@@ -1,0 +1,7 @@
+.idea
+.ruby-version
+~$*
+*.pem
+*.json
+aws.log
+Gemfile.lock
