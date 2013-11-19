@@ -43,13 +43,13 @@ desc "test the creation of the cluster"
 task :create_cluster do
   aws = OpenStudio::Aws::Aws.new()
   #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
-  server_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
+  server_options = {instance_type: "m2.xlarge"} # 2 cores ($0.410/hour)
 
   #worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
   #worker_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
   #worker_options = {instance_type: "m2.2xlarge" } # 4 cores ($0.820/hour)
   #worker_options = {instance_type: "m2.4xlarge" } # 8 cores ($1.64/hour) 
-  worker_options = {instance_type: "cc2.8xlarge" } # 16 cores ($2.40/hour) | we turn off hyperthreading
+  worker_options = {instance_type: "cc2.8xlarge"} # 16 cores ($2.40/hour) | we turn off hyperthreading
 
   # Create the server
   aws.create_server(server_options)
@@ -176,7 +176,9 @@ task :create_measure_csv do
       values << 'static'
       values << argument[:variable_type]
       values << '' # units
-      argument[:default_value] ? values << argument[:default_value] : values << ''
+      # watch out because :default_value can be a boolean 
+      argument[:default_value].nil? ? values << '' : values << argument[:default_value]
+      argument[:choices] ? values << "|#{argument[:choices].join(",")}|" : values << ''
 
       csv << values
     end
@@ -198,12 +200,13 @@ task :update_measures do
       if measure[:measure][:name] && measure[:measure][:uuid]
         m_cnt += 1
 
-        # Comment some bad measures
+        # Comment some bad measures (for some reason) 
         next if measure[:measure][:name] =~ /Change this to whatever you want/
         next if measure[:measure][:name] =~ /Add Non-Integrated Water Side Economizer/
 
-        #next if measure[:measure][:name] != "Add Daylight Sensor at Center of Spaces with a Specified Space Type Assigned"
-        
+        # Change and uncomment the below if you want to restrict the tests to a specific measure
+        next if measure[:measure][:name] != "Improve Fan Belt Efficiency"
+
         file_data = bcl.download_component(measure[:measure][:uuid])
 
         if file_data
@@ -215,10 +218,10 @@ task :update_measures do
 
           # Read the measure.rb file and rename the directory
           temp_dir_name = "./measures/#{measure[:measure][:name]}"
-          
+
           # catch a weird case where there is an extra space in an unzip file structure but not in the measure.name
           if measure[:measure][:name] == "Add Daylight Sensor at Center of Spaces with a Specified Space Type Assigned"
-            temp_dir_name = "./measures/Add Daylight Sensor at Center of  Spaces with a Specified Space Type Assigned"   
+            temp_dir_name = "./measures/Add Daylight Sensor at Center of  Spaces with a Specified Space Type Assigned"
           end
           puts "save dir name #{temp_dir_name}"
           measure_filename = "#{temp_dir_name}/measure.rb"
@@ -247,12 +250,13 @@ task :update_measures do
             measure_hash[:arguments] = []
 
             args = measure_string.scan(/(.*).*=.*OpenStudio::Ruleset::OSArgument::make(.*)Argument\((.*).*\)/)
-            puts args.inspect
             args.each do |arg|
               new_arg = {}
               new_arg[:local_variable] = arg[0].strip
               new_arg[:variable_type] = arg[1]
-              new_arg[:name] = arg[2].split(",")[0].gsub(/"|'/, "")
+              arg_params = arg[2].split(",")
+              new_arg[:name] = arg_params[0].gsub(/"|'/, "")
+              choice_vector = arg_params[1]
 
               # local variable name to get other attributes
               new_arg[:display_name] = measure_string.match(/#{new_arg[:local_variable]}.setDisplayName\((.*)\)/)[1]
@@ -261,8 +265,21 @@ task :update_measures do
               if measure_string =~ /#{new_arg[:local_variable]}.setDefaultValue/
                 new_arg[:default_value] = measure_string.match(/#{new_arg[:local_variable]}.setDefaultValue\((.*)\)/)[1]
                 case new_arg[:variable_type]
-                  when "Choice", "String", "Bool"
+                  when "Choice"
+                    # Choices to appear to only be strings?
                     new_arg[:default_value].gsub!(/"|'/, "")
+
+                    # parse the choices from the measure 
+                    choices = measure_string.scan(/#{choice_vector}.*<<.*("|')(.*)("|')/)
+
+                    new_arg[:choices] = choices.map { |c| c[1] }
+                    # if the choices are inherited from the model, then need to just display the default value which
+                    # somehow magically works because that is the display name
+                    new_arg[:choices] << new_arg[:default_value] unless new_arg[:choices].include?(new_arg[:default_value])
+                  when "String"
+                    new_arg[:default_value].gsub!(/"|'/, "")
+                  when "Bool"
+                    new_arg[:default_value] = new_arg[:default_value].downcase == "true" ? true : false 
                   when "Integer"
                     new_arg[:default_value] = new_arg[:default_value].to_i
                   when "Double"
