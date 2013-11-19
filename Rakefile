@@ -49,7 +49,7 @@ task :create_cluster do
   #worker_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
   #worker_options = {instance_type: "m2.2xlarge" } # 4 cores ($0.820/hour)
   #worker_options = {instance_type: "m2.4xlarge" } # 8 cores ($1.64/hour) 
-  worker_options = {instance_type: "cc2.8xlarge" } # 32 cores ($2.40/hour)
+  worker_options = {instance_type: "cc2.8xlarge" } # 16 cores ($2.40/hour) | we turn off hyperthreading
 
   # Create the server
   aws.create_server(server_options)
