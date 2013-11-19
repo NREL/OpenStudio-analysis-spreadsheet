@@ -1,0 +1,36 @@
+{
+  "classname": "IncreaseInsulationRValueForExteriorWalls",
+  "path": "./measures/IncreaseInsulationRValueForExteriorWalls",
+  "name": "Set R-value of Insulation for Exterior Walls to a Specific Value",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "r_value",
+      "variable_type": "Double",
+      "name": "r_value",
+      "display_name": "Insulation R-value (ft^2*h*R/Btu).",
+      "default_value": 13.0
+    },
+    {
+      "local_variable": "material_cost_increase_ip",
+      "variable_type": "Double",
+      "name": "material_cost_increase_ip",
+      "display_name": "Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "one_time_retrofit_cost_ip",
+      "variable_type": "Double",
+      "name": "one_time_retrofit_cost_ip",
+      "display_name": "One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "years_until_retrofit_cost",
+      "variable_type": "Integer",
+      "name": "years_until_retrofit_cost",
+      "display_name": "Year to Incur One Time Retrofit Cost (whole years).",
+      "default_value": 0
+    }
+  ]
+}

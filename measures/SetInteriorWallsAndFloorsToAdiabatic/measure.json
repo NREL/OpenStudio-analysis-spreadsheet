@@ -1,0 +1,14 @@
+{
+  "classname": "SetInteriorWallsAndFloorsToAdiabatic",
+  "path": "./measures/SetInteriorWallsAndFloorsToAdiabatic",
+  "name": "Set Interior Walls to Adiabatic",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "construction",
+      "variable_type": "Choice",
+      "name": "construction",
+      "display_name": "Select New Construction."
+    }
+  ]
+}

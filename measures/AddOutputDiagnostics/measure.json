@@ -1,0 +1,27 @@
+{
+  "classname": "AddOutputDiagnostics",
+  "path": "./measures/AddOutputDiagnostics",
+  "name": "Add Output Diagnostics",
+  "measure_type": "EnergyPlusMeasure",
+  "arguments": [
+    {
+      "local_variable": "outputDiagnostic",
+      "variable_type": "Choice",
+      "name": "outputDiagnostic",
+      "display_name": "Ouput Diagnostic Value.",
+      "default_value": "DisplayExtraWarnings",
+      "choices": [
+        "DisplayAllWarnings",
+        "DisplayExtraWarnings",
+        "DisplayUnusedSchedules",
+        "DisplayUnusedObjects",
+        "DisplayAdvancedReportVariables",
+        "DisplayZoneAirHeatBalanceOffBalance",
+        "DoNotMirrorDetachedShading",
+        "DisplayWeatherMissingDataWarnings",
+        "ReportDuringWarmup",
+        "ReportDetailedWarmupConvergence"
+      ]
+    }
+  ]
+}

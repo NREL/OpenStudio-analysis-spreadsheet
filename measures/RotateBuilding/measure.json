@@ -1,0 +1,15 @@
+{
+  "classname": "RotateBuilding",
+  "path": "./measures/RotateBuilding",
+  "name": "Rotate Building Relative to Current Orientation",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "relative_building_rotation",
+      "variable_type": "Double",
+      "name": "relative_building_rotation",
+      "display_name": "Number of Degrees to Rotate Building (positive value is clockwise).",
+      "default_value": 90.0
+    }
+  ]
+}

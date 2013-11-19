@@ -1,0 +1,71 @@
+{
+  "classname": "AddCostPerFloorAreaToBuilding",
+  "path": "./measures/AddCostPerFloorAreaToBuilding",
+  "name": "Add Cost per Floor Area to Building",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "remove_costs",
+      "variable_type": "Bool",
+      "name": "remove_costs",
+      "display_name": "Remove Existing Costs?",
+      "default_value": true
+    },
+    {
+      "local_variable": "lcc_name",
+      "variable_type": "String",
+      "name": "lcc_name",
+      "display_name": "Name for Life Cycle Cost Object.",
+      "default_value": "Building - Life Cycle Costs"
+    },
+    {
+      "local_variable": "material_cost_ip",
+      "variable_type": "Double",
+      "name": "material_cost_ip",
+      "display_name": "Material and Installation Costs for the Building per Floor Area ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "demolition_cost_ip",
+      "variable_type": "Double",
+      "name": "demolition_cost_ip",
+      "display_name": "Demolition Costs for Construction per Area Used ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "years_until_costs_start",
+      "variable_type": "Integer",
+      "name": "years_until_costs_start",
+      "display_name": "Years Until Costs Start (whole years).",
+      "default_value": 0
+    },
+    {
+      "local_variable": "demo_cost_initial_const",
+      "variable_type": "Bool",
+      "name": "demo_cost_initial_const",
+      "display_name": "Demolition Costs Occur During Initial Construction?",
+      "default_value": false
+    },
+    {
+      "local_variable": "expected_life",
+      "variable_type": "Integer",
+      "name": "expected_life",
+      "display_name": "Expected Life (whole years).",
+      "default_value": 20
+    },
+    {
+      "local_variable": "om_cost_ip",
+      "variable_type": "Double",
+      "name": "om_cost_ip",
+      "display_name": "O & M Costs for the Builiding per Floor Area Used ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_frequency",
+      "variable_type": "Integer",
+      "name": "om_frequency",
+      "display_name": "O & M Frequency (whole years).",
+      "default_value": 1
+    }
+  ]
+}

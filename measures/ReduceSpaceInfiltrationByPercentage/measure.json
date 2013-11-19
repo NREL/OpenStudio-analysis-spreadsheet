@@ -1,0 +1,46 @@
+{
+  "classname": "ReduceSpaceInfiltrationByPercentage",
+  "path": "./measures/ReduceSpaceInfiltrationByPercentage",
+  "name": "ReduceSpaceInfiltrationByPercentage",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "space_type",
+      "variable_type": "Choice",
+      "name": "space_type",
+      "display_name": "Apply the Measure to a Specific Space Type or to the Entire Model.",
+      "default_value": "*Entire Building*",
+      "choices": [
+        "*Entire Building*"
+      ]
+    },
+    {
+      "local_variable": "space_infiltration_reduction_percent",
+      "variable_type": "Double",
+      "name": "space_infiltration_reduction_percent",
+      "display_name": "Space Infiltration Power Reduction (%).",
+      "default_value": 30.0
+    },
+    {
+      "local_variable": "material_and_installation_cost",
+      "variable_type": "Double",
+      "name": "material_and_installation_cost",
+      "display_name": "Increase in Material and Installation Costs for Building per Affected Floor Area ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_cost",
+      "variable_type": "Double",
+      "name": "om_cost",
+      "display_name": "O & M Costs for Construction per Affected Floor Area ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_frequency",
+      "variable_type": "Integer",
+      "name": "om_frequency",
+      "display_name": "O & M Frequency (whole years).",
+      "default_value": 1
+    }
+  ]
+}

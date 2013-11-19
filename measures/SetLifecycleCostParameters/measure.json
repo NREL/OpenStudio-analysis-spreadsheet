@@ -1,0 +1,15 @@
+{
+  "classname": "SetLifecycleCostParameters",
+  "path": "./measures/SetLifecycleCostParameters",
+  "name": "Set Lifecycle Cost Parameters",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "study_period",
+      "variable_type": "Integer",
+      "name": "study_period",
+      "display_name": "Set the Length of the Study Period (years).",
+      "default_value": 25
+    }
+  ]
+}

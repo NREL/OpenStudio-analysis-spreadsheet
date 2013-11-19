@@ -1,0 +1,35 @@
+{
+  "classname": "SetWindowToWallRatioByFacade",
+  "path": "./measures/SetWindowToWallRatioByFacade",
+  "name": "Set Window to Wall Ratio by Facade",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "wwr",
+      "variable_type": "Double",
+      "name": "wwr",
+      "display_name": "Window to Wall Ratio (fraction).",
+      "default_value": 0.4
+    },
+    {
+      "local_variable": "sillHeight",
+      "variable_type": "Double",
+      "name": "sillHeight",
+      "display_name": "Sill Height (in).",
+      "default_value": 30.0
+    },
+    {
+      "local_variable": "facade",
+      "variable_type": "Choice",
+      "name": "facade",
+      "display_name": "Cardinal Direction.",
+      "default_value": "South",
+      "choices": [
+        "North",
+        "East",
+        "South",
+        "West"
+      ]
+    }
+  ]
+}

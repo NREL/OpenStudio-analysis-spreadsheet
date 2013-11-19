@@ -1,0 +1,9 @@
+{
+  "classname": "RemoveUnusedDefaultProfiles",
+  "path": "./measures/RemoveUnusedDefaultProfiles",
+  "name": "RemoveUnusedDefaultProfiles",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ]
+}

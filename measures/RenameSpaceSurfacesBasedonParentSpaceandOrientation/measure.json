@@ -1,0 +1,9 @@
+{
+  "classname": "RenameSpaceSurfacesBasedonParentSpaceandOrientation",
+  "path": "./measures/RenameSpaceSurfacesBasedonParentSpaceandOrientation",
+  "name": "Rename Space Surfaces Based on Parent Space and Orientation",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ]
+}

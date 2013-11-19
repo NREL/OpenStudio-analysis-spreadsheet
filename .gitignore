@@ -2,6 +2,6 @@
 .ruby-version
 ~$*
 *.pem
-*.json
+/*.json
 aws.log
 Gemfile.lock

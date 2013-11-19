@@ -1,0 +1,36 @@
+{
+  "classname": "SetSpaceInfiltrationByExteriorSurfaceArea",
+  "path": "./measures/SetSpaceInfiltrationByExteriorSurfaceArea",
+  "name": "Set Space Infiltration by Exterior Surface Area",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "infiltration_ip",
+      "variable_type": "Double",
+      "name": "infiltration_ip",
+      "display_name": "Space Infiltration Flow per Exterior Envelope Surface Area (cfm/ft^2).) #(ft^3/min)/(ft^2) = (ft/min",
+      "default_value": 0.05
+    },
+    {
+      "local_variable": "material_cost_ip",
+      "variable_type": "Double",
+      "name": "material_cost_ip",
+      "display_name": "Increase in Material and Installation Costs for Building per Exterior Envelope Area ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_cost_ip",
+      "variable_type": "Double",
+      "name": "om_cost_ip",
+      "display_name": "O & M Costs for Construction per Area Used ($/ft^2).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_frequency",
+      "variable_type": "Integer",
+      "name": "om_frequency",
+      "display_name": "O & M Frequency (whole years).",
+      "default_value": 1
+    }
+  ]
+}

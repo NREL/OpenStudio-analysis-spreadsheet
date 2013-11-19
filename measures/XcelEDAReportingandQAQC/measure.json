@@ -1,0 +1,9 @@
+{
+  "classname": "XcelEDAReportingandQAQC",
+  "path": "./measures/XcelEDAReportingandQAQC",
+  "name": "Xcel EDA Reporting and QAQC",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ]
+}

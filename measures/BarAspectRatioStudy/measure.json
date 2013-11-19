@@ -1,0 +1,50 @@
+{
+  "classname": "BarAspectRatioStudy",
+  "path": "./measures/BarAspectRatioStudy",
+  "name": "Bar Aspect Ratio Study",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "total_bldg_area_ip",
+      "variable_type": "Double",
+      "name": "total_bldg_area_ip",
+      "display_name": "Total Building Floor Area (ft^2).",
+      "default_value": 10000.0
+    },
+    {
+      "local_variable": "ns_to_ew_ratio",
+      "variable_type": "Double",
+      "name": "ns_to_ew_ratio",
+      "display_name": "Ratio of North/South Facade Length Relative to East/West Facade Length.",
+      "default_value": 2.0
+    },
+    {
+      "local_variable": "num_floors",
+      "variable_type": "Integer",
+      "name": "num_floors",
+      "display_name": "Number of Floors.",
+      "default_value": 2
+    },
+    {
+      "local_variable": "floor_to_floor_height_ip",
+      "variable_type": "Double",
+      "name": "floor_to_floor_height_ip",
+      "display_name": "Floor to Floor Height (ft).",
+      "default_value": 10.0
+    },
+    {
+      "local_variable": "surface_matching",
+      "variable_type": "Bool",
+      "name": "surface_matching",
+      "display_name": "Surface Matching?",
+      "default_value": true
+    },
+    {
+      "local_variable": "make_zones",
+      "variable_type": "Bool",
+      "name": "make_zones",
+      "display_name": "Make Thermal Zones from Spaces?",
+      "default_value": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "classname": "ExportScheduleCSV",
+  "path": "./measures/ExportScheduleCSV",
+  "name": "Export Schedule CSV",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+    {
+      "local_variable": "interval_arg",
+      "variable_type": "Integer",
+      "name": "interval",
+      "display_name": "Time Interval (minutes)",
+      "default_value": 60
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "classname": "ReduceNightTimeLightingLoads",
+  "path": "./measures/ReduceNightTimeLightingLoads",
+  "name": "Reduce Night Time Lighting Loads",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "lights_def",
+      "variable_type": "Choice",
+      "name": "lights_def",
+      "display_name": "Pick a Lighting Definition From the Model (schedules using this will be altered)"
+    },
+    {
+      "local_variable": "fraction_value",
+      "variable_type": "Double",
+      "name": "fraction_value",
+      "display_name": "Fractional Value for Night Time Load",
+      "default_value": 0.1
+    },
+    {
+      "local_variable": "apply_weekday",
+      "variable_type": "Bool",
+      "name": "apply_weekday",
+      "display_name": "Apply Schedule Changes to Weekday and Default Profiles?",
+      "default_value": true
+    },
+    {
+      "local_variable": "start_weekday",
+      "variable_type": "Double",
+      "name": "start_weekday",
+      "display_name": "Weekday/Default Time to Start Night Time Fraction(24hr, use decimal for sub hour).",
+      "default_value": 18.0
+    },
+    {
+      "local_variable": "end_weekday",
+      "variable_type": "Double",
+      "name": "end_weekday",
+      "display_name": "Weekday/Default Time to End Night Time Fraction(24hr, use decimal for sub hour).",
+      "default_value": 9.0
+    },
+    {
+      "local_variable": "apply_saturday",
+      "variable_type": "Bool",
+      "name": "apply_saturday",
+      "display_name": "Apply schedule changes to Saturdays?",
+      "default_value": true
+    },
+    {
+      "local_variable": "start_saturday",
+      "variable_type": "Double",
+      "name": "start_saturday",
+      "display_name": "Saturday Time to Start Night Time Fraction(24hr, use decimal for sub hour).",
+      "default_value": 18.0
+    },
+    {
+      "local_variable": "end_saturday",
+      "variable_type": "Double",
+      "name": "end_saturday",
+      "display_name": "Saturday Time to End Night Time Fraction(24hr, use decimal for sub hour).",
+      "default_value": 9.0
+    },
+    {
+      "local_variable": "apply_sunday",
+      "variable_type": "Bool",
+      "name": "apply_sunday",
+      "display_name": "Apply Schedule Changes to Sundays?",
+      "default_value": true
+    },
+    {
+      "local_variable": "start_sunday",
+      "variable_type": "Double",
+      "name": "start_sunday",
+      "display_name": "Sunday Time to Start Night Time Fraction(24hr, use decimal for sub hour).",
+      "default_value": 18.0
+    },
+    {
+      "local_variable": "end_sunday",
+      "variable_type": "Double",
+      "name": "end_sunday",
+      "display_name": "Sunday Time to End Night Time Fraction(24hr, use decimal for sub hour).",
+      "default_value": 9.0
+    },
+    {
+      "local_variable": "material_cost",
+      "variable_type": "Double",
+      "name": "material_cost",
+      "display_name": "Material and Installation Costs per Light Quantity ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "years_until_costs_start",
+      "variable_type": "Integer",
+      "name": "years_until_costs_start",
+      "display_name": "Years Until Costs Start (whole years).",
+      "default_value": 0
+    },
+    {
+      "local_variable": "expected_life",
+      "variable_type": "Integer",
+      "name": "expected_life",
+      "display_name": "Expected Life (whole years).",
+      "default_value": 20
+    },
+    {
+      "local_variable": "om_cost",
+      "variable_type": "Double",
+      "name": "om_cost",
+      "display_name": "O & M Costs Costs per Light Quantity ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_frequency",
+      "variable_type": "Integer",
+      "name": "om_frequency",
+      "display_name": "O & M Frequency (whole years).",
+      "default_value": 1
+    }
+  ]
+}

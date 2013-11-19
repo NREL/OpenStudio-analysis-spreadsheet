@@ -1,0 +1,25 @@
+{
+  "classname": "ShiftScheduleProfileTime",
+  "path": "./measures/ShiftScheduleProfileTime",
+  "name": "Shift Schedule Profile Time",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "schedule",
+      "variable_type": "Choice",
+      "name": "schedule",
+      "display_name": "Choose a Schedule to Shift the Time For.",
+      "default_value": "*All Ruleset Schedules*",
+      "choices": [
+        "*All Ruleset Schedules*"
+      ]
+    },
+    {
+      "local_variable": "shift_value",
+      "variable_type": "Double",
+      "name": "shift_value",
+      "display_name": "Shift Schedule Profiles Forward (24hr, use decimal for sub hour).",
+      "default_value": 1.0
+    }
+  ]
+}

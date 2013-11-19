@@ -1,0 +1,25 @@
+{
+  "classname": "ReduceVentilationByPercentage",
+  "path": "./measures/ReduceVentilationByPercentage",
+  "name": "Reduce Ventilation By Percentage",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "space_type",
+      "variable_type": "Choice",
+      "name": "space_type",
+      "display_name": "Apply the Measure to a Specific Space Type or to the Entire Model.",
+      "default_value": "*Entire Building*",
+      "choices": [
+        "*Entire Building*"
+      ]
+    },
+    {
+      "local_variable": "design_spec_outdoor_air_reduction_percent",
+      "variable_type": "Double",
+      "name": "design_spec_outdoor_air_reduction_percent",
+      "display_name": "Design Specification Outdoor Air Reduction (%).",
+      "default_value": 30.0
+    }
+  ]
+}

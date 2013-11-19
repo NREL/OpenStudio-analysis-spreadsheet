@@ -1,0 +1,62 @@
+{
+  "classname": "AddSimplePvToShadingSurfacesByType",
+  "path": "./measures/AddSimplePvToShadingSurfacesByType",
+  "name": "Add Simple PV to Shading Surfaces By Type",
+  "measure_type": "EnergyPlusMeasure",
+  "arguments": [
+    {
+      "local_variable": "shading_type",
+      "variable_type": "Choice",
+      "name": "shading_type",
+      "display_name": "Choose the Type of Shading Surfaces to add PV to",
+      "default_value": "Building Shading",
+      "choices": [
+        "Site Shading",
+        "Building Shading",
+        "Space/Zone Shading"
+      ]
+    },
+    {
+      "local_variable": "fraction_surfacearea_with_pv",
+      "variable_type": "Double",
+      "name": "fraction_surfacearea_with_pv",
+      "display_name": "Fraction of Included Surface Area with PV",
+      "default_value": 0.5
+    },
+    {
+      "local_variable": "value_for_cell_efficiency",
+      "variable_type": "Double",
+      "name": "value_for_cell_efficiency",
+      "display_name": "Fractional Value for Cell Efficiency",
+      "default_value": 0.12
+    },
+    {
+      "local_variable": "material_cost",
+      "variable_type": "Double",
+      "name": "material_cost",
+      "display_name": "Material and Installation Costs for the PV ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "expected_life",
+      "variable_type": "Integer",
+      "name": "expected_life",
+      "display_name": "Expected Life (whole years).",
+      "default_value": 20
+    },
+    {
+      "local_variable": "om_cost",
+      "variable_type": "Double",
+      "name": "om_cost",
+      "display_name": "O & M Costs for the PV ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_frequency",
+      "variable_type": "Integer",
+      "name": "om_frequency",
+      "display_name": "O & M Frequency (whole years).",
+      "default_value": 1
+    }
+  ]
+}

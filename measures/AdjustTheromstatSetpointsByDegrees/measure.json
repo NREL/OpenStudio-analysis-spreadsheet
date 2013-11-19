@@ -1,0 +1,29 @@
+{
+  "classname": "AdjustTheromstatSetpointsByDegrees",
+  "path": "./measures/AdjustTheromstatSetpointsByDegrees",
+  "name": "Adjust Thermostat Setpoints by Degrees",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "cooling_adjustment",
+      "variable_type": "Double",
+      "name": "cooling_adjustment",
+      "display_name": "Degrees Fahrenheit to Adjust Cooling Setpoint By.",
+      "default_value": 1.0
+    },
+    {
+      "local_variable": "heating_adjustment",
+      "variable_type": "Double",
+      "name": "heating_adjustment",
+      "display_name": "Degrees Fahrenheit to Adjust heating Setpoint By.",
+      "default_value": -1.0
+    },
+    {
+      "local_variable": "alter_design_days",
+      "variable_type": "Bool",
+      "name": "alter_design_days",
+      "display_name": "Alter Design Day Thermostats?",
+      "default_value": false
+    }
+  ]
+}

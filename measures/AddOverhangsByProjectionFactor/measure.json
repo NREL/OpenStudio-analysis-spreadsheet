@@ -1,0 +1,41 @@
+{
+  "classname": "AddOverhangsByProjectionFactor",
+  "path": "./measures/AddOverhangsByProjectionFactor",
+  "name": "Add Overhangs by Projection Factor",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "projection_factor",
+      "variable_type": "Double",
+      "name": "projection_factor",
+      "display_name": "Projection Factor (overhang depth / window height)",
+      "default_value": 0.5
+    },
+    {
+      "local_variable": "facade",
+      "variable_type": "Choice",
+      "name": "facade",
+      "display_name": "Cardinal Direction",
+      "default_value": "South",
+      "choices": [
+        "North",
+        "East",
+        "South",
+        "West"
+      ]
+    },
+    {
+      "local_variable": "remove_ext_space_shading",
+      "variable_type": "Bool",
+      "name": "remove_ext_space_shading",
+      "display_name": "Remove Existing Space Shading Surfaces From the Model?",
+      "default_value": false
+    },
+    {
+      "local_variable": "construction",
+      "variable_type": "Choice",
+      "name": "construction",
+      "display_name": "Optionally Choose a Construction for the Overhangs."
+    }
+  ]
+}
