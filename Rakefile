@@ -61,8 +61,8 @@ task :create_cluster do
   # next step
 end
 
-desc "manually run the model on the AWS cluster"
-task :run_model do
+desc "run on already configured AWS cluster"
+task :run_analysis do
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
@@ -101,8 +101,8 @@ task :run_model do
   end
 end
 
-desc "run analysis"
-task :run => [:setup, :create_cluster, :run_model]
+desc "setup problem, start cluster, and run analysis"
+task :run => [:setup, :create_cluster, :run_analysis]
 
 desc "run vagrant"
 task :run_vagrant => [:setup] do
