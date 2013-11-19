@@ -205,7 +205,7 @@ task :update_measures do
         next if measure[:measure][:name] =~ /Add Non-Integrated Water Side Economizer/
 
         # Change and uncomment the below if you want to restrict the tests to a specific measure
-        next if measure[:measure][:name] != "Improve Fan Belt Efficiency"
+        #next if measure[:measure][:name] != "Improve Fan Belt Efficiency"
 
         file_data = bcl.download_component(measure[:measure][:uuid])
 
