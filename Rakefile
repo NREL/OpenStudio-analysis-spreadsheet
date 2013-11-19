@@ -8,7 +8,7 @@ require 'bcl'
 require 'openstudio-aws'
 require 'openstudio-analysis'
 
-NUMBER_OF_WORKERS = 2
+NUMBER_OF_WORKERS = 1
 PROJECT_NAME = "medium_office"
 
 CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
@@ -42,14 +42,14 @@ end
 desc "test the creation of the cluster"
 task :create_cluster do
   aws = OpenStudio::Aws::Aws.new()
-  #server_options = {instance_type: "m1.small"}  # 1 core
-  server_options = {instance_type: "m2.xlarge" } # 2 cores
+  #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
+  server_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
 
-  #worker_options = {instance_type: "m1.small"} # 1 core
-  #worker_options = {instance_type: "m2.xlarge" } # 2 cores
-  worker_options = {instance_type: "m2.2xlarge" } # 4 cores
-  #worker_options = {instance_type: "m2.4xlarge" }
-  #worker_options = {instance_type: "cc2.8xlarge" }
+  #worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
+  #worker_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
+  #worker_options = {instance_type: "m2.2xlarge" } # 4 cores ($0.820/hour)
+  #worker_options = {instance_type: "m2.4xlarge" } # 8 cores ($1.64/hour) 
+  worker_options = {instance_type: "cc2.8xlarge" } # 32 cores ($2.40/hour)
 
   # Create the server
   aws.create_server(server_options)

@@ -33,5 +33,5 @@ rake delete_all
 * Reset analysis (removes the server files) NOTE: this does not kill AWS instances. You must do that manually via the AWS console
 
 ```
-rake clobber
+rake clean
 ```
