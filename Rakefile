@@ -3,13 +3,16 @@ Bundler.setup
 
 require "rake"
 require "rspec/core/rake_task"
-
+require 'rake/clean'
 require 'bcl'
 require 'openstudio-aws'
 require 'openstudio-analysis'
 
 NUMBER_OF_WORKERS = 2
 PROJECT_NAME = "medium_office"
+
+CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
+CLOBBER.include('hello')
 
 desc "create the analysis files"
 task :setup do
@@ -37,14 +40,14 @@ task :setup do
 end
 
 desc "test the creation of the cluster"
-task :test_create_cluster do
+task :create_cluster do
   aws = OpenStudio::Aws::Aws.new()
-  server_options = {instance_type: "m1.small"}
-  #server_options = {instance_type: "m2.xlarge" }
+  #server_options = {instance_type: "m1.small"}  # 1 core
+  server_options = {instance_type: "m2.xlarge" } # 2 cores
 
-  worker_options = {instance_type: "m1.small"}
-  #worker_options = {instance_type: "m2.xlarge" }
-  #worker_options = {instance_type: "m2.2xlarge" }
+  #worker_options = {instance_type: "m1.small"} # 1 core
+  #worker_options = {instance_type: "m2.xlarge" } # 2 cores
+  worker_options = {instance_type: "m2.2xlarge" } # 4 cores
   #worker_options = {instance_type: "m2.4xlarge" }
   #worker_options = {instance_type: "cc2.8xlarge" }
 
@@ -98,6 +101,9 @@ task :run_model do
   end
 end
 
+desc "run analysis"
+task :run => [:setup, :create_cluster, :run_model]
+
 desc "run vagrant"
 task :run_vagrant => [:setup] do
   formulation_file = "./analysis/#{PROJECT_NAME}.json"
@@ -131,12 +137,6 @@ task :run_vagrant => [:setup] do
 
 end
 
-desc "run analysis"
-task :run => [:setup, :create_cluster, :run_model] do
-
-end
-
-
 desc "delete all projects on site"
 task :delete_all do
   if File.exists?("server_data.json")
@@ -151,8 +151,6 @@ task :delete_all do
   else
     puts "There doesn't appear to be a cluster running"
   end
-
-
 end
 
 task :default do

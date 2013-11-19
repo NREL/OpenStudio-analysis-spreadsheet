@@ -16,10 +16,22 @@ Currently the execution of this requires command line (terminal) access.
 bundle
 ```
 
-* Run example
+* Run example (will setup the cluster and run the project)
 
 ```
 rake run
 ```
 
 * Note the first time you run this you will need to add in your AWS creditials, then run again
+
+* Delete projects
+
+```
+rake delete_all
+```
+
+* Reset analysis (removes the server files) NOTE: this does not kill AWS instances. You must do that manually via the AWS console
+
+```
+rake clobber
+```
