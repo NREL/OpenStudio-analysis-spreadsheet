@@ -24,6 +24,12 @@ rake run
 
 * Note the first time you run this you will need to add in your AWS creditials, then run again
 
+* Kill running simulations
+
+```
+rake kill_all
+```
+
 * Delete projects
 
 ```
@@ -34,4 +40,10 @@ rake delete_all
 
 ```
 rake clean
+```
+
+* To run an analysis on a preconfigured AWS instance
+
+```
+rake run_analysis
 ```

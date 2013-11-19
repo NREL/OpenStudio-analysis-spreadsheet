@@ -62,7 +62,7 @@ task :create_cluster do
 end
 
 desc "run on already configured AWS cluster"
-task :run_analysis do
+task :run_analysis => :setup do
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
@@ -102,7 +102,7 @@ task :run_analysis do
 end
 
 desc "setup problem, start cluster, and run analysis"
-task :run => [:setup, :create_cluster, :run_analysis]
+task :run => [:create_cluster, :run_analysis]
 
 desc "run vagrant"
 task :run_vagrant => [:setup] do
@@ -135,6 +135,22 @@ task :run_vagrant => [:setup] do
                  simulate_data_point_filename: "simulate_data_point_lhs.rb"}
   api.run_analysis(analysis_id, run_options)
 
+end
+
+desc "kill all running analysis"
+task :kill_all do
+  if File.exists?("server_data.json")
+    # parse the file and check if the instance appears to be up
+    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
+    server_dns = "http://#{json[:server_dns]}"
+
+    # Project data 
+    options = {hostname: server_dns}
+    api = OpenStudio::Analysis::ServerApi.new(options)
+    api.kill_all_analyses()
+  else
+    puts "There doesn't appear to be a cluster running"
+  end
 end
 
 desc "delete all projects on site"
