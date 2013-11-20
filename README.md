@@ -47,3 +47,29 @@ rake clean
 ```
 rake run_analysis
 ```
+
+Running Example
+---------------
+
+Make sure that you have Ruby 2.0 and the Bundler gem
+
+```
+ruby --version
+gem install bundler
+```
+
+In terminal do the following:
+```
+git clone https://github.com/nllong/os-analysis-example.git
+cd os-analysis-example
+sudo bundle install
+bundle exec rake run
+```
+
+Updating Example
+----------------
+
+In terminal
+```
+sudo bundle update
+```
