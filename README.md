@@ -71,5 +71,6 @@ Updating Example
 
 In terminal
 ```
+git pull
 sudo bundle update
 ```
