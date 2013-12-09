@@ -78,23 +78,30 @@ task :run_analysis => :setup do
     project_options = {}
     project_id = api.new_project(project_options)
 
-    analysis_options = {formulation_file: formulation_file,
-                        upload_file: analysis_zip_file,
-                        reset_uuids: true}
+    analysis_options = {
+        formulation_file: formulation_file,
+        upload_file: analysis_zip_file,
+        reset_uuids: true
+    }
     analysis_id = api.new_analysis(project_id, analysis_options)
 
-    run_options = {analysis_action: "start",
-                   without_delay: false,
-                   analysis_type: "lhs",
-                   allow_multiple_jobs: true}
+    run_options = {
+        analysis_action: "start",
+        without_delay: false,
+        analysis_type: "lhs",
+        allow_multiple_jobs: true
+    }
     api.run_analysis(analysis_id, run_options)
 
-    run_options = {analysis_action: "start",
-                   without_delay: false,
-                   analysis_type: "batch_run",
-                   allow_multiple_jobs: true,
-                   use_server_as_worker: false,
-                   simulate_data_point_filename: "simulate_data_point_lhs.rb"}
+    run_options = {
+        analysis_action: "start",
+        without_delay: false,
+        analysis_type: "batch_run",
+        allow_multiple_jobs: true,
+        use_server_as_worker: false,
+        simulate_data_point_filename: "simulate_data_point_lhs.rb", # keep for backwards compatibility for 2 versions
+        run_data_point_filename: "run_openstudio_workflow.rb"
+    }
     api.run_analysis(analysis_id, run_options)
   else
     puts "There doesn't appear to be a cluster running"
@@ -121,18 +128,23 @@ task :run_vagrant => [:setup] do
                       reset_uuids: true}
   analysis_id = api.new_analysis(project_id, analysis_options)
 
-  run_options = {analysis_action: "start",
-                 without_delay: false,
-                 analysis_type: "lhs",
-                 allow_multiple_jobs: true}
+  run_options = {
+      analysis_action: "start",
+      without_delay: false,
+      analysis_type: "lhs",
+      allow_multiple_jobs: true
+  }
   api.run_analysis(analysis_id, run_options)
 
-  run_options = {analysis_action: "start",
-                 without_delay: false,
-                 analysis_type: "batch_run",
-                 allow_multiple_jobs: true,
-                 use_server_as_worker: false,
-                 simulate_data_point_filename: "simulate_data_point_lhs.rb"}
+  run_options = {
+      analysis_action: "start",
+      without_delay: false,
+      analysis_type: "batch_run",
+      allow_multiple_jobs: true,
+      use_server_as_worker: false,
+      simulate_data_point_filename: "simulate_data_point_lhs.rb", # keep for backwards compatibility for 2 versions
+      run_data_point_filename: "run_openstudio_workflow.rb"
+  }
   api.run_analysis(analysis_id, run_options)
 
 end
@@ -192,7 +204,7 @@ task :create_measure_csv do
       values << 'static'
       values << argument[:variable_type]
       values << '' # units
-      # watch out because :default_value can be a boolean 
+                   # watch out because :default_value can be a boolean 
       argument[:default_value].nil? ? values << '' : values << argument[:default_value]
       argument[:choices] ? values << "|#{argument[:choices].join(",")}|" : values << ''
 
@@ -295,7 +307,7 @@ task :update_measures do
                   when "String"
                     new_arg[:default_value].gsub!(/"|'/, "")
                   when "Bool"
-                    new_arg[:default_value] = new_arg[:default_value].downcase == "true" ? true : false 
+                    new_arg[:default_value] = new_arg[:default_value].downcase == "true" ? true : false
                   when "Integer"
                     new_arg[:default_value] = new_arg[:default_value].to_i
                   when "Double"

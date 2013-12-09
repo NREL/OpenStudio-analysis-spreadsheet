@@ -3,6 +3,13 @@ Analysis Example Change Log
 
 There is no formal versioning of this project...
 
+Version 0.1.1
+-----------
+
+### Minor Changes
+
+* AMIs in the future will not need the simulate_data_point field, rather the run_data_point_filename. Updated Rakefile to support both
+
 Version 0.1
 -------------
 
