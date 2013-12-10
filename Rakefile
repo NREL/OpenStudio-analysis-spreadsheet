@@ -20,6 +20,7 @@ task :setup do
   excel_file = "./doc/input_data.xlsx"
   if File.exists?(excel_file)
     excel = OpenStudio::Analysis::Translator::Excel.new("./doc/input_data.xlsx")
+    excel.process
 
     # Print some messages
     puts "Seed models are:"
