@@ -150,7 +150,7 @@ task :run_vagrant => [:setup] do
 
 end
 
-desc "kill all running analysis"
+desc "kill all running on cloud"
 task :kill_all do
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
@@ -164,6 +164,16 @@ task :kill_all do
   else
     puts "There doesn't appear to be a cluster running"
   end
+end
+
+desc "kill all running vagrant"
+task :kill_all_vagrant do
+  server_dns = "http://localhost:8080"
+
+  # Project data 
+  options = {hostname: server_dns}
+  api = OpenStudio::Analysis::ServerApi.new(options)
+  api.kill_all_analyses()
 end
 
 desc "delete all projects on site"
