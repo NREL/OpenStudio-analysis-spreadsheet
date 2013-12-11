@@ -10,16 +10,16 @@ require 'openstudio-analysis'
 
 NUMBER_OF_WORKERS = 1
 PROJECT_NAME = "medium_office"
+EXCEL_FILENAME = "./doc/input_data.xlsx"
 
 CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
-CLOBBER.include('hello')
 
 desc "create the analysis files"
 task :setup do
   # Read, parse, and validate the excel file
   excel_file = "./doc/input_data.xlsx"
   if File.exists?(excel_file)
-    excel = OpenStudio::Analysis::Translator::Excel.new("./doc/input_data.xlsx")
+    excel = OpenStudio::Analysis::Translator::Excel.new(EXCEL_FILENAME)
     excel.process
 
     # Print some messages
