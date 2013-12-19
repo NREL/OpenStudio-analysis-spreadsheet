@@ -1,10 +1,12 @@
 require "bundler"
 Bundler.setup
 
-require "rake"
-require "rspec/core/rake_task"
+require 'rake'
 require 'rake/clean'
-require 'bcl'
+
+# uncomment if doing development
+#require 'bcl'
+
 require 'openstudio-aws'
 require 'openstudio-analysis'
 
