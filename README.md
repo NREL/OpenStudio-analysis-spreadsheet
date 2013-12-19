@@ -3,7 +3,7 @@ Analysis Example
 
 This example uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon OpenStudio Cluster.
 
-Loyout
+Layout
 ------
 * Doc - Contains the spreadsheet (input_data.json).  This is what you will change
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
@@ -84,3 +84,15 @@ git pull
 bundle update
 ```
 Note: Mac 10.9 users may need to run `sudo bundle update`
+
+
+Windows Specific Installation Steps
+-----------------------------------
+
+By default the path to the libxml dlls is not included.  You will need to add the path by hand.  To do this find where the DLLs are by going to your Ruby installation directory and making sure they exist. Typically the installation will be something like:
+
+```
+C:\Ruby<RUBY_VERSION>\lib\ruby\gems\<RUBY_VERSION>\gems\libxml-ruby-<GEM_VERSION>\lib\libs
+```
+
+Add this path to your environment variables.
