@@ -16,13 +16,21 @@ Instructions
 
 Currently the execution of this requires command line (terminal) access.  
 
-* Make sure to have ruby 2.0 installed and the bundler gem.  Check your version of ruby by running `ruby --version`.  To install bundler run `gem install bundler` at the command line. Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo gem install bundler`.
+* Make sure to have ruby 2.0 installed and the bundler gem.  Check your version of ruby by running `ruby --version`.
+
+* Install RubyGem's Bundler.  In a command line call the method below.  
+
+```
+`gem install bundler`
+```
+Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo gem install bundler`.
 
 * Install the dependencies by running
 
 ```
 bundle
 ```
+
 Note Mac 10.9 users using system Ruby 2.0 may need to run `sudo bundle`
 
 * Run example (will setup the cluster and run the project)
@@ -31,7 +39,12 @@ Note Mac 10.9 users using system Ruby 2.0 may need to run `sudo bundle`
 bundle exec rake run
 ```
 
-* Note the first time you run this you will need to add in your AWS creditials, then run again
+* Note the first time you run this you will need to add in your AWS creditials in your <home-dir>/config_aws.yml file then run the `bundle exec rake run` command again.  Note that this file should only be readable by you as it contains your secret key for AWS access. The YML file will look something like:
+
+```
+access_key_id: YOUR_ACCESS_KEY_ID
+secret_access_key: YOUR_SECRET_ACCESS_KEY
+```
 
 * Kill running simulations
 
@@ -57,7 +70,7 @@ bundle exec rake clean
 bundle exec rake run_analysis
 ```
 
-Running Example
+Running Example from Git
 ---------------
 
 Make sure that you have Ruby 2.0 and the Bundler gem
@@ -65,10 +78,6 @@ Make sure that you have Ruby 2.0 and the Bundler gem
 ```
 ruby --version
 gem install bundler
-```
-
-In terminal do the following:
-```
 git clone https://github.com/nllong/os-analysis-example.git
 cd os-analysis-example
 sudo bundle install
@@ -89,7 +98,14 @@ Note: Mac 10.9 users may need to run `sudo bundle update`
 Windows Specific Installation Steps
 -----------------------------------
 
-By default the path to the libxml dlls is not included.  You will need to add the path by hand.  To do this find where the DLLs are by going to your Ruby installation directory and making sure they exist. Typically the installation will be something like:
+If you have any issues getting gem dependencies installed, it may be helpful to remove all your gems and start over.  to do this run the command below (note that you will need to reinstall bundler after removing all gems).
+
+```
+ruby -e "`gem list`.split(/$/).each { |line| puts `gem uninstall -Iax #{line.split(' ')[0]}` unless line.empty? }"
+```
+
+
+If you are using XML (via the BCL gem) then by default the path to the libxml dlls is not included.  You will need to add the path by hand.  To do this find where the DLLs are by going to your Ruby installation directory and making sure they exist. Typically the installation will be something like:
 
 ```
 C:\Ruby<RUBY_VERSION>\lib\ruby\gems\<RUBY_VERSION>\gems\libxml-ruby-<GEM_VERSION>\lib\libs
