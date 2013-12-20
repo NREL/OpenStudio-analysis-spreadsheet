@@ -1,18 +1,15 @@
-Analysis Example
-================
+# Analysis Example
 
 This example uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon OpenStudio Cluster.
 
-Layout
-------
+## Layout
 * Doc - Contains the spreadsheet (input_data.json).  This is what you will change
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
 * Seeds - Example seed OSM models
 * Weather - Where to dump other weather files of interest
 * Measures- Local cache of BCL measures
 
-Instructions
-------------
+## Instructions
 
 Currently the execution of this requires command line (terminal) access.  
 
@@ -21,7 +18,7 @@ Currently the execution of this requires command line (terminal) access.
 * Install RubyGem's Bundler.  In a command line call the method below.  
 
 ```
-`gem install bundler`
+gem install bundler
 ```
 Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo gem install bundler`.
 
@@ -70,33 +67,49 @@ bundle exec rake clean
 bundle exec rake run_analysis
 ```
 
-Running Example from Git
----------------
+## Running Examples
 
 Make sure that you have Ruby 2.0 and the Bundler gem
 
 ```
 ruby --version
 gem install bundler
+```
+
+### Using Git
+
+```
 git clone https://github.com/nllong/os-analysis-example.git
 cd os-analysis-example
-sudo bundle install
+bundle 
 bundle exec rake run
 ```
+Note: Mac 10.9 users may need to call `sudo bundle`
 
-Updating Example
-----------------
+To update simply go to the directory and call
 
-In terminal
 ```
 git pull
-bundle update
+bundle
 ```
 Note: Mac 10.9 users may need to run `sudo bundle update`
 
+### Without Git
 
-Windows Specific Installation Steps
------------------------------------
+* Download the latest release from https://github.com/nllong/os-analysis-example/releases
+* Unzip into a directory and go to that directory in a command/terminal window
+* Run
+
+```
+cd <path_to_downloaded_files>
+bundle
+bundle exec rake run
+``` 
+Note: Mac 10.9 users may need to call `sudo bundle`
+
+
+## Windows Specific Installation Steps
+
 
 If you have any issues getting gem dependencies installed, it may be helpful to remove all your gems and start over.  to do this run the command below (note that you will need to reinstall bundler after removing all gems).
 
