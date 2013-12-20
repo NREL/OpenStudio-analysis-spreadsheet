@@ -2,7 +2,6 @@ source "http://rubygems.org"
 
 gem "rake", "~> 10.1.0"
 gem "rubyzip", "~> 1.1.0"
-gem "aws-sdk"
 
 # uncomment if you need to update the bcl measures
 #gem "bcl", "~> 0.3.7"
