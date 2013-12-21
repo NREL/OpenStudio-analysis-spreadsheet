@@ -110,19 +110,6 @@ Note: Mac 10.9 users may need to call `sudo bundle`
 
 ## Windows Specific Installation Steps
 
-Here are the instructions to get this to install without needing the devkit on windows.
-
-You have to install the gems one-by-one.  If you already have installed some of these gems, then it may be best to just remove them all and start over (see the remove command below).
-
-```
-gem install bundler
-gem install rake
-gem install aws-sdk -v 1.30.1
-gem install openstudio-aws
-gem install openstudio-analysis
-gem install rubyzip
-```                  
-
 If you have any issues getting gem dependencies installed, it may be helpful to remove all your gems and start over.  to do this run the command below (note that you will need to reinstall bundler after removing all gems).
 
 ```
