@@ -5,3 +5,4 @@
 *.pem
 /*.json
 aws.log
+.gitignore
