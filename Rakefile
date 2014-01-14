@@ -10,7 +10,7 @@ require 'rake/clean'
 require 'openstudio-aws'
 require 'openstudio-analysis'
 
-NUMBER_OF_WORKERS = 2
+NUMBER_OF_WORKERS = 1
 PROJECT_NAME = "medium_office"
 EXCEL_FILENAME = "./doc/input_data.xlsx"
 
@@ -44,15 +44,16 @@ end
 
 desc "test the creation of the cluster"
 task :create_cluster do
+  puts "Creating cluster"
   aws = OpenStudio::Aws::Aws.new()
-  server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
-  #server_options = {instance_type: "m2.xlarge"} # 2 cores ($0.410/hour)
+  #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
+  server_options = {instance_type: "m2.xlarge"} # 2 cores ($0.410/hour)
 
-  worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
+  #worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
   #worker_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
   #worker_options = {instance_type: "m2.2xlarge" } # 4 cores ($0.820/hour)
   #worker_options = {instance_type: "m2.4xlarge" } # 8 cores ($1.64/hour) 
-  #worker_options = {instance_type: "cc2.8xlarge"} # 16 cores ($2.40/hour) | we turn off hyperthreading
+  worker_options = {instance_type: "cc2.8xlarge"} # 16 cores ($2.40/hour) | we turn off hyperthreading
 
   # Create the server
   aws.create_server(server_options)
@@ -66,6 +67,7 @@ end
 
 desc "run on already configured AWS cluster"
 task :run_analysis => :setup do
+  puts "Running the analysis"
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
