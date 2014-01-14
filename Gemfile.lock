@@ -29,7 +29,7 @@ GEM
       roo (~> 1.12.2)
       rubyzip (~> 1.1.0)
       uuid (~> 2.3.7)
-    openstudio-aws (0.1.10)
+    openstudio-aws (0.1.11)
       aws-sdk-core (~> 2.0.0.rc3)
       net-scp (~> 1.1.2)
     rake (10.1.1)
@@ -59,7 +59,7 @@ PLATFORMS
 DEPENDENCIES
   ci_reporter (~> 1.9.0)
   openstudio-analysis (~> 0.1.6)
-  openstudio-aws (~> 0.1.10)
+  openstudio-aws (~> 0.1.11)
   rake (~> 10.1.0)
   rspec (~> 2.12)
   rubyzip (~> 1.1.0)
