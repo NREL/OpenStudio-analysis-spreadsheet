@@ -1,9 +1,9 @@
 PATH
-  remote: ./vendor/aws-sdk-ruby-1.31.3
+  remote: ../OpenStudio-aws-gem
   specs:
-    aws-sdk (1.31.3)
-      nokogiri (>= 1.4.4)
-      uuidtools (~> 2.1)
+    openstudio-aws (0.1.9)
+      aws-sdk-core (~> 2.0.0.rc3)
+      net-scp (~> 1.1.2)
 
 GEM
   remote: http://rubygems.org/
@@ -34,9 +34,6 @@ GEM
       roo (~> 1.12.2)
       rubyzip (~> 1.1.0)
       uuid (~> 2.3.7)
-    openstudio-aws (0.1.9)
-      aws-sdk-core (~> 2.0.0.rc3)
-      net-scp (~> 1.1.2)
     rake (10.1.1)
     roo (1.12.2)
       nokogiri
@@ -57,15 +54,13 @@ GEM
     systemu (2.5.2)
     uuid (2.3.7)
       macaddr (~> 1.0)
-    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk!
   openstudio-analysis (~> 0.1.6)
-  openstudio-aws (~> 0.1.9)
+  openstudio-aws!
   rake (~> 10.1.0)
   rspec (~> 2.12)
   rubyzip (~> 1.1.0)

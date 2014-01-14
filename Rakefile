@@ -10,7 +10,7 @@ require 'rake/clean'
 require 'openstudio-aws'
 require 'openstudio-analysis'
 
-NUMBER_OF_WORKERS = 1
+NUMBER_OF_WORKERS = 2
 PROJECT_NAME = "medium_office"
 EXCEL_FILENAME = "./doc/input_data.xlsx"
 
@@ -45,14 +45,14 @@ end
 desc "test the creation of the cluster"
 task :create_cluster do
   aws = OpenStudio::Aws::Aws.new()
-  #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
-  server_options = {instance_type: "m2.xlarge"} # 2 cores ($0.410/hour)
+  server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
+  #server_options = {instance_type: "m2.xlarge"} # 2 cores ($0.410/hour)
 
-  #worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
+  worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
   #worker_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
   #worker_options = {instance_type: "m2.2xlarge" } # 4 cores ($0.820/hour)
   #worker_options = {instance_type: "m2.4xlarge" } # 8 cores ($1.64/hour) 
-  worker_options = {instance_type: "cc2.8xlarge"} # 16 cores ($2.40/hour) | we turn off hyperthreading
+  #worker_options = {instance_type: "cc2.8xlarge"} # 16 cores ($2.40/hour) | we turn off hyperthreading
 
   # Create the server
   aws.create_server(server_options)
@@ -69,8 +69,7 @@ task :run_analysis => :setup do
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-    server_dns = "http://#{json[:server_dns]}"
-
+    server_dns = "http://#{json[:server][:dns]}"
     formulation_file = "./analysis/#{PROJECT_NAME}.json"
     analysis_zip_file = "./analysis/#{PROJECT_NAME}.zip"
 
@@ -157,7 +156,7 @@ task :kill_all do
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-    server_dns = "http://#{json[:server_dns]}"
+    server_dns = "http://#{json[:server][:dns]}"
 
     # Project data 
     options = {hostname: server_dns}
@@ -183,7 +182,7 @@ task :delete_all do
   if File.exists?("server_data.json")
     # parse the file and check if the instance appears to be up
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-    server_dns = "http://#{json[:server_dns]}"
+    server_dns = "http://#{json[:server][:dns]}"
 
     # Project data 
     options = {hostname: server_dns}
