@@ -6,7 +6,7 @@ gem "rubyzip", "~> 1.1.0"
 # uncomment if you need to update the bcl measures
 #gem "bcl", "~> 0.3.7"
 
-gem "openstudio-aws", "~> 0.1.11" 
+gem "openstudio-aws", "~> 0.1.12" 
 #gem "openstudio-aws", :git => "git@github.com:NREL/OpenStudio-aws-gem.git"
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
