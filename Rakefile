@@ -201,6 +201,8 @@ end
 
 desc "make csv file of measures"
 task :create_measure_csv do
+  require 'CSV'
+
   new_csv_file = "./doc/bcl_spreadsheet.csv"
   FileUtils.rm_f(new_csv_file) if File.exists?(new_csv_file)
   csv = CSV.open(new_csv_file, "w")
