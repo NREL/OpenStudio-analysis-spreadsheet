@@ -9,191 +9,242 @@ require 'rake/clean'
 
 require 'openstudio-aws'
 require 'openstudio-analysis'
+require 'colored'
 
-NUMBER_OF_WORKERS = 1
 PROJECT_NAME = "medium_office"
-EXCEL_FILENAME = "./doc/input_data.xlsx"
 
 CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
 
+
+def get_project()
+  # determine the project file to run.  This will list out all the xlsx files and give you a 
+  # choice from which to choose
+  puts
+  puts "Select which project to run from the list below:".blue.underline
+  puts "Note: if this list is too long, simply remove xlsx files from the ./projects directory".cyan
+  projects = Dir.glob("./projects/*.xlsx").reject { |i| i =~ /~\$.*/ }
+  projects.each_index do |i|
+    puts "  #{i+1}) #{File.basename(projects[i])}".green
+  end
+  puts
+  print "Selection (1-#{projects.size}): ".blue
+  n = $stdin.gets.chomp
+  n_i = n.to_i
+  if n_i == 0 || n_i > projects.size
+    puts "Could not process your selection. You entered '#{n}'".red
+    exit
+  end
+
+  excel = nil
+  excel_file = projects[n_i-1]
+  if excel_file && File.exists?(excel_file)
+    excel = OpenStudio::Analysis::Translator::Excel.new(excel_file)
+    excel.process
+  else
+    puts "Could not find input excel file: #{excel_file}".red
+    exit 1
+  end
+
+  excel
+end
+
+def create_cluster(excel)
+  if File.exists?("#{excel.machine_name}.json")
+    puts
+    puts "It appears that a cluster for #{excel.machine_name} is already running.  If this is not the case then delete #{excel.machine_name}".red
+    puts "Will try to continue".blue
+  else
+    puts "Creating cluster for #{excel.machine_name}".blue
+    aws = OpenStudio::Aws::Aws.new()
+    #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
+    server_options = {instance_type: excel.settings["server_instance_type"]} # 2 cores ($0.410/hour)
+    worker_options = {instance_type: excel.settings["worker_instance_type"]} # 16 cores ($2.40/hour) | we turn off hyperthreading
+  
+    # Create the server
+    aws.create_server(server_options, "#{excel.machine_name}.json")
+  
+    # Create the worker
+    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options)
+  
+    # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
+    # next step
+  
+    puts "Cluster setup and awaiting analyses".blue
+  end
+end
+
+def run_analysis(excel, run_vagrant = false)
+  puts "Running the analysis"
+  if File.exists?("#{excel.machine_name}.json") || run_vagrant
+    # for each model in the excel file submit the analysis
+    server_dns = nil
+    if run_vagrant
+      server_dns = "http://localhost:8080"
+    else
+      json = JSON.parse(File.read("#{excel.machine_name}.json"), :symbolize_names => true)
+      server_dns = "http://#{json[:server][:dns]}"
+    end
+
+    excel.models.each do |model|
+      # parse the file and check if the instance appears to be up
+
+      formulation_file = "./analysis/#{model[:name]}.json"
+      analysis_zip_file = "./analysis/#{model[:name]}.zip"
+
+      # Project data 
+      options = {hostname: server_dns}
+      api = OpenStudio::Analysis::ServerApi.new(options)
+
+      project_options = {}
+      project_id = api.new_project(project_options)
+
+      analysis_options = {
+          formulation_file: formulation_file,
+          upload_file: analysis_zip_file,
+          reset_uuids: true
+      }
+      analysis_id = api.new_analysis(project_id, analysis_options)
+
+      run_options = {
+          analysis_action: "start",
+          without_delay: false,
+          analysis_type: "lhs",
+          allow_multiple_jobs: true
+      }
+      api.run_analysis(analysis_id, run_options)
+
+      run_options = {
+          analysis_action: "start",
+          without_delay: false,
+          analysis_type: "batch_run",
+          allow_multiple_jobs: true,
+          use_server_as_worker: false,
+          simulate_data_point_filename: "simulate_data_point_lhs.rb", # keep for backwards compatibility for 2 versions
+          run_data_point_filename: "run_openstudio_workflow.rb"
+      }
+      api.run_analysis(analysis_id, run_options)
+    end
+
+    puts
+    puts "Server URL is: #{server_dns}".bold.blue
+    puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
+  else
+    puts "There doesn't appear to be a cluster running for this project #{excel.machine_name}"
+  end
+end
+
+desc "create a new analysis (and spreadsheet)"
+task :new do
+  print "Name of the new project without the file extension (this will make a new spreadsheet): ".blue
+  n = $stdin.gets.chomp
+
+  new_projectfile = nil
+  tmp_excel = "./doc/template_input.xlsx"
+  if File.exists?(tmp_excel)
+    new_projectfile = "./projects/#{n}.xlsx"
+    if File.exists?(new_projectfile)
+      puts "File already exists, rerun with a new name".red
+      exit 1
+    end
+    FileUtils.copy(tmp_excel, new_projectfile)
+  else
+    puts "Template file has been deleted (#{tmp_excel}. Best to recheckout the project".red
+  end
+  puts
+  puts "Open the excel file and add in your seed models, weather files, and measures #{new_projectfile}".blue
+  puts "When ready, from the command line run 'rake run' and select the project of interest".blue
+end
+
 desc "create the analysis files"
 task :setup do
-  # Read, parse, and validate the excel file
-  excel_file = "./doc/input_data.xlsx"
-  if File.exists?(excel_file)
-    excel = OpenStudio::Analysis::Translator::Excel.new(EXCEL_FILENAME)
-    excel.process
+  excel = get_project()
 
-    # Print some messages
-    puts "Seed models are:"
-    excel.models.each do |model|
-      puts "  #{model}"
-    end
-
-    puts "Weather files to bundle are are:"
-    excel.weather_files.each do |wf|
-      puts "  #{wf}"
-    end
-
-    puts "Saving the analysis JSONS and zips"
-    excel.save_analysis() # directory is define in the setup
-  else
-    puts "ERROR: could not find input excel file: #{excel_file}"
+  puts "Seed models are:".blue
+  excel.models.each do |model|
+    puts "  #{model}".green
   end
+
+  puts "Weather files to bundle are are:".blue
+  excel.weather_files.each do |wf|
+    puts "  #{wf}".green
+  end
+
+  puts "Saving the analysis JSONS and zips".blue
+  excel.save_analysis() # directory is define in the setup
+
+  puts "Finished saving analysis into the analysis directory".blue
 end
 
 desc "test the creation of the cluster"
 task :create_cluster do
-  puts "Creating cluster"
-  aws = OpenStudio::Aws::Aws.new()
-  #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
-  server_options = {instance_type: "m2.xlarge"} # 2 cores ($0.410/hour)
+  excel = get_project()
 
-  #worker_options = {instance_type: "m1.small"} # 1 core ($0.06/hour)
-  #worker_options = {instance_type: "m2.xlarge" } # 2 cores ($0.410/hour)
-  #worker_options = {instance_type: "m2.2xlarge" } # 4 cores ($0.820/hour)
-  #worker_options = {instance_type: "m2.4xlarge" } # 8 cores ($1.64/hour) 
-  worker_options = {instance_type: "cc2.8xlarge"} # 16 cores ($2.40/hour) | we turn off hyperthreading
-
-  # Create the server
-  aws.create_server(server_options)
-
-  # Create the worker
-  aws.create_workers(NUMBER_OF_WORKERS, worker_options)
-
-  # This saves off a file called server_data.json that can be used to read in to run the 
-  # next step
+  create_cluster(excel)
 end
 
 desc "run on already configured AWS cluster"
 task :run_analysis => :setup do
-  puts "Running the analysis"
-  if File.exists?("server_data.json")
-    # parse the file and check if the instance appears to be up
-    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-    server_dns = "http://#{json[:server][:dns]}"
-    formulation_file = "./analysis/#{PROJECT_NAME}.json"
-    analysis_zip_file = "./analysis/#{PROJECT_NAME}.zip"
 
-    # Project data 
-    options = {hostname: server_dns}
-    api = OpenStudio::Analysis::ServerApi.new(options)
-
-    project_options = {}
-    project_id = api.new_project(project_options)
-
-    analysis_options = {
-        formulation_file: formulation_file,
-        upload_file: analysis_zip_file,
-        reset_uuids: true
-    }
-    analysis_id = api.new_analysis(project_id, analysis_options)
-
-    run_options = {
-        analysis_action: "start",
-        without_delay: false,
-        analysis_type: "lhs",
-        allow_multiple_jobs: true
-    }
-    api.run_analysis(analysis_id, run_options)
-
-    run_options = {
-        analysis_action: "start",
-        without_delay: false,
-        analysis_type: "batch_run",
-        allow_multiple_jobs: true,
-        use_server_as_worker: false,
-        simulate_data_point_filename: "simulate_data_point_lhs.rb", # keep for backwards compatibility for 2 versions
-        run_data_point_filename: "run_openstudio_workflow.rb"
-    }
-    api.run_analysis(analysis_id, run_options)
-  else
-    puts "There doesn't appear to be a cluster running"
-  end
 end
 
 desc "setup problem, start cluster, and run analysis"
-task :run => [:create_cluster, :run_analysis]
+task :run do
+  excel = get_project()
+  excel.save_analysis()
+  create_cluster(excel)
+  run_analysis(excel)
+end
 
 desc "run vagrant"
 task :run_vagrant => [:setup] do
-  formulation_file = "./analysis/#{PROJECT_NAME}.json"
-  analysis_zip_file = "./analysis/#{PROJECT_NAME}.zip"
-
-  # Project data 
-  options = {hostname: 'http://localhost:8080'}
-  api = OpenStudio::Analysis::ServerApi.new(options)
-
-  project_options = {}
-  project_id = api.new_project(project_options)
-
-  analysis_options = {formulation_file: formulation_file,
-                      upload_file: analysis_zip_file,
-                      reset_uuids: true}
-  analysis_id = api.new_analysis(project_id, analysis_options)
-
-  run_options = {
-      analysis_action: "start",
-      without_delay: false,
-      analysis_type: "lhs",
-      allow_multiple_jobs: true
-  }
-  api.run_analysis(analysis_id, run_options)
-
-  run_options = {
-      analysis_action: "start",
-      without_delay: false,
-      analysis_type: "batch_run",
-      allow_multiple_jobs: true,
-      use_server_as_worker: false,
-      simulate_data_point_filename: "simulate_data_point_lhs.rb", # keep for backwards compatibility for 2 versions
-      run_data_point_filename: "run_openstudio_workflow.rb"
-  }
-  api.run_analysis(analysis_id, run_options)
-
+  excel = get_project()
+  excel.save_analysis()
+  run_analysis(excel, true)
 end
 
-desc "kill all running on cloud"
-task :kill_all do
-  if File.exists?("server_data.json")
-    # parse the file and check if the instance appears to be up
-    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-    server_dns = "http://#{json[:server][:dns]}"
-
-    # Project data 
-    options = {hostname: server_dns}
-    api = OpenStudio::Analysis::ServerApi.new(options)
-    api.kill_all_analyses()
-  else
-    puts "There doesn't appear to be a cluster running"
-  end
-end
-
-desc "kill all running vagrant"
-task :kill_all_vagrant do
-  server_dns = "http://localhost:8080"
-
-  # Project data 
-  options = {hostname: server_dns}
-  api = OpenStudio::Analysis::ServerApi.new(options)
-  api.kill_all_analyses()
-end
-
-desc "delete all projects on site"
-task :delete_all do
-  if File.exists?("server_data.json")
-    # parse the file and check if the instance appears to be up
-    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-    server_dns = "http://#{json[:server][:dns]}"
-
-    # Project data 
-    options = {hostname: server_dns}
-    api = OpenStudio::Analysis::ServerApi.new(options)
-    api.delete_all()
-  else
-    puts "There doesn't appear to be a cluster running"
-  end
-end
+#desc "kill all running on cloud"
+#task :kill_all do
+#  excel = get_project()
+#  
+#  if File.exists?("server_data.json")
+#    # parse the file and check if the instance appears to be up
+#    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
+#    server_dns = "http://#{json[:server][:dns]}"
+#
+#    # Project data 
+#    options = {hostname: server_dns}
+#    api = OpenStudio::Analysis::ServerApi.new(options)
+#    api.kill_all_analyses()
+#  else
+#    puts "There doesn't appear to be a cluster running"
+#  end
+#end
+#
+#desc "kill all running vagrant"
+#task :kill_all_vagrant do
+#  server_dns = "http://localhost:8080"
+#
+#  # Project data 
+#  options = {hostname: server_dns}
+#  api = OpenStudio::Analysis::ServerApi.new(options)
+#  api.kill_all_analyses()
+#end
+#
+#desc "delete all projects on site"
+#task :delete_all do
+#  if File.exists?("server_data.json")
+#    # parse the file and check if the instance appears to be up
+#    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
+#    server_dns = "http://#{json[:server][:dns]}"
+#
+#    # Project data 
+#    options = {hostname: server_dns}
+#    api = OpenStudio::Analysis::ServerApi.new(options)
+#    api.delete_all()
+#  else
+#    puts "There doesn't appear to be a cluster running"
+#  end
+#end
 
 task :default do
   system("rake -sT") # s for silent
