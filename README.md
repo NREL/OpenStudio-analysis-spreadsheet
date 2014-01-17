@@ -144,5 +144,5 @@ Add this path to your environment variables.
 ## Todos
 
 * Move the analysis files under need a project specific folder (under project)
-
 * Renable the kill_all methods
+* Pass default options for clusters 
