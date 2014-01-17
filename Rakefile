@@ -55,6 +55,9 @@ def create_cluster(excel)
     puts "Will try to continue".cyan
   else
     puts "Creating cluster for #{excel.machine_name}".cyan
+    puts "Validating cluster options...".cyan
+    raise "Number of workers not defined".red if excel.settings['worker_nodes'].to_i == 0
+    
     aws = OpenStudio::Aws::Aws.new()
     #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
     server_options = {instance_type: excel.settings["server_instance_type"]} # 2 cores ($0.410/hour)
