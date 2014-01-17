@@ -36,29 +36,13 @@ Note Mac 10.9 users using system Ruby 2.0 may need to run `sudo bundle`
 bundle exec rake run
 ```
 
+* This will now ask which project you want to run. Select the right spreadsheet.  See `rake new` for adding new projects.
 * Note the first time you run this you will need to add in your AWS creditials in your <home-dir>/config_aws.yml file then run the `bundle exec rake run` command again.  Note that this file should only be readable by you as it contains your secret key for AWS access. The YML file will look something like:
+
 
 ```
 access_key_id: YOUR_ACCESS_KEY_ID
 secret_access_key: YOUR_SECRET_ACCESS_KEY
-```
-
-* Kill running simulations
-
-```
-bundle exec rake kill_all
-```
-
-* Delete projects
-
-```
-bundle exec rake delete_all
-```
-
-* Reset analysis (removes the server files) NOTE: this does not kill AWS instances. You must do that manually via the AWS console
-
-```
-bundle exec rake clean
 ```
 
 * To run an analysis on a preconfigured AWS instance
@@ -66,6 +50,37 @@ bundle exec rake clean
 ```
 bundle exec rake run_analysis
 ```
+
+* To add a new project (spreadsheet)
+
+```
+bundle exec rake new
+```
+
+Follow the instructions.  Note that the name of the new project will become the spreadsheet but you do NOT need to provide the extension (.xlsx)
+
+* Kill running simulations
+Note: this has been disabled.
+ 
+```
+bundle exec rake kill_all
+```
+
+* Delete projects
+Note: this has been disabled.
+
+```
+bundle exec rake delete_all
+```
+
+* Reset analysis (removes the server files) NOTE: this does not kill AWS instances. You must do that manually via the AWS console
+Note: this has been disabled.
+
+```
+bundle exec rake clean
+```
+
+
 
 ## Running Examples
 
