@@ -52,7 +52,7 @@ def create_cluster(excel)
   if File.exists?("#{excel.machine_name}.json")
     puts
     puts "It appears that a cluster for #{excel.machine_name} is already running.  If this is not the case then delete ./#{excel.machine_name}.json file".red
-    puts "Will try to continue".blue
+    puts "Will try to continue".cyan
   else
     puts "Creating cluster for #{excel.machine_name}".cyan
     aws = OpenStudio::Aws::Aws.new()
@@ -69,7 +69,7 @@ def create_cluster(excel)
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
     # next step
   
-    puts "Cluster setup and awaiting analyses".blue
+    puts "Cluster setup and awaiting analyses".cyan
   end
 end
 
@@ -155,7 +155,7 @@ task :new do
   puts "When ready, from the command line run 'rake run' and select the project of interest".cyan
 end
 
-desc "create the analysis files"
+desc "create the analysis files with more output"
 task :setup do
   excel = get_project()
 
