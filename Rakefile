@@ -20,14 +20,14 @@ def get_project()
   # determine the project file to run.  This will list out all the xlsx files and give you a 
   # choice from which to choose
   puts
-  puts "Select which project to run from the list below:".blue.underline
+  puts "Select which project to run from the list below:".cyan.underline
   puts "Note: if this list is too long, simply remove xlsx files from the ./projects directory".cyan
   projects = Dir.glob("./projects/*.xlsx").reject { |i| i =~ /~\$.*/ }
   projects.each_index do |i|
     puts "  #{i+1}) #{File.basename(projects[i])}".green
   end
   puts
-  print "Selection (1-#{projects.size}): ".blue
+  print "Selection (1-#{projects.size}): ".cyan
   n = $stdin.gets.chomp
   n_i = n.to_i
   if n_i == 0 || n_i > projects.size
@@ -54,7 +54,7 @@ def create_cluster(excel)
     puts "It appears that a cluster for #{excel.machine_name} is already running.  If this is not the case then delete #{excel.machine_name}".red
     puts "Will try to continue".blue
   else
-    puts "Creating cluster for #{excel.machine_name}".blue
+    puts "Creating cluster for #{excel.machine_name}".cyan
     aws = OpenStudio::Aws::Aws.new()
     #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
     server_options = {instance_type: excel.settings["server_instance_type"]} # 2 cores ($0.410/hour)
@@ -126,7 +126,7 @@ def run_analysis(excel, run_vagrant = false)
     end
 
     puts
-    puts "Server URL is: #{server_dns}".bold.blue
+    puts "Server URL is: #{server_dns}".bold.cyan
     puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
   else
     puts "There doesn't appear to be a cluster running for this project #{excel.machine_name}"
@@ -135,7 +135,7 @@ end
 
 desc "create a new analysis (and spreadsheet)"
 task :new do
-  print "Name of the new project without the file extension (this will make a new spreadsheet): ".blue
+  print "Name of the new project without the file extension (this will make a new spreadsheet): ".cyan
   n = $stdin.gets.chomp
 
   new_projectfile = nil
@@ -151,28 +151,28 @@ task :new do
     puts "Template file has been deleted (#{tmp_excel}. Best to recheckout the project".red
   end
   puts
-  puts "Open the excel file and add in your seed models, weather files, and measures #{new_projectfile}".blue
-  puts "When ready, from the command line run 'rake run' and select the project of interest".blue
+  puts "Open the excel file and add in your seed models, weather files, and measures #{new_projectfile}".cyan
+  puts "When ready, from the command line run 'rake run' and select the project of interest".cyan
 end
 
 desc "create the analysis files"
 task :setup do
   excel = get_project()
 
-  puts "Seed models are:".blue
+  puts "Seed models are:".cyan
   excel.models.each do |model|
     puts "  #{model}".green
   end
 
-  puts "Weather files to bundle are are:".blue
+  puts "Weather files to bundle are are:".cyan
   excel.weather_files.each do |wf|
     puts "  #{wf}".green
   end
 
-  puts "Saving the analysis JSONS and zips".blue
+  puts "Saving the analysis JSONS and zips".cyan
   excel.save_analysis() # directory is define in the setup
 
-  puts "Finished saving analysis into the analysis directory".blue
+  puts "Finished saving analysis into the analysis directory".cyan
 end
 
 desc "test the creation of the cluster"
