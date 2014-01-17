@@ -51,7 +51,7 @@ end
 def create_cluster(excel)
   if File.exists?("#{excel.machine_name}.json")
     puts
-    puts "It appears that a cluster for #{excel.machine_name} is already running.  If this is not the case then delete #{excel.machine_name}".red
+    puts "It appears that a cluster for #{excel.machine_name} is already running.  If this is not the case then delete ./#{excel.machine_name}.json file".red
     puts "Will try to continue".blue
   else
     puts "Creating cluster for #{excel.machine_name}".cyan
