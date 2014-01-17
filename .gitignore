@@ -8,3 +8,4 @@
 aws.log
 .gitignore
 Gemfile.lock
+faraday.log
