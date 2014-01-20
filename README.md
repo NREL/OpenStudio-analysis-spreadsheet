@@ -14,6 +14,7 @@ This example uses OpenStudio's Analysis & AWS gem to setup and run simulations o
 Currently the execution of this requires command line (terminal) access.  
 
 * Make sure to have ruby 2.0 installed and the bundler gem.  Check your version of ruby by running `ruby --version`.
+* Note that if you are a Windows user, install the 32-bit version of Ruby from here: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p353.exe?direct
 
 * Install RubyGem's Bundler.  In a command line call the method below.  
 
