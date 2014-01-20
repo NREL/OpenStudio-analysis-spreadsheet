@@ -13,7 +13,7 @@ require 'colored'
 
 PROJECT_NAME = "medium_office"
 
-CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
+CLEAN.include("*.pem", "./projects/*.json")
 
 
 def get_project()
@@ -56,8 +56,11 @@ def create_cluster(excel)
   else
     puts "Creating cluster for #{excel.machine_name}".cyan
     puts "Validating cluster options...".cyan
+
     raise "Number of workers not defined".red if excel.settings['worker_nodes'].to_i == 0
     
+    puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
+    puts "Starting cluster...".cyan
     aws = OpenStudio::Aws::Aws.new()
     #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
     server_options = {instance_type: excel.settings["server_instance_type"]} # 2 cores ($0.410/hour)
