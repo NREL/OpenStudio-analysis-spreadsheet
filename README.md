@@ -16,7 +16,7 @@ Currently the execution of this requires command line (terminal) access.
 * Make sure to have ruby 2.0 installed and the bundler gem.  Check your version of ruby by running `ruby --version`.
 * Note that if you are a Windows user, install the 32-bit version of Ruby from here: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p353.exe?direct
 
-* If you are behind a 'proxy' then make sure to export the environment variables.  For windows you can add them to your environment or at the command line using. Similar for Mac/Linux except use export.
+* If you are behind a **proxy** then make sure to export the environment variables.  For windows you can add them to your environment or at the command line using. Similar for Mac/Linux except use export.
 
 ```
 set HTTP_PROXY=proxy.a.com:port  ( e.g. 192.168.0.1:2782 or a.b.com:8080 )
