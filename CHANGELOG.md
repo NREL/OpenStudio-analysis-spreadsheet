@@ -3,6 +3,13 @@ Analysis Example Change Log
 
 There is no formal versioning of this project...
 
+Version 0.1.TODO GET NUMBER
+-----------
+
+### Major Changes
+
+* New Spreadsheet Setup sheet format to select instances and number of worker nodes. 
+
 Version 0.1.1
 -----------
 
