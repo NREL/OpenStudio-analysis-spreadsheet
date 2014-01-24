@@ -11,10 +11,7 @@ require 'openstudio-aws'
 require 'openstudio-analysis'
 require 'colored'
 
-PROJECT_NAME = "medium_office"
-
 CLEAN.include("*.pem", "./projects/*.json")
-
 
 def get_project()
   # determine the project file to run.  This will list out all the xlsx files and give you a 
