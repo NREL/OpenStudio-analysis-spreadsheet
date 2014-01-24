@@ -11,7 +11,7 @@ require 'openstudio-aws'
 require 'openstudio-analysis'
 require 'colored'
 
-PROJECT_NAME = "medium_office"
+PROJECT_NAME = "housecal"
 
 CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
 
@@ -111,7 +111,7 @@ def run_analysis(excel, run_vagrant = false)
       run_options = {
           analysis_action: "start",
           without_delay: false,
-          analysis_type: "nsga_nrelcal4",
+          analysis_type: "deoptimcal",
           allow_multiple_jobs: true,
           use_server_as_worker: true,
           simulate_data_point_filename: "simulate_data_point.rb", # keep for backwards compatibility for 2 versions
