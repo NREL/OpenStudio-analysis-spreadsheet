@@ -11,7 +11,7 @@ require 'openstudio-aws'
 require 'openstudio-analysis'
 require 'colored'
 
-PROJECT_NAME = "medium_office"
+PROJECT_NAME = "house_calibration"
 
 CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
 
