@@ -111,11 +111,11 @@ def run_analysis(excel, run_vagrant = false)
       run_options = {
           analysis_action: "start",
           without_delay: false,
-          analysis_type: "nsga_nrelcal4",
-          allow_multiple_jobs: true,
-          use_server_as_worker: true,
-          simulate_data_point_filename: "simulate_data_point.rb", # keep for backwards compatibility for 2 versions
-          run_data_point_filename: "run_openstudio_workflow_monthly.rb"
+          analysis_type: excel.problem['analysis_type'],
+          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
+          use_server_as_worker: excel.run_setup['use_server_as_worker'],
+          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
+          run_data_point_filename: excel.run_setup['run_data_point_filename']
       }
       api.run_analysis(analysis_id, run_options)
     end
