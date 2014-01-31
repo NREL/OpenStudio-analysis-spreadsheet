@@ -110,11 +110,11 @@ def run_analysis(excel, run_vagrant = false)
 
       run_options = {
           analysis_action: "start",
-          without_delay: false,
+          without_delay: true,
           analysis_type: excel.problem['analysis_type'],
-          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
-          use_server_as_worker: excel.run_setup['use_server_as_worker'],
-          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
+          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'].downcase == "true" ? true : false,
+          use_server_as_worker: excel.run_setup['use_server_as_worker'].downcase == "true" ? true : false,
+          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'], # keep for backwards compatibility for 2 versions
           run_data_point_filename: excel.run_setup['run_data_point_filename']
       }
       api.run_analysis(analysis_id, run_options)
