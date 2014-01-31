@@ -278,7 +278,7 @@ task :update_measures do
   FileUtils.mkdir_p("./measures")
 
   bcl = BCL::ComponentMethods.new
-  bcl.parsed_measures_path = "./measures/somehtingjunkiier"
+  bcl.parsed_measures_path = "./measures"
   bcl.login() # have to do this even if you don't set your username to get a session
   query = 'NREL'
   #filter = 'show_rows=5'
@@ -293,6 +293,5 @@ task :update_measures do
     puts "Deleting test file #{file}"
     FileUtils.rm_rf(file)
   end
-
 end
 
