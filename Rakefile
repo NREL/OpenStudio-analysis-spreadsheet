@@ -4,17 +4,11 @@ Bundler.setup
 require 'rake'
 require 'rake/clean'
 
-# uncomment if doing development
-#require 'bcl'
-
 require 'openstudio-aws'
 require 'openstudio-analysis'
 require 'colored'
 
-PROJECT_NAME = "house_calibration"
-
 CLEAN.include('./server_data.json', 'worker_data.json', 'ec2_server_key.pem')
-
 
 def get_project()
   # determine the project file to run.  This will list out all the xlsx files and give you a 
@@ -279,123 +273,23 @@ end
 
 desc "update measures from BCL"
 task :update_measures do
+  require 'bcl'
+  
   FileUtils.mkdir_p("./measures")
+
   bcl = BCL::ComponentMethods.new
+  bcl.parsed_measures_path = "./measures/somehtingjunkiier"
   bcl.login() # have to do this even if you don't set your username to get a session
-
-  json = bcl.list_all_measures()
-  if json[:result]
-    m_cnt = 0
-    json[:result].each do |measure|
-      if measure[:measure][:name] && measure[:measure][:uuid]
-        m_cnt += 1
-
-        # Comment some bad measures (for some reason) 
-        next if measure[:measure][:name] =~ /Change this to whatever you want/
-        next if measure[:measure][:name] =~ /Add Non-Integrated Water Side Economizer/
-
-        # Change and uncomment the below if you want to restrict the tests to a specific measure
-        #next if measure[:measure][:name] != "Improve Fan Belt Efficiency"
-
-        file_data = bcl.download_component(measure[:measure][:uuid])
-
-        if file_data
-          save_file = File.expand_path("./measures/#{measure[:measure][:name].downcase.gsub(" ", "_")}.zip")
-          File.open(save_file, 'wb') { |f| f << file_data }
-
-          # now unzip the file (MAC/LINUX Only) and remove zip
-          `cd #{File.dirname(save_file)} && unzip -o #{save_file} && rm -f #{save_file}`
-
-          # Read the measure.rb file and rename the directory
-          temp_dir_name = "./measures/#{measure[:measure][:name]}"
-
-          # catch a weird case where there is an extra space in an unzip file structure but not in the measure.name
-          if measure[:measure][:name] == "Add Daylight Sensor at Center of Spaces with a Specified Space Type Assigned"
-            temp_dir_name = "./measures/Add Daylight Sensor at Center of  Spaces with a Specified Space Type Assigned"
-          end
-          puts "save dir name #{temp_dir_name}"
-          measure_filename = "#{temp_dir_name}/measure.rb"
-          if File.exists?(measure_filename)
-            measure_hash = {}
-            # read in the measure file and extract some information
-            measure_string = File.read(measure_filename)
-
-            measure_hash[:classname] = measure_string.match(/class (.*) </)[1]
-            measure_hash[:path] = "./measures/#{measure_hash[:classname]}"
-            measure_hash[:name] = measure[:measure][:name]
-            if measure_string =~ /OpenStudio::Ruleset::WorkspaceUserScript/
-              measure_hash[:measure_type] = "EnergyPlusMeasure"
-            elsif measure_string =~ /OpenStudio::Ruleset::ModelUserScript/
-              measure_hash[:measure_type] = "RubyMeasure"
-            elsif measure_string =~ /OpenStudio::Ruleset::ReportingUserScript/
-              measure_hash[:measure_type] = "ReportingMeasure"
-            else
-              raise "measure type is unknown with an inherited class in #{measure_filename}"
-            end
-
-            # move the directory to the class name
-            FileUtils.rm_rf(measure_hash[:path]) if Dir.exists?(measure_hash[:path]) && temp_dir_name != measure_hash[:path]
-            FileUtils.move(temp_dir_name, measure_hash[:path]) unless temp_dir_name == measure_hash[:path]
-
-            measure_hash[:arguments] = []
-
-            args = measure_string.scan(/(.*).*=.*OpenStudio::Ruleset::OSArgument::make(.*)Argument\((.*).*\)/)
-            args.each do |arg|
-              new_arg = {}
-              new_arg[:local_variable] = arg[0].strip
-              new_arg[:variable_type] = arg[1]
-              arg_params = arg[2].split(",")
-              new_arg[:name] = arg_params[0].gsub(/"|'/, "")
-              choice_vector = arg_params[1]
-
-              # local variable name to get other attributes
-              new_arg[:display_name] = measure_string.match(/#{new_arg[:local_variable]}.setDisplayName\((.*)\)/)[1]
-              new_arg[:display_name].gsub!(/"|'/, "") if new_arg[:display_name]
-
-              if measure_string =~ /#{new_arg[:local_variable]}.setDefaultValue/
-                new_arg[:default_value] = measure_string.match(/#{new_arg[:local_variable]}.setDefaultValue\((.*)\)/)[1]
-                case new_arg[:variable_type]
-                  when "Choice"
-                    # Choices to appear to only be strings?
-                    new_arg[:default_value].gsub!(/"|'/, "")
-
-                    # parse the choices from the measure 
-                    choices = measure_string.scan(/#{choice_vector}.*<<.*("|')(.*)("|')/)
-
-                    new_arg[:choices] = choices.map { |c| c[1] }
-                    # if the choices are inherited from the model, then need to just display the default value which
-                    # somehow magically works because that is the display name
-                    new_arg[:choices] << new_arg[:default_value] unless new_arg[:choices].include?(new_arg[:default_value])
-                  when "String"
-                    new_arg[:default_value].gsub!(/"|'/, "")
-                  when "Bool"
-                    new_arg[:default_value] = new_arg[:default_value].downcase == "true" ? true : false
-                  when "Integer"
-                    new_arg[:default_value] = new_arg[:default_value].to_i
-                  when "Double"
-                    new_arg[:default_value] = new_arg[:default_value].to_f
-                  else
-                    raise "unknown variable type of #{new_arg[:variable_type]}"
-                end
-              end
-
-              measure_hash[:arguments] << new_arg
-            end
-
-            # create a new measure.json file for parsing later if need be
-            File.open("#{measure_hash[:path]}/measure.json", 'w') { |f| f << JSON.pretty_generate(measure_hash) }
-
-          end
-
-
-          #break if m_cnt > 2
-        end
-      end
-    end
+  query = 'NREL'
+  #filter = 'show_rows=5'
+  
+  success = bcl.measure_metadata(query, nil, false)
+  if success
+    # move the measures to the right place
   end
 
   # delete the test files
-  Dir.glob("./measures/**/tests").each do |file|
+  Dir.glob("#{bcl.parsed_measures_path}/**/tests").each do |file|
     puts "Deleting test file #{file}"
     FileUtils.rm_rf(file)
   end
