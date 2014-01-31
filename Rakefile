@@ -191,7 +191,7 @@ task :run do
 end
 
 desc "run vagrant"
-task :run_vagrant => [:setup] do
+task :run_vagrant do
   excel = get_project()
   excel.save_analysis()
   run_analysis(excel, true)
