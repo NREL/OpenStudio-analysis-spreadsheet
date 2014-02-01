@@ -1,0 +1,9 @@
+{
+  "classname": "AnnualEndUseBreakdown",
+  "path": "./measures/AnnualEndUseBreakdown",
+  "name": "Annual End Use Breakdown",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ]
+}
