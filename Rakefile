@@ -259,11 +259,17 @@ task :create_measure_csv do
       values << argument[:name]
       values << 'static'
       values << argument[:variable_type]
-      values << '' # units
-                   # watch out because :default_value can be a boolean 
+      values << ''
+      # units
+      
+      # watch out because :default_value can be a boolean 
       argument[:default_value].nil? ? values << '' : values << argument[:default_value]
-      argument[:choices] ? values << "|#{argument[:choices].join(",")}|" : values << ''
-
+      choices = ''
+      if argument[:choices]
+        choices << "|#{argument[:choices].join(",")}|" if not argument[:choices].empty?
+      end
+      values << choices 
+      
       csv << values
     end
   end

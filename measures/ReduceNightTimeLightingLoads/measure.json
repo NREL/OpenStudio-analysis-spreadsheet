@@ -8,7 +8,10 @@
       "local_variable": "lights_def",
       "variable_type": "Choice",
       "name": "lights_def",
-      "display_name": "Pick a Lighting Definition From the Model (schedules using this will be altered)"
+      "display_name": "Pick a Lighting Definition From the Model (schedules using this will be altered)",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "fraction_value",

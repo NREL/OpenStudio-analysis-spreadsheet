@@ -1,0 +1,9 @@
+{
+  "classname": "StandardReports",
+  "path": "./measures/StandardReports",
+  "name": "Standard Reports",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ]
+}

@@ -8,7 +8,10 @@
       "local_variable": "elec_load_def",
       "variable_type": "Choice",
       "name": "elec_load_def",
-      "display_name": "Pick an Electric Equipment Definition(schedules using this will be altered)"
+      "display_name": "Pick an Electric Equipment Definition(schedules using this will be altered)",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "fraction_value",

@@ -8,7 +8,10 @@
       "local_variable": "storyBasement",
       "variable_type": "Choice",
       "name": "storyBasement",
-      "display_name": "Choose a Story to Change Wall Boundary Conditions For."
+      "display_name": "Choose a Story to Change Wall Boundary Conditions For.",
+      "choices": [
+
+      ]
     }
   ]
 }

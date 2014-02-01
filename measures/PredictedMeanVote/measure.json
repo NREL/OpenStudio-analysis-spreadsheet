@@ -19,14 +19,18 @@
       "default_value": "ZoneAveraged",
       "choices": [
         "ZoneAveraged",
-        "SurfaceWeighted"
+        "SurfaceWeighted",
+        "AngleFactor"
       ]
     },
     {
       "local_variable": "workEfficiencySchedule",
       "variable_type": "Choice",
       "name": "workEfficiencySchedule",
-      "display_name": "Choose a Work Efficiency Schedule."
+      "display_name": "Choose a Work Efficiency Schedule.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "clothingSchedule",
