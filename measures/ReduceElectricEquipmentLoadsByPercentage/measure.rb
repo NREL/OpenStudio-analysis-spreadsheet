@@ -300,18 +300,20 @@ class ReduceElectricEquipmentLoadsByPercentage < OpenStudio::Ruleset::ModelUserS
       next if not space_type.spaces.size > 0
       space_type_equipments = space_type.electricEquipment
       space_type_equipments.each do |space_type_equipment|
+      
+        new_def = nil
 
         #clone def if it has not already been cloned
         exist_def = space_type_equipment.electricEquipmentDefinition
-        if cloned_elecequip_defs.any? {|k,v| k.include? exist_def.name.to_s}
-          new_def = cloned_elecequip_defs[exist_def.name.to_s]
+        if not cloned_elecequip_defs[exist_def.name.get.to_s].nil?
+          new_def = cloned_elecequip_defs[exist_def.name.get.to_s]
         else
           #clone rename and add to hash
           new_def = exist_def.clone(model)
-          new_def_name = new_def.setName("#{exist_def.name} - #{elecequip_power_reduction_percent} percent reduction")
-          cloned_elecequip_defs[exist_def.name.to_s] = new_def
+          new_def_name = new_def.setName("#{exist_def.name.get} - #{elecequip_power_reduction_percent} percent reduction")
           new_def = new_def.to_ElectricEquipmentDefinition.get
-
+          cloned_elecequip_defs[exist_def.name.get.to_s] = new_def
+          
           #add demo cost of object being removed to one counter for one time demo cost for baseline objects
           demo_costs_of_baseline_objects += add_to_baseline_demo_cost_counter(exist_def, demo_cost_initial_const)
 
@@ -346,13 +348,13 @@ class ReduceElectricEquipmentLoadsByPercentage < OpenStudio::Ruleset::ModelUserS
 
         #clone def if it has not already been cloned
         exist_def = space_equipment.electricEquipmentDefinition
-        if cloned_elecequip_defs.any? {|k,v| k.include? exist_def.name.to_s}
-          new_def = cloned_elecequip_defs[exist_def.name.to_s]
+        if cloned_elecequip_defs.any? {|k,v| k.include? exist_def.name.get.to_s}
+          new_def = cloned_elecequip_defs[exist_def.name.get.to_s]
         else
           #clone rename and add to hash
           new_def = exist_def.clone(model)
           new_def_name = new_def.setName("#{new_def.name} - #{elecequip_power_reduction_percent} percent reduction")
-          cloned_elecequip_defs[exist_def.name] = new_def
+          cloned_elecequip_defs[exist_def.name.get] = new_def
           new_def = new_def.to_ElectricEquipmentDefinition.get
 
           #add demo cost of object being removed to one counter for one time demo cost for baseline objects
@@ -394,7 +396,7 @@ class ReduceElectricEquipmentLoadsByPercentage < OpenStudio::Ruleset::ModelUserS
     final_building = model.getBuilding
     final_building_equip_power = final_building.electricEquipmentPower
     final_building_EPD =  unit_helper(final_building.electricEquipmentPowerPerFloorArea,"W/m^2","W/ft^2")
-    runner.registerFinalCondition("The model's final final electric equipment power was  #{neat_numbers(final_building_equip_power,0)} watts, an electric equipment power density of #{neat_numbers(final_building_EPD)} w/ft^2. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
+    runner.registerFinalCondition("The model's final building electric equipment power was  #{neat_numbers(final_building_equip_power,0)} watts, an electric equipment power density of #{neat_numbers(final_building_EPD)} w/ft^2. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
 
     return true
 

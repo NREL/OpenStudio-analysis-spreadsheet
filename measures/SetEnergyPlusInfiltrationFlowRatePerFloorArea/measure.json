@@ -1,0 +1,15 @@
+{
+  "classname": "SetEnergyPlusInfiltrationFlowRatePerFloorArea",
+  "path": "./measures/SetEnergyPlusInfiltrationFlowRatePerFloorArea",
+  "name": "Set EnergyPlus Infiltration Flow Rate Per Floor Area",
+  "measure_type": "EnergyPlusMeasure",
+  "arguments": [
+    {
+      "local_variable": "flowPerZoneFloorArea",
+      "variable_type": "Double",
+      "name": "flowPerZoneFloorArea",
+      "display_name": "Flow per Zone Floor Area (m^3/s-m^2).",
+      "default_value": 10.76
+    }
+  ]
+}

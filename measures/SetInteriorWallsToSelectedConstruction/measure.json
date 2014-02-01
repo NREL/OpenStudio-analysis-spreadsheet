@@ -8,7 +8,10 @@
       "local_variable": "construction",
       "variable_type": "Choice",
       "name": "construction",
-      "display_name": "Select new material:"
+      "display_name": "Select new material:",
+      "choices": [
+
+      ]
     }
   ]
 }

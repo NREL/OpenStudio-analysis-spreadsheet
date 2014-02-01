@@ -8,7 +8,10 @@
       "local_variable": "space_type",
       "variable_type": "Choice",
       "name": "space_type",
-      "display_name": "Add Daylight Sensors to Spaces of This Space Type"
+      "display_name": "Add Daylight Sensors to Spaces of This Space Type",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "setpoint",

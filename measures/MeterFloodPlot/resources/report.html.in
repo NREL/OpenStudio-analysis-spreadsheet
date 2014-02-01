@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<title>Meter Flood Plot</title>
+
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>ReportingMeasure</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<link href="file:///<%= web_asset_path %>/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="file:///<%= web_asset_path %>/jquery.min.js"></script>
+<script type="text/javascript" src="file:///<%= web_asset_path %>/d3.min.js"></script>
+<style type="text/css">
+    .slice text {
+        font-size: 10pt;
+        font-family: Arial;
+    }
+</style>
+<style>
+<!--
+.tab { margin-left: 50px; }
+-->
+</style>
+</head>
+<body>
+
+<br>
+<p class="tab"><b><%= plot_title %></b></p>
+
+
+<div id='heatmap'></div>
+<script>
+var data = [<%= output_hourly_plr %>];
+var value_range = [<%= value_range %>];
+min_value = value_range[0].low;  //need to bring in from measure
+max_value = value_range[0].high; //need to bring in from measure
+scale_step = (max_value - min_value)/7
+
+color1_value = min_value
+color2_value = min_value + scale_step*1
+color3_value = min_value + scale_step*2
+color4_value = min_value + scale_step*3
+color5_value = min_value + scale_step*4
+color6_value = min_value + scale_step*5
+color7_value = min_value + scale_step*6
+color8_value = min_value + scale_step*7
+
+//height of each row in the heatmap
+//width of each column in the heatmap
+var gridSize = 30,
+    h = gridSize,
+    w = gridSize/15,
+    rectPadding = 0;
+
+var color1 = 'darkblue', color2 = 'blue', color3 = 'cyan', color4 = 'greenyellow', color5 = 'yellow',color6 = 'orange', color7 = 'red', color8 = 'darkred';
+
+var margin = {top: 0, right: 40, bottom: 30, left: 50},
+    width = w*379 + margin.left + margin.right, //extra two weeks to fit scale
+    height = h*24 + margin.top + margin.bottom;
+
+var colorScale = d3.scale.linear()
+     .domain([color1_value,color2_value,color3_value,color4_value,color5_value,color6_value,color7_value,color8_value])
+     .range([color1, color2, color3, color4, color5, color6, color7, color8]);
+
+var svg = d3.select("#heatmap").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var heatMap = svg.selectAll(".heatmap")
+    .data(data, function(d) { return d.day + ':' + d.hour; })
+  .enter().append("svg:rect")
+    .attr("x", function(d) { return d.day * w; })
+    .attr("y", function(d) { return ((d.hour)*-1+24) * h; })
+    .attr("width", function(d) { return w; })
+    .attr("height", function(d) { return h; })
+    .style("fill", function(d) { return colorScale(d.value); });
+
+var scale = [<%= color_scale_values %>];
+
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height )
+        .text(function(d, i) { return scale[0].value; });
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height-(h*24/6)*1)
+        .text(function(d, i) { return scale[1].value; });
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height-(h*24/6)*2)
+        .text(function(d, i) { return scale[2].value; });
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height-(h*24/6)*3)
+        .text(function(d, i) { return scale[3].value; });
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height-(h*24/6)*4)
+        .text(function(d, i) { return scale[4].value; });
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height-(h*24/6)*5)
+        .text(function(d, i) { return scale[5].value; });
+   svg.append("text")             // text label for the color scale
+        .attr("x", width - 80 )
+        .style("text-anchor", "left")
+        .attr("y",  height-(h*24/6)*6)
+        .text(function(d, i) { return scale[6].value; });
+
+
+    data_hour = [{"label":"0", "value":0},{"label":"1", "value":1}, {"label":"2", "value":2}, {"label":"3", "value":3}, {"label":"4", "value":4}, {"label":"5", "value":5}, {"label":"6", "value":6}, {"label":"7", "value":7}, {"label":"8", "value":8}, {"label":"9", "value":9}, {"label":"10", "value":10}, {"label":"11", "value":11}, {"label":"12", "value":12}, {"label":"13", "value":13}, {"label":"14", "value":14}, {"label":"15", "value":15}, {"label":"16", "value":16}, {"label":"17", "value":17}, {"label":"18", "value":18}, {"label":"19", "value":19}, {"label":"20", "value":20}, {"label":"21", "value":21}, {"label":"22", "value":22}, {"label":"23", "value":23}];
+
+    svg.append("text")           // text label for the hours
+         .data(data_hour)
+         .style("text-anchor", "right")
+         .attr("x",-20)
+         .attr("y",  height - h*0)
+         .text(function(d, i) { return data_hour[0].value; });
+
+    svg.append("text")           // text label for the hours
+         .data(data_hour)
+         .style("text-anchor", "right")
+         .attr("x",-20)
+         .attr("y",  height - h*5)
+         .text(function(d, i) { return data_hour[5].value; });
+
+    svg.append("text")           // text label for the hours
+         .data(data_hour)
+         .style("text-anchor", "right")
+         .attr("x",-20)
+         .attr("y",  height  - h*10)
+         .text(function(d, i) { return data_hour[10].value; });
+
+     svg.append("text")           // text label for the hours
+          .data(data_hour)
+          .style("text-anchor", "right")
+          .attr("x",-20)
+         .attr("y",  height - h*15)
+          .text(function(d, i) { return data_hour[15].value; });
+
+    svg.append("text")           // text label for the hours
+         .data(data_hour)
+         .style("text-anchor", "right")
+         .attr("x",-20)
+         .attr("y",  height - h*20)
+         .text(function(d, i) { return data_hour[20].value; });
+
+
+    data_month = [{"label":"Jan"},{"label":"Feb"},{"label":"Mar"},{"label":"April"},{"label":"May"},{"label":"June"},{"label":"July"},{"label":"Aug"},{"label":"Sept"},{"label":"Oct"},{"label":"Nov"},{"label":"Dec"},]
+
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + 0)
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[0].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(1/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[1].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(2/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[2].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(3/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[3].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(4/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[4].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(5/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[5].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(6/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[6].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(7/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[7].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(8/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[8].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(9/14))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[9].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(10/14.0))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[10].label; });
+   svg.append("text")             // text label for month
+        .style("text-anchor", "middle")
+        .attr("x", w*15 + width*(11/14.0))
+        .attr("y", height + 20)
+        .text(function(d, i) { return data_month[11].label; });
+
+</script>
+
+</body>
+</html>

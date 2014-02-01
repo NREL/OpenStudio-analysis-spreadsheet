@@ -1,0 +1,81 @@
+{
+  "classname": "SetCOPforSingleSpeedDXCoolingUnits",
+  "path": "./measures/SetCOPforSingleSpeedDXCoolingUnits",
+  "name": "Set COP for Single Speed DX Cooling Units",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "object",
+      "variable_type": "Choice",
+      "name": "object",
+      "display_name": "Choose an Air Loop with a two speed DX Cooling Unit to Alter.",
+      "default_value": "*All Air Loops*",
+      "choices": [
+        "*All Air Loops*"
+      ]
+    },
+    {
+      "local_variable": "cop",
+      "variable_type": "Double",
+      "name": "cop",
+      "display_name": "Rated COP",
+      "default_value": 4.0
+    },
+    {
+      "local_variable": "remove_costs",
+      "variable_type": "Bool",
+      "name": "remove_costs",
+      "display_name": "Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units?",
+      "default_value": true
+    },
+    {
+      "local_variable": "material_cost",
+      "variable_type": "Double",
+      "name": "material_cost",
+      "display_name": "Material and Installation Costs per Cooling Coil DX Two Speed Unit ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "demolition_cost",
+      "variable_type": "Double",
+      "name": "demolition_cost",
+      "display_name": "Demolition Costs per Cooling Coil DX Two Speed Unit ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "years_until_costs_start",
+      "variable_type": "Integer",
+      "name": "years_until_costs_start",
+      "display_name": "Years Until Costs Start (whole years).",
+      "default_value": 0
+    },
+    {
+      "local_variable": "demo_cost_initial_const",
+      "variable_type": "Bool",
+      "name": "demo_cost_initial_const",
+      "display_name": "Demolition Costs Occur During Initial Construction?",
+      "default_value": false
+    },
+    {
+      "local_variable": "expected_life",
+      "variable_type": "Integer",
+      "name": "expected_life",
+      "display_name": "Expected Life (whole years).",
+      "default_value": 20
+    },
+    {
+      "local_variable": "om_cost",
+      "variable_type": "Double",
+      "name": "om_cost",
+      "display_name": "O & M Costs per Cooling Coil DX Two Speed Unit ($).",
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "om_frequency",
+      "variable_type": "Integer",
+      "name": "om_frequency",
+      "display_name": "O & M Frequency (whole years).",
+      "default_value": 1
+    }
+  ]
+}

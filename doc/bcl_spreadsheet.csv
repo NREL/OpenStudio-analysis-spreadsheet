@@ -59,7 +59,7 @@ false,Add Cost per Floor Area to Unused Lights,AddCostPerFloorAreaToUnusedLights
 "",argument,O & M Costs for Definition per Floor Area ($/ft^2).,om_cost_ip,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Add Cost To Supply Side HVAC Component by Air Loop,AddCostToSupplySideHVACComponentByAirLoop,RubyMeasure
-"",argument,Select an HVAC Air Loop Supply Side Component Type.,hvac_comp_type,static,Choice,"","",""
+"",argument,Select an HVAC Air Loop Supply Side Component Type.,hvac_comp_type,static,Choice,"","","|CoilCoolingDXSingleSpeed,CoilCoolingDXTwoSpeed,CoilHeatingDXSingleSpeed,CoilHeatingElectric,CoilHeatingGas,CoilHeatingWaterBaseboard,FanConstantVolume,FanOnOff,FanVariableVolume,PumpConstantSpeed,PumpVariableSpeed,CoilCoolingWater,CoilHeatingWater|"
 "",argument,Choose an Air Loop to Add Costs to.,object,static,Choice,"",**All Air Loops**,|**All Air Loops**|
 "",argument,Remove Existing Costs?,remove_costs,static,Bool,"",true,""
 "",argument,Material and Installation Costs per Component ($).,material_cost,static,Double,"",0.0,""
@@ -94,6 +94,9 @@ false,Add Exterior Lights,AddExteriorLights,RubyMeasure
 "",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
 "",argument,O & M Costs for Exterior Lights ($).,om_cost,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,Add Meter,AddMeter,RubyMeasure
+"",argument,Enter Meter Name.,meter_name,static,String,"",Electricity:Facility,""
+"",argument,Reporting Frequency.,reporting_frequency,static,Choice,"",hourly,"|detailed,timestep,hourly,daily,monthly|"
 false,Add Output Diagnostics,AddOutputDiagnostics,EnergyPlusMeasure
 "",argument,Ouput Diagnostic Value.,outputDiagnostic,static,Choice,"",DisplayExtraWarnings,"|DisplayAllWarnings,DisplayExtraWarnings,DisplayUnusedSchedules,DisplayUnusedObjects,DisplayAdvancedReportVariables,DisplayZoneAirHeatBalanceOffBalance,DoNotMirrorDetachedShading,DisplayWeatherMissingDataWarnings,ReportDuringWarmup,ReportDetailedWarmupConvergence|"
 false,Add Output Variable,AddOutputVariable,RubyMeasure
@@ -116,6 +119,8 @@ false,Adjust Thermostat Setpoints by Degrees,AdjustTheromstatSetpointsByDegrees,
 "",argument,Degrees Fahrenheit to Adjust Cooling Setpoint By.,cooling_adjustment,static,Double,"",1.0,""
 "",argument,Degrees Fahrenheit to Adjust heating Setpoint By.,heating_adjustment,static,Double,"",-1.0,""
 "",argument,Alter Design Day Thermostats?,alter_design_days,static,Bool,"",false,""
+false,Analysis Period Cash Flows,AnalysisPeriodCashFlows,ReportingMeasure
+false,Annual End Use Breakdown,AnnualEndUseBreakdown,ReportingMeasure
 false,Bar Aspect Ratio Study,BarAspectRatioStudy,RubyMeasure
 "",argument,Total Building Floor Area (ft^2).,total_bldg_area_ip,static,Double,"",10000.0,""
 "",argument,Ratio of North/South Facade Length Relative to East/West Facade Length.,ns_to_ew_ratio,static,Double,"",2.0,""
@@ -123,6 +128,7 @@ false,Bar Aspect Ratio Study,BarAspectRatioStudy,RubyMeasure
 "",argument,Floor to Floor Height (ft).,floor_to_floor_height_ip,static,Double,"",10.0,""
 "",argument,Surface Matching?,surface_matching,static,Bool,"",true,""
 "",argument,Make Thermal Zones from Spaces?,make_zones,static,Bool,"",true,""
+false,Calibration Reports,CalibrationReports,ReportingMeasure
 false,Enable Demand Controlled Ventilation,EnableDemandControlledVentilation,RubyMeasure
 "",argument,Choose an Air Loop to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Remove Baseline Costs From Effected AirLoopHVACOutdoorAirSystems?,remove_costs,static,Bool,"",false,""
@@ -135,7 +141,7 @@ false,Enable Demand Controlled Ventilation,EnableDemandControlledVentilation,Rub
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Enable Economizer Control,EnableEconomizerControl,RubyMeasure
 "",argument,Choose an Air Loop to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
-"",argument,Economizer Control Type.,economizer_type,static,Choice,"","",""
+"",argument,Economizer Control Type.,economizer_type,static,Choice,"","","|FixedDryBulb,FixedEnthalpy,DifferentialDryBulb,DifferentialEnthalpy,FixedDewPointAndDryBulb,NoEconomizer|"
 "",argument,Economizer Maximum Limit Dry-Bulb Temperature (F).,econoMaxDryBulbTemp,static,Double,"",69.0,""
 "",argument,Economizer Maximum Enthalpy (Btu/lb).,econoMaxEnthalpy,static,Double,"",28.0,""
 "",argument,Economizer Maximum Limit Dewpoint Temperature (F).,econoMaxDewpointTemp,static,Double,"",55.0,""
@@ -188,9 +194,21 @@ false,Set R-value of Insulation for Roofs to a Specific Value,IncreaseInsulation
 false,Inject OSM Geometry into an External IDF,InjectOsmGeometryIntoAnExternalIdf,EnergyPlusMeasure
 "",argument,Path to Source IDF File to Use.,source_idf_path,static,String,"","",""
 "",argument,Merge Geometry From OpenStudio Model into Source IDF File?,merge_geometry_from_osm,static,Bool,"",true,""
+false,Meter Flood Plot,MeterFloodPlot,ReportingMeasure
+"",argument,Enter Meter Name.,meter_name,static,String,"",Electricity:Facility,""
+false,Modify EnergyPlus CoilCoolingDXSingleSpeed Objects,ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects,EnergyPlusMeasure
+"",argument,Rated Total Cooling Capacity (W).,ratedTotalCoolingCapacity,static,Double,"",10.76,""
+"",argument,Rated COP (W/W).,ratedCOP,static,Double,"",10.76,""
+"",argument,Rated Air Flow Rate (m^3/s).,ratedAirFlowRate,static,Double,"",10.76,""
+"",argument,Nominal Time for Condensate Removal to Begin (s).,condensateRemovalStart,static,Double,"",10.76,""
+"",argument,Ratio of Initial Moisture Evaporation Rate and Steady State Latent Capacity.,evapLatentRatio,static,Double,"",10.76,""
+"",argument,Latent Capacity Time Constant (s).,latentCapTimeConstant,static,Double,"",10.76,""
+false,Modify EnergyPlus Fan Varaible Volume Objects,ModifyEnergyPlusFanVariableVolumeObjects,EnergyPlusMeasure
+"",argument,Pressure Rise (Pa).,pressureRise,static,Double,"",10.76,""
+"",argument,Maximum Flow Rate (m^3/s).,maximumFlowRate,static,Double,"",10.76,""
 false,Predicted Mean Vote,PredictedMeanVote,RubyMeasure
 "",argument,Enable ASHRAE 55 Comfort Warnings?,comfortWarnings,static,Bool,"",false,""
-"",argument,Mean Radiant Temperature Calculation Type.,meanRadiantCalcType,static,Choice,"",ZoneAveraged,"|ZoneAveraged,SurfaceWeighted|"
+"",argument,Mean Radiant Temperature Calculation Type.,meanRadiantCalcType,static,Choice,"",ZoneAveraged,"|ZoneAveraged,SurfaceWeighted,AngleFactor|"
 "",argument,Choose a Work Efficiency Schedule.,workEfficiencySchedule,static,Choice,"","",""
 "",argument,Choose a Clothing Insulation Schedule.,clothingSchedule,static,Choice,"",clothing_schedule_display_names[0],|clothing_schedule_display_names[0]|
 "",argument,Choose an Air Velocity Schedule.,airVelocitySchedule,static,Choice,"",airVelocity_schedule_display_names[0],|airVelocity_schedule_display_names[0]|
@@ -273,6 +291,17 @@ false,Replace Exterior Window Constructions with a Different Construction from t
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Rotate Building Relative to Current Orientation,RotateBuilding,RubyMeasure
 "",argument,Number of Degrees to Rotate Building (positive value is clockwise).,relative_building_rotation,static,Double,"",90.0,""
+false,Set COP for Single Speed DX Cooling Units,SetCOPforSingleSpeedDXCoolingUnits,RubyMeasure
+"",argument,Choose an Air Loop with a two speed DX Cooling Unit to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
+"",argument,Rated COP,cop,static,Double,"",4.0,""
+"",argument,Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units?,remove_costs,static,Bool,"",true,""
+"",argument,Material and Installation Costs per Cooling Coil DX Two Speed Unit ($).,material_cost,static,Double,"",0.0,""
+"",argument,Demolition Costs per Cooling Coil DX Two Speed Unit ($).,demolition_cost,static,Double,"",0.0,""
+"",argument,Years Until Costs Start (whole years).,years_until_costs_start,static,Integer,"",0,""
+"",argument,Demolition Costs Occur During Initial Construction?,demo_cost_initial_const,static,Bool,"",false,""
+"",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
+"",argument,O & M Costs per Cooling Coil DX Two Speed Unit ($).,om_cost,static,Double,"",0.0,""
+"",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Set COP for Two Speed DX Cooling Units,SetCOPforTwoSpeedDXCoolingUnits,RubyMeasure
 "",argument,Choose an Air Loop with a two speed DX Cooling Unit to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Rated High Speed COP,cop_high,static,Double,"",4.0,""
@@ -285,10 +314,25 @@ false,Set COP for Two Speed DX Cooling Units,SetCOPforTwoSpeedDXCoolingUnits,Rub
 "",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
 "",argument,O & M Costs per Cooling Coil DX Two Speed Unit ($).,om_cost,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,Set EnergyPlus Infiltration Flow Rate Per Floor Area,SetEnergyPlusInfiltrationFlowRatePerFloorArea,EnergyPlusMeasure
+"",argument,Flow per Zone Floor Area (m^3/s-m^2).,flowPerZoneFloorArea,static,Double,"",10.76,""
 false,Set EnergyPlus Light objects LPD,SetEnergyPlusLightObjectsLPD,EnergyPlusMeasure
 "",argument,Lighting Power Density (W/m^2),lpd,static,Double,"",10.76,""
+false,Set EnergyPlus Minimum Outdoor Air Flow Rate,SetEnergyPlusMinimumOutdoorAirFlowRate,EnergyPlusMeasure
+"",argument,Minimum Outdoor Air Flow Rate (m^3/s).,minOutdoorAirFlow,static,Double,"",10.76,""
 false,Set Ext Wall To Ground Boundary Condition By Story,SetExtWallToGroundBoundaryConditionByStory,RubyMeasure
 "",argument,Choose a Story to Change Wall Boundary Conditions For.,storyBasement,static,Choice,"","",""
+false,SetGasBurnerEfficiency,SetGasBurnerEfficiency,RubyMeasure
+"",argument,Choose an Air Loop with a two speed DX Cooling Unit to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
+"",argument,Burner Efficiency (fractional),eff,static,Double,"",0.95,""
+"",argument,Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units?,remove_costs,static,Bool,"",true,""
+"",argument,Material and Installation Costs per Cooling Coil DX Two Speed Unit ($).,material_cost,static,Double,"",0.0,""
+"",argument,Demolition Costs per Cooling Coil DX Two Speed Unit ($).,demolition_cost,static,Double,"",0.0,""
+"",argument,Years Until Costs Start (whole years).,years_until_costs_start,static,Integer,"",0,""
+"",argument,Demolition Costs Occur During Initial Construction?,demo_cost_initial_const,static,Bool,"",false,""
+"",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
+"",argument,O & M Costs per Cooling Coil DX Two Speed Unit ($).,om_cost,static,Double,"",0.0,""
+"",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Set Interior Walls to Adiabatic,SetInteriorWallsAndFloorsToAdiabatic,RubyMeasure
 "",argument,Select New Construction.,construction,static,Choice,"","",""
 false,Set Interior Walls to Selected Construction,SetInteriorWallsToSelectedConstruction,RubyMeasure
@@ -317,6 +361,7 @@ false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,RubyMeasur
 false,Shift Schedule Profile Time,ShiftScheduleProfileTime,RubyMeasure
 "",argument,Choose a Schedule to Shift the Time For.,schedule,static,Choice,"",*All Ruleset Schedules*,|*All Ruleset Schedules*|
 "",argument,"Shift Schedule Profiles Forward (24hr, use decimal for sub hour).",shift_value,static,Double,"",1.0,""
+false,Standard Reports,StandardReports,ReportingMeasure
 false,Swap Lights Definition,SwapLightsDefinition,RubyMeasure
 "",argument,Choose the Lights Definition you Want to Replace.,old_lights_def,static,Choice,"","",""
 "",argument,Choose the Lights Definition to Use in Place of Removed Definition.,new_lights_def,static,Choice,"","",""

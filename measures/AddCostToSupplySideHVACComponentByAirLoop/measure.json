@@ -8,7 +8,22 @@
       "local_variable": "hvac_comp_type",
       "variable_type": "Choice",
       "name": "hvac_comp_type",
-      "display_name": "Select an HVAC Air Loop Supply Side Component Type."
+      "display_name": "Select an HVAC Air Loop Supply Side Component Type.",
+      "choices": [
+        "CoilCoolingDXSingleSpeed",
+        "CoilCoolingDXTwoSpeed",
+        "CoilHeatingDXSingleSpeed",
+        "CoilHeatingElectric",
+        "CoilHeatingGas",
+        "CoilHeatingWaterBaseboard",
+        "FanConstantVolume",
+        "FanOnOff",
+        "FanVariableVolume",
+        "PumpConstantSpeed",
+        "PumpVariableSpeed",
+        "CoilCoolingWater",
+        "CoilHeatingWater"
+      ]
     },
     {
       "local_variable": "object",

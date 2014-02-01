@@ -1,0 +1,9 @@
+{
+  "classname": "CalibrationReports",
+  "path": "./measures/CalibrationReports",
+  "name": "Calibration Reports",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ]
+}

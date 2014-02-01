@@ -26,6 +26,8 @@ class XcelEDAReportingandQAQC < OpenStudio::Ruleset::ReportingUserScript
       return false
     end
 
+    runner.registerInitialCondition("Starting QAQC report generation")
+
     # get the last model and sql file 
     @model = runner.lastOpenStudioModel
     if @model.is_initialized
@@ -42,16 +44,22 @@ class XcelEDAReportingandQAQC < OpenStudio::Ruleset::ReportingUserScript
       runner.registerError("Cannot find last sql file.")
       return false
     end
+    
+    resource_path = "#{File.dirname(__FILE__)}/resources/"
+    if not File.exists?("#{resource_path}/CreateResults.rb")
+      # support pre 1.2.0 OpenStudio
+      resource_path = "#{File.dirname(__FILE__)}/"
+    end
 
     #require the file that stores results
-    require "#{File.dirname(__FILE__)}/CreateResults.rb"
+    require "#{resource_path}/CreateResults.rb"
     
     #require the qaqc checks
-    require "#{File.dirname(__FILE__)}/EndUseBreakdown"
-    require "#{File.dirname(__FILE__)}/EUI"
-    require "#{File.dirname(__FILE__)}/FuelSwap"
-    require "#{File.dirname(__FILE__)}/PeakHeatCoolMonth"
-    require "#{File.dirname(__FILE__)}/UnmetHrs"
+    require "#{resource_path}/EndUseBreakdown"
+    require "#{resource_path}/EUI"
+    require "#{resource_path}/FuelSwap"
+    require "#{resource_path}/PeakHeatCoolMonth"
+    require "#{resource_path}/UnmetHrs"
     
     #vector to store the results and checks
     report_elems = OpenStudio::AttributeVector.new
@@ -82,9 +90,12 @@ class XcelEDAReportingandQAQC < OpenStudio::Ruleset::ReportingUserScript
     #create the report
     result = OpenStudio::Attribute.new("summary_report", top_level_elems)
     result.saveToXml(OpenStudio::Path.new("report.xml"))
-      
+
+    #closing the sql file
+    @sql.close()
+
     #reporting final condition
-    #runner.registerFinalCondition("Goodbye.")
+    runner.registerFinalCondition("Finished generating report.xml.")
     
     return true
  
