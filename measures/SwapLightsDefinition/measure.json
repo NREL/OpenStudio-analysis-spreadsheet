@@ -8,13 +8,19 @@
       "local_variable": "old_lights_def",
       "variable_type": "Choice",
       "name": "old_lights_def",
-      "display_name": "Choose the Lights Definition you Want to Replace."
+      "display_name": "Choose the Lights Definition you Want to Replace.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "new_lights_def",
       "variable_type": "Choice",
       "name": "new_lights_def",
-      "display_name": "Choose the Lights Definition to Use in Place of Removed Definition."
+      "display_name": "Choose the Lights Definition to Use in Place of Removed Definition.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "demo_cost_initial_const",

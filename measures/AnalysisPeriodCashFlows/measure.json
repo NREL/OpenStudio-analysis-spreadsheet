@@ -1,0 +1,9 @@
+{
+  "classname": "AnalysisPeriodCashFlows",
+  "path": "./measures/AnalysisPeriodCashFlows",
+  "name": "Analysis Period Cash Flows",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ]
+}

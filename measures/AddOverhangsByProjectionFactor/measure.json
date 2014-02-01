@@ -35,7 +35,10 @@
       "local_variable": "construction",
       "variable_type": "Choice",
       "name": "construction",
-      "display_name": "Optionally Choose a Construction for the Overhangs."
+      "display_name": "Optionally Choose a Construction for the Overhangs.",
+      "choices": [
+
+      ]
     }
   ]
 }

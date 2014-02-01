@@ -8,7 +8,10 @@
       "local_variable": "equip_def",
       "variable_type": "Choice",
       "name": "equip_def",
-      "display_name": "Choose a Watts per Area Electric Equipment Definition to Add Costs to."
+      "display_name": "Choose a Watts per Area Electric Equipment Definition to Add Costs to.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "remove_costs",

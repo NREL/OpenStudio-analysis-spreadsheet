@@ -1,0 +1,22 @@
+{
+  "classname": "ModifyEnergyPlusFanVariableVolumeObjects",
+  "path": "./measures/ModifyEnergyPlusFanVariableVolumeObjects",
+  "name": "Modify EnergyPlus Fan Varaible Volume Objects",
+  "measure_type": "EnergyPlusMeasure",
+  "arguments": [
+    {
+      "local_variable": "pressureRise",
+      "variable_type": "Double",
+      "name": "pressureRise",
+      "display_name": "Pressure Rise (Pa).",
+      "default_value": 10.76
+    },
+    {
+      "local_variable": "maximumFlowRate",
+      "variable_type": "Double",
+      "name": "maximumFlowRate",
+      "display_name": "Maximum Flow Rate (m^3/s).",
+      "default_value": 10.76
+    }
+  ]
+}

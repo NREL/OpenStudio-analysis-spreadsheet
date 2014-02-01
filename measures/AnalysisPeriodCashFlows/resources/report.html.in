@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Analysis Period Cash Flows</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="file:///<%= web_asset_path %>/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="file:///<%= web_asset_path %>/jquery.min.js"></script>
+<script type="text/javascript" src="file:///<%= web_asset_path %>/d3.min.js"></script>
+</head>
+<body>
+
+
+<%= output %>
+
+
+<div id="chartContainer">
+<script src="http://dimplejs.org/dist/dimple.v1.1.1.min.js"></script>
+
+<br>&nbsp&nbsp Annual Cash Flow (Not adjusted for inflation or utility escalation)<br>
+
+<script type="text/javascript">
+var svg = dimple.newSvg("body", 1200, 600);
+var data = [<%= data_cashFlow_merge %>];
+var myChart = new dimple.chart(svg, data);
+myChart.setBounds(60, 30, 1140, 400)
+var x = myChart.addCategoryAxis("x", "Year");
+x.addOrderRule("Year");
+myChart.addMeasureAxis("y", "Cash Flow");
+myChart.addSeries("Type", dimple.plot.bar);
+myChart.addLegend(60, 10, 1100, 20, "right");
+myChart.draw();
+</script>
+</div>
+
+
+<div id="chartContainer">
+<script src="http://dimplejs.org/dist/dimple.v1.1.1.min.js"></script>
+
+<br><br>&nbsp&nbsp Total Running Cash Flow (Not adjusted for inflation or utility escalation)<br>
+
+<script type="text/javascript">
+var svg = dimple.newSvg("body", 1200, 600);
+var data = [<%= data_running_total_merge %>];
+var myChart = new dimple.chart(svg, data);
+myChart.setBounds(60, 30, 1140, 400)
+var x = myChart.addCategoryAxis("x", "Year");
+x.addOrderRule("Year");
+myChart.addMeasureAxis("y", "Cash Flow");
+myChart.addSeries("Type", dimple.plot.line);
+// 5.0 shades of grey
+myChart.defaultColors = [
+    new dimple.color("#000000"),
+];
+myChart.draw();
+</script>
+</div>
+
+
+</body>
+</html>

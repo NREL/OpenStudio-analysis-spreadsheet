@@ -18,7 +18,15 @@
       "local_variable": "economizer_type",
       "variable_type": "Choice",
       "name": "economizer_type",
-      "display_name": "Economizer Control Type."
+      "display_name": "Economizer Control Type.",
+      "choices": [
+        "FixedDryBulb",
+        "FixedEnthalpy",
+        "DifferentialDryBulb",
+        "DifferentialEnthalpy",
+        "FixedDewPointAndDryBulb",
+        "NoEconomizer"
+      ]
     },
     {
       "local_variable": "econoMaxDryBulbTemp",

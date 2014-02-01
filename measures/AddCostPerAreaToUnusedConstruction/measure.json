@@ -8,7 +8,10 @@
       "local_variable": "construction",
       "variable_type": "Choice",
       "name": "construction",
-      "display_name": "Choose a Construction to Add Costs to."
+      "display_name": "Choose a Construction to Add Costs to.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "remove_costs",
