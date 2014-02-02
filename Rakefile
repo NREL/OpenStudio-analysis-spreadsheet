@@ -43,28 +43,31 @@ def get_project()
 end
 
 def create_cluster(excel)
-  if File.exists?("#{excel.machine_name}.json")
+  if File.exists?("#{excel.cluster_name}.json")
     puts
-    puts "It appears that a cluster for #{excel.machine_name} is already running.  If this is not the case then delete ./#{excel.machine_name}.json file".red
+    puts "It appears that a cluster for #{excel.cluster_name} is already running.  If this is not the case then delete ./#{excel.cluster_name}.json file".red
     puts "Will try to continue".cyan
   else
-    puts "Creating cluster for #{excel.machine_name}".cyan
+    puts "Creating cluster for #{excel.cluster_name}".cyan
     puts "Validating cluster options...".cyan
 
     raise "Number of workers not defined".red if excel.settings['worker_nodes'].to_i == 0
     
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
-    aws = OpenStudio::Aws::Aws.new()
-    #server_options = {instance_type: "m1.small"}  # 1 core ($0.06/hour)
-    server_options = {instance_type: excel.settings["server_instance_type"]} # 2 cores ($0.410/hour)
-    worker_options = {instance_type: excel.settings["worker_instance_type"]} # 16 cores ($2.40/hour) | we turn off hyperthreading
+    
+    # TODO: move this over to version 2 once the amis are fixed
+    #aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
+    aws_options = {:ami_lookup_version => 1, :openstudio_version => excel.settings['openstudio_server_version']}
+    aws = OpenStudio::Aws::Aws.new(aws_options)
+    server_options = {instance_type: excel.settings["server_instance_type"]}
+    worker_options = {instance_type: excel.settings["worker_instance_type"]}
   
     # Create the server
-    aws.create_server(server_options, "#{excel.machine_name}.json")
+    aws.create_server(server_options, "#{excel.cluster_name}.json", excel.settings["user_id"])
   
     # Create the worker
-    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options)
+    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options, excel.settings["user_id"])
   
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
     # next step
@@ -75,13 +78,13 @@ end
 
 def run_analysis(excel, run_vagrant = false)
   puts "Running the analysis"
-  if File.exists?("#{excel.machine_name}.json") || run_vagrant
+  if File.exists?("#{excel.cluster_name}.json") || run_vagrant
     # for each model in the excel file submit the analysis
     server_dns = nil
     if run_vagrant
       server_dns = "http://localhost:8080"
     else
-      json = JSON.parse(File.read("#{excel.machine_name}.json"), :symbolize_names => true)
+      json = JSON.parse(File.read("#{excel.cluster_name}.json"), :symbolize_names => true)
       server_dns = "http://#{json[:server][:dns]}"
     end
 
@@ -109,9 +112,9 @@ def run_analysis(excel, run_vagrant = false)
           analysis_action: "start",
           without_delay: true,
           analysis_type: excel.problem['analysis_type'],
-          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'].downcase == "true" ? true : false,
-          use_server_as_worker: excel.run_setup['use_server_as_worker'].downcase == "true" ? true : false,
-          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'], # keep for backwards compatibility for 2 versions
+          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
+          use_server_as_worker: excel.run_setup['use_server_as_worker'],
+          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
           run_data_point_filename: excel.run_setup['run_data_point_filename']
       }
       api.run_analysis(analysis_id, run_options)
@@ -121,7 +124,7 @@ def run_analysis(excel, run_vagrant = false)
     puts "Server URL is: #{server_dns}".bold.cyan
     puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
   else
-    puts "There doesn't appear to be a cluster running for this project #{excel.machine_name}"
+    puts "There doesn't appear to be a cluster running for this project #{excel.cluster_name}"
   end
 end
 
