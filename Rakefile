@@ -52,26 +52,26 @@ def create_cluster(excel)
     puts "Validating cluster options...".cyan
 
     raise "Number of workers not defined".red if excel.settings['worker_nodes'].to_i == 0
-    
+
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
-    
+
     # TODO: move this over to version 2 once the amis are fixed
     #aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
     aws_options = {:ami_lookup_version => 1, :openstudio_version => excel.settings['openstudio_server_version']}
     aws = OpenStudio::Aws::Aws.new(aws_options)
     server_options = {instance_type: excel.settings["server_instance_type"]}
     worker_options = {instance_type: excel.settings["worker_instance_type"]}
-  
+
     # Create the server
     aws.create_server(server_options, "#{excel.cluster_name}.json", excel.settings["user_id"])
-  
+
     # Create the worker
     aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options, excel.settings["user_id"])
-  
+
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
     # next step
-  
+
     puts "Cluster setup and awaiting analyses".cyan
   end
 end
@@ -110,7 +110,7 @@ def run_analysis(excel, run_vagrant = false)
 
       run_options = {
           analysis_action: "start",
-          without_delay: true,
+          without_delay: false, # run in background
           analysis_type: excel.problem['analysis_type'],
           allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
           use_server_as_worker: excel.run_setup['use_server_as_worker'],
@@ -118,6 +118,21 @@ def run_analysis(excel, run_vagrant = false)
           run_data_point_filename: excel.run_setup['run_data_point_filename']
       }
       api.run_analysis(analysis_id, run_options)
+
+      # If the analysis is LHS, then go ahead and run batch run because there is 
+      # no explicit way to tell the system to do it
+      if excel.problem['analysis_type'] == 'lhs'
+        run_options = {
+            analysis_action: "start",
+            without_delay: false, # run in background
+            analysis_type: 'batch_run',
+            allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
+            use_server_as_worker: excel.run_setup['use_server_as_worker'],
+            simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
+            run_data_point_filename: excel.run_setup['run_data_point_filename']
+        }
+        api.run_analysis(analysis_id, run_options)
+      end
     end
 
     puts
@@ -267,15 +282,15 @@ task :create_measure_csv do
       values << argument[:variable_type]
       values << ''
       # units
-      
+
       # watch out because :default_value can be a boolean 
       argument[:default_value].nil? ? values << '' : values << argument[:default_value]
       choices = ''
       if argument[:choices]
         choices << "|#{argument[:choices].join(",")}|" if not argument[:choices].empty?
       end
-      values << choices 
-      
+      values << choices
+
       csv << values
     end
   end
@@ -286,15 +301,15 @@ end
 desc "update measures from BCL"
 task :update_measures do
   require 'bcl'
-  
+
   FileUtils.mkdir_p("./measures")
 
   bcl = BCL::ComponentMethods.new
   bcl.parsed_measures_path = "./measures"
   bcl.login() # have to do this even if you don't set your username to get a session
   query = 'NREL'
-  #filter = 'show_rows=5'
-  
+              #filter = 'show_rows=5'
+
   success = bcl.measure_metadata(query, nil, false)
   if success
     # move the measures to the right place
