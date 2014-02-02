@@ -41,64 +41,64 @@
               "machine_name": "apply_the_measure_to_a_specific_space_type_or_to_the_entire_model.",
               "name": "space_type",
               "value": "*Entire Building*",
-              "uuid": "e7658490-6e01-0131-e039-14109fdf0b37",
-              "version_uuid": "e765a110-6e01-0131-e03a-14109fdf0b37"
+              "uuid": "53e84640-6e03-0131-e153-14109fdf0b37",
+              "version_uuid": "53e865f0-6e03-0131-e154-14109fdf0b37"
             },
             {
               "display_name": "Increase in Material and Installation Cost for Lighting per Floor Area (%).",
               "machine_name": "increase_in_material_and_installation_cost_for_lighting_per_floor_area_(%).",
               "name": "material_and_installation_cost",
               "value": 0.0,
-              "uuid": "e765c570-6e01-0131-e03b-14109fdf0b37",
-              "version_uuid": "e765ec30-6e01-0131-e03c-14109fdf0b37"
+              "uuid": "53e88eb0-6e03-0131-e155-14109fdf0b37",
+              "version_uuid": "53e8af60-6e03-0131-e156-14109fdf0b37"
             },
             {
               "display_name": "Increase in Demolition Costs for Lighting per Floor Area (%).",
               "machine_name": "increase_in_demolition_costs_for_lighting_per_floor_area_(%).",
               "name": "demolition_cost",
               "value": 0.0,
-              "uuid": "e7660ad0-6e01-0131-e03d-14109fdf0b37",
-              "version_uuid": "e7662830-6e01-0131-e03e-14109fdf0b37"
+              "uuid": "53e8cf40-6e03-0131-e157-14109fdf0b37",
+              "version_uuid": "53e8ee90-6e03-0131-e158-14109fdf0b37"
             },
             {
               "display_name": "Years Until Costs Start (whole years).",
               "machine_name": "years_until_costs_start_(whole_years).",
               "name": "years_until_costs_start",
               "value": 0,
-              "uuid": "e76647e0-6e01-0131-e03f-14109fdf0b37",
-              "version_uuid": "e76660e0-6e01-0131-e040-14109fdf0b37"
+              "uuid": "53e90f00-6e03-0131-e159-14109fdf0b37",
+              "version_uuid": "53e92f50-6e03-0131-e15a-14109fdf0b37"
             },
             {
               "display_name": "Demolition Costs Occur During Initial Construction?",
               "machine_name": "demolition_costs_occur_during_initial_construction?",
               "name": "demo_cost_initial_const",
               "value": true,
-              "uuid": "e7667cb0-6e01-0131-e041-14109fdf0b37",
-              "version_uuid": "e76697d0-6e01-0131-e042-14109fdf0b37"
+              "uuid": "53e94da0-6e03-0131-e15b-14109fdf0b37",
+              "version_uuid": "53e96c00-6e03-0131-e15c-14109fdf0b37"
             },
             {
               "display_name": "Expected Life (whole years).",
               "machine_name": "expected_life_(whole_years).",
               "name": "expected_life",
               "value": 15,
-              "uuid": "e766c010-6e01-0131-e043-14109fdf0b37",
-              "version_uuid": "e766db30-6e01-0131-e044-14109fdf0b37"
+              "uuid": "53e98a70-6e03-0131-e15d-14109fdf0b37",
+              "version_uuid": "53e9a530-6e03-0131-e15e-14109fdf0b37"
             },
             {
               "display_name": "Increase O & M Costs for Lighting per Floor Area (%).",
               "machine_name": "increase_o_&_m_costs_for_lighting_per_floor_area_(%).",
               "name": "om_cost",
               "value": 0.0,
-              "uuid": "e766f810-6e01-0131-e045-14109fdf0b37",
-              "version_uuid": "e7671110-6e01-0131-e046-14109fdf0b37"
+              "uuid": "53e9c130-6e03-0131-e15f-14109fdf0b37",
+              "version_uuid": "53e9e200-6e03-0131-e160-14109fdf0b37"
             },
             {
               "display_name": "O & M Frequency (whole years).",
               "machine_name": "o_&_m_frequency_(whole_years).",
               "name": "om_frequency",
               "value": 1,
-              "uuid": "e7672c40-6e01-0131-e047-14109fdf0b37",
-              "version_uuid": "e7674b90-6e01-0131-e048-14109fdf0b37"
+              "uuid": "53ea0710-6e03-0131-e161-14109fdf0b37",
+              "version_uuid": "53ea2630-6e03-0131-e162-14109fdf0b37"
             }
           ],
           "bcl_measure_directory": "./measures/reduce_lighting_loads_by_percentage",
@@ -106,14 +106,14 @@
           "bcl_measure_class_name_ADDME": "ReduceLightingLoadsByPercentage",
           "measure_definition_class_name_CHANGE_TO_ME": "ReduceLightingLoadsByPercentage",
           "measure_definition_class_name": "ReduceLightingLoadsByPercentage",
-          "bcl_measure_uuid": "e764a050-6e01-0131-e033-14109fdf0b37",
-          "measure_definition_uuid_CHANGE_TO_ME": "e764faa0-6e01-0131-e034-14109fdf0b37",
-          "bcl_measure_version_uuid": "e76516e0-6e01-0131-e035-14109fdf0b37",
-          "measure_definition_version_uuid_CHANGE_TO_ME": "e7653260-6e01-0131-e036-14109fdf0b37",
+          "bcl_measure_uuid": "53e74f00-6e03-0131-e14d-14109fdf0b37",
+          "measure_definition_uuid_CHANGE_TO_ME": "53e7ac40-6e03-0131-e14e-14109fdf0b37",
+          "bcl_measure_version_uuid": "53e7ca00-6e03-0131-e14f-14109fdf0b37",
+          "measure_definition_version_uuid_CHANGE_TO_ME": "53e7ea50-6e03-0131-e150-14109fdf0b37",
           "measure_type": "RubyMeasure",
           "name": "reduce_lighting_loads_by_percentage",
           "display_name": "Reduce Lighting Loads by Percentage",
-          "uuid": "e7654aa0-6e01-0131-e037-14109fdf0b37",
+          "uuid": "53e80940-6e03-0131-e151-14109fdf0b37",
           "variables": [
             {
               "argument": {
@@ -158,7 +158,7 @@
               "version_uuid": "26e7d8de-83e3-4a53-938b-45d3e0f29953"
             }
           ],
-          "version_uuid": "e76566c0-6e01-0131-e038-14109fdf0b37",
+          "version_uuid": "53e824a0-6e03-0131-e152-14109fdf0b37",
           "workflow_index": 0,
           "workflow_step_type": "Measure"
         },
@@ -169,32 +169,32 @@
               "machine_name": "apply_the_measure_to_a_specific_space_type_or_to_the_entire_model.",
               "name": "space_type",
               "value": "*Entire Building*",
-              "uuid": "e7682fb0-6e01-0131-e04f-14109fdf0b37",
-              "version_uuid": "e76859c0-6e01-0131-e050-14109fdf0b37"
+              "uuid": "53eaf510-6e03-0131-e169-14109fdf0b37",
+              "version_uuid": "53eb1080-6e03-0131-e16a-14109fdf0b37"
             },
             {
               "display_name": "Increase in Material and Installation Costs for Building per Affected Floor Area ($/ft^2).",
               "machine_name": "increase_in_material_and_installation_costs_for_building_per_affected_floor_area_($/ft^2).",
               "name": "material_and_installation_cost",
               "value": 0.0,
-              "uuid": "e7689630-6e01-0131-e051-14109fdf0b37",
-              "version_uuid": "e768b190-6e01-0131-e052-14109fdf0b37"
+              "uuid": "53eb3440-6e03-0131-e16b-14109fdf0b37",
+              "version_uuid": "53eb5250-6e03-0131-e16c-14109fdf0b37"
             },
             {
               "display_name": "O & M Costs for Construction per Affected Floor Area ($/ft^2).",
               "machine_name": "o_&_m_costs_for_construction_per_affected_floor_area_($/ft^2).",
               "name": "om_cost",
               "value": 0.0,
-              "uuid": "e768d000-6e01-0131-e053-14109fdf0b37",
-              "version_uuid": "e768eae0-6e01-0131-e054-14109fdf0b37"
+              "uuid": "53eb7600-6e03-0131-e16d-14109fdf0b37",
+              "version_uuid": "53eb9b60-6e03-0131-e16e-14109fdf0b37"
             },
             {
               "display_name": "O & M Frequency (whole years).",
               "machine_name": "o_&_m_frequency_(whole_years).",
               "name": "om_frequency",
               "value": 1,
-              "uuid": "e7690a20-6e01-0131-e055-14109fdf0b37",
-              "version_uuid": "e7692450-6e01-0131-e056-14109fdf0b37"
+              "uuid": "53ebb9a0-6e03-0131-e16f-14109fdf0b37",
+              "version_uuid": "53ebd510-6e03-0131-e170-14109fdf0b37"
             }
           ],
           "bcl_measure_directory": "./measures/reduce_space_infiltration_by_percentage",
@@ -202,14 +202,14 @@
           "bcl_measure_class_name_ADDME": "ReduceSpaceInfiltrationByPercentage",
           "measure_definition_class_name_CHANGE_TO_ME": "ReduceSpaceInfiltrationByPercentage",
           "measure_definition_class_name": "ReduceSpaceInfiltrationByPercentage",
-          "bcl_measure_uuid": "e7676e70-6e01-0131-e049-14109fdf0b37",
-          "measure_definition_uuid_CHANGE_TO_ME": "e7678af0-6e01-0131-e04a-14109fdf0b37",
-          "bcl_measure_version_uuid": "e767a630-6e01-0131-e04b-14109fdf0b37",
-          "measure_definition_version_uuid_CHANGE_TO_ME": "e767c140-6e01-0131-e04c-14109fdf0b37",
+          "bcl_measure_uuid": "53ea4ab0-6e03-0131-e163-14109fdf0b37",
+          "measure_definition_uuid_CHANGE_TO_ME": "53ea6910-6e03-0131-e164-14109fdf0b37",
+          "bcl_measure_version_uuid": "53ea8860-6e03-0131-e165-14109fdf0b37",
+          "measure_definition_version_uuid_CHANGE_TO_ME": "53eaa4f0-6e03-0131-e166-14109fdf0b37",
           "measure_type": "RubyMeasure",
           "name": "reducespaceinfiltrationbypercentage",
           "display_name": "ReduceSpaceInfiltrationByPercentage",
-          "uuid": "e767dc10-6e01-0131-e04d-14109fdf0b37",
+          "uuid": "53eabfc0-6e03-0131-e167-14109fdf0b37",
           "variables": [
             {
               "argument": {
@@ -254,7 +254,7 @@
               "version_uuid": "26e7d8de-83e3-4a53-938b-45d3e0f29953"
             }
           ],
-          "version_uuid": "e767f9c0-6e01-0131-e04e-14109fdf0b37",
+          "version_uuid": "53ead890-6e03-0131-e168-14109fdf0b37",
           "workflow_index": 1,
           "workflow_step_type": "Measure"
         },
@@ -267,14 +267,14 @@
           "bcl_measure_class_name_ADDME": "RotateBuilding",
           "measure_definition_class_name_CHANGE_TO_ME": "RotateBuilding",
           "measure_definition_class_name": "RotateBuilding",
-          "bcl_measure_uuid": "e7694d80-6e01-0131-e057-14109fdf0b37",
-          "measure_definition_uuid_CHANGE_TO_ME": "e7696dc0-6e01-0131-e058-14109fdf0b37",
-          "bcl_measure_version_uuid": "e7698bd0-6e01-0131-e059-14109fdf0b37",
-          "measure_definition_version_uuid_CHANGE_TO_ME": "e769a6b0-6e01-0131-e05a-14109fdf0b37",
+          "bcl_measure_uuid": "53ebf500-6e03-0131-e171-14109fdf0b37",
+          "measure_definition_uuid_CHANGE_TO_ME": "53ec1120-6e03-0131-e172-14109fdf0b37",
+          "bcl_measure_version_uuid": "53ec2f30-6e03-0131-e173-14109fdf0b37",
+          "measure_definition_version_uuid_CHANGE_TO_ME": "53ec4ca0-6e03-0131-e174-14109fdf0b37",
           "measure_type": "RubyMeasure",
           "name": "rotate_building_relative_to_current_orientation",
           "display_name": "Rotate Building Relative to Current Orientation",
-          "uuid": "e769c220-6e01-0131-e05b-14109fdf0b37",
+          "uuid": "53ec69a0-6e03-0131-e175-14109fdf0b37",
           "variables": [
             {
               "argument": {
@@ -319,7 +319,7 @@
               "version_uuid": "26e7d8de-83e3-4a53-938b-45d3e0f29953"
             }
           ],
-          "version_uuid": "e769dc80-6e01-0131-e05c-14109fdf0b37",
+          "version_uuid": "53ec8880-6e03-0131-e176-14109fdf0b37",
           "workflow_index": 2,
           "workflow_step_type": "Measure"
         },
@@ -330,16 +330,16 @@
               "machine_name": "sill_height_(in).",
               "name": "sillHeight",
               "value": 30.0,
-              "uuid": "e76acc80-6e01-0131-e063-14109fdf0b37",
-              "version_uuid": "e76ae870-6e01-0131-e064-14109fdf0b37"
+              "uuid": "53ed7ed0-6e03-0131-e17d-14109fdf0b37",
+              "version_uuid": "53ed9d60-6e03-0131-e17e-14109fdf0b37"
             },
             {
               "display_name": "Cardinal Direction.",
               "machine_name": "cardinal_direction.",
               "name": "facade",
               "value": "South",
-              "uuid": "e76b0580-6e01-0131-e065-14109fdf0b37",
-              "version_uuid": "e76b2440-6e01-0131-e066-14109fdf0b37"
+              "uuid": "53edbfb0-6e03-0131-e17f-14109fdf0b37",
+              "version_uuid": "53edd910-6e03-0131-e180-14109fdf0b37"
             }
           ],
           "bcl_measure_directory": "./measures/set_window_to_wall_ratio_by_facade",
@@ -347,14 +347,14 @@
           "bcl_measure_class_name_ADDME": "SetWindowToWallRatioByFacade",
           "measure_definition_class_name_CHANGE_TO_ME": "SetWindowToWallRatioByFacade",
           "measure_definition_class_name": "SetWindowToWallRatioByFacade",
-          "bcl_measure_uuid": "e76a15b0-6e01-0131-e05d-14109fdf0b37",
-          "measure_definition_uuid_CHANGE_TO_ME": "e76a3340-6e01-0131-e05e-14109fdf0b37",
-          "bcl_measure_version_uuid": "e76a5380-6e01-0131-e05f-14109fdf0b37",
-          "measure_definition_version_uuid_CHANGE_TO_ME": "e76a6d40-6e01-0131-e060-14109fdf0b37",
+          "bcl_measure_uuid": "53ecc1c0-6e03-0131-e177-14109fdf0b37",
+          "measure_definition_uuid_CHANGE_TO_ME": "53ecdd80-6e03-0131-e178-14109fdf0b37",
+          "bcl_measure_version_uuid": "53ecf940-6e03-0131-e179-14109fdf0b37",
+          "measure_definition_version_uuid_CHANGE_TO_ME": "53ed1530-6e03-0131-e17a-14109fdf0b37",
           "measure_type": "RubyMeasure",
           "name": "set_south_wwr",
           "display_name": "Set South WWR",
-          "uuid": "e76a8700-6e01-0131-e061-14109fdf0b37",
+          "uuid": "53ed2fd0-6e03-0131-e17b-14109fdf0b37",
           "variables": [
             {
               "argument": {
@@ -399,7 +399,7 @@
               "version_uuid": "26e7d8de-83e3-4a53-938b-45d3e0f29953"
             }
           ],
-          "version_uuid": "e76aa390-6e01-0131-e062-14109fdf0b37",
+          "version_uuid": "53ed5060-6e03-0131-e17c-14109fdf0b37",
           "workflow_index": 3,
           "workflow_step_type": "Measure"
         },
@@ -410,16 +410,16 @@
               "machine_name": "sill_height_(in).",
               "name": "sillHeight",
               "value": 30.0,
-              "uuid": "e76c1230-6e01-0131-e06d-14109fdf0b37",
-              "version_uuid": "e76c2d90-6e01-0131-e06e-14109fdf0b37"
+              "uuid": "53eeaec0-6e03-0131-e187-14109fdf0b37",
+              "version_uuid": "53eed320-6e03-0131-e188-14109fdf0b37"
             },
             {
               "display_name": "Cardinal Direction.",
               "machine_name": "cardinal_direction.",
               "name": "facade",
               "value": "West",
-              "uuid": "e76c4c90-6e01-0131-e06f-14109fdf0b37",
-              "version_uuid": "e76c6630-6e01-0131-e070-14109fdf0b37"
+              "uuid": "53eefe90-6e03-0131-e189-14109fdf0b37",
+              "version_uuid": "53ef1b70-6e03-0131-e18a-14109fdf0b37"
             }
           ],
           "bcl_measure_directory": "./measures/set_window_to_wall_ratio_by_facade",
@@ -427,14 +427,14 @@
           "bcl_measure_class_name_ADDME": "SetWindowToWallRatioByFacade",
           "measure_definition_class_name_CHANGE_TO_ME": "SetWindowToWallRatioByFacade",
           "measure_definition_class_name": "SetWindowToWallRatioByFacade",
-          "bcl_measure_uuid": "e76b4730-6e01-0131-e067-14109fdf0b37",
-          "measure_definition_uuid_CHANGE_TO_ME": "e76b63c0-6e01-0131-e068-14109fdf0b37",
-          "bcl_measure_version_uuid": "e76b7f00-6e01-0131-e069-14109fdf0b37",
-          "measure_definition_version_uuid_CHANGE_TO_ME": "e76b9ef0-6e01-0131-e06a-14109fdf0b37",
+          "bcl_measure_uuid": "53edf940-6e03-0131-e181-14109fdf0b37",
+          "measure_definition_uuid_CHANGE_TO_ME": "53ee1510-6e03-0131-e182-14109fdf0b37",
+          "bcl_measure_version_uuid": "53ee3010-6e03-0131-e183-14109fdf0b37",
+          "measure_definition_version_uuid_CHANGE_TO_ME": "53ee4d90-6e03-0131-e184-14109fdf0b37",
           "measure_type": "RubyMeasure",
           "name": "set_west_wwr",
           "display_name": "Set West WWR",
-          "uuid": "e76bc880-6e01-0131-e06b-14109fdf0b37",
+          "uuid": "53ee6de0-6e03-0131-e185-14109fdf0b37",
           "variables": [
             {
               "argument": {
@@ -479,7 +479,7 @@
               "version_uuid": "26e7d8de-83e3-4a53-938b-45d3e0f29953"
             }
           ],
-          "version_uuid": "e76be880-6e01-0131-e06c-14109fdf0b37",
+          "version_uuid": "53ee8900-6e03-0131-e186-14109fdf0b37",
           "workflow_index": 4,
           "workflow_step_type": "Measure"
         }
