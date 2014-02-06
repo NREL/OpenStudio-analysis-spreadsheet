@@ -16,6 +16,12 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
     r_value.setDefaultValue(30.0)
     args << r_value
 
+    #make bool argument to allow both increase and decrease in R value
+    allow_reduction = OpenStudio::Ruleset::OSArgument::makeBoolArgument("allow_reduction",true)
+    allow_reduction.setDisplayName("Allow both increase and decrease in R-value to reach requested target?")
+    allow_reduction.setDefaultValue(false)
+    args << allow_reduction
+
     #make an argument for material and installation cost
     material_cost_increase_ip = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("material_cost_increase_ip",true)
     material_cost_increase_ip.setDisplayName("Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).")
@@ -48,6 +54,7 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
 
     #assign the user inputs to variables
     r_value = runner.getDoubleArgumentValue("r_value",user_arguments)
+    allow_reduction = runner.getBoolArgumentValue("allow_reduction",user_arguments)
     material_cost_increase_ip = runner.getDoubleArgumentValue("material_cost_increase_ip",user_arguments)
     one_time_retrofit_cost_ip = runner.getDoubleArgumentValue("one_time_retrofit_cost_ip",user_arguments)
     years_until_retrofit_cost = runner.getIntegerArgumentValue("years_until_retrofit_cost",user_arguments)
@@ -112,6 +119,7 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
     # nothing will be done if there are no exterior surfaces
     if exterior_surfaces.empty?
       runner.registerAsNotApplicable("Model does not have any roofs.")
+      return true
     end
 
     #report strings for initial condition
@@ -154,7 +162,7 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
 
       if not thermal_resistance_values.max > unit_helper(min_expected_r_value_ip, "ft^2*h*R/Btu","m^2*K/W")
         runner.registerWarning("Construction '#{exterior_surface_construction.name.to_s}' does not appear to have an insulation layer and was not altered.")
-      elsif not thermal_resistance_values.max < r_value_si
+      elsif not thermal_resistance_values.max < r_value_si and not allow_reduction
         runner.registerInfo("The insulation layer of construction #{exterior_surface_construction.name.to_s} exceeds the requested R-Value. It was not altered.")
       else
         #clone the construction
@@ -356,14 +364,15 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
     #add not applicable test if there were exterior roof constructions but non of them were altered (already enough insulation or doesn't look like insulated wall)
     if affected_area_si == 0
       runner.registerAsNotApplicable("No roofs were altered.")
-      affected_area_ip = affected_area_si
+      return true
+      # affected_area_ip = affected_area_si
     else
       #ip construction area for reporting
       affected_area_ip = unit_helper(affected_area_si,"m^2","ft^2")
     end
 
     #report final condition
-    runner.registerFinalCondition("The existing insulation for roofs was increased to R-#{r_value}. This was accomplished for an initial cost of #{one_time_retrofit_cost_ip} ($/sf) and an increase of #{material_cost_increase_ip} ($/sf) for construction. This was applied to #{neat_numbers(affected_area_ip,0)} (ft^2) across #{final_string.size} roof constructions: #{final_string.sort.join(", ")}.")
+    runner.registerFinalCondition("The existing insulation for roofs was changed to R-#{r_value}. This was accomplished for an initial cost of #{one_time_retrofit_cost_ip} ($/sf) and an increase of #{material_cost_increase_ip} ($/sf) for construction. This was applied to #{neat_numbers(affected_area_ip,0)} (ft^2) across #{final_string.size} roof constructions: #{final_string.sort.join(", ")}.")
 
     return true
 
