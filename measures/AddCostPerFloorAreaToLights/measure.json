@@ -8,7 +8,10 @@
       "local_variable": "lights_def",
       "variable_type": "Choice",
       "name": "lights_def",
-      "display_name": "Choose a Watt per Area Lights Definition to Add Costs to."
+      "display_name": "Choose a Watt per Area Lights Definition to Add Costs to.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "remove_costs",

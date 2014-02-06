@@ -8,7 +8,10 @@
       "local_variable": "construction",
       "variable_type": "Choice",
       "name": "construction",
-      "display_name": "Pick a Window Construction From the Model to Replace Existing Window Constructions."
+      "display_name": "Pick a Window Construction From the Model to Replace Existing Window Constructions.",
+      "choices": [
+
+      ]
     },
     {
       "local_variable": "change_fixed_windows",

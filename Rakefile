@@ -310,7 +310,7 @@ task :update_measures do
   query = 'NREL'
               #filter = 'show_rows=5'
 
-  success = bcl.measure_metadata(query, nil, false)
+  success = bcl.measure_metadata(query, nil, true)
   if success
     # move the measures to the right place
   end

@@ -12,6 +12,13 @@
       "default_value": 30.0
     },
     {
+      "local_variable": "allow_reduction",
+      "variable_type": "Bool",
+      "name": "allow_reduction",
+      "display_name": "Allow both increase and decrease in R-value to reach requested target?",
+      "default_value": false
+    },
+    {
       "local_variable": "material_cost_increase_ip",
       "variable_type": "Double",
       "name": "material_cost_increase_ip",
