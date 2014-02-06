@@ -1,0 +1,92 @@
+{
+  "classname": "AddEnergyRecoveryVentilator",
+  "path": "./measures/AddEnergyRecoveryVentilator",
+  "name": "Add Energy Recovery Ventilator",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "air_loop_widget",
+      "variable_type": "Choice",
+      "name": "air_loop_widget",
+      "display_name": "Apply the measure to ",
+      "default_value": "air_loop_display_names[0]",
+      "choices": [
+        "0",
+        "air_loop_display_names[0]"
+      ]
+    },
+    {
+      "local_variable": "sensible_eff_at_100_heating",
+      "variable_type": "Double",
+      "name": "sensible_eff_at_100_heating",
+      "display_name": "Sensible Effectiveness at 100% Heating Air Flow",
+      "default_value": 0.76
+    },
+    {
+      "local_variable": "latent_eff_at_100_heating",
+      "variable_type": "Double",
+      "name": "latent_eff_at_100_heating",
+      "display_name": "Latent Effectiveness at 100% Heating Air Flow",
+      "default_value": 0.68
+    },
+    {
+      "local_variable": "sensible_eff_at_75_heating",
+      "variable_type": "Double",
+      "name": "sensible_eff_at_75_heating",
+      "display_name": "Sensible Effectiveness at 75% Heating Air Flow",
+      "default_value": 0.81
+    },
+    {
+      "local_variable": "latent_eff_at_75_heating",
+      "variable_type": "Double",
+      "name": "latent_eff_at_75_heating",
+      "display_name": "Latent Effectiveness at 75% Heating Air Flow",
+      "default_value": 0.73
+    },
+    {
+      "local_variable": "sensible_eff_at_100_cooling",
+      "variable_type": "Double",
+      "name": "sensible_eff_at_100_cooling",
+      "display_name": "Sensible Effectiveness at 100% Cooling Air Flow",
+      "default_value": 0.76
+    },
+    {
+      "local_variable": "latent_eff_at_100_cooling",
+      "variable_type": "Double",
+      "name": "latent_eff_at_100_cooling",
+      "display_name": "Latent Effectiveness at 100% Cooling Air Flow",
+      "default_value": 0.68
+    },
+    {
+      "local_variable": "sensible_eff_at_75_cooling",
+      "variable_type": "Double",
+      "name": "sensible_eff_at_75_cooling",
+      "display_name": "Sensible Effectiveness at 75% Cooling Air Flow",
+      "default_value": 0.81
+    },
+    {
+      "local_variable": "latent_eff_at_75_cooling",
+      "variable_type": "Double",
+      "name": "latent_eff_at_75_cooling",
+      "display_name": "Latent Effectiveness at 75% Cooling Air Flow",
+      "default_value": 0.73
+    },
+    {
+      "local_variable": "heat_exchanger_type_widget",
+      "variable_type": "Choice",
+      "name": "heat_exchanger_type_widget",
+      "display_name": "Heat Exchanger Type.",
+      "default_value": "heat_exchanger_type_display_names[0]",
+      "choices": [
+        "0",
+        "heat_exchanger_type_display_names[0]"
+      ]
+    },
+    {
+      "local_variable": "nominal_electric_power",
+      "variable_type": "Double",
+      "name": "nominal_electric_power",
+      "display_name": "Nominal electric power [W]"
+    }
+  ]
+}

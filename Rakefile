@@ -307,12 +307,9 @@ task :update_measures do
   bcl = BCL::ComponentMethods.new
   bcl.parsed_measures_path = "./measures"
   bcl.login() # have to do this even if you don't set your username to get a session
-  #query = 'NREL%20PNNL%2BBCL%2BGroup'
 
-  query = 'NREL'
+  query = 'NREL%20PNNL%2BBCL%2BGroup'
   success = bcl.measure_metadata(query, nil, true)
-
-  query = ''
 
 
   # delete the test files

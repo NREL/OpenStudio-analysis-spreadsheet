@@ -1,0 +1,61 @@
+{
+  "classname": "SetFurnaceEfficiency",
+  "path": "./measures/SetFurnaceEfficiency",
+  "name": "Set Furnace Efficiency",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "furnace_widget",
+      "variable_type": "Choice",
+      "name": "furnace_widget",
+      "display_name": "Apply the measure to ",
+      "default_value": "furnace_display_names[0]",
+      "choices": [
+        "0",
+        "furnace_display_names[0]"
+      ]
+    },
+    {
+      "local_variable": "input_option_manual",
+      "variable_type": "Bool",
+      "name": "input_option_manual",
+      "display_name": "Option 1, set furnace burner efficiency to a user defined value",
+      "default_value": false
+    },
+    {
+      "local_variable": "burner_efficiency",
+      "variable_type": "Double",
+      "name": "burner_efficiency",
+      "display_name": "Burner efficiency (between 0 and 1)",
+      "default_value": 0.8
+    },
+    {
+      "local_variable": "input_option_standard",
+      "variable_type": "Bool",
+      "name": "input_option_standard",
+      "display_name": "Option 2, set furnace burner efficiency based on ASHRAE Standard 90.1 requirement",
+      "default_value": false
+    },
+    {
+      "local_variable": "nominal_capacity",
+      "variable_type": "Double",
+      "name": "nominal_capacity",
+      "display_name": "Nominal capacity [W] "
+    },
+    {
+      "local_variable": "standards_widget",
+      "variable_type": "Choice",
+      "name": "standards_widget",
+      "display_name": "ASHRAE Standards 90.1",
+      "default_value": "standards_display_names[0]",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "standards_display_names[0]"
+      ]
+    }
+  ]
+}
