@@ -83,6 +83,18 @@ false,Add Daylight Sensor at Center of Spaces with a Specified Space Type Assign
 "",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
 "",argument,O & M Costs per Space for Daylight Sensor ($).,om_cost,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,Add Energy Recovery Ventilator,AddEnergyRecoveryVentilator,RubyMeasure
+"",argument,Apply the measure to ,air_loop_widget,static,Choice,"",air_loop_display_names[0],"|0,air_loop_display_names[0]|"
+"",argument,Sensible Effectiveness at 100% Heating Air Flow,sensible_eff_at_100_heating,static,Double,"",0.76,""
+"",argument,Latent Effectiveness at 100% Heating Air Flow,latent_eff_at_100_heating,static,Double,"",0.68,""
+"",argument,Sensible Effectiveness at 75% Heating Air Flow,sensible_eff_at_75_heating,static,Double,"",0.81,""
+"",argument,Latent Effectiveness at 75% Heating Air Flow,latent_eff_at_75_heating,static,Double,"",0.73,""
+"",argument,Sensible Effectiveness at 100% Cooling Air Flow,sensible_eff_at_100_cooling,static,Double,"",0.76,""
+"",argument,Latent Effectiveness at 100% Cooling Air Flow,latent_eff_at_100_cooling,static,Double,"",0.68,""
+"",argument,Sensible Effectiveness at 75% Cooling Air Flow,sensible_eff_at_75_cooling,static,Double,"",0.81,""
+"",argument,Latent Effectiveness at 75% Cooling Air Flow,latent_eff_at_75_cooling,static,Double,"",0.73,""
+"",argument,Heat Exchanger Type.,heat_exchanger_type_widget,static,Choice,"",heat_exchanger_type_display_names[0],"|0,heat_exchanger_type_display_names[0]|"
+"",argument,Nominal electric power [W],nominal_electric_power,static,Double,"","",""
 false,Add Exterior Lights,AddExteriorLights,RubyMeasure
 "",argument,Exterior Lighting Design Power (W),ext_lighting_level,static,Double,"",1000.0,""
 "",argument,End-Use SubCategory,end_use_subcategory,static,String,"",Exterior Facade Lighting,""
@@ -183,11 +195,13 @@ false,Improve Motor Efficiency,ImproveMotorEfficiency,RubyMeasure
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Set R-value of Insulation for Exterior Walls to a Specific Value,IncreaseInsulationRValueForExteriorWalls,RubyMeasure
 "",argument,Insulation R-value (ft^2*h*R/Btu).,r_value,static,Double,"",13.0,""
+"",argument,Allow both increase and decrease in R-value to reach requested target?,allow_reduction,static,Bool,"",false,""
 "",argument,Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).,material_cost_increase_ip,static,Double,"",0.0,""
 "",argument,One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).,one_time_retrofit_cost_ip,static,Double,"",0.0,""
 "",argument,Year to Incur One Time Retrofit Cost (whole years).,years_until_retrofit_cost,static,Integer,"",0,""
 false,Set R-value of Insulation for Roofs to a Specific Value,IncreaseInsulationRValueForRoofs,RubyMeasure
 "",argument,Insulation R-value (ft^2*h*R/Btu).,r_value,static,Double,"",30.0,""
+"",argument,Allow both increase and decrease in R-value to reach requested target?,allow_reduction,static,Bool,"",false,""
 "",argument,Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).,material_cost_increase_ip,static,Double,"",0.0,""
 "",argument,One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).,one_time_retrofit_cost_ip,static,Double,"",0.0,""
 "",argument,Year to Incur One Time Retrofit Cost (whole years).,years_until_retrofit_cost,static,Integer,"",0,""
@@ -291,6 +305,29 @@ false,Replace Exterior Window Constructions with a Different Construction from t
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
 false,Rotate Building Relative to Current Orientation,RotateBuilding,RubyMeasure
 "",argument,Number of Degrees to Rotate Building (positive value is clockwise).,relative_building_rotation,static,Double,"",90.0,""
+false,Set Air-Cooled Air Conditioner COP,SetAirCooledAirConditionerCOP,RubyMeasure
+"",argument,Apply the measure to ,unitary_ac_widget,static,Choice,"",unitary_ac_display_names[0],"|0,unitary_ac_display_names[0]|"
+"",argument,"Option 1, set rated COP to a user defined value",input_option_manual,static,Bool,"",false,""
+"",argument,Rated COP [W/W],rated_COP,static,Double,"",3.0,""
+"",argument,"Option 2, set rated COP based on ASHRAE Standard 90.1 requirement",input_option_standard,static,Bool,"",false,""
+"",argument,"Estimated total cooling capacity [W] (Only used to lookup 90.1 requirements, not used to change model capacity)",total_cooling_capacity,static,Double,"","",""
+"",argument,ASHRAE Standard 90.1,standards_widget,static,Choice,"",standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,Set Air-Cooled Unitary Heat Pump COP,SetAirCooledUnitaryHeatPumpCOP,RubyMeasure
+"",argument,Apply the measure to ,unitary_hp_widget,static,Choice,"",unitary_hp_display_names[0],"|0,unitary_hp_display_names[0]|"
+"",argument,"Option 1, set rated COP to a user defined value",input_option_manual,static,Bool,"",false,""
+"",argument,Rated heating COP [W/W],rated_heating_COP,static,Double,"",3.0,""
+"",argument,Rated cooling COP [W/W],rated_cooling_COP,static,Double,"",3.0,""
+"",argument,"Option 2, set rated COP based on ASHRAE Standard 90.1 requirement",input_option_standard,static,Bool,"",false,""
+"",argument,"Estimated total cooling capacity [W] (Only used to lookup 90.1 requirements, not used to change model capacity)",total_cooling_capacity,static,Double,"","",""
+"",argument,ASHRAE Standard 90.1,standards_widget,static,Choice,"",standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,Set Boiler Thermal Efficiency,SetBoilerThermalEfficiency,RubyMeasure
+"",argument,Apply the measure to ,boiler_widget,static,Choice,"",boiler_display_names[0],"|0,boiler_display_names[0]|"
+"",argument,"Option 1, set boiler nominal thermal efficiency to a user defined value",input_option_manual,static,Bool,"",false,""
+"",argument,Boiler nominal thermal efficiency (between 0 and 1),boiler_thermal_efficiency,static,Double,"",0.8,""
+"",argument,"Option 2, set boiler nominal thermal efficiency based on ASHRAE Standard 90.1 requirement",input_option_standard,static,Bool,"",false,""
+"",argument,Boiler nominal capacity [W] ,nominal_capacity,static,Double,"","",""
+"",argument,Fuel type,fuel_type_widget,static,Choice,"",fuel_type_display_names[0],"|0,1,2,fuel_type_display_names[0]|"
+"",argument,ASHRAE Standards 90.1,standards_widget,static,Choice,"",standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
 false,Set COP for Single Speed DX Cooling Units,SetCOPforSingleSpeedDXCoolingUnits,RubyMeasure
 "",argument,Choose an Air Loop with a two speed DX Cooling Unit to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Rated COP,cop,static,Double,"",4.0,""
@@ -322,6 +359,13 @@ false,Set EnergyPlus Minimum Outdoor Air Flow Rate,SetEnergyPlusMinimumOutdoorAi
 "",argument,Minimum Outdoor Air Flow Rate (m^3/s).,minOutdoorAirFlow,static,Double,"",10.76,""
 false,Set Ext Wall To Ground Boundary Condition By Story,SetExtWallToGroundBoundaryConditionByStory,RubyMeasure
 "",argument,Choose a Story to Change Wall Boundary Conditions For.,storyBasement,static,Choice,"","",""
+false,Set Furnace Efficiency,SetFurnaceEfficiency,RubyMeasure
+"",argument,Apply the measure to ,furnace_widget,static,Choice,"",furnace_display_names[0],"|0,furnace_display_names[0]|"
+"",argument,"Option 1, set furnace burner efficiency to a user defined value",input_option_manual,static,Bool,"",false,""
+"",argument,Burner efficiency (between 0 and 1),burner_efficiency,static,Double,"",0.8,""
+"",argument,"Option 2, set furnace burner efficiency based on ASHRAE Standard 90.1 requirement",input_option_standard,static,Bool,"",false,""
+"",argument,Nominal capacity [W] ,nominal_capacity,static,Double,"","",""
+"",argument,ASHRAE Standards 90.1,standards_widget,static,Choice,"",standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
 false,SetGasBurnerEfficiency,SetGasBurnerEfficiency,RubyMeasure
 "",argument,Choose an Air Loop with a two speed DX Cooling Unit to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Burner Efficiency (fractional),eff,static,Double,"",0.95,""
@@ -354,6 +398,12 @@ false,Set Space Infiltration by Exterior Surface Area,SetSpaceInfiltrationByExte
 "",argument,Increase in Material and Installation Costs for Building per Exterior Envelope Area ($/ft^2).,material_cost_ip,static,Double,"",0.0,""
 "",argument,O & M Costs for Construction per Area Used ($/ft^2).,om_cost_ip,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,"Set Water Heater Efficiency, Heat Loss, and Peak Water Flow Rate",SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate,RubyMeasure
+"",argument,Apply the measure to,waterheater_widget,static,Choice,"",waterheater_display_names[0],"|0,waterheater_display_names[0]|"
+"",argument,Fuel type,heater_fuel_type_widget,static,Choice,"",heater_fuel_type_display_names[0],|heater_fuel_type_display_names[0]|
+"",argument,Thermal efficiency [between 0 and 1],heater_thermal_efficiency,static,Double,"",0.8,""
+"",argument,"Loss coefficient to ambient temperature [W/K] (optional input, baseline value will be used if empty)",onoff_cycle_loss_coefficient_to_ambient_temperature,static,Double,"",0.0,""
+"",argument,"Peak water use flow rate [m3/s] (optional input, baseline value will be used if empty)",peak_use_flow_rate,static,Double,"","",""
 false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,RubyMeasure
 "",argument,Window to Wall Ratio (fraction).,wwr,static,Double,"",0.4,""
 "",argument,Sill Height (in).,sillHeight,static,Double,"",30.0,""

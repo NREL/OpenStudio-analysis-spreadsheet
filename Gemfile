@@ -4,7 +4,7 @@ gem "rake", "~> 10.1.0"
 gem "rubyzip" 
 
 # uncomment if you need to update the bcl measures
-gem "bcl", "~> 0.5.0"
+gem "bcl", "~> 0.5.1"
 #gem "bcl", :path => "../bcl-gem"
 
 gem "openstudio-aws", "~> 0.1.16"
