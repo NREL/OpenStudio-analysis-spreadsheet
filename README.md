@@ -103,7 +103,7 @@ gem install bundler
 ### Using Git
 
 ```
-git clone https://github.com/nllong/os-analysis-example.git
+git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
 cd os-analysis-example
 bundle 
 bundle exec rake run
