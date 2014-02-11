@@ -103,7 +103,7 @@ gem install bundler
 ### Using Git
 
 ```
-git clone https://github.com/nllong/os-analysis-example.git
+git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
 cd os-analysis-example
 bundle 
 bundle exec rake run
@@ -120,7 +120,7 @@ Note: Mac 10.9 users may need to run `sudo bundle update`
 
 ### Without Git
 
-* Download the latest release from https://github.com/nllong/os-analysis-example/releases
+* Download the latest release from https://github.com/NREL/OpenStudio-analysis-spreadsheet/releases
 * Unzip into a directory and go to that directory in a command/terminal window
 * Run
 
