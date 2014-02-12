@@ -104,13 +104,20 @@ project.analysis.problem.workflow.each { |workflow_step|
     rjb = OpenStudio::Runmanager::RubyJobBuilder.new(workflow_step.workItem)
     measure_info = Hash.new
     measure_info["workflow_step"] = workflow_step
-    bcl_dir = OpenStudio::Path.new(rjb.toParams.get("ruby_scriptfile").children.at(0).value).parent_path
+    bcl_dir = nil
+    rjb.requiredFiles().each { |req_file|
+      if req_file.second.to_s == "user_script.rb"
+        bcl_dir = req_file.first.parent_path
+        break
+      end
+    }
+    raise "Unable to locate BCLMeasure directory." if bcl_dir.nil?    
     begin
       measure_info["bcl_measure"] = OpenStudio::BCLMeasure.new(bcl_dir)
     rescue
-      raise "Unable to open measure at '${bcl_dir}'."
+      raise "Unable to open measure at '#{bcl_dir}'."
     end
-    measure_info["arguments"] = rjb.toOSArguments(rjb.toParams)
+    measure_info["arguments"] = OpenStudio::Runmanager::RubyJobBuilder::toOSArguments(rjb.toParams)
     measures << measure_info
   end
 }
@@ -122,10 +129,15 @@ measures << compound_measure if not compound_measure.nil?
 n = measures.size
 data_points.each { |data_point|
   measure_index = 0
-  analysis.problem.getJobsByWorkflowStep(dataPoint,true).each { |job_data|
+  project.analysis.problem.getJobsByWorkflowStep(data_point,true).each { |job_data|
     # see if has output attributes
     if not job_data.outputFiles.empty?
-      result_path = job_data.outputFiles.get.getLastByExtension("ossr").fullPath
+      result_path = nil
+      begin
+        result_path = job_data.outputFiles.get.getLastByExtension("ossr").fullPath
+      rescue
+        next
+      end
       result = OpenStudio::Ruleset::OSResult::load(result_path)
       raise "Unable to load result from '${result_path}'" if result.empty?
       result = result.get
@@ -150,13 +162,13 @@ end
 table = OpenStudio::Table.new
 row = OpenStudio::TableRow.new
 measures.each { |measure|
-  row << table_element("FALSE")
+  row << table_element("'FALSE")
   row << table_element(measure["bcl_measure"].name)
-  row << table_element(measure["bcl_measure"].directory.stem.to_s)
+  row << table_element(OpenStudio::toString(measure["bcl_measure"].directory.stem))
   row << table_element("RubyMeasure")
   table.appendRow(row)
+  row.clear
   measure["arguments"].each { |arg|
-    row.clear
     row << table_element("")
     row << table_element("argument")
     row << table_element(arg.displayName)
@@ -178,19 +190,22 @@ measures.each { |measure|
       row << table_element(choices_str)
     end
     table.appendRow(row)
-  }
-  measure["outputs"].each { |output|
     row.clear
-    row << table_element("")
-    row << table_element("output")
-    row << output.displayName.empty? table_element("") : table_element(output.displayName.get)
-    row << table_element(output.name)
-    row << table_element("")
-    row << table_element(output.valueType.valueDescription)
-    row << output.units.empty? table_element("") : table_element(output.units.get)
-    row << table_element(output.toString)
-    table.appendRow(row)
   }
+  if measure.has_key?("outputs")
+    measure["outputs"].each { |output|
+      row << table_element("")
+      row << table_element("output")
+      row << (output.displayName.empty? ? table_element("") : table_element(output.displayName.get))
+      row << table_element(output.name)
+      row << table_element("")
+      row << table_element(output.valueType.valueDescription)
+      row << (output.units.empty? ? table_element("") : table_element(output.units.get))
+      row << table_element(output.toString)
+      table.appendRow(row)
+      row.clear
+    }
+  end
 }
 csv_path = OpenStudio::Path.new(project_dir) / OpenStudio::Path.new("spreadsheet_export.csv")
 table.save(csv_path,true)
