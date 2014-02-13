@@ -196,7 +196,7 @@ measures.each { |measure|
     measure["outputs"].each { |output|
       row << table_element("")
       row << table_element("output")
-      row << (output.displayName.empty? ? table_element("") : table_element(output.displayName.get))
+      row << (output.displayName.empty? ? table_element(output.name) : table_element(output.displayName.get))
       row << table_element(output.name)
       row << table_element("")
       row << table_element(output.valueType.valueDescription)
