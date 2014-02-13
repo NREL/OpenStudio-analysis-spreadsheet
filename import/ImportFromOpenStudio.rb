@@ -162,7 +162,7 @@ end
 table = OpenStudio::Table.new
 row = OpenStudio::TableRow.new
 measures.each { |measure|
-  row << table_element("'FALSE")
+  row << OpenStudio::TableElement.new("FALSE",OpenStudio::TableLoadOptions.new(false,false,false))
   row << table_element(measure["bcl_measure"].name)
   row << table_element(OpenStudio::toString(measure["bcl_measure"].directory.stem))
   row << table_element("RubyMeasure")
@@ -178,6 +178,8 @@ measures.each { |measure|
     row << table_element("")
     if arg.hasDefaultValue
       row << table_element(arg.defaultValueAsString)
+    else
+      row << table_element("")
     end
     if arg.type == "Choice".to_OSArgumentType
       choices_str = String.new
