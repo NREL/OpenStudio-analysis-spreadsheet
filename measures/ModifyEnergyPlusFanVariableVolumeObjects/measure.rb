@@ -24,13 +24,13 @@ class ModifyEnergyPlusFanVariableVolumeObjects < OpenStudio::Ruleset::WorkspaceU
     args = OpenStudio::Ruleset::OSArgumentVector.new
 
     #make an argument
-    pressureRise = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("pressureRise",true)
+    pressureRise = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("pressureRise",false)
     pressureRise.setDisplayName("Pressure Rise (Pa).")
     #pressureRise.setDefaultValue(10.76)
     args << pressureRise
 
     #make an argument
-    maximumFlowRate = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("maximumFlowRate",true)
+    maximumFlowRate = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("maximumFlowRate",false)
     maximumFlowRate.setDisplayName("Maximum Flow Rate (m^3/s).")
     #maximumFlowRate.setDefaultValue(10.76)
     args << maximumFlowRate
@@ -48,18 +48,26 @@ class ModifyEnergyPlusFanVariableVolumeObjects < OpenStudio::Ruleset::WorkspaceU
     end
 
     #assign the user inputs to variables
-    pressureRise = runner.getDoubleArgumentValue("pressureRise",user_arguments)
-    maximumFlowRate = runner.getDoubleArgumentValue("maximumFlowRate",user_arguments)
+    if not runner.getOptionalDoubleArgumentValue("pressureRise",user_arguments).empty?
+      pressureRise = runner.getOptionalDoubleArgumentValue("pressureRise",user_arguments).get
+    else
+      pressureRise = nil
+    end
+    if not runner.getOptionalDoubleArgumentValue("maximumFlowRate",user_arguments).empty?
+      maximumFlowRate = runner.getOptionalDoubleArgumentValue("maximumFlowRate",user_arguments).get
+    else
+      maximumFlowRate = nil
+    end
 
     #check the pressureRise for reasonableness
-    if pressureRise < 0
+    if pressureRise and pressureRise < 0
       runner.registerError("Please enter a non-negative value for Pressure Rise.")
       return false
     end
 
     #check the pressureRise for reasonableness
-    if maximumFlowRate < 0
-      runner.registerError("Please enter a non-negative value for Maximum Flor Rate.")
+    if maximumFlowRate and maximumFlowRate < 0
+      runner.registerError("Please enter a non-negative value for Maximum Flow Rate.")
       return false
     end
 
@@ -70,17 +78,19 @@ class ModifyEnergyPlusFanVariableVolumeObjects < OpenStudio::Ruleset::WorkspaceU
       runner.registerAsNotApplicable("The model does not contain any fanVariableVolumeObjects. The model will not be altered.")
       return true
     end
-
+    puts "pressure rise: #{pressureRise}"
     fanVariableVolumeObjects.each do |fanVariableVolumeObject|
       fanVariableVolumeObject_name =  fanVariableVolumeObject.getString(0) # Name
       fanVariableVolumeObject_starting_pressureRise = fanVariableVolumeObject.getString(3) # Pressure Rise
-      fanVariableVolumeObject_starting_maximumFlowRate = fanVariableVolumeObject.getString(4) # Maximum Flor Rate
-      fanVariableVolumeObject.setString(3,pressureRise.to_s) # Pressure Rise
-      fanVariableVolumeObject.setString(4,pressureRise.to_s) # Maximum Flor Rate
-
-      #info message on change
-      runner.registerInfo("Changing pressure rise of #{fanVariableVolumeObject_name} from #{fanVariableVolumeObject_starting_pressureRise}(Pa) to #{fanVariableVolumeObject.getString(3)}(Pa).")
-      runner.registerInfo("Changing maximum flow rate of #{fanVariableVolumeObject_name} from #{fanVariableVolumeObject_starting_maximumFlowRate}(m^3/s) to #{fanVariableVolumeObject.getString(4)}(m^3/s).")
+      fanVariableVolumeObject_starting_maximumFlowRate = fanVariableVolumeObject.getString(4) # Maximum Flow Rate
+      if pressureRise
+        fanVariableVolumeObject.setString(3,pressureRise.to_s) # Pressure Rise
+        runner.registerInfo("Changing pressure rise of #{fanVariableVolumeObject_name} from #{fanVariableVolumeObject_starting_pressureRise}(Pa) to #{fanVariableVolumeObject.getString(3)}(Pa).")
+      end
+      if maximumFlowRate
+        fanVariableVolumeObject.setString(4,maximumFlowRate.to_s) # Maximum Flow Rate
+        runner.registerInfo("Changing maximum flow rate of #{fanVariableVolumeObject_name} from #{fanVariableVolumeObject_starting_maximumFlowRate}(m^3/s) to #{fanVariableVolumeObject.getString(4)}(m^3/s).")
+      end
 
     end  #end of fanVariableVolumeObjects.each do
 
