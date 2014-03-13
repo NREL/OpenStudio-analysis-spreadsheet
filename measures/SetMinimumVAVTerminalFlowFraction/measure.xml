@@ -1,0 +1,41 @@
+<measure>
+  <name>Set Minimum VAV Terminal Flow Fraction</name>
+  <uid>5e2dbc3a-5a22-4e6b-93e2-a4add95e3ccc</uid>
+  <version_id>a94f55ef-06e6-44b3-b6ca-b930a546f919</version_id>
+  <description></description>
+  <modeler_description>Loops through all AirLoops, setting Zone Minimum Air Flow Input Method to "Constant" and "Constant Minimum Airflow Fraction" to a user specified value for all Airterminal:SingleDuct:VAV:Reheat and Airterminal:SingleDuct:VAV:NoReheat terminals encountered.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Ventilation</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>SetMinimumVAVTerminalFlowFraction_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>5744362B</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.3</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>5461C370</checksum>
+    </file>
+  </files>
+</measure>
