@@ -1,0 +1,41 @@
+<measure>
+  <name>Set Hot Water Loop Temperature</name>
+  <uid>5217cff7-d280-438b-948a-d6c028fa2dfb</uid>
+  <version_id>a198a0d3-cf6e-43f6-8fe4-62d15490be67</version_id>
+  <description></description>
+  <modeler_description>For each plantloop that contains a boiler:hotwater, set the loop setpoint to the user specified value.  Also, set the sizing temperature of the plant to this same setpoint.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Heating</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>SetHotWaterLoopTemperature_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>1C183F04</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.3</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>E4F96394</checksum>
+    </file>
+  </files>
+</measure>

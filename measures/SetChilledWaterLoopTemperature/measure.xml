@@ -1,0 +1,41 @@
+<measure>
+  <name>Set Chilled Water Loop Temperature</name>
+  <uid>ec96cdda-42c7-4051-b983-06b36aac0bf4</uid>
+  <version_id>8e239ee9-e873-4187-a1d0-718bb9fbac53</version_id>
+  <description></description>
+  <modeler_description>For each plantloop that contains a chiller:electric:eir, set the loop setpoint to the user specified value.  Also, set the sizing temperature of the plant to this same setpoint.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Cooling</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>SetHotWaterLoopTemperature_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>1C183F04</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.3</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>47E19188</checksum>
+    </file>
+  </files>
+</measure>

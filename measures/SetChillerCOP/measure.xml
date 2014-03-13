@@ -1,0 +1,41 @@
+<measure>
+  <name>SetChillerCOP</name>
+  <uid>6b87fc76-a663-4611-bf1f-3ff416727267</uid>
+  <version_id>279c16d7-e087-43ea-bfce-1b6c85bb4c5a</version_id>
+  <description>This measure sets the COP for a chiller </description>
+  <modeler_description>This measure may only work for Chiller:Electric:EIR</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Cooling</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>SetChillerCOP_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>92627C06</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.0</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>E1E3C18E</checksum>
+    </file>
+  </files>
+</measure>
