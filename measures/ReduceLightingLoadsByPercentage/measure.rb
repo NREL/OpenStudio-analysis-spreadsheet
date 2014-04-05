@@ -302,18 +302,16 @@ class ReduceLightingLoadsByPercentage < OpenStudio::Ruleset::ModelUserScript
       space_type_lights = space_type.lights
       space_type_lights.each do |space_type_light|
 
-        new_def = nil
-
         #clone def if it has not already been cloned
         exist_def = space_type_light.lightsDefinition
-        if not cloned_lights_defs[exist_def.name.get.to_s].nil?
-          new_def = cloned_lights_defs[exist_def.name.get.to_s]
+        if cloned_lights_defs.any? {|k,v| k.include? exist_def.name.to_s}
+          new_def = cloned_lights_defs[exist_def.name.to_s]
         else
           #clone rename and add to hash
           new_def = exist_def.clone(model)
-          new_def_name = new_def.setName("#{exist_def.name.get} - #{lighting_power_reduction_percent} percent reduction")
+          new_def_name = new_def.setName("#{exist_def.name} - #{lighting_power_reduction_percent} percent reduction")
+          cloned_lights_defs[exist_def.name.to_s] = new_def
           new_def = new_def.to_LightsDefinition.get
-          cloned_lights_defs[exist_def.name.get.to_s] = new_def
 
           #add demo cost of object being removed to one counter for one time demo cost for baseline objects
           demo_costs_of_baseline_objects += add_to_baseline_demo_cost_counter(exist_def, demo_cost_initial_const)
@@ -334,13 +332,13 @@ class ReduceLightingLoadsByPercentage < OpenStudio::Ruleset::ModelUserScript
 
         #clone def if it has not already been cloned
         exist_def = space_type_luminaire.luminaireDefinition
-        if cloned_luminaire_defs.any? {|k,v| k.include? exist_def.name.get}
-          new_def = cloned_luminaire_defs[exist_def.name.get]
+        if cloned_luminaire_defs.any? {|k,v| k.include? exist_def.name}
+          new_def = cloned_luminaire_defs[exist_def.name]
         else
           #clone rename and add to hash
           new_def = exist_def.clone(model)
           new_def_name = new_def.setName("#{new_def.name} - #{lighting_power_reduction_percent} percent reduction")
-          cloned_luminaire_defs[exist_def.name.get] = new_def
+          cloned_luminaire_defs[exist_def.name] = new_def
           new_def = new_def.to_LightsDefinition.get
 
           #add demo cost of object being removed to one counter for one time demo cost for baseline objects
@@ -377,13 +375,13 @@ class ReduceLightingLoadsByPercentage < OpenStudio::Ruleset::ModelUserScript
 
         #clone def if it has not already been cloned
         exist_def = space_light.lightsDefinition
-        if cloned_lights_defs.any? {|k,v| k.include? exist_def.name.get.to_s}
-          new_def = cloned_lights_defs[exist_def.name.get.to_s]
+        if cloned_lights_defs.any? {|k,v| k.include? exist_def.name.to_s}
+          new_def = cloned_lights_defs[exist_def.name.to_s]
         else
           #clone rename and add to hash
           new_def = exist_def.clone(model)
           new_def_name = new_def.setName("#{new_def.name} - #{lighting_power_reduction_percent} percent reduction")
-          cloned_lights_defs[exist_def.name.get] = new_def
+          cloned_lights_defs[exist_def.name] = new_def
           new_def = new_def.to_LightsDefinition.get
 
           #add demo cost of object being removed to one counter for one time demo cost for baseline objects
@@ -405,13 +403,13 @@ class ReduceLightingLoadsByPercentage < OpenStudio::Ruleset::ModelUserScript
 
         #clone def if it has not already been cloned
         exist_def = space_luminaire.luminaireDefinition
-        if cloned_luminaire_defs.any? {|k,v| k.include? exist_def.name.get}
-          new_def = cloned_luminaire_defs[exist_def.name.get]
+        if cloned_luminaire_defs.any? {|k,v| k.include? exist_def.name}
+          new_def = cloned_luminaire_defs[exist_def.name]
         else
           #clone rename and add to hash
           new_def = exist_def.clone(model)
           new_def_name = new_def.setName("#{new_def.name} - #{lighting_power_reduction_percent} percent reduction")
-          cloned_luminaire_defs[exist_def.name.get] = new_def
+          cloned_luminaire_defs[exist_def.name] = new_def
           new_def = new_def.to_LightsDefinition.get
 
           #add demo cost of object being removed to one counter for one time demo cost for baseline objects
@@ -453,7 +451,7 @@ class ReduceLightingLoadsByPercentage < OpenStudio::Ruleset::ModelUserScript
     final_building = model.getBuilding
     final_building_lighting_power = final_building.lightingPower
     final_building_LPD =  unit_helper(final_building.lightingPowerPerFloorArea,"W/m^2","W/ft^2")
-    runner.registerFinalCondition("The model's final building lighting power was  #{neat_numbers(final_building_lighting_power,0)} watts, a lighting power density of #{neat_numbers(final_building_LPD)} w/ft^2. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
+    runner.registerFinalCondition("The model's final final lighting power was  #{neat_numbers(final_building_lighting_power,0)} watts, a lighting power density of #{neat_numbers(final_building_LPD)} w/ft^2. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
 
     return true
 
