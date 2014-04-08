@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rake", "~> 10.1.0"
+gem "rake", "~> 10.2.2"
 gem "rubyzip" 
 
 # uncomment if you need to update the bcl measures
