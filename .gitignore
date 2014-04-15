@@ -9,3 +9,5 @@ aws.log
 .gitignore
 Gemfile.lock
 faraday.log
+analysis/*.json
+analysis/*.zip
