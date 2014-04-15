@@ -240,21 +240,33 @@ end
 #  api.kill_all_analyses()
 #end
 #
-#desc "delete all projects on site"
-#task :delete_all do
-#  if File.exists?("server_data.json")
-#    # parse the file and check if the instance appears to be up
-#    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-#    server_dns = "http://#{json[:server][:dns]}"
-#
-#    # Project data 
-#    options = {hostname: server_dns}
-#    api = OpenStudio::Analysis::ServerApi.new(options)
-#    api.delete_all()
-#  else
-#    puts "There doesn't appear to be a cluster running"
-#  end
-#end
+
+desc "delete all projects on site"
+task :delete_all do
+  if File.exists?("server_data.json")
+    # parse the file and check if the instance appears to be up
+    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
+    server_dns = "http://#{json[:server][:dns]}"
+
+    # Project data 
+    options = {hostname: server_dns}
+    api = OpenStudio::Analysis::ServerApi.new(options)
+    api.delete_all()
+  else
+    puts "There doesn't appear to be a cluster running"
+  end
+end
+
+desc "delete all projects on site"
+task :delete_all_vagrant do
+  # parse the file and check if the instance appears to be up
+  server_dns = "http://localhost:8080"
+
+  # Project data 
+  options = {hostname: server_dns}
+  api = OpenStudio::Analysis::ServerApi.new(options)
+  api.delete_all()
+end
 
 task :default do
   system("rake -sT") # s for silent
