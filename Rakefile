@@ -108,6 +108,17 @@ def run_analysis(excel, run_vagrant = false)
       }
       analysis_id = api.new_analysis(project_id, analysis_options)
 
+     if (excel.problem['analysis_type'] == 'optim') || (excel.problem['analysis_type'] == 'rgenoud')
+      run_options = {
+          analysis_action: "start",
+          without_delay: false, # run in background
+          analysis_type: excel.problem['analysis_type'],
+          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
+          use_server_as_worker: true,
+          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
+          run_data_point_filename: excel.run_setup['run_data_point_filename']
+      }
+     else
       run_options = {
           analysis_action: "start",
           without_delay: false, # run in background
@@ -117,6 +128,7 @@ def run_analysis(excel, run_vagrant = false)
           simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
           run_data_point_filename: excel.run_setup['run_data_point_filename']
       }
+     end
       api.run_analysis(analysis_id, run_options)
 
       # If the analysis is LHS, then go ahead and run batch run because there is 
