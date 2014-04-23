@@ -1,5 +1,5 @@
 #start the measure
-class AdjustTheromstatSetpointsByDegrees < OpenStudio::Ruleset::ModelUserScript
+class AdjustThermostatSetpointsByDegrees < OpenStudio::Ruleset::ModelUserScript
 
   #define the name that a user will see
   def name
@@ -307,4 +307,4 @@ class AdjustTheromstatSetpointsByDegrees < OpenStudio::Ruleset::ModelUserScript
 end #end the measure
 
 #this allows the measure to be used by the application
-AdjustTheromstatSetpointsByDegrees.new.registerWithApplication
+AdjustThermostatSetpointsByDegrees.new.registerWithApplication
