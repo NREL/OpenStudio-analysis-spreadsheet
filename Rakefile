@@ -204,12 +204,7 @@ task :create_cluster do
   create_cluster(excel)
 end
 
-desc "run on already configured AWS cluster"
-task :run_analysis => :setup do
-
-end
-
-desc "setup problem, start cluster, and run analysis"
+desc "setup problem, start cluster, and run analysis (will submit another job if cluster is already running)"
 task :run do
   excel = get_project()
   excel.save_analysis()
