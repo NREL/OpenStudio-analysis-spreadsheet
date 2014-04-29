@@ -79,11 +79,13 @@ class AddOverhangsByProjectionFactor < OpenStudio::Ruleset::ModelUserScript
     construction = runner.getOptionalWorkspaceObjectChoiceValue("construction",user_arguments,model)
 
     #check reasonableness of fraction
+    projection_factor_too_small = false
     if projection_factor < 0
       runner.registerError("Please enter a positive number for the projection factor.")
       return false
     elsif projection_factor < 0.1
-      runner.registerWarning("The requested projection factor of #{projection_factor} seems unusually small.")
+      runner.registerWarning("The requested projection factor of #{projection_factor} seems unusually small, no overhangs will be added.")
+      projection_factor_too_small = true
     elsif projection_factor > 5
       runner.registerWarning("The requested projection factor of #{projection_factor} seems unusually large.")
     end
@@ -159,12 +161,14 @@ class AddOverhangsByProjectionFactor < OpenStudio::Ruleset::ModelUserScript
 
     #delete all space shading groups if requested
     if remove_ext_space_shading and number_of_exist_space_shading_surf > 0
+      num_removed = 0
       shading_groups.each do |shading_group|
         if shading_group.shadingSurfaceType == "Space"
           shading_group.remove
+          num_removed += 1
         end
-        runner.registerWarning("Removed all existing space shading surface groups from the model.")
       end
+      runner.registerInfo("Removed all #{num_removed} space shading surface groups from the model.")
     end
 
     #flag for not applicable
@@ -209,22 +213,29 @@ class AddOverhangsByProjectionFactor < OpenStudio::Ruleset::ModelUserScript
         end
       end
 
-      new_overhang = s.addOverhangByProjectionFactor(projection_factor, 0)
-      if new_overhang.empty?
-        ok = runner.registerWarning("Unable to add overhang to " + s.briefDescription +
-                 " with projection factor " + projection_factor.to_s + " and offset " + offset.to_s + ".")
-        return false if not ok
-      else
-        new_overhang.get.setName("#{s.name} - Overhang")
-        runner.registerInfo("Added overhang " + new_overhang.get.briefDescription + " to " +
-            s.briefDescription + " with projection factor " + projection_factor.to_s +
-            " and offset " + "0" + ".")
-        if construction_chosen
-          if not construction.to_Construction.empty?
-            new_overhang.get.setConstruction(construction)
-          end
-        end
+      if projection_factor_too_small
+        # new overhang would be too small and would cause errors in OpenStudio
+        # don't actually add it, but from the measure's perspective this worked as requested
         overhang_added = true
+      else
+        # add the overhang
+        new_overhang = s.addOverhangByProjectionFactor(projection_factor, 0)
+        if new_overhang.empty?
+          ok = runner.registerWarning("Unable to add overhang to " + s.briefDescription +
+                   " with projection factor " + projection_factor.to_s + " and offset " + offset.to_s + ".")
+          return false if not ok
+        else
+          new_overhang.get.setName("#{s.name} - Overhang")
+          runner.registerInfo("Added overhang " + new_overhang.get.briefDescription + " to " +
+              s.briefDescription + " with projection factor " + projection_factor.to_s +
+              " and offset " + "0" + ".")
+          if construction_chosen
+            if not construction.to_Construction.empty?
+              new_overhang.get.setConstruction(construction)
+            end
+          end
+          overhang_added = true
+        end
       end
 
     end #end sub_surfaces.each do |s|

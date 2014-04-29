@@ -1,7 +1,4 @@
-begin
-  require 'erb'
-rescue LoadError
-end
+require 'erb'
 
 #start the measure
 class AnnualEndUseBreakdown < OpenStudio::Ruleset::ReportingUserScript
@@ -44,6 +41,8 @@ class AnnualEndUseBreakdown < OpenStudio::Ruleset::ReportingUserScript
     end
     sqlFile = sqlFile.get
     model.setSqlFile(sqlFile)
+
+    web_asset_path = OpenStudio::getSharedResourcesPath() / OpenStudio::Path.new("web_assets")
 
     def neat_numbers(number, roundto = 2) #round to 0 or 2)
                                           # round to zero or two decimals

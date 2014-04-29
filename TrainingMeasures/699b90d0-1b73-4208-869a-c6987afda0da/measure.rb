@@ -49,7 +49,7 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
 
     #putting schedule names into hash
     sch_hash = {}
-    model.getScheduleRulesets.each do |sch|
+    model.getSchedules.each do |sch|
       sch_hash[sch.name.to_s] = sch
     end
 
@@ -57,7 +57,7 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
     sch_hash.sort.map do |sch_name, sch|
       if not sch.scheduleTypeLimits.empty?
         unitType = sch.scheduleTypeLimits.get.unitType
-        puts "#{sch.name}, #{unitType}"
+        #puts "#{sch.name}, #{unitType}"
         if unitType == "Temperature"
           sch_handles << sch.handle.to_s
           sch_display_names << sch_name
@@ -83,7 +83,7 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
     
     #make an argument for material and installation cost
     material_cost = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("material_cost",true)
-    material_cost.setDisplayName("Material and Installation Costs per Thermal Zone ($).")
+    material_cost.setDisplayName("Material and Installation Costs per Thermal Zone ($/thermal zone).")
     material_cost.setDefaultValue(0.0)
     args << material_cost
     
@@ -112,10 +112,11 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
       handle = runner.getStringArgumentValue("zones",user_arguments)
       if handle.empty?
         runner.registerError("No thermal zone was chosen.")
+        return false
       else
         runner.registerError("The selected thermal zone with handle '#{handle}' was not found in the model. It may have been removed by another measure.")
+        return false
       end
-      return false
     else
       if not zones.get.to_ThermalZone.empty?
         selected_zone = zones.get.to_ThermalZone.get
@@ -146,8 +147,8 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
         return false
       end
     else
-      if not cooling_sch.get.to_ScheduleRuleset.empty?
-        cooling_sch = cooling_sch.get.to_ScheduleRuleset.get
+      if not cooling_sch.get.to_Schedule.empty?
+        cooling_sch = cooling_sch.get.to_Schedule.get
       else
         runner.registerError("Script Error - argument not showing up as schedule.")
         return false
@@ -165,8 +166,8 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
         return false
       end
     else
-      if not heating_sch.get.to_ScheduleRuleset.empty?
-        heating_sch = heating_sch.get.to_ScheduleRuleset.get
+      if not heating_sch.get.to_Schedule.empty?
+        heating_sch = heating_sch.get.to_Schedule.get
       else
         runner.registerError("Script Error - argument not showing up as schedule.")
         return false
@@ -181,22 +182,41 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
         
         thermostatSetpointDualSetpoint = zone.thermostatSetpointDualSetpoint
         if thermostatSetpointDualSetpoint.empty?
+          runner.registerInfo("Creating thermostat for thermal zone '#{zone.name}'.")
+          
           thermostatSetpointDualSetpoint = OpenStudio::Model::ThermostatSetpointDualSetpoint.new(model)
           zone.setThermostatSetpointDualSetpoint(thermostatSetpointDualSetpoint)
-          runner.registerInfo("Creating thermostat for thermal zone '#{zone.name}'.")
         else
           thermostatSetpointDualSetpoint = thermostatSetpointDualSetpoint.get
+          
+          # make sure this thermostat is unique to this zone
+          if thermostatSetpointDualSetpoint.getSources("OS_ThermalZone".to_IddObjectType).size > 1
+            # if not create a new copy
+            runner.registerInfo("Copying thermostat for thermal zone '#{zone.name}'.")
+            
+            oldThermostat = thermostatSetpointDualSetpoint
+            thermostatSetpointDualSetpoint = OpenStudio::Model::ThermostatSetpointDualSetpoint.new(model)
+            if not oldThermostat.heatingSetpointTemperatureSchedule.empty?
+              thermostatSetpointDualSetpoint.setHeatingSetpointTemperatureSchedule(oldThermostat.heatingSetpointTemperatureSchedule.get)
+            end
+            if not oldThermostat.coolingSetpointTemperatureSchedule.empty?
+              thermostatSetpointDualSetpoint.setCoolingSetpointTemperatureSchedule(oldThermostat.coolingSetpointTemperatureSchedule.get)
+            end
+            zone.setThermostatSetpointDualSetpoint(thermostatSetpointDualSetpoint)
+          end
         end
         
         if heating_sch
           if not thermostatSetpointDualSetpoint.setHeatingSetpointTemperatureSchedule(heating_sch)
             runner.registerError("Script Error - cannot set heating schedule for thermal zone '#{zone.name}'.")
+            return false
           end
         end
         
         if cooling_sch
           if not thermostatSetpointDualSetpoint.setCoolingSetpointTemperatureSchedule(cooling_sch)
             runner.registerError("Script Error - cannot set cooling schedule for thermal zone '#{zone.name}'.")
+            return false
           end
         end
         
