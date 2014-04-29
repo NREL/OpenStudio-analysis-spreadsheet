@@ -39,6 +39,48 @@ bundle
 
 Note Mac 10.9 users using system Ruby 2.0 may need to run `sudo bundle`
 
+
+
+## Running Examples
+
+Make sure that you have Ruby 2.0 and the Bundler gem
+
+```
+ruby --version
+gem install bundler
+```
+
+### Using Git
+
+```
+git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
+cd os-analysis-example
+bundle 
+bundle exec rake run
+```
+Note: Mac 10.9 users may need to call `sudo bundle`
+
+To update simply go to the directory and call
+
+```
+git pull
+bundle
+```
+Note: Mac 10.9 users may need to run `sudo bundle update`
+
+### Without Git
+
+* Download the latest release from https://github.com/NREL/OpenStudio-analysis-spreadsheet/releases
+* Unzip into a directory and go to that directory in a command/terminal window
+* Run
+
+```
+cd <path_to_downloaded_files>
+bundle
+bundle exec rake run
+``` 
+Note: Mac 10.9 users may need to call `sudo bundle`
+
 * Run example (will setup the cluster and run the project)
 
 ```
@@ -88,48 +130,6 @@ Note: this has been disabled.
 ```
 bundle exec rake clean
 ```
-
-
-
-## Running Examples
-
-Make sure that you have Ruby 2.0 and the Bundler gem
-
-```
-ruby --version
-gem install bundler
-```
-
-### Using Git
-
-```
-git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
-cd os-analysis-example
-bundle 
-bundle exec rake run
-```
-Note: Mac 10.9 users may need to call `sudo bundle`
-
-To update simply go to the directory and call
-
-```
-git pull
-bundle
-```
-Note: Mac 10.9 users may need to run `sudo bundle update`
-
-### Without Git
-
-* Download the latest release from https://github.com/NREL/OpenStudio-analysis-spreadsheet/releases
-* Unzip into a directory and go to that directory in a command/terminal window
-* Run
-
-```
-cd <path_to_downloaded_files>
-bundle
-bundle exec rake run
-``` 
-Note: Mac 10.9 users may need to call `sudo bundle`
 
 
 ## Windows Specific Installation Steps
