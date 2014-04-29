@@ -7,8 +7,9 @@ require 'rake/clean'
 require 'openstudio-aws'
 require 'openstudio-analysis'
 require 'colored'
+require 'pp'
 
-CLEAN.include("*.pem", "./projects/*.json")
+CLEAN.include("*.pem", "./projects/*.json", "*.json")
 
 def get_project()
   # determine the project file to run.  This will list out all the xlsx files and give you a 
@@ -45,7 +46,8 @@ end
 def create_cluster(excel)
   if File.exists?("#{excel.cluster_name}.json")
     puts
-    puts "It appears that a cluster for #{excel.cluster_name} is already running.  If this is not the case then delete ./#{excel.cluster_name}.json file".red
+    puts "It appears that a cluster for #{excel.cluster_name} is already running. \
+If this is not the case then delete ./#{excel.cluster_name}.json file".red
     puts "Will try to continue".cyan
   else
     puts "Creating cluster for #{excel.cluster_name}".cyan
@@ -56,10 +58,9 @@ def create_cluster(excel)
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
 
-    # TODO: move this over to version 2 once the amis are fixed
-    #aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
-    aws_options = {:ami_lookup_version => 1, :openstudio_version => excel.settings['openstudio_server_version']}
-    aws = OpenStudio::Aws::Aws.new(aws_options)
+    # Don't use the old API (Version 1)
+    aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
+    aws = OpenStudio::Aws::Aws.new(aws_options_2)
     server_options = {instance_type: excel.settings["server_instance_type"]}
     worker_options = {instance_type: excel.settings["worker_instance_type"]}
 
@@ -70,8 +71,6 @@ def create_cluster(excel)
     aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options, excel.settings["user_id"])
 
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
-    # next step
-
     puts "Cluster setup and awaiting analyses".cyan
   end
 end
@@ -222,13 +221,13 @@ end
 #desc "kill all running on cloud"
 #task :kill_all do
 #  excel = get_project()
-#  
+#
 #  if File.exists?("server_data.json")
 #    # parse the file and check if the instance appears to be up
 #    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
 #    server_dns = "http://#{json[:server][:dns]}"
 #
-#    # Project data 
+#    # Project data
 #    options = {hostname: server_dns}
 #    api = OpenStudio::Analysis::ServerApi.new(options)
 #    api.kill_all_analyses()
@@ -241,7 +240,7 @@ end
 #task :kill_all_vagrant do
 #  server_dns = "http://localhost:8080"
 #
-#  # Project data 
+#  # Project data
 #  options = {hostname: server_dns}
 #  api = OpenStudio::Analysis::ServerApi.new(options)
 #  api.kill_all_analyses()
