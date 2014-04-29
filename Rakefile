@@ -60,7 +60,7 @@ If this is not the case then delete ./#{excel.cluster_name}.json file".red
 
     # Don't use the old API (Version 1)
     aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
-    aws = OpenStudio::Aws::Aws.new(aws_options_2)
+    aws = OpenStudio::Aws::Aws.new(aws_options)
     server_options = {instance_type: excel.settings["server_instance_type"]}
     worker_options = {instance_type: excel.settings["worker_instance_type"]}
 
