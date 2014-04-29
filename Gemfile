@@ -7,11 +7,11 @@ gem "rubyzip"
 gem "bcl", "~> 0.5.1"
 #gem "bcl", :path => "../bcl-gem"
 
-gem "openstudio-aws", "~> 0.1.16"
+gem "openstudio-aws", "~> 0.1.24"
 #gem "openstudio-aws", :git => "git@github.com:NREL/OpenStudio-aws-gem.git"
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
-gem "openstudio-analysis", "~> 0.1.15"
+gem "openstudio-analysis", "~> 0.1.18"
 #gem "openstudio-analysis", :git => "git@github.com:NREL/OpenStudio-analysis-gem.git"
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
 

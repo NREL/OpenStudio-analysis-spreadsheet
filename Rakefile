@@ -47,7 +47,8 @@ def create_cluster(excel)
   if File.exists?("#{excel.cluster_name}.json")
     puts
     puts "It appears that a cluster for #{excel.cluster_name} is already running. \
-If this is not the case then delete ./#{excel.cluster_name}.json file".red
+If this is not the case then delete ./#{excel.cluster_name}.json file. \
+Or run `rake clean`".red
     puts "Will try to continue".cyan
   else
     puts "Creating cluster for #{excel.cluster_name}".cyan
