@@ -94,10 +94,14 @@ class SetThermostatSchedules < OpenStudio::Ruleset::ModelUserScript
   def run(model, runner, user_arguments)
     super(model, runner, user_arguments)
     
+    runner.registerWarning("Hello, beginning run.")
+    
     #use the built-in error checking 
     if not runner.validateUserArguments(arguments(model), user_arguments)
       return false
     end
+    
+    runner.registerWarning("User arguments validated.")
 
     #assign the user inputs to variables
     zones = runner.getOptionalWorkspaceObjectChoiceValue("zones",user_arguments,model) #model is passed in because of argument type
