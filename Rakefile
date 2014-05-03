@@ -52,9 +52,12 @@ Or run `rake clean`".red
     puts "Will try to continue".cyan
   else
     puts "Creating cluster for #{excel.cluster_name}".cyan
-    puts "Validating cluster options...".cyan
+    puts "Validating cluster options".cyan
 
-    raise "Number of workers not defined".red if excel.settings['worker_nodes'].to_i == 0
+    if excel.settings['worker_nodes'].to_i == 0
+      puts 'Number of workers set to zero'.red
+      exit 1
+    end
 
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
