@@ -127,12 +127,147 @@ false,Add Simple PV to Shading Surfaces By Type,AddSimplePvToShadingSurfacesByTy
 "",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
 "",argument,O & M Costs for the PV ($).,om_cost,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,Adjust Thermostat Setpoints by Degrees,AdjustThermostatSetpointsByDegrees,RubyMeasure
+"",argument,Degrees Fahrenheit to Adjust Cooling Setpoint By.,cooling_adjustment,static,Double,"",1.0,""
+"",argument,Degrees Fahrenheit to Adjust heating Setpoint By.,heating_adjustment,static,Double,"",-1.0,""
+"",argument,Alter Design Day Thermostats?,alter_design_days,static,Bool,"",false,""
 false,Adjust Thermostat Setpoints by Degrees,AdjustTheromstatSetpointsByDegrees,RubyMeasure
 "",argument,Degrees Fahrenheit to Adjust Cooling Setpoint By.,cooling_adjustment,static,Double,"",1.0,""
 "",argument,Degrees Fahrenheit to Adjust heating Setpoint By.,heating_adjustment,static,Double,"",-1.0,""
 "",argument,Alter Design Day Thermostats?,alter_design_days,static,Bool,"",false,""
+false,AEDG K12 - Electric Equipment,AedgK12ElectricEquipment,RubyMeasure
+"",argument,Material and Installation Costs for Electric Equipment per Floor Area ($/ft^2).,material_cost_ip,static,Double,"",0.0,""
+false,AEDG K12 - Electric Equipment Controls,AedgK12ElectricEquipmentControls,RubyMeasure
+"",argument,Total cost for all Equipment Controls in the Building ($).,costTotal,static,Double,"",0.0,""
+false,AEDG K12 - Envelope And Entry Infiltration,AedgK12EnvelopeAndEntryInfiltration,RubyMeasure
+"",argument,Envelope Infiltration Level (Not including Occupant Entry Infiltration),infiltrationEnvelope,static,Choice,"",AEDG K-12 - Target,"|AEDG K-12 - Baseline,AEDG K-12 - Target,Model Occupant Entry With a Vestibule if Recommended by K12 AEDG,t model Occupant Entry Infiltration With a Vestibule,Model Occupant Entry With a Vestibule|"
+"",argument,Occupant Entry Infiltration Modeling Approach,infiltrationOccupant,static,Choice,"",Model Occupant Entry With a Vestibule if Recommended by K12 AEDG,"|AEDG K-12 - Baseline,AEDG K-12 - Target,Model Occupant Entry With a Vestibule if Recommended by K12 AEDG,t model Occupant Entry Infiltration With a Vestibule,Model Occupant Entry With a Vestibule|"
+"",argument,Apply Occupant Entry Infiltration to ThermalZones on this floor.,story,static,Choice,"",storyChoiceArgument[modelObject_display_names][0],|storyChoiceArgument[modelObject_display_names][0]|
+"",argument,Number of Primary Occupant Entry Points on Selected Floor.,num_entries,static,Integer,"",4,""
+"",argument,Number of Door Opening Events Per Person Per Day (2 is expected minimum for one entry and exit).,doorOpeningEventsPerPerson,static,Double,"",3.0,""
+"",argument,Pressure Difference Across Door At Occupant Entries (pa).,pressureDifferenceAcrossDoor_pa,static,Double,"",4.0,""
+"",argument,Total cost for all Envelope Improvements ($).,costTotalEnvelopeInfiltration,static,Double,"",0.0,""
+"",argument,Total cost for all Occupant Entry Improvements ($).,costTotalEntryInfiltration,static,Double,"",0.0,""
+false,AEDG K12 - Exterior Door Construction,AedgK12ExteriorDoorConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+false,AEDG K12 - Exterior Floor Construction (Air Exposed),AedgK12ExteriorFloorConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+false,AEDG K12 - Exterior Lighting,AedgK12ExteriorLighting,RubyMeasure
+"",argument,Exterior Lighting Target Performance,target,static,Choice,"",AEDG K-12 - Target,"|AEDG K-12 - Baseline,AEDG K-12 - Target,0 - Parks/Rural Areas (Undeveloped),1 - Parks/Rural Areas (Developed),2 - Residential, Mixed Use,3 - All Other Areas,4 - High Activity Commercial|"
+"",argument,Exterior Lighting Zone,lightingZone,static,Choice,"","2 - Residential, Mixed Use","|AEDG K-12 - Baseline,AEDG K-12 - Target,0 - Parks/Rural Areas (Undeveloped),1 - Parks/Rural Areas (Developed),2 - Residential, Mixed Use,3 - All Other Areas,4 - High Activity Commercial|"
+"",argument,Wall Coverage Area for Decorative Facade Lighting (ft^2),facadeLandscapeLighting,static,Double,"",0.0,""
+"",argument,Ground Coverage Area for Parking Lots and Drives Lighting (ft^2),parkingDrivesLighting,static,Double,"",0.0,""
+"",argument,Gound Coverage Area for Walkway and Plaza Lighting (ft^2),walkwayPlazaSpecialLighting,static,Double,"",0.0,""
+"",argument,Total cost for all Exterior Lighting ($).,costTotalExteriorLights,static,Double,"",0.0,""
+false,AEDG K12 - Exterior Wall Construction,AedgK12ExteriorWallConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+false,AEDG K12 - Fenestration and Daylighting Controls,AedgK12FenestrationAndDaylightingControls,RubyMeasure
+"",argument,Cost per Area for Proposed Daylighting Window Constructions ($/ft^2).,cost_daylight_glazing,static,Double,"",0.0,""
+"",argument,Cost per Area for Proposed View Window Constructions ($/ft^2).,cost_view_glazing,static,Double,"",0.0,""
+"",argument,Cost per Area for Proposed Skylight Construction ($/ft^2).,cost_skylight,static,Double,"",0.0,""
+"",argument,Cost per Area for Proposed Exterior Shading Surface Construction ($/ft^2).,cost_shading_surface,static,Double,"",0.0,""
+"",argument,Cost per Area for Proposed Light Shelf Construction ($/ft^2).,cost_light_shelf,static,Double,"",0.0,""
+false,AEDG K12 HVAC Dual Duct DOAS,AedgK12HvacDualDuctDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG K12 HVAC Fan Coil DOAS,AedgK12HvacFanCoilDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG K12 HVAC GSHP DOAS,AedgK12HvacGshpDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG K12 - Interior Finishes,AedgK12InteriorFinishes,RubyMeasure
+"",argument,Only Check/Alter Interior Partition Surfaces To Meet Furniture Target When They Use This Construction.,object,static,Choice,"",*All Interior Partition Surfaces*,|*All Interior Partition Surfaces*|
+false,AEDG K12 - Interior Lighting,AedgK12InteriorLighting,RubyMeasure
+"",argument,Material and Installation Costs for Lights per Floor Area ($/ft^2).,material_cost_ip,static,Double,"",0.0,""
+false,AEDG K12 - Interior Lighting Controls,AedgK12InteriorLightingControls,RubyMeasure
+"",argument,Total cost for all Lighting Controls in the Building ($).,costTotal,static,Double,"",0.0,""
+false,AEDG K12 Kitchen,AedgK12Kitchen,RubyMeasure
+"",argument,Total Cost for Kitchen System ($).,costTotalKitchenSystem,static,Double,"",0.0,""
+"",argument,Total Number of Students.,numberOfStudents,static,Integer,"",0,""
+false,AEDG K12 - Roof Construction,AedgK12RoofConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+"",argument,Increase Cost per Area of Construction Where Solar Reflectance Index (SRI) was Improved. ($/ft^2).,material_cost_sri_increase_ip,static,Double,"",0.0,""
+false,AEDG K12 SWH,AedgK12Swh,RubyMeasure
+"",argument,Total Cost for Kitchen System ($).,costTotalSwhSystem,static,Double,"",0.0,""
+"",argument,Total Number of Students.,numberOfStudents,static,Integer,"",0,""
+false,AEDG Office HVAC ASHP with DOAS,AedgOfficeHvacAshpDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG Office HVAC Fan Coil DOAS,AedgOfficeHvacFanCoilDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG Office HVAC Radiant with DOAS,AedgOfficeHvacRadiantDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG Office HVAC VAV with Chilled Water Cooling,AedgOfficeHvacVavChW,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG Office HVAC VAV with DX Cooling,AedgOfficeHvacVavDx,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG Office HVAC WSHP with DOAS,AedgOfficeHvacWshpDoas,RubyMeasure
+"",argument,This space type should be part of a ceiling return air plenum.,ceilingReturnPlenumSpaceType,static,Choice,"","We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,Total Cost for HVAC System ($).,costTotalHVACSystem,static,Double,"",0.0,""
+"",argument,Apply recommended availability and ventilation schedules for air handlers?,remake_schedules,static,Bool,"",true,""
+false,AEDG Office SWH,AedgOfficeSwh,RubyMeasure
+"",argument,Total Cost for Kitchen System ($).,costTotalSwhSystem,static,Double,"",0.0,""
+"",argument,Total Number of Employees.,numberOfEmployees,static,Integer,"",0,""
+false,AEDG Small to Medium Office - Electric Equipment,AedgSmallToMediumOfficeElectricEquipment,RubyMeasure
+"",argument,Material and Installation Costs for Electric Equipment per Floor Area ($/ft^2).,material_cost_ip,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Electric Equipment Controls,AedgSmallToMediumOfficeElectricEquipmentControls,RubyMeasure
+"",argument,Total cost for all Electric Equipment Controls in the Building ($).,costTotal,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Envelope And Entry Infiltration,AedgSmallToMediumOfficeEnvelopeAndEntryInfiltration,RubyMeasure
+"",argument,Envelope Infiltration Level (Not including Occupant Entry Infiltration),infiltrationEnvelope,static,Choice,"",AEDG Small To Medium Office - Target,"|AEDG Small To Medium Office - Baseline,AEDG Small To Medium Office - Target,Model Occupant Entry With a Vestibule if Recommended by Small to Medium Office AEDG,t model Occupant Entry Infiltration With a Vestibule,Model Occupant Entry With a Vestibule|"
+"",argument,Occupant Entry Infiltration Modeling Approach,infiltrationOccupant,static,Choice,"",Model Occupant Entry With a Vestibule if Recommended by Small to Medium Office AEDG,"|AEDG Small To Medium Office - Baseline,AEDG Small To Medium Office - Target,Model Occupant Entry With a Vestibule if Recommended by Small to Medium Office AEDG,t model Occupant Entry Infiltration With a Vestibule,Model Occupant Entry With a Vestibule|"
+"",argument,Apply Occupant Entry Infiltration to ThermalZones on this floor.,story,static,Choice,"",storyChoiceArgument[modelObject_display_names][0],|storyChoiceArgument[modelObject_display_names][0]|
+"",argument,Number of Primary Occupant Entry Points on Selected Floor.,num_entries,static,Integer,"",4,""
+"",argument,Number of Door Opening Events Per Person Per Day (2 is expected minimum for one entry and exit).,doorOpeningEventsPerPerson,static,Double,"",3.0,""
+"",argument,Pressure Difference Across Door At Occupant Entries (pa).,pressureDifferenceAcrossDoor_pa,static,Double,"",4.0,""
+"",argument,Total cost for all Envelope Improvements ($).,costTotalEnvelopeInfiltration,static,Double,"",0.0,""
+"",argument,Total cost for all Occupant Entry Improvements ($).,costTotalEntryInfiltration,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Exterior Door Construction,AedgSmallToMediumOfficeExteriorDoorConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Exterior Floor Construction (Air Exposed),AedgSmallToMediumOfficeExteriorFloorConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Exterior Lighting,AedgSmallToMediumOfficeExteriorLighting,RubyMeasure
+"",argument,Exterior Lighting Target Performance,target,static,Choice,"",AEDG SmMdOff - Target,"|AEDG SmMdOff - Baseline,AEDG SmMdOff - Target,0 - Parks/Rural Areas (Undeveloped),1 - Parks/Rural Areas (Developed),2 - Residential, Mixed Use,3 - All Other Areas,4 - High Activity Commercial|"
+"",argument,Exterior Lighting Zone,lightingZone,static,Choice,"","2 - Residential, Mixed Use","|AEDG SmMdOff - Baseline,AEDG SmMdOff - Target,0 - Parks/Rural Areas (Undeveloped),1 - Parks/Rural Areas (Developed),2 - Residential, Mixed Use,3 - All Other Areas,4 - High Activity Commercial|"
+"",argument,Wall Coverage Area for Decorative Facade Lighting (ft^2),facadeLandscapeLighting,static,Double,"",0.0,""
+"",argument,Ground Coverage Area for Parking Lots and Drives Lighting (ft^2),parkingDrivesLighting,static,Double,"",0.0,""
+"",argument,Gound Coverage Area for Walkway and Plaza Lighting (ft^2),walkwayPlazaSpecialLighting,static,Double,"",0.0,""
+"",argument,Total cost for all Exterior Lighting ($).,costTotalExteriorLights,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Exterior Wall Construction,AedgSmallToMediumOfficeExteriorWallConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Interior Finishes,AedgSmallToMediumOfficeInteriorFinishes,RubyMeasure
+"",argument,Only Check/Alter Interior Partition Surfaces To Meet Furniture Target When They Use This Construction.,object,static,Choice,"",*All Interior Partition Surfaces*,|*All Interior Partition Surfaces*|
+"",argument,Lower Height of Interior Partition Surfaces?,lowerPartitions,static,Bool,"",true,""
+false,AEDG Small to Medium Office - Interior Lighting,AedgSmallToMediumOfficeInteriorLighting,RubyMeasure
+"",argument,Material and Installation Costs for Lights per Floor Area ($/ft^2).,material_cost_ip,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Interior Lighting Controls,AedgSmallToMediumOfficeInteriorLightingControls,RubyMeasure
+"",argument,Total cost for all Lighting Controls in the Building ($).,costTotal,static,Double,"",0.0,""
+false,AEDG Small to Medium Office - Roof Construction,AedgSmallToMediumOfficeRoofConstruction,RubyMeasure
+"",argument,Increase Cost per Area of Construction Where Insulation was Improved ($/ft^2).,material_cost_insulation_increase_ip,static,Double,"",0.0,""
+"",argument,Increase Cost per Area of Construction Where Solar Reflectance Index (SRI) was Improved. ($/ft^2).,material_cost_sri_increase_ip,static,Double,"",0.0,""
 false,Analysis Period Cash Flows,AnalysisPeriodCashFlows,ReportingMeasure
 false,Annual End Use Breakdown,AnnualEndUseBreakdown,ReportingMeasure
+false,Assign ConstructionSet To Building,AssignConstructionSetToBuilding,RubyMeasure
+"",argument,Set the Default Construction Set for the Building.,construction_set,static,Choice,"",<clear field>,|<clear field>|
+false,Assign Spaces to Stories,AssignSpacesToStories,RubyMeasure
+false,AssignSpaceTypeBySpaceName,AssignSpaceTypeBySpaceName,RubyMeasure
+"",argument,String ot search for in space names.,search_string,static,String,"","",""
+"",argument,Space type to assign to affected spaces.,space_type,static,Choice,"",<clear field>,|<clear field>|
+"",argument,Skip spaces that already have hard assigned space types.,skip_already_assigned,static,Bool,"",false,""
+false,Assign Space Type To Building,AssignSpaceTypeToBuilding,RubyMeasure
+"",argument,Set Default Space Type for the Building.,space_type,static,Choice,"",<clear field>,|<clear field>|
 false,Bar Aspect Ratio Study,BarAspectRatioStudy,RubyMeasure
 "",argument,Total Building Floor Area (ft^2).,total_bldg_area_ip,static,Double,"",10000.0,""
 "",argument,Ratio of North/South Facade Length Relative to East/West Facade Length.,ns_to_ew_ratio,static,Double,"",2.0,""
@@ -141,6 +276,7 @@ false,Bar Aspect Ratio Study,BarAspectRatioStudy,RubyMeasure
 "",argument,Surface Matching?,surface_matching,static,Bool,"",true,""
 "",argument,Make Thermal Zones from Spaces?,make_zones,static,Bool,"",true,""
 false,Calibration Reports,CalibrationReports,ReportingMeasure
+false,Cleanup Space Origins,CleanupSpaceOrigins,RubyMeasure
 false,Enable Demand Controlled Ventilation,EnableDemandControlledVentilation,RubyMeasure
 "",argument,Choose an Air Loop to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Remove Baseline Costs From Effected AirLoopHVACOutdoorAirSystems?,remove_costs,static,Bool,"",false,""
@@ -171,6 +307,9 @@ false,Export Schedule CSV,ExportScheduleCSV,ReportingMeasure
 false,Find and Replace Object Names in the Model,FindAndReplaceObjectNames,RubyMeasure
 "",argument,Type the text you want search for in object names,orig_string,static,String,"",replace this text,""
 "",argument,Type the text you want to add in place of the found text,new_string,static,String,"",with this text,""
+false,Import Envelope and Internal Loads From IDF,ImportEnvelopeAndInternalLoadsFromIdf,RubyMeasure
+"",argument,Path to Source IDF File to Use.,source_idf_path,static,String,"","",""
+"",argument,Import Site Shading.,import_site_objects,static,Bool,"",true,""
 false,Improve Fan Belt Efficiency,ImproveFanBeltEfficiency,RubyMeasure
 "",argument,Choose an Air Loop to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Motor Efficiency Improvement Due to Fan Belt Improvements(%).,motor_eff,static,Double,"",3.0,""
@@ -217,7 +356,7 @@ false,Modify EnergyPlus CoilCoolingDXSingleSpeed Objects,ModifyEnergyPlusCoilCoo
 "",argument,Nominal Time for Condensate Removal to Begin (s).,condensateRemovalStart,static,Double,"",10.76,""
 "",argument,Ratio of Initial Moisture Evaporation Rate and Steady State Latent Capacity.,evapLatentRatio,static,Double,"",10.76,""
 "",argument,Latent Capacity Time Constant (s).,latentCapTimeConstant,static,Double,"",10.76,""
-false,Modify EnergyPlus Fan Varaible Volume Objects,ModifyEnergyPlusFanVariableVolumeObjects,EnergyPlusMeasure
+false,Modify EnergyPlus Fan Variable Volume Objects,ModifyEnergyPlusFanVariableVolumeObjects,EnergyPlusMeasure
 "",argument,Pressure Rise (Pa).,pressureRise,static,Double,"",10.76,""
 "",argument,Maximum Flow Rate (m^3/s).,maximumFlowRate,static,Double,"",10.76,""
 false,Predicted Mean Vote,PredictedMeanVote,RubyMeasure
@@ -289,6 +428,9 @@ false,ReduceSpaceInfiltrationByPercentage,ReduceSpaceInfiltrationByPercentage,Ru
 false,Reduce Ventilation By Percentage,ReduceVentilationByPercentage,RubyMeasure
 "",argument,Apply the Measure to a Specific Space Type or to the Entire Model.,space_type,static,Choice,"",*Entire Building*,|*Entire Building*|
 "",argument,Design Specification Outdoor Air Reduction (%).,design_spec_outdoor_air_reduction_percent,static,Double,"",30.0,""
+false,Remove Hard Assigned Constructions,RemoveHardAssignedConstructions,RubyMeasure
+"",argument,Preserve Hard Assigned Constructions for Adiabatic Surfaces.,preserve_adiabatic,static,Bool,"",true,""
+false,RemoveInternalLoadsDirectlyAssignedToSpaces,RemoveInternalLoadsDirectlyAssignedToSpaces,RubyMeasure
 false,RemoveUnusedDefaultProfiles,RemoveUnusedDefaultProfiles,RubyMeasure
 false,Rename Space Surfaces Based on Parent Space and Orientation,RenameSpaceSurfacesBasedonParentSpaceandOrientation,RubyMeasure
 false,Replace Exterior Window Constructions with a Different Construction from the Model,ReplaceExteriorWindowConstruction,RubyMeasure
@@ -303,6 +445,11 @@ false,Replace Exterior Window Constructions with a Different Construction from t
 "",argument,Expected Life (whole years).,expected_life,static,Integer,"",20,""
 "",argument,O & M Costs for Construction per Area Used ($/ft^2).,om_cost_ip,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,Replace Thermostat Schedules,ReplaceThermostatSchedules,RubyMeasure
+"",argument,Choose Thermal Zones to change thermostat schedules on.,zones,static,Choice,"",*All Thermal Zones*,|*All Thermal Zones*|
+"",argument,Choose Cooling Schedule.,cooling_sch,static,Choice,"",*No Change*,"|,*No Change*|"
+"",argument,Choose Heating Schedule.,heating_sch,static,Choice,"",*No Change*,"|,*No Change*|"
+"",argument,Material and Installation Costs per Thermal Zone ($/thermal zone).,material_cost,static,Double,"",0.0,""
 false,Rotate Building Relative to Current Orientation,RotateBuilding,RubyMeasure
 "",argument,Number of Degrees to Rotate Building (positive value is clockwise).,relative_building_rotation,static,Double,"",90.0,""
 false,Set Air-Cooled Air Conditioner COP,SetAirCooledAirConditionerCOP,RubyMeasure
@@ -328,6 +475,9 @@ false,Set Boiler Thermal Efficiency,SetBoilerThermalEfficiency,RubyMeasure
 "",argument,Boiler nominal capacity [W] ,nominal_capacity,static,Double,"","",""
 "",argument,Fuel type,fuel_type_widget,static,Choice,"",fuel_type_display_names[0],"|0,1,2,fuel_type_display_names[0]|"
 "",argument,ASHRAE Standards 90.1,standards_widget,static,Choice,"",standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,SetChillerCOP,SetChillerCOP,RubyMeasure
+"",argument,Apply the measure to ,boiler_widget,static,Choice,"",chiller_display_names[0],"|0,chiller_display_names[0]|"
+"",argument,Chiller rated COP (more than 0),chiller_thermal_efficiency,static,Double,"",3,""
 false,Set COP for Single Speed DX Cooling Units,SetCOPforSingleSpeedDXCoolingUnits,RubyMeasure
 "",argument,Choose an Air Loop with a two speed DX Cooling Unit to Alter.,object,static,Choice,"",*All Air Loops*,|*All Air Loops*|
 "",argument,Rated COP,cop,static,Double,"",4.0,""
@@ -398,6 +548,11 @@ false,Set Space Infiltration by Exterior Surface Area,SetSpaceInfiltrationByExte
 "",argument,Increase in Material and Installation Costs for Building per Exterior Envelope Area ($/ft^2).,material_cost_ip,static,Double,"",0.0,""
 "",argument,O & M Costs for Construction per Area Used ($/ft^2).,om_cost_ip,static,Double,"",0.0,""
 "",argument,O & M Frequency (whole years).,om_frequency,static,Integer,"",1,""
+false,Set Thermostat Schedules,SetThermostatSchedules,RubyMeasure
+"",argument,Choose Thermal Zones to change thermostat schedules on.,zones,static,Choice,"",*All Thermal Zones*,|*All Thermal Zones*|
+"",argument,Choose Cooling Schedule.,cooling_sch,static,Choice,"",*No Change*,"|,*No Change*|"
+"",argument,Choose Heating Schedule.,heating_sch,static,Choice,"",*No Change*,"|,*No Change*|"
+"",argument,Material and Installation Costs per Thermal Zone ($/thermal zone).,material_cost,static,Double,"",0.0,""
 false,"Set Water Heater Efficiency, Heat Loss, and Peak Water Flow Rate",SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate,RubyMeasure
 "",argument,Apply the measure to,waterheater_widget,static,Choice,"",waterheater_display_names[0],"|0,waterheater_display_names[0]|"
 "",argument,Fuel type,heater_fuel_type_widget,static,Choice,"",heater_fuel_type_display_names[0],|heater_fuel_type_display_names[0]|
@@ -412,6 +567,7 @@ false,Shift Schedule Profile Time,ShiftScheduleProfileTime,RubyMeasure
 "",argument,Choose a Schedule to Shift the Time For.,schedule,static,Choice,"",*All Ruleset Schedules*,|*All Ruleset Schedules*|
 "",argument,"Shift Schedule Profiles Forward (24hr, use decimal for sub hour).",shift_value,static,Double,"",1.0,""
 false,Standard Reports,StandardReports,ReportingMeasure
+false,Surface Matching,SurfaceMatching,RubyMeasure
 false,Swap Lights Definition,SwapLightsDefinition,RubyMeasure
 "",argument,Choose the Lights Definition you Want to Replace.,old_lights_def,static,Choice,"","",""
 "",argument,Choose the Lights Definition to Use in Place of Removed Definition.,new_lights_def,static,Choice,"","",""
