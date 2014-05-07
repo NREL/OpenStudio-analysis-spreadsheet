@@ -79,15 +79,17 @@ Or run `rake clean`".red
   end
 end
 
-def run_analysis(excel, run_vagrant = false, run_NREL = false)
+def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = false)
   puts "Running the analysis"
   if File.exists?("#{excel.cluster_name}.json") || run_vagrant || run_NREL
     # for each model in the excel file submit the analysis
     server_dns = nil
     if run_vagrant
       server_dns = "http://localhost:8080"
-    elsif run_NREL
+    elsif run_NREL24
       server_dns ="http://bball-130449.nrel.gov:8080"
+    elsif run_NREL12
+      server_dns ="http://bball-129913.nrel.gov:8080"
     else
       json = JSON.parse(File.read("#{excel.cluster_name}.json"), :symbolize_names => true)
       server_dns = "http://#{json[:server][:dns]}"
@@ -224,11 +226,17 @@ task :run_vagrant do
   run_analysis(excel, true)
 end
 
-desc "run NREL"
-task :run_NREL do
+desc "run NREL12"
+task :run_NREL12 do
   excel = get_project()
   excel.save_analysis()
-  run_analysis(excel, false, true)
+  run_analysis(excel, false, false, true)
+end
+desc "run NREL24"
+task :run_NREL24 do
+  excel = get_project()
+  excel.save_analysis()
+  run_analysis(excel, false, true, false)
 end
 
 #desc "kill all running on cloud"
