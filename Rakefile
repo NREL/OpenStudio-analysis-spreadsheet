@@ -138,7 +138,7 @@ def run_analysis(excel, run_vagrant = false, run_NREL = false)
 
       # If the analysis is LHS, then go ahead and run batch run because there is 
       # no explicit way to tell the system to do it
-      if excel.problem['analysis_type'] == 'lhs'
+      if excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight'
         run_options = {
             analysis_action: "start",
             without_delay: false, # run in background
