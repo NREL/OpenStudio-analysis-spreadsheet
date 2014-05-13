@@ -1,0 +1,41 @@
+<measure>
+  <name>Set Maximum Reheat Air Temperature of VAV Single Duct Air Terminals with Reheat</name>
+  <uid>d4c15f93-9a9f-4494-9524-272fd47bd286</uid>
+  <version_id>8ffb4770-8204-4fa0-8aaa-906d8bbeaa6a</version_id>
+  <description>Set the maximum reheat air temperature (F) for all VAV single duct air terminals with reheat in the entire model.</description>
+  <modeler_description>Loop through all of the model's AirTerminalSingleDuctVAVReheat objects and set the maximum reheat air temperature to the given value.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.HVAC Controls</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>SetMaximumReheatAirTemperatureofVAVSingleDuctAirTerminalswithReheat_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>08391B4C</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.3</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>D777565F</checksum>
+    </file>
+  </files>
+</measure>
