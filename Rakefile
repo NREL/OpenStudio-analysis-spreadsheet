@@ -81,7 +81,7 @@ end
 
 def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = false)
   puts "Running the analysis"
-  if File.exists?("#{excel.cluster_name}.json") || run_vagrant || run_NREL
+  if File.exists?("#{excel.cluster_name}.json") || run_vagrant || run_NREL12 || run_NREL24
     # for each model in the excel file submit the analysis
     server_dns = nil
     if run_vagrant
