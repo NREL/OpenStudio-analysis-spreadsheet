@@ -12,7 +12,7 @@ gem "openstudio-aws", "~> 0.1.25"
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
 #gem "openstudio-analysis", "~> 0.2.2"
-gem "openstudio-analysis", :git => "git@github.com:NREL/OpenStudio-analysis-gem.git"
+gem "openstudio-analysis", :git => "git@github.com:NREL/OpenStudio-analysis-gem.git", :branch=> 'develop'
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
 
 gem "colored", "~> 1.2"
