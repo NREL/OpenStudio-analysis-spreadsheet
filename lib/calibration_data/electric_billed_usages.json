@@ -1,0 +1,191 @@
+{
+	"data": [{
+		"dt_rdg_from": "2011-12-19",
+		"dt_rdg_to": "2012-01-20",
+		"elec_rate": "018",
+		"peak_kw": 0.01,
+		"tot_kwh": 1
+	},
+	{
+		"dt_rdg_from": "2012-01-20",
+		"dt_rdg_to": "2012-02-17",
+		"elec_rate": "018",
+		"peak_kw": 0.02,
+		"tot_kwh": 2
+	},
+	{
+		"dt_rdg_from": "2012-02-17",
+		"dt_rdg_to": "2012-03-21",
+		"elec_rate": "018",
+		"peak_kw": 0.03,
+		"tot_kwh": 3
+	},
+	{
+		"dt_rdg_from": "2012-03-21",
+		"dt_rdg_to": "2012-04-19",
+		"elec_rate": "018",
+		"peak_kw": 0.04,
+		"tot_kwh": 4
+	},
+	{
+		"dt_rdg_from": "2012-04-19",
+		"dt_rdg_to": "2012-05-21",
+		"elec_rate": "018",
+		"peak_kw": 0.05,
+		"tot_kwh": 5
+	},
+	{
+		"dt_rdg_from": "2012-05-21",
+		"dt_rdg_to": "2012-06-19",
+		"elec_rate": "018",
+		"peak_kw": 0.06,
+		"tot_kwh": 6
+	},
+	{
+		"dt_rdg_from": "2012-06-19",
+		"dt_rdg_to": "2012-07-20",
+		"elec_rate": "018",
+		"peak_kw": 0.07,
+		"tot_kwh": 7
+	},
+	{
+		"dt_rdg_from": "2012-07-20",
+		"dt_rdg_to": "2012-08-21",
+		"elec_rate": "018",
+		"peak_kw": 0.08,
+		"tot_kwh": 8
+	},
+	{
+		"dt_rdg_from": "2012-08-21",
+		"dt_rdg_to": "2012-09-19",
+		"elec_rate": "018",
+		"peak_kw": 0.09,
+		"tot_kwh": 9
+	},
+	{
+		"dt_rdg_from": "2012-09-19",
+		"dt_rdg_to": "2012-10-18",
+		"elec_rate": "018",
+		"peak_kw": 0.10,
+		"tot_kwh": 10
+	},
+	{
+		"dt_rdg_from": "2012-10-18",
+		"dt_rdg_to": "2012-11-19",
+		"elec_rate": "018",
+		"peak_kw": 0.11,
+		"tot_kwh": 11
+	},
+	{
+		"dt_rdg_from": "2012-11-19",
+		"dt_rdg_to": "2012-12-19",
+		"elec_rate": "018",
+		"peak_kw": 0.12,
+		"tot_kwh": 12
+	},
+	{
+		"dt_rdg_from": "2012-12-19",
+		"dt_rdg_to": "2013-01-21",
+		"elec_rate": "018",
+		"peak_kw": 0.13,
+		"tot_kwh": 13
+	},
+	{
+		"dt_rdg_from": "2013-01-21",
+		"dt_rdg_to": "2013-02-19",
+		"elec_rate": "018",
+		"peak_kw": 0.14,
+		"tot_kwh": 14
+	},
+	{
+		"dt_rdg_from": "2013-02-19",
+		"dt_rdg_to": "2013-03-21",
+		"elec_rate": "018",
+		"peak_kw": 0.15,
+		"tot_kwh": 15
+	},
+	{
+		"dt_rdg_from": "2013-03-21",
+		"dt_rdg_to": "2013-04-22",
+		"elec_rate": "018",
+		"peak_kw": 0.16,
+		"tot_kwh": 16
+	},
+	{
+		"dt_rdg_from": "2013-04-22",
+		"dt_rdg_to": "2013-05-21",
+		"elec_rate": "018",
+		"peak_kw": 0.17,
+		"tot_kwh": 17
+	},
+	{
+		"dt_rdg_from": "2013-05-21",
+		"dt_rdg_to": "2013-06-19",
+		"elec_rate": "018",
+		"peak_kw": 0.18,
+		"tot_kwh": 18
+	},
+	{
+		"dt_rdg_from": "2013-06-19",
+		"dt_rdg_to": "2013-07-23",
+		"elec_rate": "018",
+		"peak_kw": 0.19,
+		"tot_kwh": 19
+	},
+	{
+		"dt_rdg_from": "2013-07-23",
+		"dt_rdg_to": "2013-08-21",
+		"elec_rate": "018",
+		"peak_kw": 0.20,
+		"tot_kwh": 20
+	},
+	{
+		"dt_rdg_from": "2013-08-21",
+		"dt_rdg_to": "2013-09-19",
+		"elec_rate": "018",
+		"peak_kw": 0.21,
+		"tot_kwh": 21
+	},
+	{
+		"dt_rdg_from": "2013-09-19",
+		"dt_rdg_to": "2013-10-18",
+		"elec_rate": "018",
+		"peak_kw": 0.22,
+		"tot_kwh": 22
+	},
+	{
+		"dt_rdg_from": "2013-10-18",
+		"dt_rdg_to": "2013-11-18",
+		"elec_rate": "018",
+		"peak_kw": 0.23,
+		"tot_kwh": 23
+	},
+	{
+		"dt_rdg_from": "2013-11-18",
+		"dt_rdg_to": "2013-12-21",
+		"elec_rate": "018",
+		"peak_kw": 0.24,
+		"tot_kwh": 24
+	},
+	{
+		"dt_rdg_from": "2013-12-21",
+		"dt_rdg_to": "2014-01-21",
+		"elec_rate": "018",
+		"peak_kw": 0.25,
+		"tot_kwh": 25
+	},
+	{
+		"dt_rdg_from": "2014-01-21",
+		"dt_rdg_to": "2014-02-19",
+		"elec_rate": "018",
+		"peak_kw": 0.26,
+		"tot_kwh": 26
+	},
+	{
+		"dt_rdg_from": "2014-02-19",
+		"dt_rdg_to": "2014-03-20",
+		"elec_rate": "018",
+		"peak_kw": 0.27,
+		"tot_kwh": 27
+	}]
+}
