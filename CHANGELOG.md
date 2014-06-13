@@ -3,8 +3,15 @@ Analysis Example Change Log
 
 There is no formal versioning of this project...
 
-Version 0.1.TODO GET NUMBER
------------
+Unreleased Version 0.2.0
+------------------------
+
+* Remove the sampling column
+
+* More columns for defining the outputs
+
+Version 0.1.3
+------------
 
 ### Major Changes
 
