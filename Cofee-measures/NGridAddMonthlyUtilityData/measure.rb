@@ -76,6 +76,8 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     # set start date
     if date = year_month_day(start_date)
 
+      start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(date[1]), date[2], date[0])
+      
       # actual year of start date
       yearDescription = model.getYearDescription()
       yearDescription.setCalendarYear(date[0])
@@ -90,6 +92,9 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     
     # set end date
     if date = year_month_day(end_date)
+      
+      end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(date[1]), date[2], date[0])
+      
       runPeriod = model.getRunPeriod()
       runPeriod.setEndMonth(date[1])
       runPeriod.setEndDayOfMonth(date[2])
@@ -121,8 +126,13 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
           runner.registerError("Unknown date format in period '#{period}'")
           return false
         end
-        start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0]) - OpenStudio::Time.new(1.0)
+        period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
+        period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0]) - OpenStudio::Time.new(1.0)
+        
+        if (period_start_date < start_date) or (period_end_date > end_date)
+          runner.registerInfo("skipping period #{period_start_date} to #{period_end_date}")
+          next
+        end
         
         if period['tot_kwh'].nil?
           runner.registerError("Billing period missing tot_kwh '#{period}'")
@@ -135,12 +145,12 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
           peak_kw = period['peak_kw'].to_f
         end
         
-        puts "#{period}"
-        puts "#{start_date}, #{end_date}, #{tot_kwh}, #{peak_kw}"
+        runner.registerInfo("electric period #{period}")
+        runner.registerInfo("electric period_start_date: #{period_start_date}, period_end_date: #{period_end_date}, tot_kwh: #{tot_kwh}, peak_kw: #{peak_kw}")
         
         bp = utilityBill.addBillingPeriod()
-        bp.setStartDate(start_date)
-        bp.setEndDate(end_date)
+        bp.setStartDate(period_start_date)
+        bp.setEndDate(period_end_date)
         bp.setConsumption(tot_kwh)
         if peak_kw
           bp.setPeakDemand(peak_kw)
@@ -165,8 +175,13 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
           runner.registerError("Unknown date format in period '#{period}'")
           return false
         end
-        start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0]) - OpenStudio::Time.new(1.0)
+        period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
+        period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0]) - OpenStudio::Time.new(1.0)
+                
+        if (period_start_date < start_date) or (period_end_date > end_date)
+          runner.registerInfo("skipping period #{period_start_date} to #{period_end_date}")
+          next
+        end
         
         if period['tot_therms'].nil?
           runner.registerError("Billing period missing tot_therms '#{period}'")
@@ -174,12 +189,12 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
         end
         tot_therms = period['tot_therms'].to_f
         
-        puts "#{period}"
-        puts "#{start_date}, #{end_date}, #{tot_therms}"
+        runner.registerInfo("gas period: #{period}")
+        runner.registerInfo("gas period_start_date: #{period_start_date}, period_end_date: #{period_end_date}, tot_therms: #{tot_therms}")
         
         bp = utilityBill.addBillingPeriod()
-        bp.setStartDate(start_date)
-        bp.setEndDate(end_date)
+        bp.setStartDate(period_start_date)
+        bp.setEndDate(period_end_date)
         bp.setConsumption(tot_therms)
       end
     end
