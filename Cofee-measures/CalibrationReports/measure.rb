@@ -152,19 +152,22 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
       runner.registerWarning("Model has no calendar year and cannot generate all data.")
     end
     
-    bill_index = 1
-    model.getUtilityBills.each do |utilityBill|
+    # sort bills by fuel type and name
+    utilityBills = model.getUtilityBills.sort {|x, y| (x.fuelType.valueDescription + x.name.get) <=> (y.fuelType.valueDescription + y.name.get)}
+    
+    utilityBills.each do |utilityBill|
+    
+      utility_bill_name = OpenStudio::toUnderscoreCase(utilityBill.name.get)
     
       if os_version >= min_version_feature1
-        runner.registerValue("utility_bill_#{bill_index}_name",utilityBill.name.get)
-        runner.registerValue("utility_bill_#{bill_index}_fuel_type",utilityBill.fuelType.valueDescription)
+        runner.registerValue("#{utility_bill_name}_fuel_type",utilityBill.fuelType.valueDescription)
       end
 
       cvrsme = 0.0
       if not utilityBill.CVRMSE.empty?
         cvrsme = utilityBill.CVRMSE.get
         if os_version >= min_version_feature1
-          runner.registerValue("utility_bill_#{bill_index}_consumption_cvrmse",cvrsme,"%")
+          runner.registerValue("#{utility_bill_name}_consumption_cvrmse",cvrsme,"%")
         end
         cvrsme =  sprintf "%.2f", cvrsme
       end
@@ -173,7 +176,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
       if not utilityBill.NMBE.empty?
         nmbe = utilityBill.NMBE.get
         if os_version >= min_version_feature1
-          runner.registerValue("utility_bill_#{bill_index}_consumption_nmbe",nmbe,"%")
+          runner.registerValue("#{utility_bill_name}_consumption_nmbe",nmbe,"%")
         end        
         nmbe = sprintf "%.2f", nmbe
       end
@@ -208,8 +211,8 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
         tempEndDate << "/"
         tempEndDate << billingPeriod.endDate.dayOfMonth.to_s << "\""
         if os_version >= min_version_feature1
-          runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_start_date",billingPeriod.startDate.to_s)
-          runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_end_date",billingPeriod.endDate.to_s)
+          runner.registerValue("#{utility_bill_name}_period_#{period_index}_start_date",billingPeriod.startDate.to_s)
+          runner.registerValue("#{utility_bill_name}_period_#{period_index}_end_date",billingPeriod.endDate.to_s)
         end
 
         if hasDemandValues
@@ -222,7 +225,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             elecActualConsumption << consumption.get.to_s
             actual_consumption += consumption.get
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_consumption_actual",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_actual",
                                    consumption.get,
                                    utilityBill.consumptionUnit)
             end            
@@ -238,7 +241,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             elecModelConsumption << temp.round.to_s
             modeled_consumption += temp
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_consumption_modeled",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_modeled",
                                    temp,
                                    utilityBill.consumptionUnit)
             end              
@@ -255,7 +258,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
               actual_demand = peakDemand.get
             end
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_peak_demand_actual",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_peak_demand_actual",
                                    peakDemand.get,
                                    utilityBill.peakDemandUnit.get)
             end
@@ -274,7 +277,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
               modeled_demand = temp
             end
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_peak_demand_modeled",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_peak_demand_modeled",
                                    temp,
                                    utilityBill.peakDemandUnit.get)
             end            
@@ -288,7 +291,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             percent_str = sprintf "%.2f", percent
             demandNMBE << percent_str.to_s
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_peak_demand_nmbe",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_peak_demand_nmbe",
                                    percent,
                                    "%")
             end            
@@ -302,7 +305,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             percent_str = sprintf "%.2f", percent
             elecNMBE << percent_str.to_s
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_consumption_nmbe",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_nmbe",
                                    percent,
                                    "%")
             end                
@@ -321,7 +324,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             gasActualConsumption << consumption.get.to_s
             actual_consumption += consumption.get
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_consumption_actual",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_actual",
                                    consumption.get,
                                    utilityBill.consumptionUnit)
             end
@@ -337,7 +340,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             gasModelConsumption << temp.round.to_s
             modeled_consumption += temp
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_consumption_modeled",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_modeled",
                                    temp,
                                    utilityBill.consumptionUnit)
             end             
@@ -351,7 +354,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             percent_str = sprintf "%.2f", percent
             gasNMBE << percent_str.to_s
             if os_version >= min_version_feature1
-              runner.registerValue("utility_bill_#{bill_index}_period_#{period_index}_consumption_nmbe",
+              runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_nmbe",
                                    percent,
                                    "%")
             end
@@ -366,27 +369,26 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
       
       if os_version >= min_version_feature1
         if actual_consumption > 0.0
-          runner.registerValue("utility_bill_#{bill_index}_consumption_actual",
+          runner.registerValue("#{utility_bill_name}_consumption_actual",
                                actual_consumption,
                                utilityBill.consumptionUnit)
-          runner.registerValue("utility_bill_#{bill_index}_consumption_modeled",
+          runner.registerValue("#{utility_bill_name}_consumption_modeled",
                                modeled_consumption,
                                utilityBill.consumptionUnit)
         end
         if actual_demand > 0.0
-          runner.registerValue("utility_bill_#{bill_index}_peak_demand_actual",
+          runner.registerValue("#{utility_bill_name}_peak_demand_actual",
                                actual_demand,
                                utilityBill.peakDemandUnit.get)
-          runner.registerValue("utility_bill_#{bill_index}_peak_demand_modeled",
+          runner.registerValue("#{utility_bill_name}_peak_demand_modeled",
                                modeled_demand,
                                utilityBill.peakDemandUnit.get)
-          runner.registerValue("utility_bill_#{bill_index}_peak_demand_nmbe",
+          runner.registerValue("#{utility_bill_name}_peak_demand_nmbe",
                                100.0 * (modeled_demand - actual_demand) / actual_demand,
                                "%")
         end
       end
-      
-      bill_index += 1
+     
     end
 
     elecStartDate = elecStartDate[0..-2]
