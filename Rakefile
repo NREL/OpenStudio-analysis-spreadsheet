@@ -307,14 +307,15 @@ task :create_measure_csv do
   FileUtils.rm_f(new_csv_file) if File.exists?(new_csv_file)
   csv = CSV.open(new_csv_file, "w")
   Dir.glob("./measures/**/*.json").each do |file|
-    puts "Parsing Measure JSON #{file}"
+    puts "Parsing Measure JSON for CSV #{file}"
     json = JSON.parse(File.read(file), :symbolize_names => true)
-    csv << [false, json[:name], json[:classname], json[:measure_type]]
+    csv << [false, json[:display_name], json[:classname], json[:classname], json[:measure_type]]
 
     json[:arguments].each do |argument|
       values = []
       values << ''
       values << 'argument'
+      values << ''
       values << argument[:display_name]
       values << argument[:name]
       values << 'static'
@@ -322,7 +323,7 @@ task :create_measure_csv do
       values << ''
       # units
 
-      # watch out because :default_value can be a boolean 
+      # watch out because :default_value can be a boolean
       argument[:default_value].nil? ? values << '' : values << argument[:default_value]
       choices = ''
       if argument[:choices]
