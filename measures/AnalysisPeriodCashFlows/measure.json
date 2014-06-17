@@ -1,7 +1,7 @@
 {
   "classname": "AnalysisPeriodCashFlows",
-  "path": "./measures/AnalysisPeriodCashFlows",
-  "name": "Analysis Period Cash Flows",
+  "name": "analysis_period_cash_flows",
+  "display_name": "Analysis Period Cash Flows",
   "measure_type": "ReportingMeasure",
   "arguments": [
 

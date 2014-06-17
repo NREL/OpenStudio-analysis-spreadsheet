@@ -1,20 +1,24 @@
 {
   "classname": "InjectOsmGeometryIntoAnExternalIdf",
-  "path": "./measures/InjectOsmGeometryIntoAnExternalIdf",
-  "name": "Inject OSM Geometry into an External IDF",
+  "name": "inject_osm_geometry_into_an_external_idf",
+  "display_name": "Inject Osm Geometry Into an External Idf",
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
       "local_variable": "source_idf_path",
       "variable_type": "String",
       "name": "source_idf_path",
-      "display_name": "Path to Source IDF File to Use."
+      "display_name": "Path to Source IDF File to Use",
+      "units": null,
+      "description": null
     },
     {
       "local_variable": "merge_geometry_from_osm",
       "variable_type": "Bool",
       "name": "merge_geometry_from_osm",
-      "display_name": "Merge Geometry From OpenStudio Model into Source IDF File?",
+      "display_name": "Merge Geometry From OpenStudio Model into Source IDF File",
+      "units": null,
+      "description": null,
       "default_value": true
     }
   ]

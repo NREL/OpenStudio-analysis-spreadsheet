@@ -1,0 +1,40 @@
+{
+  "classname": "NGridAddMonthlyUtilityData",
+  "name": "n_grid_add_monthly_utility_data",
+  "display_name": "N Grid Add Monthly Utility Data",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "electric_json",
+      "variable_type": "String",
+      "name": "electric_json",
+      "display_name": "Path to electric JSON",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "gas_json",
+      "variable_type": "String",
+      "name": "gas_json",
+      "display_name": "Path to gas JSON",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "start_date",
+      "variable_type": "String",
+      "name": "start_date",
+      "display_name": "Start date",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "end_date",
+      "variable_type": "String",
+      "name": "end_date",
+      "display_name": "End date",
+      "units": null,
+      "description": null
+    }
+  ]
+}

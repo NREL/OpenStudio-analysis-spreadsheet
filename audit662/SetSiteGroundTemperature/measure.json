@@ -1,0 +1,16 @@
+{
+  "classname": "SetSiteGroundTemperature",
+  "name": "set_site_ground_temperature",
+  "display_name": "Set Site Ground Temperature",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "ground_temperature",
+      "variable_type": "Double",
+      "name": "ground_temperature",
+      "display_name": "Ground Temperature",
+      "units": "degC",
+      "description": null
+    }
+  ]
+}

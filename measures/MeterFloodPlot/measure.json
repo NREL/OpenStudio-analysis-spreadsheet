@@ -1,14 +1,16 @@
 {
   "classname": "MeterFloodPlot",
-  "path": "./measures/MeterFloodPlot",
-  "name": "Meter Flood Plot",
+  "name": "meter_flood_plot",
+  "display_name": "Meter Flood Plot",
   "measure_type": "ReportingMeasure",
   "arguments": [
     {
       "local_variable": "meter_name",
       "variable_type": "String",
       "name": "meter_name",
-      "display_name": "Enter Meter Name.",
+      "display_name": "Enter Meter Name",
+      "units": null,
+      "description": null,
       "default_value": "Electricity:Facility"
     }
   ]

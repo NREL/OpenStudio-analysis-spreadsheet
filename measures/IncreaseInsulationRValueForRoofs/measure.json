@@ -1,42 +1,52 @@
 {
   "classname": "IncreaseInsulationRValueForRoofs",
-  "path": "./measures/IncreaseInsulationRValueForRoofs",
-  "name": "Set R-value of Insulation for Roofs to a Specific Value",
+  "name": "increase_insulation_r_value_for_roofs",
+  "display_name": "Increase Insulation R Value For Roofs",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "r_value",
       "variable_type": "Double",
       "name": "r_value",
-      "display_name": "Insulation R-value (ft^2*h*R/Btu).",
+      "display_name": "Insulation R-value",
+      "units": "ft^2*h*R/Btu",
+      "description": null,
       "default_value": 30.0
     },
     {
       "local_variable": "allow_reduction",
       "variable_type": "Bool",
       "name": "allow_reduction",
-      "display_name": "Allow both increase and decrease in R-value to reach requested target?",
+      "display_name": "Allow both increase and decrease in R-value to reach requested target",
+      "units": null,
+      "description": null,
       "default_value": false
     },
     {
       "local_variable": "material_cost_increase_ip",
       "variable_type": "Double",
       "name": "material_cost_increase_ip",
-      "display_name": "Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).",
+      "display_name": "Increase in Material and Installation Costs for Construction per Area Used",
+      "units": "$/ft^2",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "one_time_retrofit_cost_ip",
       "variable_type": "Double",
       "name": "one_time_retrofit_cost_ip",
-      "display_name": "One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).",
+      "display_name": "One Time Retrofit Cost to Add Insulation to Construction",
+      "units": "$/ft^2",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "years_until_retrofit_cost",
       "variable_type": "Integer",
       "name": "years_until_retrofit_cost",
-      "display_name": "Year to Incur One Time Retrofit Cost (whole years).",
+      "display_name": "Year to Incur One Time Retrofit Cost",
+      "units": "whole years",
+      "description": null,
       "default_value": 0
     }
   ]

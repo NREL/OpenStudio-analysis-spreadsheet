@@ -1,14 +1,16 @@
 {
   "classname": "AddCostToSupplySideHVACComponentByAirLoop",
-  "path": "./measures/AddCostToSupplySideHVACComponentByAirLoop",
-  "name": "Add Cost To Supply Side HVAC Component by Air Loop",
+  "name": "add_cost_to_supply_side_hvac_component_by_air_loop",
+  "display_name": "Add Cost to Supply Side Hvac Component by Air Loop",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "hvac_comp_type",
       "variable_type": "Choice",
       "name": "hvac_comp_type",
-      "display_name": "Select an HVAC Air Loop Supply Side Component Type.",
+      "display_name": "Select an HVAC Air Loop Supply Side Component Type",
+      "units": null,
+      "description": null,
       "choices": [
         "CoilCoolingDXSingleSpeed",
         "CoilCoolingDXTwoSpeed",
@@ -29,7 +31,9 @@
       "local_variable": "object",
       "variable_type": "Choice",
       "name": "object",
-      "display_name": "Choose an Air Loop to Add Costs to.",
+      "display_name": "Choose an Air Loop to Add Costs to",
+      "units": null,
+      "description": null,
       "default_value": "**All Air Loops**",
       "choices": [
         "**All Air Loops**"
@@ -39,56 +43,72 @@
       "local_variable": "remove_costs",
       "variable_type": "Bool",
       "name": "remove_costs",
-      "display_name": "Remove Existing Costs?",
+      "display_name": "Remove Existing Costs",
+      "units": null,
+      "description": null,
       "default_value": true
     },
     {
       "local_variable": "material_cost",
       "variable_type": "Double",
       "name": "material_cost",
-      "display_name": "Material and Installation Costs per Component ($).",
+      "display_name": "Material and Installation Costs per Component",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "demolition_cost",
       "variable_type": "Double",
       "name": "demolition_cost",
-      "display_name": "Demolition Costs per Component ($).",
+      "display_name": "Demolition Costs per Component",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "years_until_costs_start",
       "variable_type": "Integer",
       "name": "years_until_costs_start",
-      "display_name": "Years Until Costs Start (whole years).",
+      "display_name": "Years Until Costs Start",
+      "units": "whole years",
+      "description": null,
       "default_value": 0
     },
     {
       "local_variable": "demo_cost_initial_const",
       "variable_type": "Bool",
       "name": "demo_cost_initial_const",
-      "display_name": "Demolition Costs Occur During Initial Construction?",
+      "display_name": "Demolition Costs Occur During Initial Construction",
+      "units": null,
+      "description": null,
       "default_value": false
     },
     {
       "local_variable": "expected_life",
       "variable_type": "Integer",
       "name": "expected_life",
-      "display_name": "Expected Life (whole years).",
+      "display_name": "Expected Life",
+      "units": "whole years",
+      "description": null,
       "default_value": 20
     },
     {
       "local_variable": "om_cost",
       "variable_type": "Double",
       "name": "om_cost",
-      "display_name": "O & M Costs per Component ($).",
+      "display_name": "O & M Costs per Component",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "om_frequency",
       "variable_type": "Integer",
       "name": "om_frequency",
-      "display_name": "O & M Frequency (whole years).",
+      "display_name": "O & M Frequency",
+      "units": "whole years",
+      "description": null,
       "default_value": 1
     }
   ]

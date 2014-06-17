@@ -1,0 +1,16 @@
+{
+  "classname": "SetConstantVolumeFanStaticPressure",
+  "name": "set_constant_volume_fan_static_pressure",
+  "display_name": "Set Constant Volume Fan Static Pressure",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "static_pressure_rise",
+      "variable_type": "Double",
+      "name": "static_pressure_rise",
+      "display_name": "Static Pressure Rise",
+      "units": "in. H2O",
+      "description": null
+    }
+  ]
+}

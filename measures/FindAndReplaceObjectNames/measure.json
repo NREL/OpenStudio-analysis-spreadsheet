@@ -1,7 +1,7 @@
 {
   "classname": "FindAndReplaceObjectNames",
-  "path": "./measures/FindAndReplaceObjectNames",
-  "name": "Find and Replace Object Names in the Model",
+  "name": "find_and_replace_object_names",
+  "display_name": "Find And Replace Object Names",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -9,6 +9,8 @@
       "variable_type": "String",
       "name": "orig_string",
       "display_name": "Type the text you want search for in object names",
+      "units": null,
+      "description": null,
       "default_value": "replace this text"
     },
     {
@@ -16,6 +18,8 @@
       "variable_type": "String",
       "name": "new_string",
       "display_name": "Type the text you want to add in place of the found text",
+      "units": null,
+      "description": null,
       "default_value": "with this text"
     }
   ]

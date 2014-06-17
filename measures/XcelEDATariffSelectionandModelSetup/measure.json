@@ -1,14 +1,16 @@
 {
   "classname": "XcelEDATariffSelectionandModelSetup",
-  "path": "./measures/XcelEDATariffSelectionandModelSetup",
-  "name": "Xcel EDA Tariff Selection and Model Setup",
+  "name": "xcel_eda_tariff_selectionand_model_setup",
+  "display_name": "Xcel EDA Tariff Selectionand Model Setup",
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
       "local_variable": "elec_tar",
       "variable_type": "Choice",
       "name": "elec_tar",
-      "display_name": "Select an Electricity Tariff.",
+      "display_name": "Select an Electricity Tariff",
+      "units": null,
+      "description": null,
       "default_value": "Secondary General",
       "choices": [
         "Residential General",
@@ -29,7 +31,9 @@
       "local_variable": "gas_tar",
       "variable_type": "Choice",
       "name": "gas_tar",
-      "display_name": "Select a Gas Tariff.",
+      "display_name": "Select a Gas Tariff",
+      "units": null,
+      "description": null,
       "default_value": "Large CG",
       "choices": [
         "Residential Gas",

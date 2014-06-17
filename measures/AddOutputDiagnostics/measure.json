@@ -1,14 +1,16 @@
 {
   "classname": "AddOutputDiagnostics",
-  "path": "./measures/AddOutputDiagnostics",
-  "name": "Add Output Diagnostics",
+  "name": "add_output_diagnostics",
+  "display_name": "Add Output Diagnostics",
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
       "local_variable": "outputDiagnostic",
       "variable_type": "Choice",
       "name": "outputDiagnostic",
-      "display_name": "Ouput Diagnostic Value.",
+      "display_name": "Ouput Diagnostic Value",
+      "units": null,
+      "description": null,
       "default_value": "DisplayExtraWarnings",
       "choices": [
         "DisplayAllWarnings",

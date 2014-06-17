@@ -302,40 +302,33 @@ end
 desc "make csv file of measures"
 task :create_measure_csv do
   require 'CSV'
+  require 'bcl'
 
-  new_csv_file = "./doc/bcl_spreadsheet.csv"
+  b = BCL::ComponentMethods.new
+  new_csv_file = "./doc/local_measures.csv"
   FileUtils.rm_f(new_csv_file) if File.exists?(new_csv_file)
   csv = CSV.open(new_csv_file, "w")
-  Dir.glob("./measures/**/*.json").each do |file|
+  Dir.glob("./**/measure.json").each do |file|
     puts "Parsing Measure JSON for CSV #{file}"
     json = JSON.parse(File.read(file), :symbolize_names => true)
-    csv << [false, json[:display_name], json[:classname], json[:classname], json[:measure_type]]
-
-    json[:arguments].each do |argument|
-      values = []
-      values << ''
-      values << 'argument'
-      values << ''
-      values << argument[:display_name]
-      values << argument[:name]
-      values << 'static'
-      values << argument[:variable_type]
-      values << ''
-      # units
-
-      # watch out because :default_value can be a boolean
-      argument[:default_value].nil? ? values << '' : values << argument[:default_value]
-      choices = ''
-      if argument[:choices]
-        choices << "|#{argument[:choices].join(",")}|" if not argument[:choices].empty?
-      end
-      values << choices
-
-      csv << values
-    end
+    b.translate_measure_hash_to_csv(json).each {|r| csv << r}
   end
 
   csv.close
+end
+
+desc "update measure.json files"
+task :update_measure_jsons do
+  require 'bcl'
+  bcl = BCL::ComponentMethods.new
+
+  Dir['./**/measure.rb'].each do |m|
+    puts "Parsing #{m}"
+    j = bcl.parse_measure_file("useless", m)
+    m_j = "#{File.join(File.dirname(m), File.basename(m, '.*'))}.json"
+    puts "Writing #{m_j}"
+    File.open(m_j, 'w') {|f| f << JSON.pretty_generate(j)}
+  end
 end
 
 desc "update measures from BCL"

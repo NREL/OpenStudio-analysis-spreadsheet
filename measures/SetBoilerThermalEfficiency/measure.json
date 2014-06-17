@@ -1,14 +1,16 @@
 {
   "classname": "SetBoilerThermalEfficiency",
-  "path": "./measures/SetBoilerThermalEfficiency",
-  "name": "Set Boiler Thermal Efficiency",
+  "name": "set_boiler_thermal_efficiency",
+  "display_name": "Set Boiler Thermal Efficiency",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "boiler_widget",
       "variable_type": "Choice",
       "name": "boiler_widget",
-      "display_name": "Apply the measure to ",
+      "display_name": "Apply the measure to",
+      "units": null,
+      "description": null,
       "default_value": "boiler_display_names[0]",
       "choices": [
         "0",
@@ -20,33 +22,43 @@
       "variable_type": "Bool",
       "name": "input_option_manual",
       "display_name": "Option 1, set boiler nominal thermal efficiency to a user defined value",
+      "units": null,
+      "description": null,
       "default_value": false
     },
     {
       "local_variable": "boiler_thermal_efficiency",
       "variable_type": "Double",
       "name": "boiler_thermal_efficiency",
-      "display_name": "Boiler nominal thermal efficiency (between 0 and 1)",
+      "display_name": "Boiler nominal thermal efficiency",
+      "units": "between 0 and 1",
+      "description": null,
       "default_value": 0.8
     },
     {
       "local_variable": "input_option_standard",
       "variable_type": "Bool",
       "name": "input_option_standard",
-      "display_name": "Option 2, set boiler nominal thermal efficiency based on ASHRAE Standard 90.1 requirement",
+      "display_name": "Option 2, set boiler nominal thermal efficiency based on ASHRAE Standard 90 requirement",
+      "units": null,
+      "description": null,
       "default_value": false
     },
     {
       "local_variable": "nominal_capacity",
       "variable_type": "Double",
       "name": "nominal_capacity",
-      "display_name": "Boiler nominal capacity [W] "
+      "display_name": "Boiler nominal capacity",
+      "units": null,
+      "description": null
     },
     {
       "local_variable": "fuel_type_widget",
       "variable_type": "Choice",
       "name": "fuel_type_widget",
       "display_name": "Fuel type",
+      "units": null,
+      "description": null,
       "default_value": "fuel_type_display_names[0]",
       "choices": [
         "0",
@@ -59,7 +71,9 @@
       "local_variable": "standards_widget",
       "variable_type": "Choice",
       "name": "standards_widget",
-      "display_name": "ASHRAE Standards 90.1",
+      "display_name": "ASHRAE Standards 90",
+      "units": null,
+      "description": null,
       "default_value": "standards_display_names[0]",
       "choices": [
         "0",

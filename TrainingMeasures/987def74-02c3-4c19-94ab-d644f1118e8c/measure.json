@@ -1,0 +1,38 @@
+{
+  "classname": "AedgOfficeHvacVavDx",
+  "name": "aedg_office_hvac_vav_dx",
+  "display_name": "Aedg Office Hvac Vav DX",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "ceilingReturnPlenumSpaceType",
+      "variable_type": "Choice",
+      "name": "ceilingReturnPlenumSpaceType",
+      "display_name": "This space type should be part of a ceiling return air plenum",
+      "units": null,
+      "description": null,
+      "default_value": "We dont want a default, this is an optional argument",
+      "choices": [
+        "We dont want a default, this is an optional argument"
+      ]
+    },
+    {
+      "local_variable": "costTotalHVACSystem",
+      "variable_type": "Double",
+      "name": "costTotalHVACSystem",
+      "display_name": "Total Cost for HVAC System",
+      "units": "$",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "remake_schedules",
+      "variable_type": "Bool",
+      "name": "remake_schedules",
+      "display_name": "Apply recommended availability and ventilation schedules for air handlers",
+      "units": null,
+      "description": null,
+      "default_value": true
+    }
+  ]
+}

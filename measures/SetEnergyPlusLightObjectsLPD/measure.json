@@ -1,14 +1,16 @@
 {
   "classname": "SetEnergyPlusLightObjectsLPD",
-  "path": "./measures/SetEnergyPlusLightObjectsLPD",
-  "name": "Set EnergyPlus Light objects LPD",
+  "name": "set_energy_plus_light_objects_lpd",
+  "display_name": "Set Energy Plus Light Objects Lpd",
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
       "local_variable": "lpd",
       "variable_type": "Double",
       "name": "lpd",
-      "display_name": "Lighting Power Density (W/m^2)",
+      "display_name": "Lighting Power Density",
+      "units": "W/m^2",
+      "description": null,
       "default_value": 10.76
     }
   ]

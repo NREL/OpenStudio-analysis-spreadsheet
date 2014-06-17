@@ -1,0 +1,148 @@
+{
+  "classname": "BarAspectRatioStudySlicedBySpaceTypeOffice",
+  "name": "bar_aspect_ratio_study_sliced_by_space_type_office",
+  "display_name": "Bar Aspect Ratio Study Sliced by Space Type Office",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "total_bldg_area_ip",
+      "variable_type": "Double",
+      "name": "total_bldg_area_ip",
+      "display_name": "Total Building Floor Area",
+      "units": "ft^2",
+      "description": null,
+      "default_value": 10000.0
+    },
+    {
+      "local_variable": "ns_to_ew_ratio",
+      "variable_type": "Double",
+      "name": "ns_to_ew_ratio",
+      "display_name": "Ratio of North/South Facade Length Relative to East/West Facade Length",
+      "units": null,
+      "description": null,
+      "default_value": 2.0
+    },
+    {
+      "local_variable": "num_floors",
+      "variable_type": "Integer",
+      "name": "num_floors",
+      "display_name": "Number of Floors",
+      "units": null,
+      "description": null,
+      "default_value": 2
+    },
+    {
+      "local_variable": "floor_to_floor_height_ip",
+      "variable_type": "Double",
+      "name": "floor_to_floor_height_ip",
+      "display_name": "Floor to Floor Height",
+      "units": "ft",
+      "description": null,
+      "default_value": 10.0
+    },
+    {
+      "local_variable": "openOffice",
+      "variable_type": "Double",
+      "name": "openOffice",
+      "display_name": "Fraction of Floor Area for Open Office Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "closedOffice",
+      "variable_type": "Double",
+      "name": "closedOffice",
+      "display_name": "Fraction of Floor Area for Closed Office Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "breakRoom",
+      "variable_type": "Double",
+      "name": "breakRoom",
+      "display_name": "Fraction of Floor Area for Break Room Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "conference",
+      "variable_type": "Double",
+      "name": "conference",
+      "display_name": "Fraction of Floor Area for Conference Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "corridor",
+      "variable_type": "Double",
+      "name": "corridor",
+      "display_name": "Fraction of Floor Area for Corridor Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "elecMechRoom",
+      "variable_type": "Double",
+      "name": "elecMechRoom",
+      "display_name": "Fraction of Floor Area for Elec/MechRoom Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "iT_Room",
+      "variable_type": "Double",
+      "name": "iT_Room",
+      "display_name": "Fraction of Floor Area for IT Room Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "lobby",
+      "variable_type": "Double",
+      "name": "lobby",
+      "display_name": "Fraction of Floor Area for Lobby Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "printRoom",
+      "variable_type": "Double",
+      "name": "printRoom",
+      "display_name": "Fraction of Floor Area for Print Room Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "restroom",
+      "variable_type": "Double",
+      "name": "restroom",
+      "display_name": "Fraction of Floor Area for Restroom Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "stair",
+      "variable_type": "Double",
+      "name": "stair",
+      "display_name": "Fraction of Floor Area for Stair Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "storage",
+      "variable_type": "Double",
+      "name": "storage",
+      "display_name": "Fraction of Floor Area for Apartment Space Type",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "vending",
+      "variable_type": "Double",
+      "name": "vending",
+      "display_name": "Fraction of Floor Area for Vending Space Type",
+      "units": null,
+      "description": null
+    }
+  ]
+}

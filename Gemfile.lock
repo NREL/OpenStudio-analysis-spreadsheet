@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:NREL/OpenStudio-analysis-gem.git
+  remote: git://github.com/NREL/OpenStudio-analysis-gem.git
   revision: b7b2af71fa76568a5725f5e1c6500f32ad06e4a3
   branch: develop
   specs:
@@ -10,6 +10,24 @@ GIT
       semantic (~> 1.3)
       uuid (~> 2.3)
 
+GIT
+  remote: git://github.com/NREL/bcl-gem.git
+  revision: cc6e42fa1bb606f5fec14b22bbe946c16e253cb8
+  specs:
+    bcl (0.5.3)
+      archive-tar-minitar
+      builder
+      faraday
+      libxml-ruby
+      multi_json
+      nokogiri
+      roo
+      rubyXL
+      rubyzip
+      uuid
+      yamler
+      zliby
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -19,18 +37,6 @@ GEM
       jamespath
       multi_json (~> 1.0)
       multi_xml (~> 0.5)
-    bcl (0.5.2)
-      archive-tar-minitar
-      builder
-      faraday
-      libxml-ruby
-      multi_json
-      nokogiri
-      roo
-      rubyzip
-      uuid
-      yamler
-      zliby
     builder (3.2.2)
     ci_reporter (1.9.2)
       builder (>= 2.1.2)
@@ -72,6 +78,9 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.99.1)
     ruby-ole (1.2.11.7)
+    rubyXL (3.0.1)
+      nokogiri (>= 1.4.4)
+      rubyzip (>= 1.0.0)
     rubyzip (1.1.4)
     semantic (1.3.0)
     spreadsheet (0.9.7)
@@ -87,7 +96,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bcl (~> 0.5.1)
+  bcl!
   ci_reporter (~> 1.9.0)
   colored (~> 1.2)
   openstudio-analysis!

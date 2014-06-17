@@ -1,21 +1,25 @@
 {
   "classname": "AddMeter",
-  "path": "./measures/AddMeter",
-  "name": "Add Meter",
+  "name": "add_meter",
+  "display_name": "Add Meter",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "meter_name",
       "variable_type": "String",
       "name": "meter_name",
-      "display_name": "Enter Meter Name.",
+      "display_name": "Enter Meter Name",
+      "units": null,
+      "description": null,
       "default_value": "Electricity:Facility"
     },
     {
       "local_variable": "reporting_frequency",
       "variable_type": "Choice",
       "name": "reporting_frequency",
-      "display_name": "Reporting Frequency.",
+      "display_name": "Reporting Frequency",
+      "units": null,
+      "description": null,
       "default_value": "hourly",
       "choices": [
         "detailed",

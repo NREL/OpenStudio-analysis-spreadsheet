@@ -1,7 +1,7 @@
 {
   "classname": "SetInteriorWallsToSelectedConstruction",
-  "path": "./measures/SetInteriorWallsToSelectedConstruction",
-  "name": "Set Interior Walls to Selected Construction",
+  "name": "set_interior_walls_to_selected_construction",
+  "display_name": "Set Interior Walls to Selected Construction",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -9,6 +9,8 @@
       "variable_type": "Choice",
       "name": "construction",
       "display_name": "Select new material:",
+      "units": null,
+      "description": null,
       "choices": [
 
       ]
