@@ -11,7 +11,7 @@ require_relative 'resources/stat_file'
 
 class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
 
-  attr_accessor :weather_directory
+  attr_reader :weather_directory
 
   def initialize
     super
@@ -31,12 +31,18 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
   def arguments(model)
     args = OpenStudio::Ruleset::OSArgumentVector.new
 
-    arg = OpenStudio::Ruleset::OSArgument::makeStringArgument('weather_file_name', true)
-    arg.setDisplayName("Weather File Name")
-    arg.setDefaultValue("unknown")
+    arg = OpenStudio::Ruleset::OSArgument.makeStringArgument('weather_directory', true)
+    arg.setDisplayName("Weather Directory")
+    #arg.setDescription("Relative directory to weather files from analysis directory")
+    #arg.setUnits(nil)
     args << arg
 
-    return args
+    arg2 = OpenStudio::Ruleset::OSArgument.makeStringArgument('weather_file_name', true)
+    arg2.setDisplayName("Weather File Name")
+    #arg.setDescription("Name of the weather file to change to. This is the filename with the extension (e.g. NewWeather.epw)")
+    args << arg2
+
+    args
   end
 
   # Define what happens when the measure is run
@@ -49,10 +55,14 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
     end
 
     # grab the initial weather file
+    @weather_directory = runner.getStringArgumentValue("weather_directory", user_arguments)
     weather_file_name = runner.getStringArgumentValue("weather_file_name", user_arguments)
 
     #Add Weather File
-    weather_file = File.expand_path(File.join(@weather_directory, weather_file_name))
+    unless (Pathname.new @weather_directory).absolute?
+      @weather_directory = File.expand_path(File.join(File.dirname(__FILE__), @weather_directory))
+    end
+    weather_file = File.join(@weather_directory, weather_file_name)
     epw_file = OpenStudio::EpwFile.new(weather_file)
     OpenStudio::Model::WeatherFile.setWeatherFile(model, epw_file).get
 
@@ -86,8 +96,7 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
     groundTemp.setDecemberGroundTemperature(19.633)
 
 
-    # Add SiteWaterMainsTemperature -- default it for now
-    # TODO: parse the .stat file and pull out the main temperatures
+    # Add SiteWaterMainsTemperature -- via parsing of STAT file.
     stat_filename = "#{File.join(File.dirname(weather_file), File.basename(weather_file, '.*'))}.stat"
     if File.exist? stat_filename
       stat_file = EnergyPlus::StatFile.new(stat_filename)
@@ -101,7 +110,8 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
       fail "[ERROR] Could not find stat file"
     end
 
-    # TODO: do we want to remove all the other DDY entries?
+    # Remove all the Design Day objects that are in the file
+    model.getObjectsByType("OS:SizingPeriod:DesignDay".to_IddObjectType).each { |d| d.remove }
 
     # Load in the ddy file based on convention that it is in the same directory and has the same basename as the weather
     ddy_file = "#{File.join(File.dirname(weather_file), File.basename(weather_file, '.*'))}.ddy"

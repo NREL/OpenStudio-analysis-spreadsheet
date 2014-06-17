@@ -1,6 +1,6 @@
 
 OS:Version,
-  {a1dafa31-4598-4b2b-bc2a-4a1113d8724c}, !- Handle
+  {b6efbb2f-15c6-4380-835f-547e886dea6f}, !- Handle
   1.3.6;                                  !- Version Identifier
 
 OS:SpaceType,
@@ -8686,7 +8686,7 @@ OS:Surface,
   -5.01015, 3.33934269125535e-015, 0;     !- X,Y,Z Vertex 4 {m}
 
 OS:WeatherFile,
-  {2a4e10db-bb63-481c-b872-6f7a07afcc48}, !- Handle
+  {0a676ab7-672e-4549-ac35-9dfdba8b3a0b}, !- Handle
   Boston Logan IntL Arpt,                 !- City
   MA,                                     !- State Province Region
   USA,                                    !- Country
@@ -8700,7 +8700,7 @@ OS:WeatherFile,
   B65824C3;                               !- Checksum
 
 OS:Site,
-  {48d6a399-bf57-41ed-a06f-deec9c9c8874}, !- Handle
+  {76fb5d6a-a94e-41f8-9f9c-6df96a4076ef}, !- Handle
   Boston Logan IntL Arpt_MA_USA,          !- Name
   42.37,                                  !- Latitude {deg}
   -71.02,                                 !- Longitude {deg}
@@ -8709,7 +8709,7 @@ OS:Site,
   ;                                       !- Terrain
 
 OS:Site:GroundTemperature:BuildingSurface,
-  {57ff60d4-c0e8-4e5c-8b54-a1e9c31f60a7}, !- Handle
+  {e29434ec-882e-4aaa-9a2e-38a5d7e57ee4}, !- Handle
   19.527,                                 !- January Ground Temperature {C}
   19.502,                                 !- February Ground Temperature {C}
   19.536,                                 !- March Ground Temperature {C}
@@ -8724,40 +8724,14 @@ OS:Site:GroundTemperature:BuildingSurface,
   19.633;                                 !- December Ground Temperature {C}
 
 OS:Site:WaterMainsTemperature,
-  {ba4fd821-dff0-44ae-b946-18fd97caae6d}, !- Handle
+  {58751211-da71-45ee-874e-f435ca726550}, !- Handle
   Correlation,                            !- Calculation Method
   ,                                       !- Temperature Schedule Name
   10.55,                                  !- Annual Average Outdoor Air Temperature {C}
   26.4;                                   !- Maximum Difference In Monthly Average Outdoor Air Temperatures {deltaC}
 
 OS:SizingPeriod:DesignDay,
-  {860ac577-8207-4bd8-80b3-829084c95578}, !- Handle
-  Boston Logan IntL Arpt Ann Clg .4% Condns WB=>MDB, !- Name
-  30.2,                                   !- Maximum Dry-Bulb Temperature {C}
-  8.4,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
-  24.6,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
-  101253,                                 !- Barometric Pressure {Pa}
-  6.3,                                    !- Wind Speed {m/s}
-  270,                                    !- Wind Direction {deg}
-  0,                                      !- Sky Clearness
-  0,                                      !- Rain Indicator
-  0,                                      !- Snow Indicator
-  21,                                     !- Day of Month
-  7,                                      !- Month
-  SummerDesignDay,                        !- Day Type
-  0,                                      !- Daylight Saving Time Indicator
-  Wetbulb,                                !- Humidity Indicating Type
-  ,                                       !- Humidity Indicating Day Schedule Name
-  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
-  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
-  ASHRAETau,                              !- Solar Model Indicator
-  ,                                       !- Beam Solar Day Schedule Name
-  ,                                       !- Diffuse Solar Day Schedule Name
-  0.488,                                  !- ASHRAE Taub {dimensionless}
-  1.95;                                   !- ASHRAE Taud {dimensionless}
-
-OS:SizingPeriod:DesignDay,
-  {97e15739-7b74-4df6-a296-2aad6ac6df1c}, !- Handle
+  {ffa91c33-79f9-4e95-9562-f49813c62503}, !- Handle
   Boston Logan IntL Arpt Ann Clg .4% Condns DB=>MWB, !- Name
   32.7,                                   !- Maximum Dry-Bulb Temperature {C}
   8.4,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
@@ -8783,7 +8757,7 @@ OS:SizingPeriod:DesignDay,
   1.95;                                   !- ASHRAE Taud {dimensionless}
 
 OS:SizingPeriod:DesignDay,
-  {06807e86-bcc3-4e8d-9cce-06ff3e29c534}, !- Handle
+  {28f9236b-9304-48b7-a8f3-3bf0305b35d1}, !- Handle
   Boston Logan IntL Arpt Ann Htg 99.6% Condns DB, !- Name
   -13.6,                                  !- Maximum Dry-Bulb Temperature {C}
   0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
@@ -8803,4 +8777,30 @@ OS:SizingPeriod:DesignDay,
   DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
   ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
   ASHRAEClearSky;                         !- Solar Model Indicator
+
+OS:SizingPeriod:DesignDay,
+  {48791aa9-8abb-465e-9488-6d0ad27a7966}, !- Handle
+  Boston Logan IntL Arpt Ann Clg .4% Condns WB=>MDB, !- Name
+  30.2,                                   !- Maximum Dry-Bulb Temperature {C}
+  8.4,                                    !- Daily Dry-Bulb Temperature Range {deltaC}
+  24.6,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
+  101253,                                 !- Barometric Pressure {Pa}
+  6.3,                                    !- Wind Speed {m/s}
+  270,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  7,                                      !- Month
+  SummerDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Wetbulb,                                !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAETau,                              !- Solar Model Indicator
+  ,                                       !- Beam Solar Day Schedule Name
+  ,                                       !- Diffuse Solar Day Schedule Name
+  0.488,                                  !- ASHRAE Taub {dimensionless}
+  1.95;                                   !- ASHRAE Taud {dimensionless}
 

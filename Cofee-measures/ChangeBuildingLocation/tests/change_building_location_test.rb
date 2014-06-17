@@ -15,7 +15,6 @@ class ChangeBuildingLocation_Test < Test::Unit::TestCase
 
     # create an instance of the measure
     measure = ChangeBuildingLocation.new
-    measure.weather_directory = File.dirname(__FILE__)
 
     # create an instance of a runner
     runner = OpenStudio::Ruleset::OSRunner.new
@@ -35,11 +34,15 @@ class ChangeBuildingLocation_Test < Test::Unit::TestCase
     end
 
     arguments = measure.arguments(model)
-    assert_equal(1, arguments.size)
+    assert_equal(2, arguments.size)
 
     argument_map = OpenStudio::Ruleset::OSArgumentMap.new
 
     count = -1
+    arg = arguments[count += 1].clone
+    assert(arg.setValue(File.dirname(__FILE__)))
+    argument_map["weather_directory"] = arg
+
     arg = arguments[count += 1].clone
     assert(arg.setValue(test_new_weather_file))
     argument_map["weather_file_name"] = arg
@@ -48,8 +51,10 @@ class ChangeBuildingLocation_Test < Test::Unit::TestCase
     result = runner.result
     show_output(result)
     assert(result.value.valueName == "Success")
-    assert(result.warnings.size == 0)
+    assert(result.warnings.size == 0, "Warnings are greater than 0")
     assert(result.info.size == 0)
+
+    assert(model.getObjectsByType("OS:SizingPeriod:DesignDay".to_IddObjectType).count == 3, "Expected only 3 design day objects")
 
     puts "Final weather file is #{model.weatherFile.get}" unless model.weatherFile.empty?
     puts "Final site data is #{model.getSite}" if model.getSite

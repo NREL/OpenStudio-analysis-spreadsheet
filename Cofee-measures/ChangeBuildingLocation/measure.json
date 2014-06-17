@@ -7,11 +7,18 @@
     {
       "local_variable": "arg",
       "variable_type": "String",
-      "name": "weather_file_name",
-      "display_name": "Weather File Name",
+      "name": "weather_directory",
+      "display_name": "Weather Directory",
       "units": null,
-      "description": null,
-      "default_value": "unknown"
+      "description": null
+    },
+    {
+      "local_variable": "arg",
+      "variable_type": "String",
+      "name": "weather_file_name",
+      "display_name": "Weather Directory",
+      "units": null,
+      "description": null
     }
   ]
 }

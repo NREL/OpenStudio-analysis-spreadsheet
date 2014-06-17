@@ -52,6 +52,24 @@ false,Add Ptac,AddPTAC,AddPTAC,RubyMeasure
 "",argument,"",Heating Fuel Type,heating_fuel_type,Choice,,Gas,"|Gas,Electric|"
 "",argument,"",Cooling COP,cooling_cop,Double,,3.0,""
 false,Assign Thermostats Basedon Standards Building Typeand Standards Space Type,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,RubyMeasure
+false,Bar Aspect Ratio Study Sliced by Space Type Office,BarAspectRatioStudySlicedBySpaceTypeOffice,BarAspectRatioStudySlicedBySpaceTypeOffice,RubyMeasure
+"",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
+"",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
+"",argument,"",Number of Floors,num_floors,Integer,,2,""
+"",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
+"",argument,"",Fraction of Floor Area for Open Office Space Type,openOffice,Double,,"",""
+"",argument,"",Fraction of Floor Area for Closed Office Space Type,closedOffice,Double,,"",""
+"",argument,"",Fraction of Floor Area for Break Room Space Type,breakRoom,Double,,"",""
+"",argument,"",Fraction of Floor Area for Conference Space Type,conference,Double,,"",""
+"",argument,"",Fraction of Floor Area for Corridor Space Type,corridor,Double,,"",""
+"",argument,"",Fraction of Floor Area for Elec/MechRoom Space Type,elecMechRoom,Double,,"",""
+"",argument,"",Fraction of Floor Area for IT Room Space Type,iT_Room,Double,,"",""
+"",argument,"",Fraction of Floor Area for Lobby Space Type,lobby,Double,,"",""
+"",argument,"",Fraction of Floor Area for Print Room Space Type,printRoom,Double,,"",""
+"",argument,"",Fraction of Floor Area for Restroom Space Type,restroom,Double,,"",""
+"",argument,"",Fraction of Floor Area for Stair Space Type,stair,Double,,"",""
+"",argument,"",Fraction of Floor Area for Apartment Space Type,storage,Double,,"",""
+"",argument,"",Fraction of Floor Area for Vending Space Type,vending,Double,,"",""
 false,Bar Aspect Ratio Study Sliced by Space Type Retail,BarAspectRatioStudySlicedBySpaceTypeRetail,BarAspectRatioStudySlicedBySpaceTypeRetail,RubyMeasure
 "",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
 "",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
@@ -63,7 +81,8 @@ false,Bar Aspect Ratio Study Sliced by Space Type Retail,BarAspectRatioStudySlic
 "",argument,"",Fraction of Floor Area for BackSpace Space Type,back_space,Double,,"",""
 false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
 false,Change Building Location,ChangeBuildingLocation,ChangeBuildingLocation,RubyMeasure
-"",argument,"",Weather File Name,weather_file_name,String,,unknown,""
+"",argument,"",Weather Directory,weather_directory,String,,"",""
+"",argument,"",Weather Directory,weather_file_name,String,,"",""
 false,Enable Ideal Air Loads For All Zones,EnableIdealAirLoadsForAllZones,EnableIdealAirLoadsForAllZones,RubyMeasure
 false,N Grid Add Monthly Utility Data,NGridAddMonthlyUtilityData,NGridAddMonthlyUtilityData,RubyMeasure
 "",argument,"",Path to electric JSON,electric_json,String,,"",""
@@ -242,24 +261,6 @@ false,Bar Aspect Ratio Study,BarAspectRatioStudy,BarAspectRatioStudy,RubyMeasure
 "",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
 "",argument,"",Surface Matching,surface_matching,Bool,,true,""
 "",argument,"",Make Thermal Zones from Spaces,make_zones,Bool,,true,""
-false,Bar Aspect Ratio Study Sliced by Space Type Office,BarAspectRatioStudySlicedBySpaceTypeOffice,BarAspectRatioStudySlicedBySpaceTypeOffice,RubyMeasure
-"",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
-"",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
-"",argument,"",Number of Floors,num_floors,Integer,,2,""
-"",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
-"",argument,"",Fraction of Floor Area for Open Office Space Type,openOffice,Double,,"",""
-"",argument,"",Fraction of Floor Area for Closed Office Space Type,closedOffice,Double,,"",""
-"",argument,"",Fraction of Floor Area for Break Room Space Type,breakRoom,Double,,"",""
-"",argument,"",Fraction of Floor Area for Conference Space Type,conference,Double,,"",""
-"",argument,"",Fraction of Floor Area for Corridor Space Type,corridor,Double,,"",""
-"",argument,"",Fraction of Floor Area for Elec/MechRoom Space Type,elecMechRoom,Double,,"",""
-"",argument,"",Fraction of Floor Area for IT Room Space Type,iT_Room,Double,,"",""
-"",argument,"",Fraction of Floor Area for Lobby Space Type,lobby,Double,,"",""
-"",argument,"",Fraction of Floor Area for Print Room Space Type,printRoom,Double,,"",""
-"",argument,"",Fraction of Floor Area for Restroom Space Type,restroom,Double,,"",""
-"",argument,"",Fraction of Floor Area for Stair Space Type,stair,Double,,"",""
-"",argument,"",Fraction of Floor Area for Apartment Space Type,storage,Double,,"",""
-"",argument,"",Fraction of Floor Area for Vending Space Type,vending,Double,,"",""
 false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
 false,Enable Demand Controlled Ventilation,EnableDemandControlledVentilation,EnableDemandControlledVentilation,RubyMeasure
 "",argument,"",Choose an Air Loop to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|

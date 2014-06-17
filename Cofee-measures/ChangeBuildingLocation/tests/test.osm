@@ -8685,3 +8685,26 @@ OS:Surface,
   -2.22044604925031e-016, 2.14411821630733e-015, 0, !- X,Y,Z Vertex 3 {m}
   -5.01015, 3.33934269125535e-015, 0;     !- X,Y,Z Vertex 4 {m}
 
+
+OS:SizingPeriod:DesignDay,
+  {004b4249-2cb8-4c64-a47d-eaa84a9869a2}, !- Handle
+  My Previous DD, !- Name
+  -13.6,                                  !- Maximum Dry-Bulb Temperature {C}
+  0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
+  -13.6,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
+  101253,                                 !- Barometric Pressure {Pa}
+  7.2,                                    !- Wind Speed {m/s}
+  320,                                    !- Wind Direction {deg}
+  0,                                      !- Sky Clearness
+  0,                                      !- Rain Indicator
+  0,                                      !- Snow Indicator
+  21,                                     !- Day of Month
+  1,                                      !- Month
+  WinterDesignDay,                        !- Day Type
+  0,                                      !- Daylight Saving Time Indicator
+  Wetbulb,                                !- Humidity Indicating Type
+  ,                                       !- Humidity Indicating Day Schedule Name
+  DefaultMultipliers,                     !- Dry-Bulb Temperature Range Modifier Type
+  ,                                       !- Dry-Bulb Temperature Range Modifier Schedule Name
+  ASHRAEClearSky;                         !- Solar Model Indicator
+

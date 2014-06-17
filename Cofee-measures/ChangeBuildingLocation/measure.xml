@@ -1,12 +1,12 @@
 <measure>
-  <name>TimeSeriesEndUses</name>
-  <uid>477e4d05-8e52-4470-9916-185612e70812</uid>
-  <version_id>acdf41b5-bfc1-44d7-9065-a5a0abede699</version_id>
-  <description>create time series for end uses</description>
-  <modeler_description>create time series for end uses</modeler_description>
+  <name>Change Building Location</name>
+  <uid>d4db4971-f5ba-11e3-a3ac-0800200c9a66</uid>
+  <version_id>ad4db4972-f5ba-11e3-a3ac-0800200c9a66</version_id>
+  <description>Change the building location</description>
+  <modeler_description>Change the building location</modeler_description>
   <provenances/>
   <tags>
-    <tag>Reporting.QAQC</tag>
+    <tag>Location</tag>
   </tags>
   <attributes>
     <attribute>
@@ -24,7 +24,7 @@
     <file>
       <version>
         <software_program>OpenStudio</software_program>
-        <identifier>1.3.2</identifier>
+        <identifier>1.3.4</identifier>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
@@ -32,14 +32,14 @@
       <checksum>6E02F190</checksum>
     </file>
     <file>
-      <filename>TimeSeriesEndUses_Test.rb</filename>
+      <filename>change_building_location_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>468998BC</checksum>
     </file>
     <file>
-      <filename></filename>
-      <filetype></filetype>
+      <filename>stat_file.rb</filename>
+      <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>00000000</checksum>
     </file>
