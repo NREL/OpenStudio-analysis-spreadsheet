@@ -1,7 +1,7 @@
 <measure>
   <name>LPD to Lamps</name>
   <uid>28291e46-bb61-474b-b54d-c4c2b47f7a46</uid>
-  <version_id>b7a75f59-94ad-4f78-99c8-96cc3fda7c20</version_id>
+  <version_id>7193a768-2d8a-4d83-8047-eb66b68d581d</version_id>
   <description>This take a generic lighing power density and convert it to individual fixtures</description>
   <modeler_description>This will take LPD values in the space type, remove them, and then add individual lights with specific power to each space in the model.</modeler_description>
   <provenances/>
@@ -22,34 +22,34 @@
   </attributes>
   <files>
     <file>
-      <filename>LPDtoLamps_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>0EC7C9B3</checksum>
-    </file>
-    <file>
       <filename>RetailModelZeroSample.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>631C44C3</checksum>
+      <checksum>23BC5021</checksum>
     </file>
     <file>
       <filename>OsLib_Cofee.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>19B02CB7</checksum>
+      <checksum>38425536</checksum>
     </file>
     <file>
       <filename>OsLib_Geometry.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>019978BE</checksum>
+      <checksum>AAB888F0</checksum>
     </file>
     <file>
       <filename>OsLib_HelperMethods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2AE9E52E</checksum>
+      <checksum>709EA7D2</checksum>
+    </file>
+    <file>
+      <filename>LPDtoLamps_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>F25FE68D</checksum>
     </file>
     <file>
       <version>
@@ -59,13 +59,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>334DF692</checksum>
+      <checksum>2F989221</checksum>
     </file>
     <file>
       <filename>test.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>3F9F98CC</checksum>
+      <checksum>8BB455BE</checksum>
     </file>
   </files>
 </measure>
