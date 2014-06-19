@@ -44,7 +44,7 @@ class NGridAddMonthlyUtilityData_Test < Test::Unit::TestCase
     argument_map["start_date"] = start_date
     
     end_date = arguments[3].clone
-    assert(end_date.setValue("2013-05-21"))
+    assert(end_date.setValue("2013-05-20"))
     argument_map["end_date"] = end_date
     
     measure.run(model, runner, argument_map)

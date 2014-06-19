@@ -76,6 +76,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     # set start date
     if date = year_month_day(start_date)
 
+      DateTime::fromISO8601
       start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(date[1]), date[2], date[0])
       
       # actual year of start date
@@ -115,19 +116,23 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     if not electric_data.nil?
     
       utilityBill = OpenStudio::Model::UtilityBill.new("Electricity".to_FuelType, model)
+      utilityBill.setName("Electric Bill")
       utilityBill.setConsumptionUnit("kWh")
       utilityBill.setPeakDemandUnit("kW")
 
       electric_data['data'].each do |period|
-        from_date = year_month_day(period['dt_rdg_from'])
-        to_date = year_month_day(period['dt_rdg_to'])
-        
+        from_date = period['from']
+        to_date = period['to']
+
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
           return false
         end
-        period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0]) - OpenStudio::Time.new(1.0)
+
+        period_start_date = OpenStudio::DateTime::fromISO8601(from_date).get.date
+        #period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
+        period_end_date = OpenStudio::DateTime::fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
+        #period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0])
         
         if (period_start_date < start_date) or (period_end_date > end_date)
           runner.registerInfo("skipping period #{period_start_date} to #{period_end_date}")
@@ -168,16 +173,19 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
       utilityBill.setConsumptionUnit("therms")
 
       gas_data['data'].each do |period|
-        from_date = year_month_day(period['dt_rdg_from'])
-        to_date = year_month_day(period['dt_rdg_to'])
+        from_date = period['from']
+        to_date = period['to']
         
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
           return false
         end
-        period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0]) - OpenStudio::Time.new(1.0)
-                
+
+        period_start_date = OpenStudio::DateTime::fromISO8601(from_date).get.date
+        #period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
+        period_end_date = OpenStudio::DateTime::fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
+        #period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0])
+
         if (period_start_date < start_date) or (period_end_date > end_date)
           runner.registerInfo("skipping period #{period_start_date} to #{period_end_date}")
           next
