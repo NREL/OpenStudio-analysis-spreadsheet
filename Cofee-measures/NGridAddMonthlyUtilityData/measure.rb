@@ -115,6 +115,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     if not electric_data.nil?
     
       utilityBill = OpenStudio::Model::UtilityBill.new("Electricity".to_FuelType, model)
+      utilityBill.setName("Electric Bill")
       utilityBill.setConsumptionUnit("kWh")
       utilityBill.setPeakDemandUnit("kW")
 
@@ -165,6 +166,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     if not gas_data.nil?
           
       utilityBill = OpenStudio::Model::UtilityBill.new("Gas".to_FuelType, model)
+      utilityBill.setName("Gas Bill")
       utilityBill.setConsumptionUnit("therms")
 
       gas_data['data'].each do |period|
