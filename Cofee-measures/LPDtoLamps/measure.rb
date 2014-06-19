@@ -74,6 +74,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
 
     # variable to use later
     lamp = nil
+    normalizedWattage = 60.0
 
     #reporting initial condition of model
     startingLightingPower =  OpenStudio::toNeatString(model.getBuilding.lightingPower,0,true)# double,decimals, show commas
@@ -119,19 +120,27 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
         # infer lighting technology based on lookup using space type and LPD
         minValue = nil
         minType = nil
+        minRemainder = nil
+        lamp = nil
         techMultiplierHash.each do |k,v|
           if minValue == nil
-            minValue = (v-techMultiplier).abs
+            minValue = v
             minType = k
-          elsif minValue > (v-techMultiplier).abs
-            minValue = (v-techMultiplier).abs
+            minRemainder = (v - lightDefPowerPerFloorArea/techMultiplier).abs
+          elsif minRemainder > (v - lightDefPowerPerFloorArea/techMultiplier).abs
+            minValue = v
             minType = k
           end
         end
 
         # set and report lamp type
-        lamp = minValue
-        runner.registerInfo("Lamps in #{spaceType.name}appear to be #{minType}.")
+        if not minValue == nil
+          lamp = minValue * normalizedWattage
+          runner.registerInfo("Lamps in #{spaceType.name} appear to be #{minType}.")
+        else
+           lamp = 55.0
+          runner.registerInfo("Not sure why MinValue is nil for #{spaceType.name}. Using 55W bulb for now.")       
+        end
 
         spaceType.spaces.sort.each do |space|
 
@@ -166,11 +175,16 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
 
       end # end of spaceTypes.sort.each do
 
-      # change value to 60 watts
+      # change value to 60 watts incandescent equiv.
       # todo - may hit issues here if same lightsDef used in different space types
-      lightsDef.setLightingLevel(lamp)
-      runner.registerInfo("Changing value of #{lightsDef.name} to #{OpenStudio::toNeatString(lamp,2,true)} watts.")
-
+      
+      if not lamp == nil 
+        lightsDef.setLightingLevel(lamp)
+        runner.registerInfo("Changing value of #{lightsDef.name} to #{OpenStudio::toNeatString(lamp,2,true)} watts.")
+      else
+        runner.registerInfo("Why is lamp nil for #{lightsDef.name}.")
+      end
+      
     end # end of lightsDefs.sort.each do
 
     #reporting final condition of model

@@ -147,7 +147,7 @@ OS:Lights:Definition,
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Handle
   DOE Ref 2004 - Retail - Back_Space Lights Definition, !- Name
   LightingLevel,                          !- Design Level Calculation Method
-  0.23,                                   !- Lighting Level {W}
+  60,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
@@ -1134,7 +1134,7 @@ OS:Lights:Definition,
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Handle
   DOE Ref 2004 - Retail - Entry Lights Definition, !- Name
   LightingLevel,                          !- Design Level Calculation Method
-  0,                                      !- Lighting Level {W}
+  60,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
@@ -1219,7 +1219,7 @@ OS:Lights:Definition,
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Handle
   DOE Ref 2004 - Retail - Point_of_Sale Lights Definition, !- Name
   LightingLevel,                          !- Design Level Calculation Method
-  4.04,                                   !- Lighting Level {W}
+  60,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
@@ -1318,7 +1318,7 @@ OS:Lights:Definition,
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Handle
   DOE Ref 2004 - Retail - Retail Lights Definition, !- Name
   LightingLevel,                          !- Design Level Calculation Method
-  4.04,                                   !- Lighting Level {W}
+  60,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
@@ -12022,461 +12022,488 @@ OS:ZoneHVAC:EquipmentList,
   {9825fbd7-c01f-41ba-9c4c-10bb520746be}; !- Thermal Zone
 
 OS:Lights,
-  {e928bdbe-03c1-43a8-85a8-1efe4c0bafc5}, !- Handle
-  0.22999999999999998 watt fixtures for Space 10, !- Name
+  {2d88a7b3-adfe-4590-9d14-edb74283e92b}, !- Handle
+  60.0 watt fixtures for Space 10,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {b1751f70-6c04-4668-812a-d89809d7fd83}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  295.140221712647;                       !- Multiplier
+  1.13137084989848;                       !- Multiplier
 
 OS:Lights,
-  {890f6884-5c46-470f-9930-39db650e6c44}, !- Handle
-  0.22999999999999998 watt fixtures for Space 11, !- Name
+  {828931ff-08e4-44b7-9618-eedc7943cf47}, !- Handle
+  60.0 watt fixtures for Space 11,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {b4a44012-8b0b-4c05-8c84-108ce250e182}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  1148.84999135732;                       !- Multiplier
+  4.40392496686974;                       !- Multiplier
 
 OS:Lights,
-  {ee3a050c-5c10-45ed-86db-2c12565f0521}, !- Handle
-  0.22999999999999998 watt fixtures for Space 12, !- Name
+  {1c4a8df9-7b49-4d5d-826d-0bee15c5e9bc}, !- Handle
+  60.0 watt fixtures for Space 12,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {95d4f7fb-629a-4fa3-853e-a005b0277283}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  295.140221712647;                       !- Multiplier
+  1.13137084989848;                       !- Multiplier
 
 OS:Lights,
-  {4f71fe2d-9062-4044-a2f6-6e0bd0ca929c}, !- Handle
-  0.22999999999999998 watt fixtures for Space 28, !- Name
+  {5fcf079f-da6d-41a3-9c85-a10b75ba4c67}, !- Handle
+  60.0 watt fixtures for Space 28,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {5a973869-408f-4eea-b5c3-ee9cfac2117b}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  295.140221712647;                       !- Multiplier
+  1.13137084989848;                       !- Multiplier
 
 OS:Lights,
-  {05a102f9-5edb-48a6-84a5-49518f2802cd}, !- Handle
-  0.22999999999999998 watt fixtures for Space 29, !- Name
+  {60003e52-c32d-46e2-9539-421d017c3dd9}, !- Handle
+  60.0 watt fixtures for Space 29,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {625ab3b7-7df4-482f-b1e9-a15faac968d0}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  1148.84999135732;                       !- Multiplier
+  4.40392496686974;                       !- Multiplier
 
 OS:Lights,
-  {db1c0828-ee54-4d29-8a56-c89f2f69d343}, !- Handle
-  0.22999999999999998 watt fixtures for Space 30, !- Name
+  {04752410-a648-4a6a-9620-11cf97877ad5}, !- Handle
+  60.0 watt fixtures for Space 30,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {0820f640-0339-4040-9b8d-d7bc81812aa3}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  295.140221712647;                       !- Multiplier
+  1.13137084989848;                       !- Multiplier
 
 OS:Lights,
-  {e30c8ea7-25de-449f-956b-8d00d25cea7e}, !- Handle
-  0.22999999999999998 watt fixtures for Space 46, !- Name
+  {1ab50eeb-366a-4d58-bfbe-e1ff86ed3b14}, !- Handle
+  60.0 watt fixtures for Space 46,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {71ef3dd0-339a-47f9-b44f-412c95b6c59d}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  295.140221712647;                       !- Multiplier
+  1.13137084989848;                       !- Multiplier
 
 OS:Lights,
-  {c53dc2a6-ee78-4473-9569-b465c26dc7b9}, !- Handle
-  0.22999999999999998 watt fixtures for Space 47, !- Name
+  {19bf3047-9a8c-41b5-8a33-f8ebebb34abd}, !- Handle
+  60.0 watt fixtures for Space 47,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {5ae3d01e-9042-441a-b44b-a8d2f366fc0d}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  1148.84999135732;                       !- Multiplier
+  4.40392496686974;                       !- Multiplier
 
 OS:Lights,
-  {758ad170-0ac6-4337-b195-f847a00aac15}, !- Handle
-  0.22999999999999998 watt fixtures for Space 48, !- Name
+  {3b1b37d1-fd96-483d-89d8-bc5df060fdd0}, !- Handle
+  60.0 watt fixtures for Space 48,        !- Name
   {abce0af8-8511-49fb-b58c-4ff0f3c24b9d}, !- Lights Definition Name
   {749e6715-2573-4c48-9c15-18a49ac4888f}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  295.140221712647;                       !- Multiplier
+  1.13137084989848;                       !- Multiplier
 
 OS:Lights,
-  {5cfb0239-3d8d-417e-8aa4-cc0be427a2ae}, !- Handle
-  0 watt fixtures for Space 25,           !- Name
+  {64c0954d-985a-4b7e-baea-2ac9a3a8f2e8}, !- Handle
+  60.0 watt fixtures for Space 25,        !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {428575ec-6b7c-4094-b730-f3373daada77}; !- Space or SpaceType Name
+  {428575ec-6b7c-4094-b730-f3373daada77}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  2.40416305603427;                       !- Multiplier
 
 OS:Lights,
-  {341adb10-acea-40cf-9d9c-351d34e212f4}, !- Handle
-  0 watt fixtures for Space 26,           !- Name
+  {fb2140f3-ba6b-45c3-9084-586e581586c1}, !- Handle
+  60.0 watt fixtures for Space 26,        !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {0d87e122-b8bd-4a44-b74b-b9d9c3ca4802}; !- Space or SpaceType Name
+  {0d87e122-b8bd-4a44-b74b-b9d9c3ca4802}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  9.3583405545982;                        !- Multiplier
 
 OS:Lights,
-  {a6196fac-9614-4ffd-9d5e-a67b636c4177}, !- Handle
-  0 watt fixtures for Space 27,           !- Name
+  {d0ba8d6c-34c2-411c-84ce-f8dff4afd6ff}, !- Handle
+  60.0 watt fixtures for Space 27,        !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {504b5aec-0019-4ec8-912c-172eedf9fa0f}; !- Space or SpaceType Name
+  {504b5aec-0019-4ec8-912c-172eedf9fa0f}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  2.40416305603427;                       !- Multiplier
 
 OS:Lights,
-  {555449de-7f4f-4293-8c17-456e5e165816}, !- Handle
-  0 watt fixtures for Space 43,           !- Name
+  {160d6fb4-7d63-48f5-9aaf-1eb6085034e2}, !- Handle
+  60.0 watt fixtures for Space 43,        !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {cd7952a7-b4c2-4212-b62e-ac8a01dea5bd}; !- Space or SpaceType Name
+  {cd7952a7-b4c2-4212-b62e-ac8a01dea5bd}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  2.40416305603427;                       !- Multiplier
 
 OS:Lights,
-  {97620a10-00f9-4bd3-b2cb-81107f3a1468}, !- Handle
-  0 watt fixtures for Space 44,           !- Name
+  {4575350b-8fb1-4fe7-bb66-66cc00d2c217}, !- Handle
+  60.0 watt fixtures for Space 44,        !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {be3d98b4-ebff-4ced-afb0-5517247fd758}; !- Space or SpaceType Name
+  {be3d98b4-ebff-4ced-afb0-5517247fd758}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  9.3583405545982;                        !- Multiplier
 
 OS:Lights,
-  {a956041a-2e12-4db5-ad6b-a524faaa847b}, !- Handle
-  0 watt fixtures for Space 45,           !- Name
+  {31c297db-f809-4ac6-a12a-d8e13fb92543}, !- Handle
+  60.0 watt fixtures for Space 45,        !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {e6d7ddfe-baf4-4c16-b199-cd17b36d3656}; !- Space or SpaceType Name
+  {e6d7ddfe-baf4-4c16-b199-cd17b36d3656}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  2.40416305603427;                       !- Multiplier
 
 OS:Lights,
-  {258e2f16-9019-49c4-8747-8605e0249940}, !- Handle
-  0 watt fixtures for Space 7,            !- Name
+  {4c677064-bcce-451c-8179-e8b4078a8dff}, !- Handle
+  60.0 watt fixtures for Space 7,         !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {25c4eed6-8538-4c8d-806b-632bd99a595b}; !- Space or SpaceType Name
+  {25c4eed6-8538-4c8d-806b-632bd99a595b}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  2.40416305603427;                       !- Multiplier
 
 OS:Lights,
-  {306129d6-a2eb-459b-a2db-07332c3e1ee3}, !- Handle
-  0 watt fixtures for Space 8,            !- Name
+  {49d9a919-a9f4-4ba6-bd13-f323fc96a323}, !- Handle
+  60.0 watt fixtures for Space 8,         !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {d05f0fb5-090c-4eb0-ba85-ca0f09f4d678}; !- Space or SpaceType Name
+  {d05f0fb5-090c-4eb0-ba85-ca0f09f4d678}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  9.3583405545982;                        !- Multiplier
 
 OS:Lights,
-  {1c6c1d47-0bb6-4a7e-90ef-f89879baab1f}, !- Handle
-  0 watt fixtures for Space 9,            !- Name
+  {05b69136-bb33-42a8-b84f-55d6253fccf3}, !- Handle
+  60.0 watt fixtures for Space 9,         !- Name
   {3bbb6e59-c436-43ee-9dd2-45edb7857278}, !- Lights Definition Name
-  {3897a743-ef52-41f3-99c2-84bd1af4781a}; !- Space or SpaceType Name
+  {3897a743-ef52-41f3-99c2-84bd1af4781a}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  2.40416305603427;                       !- Multiplier
 
 OS:Lights,
-  {b26396a5-4942-4231-bb17-fd9f2c15a458}, !- Handle
-  4.04 watt fixtures for Space 1,         !- Name
+  {70b6098e-15b3-4bc1-885d-4b007d277d50}, !- Handle
+  60.0 watt fixtures for Space 1,         !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {2a01d3c8-b593-4676-acaf-db2a9f0f08cb}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059405;                       !- Multiplier
+  4.07999999999999;                       !- Multiplier
 
 OS:Lights,
-  {4bd316ab-dc43-4c4f-a645-7fa84c0690a8}, !- Handle
-  4.04 watt fixtures for Space 19,        !- Name
+  {9b8c22b1-d8ed-4af9-ac3d-1c980c3c9349}, !- Handle
+  60.0 watt fixtures for Space 19,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {63a16085-ccd6-4686-90d8-901a27e67032}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059405;                       !- Multiplier
+  4.07999999999999;                       !- Multiplier
 
 OS:Lights,
-  {b0f6ec96-d2b9-4749-b680-677616ce53c8}, !- Handle
-  4.04 watt fixtures for Space 2,         !- Name
+  {eedcfea7-de63-4847-9184-674a424f14f4}, !- Handle
+  60.0 watt fixtures for Space 2,         !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {c8d11504-72b1-47b7-8b56-50dfb0a79a7c}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  235.865800401128;                       !- Multiplier
+  15.8816305603426;                       !- Multiplier
 
 OS:Lights,
-  {0b815089-53c6-4c57-a479-7d8cea3120db}, !- Handle
-  4.04 watt fixtures for Space 20,        !- Name
+  {4b2b2b64-ee03-437b-9381-69f0b7c3e19a}, !- Handle
+  60.0 watt fixtures for Space 20,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {8d87d142-6642-4e1d-9a2f-c1dab6372990}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  235.865800401128;                       !- Multiplier
+  15.8816305603426;                       !- Multiplier
 
 OS:Lights,
-  {8a0ed395-0fcc-4346-8081-5a710392e7e1}, !- Handle
-  4.04 watt fixtures for Space 21,        !- Name
+  {d1d2ff88-bab9-40e9-9093-cc378fdf0c18}, !- Handle
+  60.0 watt fixtures for Space 21,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {b365b30e-7f27-4b68-8d86-ae08818173a4}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059405;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {b636022c-b01c-410e-8337-d7e936b4fc08}, !- Handle
-  4.04 watt fixtures for Space 22,        !- Name
+  {00b0097b-6177-4655-9e5e-5108dcf94726}, !- Handle
+  60.0 watt fixtures for Space 22,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {ba208f32-4ecb-456c-bdd4-aff2f1592795}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  82.227508279263;                        !- Multiplier
+  5.53665222413704;                       !- Multiplier
 
 OS:Lights,
-  {333e53f4-9516-4f2d-af66-11752f1b7b9a}, !- Handle
-  4.04 watt fixtures for Space 23,        !- Name
+  {d27b328b-fb06-47b3-8bc8-7ee0ad4dbdc9}, !- Handle
+  60.0 watt fixtures for Space 23,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {53f34283-121c-43a9-b494-31facf09253a}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  320.075222644307;                       !- Multiplier
+  21.55173165805;                         !- Multiplier
 
 OS:Lights,
-  {d1bef10f-828b-4769-855d-6f14612f0cec}, !- Handle
-  4.04 watt fixtures for Space 24,        !- Name
+  {ff6de90c-94d4-4357-a295-6c1249c8ed90}, !- Handle
+  60.0 watt fixtures for Space 24,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {809f3bc8-d9ce-49fe-8b67-573df7b0b222}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  82.227508279263;                        !- Multiplier
+  5.53665222413704;                       !- Multiplier
 
 OS:Lights,
-  {83e6a073-214f-4999-93e1-5d19823bfc61}, !- Handle
-  4.04 watt fixtures for Space 3,         !- Name
+  {6a25a061-ad28-4c0a-9d77-221cff685a04}, !- Handle
+  60.0 watt fixtures for Space 3,         !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {e6b7c962-fb33-4b76-880b-5b5a4f7c9a44}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059405;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {a696535d-a1b1-4904-97fa-6ee99fc4c861}, !- Handle
-  4.04 watt fixtures for Space 37,        !- Name
+  {fd45fe91-431b-40eb-8e20-7ef6b13f0f2f}, !- Handle
+  60.0 watt fixtures for Space 37,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {e7827fc8-24fe-4faf-867a-e119713390ff}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059405;                       !- Multiplier
+  4.07999999999999;                       !- Multiplier
 
 OS:Lights,
-  {99e774f4-91f7-4141-8f99-53ca69f3a080}, !- Handle
-  4.04 watt fixtures for Space 38,        !- Name
+  {ba09a916-4afd-436d-86f9-b237e16fdf92}, !- Handle
+  60.0 watt fixtures for Space 38,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {8c3119ac-e951-417f-99e8-68540643f71a}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  235.865800401128;                       !- Multiplier
+  15.8816305603426;                       !- Multiplier
 
 OS:Lights,
-  {b4c3289d-ff1f-4357-8824-22858d623562}, !- Handle
-  4.04 watt fixtures for Space 39,        !- Name
+  {3ecc9db7-e6e0-4025-b9dc-1ebacf284a22}, !- Handle
+  60.0 watt fixtures for Space 39,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {1be59a9a-3aaa-4a5f-be69-ecd32897816d}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059405;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {ae32c39a-0e47-4161-aaf3-bf7f4dc053bb}, !- Handle
-  4.04 watt fixtures for Space 4,         !- Name
+  {938f95c7-8b2c-4e9e-9028-6807e65fee72}, !- Handle
+  60.0 watt fixtures for Space 4,         !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {bb73b6f0-72cd-4f6d-94ab-1c34c0e6a3a1}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  82.227508279263;                        !- Multiplier
+  5.53665222413704;                       !- Multiplier
 
 OS:Lights,
-  {bdbdbbfa-556a-4083-9ab5-c6fc7a122403}, !- Handle
-  4.04 watt fixtures for Space 40,        !- Name
+  {2df0893f-6e19-41b7-9f88-20f1a82d4f85}, !- Handle
+  60.0 watt fixtures for Space 40,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {52ca7f05-abeb-46c8-b23c-a4c368895d42}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  82.227508279263;                        !- Multiplier
+  5.53665222413704;                       !- Multiplier
 
 OS:Lights,
-  {5197671d-4e29-4acc-a5a2-b1c212c90d77}, !- Handle
-  4.04 watt fixtures for Space 41,        !- Name
+  {7d4e91ed-ea09-4cc9-8803-43cd849cfc2c}, !- Handle
+  60.0 watt fixtures for Space 41,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {02347e59-ede9-4bca-9568-5f4f11e8aa45}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  320.075222644307;                       !- Multiplier
+  21.55173165805;                         !- Multiplier
 
 OS:Lights,
-  {ae077fa2-7da4-4cbc-989d-5cf348fb3c1f}, !- Handle
-  4.04 watt fixtures for Space 42,        !- Name
+  {6664b593-92e5-48a4-98ac-471ce6e210fd}, !- Handle
+  60.0 watt fixtures for Space 42,        !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {84f71be4-46aa-4558-8ece-e823cd70605b}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  82.227508279263;                        !- Multiplier
+  5.53665222413704;                       !- Multiplier
 
 OS:Lights,
-  {c6582854-cbc0-46e7-9499-7e14e2e08916}, !- Handle
-  4.04 watt fixtures for Space 5,         !- Name
+  {17aa5d60-8162-4725-9635-22b2e456c017}, !- Handle
+  60.0 watt fixtures for Space 5,         !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {e8acc3dc-1105-408c-98b7-6f753009712a}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  320.075222644307;                       !- Multiplier
+  21.55173165805;                         !- Multiplier
 
 OS:Lights,
-  {8c2dcc1b-c1fd-412f-85bb-278721cff633}, !- Handle
-  4.04 watt fixtures for Space 6,         !- Name
+  {5c762688-4be6-4620-b2bf-9b0243af3923}, !- Handle
+  60.0 watt fixtures for Space 6,         !- Name
   {0c8c1144-25df-4255-a06c-846f1f8fbb43}, !- Lights Definition Name
   {ea293ded-dbba-4770-92e5-a01144a18e33}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  82.227508279263;                        !- Multiplier
+  5.53665222413704;                       !- Multiplier
 
 OS:Lights,
-  {a8c192ae-dfa5-4e57-8e4d-603547933165}, !- Handle
-  4.04 watt fixtures for Space 13,        !- Name
+  {ea7364cf-bdcd-4fb5-991a-b72c41d5da16}, !- Handle
+  60.0 watt fixtures for Space 13,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {7d4658ec-58ea-42a2-b062-6fd64c3da1e4}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  439.28142749227;                        !- Multiplier
+  29.5782827844795;                       !- Multiplier
 
 OS:Lights,
-  {9be88aae-17d8-404c-84bc-815fa575d6f1}, !- Handle
-  4.04 watt fixtures for Space 14,        !- Name
+  {18ea46ba-6d17-4649-8522-5031f7b2826e}, !- Handle
+  60.0 watt fixtures for Space 14,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {4a5164db-d5eb-4e06-a942-d6926ad4a1fb}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  1709.92778025789;                       !- Multiplier
+  115.135137204031;                       !- Multiplier
 
 OS:Lights,
-  {93e59987-1b42-4d20-8e53-ac33c8f63851}, !- Handle
-  4.04 watt fixtures for Space 15,        !- Name
+  {634efa45-3223-4ac5-b6b2-ce2790751c65}, !- Handle
+  60.0 watt fixtures for Space 15,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {673dae47-6fe7-4db7-a5a1-1321e26e8667}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  439.281427492271;                       !- Multiplier
+  29.5782827844795;                       !- Multiplier
 
 OS:Lights,
-  {0c15b76f-2048-4a38-9b4f-2028655a39b4}, !- Handle
-  4.04 watt fixtures for Space 16,        !- Name
+  {f65e9511-2280-450a-b834-3116d098f558}, !- Handle
+  60.0 watt fixtures for Space 16,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {581bf512-bacf-486a-9ee4-569cf852e7df}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059406;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {1ce7bbb9-ac05-458b-9e83-c5f40bbae157}, !- Handle
-  4.04 watt fixtures for Space 17,        !- Name
+  {79f2c012-415f-4efd-9083-c4506ef4412f}, !- Handle
+  60.0 watt fixtures for Space 17,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {6a63f869-f7dc-48a7-97cf-2667a1323151}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  235.865800401128;                       !- Multiplier
+  15.8816305603427;                       !- Multiplier
 
 OS:Lights,
-  {a5449f1e-bf9e-4489-b893-4065b6208f4e}, !- Handle
-  4.04 watt fixtures for Space 18,        !- Name
+  {f67d7100-f702-4d8f-9293-9db5c7f35139}, !- Handle
+  60.0 watt fixtures for Space 18,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {dfb67d37-cc67-4d60-aaec-c36bbd8fef53}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059406;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {ce64042d-2af7-40dd-8140-f703dba1e90d}, !- Handle
-  4.04 watt fixtures for Space 31,        !- Name
+  {210d6855-54a0-426e-8f63-e3c6a54ff5b1}, !- Handle
+  60.0 watt fixtures for Space 31,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {07873421-ddf8-4ad6-b3a1-8741daf0a9b7}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  439.28142749227;                        !- Multiplier
+  29.5782827844795;                       !- Multiplier
 
 OS:Lights,
-  {39c86c32-dbef-4dc6-999d-2e3355dd0587}, !- Handle
-  4.04 watt fixtures for Space 32,        !- Name
+  {6dbdd7c7-77f6-4228-bb0e-e54884c96ff2}, !- Handle
+  60.0 watt fixtures for Space 32,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {c6343613-803d-4f82-9205-80fdd53261a1}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  1709.92778025789;                       !- Multiplier
+  115.135137204031;                       !- Multiplier
 
 OS:Lights,
-  {ba026c48-cf27-41ff-9506-436bf4c537cb}, !- Handle
-  4.04 watt fixtures for Space 33,        !- Name
+  {5f9262e2-a7aa-4051-a77e-f3cb942ba6e2}, !- Handle
+  60.0 watt fixtures for Space 33,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {e2534904-2353-4397-bf91-bdefcd00dc40}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  439.281427492271;                       !- Multiplier
+  29.5782827844795;                       !- Multiplier
 
 OS:Lights,
-  {247ea616-9f54-415f-9f43-bad0ffb06295}, !- Handle
-  4.04 watt fixtures for Space 34,        !- Name
+  {24a247e6-54b3-4dd9-85c9-500d537046db}, !- Handle
+  60.0 watt fixtures for Space 34,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {6971c288-fa32-4dba-b928-fca4da5262be}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059406;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {917c4aa5-37e8-4759-ab29-c98b3dd15fbd}, !- Handle
-  4.04 watt fixtures for Space 35,        !- Name
+  {98619246-de00-4386-acd6-59805bd2abe3}, !- Handle
+  60.0 watt fixtures for Space 35,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {a21eafcc-2f1f-4be9-bf10-3a96676dbe52}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  235.865800401128;                       !- Multiplier
+  15.8816305603427;                       !- Multiplier
 
 OS:Lights,
-  {68920510-98f0-4d61-a29b-a27fc3cd346d}, !- Handle
-  4.04 watt fixtures for Space 36,        !- Name
+  {eb2e2f3f-8ff3-4e40-abb7-a20580782a5f}, !- Handle
+  60.0 watt fixtures for Space 36,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {82bd29ee-19fd-410e-a86a-6dd347fb4784}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059406;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {724f5a01-a89b-4460-aa2b-96375502626d}, !- Handle
-  4.04 watt fixtures for Space 49,        !- Name
+  {9f5ecbd4-f5e5-445a-a2be-0892acde56e2}, !- Handle
+  60.0 watt fixtures for Space 49,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {0c363b26-f063-4680-ae93-2245a2ec2a39}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  439.28142749227;                        !- Multiplier
+  29.5782827844795;                       !- Multiplier
 
 OS:Lights,
-  {75a3d094-462e-4a8b-be9e-9aff3863daa5}, !- Handle
-  4.04 watt fixtures for Space 50,        !- Name
+  {9eb2e901-8c8b-4949-a643-c23ceeb764f0}, !- Handle
+  60.0 watt fixtures for Space 50,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {a9ba3af5-0940-4275-8a60-220048fb6457}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  1709.92778025789;                       !- Multiplier
+  115.135137204031;                       !- Multiplier
 
 OS:Lights,
-  {41751782-a893-45f9-a936-a5f0c3e3c332}, !- Handle
-  4.04 watt fixtures for Space 51,        !- Name
+  {fba4f9d7-38cb-4261-89bd-7d01ba4b1952}, !- Handle
+  60.0 watt fixtures for Space 51,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {c109e2d3-521b-4cec-b68c-ac535c4f2076}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  439.281427492271;                       !- Multiplier
+  29.5782827844795;                       !- Multiplier
 
 OS:Lights,
-  {c65919e3-fffe-48ca-b8bd-dc6a3cb82c7d}, !- Handle
-  4.04 watt fixtures for Space 52,        !- Name
+  {fcc47b6d-fa22-4667-a52e-710a30764e1e}, !- Handle
+  60.0 watt fixtures for Space 52,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {a5d98aba-933c-4a5f-8a0d-3baa13eee0f6}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059406;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
 OS:Lights,
-  {f6003ee6-8525-4231-ba9a-c558189e258d}, !- Handle
-  4.04 watt fixtures for Space 53,        !- Name
+  {14850cc0-e088-4eb7-9a43-db5f02e0cc8b}, !- Handle
+  60.0 watt fixtures for Space 53,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {fad501fb-277c-4d74-86ed-a9d36b501897}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  235.865800401128;                       !- Multiplier
+  15.8816305603427;                       !- Multiplier
 
 OS:Lights,
-  {08c5f657-a47b-497d-b691-284faf742fe4}, !- Handle
-  4.04 watt fixtures for Space 54,        !- Name
+  {4d776948-e564-4a25-94b3-dfa37ade7f1b}, !- Handle
+  60.0 watt fixtures for Space 54,        !- Name
   {1680e4ff-73e5-4858-8480-097d6b8686dc}, !- Lights Definition Name
   {fc7a5ce5-7e69-42ce-9b58-2b7637ab2b60}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
-  60.5940594059406;                       !- Multiplier
+  4.08;                                   !- Multiplier
 
