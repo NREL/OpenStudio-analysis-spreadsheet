@@ -1,0 +1,24 @@
+{
+  "classname": "ChangeBuildingLocation",
+  "name": "change_building_location",
+  "display_name": "Change Building Location",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "arg",
+      "variable_type": "String",
+      "name": "weather_directory",
+      "display_name": "Weather Directory",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "arg",
+      "variable_type": "String",
+      "name": "weather_file_name",
+      "display_name": "Weather Directory",
+      "units": null,
+      "description": null
+    }
+  ]
+}

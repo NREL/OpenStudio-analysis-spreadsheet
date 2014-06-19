@@ -1,14 +1,16 @@
 {
   "classname": "SetEnergyPlusMinimumOutdoorAirFlowRate",
-  "path": "./measures/SetEnergyPlusMinimumOutdoorAirFlowRate",
-  "name": "Set EnergyPlus Minimum Outdoor Air Flow Rate",
+  "name": "set_energy_plus_minimum_outdoor_air_flow_rate",
+  "display_name": "Set Energy Plus Minimum Outdoor Air Flow Rate",
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
       "local_variable": "minOutdoorAirFlow",
       "variable_type": "Double",
       "name": "minOutdoorAirFlow",
-      "display_name": "Minimum Outdoor Air Flow Rate (m^3/s).",
+      "display_name": "Minimum Outdoor Air Flow Rate",
+      "units": "m^3/s",
+      "description": null,
       "default_value": 10.76
     }
   ]

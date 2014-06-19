@@ -1,14 +1,16 @@
 {
   "classname": "SwapLightsDefinition",
-  "path": "./measures/SwapLightsDefinition",
-  "name": "Swap Lights Definition",
+  "name": "swap_lights_definition",
+  "display_name": "Swap Lights Definition",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "old_lights_def",
       "variable_type": "Choice",
       "name": "old_lights_def",
-      "display_name": "Choose the Lights Definition you Want to Replace.",
+      "display_name": "Choose the Lights Definition you Want to Replace",
+      "units": null,
+      "description": null,
       "choices": [
 
       ]
@@ -17,7 +19,9 @@
       "local_variable": "new_lights_def",
       "variable_type": "Choice",
       "name": "new_lights_def",
-      "display_name": "Choose the Lights Definition to Use in Place of Removed Definition.",
+      "display_name": "Choose the Lights Definition to Use in Place of Removed Definition",
+      "units": null,
+      "description": null,
       "choices": [
 
       ]
@@ -26,7 +30,9 @@
       "local_variable": "demo_cost_initial_const",
       "variable_type": "Bool",
       "name": "demo_cost_initial_const",
-      "display_name": "Demolition Costs Occur During Initial Definition?",
+      "display_name": "Demolition Costs Occur During Initial Definition",
+      "units": null,
+      "description": null,
       "default_value": false
     }
   ]

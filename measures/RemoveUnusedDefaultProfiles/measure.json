@@ -1,7 +1,7 @@
 {
   "classname": "RemoveUnusedDefaultProfiles",
-  "path": "./measures/RemoveUnusedDefaultProfiles",
-  "name": "RemoveUnusedDefaultProfiles",
+  "name": "remove_unused_default_profiles",
+  "display_name": "Remove Unused Default Profiles",
   "measure_type": "RubyMeasure",
   "arguments": [
 

@@ -1,7 +1,7 @@
 {
   "classname": "AddSimplePvToShadingSurfacesByType",
-  "path": "./measures/AddSimplePvToShadingSurfacesByType",
-  "name": "Add Simple PV to Shading Surfaces By Type",
+  "name": "add_simple_pv_to_shading_surfaces_by_type",
+  "display_name": "Add Simple Pv to Shading Surfaces by Type",
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
@@ -9,6 +9,8 @@
       "variable_type": "Choice",
       "name": "shading_type",
       "display_name": "Choose the Type of Shading Surfaces to add PV to",
+      "units": null,
+      "description": null,
       "default_value": "Building Shading",
       "choices": [
         "Site Shading",
@@ -21,6 +23,8 @@
       "variable_type": "Double",
       "name": "fraction_surfacearea_with_pv",
       "display_name": "Fraction of Included Surface Area with PV",
+      "units": null,
+      "description": null,
       "default_value": 0.5
     },
     {
@@ -28,34 +32,44 @@
       "variable_type": "Double",
       "name": "value_for_cell_efficiency",
       "display_name": "Fractional Value for Cell Efficiency",
+      "units": null,
+      "description": null,
       "default_value": 0.12
     },
     {
       "local_variable": "material_cost",
       "variable_type": "Double",
       "name": "material_cost",
-      "display_name": "Material and Installation Costs for the PV ($).",
+      "display_name": "Material and Installation Costs for the PV",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "expected_life",
       "variable_type": "Integer",
       "name": "expected_life",
-      "display_name": "Expected Life (whole years).",
+      "display_name": "Expected Life",
+      "units": "whole years",
+      "description": null,
       "default_value": 20
     },
     {
       "local_variable": "om_cost",
       "variable_type": "Double",
       "name": "om_cost",
-      "display_name": "O & M Costs for the PV ($).",
+      "display_name": "O & M Costs for the PV",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "om_frequency",
       "variable_type": "Integer",
       "name": "om_frequency",
-      "display_name": "O & M Frequency (whole years).",
+      "display_name": "O & M Frequency",
+      "units": "whole years",
+      "description": null,
       "default_value": 1
     }
   ]

@@ -1,0 +1,9 @@
+{
+  "classname": "LPDtoLamps",
+  "name": "lp_dto_lamps",
+  "display_name": "Lp Dto Lamps",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "classname": "EnableIdealAirLoadsForAllZones",
+  "name": "enable_ideal_air_loads_for_all_zones",
+  "display_name": "Enable Ideal Air Loads For All Zones",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ]
+}

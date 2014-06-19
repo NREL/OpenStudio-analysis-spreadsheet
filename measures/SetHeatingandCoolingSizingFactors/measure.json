@@ -1,0 +1,26 @@
+{
+  "classname": "SetHeatingandCoolingSizingFactors",
+  "name": "set_heatingand_cooling_sizing_factors",
+  "display_name": "Set Heatingand Cooling Sizing Factors",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "htg_sz_factor",
+      "variable_type": "Double",
+      "name": "htg_sz_factor",
+      "display_name": "Heating Sizing Factor (eg 15 = 125% of required heating capacity",
+      "units": null,
+      "description": null,
+      "default_value": 1.25
+    },
+    {
+      "local_variable": "clg_sz_factor",
+      "variable_type": "Double",
+      "name": "clg_sz_factor",
+      "display_name": "Coolinig Sizing Factor (eg 15 = 115% of required cooling capacity",
+      "units": null,
+      "description": null,
+      "default_value": 1.15
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "classname": "AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType",
+  "name": "assign_thermostats_basedon_standards_building_typeand_standards_space_type",
+  "display_name": "Assign Thermostats Basedon Standards Building Typeand Standards Space Type",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ]
+}

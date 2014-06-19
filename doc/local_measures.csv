@@ -1,0 +1,604 @@
+false,Adjust Theromstat Setpoints by Degrees,AdjustTheromstatSetpointsByDegrees,AdjustTheromstatSetpointsByDegrees,RubyMeasure
+"",argument,"",Degrees Fahrenheit to Adjust Cooling Setpoint By,cooling_adjustment,Double,,1.0,""
+"",argument,"",Degrees Fahrenheit to Adjust heating Setpoint By,heating_adjustment,Double,,-1.0,""
+"",argument,"",Alter Design Day Thermostats,alter_design_days,Bool,,false,""
+false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
+false,Reduce Electric Equipment Loads by Percentage,ReduceElectricEquipmentLoadsByPercentage,ReduceElectricEquipmentLoadsByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Electric Equipment Power Reduction,elecequip_power_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Cost for Electric Equipment per Floor Area,material_and_installation_cost,Double,%,0.0,""
+"",argument,"",Increase in Demolition Costs for Electric Equipment per Floor Area,demolition_cost,Double,%,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,15,""
+"",argument,"",Increase O & M Costs for Electric Equipment per Floor Area,om_cost,Double,%,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Lighting Loads by Percentage,ReduceLightingLoadsByPercentage,ReduceLightingLoadsByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Lighting Power Reduction,lighting_power_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Cost for Lighting per Floor Area,material_and_installation_cost,Double,%,0.0,""
+"",argument,"",Increase in Demolition Costs for Lighting per Floor Area,demolition_cost,Double,%,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,15,""
+"",argument,"",Increase O & M Costs for Lighting per Floor Area,om_cost,Double,%,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Night Time Lighting Loads,ReduceNightTimeLightingLoads,ReduceNightTimeLightingLoads,RubyMeasure
+"",argument,"",Pick a Lighting Definition From the Model,lights_def,Choice,schedules using this will be altered,"",""
+"",argument,"",Fractional Value for Night Time Load,fraction_value,Double,,0.1,""
+"",argument,"",Apply Schedule Changes to Weekday and Default Profiles,apply_weekday,Bool,,true,""
+"",argument,"",Weekday/Default Time to Start Night Time Fraction,start_weekday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Weekday/Default Time to End Night Time Fraction,end_weekday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Apply schedule changes to Saturdays,apply_saturday,Bool,,true,""
+"",argument,"",Saturday Time to Start Night Time Fraction,start_saturday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Saturday Time to End Night Time Fraction,end_saturday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Apply Schedule Changes to Sundays,apply_sunday,Bool,,true,""
+"",argument,"",Sunday Time to Start Night Time Fraction,start_sunday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Sunday Time to End Night Time Fraction,end_sunday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Material and Installation Costs per Light Quantity,material_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs Costs per Light Quantity,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Constant Volume Fan Static Pressure,SetConstantVolumeFanStaticPressure,SetConstantVolumeFanStaticPressure,RubyMeasure
+"",argument,"",Static Pressure Rise,static_pressure_rise,Double,in. H2O,"",""
+false,Set Fixed Minimum Air Flow Ratein Vav Single Duct Air Terminalswith Reheat,SetFixedMinimumAirFlowRateinVAVSingleDuctAirTerminalswithReheat,SetFixedMinimumAirFlowRateinVAVSingleDuctAirTerminalswithReheat,RubyMeasure
+"",argument,"",Fixed Minimum Air Flow Rate,fixed_minimum_air_flow_rate,Double,cfm,"",""
+false,Set Maximum Reheat Air Temperatureof Vav Single Duct Air Terminalswith Reheat,SetMaximumReheatAirTemperatureofVAVSingleDuctAirTerminalswithReheat,SetMaximumReheatAirTemperatureofVAVSingleDuctAirTerminalswithReheat,RubyMeasure
+false,Set Site Ground Temperature,SetSiteGroundTemperature,SetSiteGroundTemperature,RubyMeasure
+"",argument,"",Ground Temperature,ground_temperature,Double,degC,"",""
+false,Add Ptac,AddPTAC,AddPTAC,RubyMeasure
+"",argument,"",Heating Efficiency,heating_efficiency,Double,,0.8,""
+"",argument,"",Heating Fuel Type,heating_fuel_type,Choice,,Gas,"|Gas,Electric|"
+"",argument,"",Cooling COP,cooling_cop,Double,,3.0,""
+false,Assign Thermostats Basedon Standards Building Typeand Standards Space Type,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,RubyMeasure
+false,Bar Aspect Ratio Study Sliced by Space Type Office,BarAspectRatioStudySlicedBySpaceTypeOffice,BarAspectRatioStudySlicedBySpaceTypeOffice,RubyMeasure
+"",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
+"",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
+"",argument,"",Number of Floors,num_floors,Integer,,2,""
+"",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
+"",argument,"",Fraction of Floor Area for Open Office Space Type,openOffice,Double,,"",""
+"",argument,"",Fraction of Floor Area for Closed Office Space Type,closedOffice,Double,,"",""
+"",argument,"",Fraction of Floor Area for Break Room Space Type,breakRoom,Double,,"",""
+"",argument,"",Fraction of Floor Area for Conference Space Type,conference,Double,,"",""
+"",argument,"",Fraction of Floor Area for Corridor Space Type,corridor,Double,,"",""
+"",argument,"",Fraction of Floor Area for Elec/MechRoom Space Type,elecMechRoom,Double,,"",""
+"",argument,"",Fraction of Floor Area for IT Room Space Type,iT_Room,Double,,"",""
+"",argument,"",Fraction of Floor Area for Lobby Space Type,lobby,Double,,"",""
+"",argument,"",Fraction of Floor Area for Print Room Space Type,printRoom,Double,,"",""
+"",argument,"",Fraction of Floor Area for Restroom Space Type,restroom,Double,,"",""
+"",argument,"",Fraction of Floor Area for Stair Space Type,stair,Double,,"",""
+"",argument,"",Fraction of Floor Area for Apartment Space Type,storage,Double,,"",""
+"",argument,"",Fraction of Floor Area for Vending Space Type,vending,Double,,"",""
+false,Bar Aspect Ratio Study Sliced by Space Type Retail,BarAspectRatioStudySlicedBySpaceTypeRetail,BarAspectRatioStudySlicedBySpaceTypeRetail,RubyMeasure
+"",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
+"",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
+"",argument,"",Number of Floors,num_floors,Integer,,2,""
+"",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
+"",argument,"",Fraction of Floor Area for Retail Space Type,retail,Double,,"",""
+"",argument,"",Fraction of Floor Area for Point of Sale Space Type,point_of_sale,Double,,"",""
+"",argument,"",Fraction of Floor Area for Entry Space Type,entry,Double,,"",""
+"",argument,"",Fraction of Floor Area for BackSpace Space Type,back_space,Double,,"",""
+false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
+false,Change Building Location,ChangeBuildingLocation,ChangeBuildingLocation,RubyMeasure
+"",argument,"",Weather Directory,weather_directory,String,,"",""
+"",argument,"",Weather Directory,weather_file_name,String,,"",""
+false,Enable Ideal Air Loads For All Zones,EnableIdealAirLoadsForAllZones,EnableIdealAirLoadsForAllZones,RubyMeasure
+false,N Grid Add Monthly Utility Data,NGridAddMonthlyUtilityData,NGridAddMonthlyUtilityData,RubyMeasure
+"",argument,"",Path to electric JSON,electric_json,String,,"",""
+"",argument,"",Path to gas JSON,gas_json,String,,"",""
+"",argument,"",Start date,start_date,String,,"",""
+"",argument,"",End date,end_date,String,,"",""
+false,Reduce Lighting Loads by Percentage,ReduceLightingLoadsByPercentage,ReduceLightingLoadsByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Lighting Power Reduction,lighting_power_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Cost for Lighting per Floor Area,material_and_installation_cost,Double,%,0.0,""
+"",argument,"",Increase in Demolition Costs for Lighting per Floor Area,demolition_cost,Double,%,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,15,""
+"",argument,"",Increase O & M Costs for Lighting per Floor Area,om_cost,Double,%,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Space Infiltration by Percentage,ReduceSpaceInfiltrationByPercentage,ReduceSpaceInfiltrationByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Space Infiltration Power Reduction,space_infiltration_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Costs for Building per Affected Floor Area,material_and_installation_cost,Double,$/ft^2,0.0,""
+"",argument,"",O & M Costs for Construction per Affected Floor Area,om_cost,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,SetWindowToWallRatioByFacade,RubyMeasure
+"",argument,"",Window to Wall Ratio,wwr,Double,fraction,0.4,""
+"",argument,"",Sill Height,sillHeight,Double,in,30.0,""
+"",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
+false,Space Type And Construction Set Wizard,SpaceTypeAndConstructionSetWizard,SpaceTypeAndConstructionSetWizard,RubyMeasure
+"",argument,"",Building Type,buildingType,String,,"",""
+"",argument,"",Template,template,String,,"",""
+"",argument,"",ASHRAE Climate Zone,climateZone,String,,"",""
+"",argument,"",Create Space Types,createSpaceTypes,Bool,,true,""
+"",argument,"",Create Construction Set,createConstructionSet,Bool,,true,""
+false,Add Cost Per Area to Construction,AddCostPerAreaToConstruction,AddCostPerAreaToConstruction,RubyMeasure
+"",argument,"",Choose a Construction to Add Costs to,construction,Choice,,"",""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Construction per Area Used,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Construction per Area Used,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Construction per Area Used,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Cost Per Area to Unused Construction,AddCostPerAreaToUnusedConstruction,AddCostPerAreaToUnusedConstruction,RubyMeasure
+"",argument,"",Choose a Construction to Add Costs to,construction,Choice,,"",""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Construction per Area Used,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Construction per Area Used,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Construction per Area Used,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Cost Per Floor Area to Building,AddCostPerFloorAreaToBuilding,AddCostPerFloorAreaToBuilding,RubyMeasure
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Name for Life Cycle Cost Object,lcc_name,String,,Building - Life Cycle Costs,""
+"",argument,"",Material and Installation Costs for the Building per Floor Area,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Construction per Area Used,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for the Builiding per Floor Area Used,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Cost Per Floor Area to Electric Equipment,AddCostPerFloorAreaToElectricEquipment,AddCostPerFloorAreaToElectricEquipment,RubyMeasure
+"",argument,"",Choose a Watts per Area Electric Equipment Definition to Add Costs to,equip_def,Choice,,"",""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Definition per Floor Area,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Definition per Floor Area,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Definition,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Definition per Floor Area,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Cost Per Floor Area to Lights,AddCostPerFloorAreaToLights,AddCostPerFloorAreaToLights,RubyMeasure
+"",argument,"",Choose a Watt per Area Lights Definition to Add Costs to,lights_def,Choice,,"",""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Definition per Floor Area,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Definition per Floor Area,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Definition,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Definition per Floor Area,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Cost Per Floor Area to Unused Lights,AddCostPerFloorAreaToUnusedLights,AddCostPerFloorAreaToUnusedLights,RubyMeasure
+"",argument,"",Choose a Watt per Area Lights Definition to Add Costs to,lights_def,Choice,,"",""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Definition per Floor Area,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Definition per Floor Area,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Definition,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Definition per Floor Area,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Cost to Supply Side Hvac Component by Air Loop,AddCostToSupplySideHVACComponentByAirLoop,AddCostToSupplySideHVACComponentByAirLoop,RubyMeasure
+"",argument,"",Select an HVAC Air Loop Supply Side Component Type,hvac_comp_type,Choice,,"","|CoilCoolingDXSingleSpeed,CoilCoolingDXTwoSpeed,CoilHeatingDXSingleSpeed,CoilHeatingElectric,CoilHeatingGas,CoilHeatingWaterBaseboard,FanConstantVolume,FanOnOff,FanVariableVolume,PumpConstantSpeed,PumpVariableSpeed,CoilCoolingWater,CoilHeatingWater|"
+"",argument,"",Choose an Air Loop to Add Costs to,object,Choice,,**All Air Loops**,|**All Air Loops**|
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs per Component,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Component,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Component,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Daylight Sensors,AddDaylightSensors,AddDaylightSensors,RubyMeasure
+"",argument,"",Add Daylight Sensors to Spaces of This Space Type,space_type,Choice,,"",""
+"",argument,"",Daylighting Setpoint,setpoint,Double,fc,45.0,""
+"",argument,"",Daylighting Control Type,control_type,Choice,,Continuous/Off,"|None,Continuous,Stepped,Continuous/Off|"
+"",argument,"",Daylighting Minimum Input Power Fraction,min_power_fraction,Double,min = 0 max = 0.6,0.3,""
+"",argument,"",Daylighting Minimum Light Output Fraction,min_light_fraction,Double,min = 0 max = 0.6,0.2,""
+"",argument,"",Sensor Height,height,Double,inches,30.0,""
+"",argument,"",Material and Installation Costs per Space for Daylight Sensor,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Space for Daylight Sensor,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Space for Daylight Sensor,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Energy Recovery Ventilator,AddEnergyRecoveryVentilator,AddEnergyRecoveryVentilator,RubyMeasure
+"",argument,"",Apply the measure to,air_loop_widget,Choice,,air_loop_display_names[0],"|0,air_loop_display_names[0]|"
+"",argument,"",Sensible Effectiveness at 100% Heating Air Flow,sensible_eff_at_100_heating,Double,,0.76,""
+"",argument,"",Latent Effectiveness at 100% Heating Air Flow,latent_eff_at_100_heating,Double,,0.68,""
+"",argument,"",Sensible Effectiveness at 75% Heating Air Flow,sensible_eff_at_75_heating,Double,,0.81,""
+"",argument,"",Latent Effectiveness at 75% Heating Air Flow,latent_eff_at_75_heating,Double,,0.73,""
+"",argument,"",Sensible Effectiveness at 100% Cooling Air Flow,sensible_eff_at_100_cooling,Double,,0.76,""
+"",argument,"",Latent Effectiveness at 100% Cooling Air Flow,latent_eff_at_100_cooling,Double,,0.68,""
+"",argument,"",Sensible Effectiveness at 75% Cooling Air Flow,sensible_eff_at_75_cooling,Double,,0.81,""
+"",argument,"",Latent Effectiveness at 75% Cooling Air Flow,latent_eff_at_75_cooling,Double,,0.73,""
+"",argument,"",Heat Exchanger Type,heat_exchanger_type_widget,Choice,,heat_exchanger_type_display_names[0],"|0,heat_exchanger_type_display_names[0]|"
+"",argument,"",Nominal electric power,nominal_electric_power,Double,,"",""
+false,Add Exterior Lights,AddExteriorLights,AddExteriorLights,RubyMeasure
+"",argument,"",Exterior Lighting Design Power,ext_lighting_level,Double,W,1000.0,""
+"",argument,"",End-Use SubCategory,end_use_subcategory,String,,Exterior Facade Lighting,""
+"",argument,"",Remove Existing Exterior Lights in the Project,remove_existing_ext_lights,Bool,,false,""
+"",argument,"",Material and Installation Costs for Exterior Lights,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs for Exterior Lights,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Exterior Lights,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Add Meter,AddMeter,AddMeter,RubyMeasure
+"",argument,"",Enter Meter Name,meter_name,String,,Electricity:Facility,""
+"",argument,"",Reporting Frequency,reporting_frequency,Choice,,hourly,"|detailed,timestep,hourly,daily,monthly|"
+false,Add Output Diagnostics,AddOutputDiagnostics,AddOutputDiagnostics,EnergyPlusMeasure
+"",argument,"",Ouput Diagnostic Value,outputDiagnostic,Choice,,DisplayExtraWarnings,"|DisplayAllWarnings,DisplayExtraWarnings,DisplayUnusedSchedules,DisplayUnusedObjects,DisplayAdvancedReportVariables,DisplayZoneAirHeatBalanceOffBalance,DoNotMirrorDetachedShading,DisplayWeatherMissingDataWarnings,ReportDuringWarmup,ReportDetailedWarmupConvergence|"
+false,Add Output Variable,AddOutputVariable,AddOutputVariable,RubyMeasure
+"",argument,"",Enter Variable Name,variable_name,String,,"",""
+"",argument,"",Reporting Frequency,reporting_frequency,Choice,,hourly,"|detailed,timestep,hourly,daily,monthly|"
+false,Add Overhangs by Projection Factor,AddOverhangsByProjectionFactor,AddOverhangsByProjectionFactor,RubyMeasure
+"",argument,"",Projection Factor,projection_factor,Double,overhang depth / window height,0.5,""
+"",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
+"",argument,"",Remove Existing Space Shading Surfaces From the Model,remove_ext_space_shading,Bool,,false,""
+"",argument,"",Optionally Choose a Construction for the Overhangs,construction,Choice,,"",""
+false,Add Simple Pv to Shading Surfaces by Type,AddSimplePvToShadingSurfacesByType,AddSimplePvToShadingSurfacesByType,EnergyPlusMeasure
+"",argument,"",Choose the Type of Shading Surfaces to add PV to,shading_type,Choice,,Building Shading,"|Site Shading,Building Shading,Space/Zone Shading|"
+"",argument,"",Fraction of Included Surface Area with PV,fraction_surfacearea_with_pv,Double,,0.5,""
+"",argument,"",Fractional Value for Cell Efficiency,value_for_cell_efficiency,Double,,0.12,""
+"",argument,"",Material and Installation Costs for the PV,material_cost,Double,$,0.0,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for the PV,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Adjust Thermostat Setpoints by Degrees,AdjustThermostatSetpointsByDegrees,AdjustThermostatSetpointsByDegrees,RubyMeasure
+"",argument,"",Degrees Fahrenheit to Adjust Cooling Setpoint By,cooling_adjustment,Double,,1.0,""
+"",argument,"",Degrees Fahrenheit to Adjust heating Setpoint By,heating_adjustment,Double,,-1.0,""
+"",argument,"",Alter Design Day Thermostats,alter_design_days,Bool,,false,""
+false,Adjust Theromstat Setpoints by Degrees,AdjustTheromstatSetpointsByDegrees,AdjustTheromstatSetpointsByDegrees,RubyMeasure
+"",argument,"",Degrees Fahrenheit to Adjust Cooling Setpoint By,cooling_adjustment,Double,,1.0,""
+"",argument,"",Degrees Fahrenheit to Adjust heating Setpoint By,heating_adjustment,Double,,-1.0,""
+"",argument,"",Alter Design Day Thermostats,alter_design_days,Bool,,false,""
+false,Analysis Period Cash Flows,AnalysisPeriodCashFlows,AnalysisPeriodCashFlows,ReportingMeasure
+false,Annual End Use Breakdown,AnnualEndUseBreakdown,AnnualEndUseBreakdown,ReportingMeasure
+false,Bar Aspect Ratio Study,BarAspectRatioStudy,BarAspectRatioStudy,RubyMeasure
+"",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
+"",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
+"",argument,"",Number of Floors,num_floors,Integer,,2,""
+"",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
+"",argument,"",Surface Matching,surface_matching,Bool,,true,""
+"",argument,"",Make Thermal Zones from Spaces,make_zones,Bool,,true,""
+false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
+false,Enable Demand Controlled Ventilation,EnableDemandControlledVentilation,EnableDemandControlledVentilation,RubyMeasure
+"",argument,"",Choose an Air Loop to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|
+"",argument,"",Remove Baseline Costs From Effected AirLoopHVACOutdoorAirSystems,remove_costs,Bool,,false,""
+"",argument,"",Material and Installation Costs per Air Loop to Enable Demand Controlled Ventilation,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Air Loop to Enable Demand Controlled Ventilation,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Air Loop for Demand Controlled Ventilation,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Enable Economizer Control,EnableEconomizerControl,EnableEconomizerControl,RubyMeasure
+"",argument,"",Choose an Air Loop to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|
+"",argument,"",Economizer Control Type,economizer_type,Choice,,"","|FixedDryBulb,FixedEnthalpy,DifferentialDryBulb,DifferentialEnthalpy,FixedDewPointAndDryBulb,NoEconomizer|"
+"",argument,"",Economizer Maximum Limit Dry-Bulb Temperature,econoMaxDryBulbTemp,Double,F,69.0,""
+"",argument,"",Economizer Maximum Enthalpy,econoMaxEnthalpy,Double,Btu/lb,28.0,""
+"",argument,"",Economizer Maximum Limit Dewpoint Temperature,econoMaxDewpointTemp,Double,F,55.0,""
+"",argument,"",Economizer Minimum Limit Dry-Bulb Temperature,econoMinDryBulbTemp,Double,F,-148.0,""
+"",argument,"",Remove Baseline Costs From Effected AirLoopHVACOutdoorAirSystems,remove_costs,Bool,,false,""
+"",argument,"",Material and Installation Costs per Air Loop to Enable Economizer,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Air Loop to Enable Economizer,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Air Loop for Economizer,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Export Schedule Csv,ExportScheduleCSV,ExportScheduleCSV,ReportingMeasure
+"",argument,"",Time Interval,interval,Integer,minutes,60,""
+false,Find And Replace Object Names,FindAndReplaceObjectNames,FindAndReplaceObjectNames,RubyMeasure
+"",argument,"",Type the text you want search for in object names,orig_string,String,,replace this text,""
+"",argument,"",Type the text you want to add in place of the found text,new_string,String,,with this text,""
+false,Improve Fan Belt Efficiency,ImproveFanBeltEfficiency,ImproveFanBeltEfficiency,RubyMeasure
+"",argument,"",Choose an Air Loop to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|
+"",argument,"",Motor Efficiency Improvement Due to Fan Belt Improvements,motor_eff,Double,%,3.0,""
+"",argument,"",Remove Baseline Costs From Effected Fans,remove_costs,Bool,,false,""
+"",argument,"",Material and Installation Costs per Motor,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Motor,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Motor,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Improve Motor Efficiency,ImproveMotorEfficiency,ImproveMotorEfficiency,RubyMeasure
+"",argument,"",Choose a Plant or Air Loop to Alter,object,Choice,,*All Plant and Air Loops*,|*All Plant and Air Loops*|
+"",argument,"",Set Motor Efficiency,motor_eff,Double,%,96.0,""
+"",argument,"",Remove Baseline Costs From Effected Fans and Pumps,remove_costs,Bool,,false,""
+"",argument,"",Material and Installation Costs per Motor,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Motor,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Motor,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Increase Insulation R Value For Exterior Walls,IncreaseInsulationRValueForExteriorWalls,IncreaseInsulationRValueForExteriorWalls,RubyMeasure
+"",argument,"",Insulation R-value,r_value,Double,ft^2*h*R/Btu,13.0,""
+"",argument,"",Allow both increase and decrease in R-value to reach requested target,allow_reduction,Bool,,false,""
+"",argument,"",Increase in Material and Installation Costs for Construction per Area Used,material_cost_increase_ip,Double,$/ft^2,0.0,""
+"",argument,"",One Time Retrofit Cost to Add Insulation to Construction,one_time_retrofit_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Year to Incur One Time Retrofit Cost,years_until_retrofit_cost,Integer,whole years,0,""
+false,Increase Insulation R Value For Roofs,IncreaseInsulationRValueForRoofs,IncreaseInsulationRValueForRoofs,RubyMeasure
+"",argument,"",Insulation R-value,r_value,Double,ft^2*h*R/Btu,30.0,""
+"",argument,"",Allow both increase and decrease in R-value to reach requested target,allow_reduction,Bool,,false,""
+"",argument,"",Increase in Material and Installation Costs for Construction per Area Used,material_cost_increase_ip,Double,$/ft^2,0.0,""
+"",argument,"",One Time Retrofit Cost to Add Insulation to Construction,one_time_retrofit_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Year to Incur One Time Retrofit Cost,years_until_retrofit_cost,Integer,whole years,0,""
+false,Inject Osm Geometry Into an External Idf,InjectOsmGeometryIntoAnExternalIdf,InjectOsmGeometryIntoAnExternalIdf,EnergyPlusMeasure
+"",argument,"",Path to Source IDF File to Use,source_idf_path,String,,"",""
+"",argument,"",Merge Geometry From OpenStudio Model into Source IDF File,merge_geometry_from_osm,Bool,,true,""
+false,Meter Flood Plot,MeterFloodPlot,MeterFloodPlot,ReportingMeasure
+"",argument,"",Enter Meter Name,meter_name,String,,Electricity:Facility,""
+false,Modify Energy Plus Fan Variable Volume Objects,ModifyEnergyPlusFanVariableVolumeObjects,ModifyEnergyPlusFanVariableVolumeObjects,EnergyPlusMeasure
+"",argument,"",Pressure Rise,pressureRise,Double,Pa,10.76,""
+"",argument,"",Maximum Flow Rate,maximumFlowRate,Double,m^3/s,10.76,""
+false,Modify Energy Plus Coil Cooling DX Single Speed Objects,ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects,ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects,EnergyPlusMeasure
+"",argument,"",Rated Total Cooling Capacity,ratedTotalCoolingCapacity,Double,W,10.76,""
+"",argument,"",Rated COP,ratedCOP,Double,W/W,10.76,""
+"",argument,"",Rated Air Flow Rate,ratedAirFlowRate,Double,m^3/s,10.76,""
+"",argument,"",Nominal Time for Condensate Removal to Begin,condensateRemovalStart,Double,s,10.76,""
+"",argument,"",Ratio of Initial Moisture Evaporation Rate and Steady State Latent Capacity,evapLatentRatio,Double,,10.76,""
+"",argument,"",Latent Capacity Time Constant,latentCapTimeConstant,Double,s,10.76,""
+false,Modify Energy Plus Fan Variable Volume Objects,ModifyEnergyPlusFanVariableVolumeObjects,ModifyEnergyPlusFanVariableVolumeObjects,EnergyPlusMeasure
+"",argument,"",Pressure Rise,pressureRise,Double,Pa,10.76,""
+"",argument,"",Maximum Flow Rate,maximumFlowRate,Double,m^3/s,10.76,""
+false,Predicted Mean Vote,PredictedMeanVote,PredictedMeanVote,RubyMeasure
+"",argument,"",Enable ASHRAE 55 Comfort Warnings,comfortWarnings,Bool,,false,""
+"",argument,"",Mean Radiant Temperature Calculation Type,meanRadiantCalcType,Choice,,ZoneAveraged,"|ZoneAveraged,SurfaceWeighted,AngleFactor|"
+"",argument,"",Choose a Work Efficiency Schedule,workEfficiencySchedule,Choice,,"",""
+"",argument,"",Choose a Clothing Insulation Schedule,clothingSchedule,Choice,,clothing_schedule_display_names[0],|clothing_schedule_display_names[0]|
+"",argument,"",Choose an Air Velocity Schedule,airVelocitySchedule,Choice,,airVelocity_schedule_display_names[0],|airVelocity_schedule_display_names[0]|
+false,Reduce Electric Equipment Loads by Percentage,ReduceElectricEquipmentLoadsByPercentage,ReduceElectricEquipmentLoadsByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Electric Equipment Power Reduction,elecequip_power_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Cost for Electric Equipment per Floor Area,material_and_installation_cost,Double,%,0.0,""
+"",argument,"",Increase in Demolition Costs for Electric Equipment per Floor Area,demolition_cost,Double,%,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,15,""
+"",argument,"",Increase O & M Costs for Electric Equipment per Floor Area,om_cost,Double,%,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Lighting Loads by Percentage,ReduceLightingLoadsByPercentage,ReduceLightingLoadsByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Lighting Power Reduction,lighting_power_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Cost for Lighting per Floor Area,material_and_installation_cost,Double,%,0.0,""
+"",argument,"",Increase in Demolition Costs for Lighting per Floor Area,demolition_cost,Double,%,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,15,""
+"",argument,"",Increase O & M Costs for Lighting per Floor Area,om_cost,Double,%,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Night Time Electric Equipment Loads,ReduceNightTimeElectricEquipmentLoads,ReduceNightTimeElectricEquipmentLoads,RubyMeasure
+"",argument,"",Pick an Electric Equipment Definition,elec_load_def,Choice,schedules using this will be altered,"",""
+"",argument,"",Fractional Value for Night Time Load,fraction_value,Double,,0.1,""
+"",argument,"",Apply Schedule Changes to Weekday and Default Profiles,apply_weekday,Bool,,true,""
+"",argument,"",Weekday/Default Time to Start Night Time Fraction,start_weekday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Weekday/Default Time to End Night Time Fraction,end_weekday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Apply Schedule Changes to Saturdays,apply_saturday,Bool,,true,""
+"",argument,"",Saturday Time to Start Night Time Fraction,start_saturday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Saturday Time to End Night Time Fraction,end_saturday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Apply Schedule Changes to Sundays,apply_sunday,Bool,,true,""
+"",argument,"",Sunday Time to Start Night Time Fraction,start_sunday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Sunday Time to End Night Time Fraction,end_sunday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Material and Installation Costs per Electric Equipment Quantity,material_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs Costs per Electric Equipment Quantity,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Night Time Lighting Loads,ReduceNightTimeLightingLoads,ReduceNightTimeLightingLoads,RubyMeasure
+"",argument,"",Pick a Lighting Definition From the Model,lights_def,Choice,schedules using this will be altered,"",""
+"",argument,"",Fractional Value for Night Time Load,fraction_value,Double,,0.1,""
+"",argument,"",Apply Schedule Changes to Weekday and Default Profiles,apply_weekday,Bool,,true,""
+"",argument,"",Weekday/Default Time to Start Night Time Fraction,start_weekday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Weekday/Default Time to End Night Time Fraction,end_weekday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Apply schedule changes to Saturdays,apply_saturday,Bool,,true,""
+"",argument,"",Saturday Time to Start Night Time Fraction,start_saturday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Saturday Time to End Night Time Fraction,end_saturday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Apply Schedule Changes to Sundays,apply_sunday,Bool,,true,""
+"",argument,"",Sunday Time to Start Night Time Fraction,start_sunday,Double,"24hr, use decimal for sub hour",18.0,""
+"",argument,"",Sunday Time to End Night Time Fraction,end_sunday,Double,"24hr, use decimal for sub hour",9.0,""
+"",argument,"",Material and Installation Costs per Light Quantity,material_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs Costs per Light Quantity,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Space Infiltration by Percentage,ReduceSpaceInfiltrationByPercentage,ReduceSpaceInfiltrationByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Space Infiltration Power Reduction,space_infiltration_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Costs for Building per Affected Floor Area,material_and_installation_cost,Double,$/ft^2,0.0,""
+"",argument,"",O & M Costs for Construction per Affected Floor Area,om_cost,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Ventilation by Percentage,ReduceVentilationByPercentage,ReduceVentilationByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Design Specification Outdoor Air Reduction,design_spec_outdoor_air_reduction_percent,Double,%,30.0,""
+false,Remove Unused Default Profiles,RemoveUnusedDefaultProfiles,RemoveUnusedDefaultProfiles,RubyMeasure
+false,Rename Space Surfaces Basedon Parent Spaceand Orientation,RenameSpaceSurfacesBasedonParentSpaceandOrientation,RenameSpaceSurfacesBasedonParentSpaceandOrientation,RubyMeasure
+false,Replace Exterior Window Construction,ReplaceExteriorWindowConstruction,ReplaceExteriorWindowConstruction,RubyMeasure
+"",argument,"",Pick a Window Construction From the Model to Replace Existing Window Constructions,construction,Choice,,"",""
+"",argument,"",Change Fixed Windows,change_fixed_windows,Bool,,true,""
+"",argument,"",Change Operable Windows,change_operable_windows,Bool,,true,""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Construction per Area Used,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Construction per Area Used,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Construction per Area Used,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Replace Exterior Window Construction,ReplaceExteriorWindowConstruction,ReplaceExteriorWindowConstruction,RubyMeasure
+"",argument,"",Pick a Window Construction From the Model to Replace Existing Window Constructions,construction,Choice,,"",""
+"",argument,"",Change Fixed Windows,change_fixed_windows,Bool,,true,""
+"",argument,"",Change Operable Windows,change_operable_windows,Bool,,true,""
+"",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs for Construction per Area Used,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Construction per Area Used,demolition_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Construction per Area Used,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Rotate Building,RotateBuilding,RotateBuilding,RubyMeasure
+"",argument,"",Number of Degrees to Rotate Building,relative_building_rotation,Double,positive value is clockwise,90.0,""
+false,Rotate Building,RotateBuilding,RotateBuilding,RubyMeasure
+"",argument,"",Number of Degrees to Rotate Building,relative_building_rotation,Double,positive value is clockwise,90.0,""
+false,Set Air Cooled Air Conditioner Cop,SetAirCooledAirConditionerCOP,SetAirCooledAirConditionerCOP,RubyMeasure
+"",argument,"",Apply the measure to,unitary_ac_widget,Choice,,unitary_ac_display_names[0],"|0,unitary_ac_display_names[0]|"
+"",argument,"","Option 1, set rated COP to a user defined value",input_option_manual,Bool,,false,""
+"",argument,"",Rated COP,rated_COP,Double,,3.0,""
+"",argument,"","Option 2, set rated COP based on ASHRAE Standard 90 requirement",input_option_standard,Bool,,false,""
+"",argument,"",Estimated total cooling capacity,total_cooling_capacity,Double,"Only used to lookup 90.1 requirements, not used to change model capacity","",""
+"",argument,"",ASHRAE Standard 90,standards_widget,Choice,,standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,Set Air Cooled Unitary Heat Pump Cop,SetAirCooledUnitaryHeatPumpCOP,SetAirCooledUnitaryHeatPumpCOP,RubyMeasure
+"",argument,"",Apply the measure to,unitary_hp_widget,Choice,,unitary_hp_display_names[0],"|0,unitary_hp_display_names[0]|"
+"",argument,"","Option 1, set rated COP to a user defined value",input_option_manual,Bool,,false,""
+"",argument,"",Rated heating COP,rated_heating_COP,Double,,3.0,""
+"",argument,"",Rated cooling COP,rated_cooling_COP,Double,,3.0,""
+"",argument,"","Option 2, set rated COP based on ASHRAE Standard 90 requirement",input_option_standard,Bool,,false,""
+"",argument,"",Estimated total cooling capacity,total_cooling_capacity,Double,"Only used to lookup 90.1 requirements, not used to change model capacity","",""
+"",argument,"",ASHRAE Standard 90,standards_widget,Choice,,standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,Set Boiler Thermal Efficiency,SetBoilerThermalEfficiency,SetBoilerThermalEfficiency,RubyMeasure
+"",argument,"",Apply the measure to,boiler_widget,Choice,,boiler_display_names[0],"|0,boiler_display_names[0]|"
+"",argument,"","Option 1, set boiler nominal thermal efficiency to a user defined value",input_option_manual,Bool,,false,""
+"",argument,"",Boiler nominal thermal efficiency,boiler_thermal_efficiency,Double,between 0 and 1,0.8,""
+"",argument,"","Option 2, set boiler nominal thermal efficiency based on ASHRAE Standard 90 requirement",input_option_standard,Bool,,false,""
+"",argument,"",Boiler nominal capacity,nominal_capacity,Double,,"",""
+"",argument,"",Fuel type,fuel_type_widget,Choice,,fuel_type_display_names[0],"|0,1,2,fuel_type_display_names[0]|"
+"",argument,"",ASHRAE Standards 90,standards_widget,Choice,,standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,Set Chilled Water Loop Temperature,SetChilledWaterLoopTemperature,SetChilledWaterLoopTemperature,RubyMeasure
+"",argument,"",Desired chilled water setpoint,cw_temp_f,Double,F,45.0,""
+false,Set Chiller Cop,SetChillerCOP,SetChillerCOP,RubyMeasure
+"",argument,"",Apply the measure to,chiller_widget,Choice,,chiller_display_names[0],"|0,chiller_display_names[0]|"
+"",argument,"",Chiller rated COP,chiller_thermal_efficiency,Double,more than 0,3.0,""
+false,Set Co Pfor Single Speed DX Cooling Units,SetCOPforSingleSpeedDXCoolingUnits,SetCOPforSingleSpeedDXCoolingUnits,RubyMeasure
+"",argument,"",Choose an Air Loop with a two speed DX Cooling Unit to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|
+"",argument,"",Rated COP,cop,Double,,4.0,""
+"",argument,"",Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs per Cooling Coil DX Two Speed Unit,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Cooling Coil DX Two Speed Unit,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Cooling Coil DX Two Speed Unit,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Co Pfor Two Speed DX Cooling Units,SetCOPforTwoSpeedDXCoolingUnits,SetCOPforTwoSpeedDXCoolingUnits,RubyMeasure
+"",argument,"",Choose an Air Loop with a two speed DX Cooling Unit to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|
+"",argument,"",Rated High Speed COP,cop_high,Double,,4.0,""
+"",argument,"",Rated Low Speed COP,cop_low,Double,,4.0,""
+"",argument,"",Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs per Cooling Coil DX Two Speed Unit,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Cooling Coil DX Two Speed Unit,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Cooling Coil DX Two Speed Unit,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Energy Plus Infiltration Flow Rate Per Floor Area,SetEnergyPlusInfiltrationFlowRatePerFloorArea,SetEnergyPlusInfiltrationFlowRatePerFloorArea,EnergyPlusMeasure
+"",argument,"",Flow per Zone Floor Area,flowPerZoneFloorArea,Double,m^3/s-m^2,10.76,""
+false,Set Energy Plus Light Objects Lpd,SetEnergyPlusLightObjectsLPD,SetEnergyPlusLightObjectsLPD,EnergyPlusMeasure
+"",argument,"",Lighting Power Density,lpd,Double,W/m^2,10.76,""
+false,Set Energy Plus Minimum Outdoor Air Flow Rate,SetEnergyPlusMinimumOutdoorAirFlowRate,SetEnergyPlusMinimumOutdoorAirFlowRate,EnergyPlusMeasure
+"",argument,"",Minimum Outdoor Air Flow Rate,minOutdoorAirFlow,Double,m^3/s,10.76,""
+false,Set Ext Wall to Ground Boundary Condition by Story,SetExtWallToGroundBoundaryConditionByStory,SetExtWallToGroundBoundaryConditionByStory,RubyMeasure
+"",argument,"",Choose a Story to Change Wall Boundary Conditions For,storyBasement,Choice,,"",""
+false,Set Furnace Efficiency,SetFurnaceEfficiency,SetFurnaceEfficiency,RubyMeasure
+"",argument,"",Apply the measure to,furnace_widget,Choice,,furnace_display_names[0],"|0,furnace_display_names[0]|"
+"",argument,"","Option 1, set furnace burner efficiency to a user defined value",input_option_manual,Bool,,false,""
+"",argument,"",Burner efficiency,burner_efficiency,Double,between 0 and 1,0.8,""
+"",argument,"","Option 2, set furnace burner efficiency based on ASHRAE Standard 90 requirement",input_option_standard,Bool,,false,""
+"",argument,"",Nominal capacity,nominal_capacity,Double,,"",""
+"",argument,"",ASHRAE Standards 90,standards_widget,Choice,,standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
+false,Set Gas Burner Efficiency,SetGasBurnerEfficiency,SetGasBurnerEfficiency,RubyMeasure
+"",argument,"",Choose an Air Loop with a two speed DX Cooling Unit to Alter,object,Choice,,*All Air Loops*,|*All Air Loops*|
+"",argument,"",Burner Efficiency,eff,Double,fractional,0.95,""
+"",argument,"",Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units,remove_costs,Bool,,true,""
+"",argument,"",Material and Installation Costs per Cooling Coil DX Two Speed Unit,material_cost,Double,$,0.0,""
+"",argument,"",Demolition Costs per Cooling Coil DX Two Speed Unit,demolition_cost,Double,$,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs per Cooling Coil DX Two Speed Unit,om_cost,Double,$,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Heatingand Cooling Sizing Factors,SetHeatingandCoolingSizingFactors,SetHeatingandCoolingSizingFactors,RubyMeasure
+"",argument,"",Heating Sizing Factor (eg 15 = 125% of required heating capacity,htg_sz_factor,Double,,1.25,""
+"",argument,"",Coolinig Sizing Factor (eg 15 = 115% of required cooling capacity,clg_sz_factor,Double,,1.15,""
+false,Set Hot Water Loop Temperature,SetHotWaterLoopTemperature,SetHotWaterLoopTemperature,RubyMeasure
+"",argument,"",Desired hot water setpoint,hw_temp_f,Double,F,140.0,""
+false,Set Interior Walls And Floors to Adiabatic,SetInteriorWallsAndFloorsToAdiabatic,SetInteriorWallsAndFloorsToAdiabatic,RubyMeasure
+"",argument,"",Select New Construction,construction,Choice,,"",""
+false,Set Interior Walls to Selected Construction,SetInteriorWallsToSelectedConstruction,SetInteriorWallsToSelectedConstruction,RubyMeasure
+"",argument,"",Select new material:,construction,Choice,,"",""
+false,Set Lifecycle Cost Parameters,SetLifecycleCostParameters,SetLifecycleCostParameters,RubyMeasure
+"",argument,"",Set the Length of the Study Period,study_period,Integer,years,25,""
+false,Set Lighting Loads by Lpd,SetLightingLoadsByLPD,SetLightingLoadsByLPD,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Lighting Power Density,lpd,Double,W/ft^2,1.0,""
+"",argument,"",Material and Installation Costs for Lights per Floor Area,material_cost,Double,$/ft^2,0.0,""
+"",argument,"",Demolition Costs for Lights per Floor Area,demolition_cost,Double,$/ft^2,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,20,""
+"",argument,"",O & M Costs for Lights per Floor Area,om_cost,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Minimum Vav Terminal Flow Fraction,SetMinimumVAVTerminalFlowFraction,SetMinimumVAVTerminalFlowFraction,RubyMeasure
+"",argument,"",Minimum VAV Terminal Flow Fraction,min_vav_frac,Double,%,30.0,""
+false,Set Space Infiltration by Exterior Surface Area,SetSpaceInfiltrationByExteriorSurfaceArea,SetSpaceInfiltrationByExteriorSurfaceArea,RubyMeasure
+"",argument,"",Space Infiltration Flow per Exterior Envelope Surface Area   = (ft/min,infiltration_ip,Double,cfm/ft^2,0.05,""
+"",argument,"",Increase in Material and Installation Costs for Building per Exterior Envelope Area,material_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Costs for Construction per Area Used,om_cost_ip,Double,$/ft^2,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Set Water Heater Efficiency Heat Lossand Peak Water Flow Rate,SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate,SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate,RubyMeasure
+"",argument,"",Apply the measure to,waterheater_widget,Choice,,waterheater_display_names[0],"|0,waterheater_display_names[0]|"
+"",argument,"",Fuel type,heater_fuel_type_widget,Choice,,heater_fuel_type_display_names[0],|heater_fuel_type_display_names[0]|
+"",argument,"",Thermal efficiency,heater_thermal_efficiency,Double,,0.8,""
+"",argument,"",Loss coefficient to ambient temperature,onoff_cycle_loss_coefficient_to_ambient_temperature,Double,"optional input, baseline value will be used if empty",0.0,""
+"",argument,"",Peak water use flow rate,peak_use_flow_rate,Double,"optional input, baseline value will be used if empty","",""
+false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,SetWindowToWallRatioByFacade,RubyMeasure
+"",argument,"",Window to Wall Ratio,wwr,Double,fraction,0.4,""
+"",argument,"",Sill Height,sillHeight,Double,in,30.0,""
+"",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
+false,Shift Schedule Profile Time,ShiftScheduleProfileTime,ShiftScheduleProfileTime,RubyMeasure
+"",argument,"",Choose a Schedule to Shift the Time For,schedule,Choice,,*All Ruleset Schedules*,|*All Ruleset Schedules*|
+"",argument,"",Shift Schedule Profiles Forward,shift_value,Double,"24hr, use decimal for sub hour",1.0,""
+false,Standard Reports,StandardReports,StandardReports,ReportingMeasure
+false,Swap Lights Definition,SwapLightsDefinition,SwapLightsDefinition,RubyMeasure
+"",argument,"",Choose the Lights Definition you Want to Replace,old_lights_def,Choice,,"",""
+"",argument,"",Choose the Lights Definition to Use in Place of Removed Definition,new_lights_def,Choice,,"",""
+"",argument,"",Demolition Costs Occur During Initial Definition,demo_cost_initial_const,Bool,,false,""
+false,Xcel EDA Reportingand Qaqc,XcelEDAReportingandQAQC,XcelEDAReportingandQAQC,ReportingMeasure
+false,Xcel EDA Tariff Selectionand Model Setup,XcelEDATariffSelectionandModelSetup,XcelEDATariffSelectionandModelSetup,EnergyPlusMeasure
+"",argument,"",Select an Electricity Tariff,elec_tar,Choice,,Secondary General,"|Residential General,Commercial,Primary General,Secondary General Low Load Factor,Secondary General,Secondary Photovoltaic Time-of-Use,Transmission General,Non-Xcel Commercial,Non-Xcel Primary General,Non-Xcel Secondary General Low Load Factor,Non-Xcel Secondary General,Non-Xcel Transmission General|"
+"",argument,"",Select a Gas Tariff,gas_tar,Choice,,Large CG,"|Residential Gas,Small CG,Large CG,Interruptible Industrial G,Non-Xcel Gas Firm,Non-Xcel Gas Interruptible|"
+false,Add Overhangs by Projection Factor,AddOverhangsByProjectionFactor,AddOverhangsByProjectionFactor,RubyMeasure
+"",argument,"",Projection Factor,projection_factor,Double,overhang depth / window height,0.5,""
+"",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
+"",argument,"",Remove Existing Space Shading Surfaces From the Model,remove_ext_space_shading,Bool,,false,""
+"",argument,"",Optionally Choose a Construction for the Overhangs,construction,Choice,,"",""
+false,Set Thermostat Schedules,SetThermostatSchedules,SetThermostatSchedules,RubyMeasure
+"",argument,"",Choose Thermal Zones to change thermostat schedules on,zones,Choice,,*All Thermal Zones*,|*All Thermal Zones*|
+"",argument,"",Choose Cooling Schedule,cooling_sch,Choice,,*No Change*,"|,*No Change*|"
+"",argument,"",Choose Heating Schedule,heating_sch,Choice,,*No Change*,"|,*No Change*|"
+"",argument,"",Material and Installation Costs per Thermal Zone,material_cost,Double,$/thermal zone,0.0,""
+false,Xcel EDA Reportingand Qaqc,XcelEDAReportingandQAQC,XcelEDAReportingandQAQC,ReportingMeasure
+false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,SetWindowToWallRatioByFacade,RubyMeasure
+"",argument,"",Window to Wall Ratio,wwr,Double,fraction,0.4,""
+"",argument,"",Sill Height,sillHeight,Double,in,30.0,""
+"",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
+false,Aedg Office Hvac Vav DX,AedgOfficeHvacVavDx,AedgOfficeHvacVavDx,RubyMeasure
+"",argument,"",This space type should be part of a ceiling return air plenum,ceilingReturnPlenumSpaceType,Choice,,"We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
+"",argument,"",Total Cost for HVAC System,costTotalHVACSystem,Double,$,0.0,""
+"",argument,"",Apply recommended availability and ventilation schedules for air handlers,remake_schedules,Bool,,true,""
+false,Create Building,CreateBuilding,CreateBuilding,RubyMeasure
+"",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
+"",argument,"",Ratio of North/South Facade Length Relative to East/West Facade Length,ns_to_ew_ratio,Double,,2.0,""
+"",argument,"",Number of Floors,num_floors,Integer,,2,""
+"",argument,"",Floor to Floor Height,floor_to_floor_height_ip,Double,ft,10.0,""
+"",argument,"",Rotation,rotation_ip,Double,deg,0.0,""
+"",argument,"",Surface Matching,surface_matching,Bool,,true,""
+"",argument,"",Make Thermal Zones from Spaces,make_zones,Bool,,true,""
+false,Annual End Use Breakdown,AnnualEndUseBreakdown,AnnualEndUseBreakdown,ReportingMeasure
+false,Standard Reports,StandardReports,StandardReports,ReportingMeasure
+false,Time Series End Uses,TimeSeriesEndUses,TimeSeriesEndUses,RubyMeasure
+"",argument,"",Meter Type,meter_type,Choice,,Facility,"|Facility,Building|"
+"",argument,"",Reporting Frequency,reporting_frequency,Choice,,hourly,"|detailed,timestep,hourly,daily,monthly|"

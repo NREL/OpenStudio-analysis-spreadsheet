@@ -1,14 +1,16 @@
 {
   "classname": "SetExtWallToGroundBoundaryConditionByStory",
-  "path": "./measures/SetExtWallToGroundBoundaryConditionByStory",
-  "name": "Set Ext Wall To Ground Boundary Condition By Story",
+  "name": "set_ext_wall_to_ground_boundary_condition_by_story",
+  "display_name": "Set Ext Wall to Ground Boundary Condition by Story",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "storyBasement",
       "variable_type": "Choice",
       "name": "storyBasement",
-      "display_name": "Choose a Story to Change Wall Boundary Conditions For.",
+      "display_name": "Choose a Story to Change Wall Boundary Conditions For",
+      "units": null,
+      "description": null,
       "choices": [
 
       ]

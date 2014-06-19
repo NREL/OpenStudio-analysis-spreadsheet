@@ -1,0 +1,63 @@
+<measure>
+  <name>SwapAllLightsForNewDefinition</name>
+  <uid>5bff5238-df47-4d43-b4a7-e1bedb9af959</uid>
+  <version_id>3892fd0b-8af9-4785-88bc-872abaf7ffa7</version_id>
+  <description>This will use a new lights definition for all lights that use a lighting power with a user selected lighting definition. This won't alter lights that have per area or per person value.</description>
+  <modeler_description>For now I will hard code three options roughly equivalent to incandescent, fluorescent, and LED. Later will have external data source.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Electric Lighting.Lighting Equipment</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>LpdToLampOutput.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>229B2CE2</checksum>
+    </file>
+    <file>
+      <filename>SwapLightsDefinition_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>549636D4</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.0</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>3FDEBA1F</checksum>
+    </file>
+    <file>
+      <filename>test.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>A048EC60</checksum>
+    </file>
+  </files>
+</measure>

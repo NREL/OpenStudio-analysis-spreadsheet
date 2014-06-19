@@ -1,0 +1,9 @@
+{
+  "classname": "SetMaximumReheatAirTemperatureofVAVSingleDuctAirTerminalswithReheat",
+  "name": "set_maximum_reheat_air_temperatureof_vav_single_duct_air_terminalswith_reheat",
+  "display_name": "Set Maximum Reheat Air Temperatureof Vav Single Duct Air Terminalswith Reheat",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ]
+}

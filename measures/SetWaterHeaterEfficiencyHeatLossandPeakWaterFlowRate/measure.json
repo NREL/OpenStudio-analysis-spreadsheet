@@ -1,7 +1,7 @@
 {
   "classname": "SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate",
-  "path": "./measures/SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate",
-  "name": "Set Water Heater Efficiency, Heat Loss, and Peak Water Flow Rate",
+  "name": "set_water_heater_efficiency_heat_lossand_peak_water_flow_rate",
+  "display_name": "Set Water Heater Efficiency Heat Lossand Peak Water Flow Rate",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -9,6 +9,8 @@
       "variable_type": "Choice",
       "name": "waterheater_widget",
       "display_name": "Apply the measure to",
+      "units": null,
+      "description": null,
       "default_value": "waterheater_display_names[0]",
       "choices": [
         "0",
@@ -20,6 +22,8 @@
       "variable_type": "Choice",
       "name": "heater_fuel_type_widget",
       "display_name": "Fuel type",
+      "units": null,
+      "description": null,
       "default_value": "heater_fuel_type_display_names[0]",
       "choices": [
         "heater_fuel_type_display_names[0]"
@@ -29,21 +33,27 @@
       "local_variable": "heater_thermal_efficiency",
       "variable_type": "Double",
       "name": "heater_thermal_efficiency",
-      "display_name": "Thermal efficiency [between 0 and 1]",
+      "display_name": "Thermal efficiency",
+      "units": null,
+      "description": null,
       "default_value": 0.8
     },
     {
       "local_variable": "onoff_cycle_loss_coefficient_to_ambient_temperature",
       "variable_type": "Double",
       "name": "onoff_cycle_loss_coefficient_to_ambient_temperature",
-      "display_name": "Loss coefficient to ambient temperature [W/K] (optional input, baseline value will be used if empty)",
+      "display_name": "Loss coefficient to ambient temperature",
+      "units": "optional input, baseline value will be used if empty",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "peak_use_flow_rate",
       "variable_type": "Double",
       "name": "peak_use_flow_rate",
-      "display_name": "Peak water use flow rate [m3/s] (optional input, baseline value will be used if empty)"
+      "display_name": "Peak water use flow rate",
+      "units": "optional input, baseline value will be used if empty",
+      "description": null
     }
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "classname": "SetChilledWaterLoopTemperature",
+  "name": "set_chilled_water_loop_temperature",
+  "display_name": "Set Chilled Water Loop Temperature",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "cw_temp_f",
+      "variable_type": "Double",
+      "name": "cw_temp_f",
+      "display_name": "Desired chilled water setpoint",
+      "units": "F",
+      "description": null,
+      "default_value": 45.0
+    }
+  ]
+}

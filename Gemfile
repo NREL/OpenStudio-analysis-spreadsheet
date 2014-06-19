@@ -4,15 +4,16 @@ gem "rake", "~> 10.3.2"
 gem "rubyzip" 
 
 # uncomment if you need to update the bcl measures
-gem "bcl", "~> 0.5.1"
+#gem "bcl", "~> 0.5.1"
+gem "bcl", :github => "NREL/bcl-gem"
 #gem "bcl", :path => "../bcl-gem"
 
 gem "openstudio-aws", "~> 0.1.25"
-#gem "openstudio-aws", :git => "git@github.com:NREL/OpenStudio-aws-gem.git"
+#gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem"
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
 #gem "openstudio-analysis", "~> 0.2.2"
-gem "openstudio-analysis", :git => "git@github.com:NREL/OpenStudio-analysis-gem.git", :branch=> 'develop'
+gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> 'develop'
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
 
 gem "colored", "~> 1.2"

@@ -1,20 +1,24 @@
 {
   "classname": "AddOutputVariable",
-  "path": "./measures/AddOutputVariable",
-  "name": "Add Output Variable",
+  "name": "add_output_variable",
+  "display_name": "Add Output Variable",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "variable_name",
       "variable_type": "String",
       "name": "variable_name",
-      "display_name": "Enter Variable Name."
+      "display_name": "Enter Variable Name",
+      "units": null,
+      "description": null
     },
     {
       "local_variable": "reporting_frequency",
       "variable_type": "Choice",
       "name": "reporting_frequency",
-      "display_name": "Reporting Frequency.",
+      "display_name": "Reporting Frequency",
+      "units": null,
+      "description": null,
       "default_value": "hourly",
       "choices": [
         "detailed",

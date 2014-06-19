@@ -1,0 +1,17 @@
+{
+  "classname": "SetMinimumVAVTerminalFlowFraction",
+  "name": "set_minimum_vav_terminal_flow_fraction",
+  "display_name": "Set Minimum Vav Terminal Flow Fraction",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "min_vav_frac",
+      "variable_type": "Double",
+      "name": "min_vav_frac",
+      "display_name": "Minimum VAV Terminal Flow Fraction",
+      "units": "%",
+      "description": null,
+      "default_value": 30.0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "classname": "AddPTAC",
+  "name": "add_ptac",
+  "display_name": "Add Ptac",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "heating_efficiency",
+      "variable_type": "Double",
+      "name": "heating_efficiency",
+      "display_name": "Heating Efficiency",
+      "units": null,
+      "description": null,
+      "default_value": 0.8
+    },
+    {
+      "local_variable": "heating_fuel_type",
+      "variable_type": "Choice",
+      "name": "heating_fuel_type",
+      "display_name": "Heating Fuel Type",
+      "units": null,
+      "description": null,
+      "default_value": "Gas",
+      "choices": [
+        "Gas",
+        "Electric"
+      ]
+    },
+    {
+      "local_variable": "cooling_cop",
+      "variable_type": "Double",
+      "name": "cooling_cop",
+      "display_name": "Cooling COP",
+      "units": null,
+      "description": null,
+      "default_value": 3.0
+    }
+  ]
+}

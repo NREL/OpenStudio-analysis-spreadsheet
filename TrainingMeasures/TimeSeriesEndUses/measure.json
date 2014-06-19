@@ -1,0 +1,37 @@
+{
+  "classname": "TimeSeriesEndUses",
+  "name": "time_series_end_uses",
+  "display_name": "Time Series End Uses",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "meter_type",
+      "variable_type": "Choice",
+      "name": "meter_type",
+      "display_name": "Meter Type",
+      "units": null,
+      "description": null,
+      "default_value": "Facility",
+      "choices": [
+        "Facility",
+        "Building"
+      ]
+    },
+    {
+      "local_variable": "reporting_frequency",
+      "variable_type": "Choice",
+      "name": "reporting_frequency",
+      "display_name": "Reporting Frequency",
+      "units": null,
+      "description": null,
+      "default_value": "hourly",
+      "choices": [
+        "detailed",
+        "timestep",
+        "hourly",
+        "daily",
+        "monthly"
+      ]
+    }
+  ]
+}

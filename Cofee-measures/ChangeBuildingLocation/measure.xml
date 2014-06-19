@@ -1,0 +1,47 @@
+<measure>
+  <name>Change Building Location</name>
+  <uid>d4db4971-f5ba-11e3-a3ac-0800200c9a66</uid>
+  <version_id>ad4db4972-f5ba-11e3-a3ac-0800200c9a66</version_id>
+  <description>Change the building location</description>
+  <modeler_description>Change the building location</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Location</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.4</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>6E02F190</checksum>
+    </file>
+    <file>
+      <filename>change_building_location_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>468998BC</checksum>
+    </file>
+    <file>
+      <filename>stat_file.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>00000000</checksum>
+    </file>
+  </files>
+</measure>
