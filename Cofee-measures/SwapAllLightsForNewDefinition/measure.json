@@ -1,0 +1,22 @@
+{
+  "classname": "SwapAllLightsForNewDefinition",
+  "name": "swap_all_lights_for_new_definition",
+  "display_name": "Swap All Lights For New Definition",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "lightsDef",
+      "variable_type": "Choice",
+      "name": "lightsDef",
+      "display_name": "Choose a Lighting Fixture Type",
+      "units": null,
+      "description": null,
+      "default_value": "Fluorescent",
+      "choices": [
+        "Incandescent",
+        "Fluorescent",
+        "LED"
+      ]
+    }
+  ]
+}
