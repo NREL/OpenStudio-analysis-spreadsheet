@@ -1,0 +1,41 @@
+<measure>
+  <name>Set Run Period</name>
+  <uid>63d43c68-ed11-4c60-a5c5-cae72f7ba4ff</uid>
+  <version_id>323d0a0b-278c-4e0f-a484-24b7135f3df3</version_id>
+  <description>This will allow you to change the starting and ending day and month of the Run Period object.</description>
+  <modeler_description>This controls the length of the simulation period for EnergyPlus.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Whole Building.Whole Building Schedules</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.4.0</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>5051711A</checksum>
+    </file>
+    <file>
+      <filename>SetRunPeriod_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>390BCFEF</checksum>
+    </file>
+  </files>
+</measure>
