@@ -50,7 +50,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
     ltg_tech_lookup << ['Office','Lobby',0.27,0.9,1.3,2.04,2.47]
     ltg_tech_lookup << ['Office','OpenOffice',0.294,0.98,1.1,1.73,2.09]
     ltg_tech_lookup << ['Office','PrintRoom',0.333,1.11,1.1,1.55,1.88]
-    ltg_tech_lookup << ['Office','RestRoom',0.294,0.98,0.9,1.41,1.71]
+    ltg_tech_lookup << ['Office','Restroom',0.294,0.98,0.9,1.41,1.71]
     ltg_tech_lookup << ['Office','Stair',0.207,0.69,0.6,0.94,1.14]
     ltg_tech_lookup << ['Office','Storage',0.189,0.63,0.8,1.27,1.54]
     ltg_tech_lookup << ['Office','Vending',0.198,0.66,0.5,1.57,0.95]
@@ -90,10 +90,13 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
       technology = nil
       fixture_wattage = nil
       fixture_name = nil
-      
+
       # Loop through all space types and replace lights def specified as LPD with
       # actual light fixtures
       model.getSpaceTypes.sort.each do |space_type|
+
+        # next if there are no spaces using this space type
+        next if space_type.spaces.size == 0
 
         # stop here if this space type doesn't use the lights_def
         # todo - make this more robust to handle multiple light instances using same def in a model
@@ -182,9 +185,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
         
         # Report out the inference
         runner.registerInfo("Inferred that '#{space_type.name}' with LPD of #{lpd_w_per_ft2.round(2)}W/ft^2 has #{ltg_tech_inferred} lights based on an LPD closest to #{ltg_tech_types[closest_ltg_type]}W/ft^2.")
-        
-        runner.registerInfo("Fixture name = '#{fixture_name}'.")
-        
+
         space_type.spaces.sort.each do |space|
 
           # todo check and see if there were any space lights to start with
@@ -200,6 +201,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
 
           # Calculate number of fixtures needed to hit calibrated LPD
           num_fixtures = (total_lighting_power_w/fixture_wattage).round # Don't want partial fixtures
+          # todo - confirm with Nick and Brian if they want rounding. I think they want accurate wattage and are ok with fractional number of fixtures.
 
           # Add a new light fixture to replace LPD 
           new_light_inst = OpenStudio::Model::Lights.new(lights_def)
@@ -230,16 +232,16 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           end
         end
 
-        runner.registerInfo("Fixture name 2 = '#{fixture_name}'.")
-        
       end # end of space_types.sort.each do
-      
-      runner.registerInfo("Fixture name 3 = '#{fixture_name}'.")
-      
+
       # Replace the lights def specified as LPD
       # with actual fixtures
-      #lights_def.setName(fixture_name)
-      #lights_def.setLightingLevel(fixture_wattage)
+      if fixture_name and fixture_wattage # not sure why this is needed but for some reason a full nulls are passed in
+        lights_def.setName(fixture_name)
+        lights_def.setLightingLevel(fixture_wattage)
+      else
+        runner.registerInfo("Skipping #{lights_def.name} because there are no spaces affected by it's instances. It may be used for an unassigned space type.")
+      end
       
     end # end of lights_defs.sort.each do
 
