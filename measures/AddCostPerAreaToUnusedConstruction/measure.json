@@ -87,5 +87,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Add Cost per Area to Unused Construction",
+  "uid": "ad632782-125f-45c8-a9cf-516e184b418a",
+  "version_id": "1a065b57-548a-44ae-b6de-44ef5edb564e",
+  "modeler_description": "The use case for this is a construction that is not used in the baseline but will be used after other measures are run. For example adding overhangs to the Building.",
+  "description": "This measure is the same as \"Add Cost per Area to Construction\" except that it only offers constructions that are not used on any surfaces in the baseline construction.",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
   ]
 }

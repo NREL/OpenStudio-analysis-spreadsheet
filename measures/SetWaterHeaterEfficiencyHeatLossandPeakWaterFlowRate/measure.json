@@ -55,5 +55,13 @@
       "units": "optional input, baseline value will be used if empty",
       "description": null
     }
+  ],
+  "name_xml": "Set Water Heater Efficiency, Heat Loss, and Peak Water Flow Rate",
+  "uid": "22dc85fc-2502-4b87-acf8-2da15467c1c5",
+  "version_id": "7f471bd7-0885-4054-b80c-1380ab13b8bc",
+  "modeler_description": "The measure loops through the baseline model and identifies the OS:WaterHeater:Mixed objects. Users can choose one or all water heaters from the drop down list to change the fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. If these parameters are changed through the measure, their initial and final values are reported during simulation.  ",
+  "description": "High efficiency service water heaters with proper insulation save building energy consumption. This measure allows users to modify the water heater fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. Note that the peak flow rate change only applies to standalone water heaters, not for those water heaters with plant loop connections.",
+  "tags": [
+    "Service Water Heating.Water Heating"
   ]
 }

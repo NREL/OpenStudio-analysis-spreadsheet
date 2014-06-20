@@ -1,7 +1,7 @@
 {
   "classname": "SetLightingLoadsByLPD",
   "name": "set_lighting_loads_by_lpd",
-  "display_name": "Set Lighting Loads by Lpd",
+  "display_name": "Set Lighting Loads by LPD",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -88,5 +88,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Set Lighting Loads by LPD",
+  "uid": "38962937-0bd7-480c-b39a-12d075f3f493",
+  "version_id": "2f2ab021-e031-482e-9c69-6ad5efaaae7c",
+  "modeler_description": "Delete all of the existing lighting in the model. Add lights with the user defined lighting power density to all spaces that initially had lights, using the schedule from the original lights. If multiple lights existed the schedule will be pulled from the one with the highest lighting power density value. Demolition costs from lights and luminaires removed by this measure can be included in the analysis.",
+  "description": "Set the lighting power density (W/ft^2) in the to a specified value for all spaces that have lights. This can be applied to the entire building or a specific space type. Cost can be added per floor area.",
+  "tags": [
+    "Electric Lighting.Lighting Equipment"
   ]
 }

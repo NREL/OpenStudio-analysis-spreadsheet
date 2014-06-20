@@ -52,5 +52,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "ReduceSpaceInfiltrationByPercentage",
+  "uid": "d8161857-8b77-4e1a-a76c-ae5deab7c1e0",
+  "version_id": "37681b68-3cc3-4799-bf51-ae603fd9b66e",
+  "modeler_description": "This can be run across a space type or the entire building. Costs will be associated with the building. If infiltration objects are removed at a later date, the costs will remain.",
+  "description": "This measure will reduce space infiltration rates by the requested percentage. A cost per square foot of building area can be added to the model.",
+  "tags": [
+    "Envelope.Infiltration"
   ]
 }

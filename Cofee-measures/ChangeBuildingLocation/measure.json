@@ -13,12 +13,20 @@
       "description": null
     },
     {
-      "local_variable": "arg",
+      "local_variable": "arg2",
       "variable_type": "String",
       "name": "weather_file_name",
-      "display_name": "Weather Directory",
+      "display_name": "Weather File Name",
       "units": null,
       "description": null
     }
+  ],
+  "name_xml": "Change Building Location",
+  "uid": "d4db4971-f5ba-11e3-a3ac-0800200c9a66",
+  "version_id": "ad4db4972-f5ba-11e3-a3ac-0800200c9a66",
+  "modeler_description": "Change the building location",
+  "description": "Change the building location",
+  "tags": [
+    "Location"
   ]
 }

@@ -5,5 +5,13 @@
   "measure_type": "ReportingMeasure",
   "arguments": [
 
+  ],
+  "name_xml": "Calibration Reports",
+  "uid": "e6642d40-7366-4647-8724-53a37991d579",
+  "version_id": "d009120e-338a-4feb-9262-5b2cbc0643f2",
+  "modeler_description": "Change me",
+  "description": "Change me",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

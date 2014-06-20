@@ -22,5 +22,13 @@
       "description": null,
       "default_value": "with this text"
     }
+  ],
+  "name_xml": "Find and Replace Object Names in the Model",
+  "uid": "f540d66c-800f-4187-81ee-957891034d56",
+  "version_id": "e92d3d75-dab2-487f-a28b-efcc4dd76a27",
+  "modeler_description": "Loop through objects. If the object has a name then search for string, and replace if found.",
+  "description": "This measure will find and replace the string you search for in names of all objects in the model.",
+  "tags": [
+    "Whole Building.Space Types"
   ]
 }

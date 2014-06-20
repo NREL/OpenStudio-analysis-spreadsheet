@@ -25,5 +25,13 @@
       "description": null,
       "default_value": 30.0
     }
+  ],
+  "name_xml": "Reduce Ventilation By Percentage",
+  "uid": "cecf490d-7146-4055-85c7-a7901b9a7dc0",
+  "version_id": "12d14189-ac2b-4287-baac-093c61094a84",
+  "modeler_description": "This can be run across a space type or the entire building. Costs will be associated with the building. If design specification outdoor air objects are removed at a later date, the costs will remain.",
+  "description": "This measure will reduce space ventilation rates by the requested percentage. A cost per square foot of building area can be added to the model.",
+  "tags": [
+    "HVAC.Ventilation"
   ]
 }

@@ -62,5 +62,13 @@
         "airVelocity_schedule_display_names[0]"
       ]
     }
+  ],
+  "name_xml": "Predicted Mean Vote",
+  "uid": "d26890c0-1281-4384-a676-5d38fa2e9e75",
+  "version_id": "628c904d-0f25-4e84-8c27-909629aa5b92",
+  "modeler_description": "This will not add new people objects, but rather just extend the ones that are in the model. It will rely on schedules already made in the model instead of creating new schedules.",
+  "description": "This measure adds the necessary data to people objects to support Predicted Mean Vote output data. It also adds the variable request.",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

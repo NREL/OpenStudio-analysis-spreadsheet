@@ -48,5 +48,13 @@
 
       ]
     }
+  ],
+  "name_xml": "Add Overhangs by Projection Factor",
+  "uid": "1e29e117-3916-4368-b24d-75da54045956",
+  "version_id": "30da3733-e6f1-4eb0-a83d-ef03feccf35b",
+  "modeler_description": "If requested then delete existing space shading surfaces. Then loop through exterior windows. If the requested cardinal direction is the closest to the window, then add the overhang. Name the shading surface the same as the window but append with \"-Overhang\".  If a space shading surface of that name already exists, then delete it before making the new one. This measure has no life cycle cost arguments. You can see the economic impact of the measure by costing the construction used for the overhangs.",
+  "description": "Add overhangs by projection factor to specified windows. The projection factor is the overhang depth divided by the window height. This can be applied to windows by the closest cardinal direction. If baseline model contains overhangs made by this measure, they will be replaced. Optionally the measure can delete any pre-existing space shading surfaces.",
+  "tags": [
+    "Envelope.Fenestration"
   ]
 }

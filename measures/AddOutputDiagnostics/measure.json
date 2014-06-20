@@ -25,5 +25,13 @@
         "ReportDetailedWarmupConvergence"
       ]
     }
+  ],
+  "name_xml": "Add Output Diagnostics",
+  "uid": "cb957503-4a01-42c4-a918-a44df4ea759c",
+  "version_id": "0160df08-398c-4bd7-b3f3-3bb9e53c6e44",
+  "modeler_description": "Makes Output\"Diagnostics object with choice list for optional values.\r\n\r\nDisplayAllWarnings\r\nDisplayExtraWarnings\r\nDisplayUnusedSchedules\r\nDisplayUnusedObjects\r\nDisplayAdvancedReportVariables\r\nDisplayZoneAirHeatBalanceOffBalance\r\nDoNotMirrorDetachedShading\r\nDisplayWeatherMissingDataWarnings\r\nReportDuringWarmup\r\nReportDetailedWarmupConvergence",
+  "description": "Often the eplusout.err file may request output diagnsotics. This measure can be used to add this to the IDF file. Re-run yoru project to see the requested output.",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

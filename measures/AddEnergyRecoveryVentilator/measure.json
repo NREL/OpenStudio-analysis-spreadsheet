@@ -110,5 +110,13 @@
       "units": null,
       "description": null
     }
+  ],
+  "name_xml": "Add Energy Recovery Ventilator",
+  "uid": "9b530f72-e5ab-467b-acd6-b5c3458d7b55",
+  "version_id": "739acc9c-ee2b-49eb-a7b9-afc0a559ed82",
+  "modeler_description": "The measure loops through all air loops in the baseline model and identify the air loops that contain OS:AirLoopHVAC:OutdoorAirSystem objects. Users can choose one or all air loops from the drop down list to apply this measure. If an OS:HeatExchanger:AirToAir:SensibleAndLatent object is found in the selected air loop, the measure modifies the effectiveness, heat exchanger type, and electric power setting in the model based on user inputs. If no OS:HeatExchanger:AirToAir:SensibleAndLatent object is found in the selected air loop, the measure will attach a OS:HeatExchanger:AirToAir:SensibleAndLatent object to the air loop. The economizer lockout is always set to be Yes. The initial and final values of effectiveness, the heat exchanger type, and nominal electric power are reported during simulation",
+  "description": "Energy recovery ventilator transfers energy between the exhaust/relief and outdoor air streams and helps reduce building energy use. The measure adds an air-to-air heat exchanger to the air handler unit. Users can define the latent and sensible heat transfer effectiveness. ",
+  "tags": [
+    "HVAC.Energy Recovery"
   ]
 }

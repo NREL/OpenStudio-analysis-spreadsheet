@@ -5,5 +5,13 @@
   "measure_type": "RubyMeasure",
   "arguments": [
 
+  ],
+  "name_xml": "LPD to Lamps",
+  "uid": "28291e46-bb61-474b-b54d-c4c2b47f7a46",
+  "version_id": "7193a768-2d8a-4d83-8047-eb66b68d581d",
+  "modeler_description": "This will take LPD values in the space type, remove them, and then add individual lights with specific power to each space in the model.",
+  "description": "This take a generic lighing power density and convert it to individual fixtures",
+  "tags": [
+    "Electric Lighting.Lighting Equipment"
   ]
 }

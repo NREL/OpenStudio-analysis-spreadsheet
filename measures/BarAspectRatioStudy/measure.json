@@ -58,5 +58,13 @@
       "description": null,
       "default_value": true
     }
+  ],
+  "name_xml": "Bar Aspect Ratio Study",
+  "uid": "3dcac94d-8a2e-43b6-8698-a3a4e8f3903f",
+  "version_id": "2ed355fb-64f8-4896-a2f2-4fef9f498bcd",
+  "modeler_description": "This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.",
+  "description": "This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.",
+  "tags": [
+    "Envelope.Form"
   ]
 }

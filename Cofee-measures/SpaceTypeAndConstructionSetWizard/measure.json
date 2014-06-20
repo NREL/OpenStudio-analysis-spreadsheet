@@ -46,5 +46,13 @@
       "description": null,
       "default_value": true
     }
+  ],
+  "name_xml": "Space Type And Construction Set Wizard",
+  "uid": "9f8b4a61-ef75-42b6-8cb9-b73fad1f794a",
+  "version_id": "56d62e5f-34c2-4f8a-b123-9f2bfdb5d57f",
+  "modeler_description": "Requires ruby 2.0 to read JSON file used to make our templates. ",
+  "description": "Create space types and or construction sets for the requested building type, climate zone, and target",
+  "tags": [
+    "Whole Building.Space Types"
   ]
 }

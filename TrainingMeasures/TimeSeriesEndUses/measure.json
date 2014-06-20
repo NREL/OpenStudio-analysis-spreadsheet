@@ -33,5 +33,13 @@
         "monthly"
       ]
     }
+  ],
+  "name_xml": "TimeSeriesEndUses",
+  "uid": "477e4d05-8e52-4470-9916-185612e70812",
+  "version_id": "acdf41b5-bfc1-44d7-9065-a5a0abede699",
+  "modeler_description": "create time series for end uses",
+  "description": "create time series for end uses",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

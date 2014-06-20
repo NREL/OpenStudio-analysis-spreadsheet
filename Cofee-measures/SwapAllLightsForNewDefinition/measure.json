@@ -18,5 +18,13 @@
         "LED"
       ]
     }
+  ],
+  "name_xml": "SwapAllLightsForNewDefinition",
+  "uid": "5bff5238-df47-4d43-b4a7-e1bedb9af959",
+  "version_id": "3892fd0b-8af9-4785-88bc-872abaf7ffa7",
+  "modeler_description": "For now I will hard code three options roughly equivalent to incandescent, fluorescent, and LED. Later will have external data source.",
+  "description": "This will use a new lights definition for all lights that use a lighting power with a user selected lighting definition. This won't alter lights that have per area or per person value.",
+  "tags": [
+    "Electric Lighting.Lighting Equipment"
   ]
 }

@@ -69,5 +69,13 @@
         "standards_display_names[0]"
       ]
     }
+  ],
+  "name_xml": "Set Furnace Efficiency",
+  "uid": "eb378599-23a5-4d29-9904-8e8c76bf5125",
+  "version_id": "f3fc0ff1-7697-434a-a8c2-491ca366cdd0",
+  "modeler_description": "The measure loops through the baseline model and identifies the OS:Boiler:HotWater and OS:Boiler:Steam objects. Users can choose one or all boilers from the drop down list to change their thermal efficiency settings. Then users need to select Option 1 or 2 using the check box. For Option 1, a boiler nominal thermal efficiency input is required and it is applied to the selected boilers. For Option 2, users need to specify the fuel type, boiler normal capacity, and the version of Standard 90.1. These inputs and the boiler type (hot water or steam) are used to identify the thermal efficiency requirement in the Standard 90.1, which is used to change the model. The initial and final values of the thermal efficiency are be reported during simulation. ",
+  "description": "Boiler thermal efficiency affects heating  energy consumption. The measure offers two options to set the boiler thermal efficiency. Option 1 allows users to specify the efficiency inputs directly. Option 2 determines the boiler thermal efficiency based on the boiler type, the boiler capacity, the fuel type and the prescriptive requirement in ASHRAE Standard 90.1. Option 2 is only applicable to natural gas or oil fired boilers. ",
+  "tags": [
+    "HVAC.Heating"
   ]
 }

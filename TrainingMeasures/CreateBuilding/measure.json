@@ -67,5 +67,13 @@
       "description": null,
       "default_value": true
     }
+  ],
+  "name_xml": "Create Aspect Ratio with Rotation",
+  "uid": "4f231149-c2ba-4b45-88e8-c117c62fcaf2",
+  "version_id": "8244cfab-5ed2-4b15-9685-1eecd1f1ab5d",
+  "modeler_description": "This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.",
+  "description": "This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.  This will also let us set rotation",
+  "tags": [
+    "Envelope.Form"
   ]
 }

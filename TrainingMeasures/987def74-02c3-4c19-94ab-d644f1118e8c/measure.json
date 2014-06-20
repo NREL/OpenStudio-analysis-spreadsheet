@@ -1,7 +1,7 @@
 {
   "classname": "AedgOfficeHvacVavDx",
   "name": "aedg_office_hvac_vav_dx",
-  "display_name": "Aedg Office Hvac Vav DX",
+  "display_name": "AEDG Office Hvac Vav DX",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -34,5 +34,13 @@
       "description": null,
       "default_value": true
     }
+  ],
+  "name_xml": "AEDG Office HVAC VAV with DX Cooling",
+  "uid": "ffdf05ce-34c2-498e-9ca8-4ef8fe3a9af5",
+  "version_id": "987def74-02c3-4c19-94ab-d644f1118e8c",
+  "modeler_description": "Airloops are dedicated to the multizone VAV cooling system and have variable speed fan operation, hot water coil heating, and two speed DX cooling.  The cold deck has outdoor air reset on the supply air temperature.  Heating is provided at the zone level with hot water baseboard heaters.",
+  "description": "Measure replaces existing HVAC system (if any) with a high efficiency multizone variable air volume (VAV) HVAC system (one system per floor).  The multizone VAV system (centralized cooling with zone level heating) is applied to all space types.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% Small and Medium Office AEDG.",
+  "tags": [
+    "HVAC.Whole System"
   ]
 }

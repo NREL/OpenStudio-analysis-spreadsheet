@@ -1,7 +1,7 @@
 {
   "classname": "SetChillerCOP",
   "name": "set_chiller_cop",
-  "display_name": "Set Chiller Cop",
+  "display_name": "Set Chiller COP",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -26,5 +26,13 @@
       "description": null,
       "default_value": 3.0
     }
+  ],
+  "name_xml": "SetChillerCOP",
+  "uid": "6b87fc76-a663-4611-bf1f-3ff416727267",
+  "version_id": "279c16d7-e087-43ea-bfce-1b6c85bb4c5a",
+  "modeler_description": "This measure may only work for Chiller:Electric:EIR",
+  "description": "This measure sets the COP for a chiller ",
+  "tags": [
+    "HVAC.Cooling"
   ]
 }

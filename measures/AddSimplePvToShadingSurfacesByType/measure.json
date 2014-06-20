@@ -72,5 +72,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Add Simple PV to Shading Surfaces By Type",
+  "uid": "27627c16-75d4-4fc3-add9-2d7d538c0130",
+  "version_id": "7dd48c74-7217-4690-9149-351c76255df2",
+  "modeler_description": "This measure will add PV objects for all site, building, or zone shading surfaces. Site and Building surfaces exist in both OpenStudio and EnergyPlus. Space shading surfaces in OpenStudio are translated to zone shading surfaces in EnergyPlus. The necessary PV objects will be added for each surface, as well as a number of shared PV resources.  A number of arguments will expose various PV settings. The recurring cost objects added are not directly associated with the PV objects. If the PV objects are removed the cost will remain.",
+  "description": "This measure will add Simple PV objects to site, building or space/zone shading surfaces. This will not create any new geometry, but will just make PV objects out of existing shading geometry. Optionally a cost can be added for the PV.",
+  "tags": [
+    "Onsite Power Generation.Photovoltaic"
   ]
 }

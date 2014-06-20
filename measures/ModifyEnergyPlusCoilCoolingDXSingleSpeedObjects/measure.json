@@ -58,5 +58,13 @@
       "description": null,
       "default_value": 10.76
     }
+  ],
+  "name_xml": "Modify EnergyPlus CoilCoolingDXSingleSpeed Objects",
+  "uid": "906f4d50-042d-4135-9eae-553345ab476a",
+  "version_id": "14e8503e-d11b-46f5-ab86-bb35747b05ec",
+  "modeler_description": "Set various values for all CoilCoolingDXSingleSpeed objects in the model will be set to the requested SI value.",
+  "description": "Set various values for existing CoilCoolingDXSingleSpeed objects. Input values are in SI units.",
+  "tags": [
+    "HVAC.Cooling"
   ]
 }

@@ -36,5 +36,13 @@
       "units": null,
       "description": null
     }
+  ],
+  "name_xml": "NGrid Add Monthly Utility Data",
+  "uid": "6da969e0-4256-49bf-9607-26504cc3d421",
+  "version_id": "541b587c-fa7c-47d0-acda-9a67d7d81e6a",
+  "modeler_description": "Minimum interval for utility data is one day",
+  "description": "Reads in custom format and adds utility data",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
   ]
 }

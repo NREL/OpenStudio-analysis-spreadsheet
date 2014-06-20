@@ -1,7 +1,7 @@
 {
   "classname": "SetAirCooledUnitaryHeatPumpCOP",
   "name": "set_air_cooled_unitary_heat_pump_cop",
-  "display_name": "Set Air Cooled Unitary Heat Pump Cop",
+  "display_name": "Set Air Cooled Unitary Heat Pump COP",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -78,5 +78,13 @@
         "standards_display_names[0]"
       ]
     }
+  ],
+  "name_xml": "Set Air-Cooled Unitary Heat Pump COP",
+  "uid": "15ae3288-331e-4c28-9fc5-2bc3397cb57e",
+  "version_id": "8e480c9a-ae39-460d-a9c8-905eae523eeb",
+  "modeler_description": "The measure loops through the baseline model and identifies the OS:AirLoopHVAC:UnitaryHeatPump:AirToAir objects. Users can choose one or all heat pumps from the drop down list to change their rated COP settings. Then users need to select Option 1 or 2 using the check box. For Option 1, a rated COP input is required and it is applied to the selected cooling coils. For Option 2, users need to specify the rated total cooling capacity and the version of Standard 90.1. These inputs are used to identify the COP requirement in the Standard 90.1, which is used to change the model. The initial and final values of the COP are reported during simulation.  ",
+  "description": "The coefficient of performance (COP) of heat pumps affects both heating and cooling energy consumption. The measure offers two options to set the air-cooled heap pump COP. Option 1 allows users to specify the heating and cooling COP inputs directly. Option 2 determines the COP values based on the rated total cooling capacity and the prescriptive requirements in ASHRAE Standard 90.1. ",
+  "tags": [
+    "HVAC.Cooling"
   ]
 }

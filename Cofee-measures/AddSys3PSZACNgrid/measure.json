@@ -1,0 +1,34 @@
+{
+  "classname": "AddSys3PSZAC",
+  "name": "add_sys3_pszac",
+  "display_name": "Add Sys3 Pszac",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "heating_efficiency",
+      "variable_type": "Double",
+      "name": "heating_efficiency",
+      "display_name": "Heating Efficiency",
+      "units": null,
+      "description": null,
+      "default_value": 0.8
+    },
+    {
+      "local_variable": "cooling_cop",
+      "variable_type": "Double",
+      "name": "cooling_cop",
+      "display_name": "Cooling COP",
+      "units": null,
+      "description": null,
+      "default_value": 3.0
+    }
+  ],
+  "name_xml": "Add Sys 3 - PSZ-AC Ngrid",
+  "uid": "af83d6ea-b7a3-405c-86e3-65da6eaf3f2c",
+  "version_id": "ee33ff18-01e7-49ac-9496-c968ea39d55f",
+  "modeler_description": "",
+  "description": "Based on Add Sys 3 - PSZ-AC but exposing arguments for COP and heating eff.",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}

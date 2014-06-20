@@ -28,5 +28,13 @@
         "monthly"
       ]
     }
+  ],
+  "name_xml": "Add Output Variable",
+  "uid": "2a058afb-e349-49ae-a4bf-2c56a42b4352",
+  "version_id": "77e9e6fc-d7e0-4768-9542-509c9b1ed665",
+  "modeler_description": "The measure just passes in the string and does not validate that it is a proper variable name. It is up to the user to know this or to look at the .rdd file from a previous simulation run.",
+  "description": "This measure adds an output variable at the requested reporting frequency.",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

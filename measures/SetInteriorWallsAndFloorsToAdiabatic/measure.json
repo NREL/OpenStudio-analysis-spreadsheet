@@ -15,5 +15,13 @@
 
       ]
     }
+  ],
+  "name_xml": "Set Interior Walls to Adiabatic",
+  "uid": "7e440f88-1b2d-444e-8586-9a8d1ac84b8d",
+  "version_id": "34a4b299-3a55-415b-81c6-d7a4520f7272",
+  "modeler_description": "This will change wall with a surface boundary condition to adiabatic and will assigned the selected construction.",
+  "description": "Set interior walls to Adiabatic and assign a hard construction.",
+  "tags": [
+    "Envelope.Opaque"
   ]
 }

@@ -12,5 +12,13 @@
       "units": "cfm",
       "description": null
     }
+  ],
+  "name_xml": "Set Fixed Minimum Air Flow Rate in VAV Single Duct Air Terminals with Reheat",
+  "uid": "ba56430e-0cad-4f8a-8fce-37b9fcf9d135",
+  "version_id": "145fe329-31ed-4808-8019-e2ceb4fe6b2e",
+  "modeler_description": "Loop through all AirTerminalSingleDuctVAVReheat objects and set a fixed minimum air flow rate.",
+  "description": "Set the minimum air flow rate (cfm) for all AirTerminalSingleDuctVAVReheat objects.",
+  "tags": [
+    "HVAC.HVAC Controls"
   ]
 }

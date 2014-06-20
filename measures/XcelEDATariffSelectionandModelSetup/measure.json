@@ -44,5 +44,13 @@
         "Non-Xcel Gas Interruptible"
       ]
     }
+  ],
+  "name_xml": "Xcel EDA Tariff Selection and Model Setup",
+  "uid": "c5ab60e9-b8e5-4653-a502-5ed030f1335d",
+  "version_id": "c463077f-0342-4e72-8477-f6e3ed66d942",
+  "modeler_description": "Adds the .idf text for the selected Xcel Energy tariffs, sets the timestep to 15min so that the demand window and the timestep align, and sets the lifecycle costing parameters to use NIST 2012 inflation and fuel escalation numbers.  These NIST numbers will not affect the Xcel EDA results.",
+  "description": "Add the selected Xcel utility rate, as well as set the timestep and lifecycle costing parameters as required by the Xcel EDA program.",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
   ]
 }

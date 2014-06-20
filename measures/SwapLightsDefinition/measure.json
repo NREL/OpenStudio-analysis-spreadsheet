@@ -35,5 +35,13 @@
       "description": null,
       "default_value": false
     }
+  ],
+  "name_xml": "Swap Lights Definition",
+  "uid": "3bbebd1f-69fd-4d49-96fe-1284bce962f4",
+  "version_id": "606e2d25-fb1d-4e59-b34d-c1467ddfb3ac",
+  "modeler_description": "This measure will not delete or change either definition, rather it just swaps out the references of one for the other. It is possible that the new definition is already used in the model elsewhere.\n    Each of these objects can be independently costed, however the measure can address demolition costs of the object being removed.\n  ",
+  "description": "This measure will swap out one lights definition for another. All objects that had referred to the original definition will now refer to the new one.",
+  "tags": [
+    "Electric Lighting.Lighting Equipment"
   ]
 }

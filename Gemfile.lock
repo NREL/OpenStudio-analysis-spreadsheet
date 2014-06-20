@@ -1,18 +1,18 @@
 GIT
   remote: git://github.com/NREL/OpenStudio-analysis-gem.git
-  revision: ee20fa3aa880691021f7a7258e91a982a56b3d00
+  revision: c26455cc7c631f552e81a1f444bbeb06a7e0d83e
   branch: develop
   specs:
     openstudio-analysis (0.3.1)
       faraday (~> 0.8)
       roo (~> 1.12)
-      rubyzip (~> 1.1)
+      rubyzip (~> 1.0)
       semantic (~> 1.3)
       uuid (~> 2.3)
 
 GIT
   remote: git://github.com/NREL/bcl-gem.git
-  revision: cc6e42fa1bb606f5fec14b22bbe946c16e253cb8
+  revision: c7b0d4a9bf85ac9e1eaaa4522383c645fea3914a
   specs:
     bcl (0.5.3)
       archive-tar-minitar
@@ -32,7 +32,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     archive-tar-minitar (0.5.2)
-    aws-sdk-core (2.0.0.rc8)
+    aws-sdk-core (2.0.0.rc9)
       builder (~> 3.0)
       jamespath
       multi_json (~> 1.0)
@@ -73,8 +73,8 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
-    rspec-core (2.99.0)
-    rspec-expectations (2.99.0)
+    rspec-core (2.99.1)
+    rspec-expectations (2.99.1)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.99.1)
     ruby-ole (1.2.11.7)

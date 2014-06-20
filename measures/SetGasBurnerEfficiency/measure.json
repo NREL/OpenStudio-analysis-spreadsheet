@@ -97,5 +97,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "SetGasBurnerEfficiency",
+  "uid": "28c79510-5001-4582-bf93-d34d223f19ca",
+  "version_id": "f31fd5f0-9efc-4adc-b020-419ad32845a6",
+  "modeler_description": "Loop through air loops in the building and find and change the burner efficiency of any OS:Coil:Heating:Gas objects you find. Note the pre-adjusted efficiency and also the name of the loop. For the starting condition note the range of efficiency values for the units, and for the final condition do the same, to confirm that they were all changed.",
+  "description": "This measure will find Coil Heating Gas units in the model and will alter the burner efficiency to a specified value. It can be run on a single or all air loops in the model.",
+  "tags": [
+    "HVAC.Heating"
   ]
 }

@@ -87,5 +87,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Add Cost per Floor Area to Unused Lights",
+  "uid": "a5f5ddcf-48bb-413a-a712-0ee22f0b40a4",
+  "version_id": "ce910bf1-e3a8-4c50-98ca-cc376a74ecdb",
+  "modeler_description": "The use case for this is a lights definition that is not used in the baseline but will be used after other measures are run. For example using the \"Swap Lights Definition\" measure.",
+  "description": "This measure is the same as \"Add Cost per Floor Area to Electric Lights\" except that it only offers lights definitions that are not used in the model.",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
   ]
 }

@@ -150,5 +150,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Reduce Night Time Electric Equipment Loads",
+  "uid": "b446301d-8f0e-41fc-9245-c3851b8732ff",
+  "version_id": "18ca91fe-179b-461c-8da1-1d4c5341fa47",
+  "modeler_description": "Make an array of space types to alter electric equipment schedules for. Clone and then edit the schedules. The rules will be edited based on the user arguments. Summer and winter design day profiles will not be altered. Quantity for cost is calculated by looking at number of instances and quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.",
+  "description": "This measure lets you set the electric equipment schedule profile values for a specific time of day, and for specific days of the week.  This can be run across the entire model or a specific space type. Cost can be added per each equipment object.",
+  "tags": [
+    "Equipment.Equipment Controls"
   ]
 }

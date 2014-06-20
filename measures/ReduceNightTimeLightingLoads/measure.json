@@ -150,5 +150,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Reduce Night Time Lighting Loads",
+  "uid": "93461778-59a1-49ca-8bbb-f4b939e4a9d8",
+  "version_id": "aede35f7-eabb-46e2-b754-8e90b0e03a01",
+  "modeler_description": "Make an array of space types to alter lighting schedules for. Clone and then edit the schedules. The rules will be edited based on the user arguments.  Summer and winter design day profiles will not be altered. Quantity for cost is calculated by looking at number of instances and quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.",
+  "description": "This measure lets you set the lighting schedule profile values for a specific time of day, and for specific days of the week.  This can be run across the entire model or a specific space type. Cost can be added per each light object.",
+  "tags": [
+    "Electric Lighting.Electric Lighting Controls"
   ]
 }

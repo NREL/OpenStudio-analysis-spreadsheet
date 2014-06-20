@@ -94,5 +94,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Add Exterior Lights",
+  "uid": "34f9050c-5f8f-4d10-8e46-30ca8333114d",
+  "version_id": "bb541f7f-6787-4b67-9f0d-c2f2e7ede8eb",
+  "modeler_description": "This measure has an argument for design power (W) and a name for the new exterior lights, as well as an option to remove any existing exterior lights. It will add an ExteriorLightsDefinition object and associate it with an Exterior Lights object. The lights will have a schedule that always has fractional value of 1 but the object will be controlled by an astronomical clock. Cost is added to the building and not the lights. If the lights are removed at a later date, the cost will remain.",
+  "description": "Add exterior lighting to the building.  This may be in addition to or in place of existing exterior lighting.  This lighting will run from sunset to sunrise. Optionally you can add costs to the lights.",
+  "tags": [
+    "Electric Lighting.Lighting Equipment"
   ]
 }

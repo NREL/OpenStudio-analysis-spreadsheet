@@ -5,5 +5,13 @@
   "measure_type": "RubyMeasure",
   "arguments": [
 
+  ],
+  "name_xml": "Assign Thermostats Based on Standards Building Type and Standards Space Type",
+  "uid": "b46cc68b-bf5b-474f-a11f-32137864b513",
+  "version_id": "8dc41fde-631c-4240-b974-2115eb31cd8f",
+  "modeler_description": "The wizard we are working on writes out thermostats and setpoint schedules along with space types. This measures attempts to re-wire them together later on after thermal zones have been assigned, as we can't directly assign thermostats to space types.",
+  "description": "This will loop through zones, and when all spaces in the zone share the same space type, will look for a properly named thermostat to assign.",
+  "tags": [
+    "HVAC.HVAC Controls"
   ]
 }

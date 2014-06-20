@@ -51,5 +51,13 @@
       "description": null,
       "default_value": 0.0
     }
+  ],
+  "name_xml": "Set Thermostat Schedules",
+  "uid": "d241d623-d596-4b26-9b67-fe390be1e839",
+  "version_id": "699b90d0-1b73-4208-869a-c6987afda0da",
+  "modeler_description": "Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one.",
+  "description": "Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one",
+  "tags": [
+    "HVAC.HVAC Controls"
   ]
 }

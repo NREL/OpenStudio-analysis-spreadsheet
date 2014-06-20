@@ -97,5 +97,13 @@
       "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Set COP for Single Speed DX Cooling Units",
+  "uid": "4a737582-b5fc-477a-89e9-f8501af13b10",
+  "version_id": "e799a7ad-7b96-47da-acca-b2c6f3539205",
+  "modeler_description": "Loop through air loops in the building and find and change the COP of any OS:Coil:Cooling:DX:SingleSpeed objects you find. Note the pre-adjusted COP and also the name of the loop. For the starting condition note the range of COP values for the units, and for the final condition do the same, to confirm that they were all changed.",
+  "description": "This measure will find single speed DX cooling units in the model and will alter the Rated COP to a specified value. It can be run on a single or all air loops in the model.",
+  "tags": [
+    "HVAC.Cooling"
   ]
 }
