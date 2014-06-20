@@ -19,7 +19,9 @@ class LPDtoLamps_Test < Test::Unit::TestCase
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/RetailModelZeroSample.osm")
+    #path = OpenStudio::Path.new(File.dirname(__FILE__) + "/RetailModelZeroSample.osm")
+    #path = OpenStudio::Path.new(File.dirname(__FILE__) + "/RetailAndOfficeBreakRoom.osm")
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/AnalysisTestFile.osm")
     model = translator.loadModel(path)
     assert((not model.empty?))
     model = model.get
