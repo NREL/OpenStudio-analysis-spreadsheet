@@ -38,6 +38,11 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
     if not runner.validateUserArguments(arguments(model), user_arguments)
       return false
     end
+    
+    runner.registerInfo("My current directory is #{Dir.pwd}")
+    
+    output_file_path = OpenStudio::Path.new("test.osm")
+    model.save(output_file_path,true)
 
     # lookup table for LPD by space type
     rules = [] #buildingTypeStandard,spaceTypeStandard,spaceTypeAdjustmentFactor
@@ -59,6 +64,9 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
     rules << ["Office","Restroom",2.22]
     rules << ["Office","Storage",1.37]
     rules << ["Office","Vending",1.71]
+    rules << ["Office","WholeBuilding - Sm Office",1.9]
+    rules << ["Office","WholeBuilding - Md Office",1.9]
+    rules << ["Office","WholeBuilding - Lg Office",1.9]
 
     #make rule hash for cleaner code
     rulesHash = {}
@@ -123,24 +131,35 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
         minRemainder = nil
         lamp = nil
         techMultiplierHash.each do |k,v|
-          if minValue == nil
+          if minValue.nil?
             minValue = v
             minType = k
             minRemainder = (v - lightDefPowerPerFloorArea/techMultiplier).abs
           elsif minRemainder > (v - lightDefPowerPerFloorArea/techMultiplier).abs
             minValue = v
             minType = k
+            minRemainder = (v - lightDefPowerPerFloorArea/techMultiplier).abs
           end
         end
+        
+        if lamp.nil?
+          runner.registerInfo("lamp is nil here -1")
+        end
+        
 
         # set and report lamp type
-        if not minValue == nil
+        if minValue
           lamp = minValue * normalizedWattage
           runner.registerInfo("Lamps in #{spaceType.name} appear to be #{minType}.")
         else
            lamp = 55.0
           runner.registerInfo("Not sure why MinValue is nil for #{spaceType.name}. Using 55W bulb for now.")       
         end
+        
+        if lamp.nil?
+          runner.registerInfo("lamp is nil here")
+        end
+          
 
         spaceType.spaces.sort.each do |space|
 
@@ -150,7 +169,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
 
           # get area of lights.
           floorArea = space.floorArea # don't want to add space.multiplier to area because zone multiplier will already pick this up.
-          floorAreaDisplay =  OsLib_HelperMethods.neatConvertWithUnitDisplay(floorArea,"m^2","ft^2",0)
+          floorAreaDisplay = OsLib_HelperMethods.neatConvertWithUnitDisplay(floorArea,"m^2","ft^2",0)
 
           # find total power wattage for this instance
           totalPower = lightDefPowerPerFloorArea*floorArea  # todo should confirm that original light instance multiplier is 1
@@ -166,6 +185,10 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
 
         end # end of spaceType.spaces each do
 
+        if lamp.nil?
+          runner.registerInfo("lamp is nil here 2")
+        end
+        
         # remove instance from space type
         lights.each do |light|
           if light.lightsDefinition == lightsDef
@@ -175,10 +198,14 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
 
       end # end of spaceTypes.sort.each do
 
+      if lamp.nil?
+        runner.registerInfo("lamp is nil here 3")
+      end
+      
       # change value to 60 watts incandescent equiv.
       # todo - may hit issues here if same lightsDef used in different space types
       
-      if not lamp == nil 
+      if lamp
         lightsDef.setLightingLevel(lamp)
         runner.registerInfo("Changing value of #{lightsDef.name} to #{OpenStudio::toNeatString(lamp,2,true)} watts.")
       else
