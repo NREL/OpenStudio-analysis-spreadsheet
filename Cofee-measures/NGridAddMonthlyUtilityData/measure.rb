@@ -88,6 +88,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
       runPeriod.setBeginDayOfMonth(date[2])
     else
       runner.registerError("Unknown start date '#{start_date}'")
+      fail "Unknown start date '#{start_date}'"
       return false
     end
     
@@ -101,6 +102,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
       runPeriod.setEndDayOfMonth(date[2])
     else
       runner.registerError("Unknown end date '#{end_date}'")
+      fail "Unknown end date '#{end_date}'"
       return false
     end
     
@@ -126,6 +128,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
 
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
+          fail "Unknown date format in period '#{period}'"
           return false
         end
 
@@ -179,6 +182,7 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
 
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
+          fail "Unknown date format in period '#{period}'"
           return false
         end
 
