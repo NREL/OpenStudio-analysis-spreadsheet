@@ -7,7 +7,7 @@ module OsLib_Cofee
     floor_to_floor_height = (zmax-zmin)/numStories
 
     # perimeter depth
-    perimeterDepth = OpenStudio::convert(12,"ft","m").get
+    perimeterDepth = OpenStudio::convert(9999,"ft","m").get # this was 12' but I made it a very large number temporarily to speed up simulation by avoiding core and perim.
     perimeterBufferFactor = 1.5 # this is a margin below which I won't bother splitting the two largest spaces
 
     # create an array to control sort order of spaces in bar
