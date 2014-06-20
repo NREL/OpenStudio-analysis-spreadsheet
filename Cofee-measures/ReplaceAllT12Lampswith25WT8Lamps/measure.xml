@@ -1,0 +1,41 @@
+<measure>
+  <name>Replace All T12 Lamps with 25W T8 Lamps</name>
+  <uid>1a2af8c8-b302-4b35-b607-780a5dc8f836</uid>
+  <version_id>50a27dfe-2fd7-4f42-8ddf-2861269261f1</version_id>
+  <description>Retrofit all of the T-12 lamps with low-wattage T-8 lamps.  The low-wattage T-8 lamps should be specified a 25W, with a color temperature of 3,500 - 4,100 Kelvin.  If the ballasts need to be replaced, electronic ballasts should be specified as program start ballasts, so that they can accommodate occupancy sensor controls.  The ballasts should be specified with a ballast factor of 0.88, and a power factor above 95%.  The total system Color Rendering Index (CRI) should be designed to be greater than 85%.  The electronic ballasts are designed to provide the appropriate starting and operating electricity to the lamps. Electronic ballasts operate at a higher frequency, eliminating flicker, and have a higher efficiency than magnetic ballasts.</description>
+  <modeler_description>Find all lighting definitions containing "32W T8", create a new copy of the fixture with a 1-for-1 25W lamp replacement </modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Electric Lighting.Lighting Equipment</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>ReplaceOneLightFixturewithAnother_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>6184E663</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.1</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>EE21F0A8</checksum>
+    </file>
+  </files>
+</measure>
