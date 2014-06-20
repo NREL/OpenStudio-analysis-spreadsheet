@@ -1,203 +1,200 @@
 {
-  "struct_id": 148046,
-  "last_tenancy_change": "2011-12-05T00:00:00Z",
-  "gaps": null,
   "num_electric_accounts": 1,
   "data": [
     {
       "from": "2011-12-05T00:00:00Z",
       "to": "2012-01-06T00:00:00Z",
       "tot_kwh": 4135,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-01-06T00:00:00Z",
       "to": "2012-02-02T00:00:00Z",
       "tot_kwh": 3931,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-02-02T00:00:00Z",
       "to": "2012-03-05T00:00:00Z",
       "tot_kwh": 4143,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-03-05T00:00:00Z",
       "to": "2012-04-02T00:00:00Z",
       "tot_kwh": 3585,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-04-02T00:00:00Z",
       "to": "2012-05-02T00:00:00Z",
       "tot_kwh": 3454,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-05-02T00:00:00Z",
       "to": "2012-06-04T00:00:00Z",
       "tot_kwh": 4360,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-06-04T00:00:00Z",
       "to": "2012-07-02T00:00:00Z",
       "tot_kwh": 4572,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-07-02T00:00:00Z",
       "to": "2012-08-02T00:00:00Z",
       "tot_kwh": 5832,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-08-02T00:00:00Z",
       "to": "2012-09-05T00:00:00Z",
       "tot_kwh": 6500,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-09-05T00:00:00Z",
       "to": "2012-10-02T00:00:00Z",
       "tot_kwh": 4205,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-10-02T00:00:00Z",
       "to": "2012-11-05T00:00:00Z",
       "tot_kwh": 3983,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-11-05T00:00:00Z",
       "to": "2012-12-04T00:00:00Z",
       "tot_kwh": 3587,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2012-12-04T00:00:00Z",
       "to": "2013-01-03T00:00:00Z",
       "tot_kwh": 3877,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-01-03T00:00:00Z",
       "to": "2013-02-01T00:00:00Z",
       "tot_kwh": 5560,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-02-01T00:00:00Z",
       "to": "2013-03-04T00:00:00Z",
       "tot_kwh": 4153,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-03-04T00:00:00Z",
       "to": "2013-04-02T00:00:00Z",
       "tot_kwh": 3732,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-04-02T00:00:00Z",
       "to": "2013-05-03T00:00:00Z",
       "tot_kwh": 3884,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-05-03T00:00:00Z",
       "to": "2013-06-04T00:00:00Z",
       "tot_kwh": 3708,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-06-04T00:00:00Z",
       "to": "2013-07-02T00:00:00Z",
       "tot_kwh": 4009,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-07-02T00:00:00Z",
       "to": "2013-08-02T00:00:00Z",
       "tot_kwh": 5042,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-08-02T00:00:00Z",
       "to": "2013-09-05T00:00:00Z",
       "tot_kwh": 4616,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-09-05T00:00:00Z",
       "to": "2013-10-03T00:00:00Z",
       "tot_kwh": 3115,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-10-03T00:00:00Z",
       "to": "2013-10-31T00:00:00Z",
       "tot_kwh": 3357,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-10-31T00:00:00Z",
       "to": "2013-12-03T00:00:00Z",
       "tot_kwh": 3743,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2013-12-03T00:00:00Z",
       "to": "2014-01-06T00:00:00Z",
       "tot_kwh": 4428,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2014-01-06T00:00:00Z",
       "to": "2014-02-03T00:00:00Z",
       "tot_kwh": 3809,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2014-02-03T00:00:00Z",
       "to": "2014-03-04T00:00:00Z",
       "tot_kwh": 3890,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     },
     {
       "from": "2014-03-04T00:00:00Z",
       "to": "2014-04-02T00:00:00Z",
       "tot_kwh": 3732,
-      "peak": 0,
+      "peak": null,
       "accounts": 1
     }
   ]
