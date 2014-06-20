@@ -39,74 +39,68 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
       return false
     end
 
-    # lookup table for LPD by space type
-    rules = [] #buildingTypeStandard,spaceTypeStandard,spaceTypeAdjustmentFactor
-    # these came from pre-1980 with the assumption that they were incandescent (but not sure if that is true)
-    rules << ["Retail","Back_Space",0.77]
-    rules << ["Retail","Entry",5.04]
-    rules << ["Retail","Point_of_Sale",5.04]
-    rules << ["Retail","Retail",5.04]
-    rules << ["Office","BreakRoom",2.0]
-    rules << ["Office","ClosedOffice",1.69]
-    rules << ["Office","Conference",1.69]
-    rules << ["Office","Corridor",1.38]
-    rules << ["Office","Elec/MechRoom",3.80]
-    rules << ["Office","IT_Room",2.34]
-    rules << ["Office","Lobby",2.92]
-    rules << ["Office","OpenOffice",2.68]
-    rules << ["Office","PrintRoom",2.68]
-    rules << ["Office","Stair",3.09]
-    rules << ["Office","Restroom",2.22]
-    rules << ["Office","Storage",1.37]
-    rules << ["Office","Vending",1.71]
-    rules << ["Office","WholeBuilding - Sm Office",1.9]
-    rules << ["Office","WholeBuilding - Md Office",1.9]
-    rules << ["Office","WholeBuilding - Lg Office",1.9]
-
-    #make rule hash for cleaner code
-    rulesHash = {}
-    rules.each do |rule|
-      rulesHash["#{rule[0]} #{rule[1]}"] = rule[2]
+    # Define lighting technology lookup table by space type
+    ltg_tech_lookup = []
+    ltg_tech_lookup << ['Office','BreakRoom',0.219,0.73,1.2,1.89,2.28]
+    ltg_tech_lookup << ['Office','ClosedOffice',0.333,1.11,1.1,1.73,2.28]
+    ltg_tech_lookup << ['Office','Conference',0.369,1.23,1.3,1.84,2.09]
+    ltg_tech_lookup << ['Office','Corridor',0.198,0.66,0.5,0.78,2.47]
+    ltg_tech_lookup << ['Office','Elec/MechRoom',0.285,0.95,1.5,2.36,2.85]
+    ltg_tech_lookup << ['Office','IT_Room',0.333,1.11,1.1,1.55,2.09]
+    ltg_tech_lookup << ['Office','Lobby',0.27,0.9,1.3,2.04,2.47]
+    ltg_tech_lookup << ['Office','OpenOffice',0.294,0.98,1.1,1.73,2.09]
+    ltg_tech_lookup << ['Office','PrintRoom',0.333,1.11,1.1,1.55,1.88]
+    ltg_tech_lookup << ['Office','RestRoom',0.294,0.98,0.9,1.41,1.71]
+    ltg_tech_lookup << ['Office','Stair',0.207,0.69,0.6,0.94,1.14]
+    ltg_tech_lookup << ['Office','Storage',0.189,0.63,0.8,1.27,1.54]
+    ltg_tech_lookup << ['Office','Vending',0.198,0.66,0.5,1.57,0.95]
+    
+    # Put lighting technology lookup into hash
+    ltg_tech_hash = {}
+    ltg_tech_lookup.each do |rule|
+      ltg_tech_hash["#{rule[0]} #{rule[1]}"] = [rule[2],rule[3],rule[4],rule[5],rule[6]] 
     end
 
-    # technology multiplier for values normalized to 1 w/ft^2
-    techMultiplierHash = {}
-    techMultiplierHash["Incandescent"] = 60/60
-    techMultiplierHash["Fluorescent"] = 14/60
-    techMultiplierHash["LED"] = 10/60
-
-    # variable to use later
-    lamp = nil
-    normalizedWattage = 60.0
-
-    #reporting initial condition of model
+    # Report initial condition of model
     startingLightingPower =  OpenStudio::toNeatString(model.getBuilding.lightingPower,0,true)# double,decimals, show commas
     runner.registerInitialCondition("The building started with a lighting power of #{startingLightingPower} watts.")
 
-    lightsDefs = model.getLightsDefinitions
-    if lightsDefs.size == 0
+    lights_defs = model.getLightsDefinitions
+    if lights_defs.size == 0
       runner.registerAsNotApplicable("Nothing to do,this model doesn't have lights.")
       return true
     end
 
-    # loop through light defs
-    lightsDefs.sort.each do |lightsDef|
+    # Loop through light defs
+    lights_defs.sort.each do |lights_def|
 
-      # next if def has no instances
-      next if lightsDef.instances.to_a.size == 0
+      # Skip if no instance use this lights definition
+      next if lights_def.instances.to_a.size == 0
 
-      # get power per floor area
-      lightDefPowerPerFloorArea = lightsDef.wattsperSpaceFloorArea.get
+      # Get LPD currently specified by this lights definition
+      lpd_w_per_m2 = lights_def.wattsperSpaceFloorArea.get
+      lpd_w_per_ft2 = OpenStudio::convert(lpd_w_per_m2,"W/m^2","W/ft^2").get
 
-      spaceTypes = model.getSpaceTypes
-      spaceTypes.sort.each do |spaceType|
+      # Define a "typical" fixture for each technology
+      num_lamps = nil
+      lamp_wattage = nil
+      num_ballasts = nil
+      ballast_factor = nil
+      ballast_type = nil
+      technology = nil
+      fixture_wattage = nil
+      fixture_name = nil
+      
+      # Loop through all space types and replace lights def specified as LPD with
+      # actual light fixtures
+      model.getSpaceTypes.sort.each do |space_type|
 
-        # stop here if this space type doesn't use the lightsDef
+        # stop here if this space type doesn't use the lights_def
         # todo - make this more robust to handle multiple light instances using same def in a model
         usesDefFlag = false
-        lights = spaceType.lights
+        lights = space_type.lights
         lights.each do |light|
-          if light.lightsDefinition == lightsDef
+          if light.lightsDefinition == lights_def
             usesDefFlag = true
           end
         end
@@ -114,93 +108,144 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
         next if usesDefFlag == false
 
         # get standards info and looking techMultiplier
-        spaceTypeStandards = OsLib_HelperMethods.getSpaceTypeStandardsInformation([spaceType])
-        techMultiplier = rulesHash["#{spaceTypeStandards[spaceType][0]} #{spaceTypeStandards[spaceType][1]}"]
+        space_typeStandards = OsLib_HelperMethods.getSpaceTypeStandardsInformation([space_type])
+        ltg_tech_types = ltg_tech_hash["#{space_typeStandards[space_type][0]} #{space_typeStandards[space_type][1]}"]
 
-        # catchall for bad hash lookup
-        if techMultiplier.nil?
-          techMultiplier = techMultiplierHash["Incandescent"]
-          runner.registerWarning("Couldn't find a mapping for #{spaceTypeStandards[spaceType][0]} #{spaceTypeStandards[spaceType][1]}. Will assume lights are incandescent.")
+        # Catchall for a space type not found in the lookup
+        if ltg_tech_types.nil?
+          runner.registerWarning("Couldn't find lighting technology lookup for #{space_typeStandards[space_type][0]} #{space_typeStandards[space_type][1]}.")
+          next
         end
 
-        # infer lighting technology based on lookup using space type and LPD
-        minValue = nil
-        minType = nil
-        minRemainder = nil
-        lamp = nil
-        techMultiplierHash.each do |k,v|
-          if minValue.nil?
-            minValue = v
-            minType = k
-            minRemainder = (v - lightDefPowerPerFloorArea/techMultiplier).abs
-          elsif minRemainder > (v - lightDefPowerPerFloorArea/techMultiplier).abs
-            minValue = v
-            minType = k
-            minRemainder = (v - lightDefPowerPerFloorArea/techMultiplier).abs
+        # Infer lighting technology based on building type, space type, and LPD
+        closest_ltg_type = nil
+        min_error = 999999
+        for i in 0..ltg_tech_types.size - 1
+          ltg_type_lpd = ltg_tech_types[i].to_f
+          error = (lpd_w_per_ft2 - ltg_type_lpd).abs
+          if error <= min_error
+            closest_ltg_type = i
+            min_error = error
           end
         end
-
-        # set and report lamp type
-        if minValue
-          lamp = minValue * normalizedWattage
-          runner.registerInfo("Lamps in #{spaceType.name} appear to be #{minType}.")
-        else
-           lamp = 60.0
-          runner.registerWarning("Not sure why MinValue is nil for #{spaceType.name}. Using 60W bulb for now.")
+         
+        # Define a "typical" fixture for each technology
+        # Naming convention for light fixtures
+        # which is expected by EE Measures downstream (so don't modify it!)
+        # (2) 40W A19 Standard Incandescent (1) 0.8BF HID Electronic Ballast
+        case closest_ltg_type
+        when 0
+          ltg_tech_inferred = 'led'
+          num_lamps = 2
+          lamp_wattage = 21
+          technology = "Linear LED"
+          fixture_wattage = num_lamps*lamp_wattage
+          fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology}"
+        when 1 
+          ltg_tech_inferred = 'high_eff_t8'
+          num_lamps = 2
+          lamp_wattage = 25
+          num_ballasts = 1
+          ballast_factor = 0.88
+          ballast_type = 'Electronic Ballast'
+          technology = 'Linear Fluorescent'
+          fixture_wattage = num_lamps*lamp_wattage*ballast_factor
+          fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"         
+        when 2 
+          ltg_tech_inferred = 'high_eff_t8'
+          num_lamps = 2
+          lamp_wattage = 32
+          num_ballasts = 1
+          ballast_factor = 1.0
+          ballast_type = 'Electronic Ballast'
+          technology = 'Linear Fluorescent'
+          fixture_wattage = num_lamps*lamp_wattage*ballast_factor
+          fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
+        when 3 
+          ltg_tech_inferred = 't12_magnetic'
+          num_lamps = 4
+          lamp_wattage = 40
+          num_ballasts = 1
+          ballast_factor = 1.2
+          ballast_type = 'Magnetic Ballast'
+          technology = 'Linear Fluorescent'
+          fixture_wattage = num_lamps*lamp_wattage*ballast_factor
+          fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
+        when 4 
+          ltg_tech_inferred = 'led'
+          num_lamps = 4
+          lamp_wattage = 60
+          technology = 'Incandescent'
+          fixture_wattage = num_lamps*lamp_wattage
+          fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology}"
         end
-
-        spaceType.spaces.sort.each do |space|
+        
+        # Report out the inference
+        runner.registerInfo("Inferred that '#{space_type.name}' with LPD of #{lpd_w_per_ft2.round(2)}W/ft^2 has #{ltg_tech_inferred} lights based on an LPD closest to #{ltg_tech_types[closest_ltg_type]}W/ft^2.")
+        
+        runner.registerInfo("Fixture name = '#{fixture_name}'.")
+        
+        space_type.spaces.sort.each do |space|
 
           # todo check and see if there were any space lights to start with
 
           # for now I'm not going to deal with schedules, I'll let schedule sets pick it up but not very robust.
 
           # get area of lights.
-          floorArea = space.floorArea # don't want to add space.multiplier to area because zone multiplier will already pick this up.
-          floorAreaDisplay = OsLib_HelperMethods.neatConvertWithUnitDisplay(floorArea,"m^2","ft^2",0)
+          floor_area_m2 = space.floorArea # don't want to add space.multiplier to area because zone multiplier will already pick this up.
+          floor_area_display = OsLib_HelperMethods.neatConvertWithUnitDisplay(floor_area_m2,"m^2","ft^2",0)
 
-          # find total power wattage for this instance
-          totalPower = lightDefPowerPerFloorArea*floorArea  # todo should confirm that original light instance multiplier is 1
+          # Find total power wattage for this instance
+          total_lighting_power_w = lpd_w_per_m2*floor_area_m2  # TODO should confirm that original light instance multiplier is 1
 
-          # calculate number of fixtures needed
-          numFixtures = totalPower/lamp
+          # Calculate number of fixtures needed to hit calibrated LPD
+          num_fixtures = (total_lighting_power_w/fixture_wattage).round # Don't want partial fixtures
 
-          # add space instance based on space type instance
-          new_light_inst = OpenStudio::Model::Lights.new(lightsDef)
-          new_light_inst.setName("#{lamp} watt fixtures for #{space.name}")
-          new_light_inst.setMultiplier(numFixtures)
+          # Add a new light fixture to replace LPD 
+          new_light_inst = OpenStudio::Model::Lights.new(lights_def)
+          new_light_inst.setMultiplier(num_fixtures)
           new_light_inst.setSpace(space)
+          
+          # TODO QAQC area per lamp against typical fixture densities
+          # https://www1.eere.energy.gov/femp/pdfs/economics_eel.pdf
+          # Open office
+          # 2x4' (4) T12 Magnetic - 8'x8' centers - 16ft^2/T12 lamp
+          # (2) T8 Electronic - 8'x8' centers - 32ft^2/T8 lamp
+          # (2) T8 Electronic - 8'x10' centers - 40ft^2/T8 lamp
+          # (3) T8 Electronic - 10'x10' centers - 33ft^2/T8 lamp
+          # Closed office
+          # 2x4 (4) T12 Magnetic - 8'x12' office - 23ft^2/T12 lamp
+          # (2) T8 Electronic - 8'x12' office - 48ft^2/T8 lamp
+          # (3) T8 Electronic - 8'x12' office - 32ft^2/T8 lamp
+          # Density ranges for QAQC
+          # T8 - 48ft^2/lamp to 32ft^2/lamp
+          # T12 - 23ft^2/lamp to 16ft^2/lamp
 
-        end # end of spaceType.spaces each do
-
-        if lamp.nil?
-          runner.registerInfo("lamp is nil here 2")
-        end
+        end # end of space_type.spaces each do
         
-        # remove instance from space type
+        # Remove old lights instances using LPD from space type
         lights.each do |light|
-          if light.lightsDefinition == lightsDef
+          if light.lightsDefinition == lights_def
             light.remove
           end
         end
 
-      end # end of spaceTypes.sort.each do
+        runner.registerInfo("Fixture name 2 = '#{fixture_name}'.")
+        
+      end # end of space_types.sort.each do
       
-      # change value to 60 watts incandescent equiv.
-      # todo - may hit issues here if same lightsDef used in different space types
+      runner.registerInfo("Fixture name 3 = '#{fixture_name}'.")
       
-      if lamp
-        lightsDef.setLightingLevel(lamp)
-        runner.registerInfo("Changing value of #{lightsDef.name} to #{OpenStudio::toNeatString(lamp,2,true)} watts.")
-      else
-        runner.registerWarning("Why is lamp nil for #{lightsDef.name}.")
-      end
+      # Replace the lights def specified as LPD
+      # with actual fixtures
+      #lights_def.setName(fixture_name)
+      #lights_def.setLightingLevel(fixture_wattage)
       
-    end # end of lightsDefs.sort.each do
+    end # end of lights_defs.sort.each do
 
-    #reporting final condition of model
-    finalLightingPower =  OpenStudio::toNeatString(model.getBuilding.lightingPower,0,true)# double,decimals, show commas
-    runner.registerFinalCondition("The building finished with a lighting power of #{finalLightingPower} watts.")
+    # Report final condition of model
+    final_lighting_power_w =  OpenStudio::toNeatString(model.getBuilding.lightingPower,0,true)# double,decimals, show commas
+    runner.registerFinalCondition("The building finished with a lighting power of #{final_lighting_power_w} watts.")
 
     return true
  
