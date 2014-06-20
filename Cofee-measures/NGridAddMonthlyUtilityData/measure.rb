@@ -8,6 +8,7 @@
 # http://openstudio.nrel.gov/sites/openstudio.nrel.gov/files/nv_data/cpp_documentation_it/model/html/namespaces.html
 
 require 'json'
+require 'time'
 
 #start the measure
 class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
@@ -76,7 +77,6 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
     # set start date
     if date = year_month_day(start_date)
 
-      DateTime::fromISO8601
       start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(date[1]), date[2], date[0])
       
       # actual year of start date
@@ -121,17 +121,17 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
       utilityBill.setPeakDemandUnit("kW")
 
       electric_data['data'].each do |period|
-        from_date = period['from']
-        to_date = period['to']
+        from_date = period['from'] ? Time.iso8601(period['from']).strftime("%Y%m%dT%H%M%S") : nil
+        to_date = period['to'] ? Time.iso8601(period['to']).strftime("%Y%m%dT%H%M%S") : nil
 
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
           return false
         end
 
-        period_start_date = OpenStudio::DateTime::fromISO8601(from_date).get.date
+        period_start_date = OpenStudio::DateTime.fromISO8601(from_date).get.date
         #period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        period_end_date = OpenStudio::DateTime::fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
+        period_end_date = OpenStudio::DateTime.fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
         #period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0])
         
         if (period_start_date < start_date) or (period_end_date > end_date)
@@ -174,17 +174,17 @@ class NGridAddMonthlyUtilityData < OpenStudio::Ruleset::ModelUserScript
       utilityBill.setConsumptionUnit("therms")
 
       gas_data['data'].each do |period|
-        from_date = period['from']
-        to_date = period['to']
-        
+        from_date = period['from'] ? Time.iso8601(period['from']).strftime("%Y%m%dT%H%M%S") : nil
+        to_date = period['to'] ? Time.iso8601(period['to']).strftime("%Y%m%dT%H%M%S") : nil
+
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
           return false
         end
 
-        period_start_date = OpenStudio::DateTime::fromISO8601(from_date).get.date
+        period_start_date = OpenStudio::DateTime.fromISO8601(from_date).get.date
         #period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        period_end_date = OpenStudio::DateTime::fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
+        period_end_date = OpenStudio::DateTime.fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
         #period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0])
 
         if (period_start_date < start_date) or (period_end_date > end_date)
