@@ -1,4 +1,5 @@
 require 'erb'
+require 'json'
 
 #start the measure
 class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
@@ -479,12 +480,47 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
 
     #closing the sql file
     sqlFile.close()
-
+    
     #reporting final condition
     if missingData == true
         runner.registerFinalCondition("Calibration Report was not generated successfully.")
     else
         runner.registerFinalCondition("Calibration Report generated successfully.")
+    end
+    
+    # write national grid specific file format, everything can be derived from reported attributes
+    ngrid_result = Hash.new
+    ashrae_max_cvrmse = nil
+    ashrae_max_nmbe = nil
+    runner.result.attributes.each do |attribute|
+      if attribute.name == "ashrae_max_cvrmse"
+        ashrae_max_cvrmse = attribute.valueAsDouble
+      elsif attribute.name == "ashrae_max_nmbe"
+        ashrae_max_nmbe = attribute.valueAsDouble
+      end
+    end
+    runner.result.attributes.each do |attribute|
+      # skip individual period metrics
+      next if /period_\d+_consumption/.match(attribute.name)
+      
+      if match_data = /(.*)_consumption_cvrmse/.match(attribute.name)
+        cvrmse = attribute.valueAsDouble
+        within_limit = false
+        if ashrae_max_cvrmse
+          within_limit = (cvrmse <= ashrae_max_cvrmse)
+        end
+        ngrid_result[match_data[1] + "_cvrmse_within_ashrae14"] = within_limit
+      elsif match_data = /(.*)_consumption_nmbe/.match(attribute.name)
+        nmbe = attribute.valueAsDouble
+        within_limit = false
+        if ashrae_max_nmbe
+          within_limit = (nmbe <= ashrae_max_nmbe)
+        end
+        ngrid_result[match_data[1] + "_nmbe_within_ashrae14"] = within_limit
+      end
+    end
+    File.open("./guideline.json","w") do |f|
+      f.write(ngrid_result.to_json)
     end
 
     return true
