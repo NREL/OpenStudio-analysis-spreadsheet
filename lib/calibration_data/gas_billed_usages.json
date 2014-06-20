@@ -1,170 +1,168 @@
 {
-	"data": [{
-		"dt_rdg_from": "2011-12-28",
-		"dt_rdg_to": "2012-01-24",
-		"gas_rate": 841,
-		"tot_therms": 1
-	},
-	{
-		"dt_rdg_from": "2012-01-24",
-		"dt_rdg_to": "2012-02-23",
-		"gas_rate": 841,
-		"tot_therms": 2
-	},
-	{
-		"dt_rdg_from": "2012-02-23",
-		"dt_rdg_to": "2012-03-23",
-		"gas_rate": 841,
-		"tot_therms": 3
-	},
-	{
-		"dt_rdg_from": "2012-03-23",
-		"dt_rdg_to": "2012-04-25",
-		"gas_rate": 841,
-		"tot_therms": 4
-	},
-	{
-		"dt_rdg_from": "2012-04-25",
-		"dt_rdg_to": "2012-05-25",
-		"gas_rate": 841,
-		"tot_therms": 5
-	},
-	{
-		"dt_rdg_from": "2012-05-25",
-		"dt_rdg_to": "2012-06-22",
-		"gas_rate": 841,
-		"tot_therms": 6
-	},
-	{
-		"dt_rdg_from": "2012-06-22",
-		"dt_rdg_to": "2012-07-25",
-		"gas_rate": 841,
-		"tot_therms": 7
-	},
-	{
-		"dt_rdg_from": "2012-07-25",
-		"dt_rdg_to": "2012-08-24",
-		"gas_rate": 841,
-		"tot_therms": 8
-	},
-	{
-		"dt_rdg_from": "2012-08-24",
-		"dt_rdg_to": "2012-09-25",
-		"gas_rate": 841,
-		"tot_therms": 9
-	},
-	{
-		"dt_rdg_from": "2012-09-25",
-		"dt_rdg_to": "2012-10-23",
-		"gas_rate": 841,
-		"tot_therms": 10
-	},
-	{
-		"dt_rdg_from": "2012-10-23",
-		"dt_rdg_to": "2012-11-24",
-		"gas_rate": 841,
-		"tot_therms": 11
-	},
-	{
-		"dt_rdg_from": "2012-11-24",
-		"dt_rdg_to": "2012-12-21",
-		"gas_rate": 841,
-		"tot_therms": 12
-	},
-	{
-		"dt_rdg_from": "2012-12-21",
-		"dt_rdg_to": "2013-01-24",
-		"gas_rate": 841,
-		"tot_therms": 13
-	},
-	{
-		"dt_rdg_from": "2013-01-24",
-		"dt_rdg_to": "2013-02-22",
-		"gas_rate": 841,
-		"tot_therms": 14
-	},
-	{
-		"dt_rdg_from": "2013-02-22",
-		"dt_rdg_to": "2013-03-25",
-		"gas_rate": 841,
-		"tot_therms": 15
-	},
-	{
-		"dt_rdg_from": "2013-03-25",
-		"dt_rdg_to": "2013-04-24",
-		"gas_rate": 841,
-		"tot_therms": 16
-	},
-	{
-		"dt_rdg_from": "2013-04-24",
-		"dt_rdg_to": "2013-05-28",
-		"gas_rate": 841,
-		"tot_therms": 17
-	},
-	{
-		"dt_rdg_from": "2013-05-28",
-		"dt_rdg_to": "2013-06-24",
-		"gas_rate": 841,
-		"tot_therms": 18
-	},
-	{
-		"dt_rdg_from": "2013-06-24",
-		"dt_rdg_to": "2013-07-25",
-		"gas_rate": 841,
-		"tot_therms": 19
-	},
-	{
-		"dt_rdg_from": "2013-07-25",
-		"dt_rdg_to": "2013-08-26",
-		"gas_rate": 841,
-		"tot_therms": 20
-	},
-	{
-		"dt_rdg_from": "2013-08-26",
-		"dt_rdg_to": "2013-09-25",
-		"gas_rate": 841,
-		"tot_therms": 21
-	},
-	{
-		"dt_rdg_from": "2013-09-25",
-		"dt_rdg_to": "2013-10-23",
-		"gas_rate": 841,
-		"tot_therms": 22
-	},
-	{
-		"dt_rdg_from": "2013-10-23",
-		"dt_rdg_to": "2013-11-21",
-		"gas_rate": 841,
-		"tot_therms": 23
-	},
-	{
-		"dt_rdg_from": "2013-11-21",
-		"dt_rdg_to": "2013-12-26",
-		"gas_rate": 841,
-		"tot_therms": 24
-	},
-	{
-		"dt_rdg_from": "2013-12-26",
-		"dt_rdg_to": "2014-01-27",
-		"gas_rate": 841,
-		"tot_therms": 25
-	},
-	{
-		"dt_rdg_from": "2014-01-27",
-		"dt_rdg_to": "2014-02-25",
-		"gas_rate": 841,
-		"tot_therms": 26
-	},
-	{
-		"dt_rdg_from": "2014-02-25",
-		"dt_rdg_to": "2014-03-26",
-		"gas_rate": 841,
-		"tot_therms": 27
-	},
-	{
-		"dt_rdg_from": "2014-03-26",
-		"dt_rdg_to": "2014-04-24",
-		"gas_rate": 841,
-		"tot_therms": 28
-	}]
+  "struct_id": 148046,
+  "num_gas_accounts": 1,
+  "data": [
+    {
+      "dt_rdg_from": "2011-12-31",
+      "dt_rdg_to": "2012-01-28",
+      "gas_rate": 841,
+      "tot_therms": 939
+    },
+    {
+      "dt_rdg_from": "2012-01-28",
+      "dt_rdg_to": "2012-02-27",
+      "gas_rate": 841,
+      "tot_therms": 807
+    },
+    {
+      "dt_rdg_from": "2012-02-27",
+      "dt_rdg_to": "2012-03-28",
+      "gas_rate": 841,
+      "tot_therms": 436
+    },
+    {
+      "dt_rdg_from": "2012-03-28",
+      "dt_rdg_to": "2012-04-27",
+      "gas_rate": 841,
+      "tot_therms": 182
+    },
+    {
+      "dt_rdg_from": "2012-04-27",
+      "dt_rdg_to": "2012-05-30",
+      "gas_rate": 841,
+      "tot_therms": 101
+    },
+    {
+      "dt_rdg_from": "2012-05-30",
+      "dt_rdg_to": "2012-06-27",
+      "gas_rate": 841,
+      "tot_therms": 26
+    },
+    {
+      "dt_rdg_from": "2012-06-27",
+      "dt_rdg_to": "2012-07-30",
+      "gas_rate": 841,
+      "tot_therms": 0
+    },
+    {
+      "dt_rdg_from": "2012-07-30",
+      "dt_rdg_to": "2012-08-29",
+      "gas_rate": 841,
+      "tot_therms": 0
+    },
+    {
+      "dt_rdg_from": "2012-08-29",
+      "dt_rdg_to": "2012-09-27",
+      "gas_rate": 841,
+      "tot_therms": 14
+    },
+    {
+      "dt_rdg_from": "2012-09-27",
+      "dt_rdg_to": "2012-10-26",
+      "gas_rate": 841,
+      "tot_therms": 86
+    },
+    {
+      "dt_rdg_from": "2012-10-26",
+      "dt_rdg_to": "2012-11-28",
+      "gas_rate": 841,
+      "tot_therms": 379
+    },
+    {
+      "dt_rdg_from": "2012-11-28",
+      "dt_rdg_to": "2012-12-28",
+      "gas_rate": 841,
+      "tot_therms": 737
+    },
+    {
+      "dt_rdg_from": "2012-12-28",
+      "dt_rdg_to": "2013-01-29",
+      "gas_rate": 841,
+      "tot_therms": 1398
+    },
+    {
+      "dt_rdg_from": "2013-01-29",
+      "dt_rdg_to": "2013-02-27",
+      "gas_rate": 841,
+      "tot_therms": 1038
+    },
+    {
+      "dt_rdg_from": "2013-02-27",
+      "dt_rdg_to": "2013-03-27",
+      "gas_rate": 841,
+      "tot_therms": 724
+    },
+    {
+      "dt_rdg_from": "2013-03-27",
+      "dt_rdg_to": "2013-04-29",
+      "gas_rate": 841,
+      "tot_therms": 297
+    },
+    {
+      "dt_rdg_from": "2013-04-29",
+      "dt_rdg_to": "2013-05-30",
+      "gas_rate": 841,
+      "tot_therms": 71
+    },
+    {
+      "dt_rdg_from": "2013-05-30",
+      "dt_rdg_to": "2013-06-27",
+      "gas_rate": 841,
+      "tot_therms": 14
+    },
+    {
+      "dt_rdg_from": "2013-06-27",
+      "dt_rdg_to": "2013-07-30",
+      "gas_rate": 841,
+      "tot_therms": 1
+    },
+    {
+      "dt_rdg_from": "2013-07-30",
+      "dt_rdg_to": "2013-08-29",
+      "gas_rate": 841,
+      "tot_therms": 0
+    },
+    {
+      "dt_rdg_from": "2013-08-29",
+      "dt_rdg_to": "2013-09-27",
+      "gas_rate": 841,
+      "tot_therms": 22
+    },
+    {
+      "dt_rdg_from": "2013-09-27",
+      "dt_rdg_to": "2013-10-28",
+      "gas_rate": 841,
+      "tot_therms": 72
+    },
+    {
+      "dt_rdg_from": "2013-10-28",
+      "dt_rdg_to": "2013-11-27",
+      "gas_rate": 841,
+      "tot_therms": 420
+    },
+    {
+      "dt_rdg_from": "2013-11-27",
+      "dt_rdg_to": "2013-12-31",
+      "gas_rate": 841,
+      "tot_therms": 1273
+    },
+    {
+      "dt_rdg_from": "2013-12-31",
+      "dt_rdg_to": "2014-01-29",
+      "gas_rate": 841,
+      "tot_therms": 1411
+    },
+    {
+      "dt_rdg_from": "2014-01-29",
+      "dt_rdg_to": "2014-03-04",
+      "gas_rate": 841,
+      "tot_therms": 1095
+    },
+    {
+      "dt_rdg_from": "2014-03-04",
+      "dt_rdg_to": "2014-03-31",
+      "gas_rate": 841,
+      "tot_therms": 1234
+    }
+  ]
 }
