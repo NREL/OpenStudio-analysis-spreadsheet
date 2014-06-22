@@ -39,9 +39,10 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
     #low wattage T8 wattage
     new_lamp_wattage = 25
     
-    #first get all of the T8 light fixture defintions in the model
+    #first get all of the T12 light fixture definitions in the model
     model.getLightsDefinitions.each do |original_lights_def|
       #(1) 32.0W T8 Linear Fluorescent (1) 0.88BF Fluorescent Electronic Non-Dimming
+      #(4) 40W Linear Fluorescent (1) 1.2BF Magnetic Ballast
       name = original_lights_def.name.get
       runner.registerInfo("Checking = #{name}")
       
@@ -49,14 +50,13 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
       next if name.scan(/[\d\.]+W (\w+)/).size == 0
       lamp_type = name.scan(/[\d\.]+W (\w+)/)[0][0]
       runner.registerInfo("lamp_type = #{lamp_type}")
-      next unless lamp_type == "T12" #only looking for T12 fixtures
+      next unless lamp_type == "Linear" #only looking for T12 fixtures (todo - need to fix names in LpdToLamp to use T12 here vs. Linear)
       
       next if name.match(/([\d\.]+)W/).size == 0
       lamp_wattage = name.match(/([\d\.]+)W/)[0].to_f
 
-      # we do not need to check starting wattage for this measure
-      # runner.registerInfo("lamp_wattage = #{lamp_wattage}")
-      # next unless lamp_wattage == 32.0 #only looking to replace 32W T8s
+      runner.registerInfo("lamp_wattage = #{lamp_wattage}")
+      next unless lamp_wattage == 40.0 #only looking to replace 40W T12s
       
       next if name.scan(/\((\d+)\)/).size == 0
       num_lamps = name.scan(/\((\d+)\)/)[0][0].to_f
@@ -113,10 +113,10 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
     end
      
     #report initial condition
-    runner.registerInitialCondition("The building has approximately #{number_of_fixtures_replaced.round} light fixtures with standard 32W T8 linear fluorescent lamps.") 
+    runner.registerInitialCondition("The building has approximately #{number_of_fixtures_replaced.round} light fixtures with standard 40W T12 linear fluorescent lamps.")
 
     #report final condition
-    runner.registerFinalCondition("Replace #{number_of_lamps_replaced.round} T12 lamps in  #{number_of_fixtures_replaced.round} light fixtures throughout the building with #{new_lamp_wattage}W low-wattage T8 lamps.")
+    runner.registerFinalCondition("Replace #{number_of_lamps_replaced.round} T12 lamps in #{number_of_fixtures_replaced.round} light fixtures throughout the building with #{new_lamp_wattage}W low-wattage T8 lamps.")
 
     return true
  
