@@ -13,7 +13,7 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
   #define the name that a user will see, this method may be deprecated as
   #the display name in PAT comes from the name field in measure.xml
   def name
-    return "Replace 32W T8 Lamps with 25W T8 Lamps"
+    return "Replace 40W T12 Lamps with 25W T8 Lamps"
   end
   
   #define the arguments that the user will input
