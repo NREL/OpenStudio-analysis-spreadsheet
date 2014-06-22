@@ -175,7 +175,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           fixture_wattage = num_lamps*lamp_wattage*ballast_factor
           fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
         when 4 
-          ltg_tech_inferred = 'led'
+          ltg_tech_inferred = 'incandescent'
           num_lamps = 4
           lamp_wattage = 60
           technology = 'Incandescent'

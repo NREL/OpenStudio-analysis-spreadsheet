@@ -4077,7 +4077,7 @@ OS:BuildingStory,
   3.048,                                  !- Nominal Floor to Floor Height {m}
   ,                                       !- Default Construction Set Name
   ,                                       !- Default Schedule Set Name
-  ;                                       !- Group Rendering Name
+  {fb8b731a-722a-4a14-af7f-a8953db56d51}; !- Group Rendering Name
 
 OS:Space,
   {dc7931e3-e2b9-4c9a-8a2b-eabe3d36e944}, !- Handle
@@ -21459,7 +21459,7 @@ OS:SubSurface,
 
 OS:Lights:Definition,
   {24718cce-8a89-4829-a8f7-41e7ba661c70}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 3, !- Name
+  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 2, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   64,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21467,7 +21467,7 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {66bc2ac0-ca5b-482f-8cd2-fd57f4551338}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 1, !- Name
+  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   64,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21483,7 +21483,7 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {3bdef155-132b-4b64-ab6d-c2467e5f2454}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 4, !- Name
+  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 3, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   64,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21491,7 +21491,7 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {04fbb9c1-6d9b-4f11-b3f9-56ecfba8144e}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 6, !- Name
+  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 5, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   64,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21499,7 +21499,7 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {7ad92b0b-c73e-44d1-90ef-c65a150871a3}, !- Handle
-  (2) 25W Linear Fluorescent (1) 0.88BF Electronic Ballast 5, !- Name
+  (2) 25W Linear Fluorescent (1) 0.88BF Electronic Ballast 4, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   44,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21515,7 +21515,7 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {f48954ee-f4c7-4634-ade3-9cebd59d5c0a}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 5, !- Name
+  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 4, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   64,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21539,23 +21539,23 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast, !- Name
+  (4) 60W Incandescent,                   !- Name
   LightingLevel,                          !- Design Level Calculation Method
-  64,                                     !- Lighting Level {W}
+  240,                                    !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
 OS:Lights:Definition,
   {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Handle
-  (2) 25W Linear Fluorescent (1) 0.88BF Electronic Ballast 4, !- Name
+  (4) 40W Linear Fluorescent (1) 1.2BF Magnetic Ballast, !- Name
   LightingLevel,                          !- Design Level Calculation Method
-  44,                                     !- Lighting Level {W}
+  192,                                    !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
 OS:Lights:Definition,
   {d3377c8a-2b64-4c70-876f-31121575df7a}, !- Handle
-  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 2, !- Name
+  (2) 32W Linear Fluorescent (1) 1.0BF Electronic Ballast 1, !- Name
   LightingLevel,                          !- Design Level Calculation Method
   64,                                     !- Lighting Level {W}
   ,                                       !- Watts per Space Floor Area {W/m2}
@@ -21570,8 +21570,35 @@ OS:LifeCycleCost,
   0,                                      !- Cost
   CostPerEach;                            !- Cost Units
 
+OS:LifeCycleCost:Parameters,
+  {b0ab9e0a-00cb-44ec-93de-a660f05e7546}, !- Handle
+  FEMP,                                   !- Analysis Type
+  ,                                       !- Discounting Convention
+  ,                                       !- Inflation Approach
+  ,                                       !- Real Discount Rate
+  ,                                       !- Nominal Discount Rate
+  ,                                       !- Inflation
+  ,                                       !- Base Date Month
+  ,                                       !- Base Date Year
+  ,                                       !- Service Date Month
+  ,                                       !- Service Date Year
+  ,                                       !- Length of Study Period in Years
+  ,                                       !- Tax Rate
+  ,                                       !- Depreciation Method
+  Yes;                                    !- Use NIST Fuel Escalation Rates
+
+OS:Rendering:Color,
+  {fb8b731a-722a-4a14-af7f-a8953db56d51}, !- Handle
+  Rendering Color 16,                     !- Name
+  0,                                      !- Rendering Red Value
+  206,                                    !- Rendering Green Value
+  209;                                    !- Rendering Blue Value
+
+OS:Facility,
+  {1f6410f0-d1fe-4747-922b-14eb1e4f284b}; !- Handle
+
 OS:Lights,
-  {c8a4b4d8-7d6e-4df4-97bd-e7651ecf63bd}, !- Handle
+  {18946984-b405-43e5-ba63-4c480f9a9342}, !- Handle
   Lights 1,                               !- Name
   {5826db7c-b219-4166-a98e-d58ef6739c5e}, !- Lights Definition Name
   {35a77636-3190-4362-92ec-540541965e6e}, !- Space or SpaceType Name
@@ -21580,7 +21607,7 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {1d304e92-d23a-4587-90a3-3c9d07110bbd}, !- Handle
+  {c196a83f-3abf-4e7f-b238-8c1867ed8ca1}, !- Handle
   Lights 2,                               !- Name
   {5826db7c-b219-4166-a98e-d58ef6739c5e}, !- Lights Definition Name
   {fff790bd-4b8a-4766-92fa-0340375f4c70}, !- Space or SpaceType Name
@@ -21589,7 +21616,7 @@ OS:Lights,
   3;                                      !- Multiplier
 
 OS:Lights,
-  {1e50a10a-1921-488e-94d5-273906bccf60}, !- Handle
+  {d6650bd7-e1b8-4098-9e0a-a602deb90f13}, !- Handle
   Lights 3,                               !- Name
   {5826db7c-b219-4166-a98e-d58ef6739c5e}, !- Lights Definition Name
   {4b67e15e-8ab5-40d1-8b64-43160b5d186b}, !- Space or SpaceType Name
@@ -21598,62 +21625,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {09772e37-6a90-45b8-b724-59171ae3ee4d}, !- Handle
+  {38f96fe1-3bc4-451f-a09c-f9842200f39b}, !- Handle
   Lights 4,                               !- Name
-  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
-  {dc7931e3-e2b9-4c9a-8a2b-eabe3d36e944}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  2;                                      !- Multiplier
-
-OS:Lights,
-  {4a73e6ad-b356-4ef3-9d5f-f9a57558dbda}, !- Handle
-  Lights 5,                               !- Name
-  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
-  {f10d729e-1d4d-49e4-96fd-bf3a7e360714}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  8;                                      !- Multiplier
-
-OS:Lights,
-  {fdaf46c4-bea2-45b4-8203-684444df4453}, !- Handle
-  Lights 6,                               !- Name
-  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
-  {a9007d6b-f906-4005-9212-01d0236895a3}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  2;                                      !- Multiplier
-
-OS:Lights,
-  {419ff6a6-06a4-4a92-a24c-511144774730}, !- Handle
-  Lights 7,                               !- Name
-  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
-  {1a51e6b5-0e1a-4f8e-a905-694a818e9754}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  2;                                      !- Multiplier
-
-OS:Lights,
-  {d56574d2-238a-4342-b9ca-4d729f0dff7c}, !- Handle
-  Lights 8,                               !- Name
-  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
-  {766e2fca-18d5-4d79-bbab-f6cd123e7246}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  8;                                      !- Multiplier
-
-OS:Lights,
-  {9b8d505c-de0b-4793-8624-1ec556f8aa81}, !- Handle
-  Lights 9,                               !- Name
-  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
-  {b0f9b027-6d6b-4264-9f47-14a60249ee46}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  2;                                      !- Multiplier
-
-OS:Lights,
-  {b40774eb-bd18-4d1c-9f75-2171cd61ee4a}, !- Handle
-  Lights 10,                              !- Name
   {43063ee3-a0f3-454d-abc6-2affb3a1594c}, !- Lights Definition Name
   {2c452b1f-13d1-4c71-a092-9c57fb9b3be2}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21661,8 +21634,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {c2385bfb-ed3c-46ae-bc4f-586dfbf8420a}, !- Handle
-  Lights 11,                              !- Name
+  {0c95eb65-d293-449d-bb8c-cfd540ff6779}, !- Handle
+  Lights 5,                               !- Name
   {43063ee3-a0f3-454d-abc6-2affb3a1594c}, !- Lights Definition Name
   {3816dfc9-a0eb-4e55-bd45-999970118833}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21670,8 +21643,8 @@ OS:Lights,
   4;                                      !- Multiplier
 
 OS:Lights,
-  {82c522c8-2469-4d1c-9d24-0921074544a9}, !- Handle
-  Lights 12,                              !- Name
+  {ca4e753e-d788-4b81-acfe-35394e8dddc1}, !- Handle
+  Lights 6,                               !- Name
   {43063ee3-a0f3-454d-abc6-2affb3a1594c}, !- Lights Definition Name
   {2082f32f-f6d8-4f2b-8e9a-850d46d306d7}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21679,8 +21652,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {ffae70cd-fa7a-47cf-8d31-0f43955790af}, !- Handle
-  Lights 13,                              !- Name
+  {cf7dcbc8-12e3-48b2-9977-13f6e4a2608d}, !- Handle
+  Lights 7,                               !- Name
   {66bc2ac0-ca5b-482f-8cd2-fd57f4551338}, !- Lights Definition Name
   {828b3e5f-dff7-4301-8c04-06130478a3c2}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21688,8 +21661,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {bb3db385-0b0a-4b41-b1bc-7c1013bafe40}, !- Handle
-  Lights 14,                              !- Name
+  {09b8dcac-8a1e-41ea-831e-f3fbe0abe13b}, !- Handle
+  Lights 8,                               !- Name
   {66bc2ac0-ca5b-482f-8cd2-fd57f4551338}, !- Lights Definition Name
   {ddd9529f-7236-4f30-829a-3f9e1551a749}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21697,8 +21670,8 @@ OS:Lights,
   6;                                      !- Multiplier
 
 OS:Lights,
-  {e081cb1b-36c2-4044-9b1b-05863594116a}, !- Handle
-  Lights 15,                              !- Name
+  {6301620e-539e-4ac6-9f30-c982b6457e0f}, !- Handle
+  Lights 9,                               !- Name
   {66bc2ac0-ca5b-482f-8cd2-fd57f4551338}, !- Lights Definition Name
   {1d7ef5b1-bcff-4190-8f84-f71300f43fbb}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21706,8 +21679,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {bb5492f8-20aa-40c7-8048-1681bb14dc9b}, !- Handle
-  Lights 16,                              !- Name
+  {9042e745-4d06-4afb-8b69-2c6a326625fa}, !- Handle
+  Lights 10,                              !- Name
   {7552faba-a8a8-4c79-8b4a-415cdf137f25}, !- Lights Definition Name
   {d9fdb462-8681-4929-8083-8e5a0ed92db9}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21715,8 +21688,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {8b742448-9e43-4362-9909-98c60b548667}, !- Handle
-  Lights 17,                              !- Name
+  {e9ee988f-a02f-45e8-a17d-ce88180ce680}, !- Handle
+  Lights 11,                              !- Name
   {7552faba-a8a8-4c79-8b4a-415cdf137f25}, !- Lights Definition Name
   {d80c9cda-0ca4-42a0-9df5-53884052995e}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21724,8 +21697,8 @@ OS:Lights,
   4;                                      !- Multiplier
 
 OS:Lights,
-  {d907801c-942b-4b32-98b6-eff065801199}, !- Handle
-  Lights 18,                              !- Name
+  {84abcfea-6c5b-4760-88d0-e05915b9b134}, !- Handle
+  Lights 12,                              !- Name
   {7552faba-a8a8-4c79-8b4a-415cdf137f25}, !- Lights Definition Name
   {91bb3b4d-1e94-4822-b18e-ec13bcd47205}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21733,8 +21706,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {b3f3242a-d237-4da0-99d4-42a2698135a8}, !- Handle
-  Lights 19,                              !- Name
+  {79387f6c-1fa8-4e96-b199-7c376d504be9}, !- Handle
+  Lights 13,                              !- Name
   {d3377c8a-2b64-4c70-876f-31121575df7a}, !- Lights Definition Name
   {c7b53610-4eed-41c9-92cb-082dab1cd7bb}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21742,8 +21715,8 @@ OS:Lights,
   0;                                      !- Multiplier
 
 OS:Lights,
-  {725383bc-0ed4-4be8-9281-e620d16c8e08}, !- Handle
-  Lights 20,                              !- Name
+  {b4bd5562-b276-4915-98e3-e3e78d2135b4}, !- Handle
+  Lights 14,                              !- Name
   {d3377c8a-2b64-4c70-876f-31121575df7a}, !- Lights Definition Name
   {66ae7c7b-4edc-4339-ae5c-30f088904408}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21751,8 +21724,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {f2f1223b-a7dc-46c9-8289-a904ff007870}, !- Handle
-  Lights 21,                              !- Name
+  {78fd8096-d3ab-4a0b-b14f-70b0836ab5e4}, !- Handle
+  Lights 15,                              !- Name
   {d3377c8a-2b64-4c70-876f-31121575df7a}, !- Lights Definition Name
   {055c42d0-843d-4036-9689-a5000a93727a}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21760,8 +21733,8 @@ OS:Lights,
   0;                                      !- Multiplier
 
 OS:Lights,
-  {e3137aa1-15bb-43ac-942d-c77ed3553d58}, !- Handle
-  Lights 22,                              !- Name
+  {5644d921-1aaa-4f48-a6cb-c8c79ab6abbf}, !- Handle
+  Lights 16,                              !- Name
   {54b7c18a-4460-4f36-8c03-5b03d93f5b3d}, !- Lights Definition Name
   {1e791222-b044-46a9-b1fb-2c63d323f231}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21769,8 +21742,8 @@ OS:Lights,
   2;                                      !- Multiplier
 
 OS:Lights,
-  {137263e4-b906-4ba4-afc5-e0f314025ea8}, !- Handle
-  Lights 23,                              !- Name
+  {8fb09287-b4b5-4114-83bb-41a10b541505}, !- Handle
+  Lights 17,                              !- Name
   {54b7c18a-4460-4f36-8c03-5b03d93f5b3d}, !- Lights Definition Name
   {f630e54d-d8da-45cf-9e72-d9595ae854c4}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21778,8 +21751,8 @@ OS:Lights,
   11;                                     !- Multiplier
 
 OS:Lights,
-  {79f6ee8b-4dfe-43c2-a804-ba4077da77d6}, !- Handle
-  Lights 24,                              !- Name
+  {49396bcd-2057-4dcb-88e5-19659f74eb81}, !- Handle
+  Lights 18,                              !- Name
   {54b7c18a-4460-4f36-8c03-5b03d93f5b3d}, !- Lights Definition Name
   {9dba7679-6f42-4ff6-a0ac-8fe78f4e0f15}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21787,62 +21760,8 @@ OS:Lights,
   2;                                      !- Multiplier
 
 OS:Lights,
-  {9de301a5-e843-4f75-91da-21a609dfc2dd}, !- Handle
-  Lights 25,                              !- Name
-  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
-  {29fff8dd-55db-40d9-867d-1509733c53d5}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  7;                                      !- Multiplier
-
-OS:Lights,
-  {40896c75-49cf-4f93-af88-d40a7c76c82b}, !- Handle
-  Lights 26,                              !- Name
-  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
-  {287f1fd4-b445-42b7-b31d-72b34bffa0bc}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  33;                                     !- Multiplier
-
-OS:Lights,
-  {444d7ec7-b38c-4c0a-a97f-d4bad7fbd839}, !- Handle
-  Lights 27,                              !- Name
-  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
-  {46ffc1e8-c61f-44f8-a13b-21ca70b4f6b2}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  7;                                      !- Multiplier
-
-OS:Lights,
-  {2ce8d973-4c38-41d3-bf57-394f1b5b3650}, !- Handle
-  Lights 28,                              !- Name
-  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
-  {8f724223-236f-4e97-ba7d-ba4d35be36e2}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  3;                                      !- Multiplier
-
-OS:Lights,
-  {201d360a-a135-4313-abe8-be11e9cb0e94}, !- Handle
-  Lights 29,                              !- Name
-  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
-  {8d844980-f678-4635-8e17-8f721b84330c}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  12;                                     !- Multiplier
-
-OS:Lights,
-  {bbc91628-21df-4670-ae41-c9185d77f1c5}, !- Handle
-  Lights 30,                              !- Name
-  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
-  {8247c37c-ffd5-468f-9ffc-c3fdc8c4f84d}, !- Space or SpaceType Name
-  ,                                       !- Schedule Name
-  ,                                       !- Fraction Replaceable
-  3;                                      !- Multiplier
-
-OS:Lights,
-  {8abc437f-4451-44ff-9a0e-4b216839d785}, !- Handle
-  Lights 31,                              !- Name
+  {5bf71788-eddd-4514-a8c7-df1c910f4a75}, !- Handle
+  Lights 19,                              !- Name
   {24718cce-8a89-4829-a8f7-41e7ba661c70}, !- Lights Definition Name
   {a32e9a2d-1724-4c53-8b8f-8dc8d200c0cc}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21850,8 +21769,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {e46f384d-4330-4e18-8ae9-3d7ab7fdc42c}, !- Handle
-  Lights 32,                              !- Name
+  {5db1d68f-a3fb-47f7-99fc-b3ce09844652}, !- Handle
+  Lights 20,                              !- Name
   {24718cce-8a89-4829-a8f7-41e7ba661c70}, !- Lights Definition Name
   {f4958876-c837-468b-836f-88266024974b}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21859,8 +21778,8 @@ OS:Lights,
   3;                                      !- Multiplier
 
 OS:Lights,
-  {03ac9c0b-6c36-469c-8bca-c6639946416d}, !- Handle
-  Lights 33,                              !- Name
+  {633efc77-9211-4947-babe-c0a7c090510f}, !- Handle
+  Lights 21,                              !- Name
   {24718cce-8a89-4829-a8f7-41e7ba661c70}, !- Lights Definition Name
   {6dfd75e1-90f9-4442-a7ec-48511f8c1044}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21868,8 +21787,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {dcf218e5-f212-4b5a-8bf9-3bca885919ae}, !- Handle
-  Lights 34,                              !- Name
+  {266d4b1e-31af-4edd-b1db-928cc67f7611}, !- Handle
+  Lights 22,                              !- Name
   {3bdef155-132b-4b64-ab6d-c2467e5f2454}, !- Lights Definition Name
   {8bc31cf6-5c44-4429-9d4d-f7fc80240e23}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21877,8 +21796,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {15f38854-501a-47c9-be0f-cbf9b24c85a8}, !- Handle
-  Lights 35,                              !- Name
+  {222e83ed-bbd6-48a8-b13c-32abd8c7bdbd}, !- Handle
+  Lights 23,                              !- Name
   {3bdef155-132b-4b64-ab6d-c2467e5f2454}, !- Lights Definition Name
   {8d67f7b7-af59-4870-95f4-1323570b7d84}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21886,8 +21805,8 @@ OS:Lights,
   4;                                      !- Multiplier
 
 OS:Lights,
-  {d1868d4f-6748-4d8c-8388-5e87404ea235}, !- Handle
-  Lights 36,                              !- Name
+  {5d8a1d0a-9fed-4be8-bed3-d002d12a5246}, !- Handle
+  Lights 24,                              !- Name
   {3bdef155-132b-4b64-ab6d-c2467e5f2454}, !- Lights Definition Name
   {d273c52d-86ee-45d6-807d-81547a4da8ed}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21895,8 +21814,8 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {9284da49-d550-4615-94b4-62661bb6c071}, !- Handle
-  Lights 37,                              !- Name
+  {0b64e172-873a-4594-9cb0-2e7a440dab3e}, !- Handle
+  Lights 25,                              !- Name
   {f48954ee-f4c7-4634-ade3-9cebd59d5c0a}, !- Lights Definition Name
   {3bf25292-b611-45d4-8005-c8ac3dc665f5}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21904,8 +21823,8 @@ OS:Lights,
   0;                                      !- Multiplier
 
 OS:Lights,
-  {e3bdf9f0-07d2-4c74-b5c4-23c7f95fa0a9}, !- Handle
-  Lights 38,                              !- Name
+  {5bc2ade2-da42-4fec-85da-c5ab894fb7fb}, !- Handle
+  Lights 26,                              !- Name
   {f48954ee-f4c7-4634-ade3-9cebd59d5c0a}, !- Lights Definition Name
   {e3af6a73-63b8-45db-b2a0-d82b59e6f76c}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21913,8 +21832,8 @@ OS:Lights,
   2;                                      !- Multiplier
 
 OS:Lights,
-  {bf5fde7c-2ec0-4c2f-9586-bf3a6c3f074f}, !- Handle
-  Lights 39,                              !- Name
+  {115e866f-edbe-401d-aa8f-088abd316c17}, !- Handle
+  Lights 27,                              !- Name
   {f48954ee-f4c7-4634-ade3-9cebd59d5c0a}, !- Lights Definition Name
   {77264eff-1c7e-4f0f-829e-39095578712d}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21922,8 +21841,8 @@ OS:Lights,
   0;                                      !- Multiplier
 
 OS:Lights,
-  {7a687270-fbde-49b3-81d2-209e0ade7ae8}, !- Handle
-  Lights 40,                              !- Name
+  {1184042e-f402-4004-9009-0cbbfdfb3bf5}, !- Handle
+  Lights 28,                              !- Name
   {7ad92b0b-c73e-44d1-90ef-c65a150871a3}, !- Lights Definition Name
   {dd63e3fb-a79a-422f-9884-0ab68e7750d5}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21931,8 +21850,8 @@ OS:Lights,
   3;                                      !- Multiplier
 
 OS:Lights,
-  {34480f44-7498-4835-8762-70414167b8bf}, !- Handle
-  Lights 41,                              !- Name
+  {bc83d704-2845-496a-93a8-1dc67fdfeba6}, !- Handle
+  Lights 29,                              !- Name
   {7ad92b0b-c73e-44d1-90ef-c65a150871a3}, !- Lights Definition Name
   {77fc9dda-6ca5-4136-b8cd-91b3cc257db6}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21940,8 +21859,8 @@ OS:Lights,
   16;                                     !- Multiplier
 
 OS:Lights,
-  {204e3b53-2212-4f00-9a56-46394de0ead6}, !- Handle
-  Lights 42,                              !- Name
+  {35cdb4b5-2bdc-4995-8ce4-2199b5d324f7}, !- Handle
+  Lights 30,                              !- Name
   {7ad92b0b-c73e-44d1-90ef-c65a150871a3}, !- Lights Definition Name
   {a9d7278c-8880-464b-9520-6cd63cd4342a}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21949,8 +21868,8 @@ OS:Lights,
   3;                                      !- Multiplier
 
 OS:Lights,
-  {c71da4f3-08f8-4b3d-ac13-7e48c237d84e}, !- Handle
-  Lights 43,                              !- Name
+  {defec140-cc97-4a54-9287-5d4dce8ab8ff}, !- Handle
+  Lights 31,                              !- Name
   {04fbb9c1-6d9b-4f11-b3f9-56ecfba8144e}, !- Lights Definition Name
   {846c97db-5d8a-4240-b25a-c4a4eb6b2afb}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21958,8 +21877,8 @@ OS:Lights,
   0;                                      !- Multiplier
 
 OS:Lights,
-  {5b293c0f-2e95-4009-b306-2c1334249446}, !- Handle
-  Lights 44,                              !- Name
+  {b3fb5278-513e-412a-83b5-aca7bf48a23f}, !- Handle
+  Lights 32,                              !- Name
   {04fbb9c1-6d9b-4f11-b3f9-56ecfba8144e}, !- Lights Definition Name
   {bf712311-3fa4-42e4-b938-a139915f4014}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
@@ -21967,11 +21886,119 @@ OS:Lights,
   1;                                      !- Multiplier
 
 OS:Lights,
-  {ac859001-9848-4e27-8f90-95b28b10d418}, !- Handle
-  Lights 45,                              !- Name
+  {388d6b5f-5ea3-4bfc-8d01-6206f469ee10}, !- Handle
+  Lights 33,                              !- Name
   {04fbb9c1-6d9b-4f11-b3f9-56ecfba8144e}, !- Lights Definition Name
   {83f0581f-2bb4-4d68-a592-010f426ecf8d}, !- Space or SpaceType Name
   ,                                       !- Schedule Name
   ,                                       !- Fraction Replaceable
   0;                                      !- Multiplier
+
+OS:Lights,
+  {ac0a56db-26df-47b6-9709-a802e8d04f47}, !- Handle
+  Lights 34,                              !- Name
+  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
+  {29fff8dd-55db-40d9-867d-1509733c53d5}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  4;                                      !- Multiplier
+
+OS:Lights,
+  {8cb02f75-398a-443b-b58b-9eb4fdeb086d}, !- Handle
+  Lights 35,                              !- Name
+  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
+  {287f1fd4-b445-42b7-b31d-72b34bffa0bc}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  17;                                     !- Multiplier
+
+OS:Lights,
+  {de503899-5c57-40eb-98b0-a1ffbeccdd8f}, !- Handle
+  Lights 36,                              !- Name
+  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
+  {46ffc1e8-c61f-44f8-a13b-21ca70b4f6b2}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  4;                                      !- Multiplier
+
+OS:Lights,
+  {91f15192-6a32-4f14-9ae4-c1baecee558a}, !- Handle
+  Lights 37,                              !- Name
+  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
+  {8f724223-236f-4e97-ba7d-ba4d35be36e2}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  1;                                      !- Multiplier
+
+OS:Lights,
+  {9e9f7a80-90e7-42d3-80b0-cd6b8884c0bf}, !- Handle
+  Lights 38,                              !- Name
+  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
+  {8d844980-f678-4635-8e17-8f721b84330c}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  6;                                      !- Multiplier
+
+OS:Lights,
+  {d3b38c36-1d1b-4158-a7bc-1d1f20030fad}, !- Handle
+  Lights 39,                              !- Name
+  {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Lights Definition Name
+  {8247c37c-ffd5-468f-9ffc-c3fdc8c4f84d}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  1;                                      !- Multiplier
+
+OS:Lights,
+  {abffbcd0-b976-46d2-a7e5-6ecf0b9708b5}, !- Handle
+  Lights 40,                              !- Name
+  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
+  {dc7931e3-e2b9-4c9a-8a2b-eabe3d36e944}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  1;                                      !- Multiplier
+
+OS:Lights,
+  {f91eb159-9f9e-4b50-9ae3-20aed7f21e22}, !- Handle
+  Lights 41,                              !- Name
+  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
+  {f10d729e-1d4d-49e4-96fd-bf3a7e360714}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  6;                                      !- Multiplier
+
+OS:Lights,
+  {5df8fea3-f6ae-44d6-a33a-82d21cc18ce7}, !- Handle
+  Lights 42,                              !- Name
+  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
+  {a9007d6b-f906-4005-9212-01d0236895a3}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  1;                                      !- Multiplier
+
+OS:Lights,
+  {07889c23-f972-44a3-97f0-5133b385bd82}, !- Handle
+  Lights 43,                              !- Name
+  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
+  {1a51e6b5-0e1a-4f8e-a905-694a818e9754}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  1;                                      !- Multiplier
+
+OS:Lights,
+  {dfe6c7b4-ba03-47aa-b5ce-e2e8842a5dd6}, !- Handle
+  Lights 44,                              !- Name
+  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
+  {766e2fca-18d5-4d79-bbab-f6cd123e7246}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  6;                                      !- Multiplier
+
+OS:Lights,
+  {c4540d1e-e42f-4ee0-a77a-e35519c0f578}, !- Handle
+  Lights 45,                              !- Name
+  {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Lights Definition Name
+  {b0f9b027-6d6b-4264-9f47-14a60249ee46}, !- Space or SpaceType Name
+  ,                                       !- Schedule Name
+  ,                                       !- Fraction Replaceable
+  1;                                      !- Multiplier
 

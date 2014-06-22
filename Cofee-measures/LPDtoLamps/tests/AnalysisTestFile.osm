@@ -4155,7 +4155,7 @@ OS:BuildingStory,
   3.048,                                  !- Nominal Floor to Floor Height {m}
   ,                                       !- Default Construction Set Name
   ,                                       !- Default Schedule Set Name
-  ;                                       !- Group Rendering Name
+  {fb8b731a-722a-4a14-af7f-a8953db56d51}; !- Group Rendering Name
 
 OS:Space,
   {dc7931e3-e2b9-4c9a-8a2b-eabe3d36e944}, !- Handle
@@ -21617,18 +21617,18 @@ OS:Lights:Definition,
 
 OS:Lights:Definition,
   {75b13d3c-14ff-4f64-808a-588d6abe421c}, !- Handle
-  DOE Ref 2004 - Office - ClosedOffice Lights Definition - 30.0 percent reduction, !- Name
+  Edited to loo like Incandescent to test LpdToLamp measure, !- Name
   Watts/Area,                             !- Design Level Calculation Method
   ,                                       !- Lighting Level {W}
-  8.28821102086649,                       !- Watts per Space Floor Area {W/m2}
+  24.2187984375969,                       !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
 OS:Lights:Definition,
   {8963986e-a9c5-40ae-b603-43ef7c6fd25a}, !- Handle
-  DOE Ref 2004 - Office - OpenOffice Lights Definition - 30.0 percent reduction, !- Name
+  Edited T look like T12 to test LpdToLamp measure, !- Name
   Watts/Area,                             !- Design Level Calculation Method
   ,                                       !- Lighting Level {W}
-  8.28821102086649,                       !- Watts per Space Floor Area {W/m2}
+  18.836843229242,                        !- Watts per Space Floor Area {W/m2}
   ;                                       !- Watts per Person {W/person}
 
 OS:Lights:Definition,
@@ -21647,4 +21647,31 @@ OS:LifeCycleCost,
   {bf305633-c5a1-4881-9edf-ca5e1a8e1274}, !- Item Name
   0,                                      !- Cost
   CostPerEach;                            !- Cost Units
+
+OS:LifeCycleCost:Parameters,
+  {b0ab9e0a-00cb-44ec-93de-a660f05e7546}, !- Handle
+  FEMP,                                   !- Analysis Type
+  ,                                       !- Discounting Convention
+  ,                                       !- Inflation Approach
+  ,                                       !- Real Discount Rate
+  ,                                       !- Nominal Discount Rate
+  ,                                       !- Inflation
+  ,                                       !- Base Date Month
+  ,                                       !- Base Date Year
+  ,                                       !- Service Date Month
+  ,                                       !- Service Date Year
+  ,                                       !- Length of Study Period in Years
+  ,                                       !- Tax Rate
+  ,                                       !- Depreciation Method
+  Yes;                                    !- Use NIST Fuel Escalation Rates
+
+OS:Rendering:Color,
+  {fb8b731a-722a-4a14-af7f-a8953db56d51}, !- Handle
+  Rendering Color 16,                     !- Name
+  0,                                      !- Rendering Red Value
+  206,                                    !- Rendering Green Value
+  209;                                    !- Rendering Blue Value
+
+OS:Facility,
+  {1f6410f0-d1fe-4747-922b-14eb1e4f284b}; !- Handle
 
