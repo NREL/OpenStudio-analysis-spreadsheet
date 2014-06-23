@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/NREL/OpenStudio-analysis-gem.git
-  revision: c26455cc7c631f552e81a1f444bbeb06a7e0d83e
+  revision: 050e026109a27e44fad47c7104281cdd3c3a0bc7
   branch: develop
   specs:
     openstudio-analysis (0.3.1)
@@ -78,7 +78,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.99.1)
     ruby-ole (1.2.11.7)
-    rubyXL (3.0.1)
+    rubyXL (3.0.2)
       nokogiri (>= 1.4.4)
       rubyzip (>= 1.0.0)
     rubyzip (1.1.4)
