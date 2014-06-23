@@ -1,7 +1,7 @@
 <measure>
   <name>Increase Insulation R value For Roofs By Percentage</name>
   <uid>6c4eb22b-770f-456c-bcd1-084cfad89eeb</uid>
-  <version_id>4ee7d7b9-02eb-4dae-b776-04893b1f41d6</version_id>
+  <version_id>30fbc32f-ff44-48b7-9b0d-e70796f09ef5</version_id>
   <description>Increase the R value of the insulation layer in roof constructinons by a percentage.</description>
   <modeler_description>Insulation later is inferred by finding the existing layer with the highest thermal resistance.</modeler_description>
   <provenances/>
@@ -35,19 +35,19 @@
       <filename>EnvelopeAndLoadTestModel_01.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>938A1BB0</checksum>
+      <checksum>10AA8866</checksum>
     </file>
     <file>
       <filename>ReverseTranslatedModel.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>20C95654</checksum>
+      <checksum>0B94403D</checksum>
     </file>
     <file>
       <filename>IncreaseInsulationRValueForRoofs_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>88738B17</checksum>
+      <checksum>C3F2A7B7</checksum>
     </file>
     <file>
       <version>
@@ -57,7 +57,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>95488DB8</checksum>
+      <checksum>DC927612</checksum>
     </file>
   </files>
 </measure>

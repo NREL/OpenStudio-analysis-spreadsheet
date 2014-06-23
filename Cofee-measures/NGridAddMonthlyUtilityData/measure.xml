@@ -1,7 +1,7 @@
 <measure>
   <name>NGrid Add Monthly Utility Data</name>
   <uid>6da969e0-4256-49bf-9607-26504cc3d421</uid>
-  <version_id>541b587c-fa7c-47d0-acda-9a67d7d81e6a</version_id>
+  <version_id>6bba2a48-5ac9-47c0-a305-dd83c18eb680</version_id>
   <description>Reads in custom format and adds utility data</description>
   <modeler_description>Minimum interval for utility data is one day</modeler_description>
   <provenances/>
@@ -29,19 +29,25 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>D4ABE347</checksum>
+      <checksum>617B7AE9</checksum>
     </file>
     <file>
       <filename>NGridAddMonthlyUtilityData_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>CFEF46E2</checksum>
+      <checksum>9F7E4CBE</checksum>
     </file>
     <file>
-      <filename></filename>
-      <filetype></filetype>
-      <usage_type>resource</usage_type>
-      <checksum>00000000</checksum>
+      <filename>electric_billed_usages.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>2E11732C</checksum>
+    </file>
+    <file>
+      <filename>gas_billed_usages.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>85262C31</checksum>
     </file>
   </files>
 </measure>

@@ -1,7 +1,7 @@
 <measure>
   <name>Add Sys 3 - PSZ-AC Ngrid</name>
   <uid>af83d6ea-b7a3-405c-86e3-65da6eaf3f2c</uid>
-  <version_id>ee33ff18-01e7-49ac-9496-c968ea39d55f</version_id>
+  <version_id>64a08738-4321-43f7-91ff-8ee0f5c751ea</version_id>
   <description>Based on Add Sys 3 - PSZ-AC but exposing arguments for COP and heating eff.</description>
   <modeler_description></modeler_description>
   <provenances/>
@@ -35,7 +35,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>9DDF1054</checksum>
+      <checksum>BD61BCDD</checksum>
     </file>
   </files>
 </measure>

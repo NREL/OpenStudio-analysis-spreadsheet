@@ -1,7 +1,7 @@
 <measure>
   <name>Space Type And Construction Set Wizard</name>
   <uid>9f8b4a61-ef75-42b6-8cb9-b73fad1f794a</uid>
-  <version_id>56d62e5f-34c2-4f8a-b123-9f2bfdb5d57f</version_id>
+  <version_id>85336755-1170-42cb-869b-66746ae0579c</version_id>
   <description>Create space types and or construction sets for the requested building type, climate zone, and target</description>
   <modeler_description>Requires ruby 2.0 to read JSON file used to make our templates. </modeler_description>
   <provenances/>
@@ -22,46 +22,40 @@
   </attributes>
   <files>
     <file>
-      <filename>EmptySeedModel.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>4A27B7AF</checksum>
-    </file>
-    <file>
       <filename>CreateTemplateModels.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>3ED024BD</checksum>
+      <checksum>D277CC46</checksum>
     </file>
     <file>
       <filename>Master_Schedules.osm</filename>
       <filetype>osm</filetype>
       <usage_type>resource</usage_type>
-      <checksum>BEA4A047</checksum>
+      <checksum>BD90EE48</checksum>
     </file>
     <file>
       <filename>OpenStudio_Standards.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
-      <checksum>E3D840CA</checksum>
+      <checksum>59A09EEA</checksum>
     </file>
     <file>
       <filename>OsLib_HelperMethods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2AE9E52E</checksum>
+      <checksum>709EA7D2</checksum>
     </file>
     <file>
       <filename>readme.md</filename>
       <filetype>md</filetype>
       <usage_type>resource</usage_type>
-      <checksum>0FDAC4ED</checksum>
+      <checksum>FDF2CAA1</checksum>
     </file>
     <file>
       <filename>ConstructionSetGenerator.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EBDB2373</checksum>
+      <checksum>243529DE</checksum>
     </file>
     <file>
       <version>
@@ -71,25 +65,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>1A8246D6</checksum>
+      <checksum>69ED8A70</checksum>
     </file>
     <file>
       <filename>SpaceTypeGenerator.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>D0EAE280</checksum>
-    </file>
-    <file>
-      <filename>SpaceTypeAndConstructionSetWizard_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>C429E286</checksum>
-    </file>
-    <file>
-      <filename>test.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>675CE7A8</checksum>
+      <checksum>69F62574</checksum>
     </file>
   </files>
 </measure>

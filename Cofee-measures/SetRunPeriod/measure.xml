@@ -1,7 +1,7 @@
 <measure>
   <name>Set Run Period</name>
   <uid>63d43c68-ed11-4c60-a5c5-cae72f7ba4ff</uid>
-  <version_id>323d0a0b-278c-4e0f-a484-24b7135f3df3</version_id>
+  <version_id>b40b3c05-00b9-4422-84f8-b86ca0ddd4b4</version_id>
   <description>This will allow you to change the starting and ending day and month of the Run Period object.</description>
   <modeler_description>This controls the length of the simulation period for EnergyPlus.</modeler_description>
   <provenances/>
@@ -29,13 +29,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>5051711A</checksum>
+      <checksum>4CBCED09</checksum>
     </file>
     <file>
       <filename>SetRunPeriod_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>390BCFEF</checksum>
+      <checksum>D4D0AD3B</checksum>
     </file>
   </files>
 </measure>

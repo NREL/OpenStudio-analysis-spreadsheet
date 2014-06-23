@@ -1,7 +1,7 @@
 <measure>
   <name>Add Overhangs by Projection Factor</name>
   <uid>1e29e117-3916-4368-b24d-75da54045956</uid>
-  <version_id>da412a87-354d-4ab7-a299-18229cc467e1</version_id>
+  <version_id>4c3b0cb1-4c11-4534-8f62-f9641ab0ff3b</version_id>
   <description>Add overhangs by projection factor to specified windows. The projection factor is the overhang depth divided by the window height. This can be applied to windows by the closest cardinal direction. If baseline model contains overhangs made by this measure, they will be replaced. Optionally the measure can delete any pre-existing space shading surfaces.</description>
   <modeler_description>If requested then delete existing space shading surfaces. Then loop through exterior windows. If the requested cardinal direction is the closest to the window, then add the overhang. Name the shading surface the same as the window but append with "-Overhang".  If a space shading surface of that name already exists, then delete it before making the new one. This measure has no life cycle cost arguments. You can see the economic impact of the measure by costing the construction used for the overhangs.</modeler_description>
   <provenances/>
@@ -35,7 +35,7 @@
       <filename>AddOverhangsByProjectionFactor_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>285A7A4F</checksum>
+      <checksum>82F98FBD</checksum>
     </file>
     <file>
       <version>
@@ -45,13 +45,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>098819CC</checksum>
+      <checksum>EB766E62</checksum>
     </file>
     <file>
       <filename>OverhangTestModel_01.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>E70C5835</checksum>
+      <checksum>CB626A3A</checksum>
     </file>
   </files>
 </measure>

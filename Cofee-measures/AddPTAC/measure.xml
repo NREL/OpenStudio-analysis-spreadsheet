@@ -1,7 +1,7 @@
 <measure>
   <name>Add PTAC</name>
   <uid>bc5a6d6a-0680-4806-a6fa-329edde82b74</uid>
-  <version_id>5609c5e1-edc8-438b-b358-0fd885d16c6d</version_id>
+  <version_id>415c47e8-667b-4227-9b63-4a7aa1bc0585</version_id>
   <description>This measure adds a PTAC system to every zone.  Arguments are heating efficiency and cooling COP.</description>
   <modeler_description></modeler_description>
   <provenances/>
@@ -22,12 +22,6 @@
   </attributes>
   <files>
     <file>
-      <filename>AddPTAC_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>7BD4392C</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.3.5</identifier>
@@ -35,7 +29,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>CCAE2422</checksum>
+      <checksum>55F5234D</checksum>
     </file>
   </files>
 </measure>

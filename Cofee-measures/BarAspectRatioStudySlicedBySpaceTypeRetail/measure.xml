@@ -1,7 +1,7 @@
 <measure>
   <name>Bar Aspect Ratio Study Sliced By Space Type Retail</name>
   <uid>28b8b43e-fde2-4abe-abce-310c2ef2471b</uid>
-  <version_id>49efaa6c-f7a8-4c77-be2b-37c5d3469771</version_id>
+  <version_id>95569921-00bd-45bb-8631-9cd12010c9c9</version_id>
   <description>This measure will create a building envelope based on a target floor area, aspect ratio, floor to floor height, and a collection of space types and fraction of building using that space type.</description>
   <modeler_description>Instead of taking a hash of space type names and fractions, this has a double argument for each standards space type for a Retail. This is intended to be used in a model where only one space type exists for each standards space type field. If there are multiple possible space types you may not get the expected results.</modeler_description>
   <provenances/>
@@ -35,25 +35,13 @@
       <filename>OsLib_Geometry.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>019978BE</checksum>
+      <checksum>AAB888F0</checksum>
     </file>
     <file>
       <filename>OsLib_HelperMethods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2AE9E52E</checksum>
-    </file>
-    <file>
-      <filename>RetailWizard.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E38E4BE1</checksum>
-    </file>
-    <file>
-      <filename>BarAspectRatioSlicedBySpaceType_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>53A2BE66</checksum>
+      <checksum>709EA7D2</checksum>
     </file>
     <file>
       <version>
@@ -63,19 +51,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>90D800FC</checksum>
-    </file>
-    <file>
-      <filename>test.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>631C44C3</checksum>
+      <checksum>BFDC91AF</checksum>
     </file>
     <file>
       <filename>OsLib_Cofee.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>19B02CB7</checksum>
+      <checksum>38425536</checksum>
     </file>
   </files>
 </measure>

@@ -1,7 +1,7 @@
 <measure>
   <name>Bar Aspect Ratio Study Sliced By Space Type Office</name>
   <uid>d51f0296-483f-4f3d-97bb-8b6308d120e3</uid>
-  <version_id>15159f0c-f18a-4e51-99f2-08049d87039d</version_id>
+  <version_id>706f972c-78da-4918-91c4-881509559cf9</version_id>
   <description>This measure will create a building envelope based on a target floor area, aspect ratio, floor to floor height, and a collection of space types and fraction of building using that space type.</description>
   <modeler_description>Instead of taking a hash of space type names and fractions, this has a double argument for each standards space type for an Office. This is intended to be used in a model where only one space type exists for each standards space type field. If there are multiple possible space types you may not get the expected results.</modeler_description>
   <provenances/>
@@ -35,31 +35,31 @@
       <filename>OsLib_Geometry.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>019978BE</checksum>
+      <checksum>AAB888F0</checksum>
     </file>
     <file>
       <filename>OsLib_HelperMethods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2AE9E52E</checksum>
+      <checksum>709EA7D2</checksum>
     </file>
     <file>
       <filename>MidriseApartmentWizard.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>5B8320BD</checksum>
+      <checksum>28AA0D64</checksum>
     </file>
     <file>
       <filename>OfficeWizard.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>E2FD582D</checksum>
+      <checksum>14B4B392</checksum>
     </file>
     <file>
       <filename>BarAspectRatioSlicedBySpaceType_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>91FC3B5E</checksum>
+      <checksum>F7979BE8</checksum>
     </file>
     <file>
       <version>
@@ -69,19 +69,19 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>B11DEA83</checksum>
+      <checksum>AF8AF1BA</checksum>
     </file>
     <file>
       <filename>test.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>F6397A0A</checksum>
+      <checksum>D955B5E8</checksum>
     </file>
     <file>
       <filename>OsLib_Cofee.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>19B02CB7</checksum>
+      <checksum>5AD60871</checksum>
     </file>
   </files>
 </measure>
