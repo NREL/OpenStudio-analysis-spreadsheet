@@ -1,9 +1,9 @@
 #start the measure
-class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
+class IncreaseInsulationRValueForRoofsByPercentage < OpenStudio::Ruleset::ModelUserScript
 
   #define the name that a user will see
   def name
-    return "Increase R-value of Insulation for Roofs to a Specific Value"
+    return "Increase R-value of Insulation for Roofs by a Specified Percentage."
   end
 
   #define the arguments that the user will input
@@ -12,33 +12,9 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
 
     #make an argument insulation R-value
     r_value = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("r_value",true)
-    r_value.setDisplayName("Insulation R-value (ft^2*h*R/Btu).")
+    r_value.setDisplayName("Percentage Increase of R-value for Roof Insulation.")
     r_value.setDefaultValue(30.0)
     args << r_value
-
-    #make bool argument to allow both increase and decrease in R value
-    allow_reduction = OpenStudio::Ruleset::OSArgument::makeBoolArgument("allow_reduction",true)
-    allow_reduction.setDisplayName("Allow both increase and decrease in R-value to reach requested target?")
-    allow_reduction.setDefaultValue(false)
-    args << allow_reduction
-
-    #make an argument for material and installation cost
-    material_cost_increase_ip = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("material_cost_increase_ip",true)
-    material_cost_increase_ip.setDisplayName("Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).")
-    material_cost_increase_ip.setDefaultValue(0.0)
-    args << material_cost_increase_ip
-
-    #make an argument for demolition cost
-    one_time_retrofit_cost_ip = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("one_time_retrofit_cost_ip",true)
-    one_time_retrofit_cost_ip.setDisplayName("One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).")
-    one_time_retrofit_cost_ip.setDefaultValue(0.0)
-    args << one_time_retrofit_cost_ip
-
-    #make an argument for duration in years until costs start
-    years_until_retrofit_cost = OpenStudio::Ruleset::OSArgument::makeIntegerArgument("years_until_retrofit_cost",true)
-    years_until_retrofit_cost.setDisplayName("Year to Incur One Time Retrofit Cost (whole years).")
-    years_until_retrofit_cost.setDefaultValue(0)
-    args << years_until_retrofit_cost
 
     return args
   end #end the arguments method
@@ -54,28 +30,16 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
 
     #assign the user inputs to variables
     r_value = runner.getDoubleArgumentValue("r_value",user_arguments)
-    allow_reduction = runner.getBoolArgumentValue("allow_reduction",user_arguments)
-    material_cost_increase_ip = runner.getDoubleArgumentValue("material_cost_increase_ip",user_arguments)
-    one_time_retrofit_cost_ip = runner.getDoubleArgumentValue("one_time_retrofit_cost_ip",user_arguments)
-    years_until_retrofit_cost = runner.getIntegerArgumentValue("years_until_retrofit_cost",user_arguments)
 
     #set limit for minimum insulation. This is used to limit input and for inferring insulation layer in construction.
     min_expected_r_value_ip = 1 #ip units
 
     #check the R-value for reasonableness
-    if r_value < 0 or r_value > 500
-      runner.registerError("The requested roof insulation R-value of #{r_value} ft^2*h*R/Btu was above the measure limit.")
+    if r_value <  -100
+      runner.registerError("Percentage increase less than -100% is not valid.")
       return false
-    elsif r_value > 60
-      runner.registerWarning("The requested roof insulation R-value of #{r_value} ft^2*h*R/Btu is abnormally high.")
-    elsif r_value < min_expected_r_value_ip
-      runner.registerWarning("The requested roof insulation R-value of #{r_value} ft^2*h*R/Btu is abnormally low.")
     end
 
-    #check lifecycle arguments for reasonableness
-    if not years_until_retrofit_cost >= 0 and not years_until_retrofit_cost <= 100
-      runner.registerError("Year to incur one time retrofit cost should be a non-negative integer less than or equal to 100.")
-    end
 
     #short def to make numbers pretty (converts 4125001.25641 to 4,125,001.26 or 4,125,001). The definition be called through this measure
     def neat_numbers(number, roundto = 2) #round to 0 or 2)
@@ -92,10 +56,6 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
     def unit_helper(number,from_unit_string,to_unit_string)
       converted_number = OpenStudio::convert(OpenStudio::Quantity.new(number, OpenStudio::createUnit(from_unit_string).get), OpenStudio::createUnit(to_unit_string).get).get.value
     end
-
-    #convert r_value and material_cost to si for future use
-    r_value_si = unit_helper(r_value, "ft^2*h*R/Btu","m^2*K/W")
-    material_cost_increase_si = unit_helper(material_cost_increase_ip,"1/ft^2","1/m^2")
 
     #create an array of roofs and find range of starting construction R-value (not just insulation layer)
     surfaces = model.getSurfaces
@@ -162,8 +122,6 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
 
       if not thermal_resistance_values.max > unit_helper(min_expected_r_value_ip, "ft^2*h*R/Btu","m^2*K/W")
         runner.registerWarning("Construction '#{exterior_surface_construction.name.to_s}' does not appear to have an insulation layer and was not altered.")
-      elsif not thermal_resistance_values.max < r_value_si and not allow_reduction
-        runner.registerInfo("The insulation layer of construction #{exterior_surface_construction.name.to_s} exceeds the requested R-Value. It was not altered.")
       else
         #clone the construction
         final_construction = exterior_surface_construction.clone(model)
@@ -171,40 +129,7 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
         final_construction.setName("#{exterior_surface_construction.name.to_s} adj roof insulation")
         final_constructions_array << final_construction
 
-        #loop through lifecycle costs getting total costs under "Construction" or "Salvage" category and add to counter if occurs during year 0
-        const_LCCs = final_construction.lifeCycleCosts
-        cost_added = false
-        const_LCC_cat_const = false
-        updated_cost_si = 0
-        const_LCCs.each do |const_LCC|
-          if const_LCC.category == "Construction" and material_cost_increase_si != 0
-            const_LCC_cat_const = true #need this test to add proper lcc if it didn't exist to start with
-            # if multiple LCC objects associated with construction only adjust the cost of one of them.
-            if not cost_added
-              const_LCC.setCost(const_LCC.cost + material_cost_increase_si)
-            else
-              runner.registerInfo("More than one LifeCycleCost object with a category of Construction was associated with #{final_construction.name}. Cost was only adjusted for one of the LifeCycleCost objects.")
-            end
-            updated_cost_si += const_LCC.cost
-          end
-        end #end of const_LCCs.each
-
-        #add construction object if it didnt exist to start with and a cost increase was requested
-        if const_LCC_cat_const == false and material_cost_increase_si != 0
-          lcc_for_uncosted_const = OpenStudio::Model::LifeCycleCost.createLifeCycleCost("LCC_increase_insulation", final_construction, material_cost_increase_si, "CostPerArea", "Construction", 20, 0).get
-          runner.registerInfo("No material or installation costs existed for #{final_construction.name}. Created a new LifeCycleCost object with a material and installation cost of #{neat_numbers(unit_helper(lcc_for_uncosted_const.cost,"1/m^2","1/ft^2"))} ($/ft^2). Assumed capitol cost in first year, an expected life of 20 years, and no O & M costs.")
-        end
-
-        if cost_added
-          runner.registerInfo("Adjusting material and installation cost for #{final_construction.name} to #{neat_numbers(unit_helper(updated_cost_si,"1/m^2","1/ft^2"))} ($/ft^2).")
-        end
-
-        #add one time cost if requested
-        if one_time_retrofit_cost_ip > 0
-          one_time_retrofit_cost_si = unit_helper(one_time_retrofit_cost_ip,"1/ft^2","1/m^2")
-          lcc_retrofit_specific = OpenStudio::Model::LifeCycleCost.createLifeCycleCost("LCC_retrofit_specific", final_construction, one_time_retrofit_cost_si, "CostPerArea", "Construction", 0, years_until_retrofit_cost).get #using 0 for repeat period since one time cost.
-          runner.registerInfo("Adding one time cost of #{neat_numbers(unit_helper(lcc_retrofit_specific.cost,"1/m^2","1/ft^2"))} ($/ft^2) related to retrofit of roof insulation.")
-        end
+        #add construction object if it didnt exist to start with
 
         #push to hashes
         constructions_hash_old_new[exterior_surface_construction.name.to_s] = final_construction
@@ -227,7 +152,7 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
         if found_material == false
           new_material = max_thermal_resistance_material.clone(model)
           new_material = new_material.to_OpaqueMaterial.get
-          new_material.setName("#{max_thermal_resistance_material.name.to_s}_R-value #{r_value} (ft^2*h*R/Btu)")
+          new_material.setName("#{max_thermal_resistance_material.name.to_s}_R-value #{r_value}% increase")
           materials_hash[max_thermal_resistance_material.name.to_s] = new_material
           final_construction.eraseLayer(max_thermal_resistance_material_index)
           final_construction.insertLayer(max_thermal_resistance_material_index,new_material)
@@ -237,16 +162,18 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
           new_material_matt = new_material.to_Material
           if not new_material_matt.empty?
             starting_thickness = new_material_matt.get.thickness
-            target_thickness = starting_thickness * r_value_si / thermal_resistance_values.max
+            target_thickness = starting_thickness * (1 + r_value/100)
             final_thickness = new_material_matt.get.setThickness(target_thickness)
           end
           new_material_massless = new_material.to_MasslessOpaqueMaterial
           if not new_material_massless.empty?
-            final_thermal_resistance = new_material_massless.get.setThermalResistance(r_value_si)
+            starting_thermal_resistance = new_material_massless.get.thermalResistance
+            final_thermal_resistance = new_material_massless.get.setThermalResistance(starting_thermal_resistance)
           end
           new_material_airgap = new_material.to_AirGap
           if not new_material_airgap.empty?
-            final_thermal_resistance = new_material_airgap.get.setThermalResistance(r_value_si)
+            starting_thermal_resistance = new_material_airgap.get.thermalResistance
+            final_thermal_resistance = new_material_airgap.get.setThermalResistance(starting_thermal_resistance)
           end
         end #end of if found material is false
       end #end of if not thermal_resistance_values.max >
@@ -340,24 +267,12 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
     #report strings for final condition
     final_string = []   #not all exterior roof constructions, but only new ones made. If  roof didn't have insulation and was not altered we don't want to show it
     affected_area_si = 0
-    totalCost_of_affected_area = 0
-    yr0_capital_totalCosts = 0
     final_constructions_array.each do |final_construction|
 
       #unit conversion of roof insulation from SI units (M^2*K/W) to IP units (ft^2*h*R/Btu)
       final_conductance_ip = unit_helper(1/final_construction.thermalConductance.to_f,"m^2*K/W", "ft^2*h*R/Btu")
       final_string << "#{final_construction.name.to_s} (R-#{(sprintf "%.1f",final_conductance_ip)})"
       affected_area_si = affected_area_si + final_construction.getNetArea
-
-      #loop through lifecycle costs getting total costs under "Construction" or "Salvage" category and add to counter if occurs during year 0
-      const_LCCs = final_construction.lifeCycleCosts
-      const_LCCs.each do |const_LCC|
-        if const_LCC.category == "Construction" or const_LCC.category == "Salvage"
-          if const_LCC.yearsFromStart == 0
-            yr0_capital_totalCosts += const_LCC.totalCost
-          end
-        end
-      end
 
     end  #end of final_constructions_array.each do
 
@@ -372,7 +287,7 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
     end
 
     #report final condition
-    runner.registerFinalCondition("The existing insulation for roofs was changed to R-#{r_value}. This was accomplished for an initial cost of #{one_time_retrofit_cost_ip} ($/sf) and an increase of #{material_cost_increase_ip} ($/sf) for construction. This was applied to #{neat_numbers(affected_area_ip,0)} (ft^2) across #{final_string.size} roof constructions: #{final_string.sort.join(", ")}.")
+    runner.registerFinalCondition("The existing insulation for roofs was increased by #{r_value}%. This was applied to #{neat_numbers(affected_area_ip,0)} (ft^2) across #{final_string.size} roof constructions: #{final_string.sort.join(", ")}.")
 
     return true
 
@@ -381,4 +296,4 @@ class IncreaseInsulationRValueForRoofs < OpenStudio::Ruleset::ModelUserScript
 end #end the measure
 
 #this allows the measure to be used by the application
-IncreaseInsulationRValueForRoofs.new.registerWithApplication
+IncreaseInsulationRValueForRoofsByPercentage.new.registerWithApplication

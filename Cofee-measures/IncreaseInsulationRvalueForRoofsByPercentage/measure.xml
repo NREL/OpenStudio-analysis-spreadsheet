@@ -1,0 +1,63 @@
+<measure>
+  <name>Increase Insulation R value For Roofs By Percentage</name>
+  <uid>6c4eb22b-770f-456c-bcd1-084cfad89eeb</uid>
+  <version_id>4ee7d7b9-02eb-4dae-b776-04893b1f41d6</version_id>
+  <description>Increase the R value of the insulation layer in roof constructinons by a percentage.</description>
+  <modeler_description>Insulation later is inferred by finding the existing layer with the highest thermal resistance.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>EnvelopeAndLoadTestModel_01.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>938A1BB0</checksum>
+    </file>
+    <file>
+      <filename>ReverseTranslatedModel.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>20C95654</checksum>
+    </file>
+    <file>
+      <filename>IncreaseInsulationRValueForRoofs_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>88738B17</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>95488DB8</checksum>
+    </file>
+  </files>
+</measure>
