@@ -18,8 +18,13 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
   
   #define the arguments that the user will input
   def arguments(model)
-   args = OpenStudio::Ruleset::OSArgumentVector.new
+    args = OpenStudio::Ruleset::OSArgumentVector.new
     
+    #make choice argument economizer control type
+    t12_to_t8_lamp_replacement = OpenStudio::Ruleset::OSArgument::makeBoolArgument("t12_to_t8_lamp_replacement", true)
+    t12_to_t8_lamp_replacement.setDisplayName("Replace T12s with T8s")
+    args << t12_to_t8_lamp_replacement
+        
     return args
   end #end the arguments method
 
@@ -32,6 +37,16 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
       return false
     end
     
+    # Assign the user inputs to variables
+    t12_to_t8_lamp_replacement = runner.getStringArgumentValue("t12_to_t8_lamp_replacement",user_arguments)    
+    
+    # Note if t12_to_t8_lamp_replacement == NoChange
+    # and register as N/A
+    if t12_to_t8_lamp_replacement == false
+      runner.registerAsNotApplicable("N/A - User requested no change in lighting fixtures.")
+      return true
+    end  
+
     #hash of original to new light fixtures
     old_lts_def_new_lts_def = {}
     lamps_replaced_per_fixture = {}
@@ -50,7 +65,7 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
       next if name.scan(/[\d\.]+W (\w+)/).size == 0
       lamp_type = name.scan(/[\d\.]+W (\w+)/)[0][0]
       runner.registerInfo("lamp_type = #{lamp_type}")
-      next unless lamp_type == "Linear" #only looking for T12 fixtures (todo - need to fix names in LpdToLamp to use T12 here vs. Linear)
+      next unless lamp_type == "T12"
       
       next if name.match(/([\d\.]+)W/).size == 0
       lamp_wattage = name.match(/([\d\.]+)W/)[0].to_f

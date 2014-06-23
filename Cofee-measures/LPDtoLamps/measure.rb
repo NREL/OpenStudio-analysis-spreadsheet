@@ -25,7 +25,10 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
   def arguments(model)
     args = OpenStudio::Ruleset::OSArgumentVector.new
     
-
+    #make choice argument economizer control type
+    lpd_to_lamps = OpenStudio::Ruleset::OSArgument::makeBoolArgument("lpd_to_lamps", true)
+    lpd_to_lamps.setDisplayName("Replace LPD with Lamps")
+    args << lpd_to_lamps
     
     return args
   end #end the arguments method
@@ -39,6 +42,16 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
       return false
     end
 
+    # Assign the user inputs to variables
+    lpd_to_lamps = runner.getBoolArgumentValue("lpd_to_lamps",user_arguments)    
+    
+    # Note if lpd_to_lamps == NoChange
+    # and register as N/A
+    if lpd_to_lamps == false
+      runner.registerAsNotApplicable("N/A - User requested no change in lighting representation.")
+      return true
+    end     
+    
     # Define lighting technology lookup table by space type
     ltg_tech_lookup = []
     ltg_tech_lookup << ['Office','BreakRoom',0.219,0.73,1.2,1.89,2.28]
@@ -150,8 +163,8 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           lamp_wattage = 25
           num_ballasts = 1
           ballast_factor = 0.88
-          ballast_type = 'Electronic Ballast'
-          technology = 'Linear Fluorescent'
+          ballast_type = 'Electronic'
+          technology = 'T8 Linear Fluorescent'
           fixture_wattage = num_lamps*lamp_wattage*ballast_factor
           fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"         
         when 2 
@@ -160,8 +173,8 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           lamp_wattage = 32
           num_ballasts = 1
           ballast_factor = 1.0
-          ballast_type = 'Electronic Ballast'
-          technology = 'Linear Fluorescent'
+          ballast_type = 'Electronic'
+          technology = 'T8 Linear Fluorescent'
           fixture_wattage = num_lamps*lamp_wattage*ballast_factor
           fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
         when 3 
@@ -170,8 +183,8 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           lamp_wattage = 40
           num_ballasts = 1
           ballast_factor = 1.2
-          ballast_type = 'Magnetic Ballast'
-          technology = 'Linear Fluorescent'
+          ballast_type = 'Magnetic'
+          technology = 'T12 Linear Fluorescent'
           fixture_wattage = num_lamps*lamp_wattage*ballast_factor
           fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
         when 4 
@@ -185,7 +198,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
         
         # Report out the inference
         runner.registerInfo("Inferred that '#{space_type.name}' with LPD of #{lpd_w_per_ft2.round(2)}W/ft^2 has #{ltg_tech_inferred} lights based on an LPD closest to #{ltg_tech_types[closest_ltg_type]}W/ft^2.")
-
+          
         space_type.spaces.sort.each do |space|
 
           # todo check and see if there were any space lights to start with
