@@ -201,6 +201,8 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
       period_index = 1
       actual_consumption = 0.0
       modeled_consumption = 0.0
+      actual_consumption_values = []
+      modeled_consumption_values = []
       actual_demand = 0.0
       modeled_demand = 0.0
       
@@ -225,6 +227,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             hasElec = true
             elecActualConsumption << consumption.get.to_s
             actual_consumption += consumption.get
+            actual_consumption_values << consumption.get
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_actual",
                                    consumption.get,
@@ -241,6 +244,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             temp = consumption.get / consumptionUnitConversionFactor
             elecModelConsumption << temp.round.to_s
             modeled_consumption += temp
+            modeled_consumption_values << temp
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_modeled",
                                    temp,
@@ -324,6 +328,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             hasGas = true
             gasActualConsumption << consumption.get.to_s
             actual_consumption += consumption.get
+            actual_consumption_values << consumption.get
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_actual",
                                    consumption.get,
@@ -340,6 +345,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             temp = consumption.get / consumptionUnitConversionFactor
             gasModelConsumption << temp.round.to_s
             modeled_consumption += temp
+            modeled_consumption_values << temp
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_modeled",
                                    temp,
@@ -388,6 +394,20 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
                                100.0 * (modeled_demand - actual_demand) / actual_demand,
                                "%")
         end
+        if actual_consumption_values.size > 0 and actual_consumption_values.size == modeled_consumption_values.size
+          sum_squares = 0.0
+          actual_consumption_values.each_index do |i|
+            sum_squares += (actual_consumption_values[i] - modeled_consumption_values[i])**2
+          end
+          rmse = Math::sqrt(sum_squares / actual_consumption_values.size)
+          runner.registerValue("#{utility_bill_name}_sum_of_squares",
+                               sum_squares,
+                               utilityBill.consumptionUnit)
+          runner.registerValue("#{utility_bill_name}_rmse",
+                     rmse,
+                     utilityBill.consumptionUnit + "^0.5")                     
+        end
+        
       end
      
     end
