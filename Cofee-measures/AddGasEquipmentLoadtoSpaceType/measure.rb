@@ -101,31 +101,63 @@ class AddGasEquipmentLoadtoSpaceType < OpenStudio::Ruleset::ModelUserScript
       runner.registerError("Please enter a non negative number for gas per space floor area.")
       return false
     end
+    
+    watts_per_space_floor_area = OpenStudio::convert(gas_per_space_floor_area, "Btu/ft^2*h", "W/m^2").get
 
     #reporting initial condition of model
     building = model.getBuilding
     building_equip_power = building.gasEquipmentPower
-    runner.registerInitialCondition("The model's initial building gas equipment power was #{building_equip_power} (units TBD).")
+    runner.registerInitialCondition("The model's initial building gas equipment power was #{building_equip_power} (W).")
+    
+    space_types = []
+    if apply_to_building
+      space_types = model.getSpaceTypes
+    else
+      space_types << space_type
+    end
 
     # add new gas definition
-
-    space_types = model.getSpaceTypes
+    gas_definition = OpenStudio::Model::GasEquipmentDefinition.new(model)
+    gas_definition.setWattsperSpaceFloorArea(watts_per_space_floor_area)
+    
     space_types.each do |space_type|
 
       # skip if space type is not used
       next if space_type.spaces.size == 0
+      
+      floor_area = space_type.floorArea
+      number_of_people = space_type.getNumberOfPeople(floor_area)
 
       # find largest electric load in space type
-
+      biggest_electric_load = nil
+      biggest_design_level = 0
+      space_type.electricEquipment.each do |electric_equipment|
+        design_level = electric_equipment.getDesignLevel(floor_area, number_of_people)
+        if design_level > biggest_design_level
+          biggest_design_level = design_level
+          biggest_electric_load = electric_equipment
+        end
+      end
+      
+      if not biggest_electric_load
+        runner.registerWarning("Space type #{space_type.name.get} does not have any electric loads, will not add gas load to this space type.")
+        next
+      end
+      
+      if biggest_electric_load.schedule.empty?
+        runner.registerWarning("Space type #{space_type.name.get}'s largest electric load does not have a schedule, will not add gas load to this space type.")
+        next
+      end
 
       # add instance of new gas definition and link to added definition
-
-
+      gas_instance = OpenStudio::Model::GasEquipment.new(gas_definition)
+      gas_instance.setSchedule(biggest_electric_load.schedule.get)
+      gas_instance.setSpaceType(space_type)
     end
 
     #reporting final condition of model
     building_equip_power = building.gasEquipmentPower
-    runner.registerFinalCondition("The model's final building gas equipment power is #{building_equip_power} (units TBD).")
+    runner.registerFinalCondition("The model's final building gas equipment power is #{building_equip_power} (W).")
 
     return true
  
