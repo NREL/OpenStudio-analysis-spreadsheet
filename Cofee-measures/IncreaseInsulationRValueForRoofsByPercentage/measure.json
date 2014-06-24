@@ -1,0 +1,25 @@
+{
+  "classname": "IncreaseInsulationRValueForRoofsByPercentage",
+  "name": "increase_insulation_r_value_for_roofs_by_percentage",
+  "display_name": "Increase Insulation R Value For Roofs by Percentage",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "r_value",
+      "variable_type": "Double",
+      "name": "r_value",
+      "display_name": "Percentage Increase of R-value for Roof Insulation",
+      "units": null,
+      "description": null,
+      "default_value": 30.0
+    }
+  ],
+  "name_xml": "Increase Insulation R value For Roofs By Percentage",
+  "uid": "6c4eb22b-770f-456c-bcd1-084cfad89eeb",
+  "version_id": "30fbc32f-ff44-48b7-9b0d-e70796f09ef5",
+  "modeler_description": "Insulation later is inferred by finding the existing layer with the highest thermal resistance.",
+  "description": "Increase the R value of the insulation layer in roof constructinons by a percentage.",
+  "tags": [
+    "Envelope.Opaque"
+  ]
+}

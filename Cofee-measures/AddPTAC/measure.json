@@ -38,7 +38,7 @@
   ],
   "name_xml": "Add PTAC",
   "uid": "bc5a6d6a-0680-4806-a6fa-329edde82b74",
-  "version_id": "5609c5e1-edc8-438b-b358-0fd885d16c6d",
+  "version_id": "415c47e8-667b-4227-9b63-4a7aa1bc0585",
   "modeler_description": "",
   "description": "This measure adds a PTAC system to every zone.  Arguments are heating efficiency and cooling COP.",
   "tags": [

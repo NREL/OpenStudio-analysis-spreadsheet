@@ -1,0 +1,37 @@
+{
+  "classname": "AddGasEquipmentLoadtoSpaceType",
+  "name": "add_gas_equipment_loadto_space_type",
+  "display_name": "Add Gas Equipment Loadto Space Type",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "object",
+      "variable_type": "Choice",
+      "name": "object",
+      "display_name": "Apply the Measure to a Specific Space Type or to the Entire Model",
+      "units": null,
+      "description": null,
+      "default_value": "*Entire Building*",
+      "choices": [
+        "*Entire Building*"
+      ]
+    },
+    {
+      "local_variable": "gas_per_space_floor_area",
+      "variable_type": "Double",
+      "name": "gas_per_space_floor_area",
+      "display_name": "Gas Energy Per Space Floor Area",
+      "units": "Btu/ft^2*h",
+      "description": null,
+      "default_value": 0.0
+    }
+  ],
+  "name_xml": "Add Gas Equipment Load to Space Type",
+  "uid": "c4549951-66ad-44e9-9c2b-a8a5ee763871",
+  "version_id": "e408cf03-9958-4966-be2c-de9517907637",
+  "modeler_description": "Currently this only works on space types, but can extend later to work on spaces that do not have a space type defined.",
+  "description": "This will add a gas equipment load to the selected space types. It will borrow the schedule from the electric equipment definition in the space type with the highest peak load. If the space type doesn't have any electric equipment, then a gas load will not be added.",
+  "tags": [
+    "Equipment.Gas Equipment"
+  ]
+}

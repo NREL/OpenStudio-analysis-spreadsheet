@@ -47,10 +47,31 @@ false,Set Fixed Minimum Air Flow Ratein Vav Single Duct Air Terminalswith Reheat
 false,Set Maximum Reheat Air Temperatureof Vav Single Duct Air Terminalswith Reheat,SetMaximumReheatAirTemperatureofVAVSingleDuctAirTerminalswithReheat,SetMaximumReheatAirTemperatureofVAVSingleDuctAirTerminalswithReheat,RubyMeasure
 false,Set Site Ground Temperature,SetSiteGroundTemperature,SetSiteGroundTemperature,RubyMeasure
 "",argument,"",Ground Temperature,ground_temperature,Double,degC,"",""
+false,Add Gas Equipment Loadto Space Type,AddGasEquipmentLoadtoSpaceType,AddGasEquipmentLoadtoSpaceType,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,object,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Gas Energy Per Space Floor Area,gas_per_space_floor_area,Double,Btu/ft^2*h,0.0,""
+false,Add Overhangs by Projection Factor,AddOverhangsByProjectionFactor,AddOverhangsByProjectionFactor,RubyMeasure
+"",argument,"",Projection Factor,projection_factor,Double,overhang depth / window height,0.5,""
+"",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
+"",argument,"",Remove Existing Space Shading Surfaces From the Model,remove_ext_space_shading,Bool,,false,""
+"",argument,"",Optionally Choose a Construction for the Overhangs,construction,Choice,,"",""
 false,Add Ptac,AddPTAC,AddPTAC,RubyMeasure
 "",argument,"",Heating Efficiency,heating_efficiency,Double,,0.8,""
 "",argument,"",Heating Fuel Type,heating_fuel_type,Choice,,Gas,"|Gas,Electric|"
 "",argument,"",Cooling COP,cooling_cop,Double,,3.0,""
+false,Add Service Water Heating,AddServiceWaterHeating,AddServiceWaterHeating,RubyMeasure
+"",argument,"",Water Heater Fuel Type,water_heater_fuel_type,Choice,,NaturalGas,"|NaturalGas,Electricity|"
+"",argument,"",Gallons Hot Water per Occupant per Day,hot_water_per_occ_per_day_gal,Double,,1.0,""
+false,Add Sys3 Pszac Ngrid,AddSys3PSZACNgrid,AddSys3PSZACNgrid,RubyMeasure
+"",argument,"",Heating Efficiency,heating_efficiency,Double,,0.8,""
+"",argument,"",Cooling COP,cooling_cop,Double,,3.0,""
+false,Add Sys5 Pvav Ngrid,AddSys5PVAVNgrid,AddSys5PVAVNgrid,RubyMeasure
+"",argument,"",Heating Efficiency,heating_efficiency,Double,,0.8,""
+"",argument,"",Cooling COP,cooling_cop,Double,,3.0,""
+false,Adjust Thermostat Setpoints by Degrees,AdjustThermostatSetpointsByDegrees,AdjustThermostatSetpointsByDegrees,RubyMeasure
+"",argument,"",Degrees Fahrenheit to Adjust Cooling Setpoint By,cooling_adjustment,Double,,1.0,""
+"",argument,"",Degrees Fahrenheit to Adjust heating Setpoint By,heating_adjustment,Double,,-1.0,""
+"",argument,"",Alter Design Day Thermostats,alter_design_days,Bool,,false,""
 false,Assign Thermostats Basedon Standards Building Typeand Standards Space Type,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,RubyMeasure
 false,Bar Aspect Ratio Study Sliced by Space Type Office,BarAspectRatioStudySlicedBySpaceTypeOffice,BarAspectRatioStudySlicedBySpaceTypeOffice,RubyMeasure
 "",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
@@ -82,13 +103,35 @@ false,Bar Aspect Ratio Study Sliced by Space Type Retail,BarAspectRatioStudySlic
 false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
 false,Change Building Location,ChangeBuildingLocation,ChangeBuildingLocation,RubyMeasure
 "",argument,"",Weather Directory,weather_directory,String,,"",""
-"",argument,"",Weather Directory,weather_file_name,String,,"",""
+"",argument,"",Weather File Name,weather_file_name,String,,"",""
+false,Enable Demand Controlled Ventilation,EnableDemandControlledVentilation,EnableDemandControlledVentilation,RubyMeasure
+"",argument,"",DCV Type,dcv_type,Choice,,"","|EnableDCV,DisableDCV,NoChange|"
+false,Enable Economizer Control,EnableEconomizerControl,EnableEconomizerControl,RubyMeasure
+"",argument,"",Economizer Control Type,economizer_type,Choice,,"","|FixedDryBulb,NoEconomizer,NoChange|"
+"",argument,"",Economizer Maximum Limit Dry-Bulb Temperature,econoMaxDryBulbTemp,Double,F,69.0,""
+"",argument,"",Economizer Minimum Limit Dry-Bulb Temperature,econoMinDryBulbTemp,Double,F,-148.0,""
 false,Enable Ideal Air Loads For All Zones,EnableIdealAirLoadsForAllZones,EnableIdealAirLoadsForAllZones,RubyMeasure
+false,Increase Insulation R Value For Exterior Walls by Percentage,IncreaseInsulationRValueForExteriorWallsByPercentage,IncreaseInsulationRValueForExteriorWallsByPercentage,RubyMeasure
+"",argument,"",Percentage Increase of R-value for Exterior Wall Insulation,r_value,Double,,30.0,""
+false,Increase Insulation R Value For Roofs by Percentage,IncreaseInsulationRValueForRoofsByPercentage,IncreaseInsulationRValueForRoofsByPercentage,RubyMeasure
+"",argument,"",Percentage Increase of R-value for Roof Insulation,r_value,Double,,30.0,""
+false,Lp Dto Lamps,LPDtoLamps,LPDtoLamps,RubyMeasure
+"",argument,"",Replace LPD with Lamps,lpd_to_lamps,Bool,,"",""
 false,N Grid Add Monthly Utility Data,NGridAddMonthlyUtilityData,NGridAddMonthlyUtilityData,RubyMeasure
 "",argument,"",Path to electric JSON,electric_json,String,,"",""
 "",argument,"",Path to gas JSON,gas_json,String,,"",""
 "",argument,"",Start date,start_date,String,,"",""
 "",argument,"",End date,end_date,String,,"",""
+false,Reduce Electric Equipment Loads by Percentage,ReduceElectricEquipmentLoadsByPercentage,ReduceElectricEquipmentLoadsByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Electric Equipment Power Reduction,elecequip_power_reduction_percent,Double,%,30.0,""
+"",argument,"",Increase in Material and Installation Cost for Electric Equipment per Floor Area,material_and_installation_cost,Double,%,0.0,""
+"",argument,"",Increase in Demolition Costs for Electric Equipment per Floor Area,demolition_cost,Double,%,0.0,""
+"",argument,"",Years Until Costs Start,years_until_costs_start,Integer,whole years,0,""
+"",argument,"",Demolition Costs Occur During Initial Construction,demo_cost_initial_const,Bool,,false,""
+"",argument,"",Expected Life,expected_life,Integer,whole years,15,""
+"",argument,"",Increase O & M Costs for Electric Equipment per Floor Area,om_cost,Double,%,0.0,""
+"",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
 false,Reduce Lighting Loads by Percentage,ReduceLightingLoadsByPercentage,ReduceLightingLoadsByPercentage,RubyMeasure
 "",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
 "",argument,"",Lighting Power Reduction,lighting_power_reduction_percent,Double,%,30.0,""
@@ -102,9 +145,25 @@ false,Reduce Lighting Loads by Percentage,ReduceLightingLoadsByPercentage,Reduce
 false,Reduce Space Infiltration by Percentage,ReduceSpaceInfiltrationByPercentage,ReduceSpaceInfiltrationByPercentage,RubyMeasure
 "",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
 "",argument,"",Space Infiltration Power Reduction,space_infiltration_reduction_percent,Double,%,30.0,""
+"",argument,"",Constant Coefficient,constant_coefficient,Double,,1.0,""
+"",argument,"",Temperature Coefficient,temperature_coefficient,Double,,0.0,""
+"",argument,"",Wind Speed Coefficient,wind_speed_coefficient,Double,,0.0,""
+"",argument,"",Wind Speed Squared Coefficient,wind_speed_squared_coefficient,Double,,0.0,""
 "",argument,"",Increase in Material and Installation Costs for Building per Affected Floor Area,material_and_installation_cost,Double,$/ft^2,0.0,""
 "",argument,"",O & M Costs for Construction per Affected Floor Area,om_cost,Double,$/ft^2,0.0,""
 "",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
+false,Reduce Ventilation by Percentage,ReduceVentilationByPercentage,ReduceVentilationByPercentage,RubyMeasure
+"",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
+"",argument,"",Design Specification Outdoor Air Reduction,design_spec_outdoor_air_reduction_percent,Double,%,30.0,""
+false,Replace All T12 Lampswith25 Wt8 Lamps,ReplaceAllT12Lampswith25WT8Lamps,ReplaceAllT12Lampswith25WT8Lamps,RubyMeasure
+"",argument,"",Replace T12s with T8s,t12_to_t8_lamp_replacement,Bool,,"",""
+false,Rotate Building,RotateBuilding,RotateBuilding,RubyMeasure
+"",argument,"",Number of Degrees to Rotate Building,relative_building_rotation,Double,positive value is clockwise,90.0,""
+false,Set Run Period,SetRunPeriod,SetRunPeriod,RubyMeasure
+"",argument,"",Begin Month,begin_month,Integer,,"",""
+"",argument,"",Begin Day,begin_day,Integer,,"",""
+"",argument,"",End Month,end_month,Integer,,"",""
+"",argument,"",End Day,end_day,Integer,,"",""
 false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,SetWindowToWallRatioByFacade,RubyMeasure
 "",argument,"",Window to Wall Ratio,wwr,Double,fraction,0.4,""
 "",argument,"",Sill Height,sillHeight,Double,in,30.0,""
@@ -115,6 +174,8 @@ false,Space Type And Construction Set Wizard,SpaceTypeAndConstructionSetWizard,S
 "",argument,"",ASHRAE Climate Zone,climateZone,String,,"",""
 "",argument,"",Create Space Types,createSpaceTypes,Bool,,true,""
 "",argument,"",Create Construction Set,createConstructionSet,Bool,,true,""
+false,Swap All Lights For New Definition,SwapAllLightsForNewDefinition,SwapAllLightsForNewDefinition,RubyMeasure
+"",argument,"",Choose a Lighting Fixture Type,lightsDef,Choice,,Fluorescent,"|Incandescent,Fluorescent,LED|"
 false,Add Cost Per Area to Construction,AddCostPerAreaToConstruction,AddCostPerAreaToConstruction,RubyMeasure
 "",argument,"",Choose a Construction to Add Costs to,construction,Choice,,"",""
 "",argument,"",Remove Existing Costs,remove_costs,Bool,,true,""
@@ -443,14 +504,14 @@ false,Rotate Building,RotateBuilding,RotateBuilding,RubyMeasure
 "",argument,"",Number of Degrees to Rotate Building,relative_building_rotation,Double,positive value is clockwise,90.0,""
 false,Rotate Building,RotateBuilding,RotateBuilding,RubyMeasure
 "",argument,"",Number of Degrees to Rotate Building,relative_building_rotation,Double,positive value is clockwise,90.0,""
-false,Set Air Cooled Air Conditioner Cop,SetAirCooledAirConditionerCOP,SetAirCooledAirConditionerCOP,RubyMeasure
+false,Set Air Cooled Air Conditioner COP,SetAirCooledAirConditionerCOP,SetAirCooledAirConditionerCOP,RubyMeasure
 "",argument,"",Apply the measure to,unitary_ac_widget,Choice,,unitary_ac_display_names[0],"|0,unitary_ac_display_names[0]|"
 "",argument,"","Option 1, set rated COP to a user defined value",input_option_manual,Bool,,false,""
 "",argument,"",Rated COP,rated_COP,Double,,3.0,""
 "",argument,"","Option 2, set rated COP based on ASHRAE Standard 90 requirement",input_option_standard,Bool,,false,""
 "",argument,"",Estimated total cooling capacity,total_cooling_capacity,Double,"Only used to lookup 90.1 requirements, not used to change model capacity","",""
 "",argument,"",ASHRAE Standard 90,standards_widget,Choice,,standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
-false,Set Air Cooled Unitary Heat Pump Cop,SetAirCooledUnitaryHeatPumpCOP,SetAirCooledUnitaryHeatPumpCOP,RubyMeasure
+false,Set Air Cooled Unitary Heat Pump COP,SetAirCooledUnitaryHeatPumpCOP,SetAirCooledUnitaryHeatPumpCOP,RubyMeasure
 "",argument,"",Apply the measure to,unitary_hp_widget,Choice,,unitary_hp_display_names[0],"|0,unitary_hp_display_names[0]|"
 "",argument,"","Option 1, set rated COP to a user defined value",input_option_manual,Bool,,false,""
 "",argument,"",Rated heating COP,rated_heating_COP,Double,,3.0,""
@@ -468,7 +529,7 @@ false,Set Boiler Thermal Efficiency,SetBoilerThermalEfficiency,SetBoilerThermalE
 "",argument,"",ASHRAE Standards 90,standards_widget,Choice,,standards_display_names[0],"|0,1,2,3,4,standards_display_names[0]|"
 false,Set Chilled Water Loop Temperature,SetChilledWaterLoopTemperature,SetChilledWaterLoopTemperature,RubyMeasure
 "",argument,"",Desired chilled water setpoint,cw_temp_f,Double,F,45.0,""
-false,Set Chiller Cop,SetChillerCOP,SetChillerCOP,RubyMeasure
+false,Set Chiller COP,SetChillerCOP,SetChillerCOP,RubyMeasure
 "",argument,"",Apply the measure to,chiller_widget,Choice,,chiller_display_names[0],"|0,chiller_display_names[0]|"
 "",argument,"",Chiller rated COP,chiller_thermal_efficiency,Double,more than 0,3.0,""
 false,Set Co Pfor Single Speed DX Cooling Units,SetCOPforSingleSpeedDXCoolingUnits,SetCOPforSingleSpeedDXCoolingUnits,RubyMeasure
@@ -496,7 +557,7 @@ false,Set Co Pfor Two Speed DX Cooling Units,SetCOPforTwoSpeedDXCoolingUnits,Set
 "",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
 false,Set Energy Plus Infiltration Flow Rate Per Floor Area,SetEnergyPlusInfiltrationFlowRatePerFloorArea,SetEnergyPlusInfiltrationFlowRatePerFloorArea,EnergyPlusMeasure
 "",argument,"",Flow per Zone Floor Area,flowPerZoneFloorArea,Double,m^3/s-m^2,10.76,""
-false,Set Energy Plus Light Objects Lpd,SetEnergyPlusLightObjectsLPD,SetEnergyPlusLightObjectsLPD,EnergyPlusMeasure
+false,Set Energy Plus Light Objects LPD,SetEnergyPlusLightObjectsLPD,SetEnergyPlusLightObjectsLPD,EnergyPlusMeasure
 "",argument,"",Lighting Power Density,lpd,Double,W/m^2,10.76,""
 false,Set Energy Plus Minimum Outdoor Air Flow Rate,SetEnergyPlusMinimumOutdoorAirFlowRate,SetEnergyPlusMinimumOutdoorAirFlowRate,EnergyPlusMeasure
 "",argument,"",Minimum Outdoor Air Flow Rate,minOutdoorAirFlow,Double,m^3/s,10.76,""
@@ -531,7 +592,7 @@ false,Set Interior Walls to Selected Construction,SetInteriorWallsToSelectedCons
 "",argument,"",Select new material:,construction,Choice,,"",""
 false,Set Lifecycle Cost Parameters,SetLifecycleCostParameters,SetLifecycleCostParameters,RubyMeasure
 "",argument,"",Set the Length of the Study Period,study_period,Integer,years,25,""
-false,Set Lighting Loads by Lpd,SetLightingLoadsByLPD,SetLightingLoadsByLPD,RubyMeasure
+false,Set Lighting Loads by LPD,SetLightingLoadsByLPD,SetLightingLoadsByLPD,RubyMeasure
 "",argument,"",Apply the Measure to a Specific Space Type or to the Entire Model,space_type,Choice,,*Entire Building*,|*Entire Building*|
 "",argument,"",Lighting Power Density,lpd,Double,W/ft^2,1.0,""
 "",argument,"",Material and Installation Costs for Lights per Floor Area,material_cost,Double,$/ft^2,0.0,""
@@ -543,6 +604,11 @@ false,Set Lighting Loads by Lpd,SetLightingLoadsByLPD,SetLightingLoadsByLPD,Ruby
 "",argument,"",O & M Frequency,om_frequency,Integer,whole years,1,""
 false,Set Minimum Vav Terminal Flow Fraction,SetMinimumVAVTerminalFlowFraction,SetMinimumVAVTerminalFlowFraction,RubyMeasure
 "",argument,"",Minimum VAV Terminal Flow Fraction,min_vav_frac,Double,%,30.0,""
+false,Set Run Period,SetRunPeriod,SetRunPeriod,RubyMeasure
+"",argument,"",Begin Month,begin_month,Integer,,"",""
+"",argument,"",Begin Day,begin_day,Integer,,"",""
+"",argument,"",End Month,end_month,Integer,,"",""
+"",argument,"",End Day,end_day,Integer,,"",""
 false,Set Space Infiltration by Exterior Surface Area,SetSpaceInfiltrationByExteriorSurfaceArea,SetSpaceInfiltrationByExteriorSurfaceArea,RubyMeasure
 "",argument,"",Space Infiltration Flow per Exterior Envelope Surface Area   = (ft/min,infiltration_ip,Double,cfm/ft^2,0.05,""
 "",argument,"",Increase in Material and Installation Costs for Building per Exterior Envelope Area,material_cost_ip,Double,$/ft^2,0.0,""
@@ -585,7 +651,7 @@ false,Set Window to Wall Ratio by Facade,SetWindowToWallRatioByFacade,SetWindowT
 "",argument,"",Window to Wall Ratio,wwr,Double,fraction,0.4,""
 "",argument,"",Sill Height,sillHeight,Double,in,30.0,""
 "",argument,"",Cardinal Direction,facade,Choice,,South,"|North,East,South,West|"
-false,Aedg Office Hvac Vav DX,AedgOfficeHvacVavDx,AedgOfficeHvacVavDx,RubyMeasure
+false,AEDG Office Hvac Vav DX,AedgOfficeHvacVavDx,AedgOfficeHvacVavDx,RubyMeasure
 "",argument,"",This space type should be part of a ceiling return air plenum,ceilingReturnPlenumSpaceType,Choice,,"We dont want a default, this is an optional argument","|We dont want a default, this is an optional argument|"
 "",argument,"",Total Cost for HVAC System,costTotalHVACSystem,Double,$,0.0,""
 "",argument,"",Apply recommended availability and ventilation schedules for air handlers,remake_schedules,Bool,,true,""

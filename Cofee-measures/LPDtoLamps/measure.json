@@ -4,11 +4,18 @@
   "display_name": "Lp Dto Lamps",
   "measure_type": "RubyMeasure",
   "arguments": [
-
+    {
+      "local_variable": "lpd_to_lamps",
+      "variable_type": "Bool",
+      "name": "lpd_to_lamps",
+      "display_name": "Replace LPD with Lamps",
+      "units": null,
+      "description": null
+    }
   ],
   "name_xml": "LPD to Lamps",
   "uid": "28291e46-bb61-474b-b54d-c4c2b47f7a46",
-  "version_id": "7193a768-2d8a-4d83-8047-eb66b68d581d",
+  "version_id": "6140b8d8-a335-478b-b625-7af2b5db3025",
   "modeler_description": "This will take LPD values in the space type, remove them, and then add individual lights with specific power to each space in the model.",
   "description": "This take a generic lighing power density and convert it to individual fixtures",
   "tags": [

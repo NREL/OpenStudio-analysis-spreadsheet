@@ -1,7 +1,7 @@
 {
-  "classname": "AddSys3PSZAC",
-  "name": "add_sys3_pszac",
-  "display_name": "Add Sys3 Pszac",
+  "classname": "AddSys3PSZACNgrid",
+  "name": "add_sys3_pszac_ngrid",
+  "display_name": "Add Sys3 Pszac Ngrid",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
@@ -25,7 +25,7 @@
   ],
   "name_xml": "Add Sys 3 - PSZ-AC Ngrid",
   "uid": "af83d6ea-b7a3-405c-86e3-65da6eaf3f2c",
-  "version_id": "ee33ff18-01e7-49ac-9496-c968ea39d55f",
+  "version_id": "64a08738-4321-43f7-91ff-8ee0f5c751ea",
   "modeler_description": "",
   "description": "Based on Add Sys 3 - PSZ-AC but exposing arguments for COP and heating eff.",
   "tags": [

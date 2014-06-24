@@ -91,7 +91,7 @@
   ],
   "name_xml": "Reduce Electric Equipment Loads by Percentage",
   "uid": "b93f5c07-a1a8-4741-9d47-af00a2e7e288",
-  "version_id": "277c848e-bc68-4399-bd45-2a95309f2e40",
+  "version_id": "5d115d49-d1ea-4c9b-8f75-67134f658aaf",
   "modeler_description": "Loop through all electric equipment objects in the specified space type or the entire building. Clone the definition if it has not already been cloned, rename and adjust the power based on the specified percentage. Link the new definition to the existing electric equipment instance. Loop through objects first in space types and then in spaces, but only for spaces that are in the specified space type, unless entire building has been chosen.",
   "description": "Reduce electric equipment loads. This will affect equipment that have a, power, power per area (LPD), or power per person value. This can be applied to the entire building or a specific space type. A positive percentage represents an increase electric equipment power, while a negative percentage can be used for an increase in electric equipment power.",
   "tags": [
