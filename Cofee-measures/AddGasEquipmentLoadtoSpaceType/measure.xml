@@ -1,0 +1,41 @@
+<measure>
+  <name>Add Gas Equipment Load to Space Type</name>
+  <uid>c4549951-66ad-44e9-9c2b-a8a5ee763871</uid>
+  <version_id>e408cf03-9958-4966-be2c-de9517907637</version_id>
+  <description>This will add a gas equipment load to the selected space types. It will borrow the schedule from the electric equipment definition in the space type with the highest peak load. If the space type doesn't have any electric equipment, then a gas load will not be added.</description>
+  <modeler_description>Currently this only works on space types, but can extend later to work on spaces that do not have a space type defined.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Equipment.Gas Equipment</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>AddGasEquipmentLoadtoSpaceType_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>5F263CA1</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.4.0</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>7FBABFB0</checksum>
+    </file>
+  </files>
+</measure>

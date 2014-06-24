@@ -1,7 +1,7 @@
 <measure>
   <name>Add Service Water Heating</name>
   <uid>6e94e11e-a581-48d0-ac9c-6859baa8e9c3</uid>
-  <version_id>9c63268d-ed9e-40bb-85cc-d38e1cd0f161</version_id>
+  <version_id>cd3df279-3106-4282-98a9-93b95f5c0d56</version_id>
   <description></description>
   <modeler_description></modeler_description>
   <provenances/>
@@ -22,6 +22,12 @@
   </attributes>
   <files>
     <file>
+      <filename>AddServiceWaterHeating_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>984B40CB</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.4.0</identifier>
@@ -29,13 +35,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>FD29AE92</checksum>
-    </file>
-    <file>
-      <filename>AddServiceWaterHeating_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>984B40CB</checksum>
+      <checksum>660AAFB1</checksum>
     </file>
   </files>
 </measure>

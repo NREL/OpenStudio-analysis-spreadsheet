@@ -1,7 +1,7 @@
 <measure>
   <name>LPD to Lamps</name>
   <uid>28291e46-bb61-474b-b54d-c4c2b47f7a46</uid>
-  <version_id>d707be5a-34ba-40fa-a2f4-df111039025c</version_id>
+  <version_id>6140b8d8-a335-478b-b625-7af2b5db3025</version_id>
   <description>This take a generic lighing power density and convert it to individual fixtures</description>
   <modeler_description>This will take LPD values in the space type, remove them, and then add individual lights with specific power to each space in the model.</modeler_description>
   <provenances/>
@@ -71,13 +71,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>57CE4852</checksum>
+      <checksum>D76B767D</checksum>
     </file>
     <file>
       <filename>test.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>634F86D0</checksum>
+      <checksum>C7928BEC</checksum>
     </file>
   </files>
 </measure>

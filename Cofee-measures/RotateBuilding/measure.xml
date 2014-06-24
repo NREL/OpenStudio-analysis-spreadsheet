@@ -1,7 +1,7 @@
 <measure>
   <name>Rotate Building Relative to Current Orientation</name>
   <uid>a5be6c96-4ecc-47fa-8d32-f4216ebc2e7d</uid>
-  <version_id>517ef228-327b-4e08-a586-c00ebd73d558</version_id>
+  <version_id>91f4196b-52d6-4ccf-b540-f54ee36b37cb</version_id>
   <description>Rotate your building relative to its current orientation. This will not rotate site shading objects.</description>
   <modeler_description>Get the North Axis field for the  OS:Building object and adjusted it based on the user specified value. If the starting value is 20 degrees and the user value is 5 degrees, then the resulting value is 25 degrees.</modeler_description>
   <provenances/>
@@ -35,13 +35,13 @@
       <filename>RotateBuilding_TestModel_01.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>E5C7E0B6</checksum>
+      <checksum>550314F1</checksum>
     </file>
     <file>
       <filename>RotateBuilding_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>D9410036</checksum>
+      <checksum>01BFBBC7</checksum>
     </file>
     <file>
       <version>
@@ -51,7 +51,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>FEC15373</checksum>
+      <checksum>C0BBCFAD</checksum>
     </file>
   </files>
 </measure>
