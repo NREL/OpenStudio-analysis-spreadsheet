@@ -514,7 +514,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
         nmbe = attribute.valueAsDouble
         within_limit = false
         if ashrae_max_nmbe
-          within_limit = (nmbe <= ashrae_max_nmbe)
+          within_limit = (nmbe.abs <= ashrae_max_nmbe)
         end
         ngrid_result[match_data[1] + "_nmbe_within_ashrae14"] = within_limit
       end
