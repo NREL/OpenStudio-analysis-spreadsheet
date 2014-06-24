@@ -147,7 +147,7 @@
   ],
   "name_xml": "Bar Aspect Ratio Study Sliced By Space Type Office",
   "uid": "d51f0296-483f-4f3d-97bb-8b6308d120e3",
-  "version_id": "15159f0c-f18a-4e51-99f2-08049d87039d",
+  "version_id": "706f972c-78da-4918-91c4-881509559cf9",
   "modeler_description": "Instead of taking a hash of space type names and fractions, this has a double argument for each standards space type for an Office. This is intended to be used in a model where only one space type exists for each standards space type field. If there are multiple possible space types you may not get the expected results.",
   "description": "This measure will create a building envelope based on a target floor area, aspect ratio, floor to floor height, and a collection of space types and fraction of building using that space type.",
   "tags": [

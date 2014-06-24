@@ -75,7 +75,7 @@
   ],
   "name_xml": "Bar Aspect Ratio Study Sliced By Space Type Retail",
   "uid": "28b8b43e-fde2-4abe-abce-310c2ef2471b",
-  "version_id": "49efaa6c-f7a8-4c77-be2b-37c5d3469771",
+  "version_id": "95569921-00bd-45bb-8631-9cd12010c9c9",
   "modeler_description": "Instead of taking a hash of space type names and fractions, this has a double argument for each standards space type for a Retail. This is intended to be used in a model where only one space type exists for each standards space type field. If there are multiple possible space types you may not get the expected results.",
   "description": "This measure will create a building envelope based on a target floor area, aspect ratio, floor to floor height, and a collection of space types and fraction of building using that space type.",
   "tags": [
