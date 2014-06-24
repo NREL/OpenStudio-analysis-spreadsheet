@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem "rake", "~> 10.3.2"
 gem "rubyzip" 
+gem "git", :require => false 
 
 # uncomment if you need to update the bcl measures
 #gem "bcl", "~> 0.5.1"

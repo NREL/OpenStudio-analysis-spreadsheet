@@ -331,6 +331,43 @@ task :update_measure_jsons do
   end
 end
 
+desc "update measure.xml files"
+task :update_measure_xmls do
+
+  begin 
+    require 'openstudio'
+    require 'git'
+
+    #g = Git.open(File.dirname(__FILE__), :log => Logger.new("update_measure_xmls.log"))
+    #g = Git.init
+    #g.status.untracked.each do |u|
+    #  puts u
+    #end
+        
+    os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion())
+    min_os_version = OpenStudio::VersionString.new("1.4.0")
+    if os_version >= min_os_version
+      Dir['./**/measure.rb'].each do |m|
+        
+        # DLM: todo, check for untracked files in this directory and do not compute checksums if they exist
+        
+        measure = OpenStudio::BCLMeasure::load(OpenStudio::Path.new("#{File.dirname(m)}"))
+        if measure.empty?
+          puts "Directory #{m} is not a measure"
+        else
+          measure = measure.get
+          measure.checkForUpdates
+          #measure.save
+        end
+      end
+    end
+    
+  rescue LoadError
+    puts 'Cannot require openstudio or git'
+  end
+
+end
+
 desc "update measures from BCL"
 task :update_measures do
   require 'bcl'
