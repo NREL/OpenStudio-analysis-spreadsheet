@@ -38,9 +38,9 @@ class ReplaceAllT12Lampswith25WT8Lamps < OpenStudio::Ruleset::ModelUserScript
     end
     
     # Assign the user inputs to variables
-    t12_to_t8_lamp_replacement = runner.getStringArgumentValue("t12_to_t8_lamp_replacement",user_arguments)    
+    t12_to_t8_lamp_replacement = runner.getBoolArgumentValue("t12_to_t8_lamp_replacement",user_arguments)    
     
-    # Note if t12_to_t8_lamp_replacement == NoChange
+    # Note if t12_to_t8_lamp_replacement == false
     # and register as N/A
     if t12_to_t8_lamp_replacement == false
       runner.registerAsNotApplicable("N/A - User requested no change in lighting fixtures.")
