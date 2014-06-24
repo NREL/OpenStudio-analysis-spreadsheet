@@ -123,7 +123,7 @@ class AddGasEquipmentLoadtoSpaceType < OpenStudio::Ruleset::ModelUserScript
     space_types.each do |space_type|
 
       # skip if space type is not used
-      next if space_type.spaces.size == 0
+      #next if space_type.spaces.size == 0
       
       floor_area = space_type.floorArea
       number_of_people = space_type.getNumberOfPeople(floor_area)
