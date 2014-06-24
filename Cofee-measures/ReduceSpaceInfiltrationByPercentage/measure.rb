@@ -56,7 +56,31 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
     space_infiltration_reduction_percent.setDisplayName("Space Infiltration Power Reduction (%).")
     space_infiltration_reduction_percent.setDefaultValue(30.0)
     args << space_infiltration_reduction_percent
-
+    
+    #make an argument for constant_coefficient
+    constant_coefficient = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("constant_coefficient",true)
+    constant_coefficient.setDisplayName("Constant Coefficient.")
+    constant_coefficient.setDefaultValue(1.0)
+    args << constant_coefficient
+    
+    #make an argument for temperature_coefficient
+    temperature_coefficient = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("temperature_coefficient",true)
+    temperature_coefficient.setDisplayName("Temperature Coefficient.")
+    temperature_coefficient.setDefaultValue(0.0)
+    args << temperature_coefficient
+        
+    #make an argument for wind_speed_coefficient
+    wind_speed_coefficient = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("wind_speed_coefficient",true)
+    wind_speed_coefficient.setDisplayName("Wind Speed Coefficient.")
+    wind_speed_coefficient.setDefaultValue(0.0)
+    args << wind_speed_coefficient
+        
+    #make an argument for wind_speed_squared_coefficient
+    wind_speed_squared_coefficient = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("wind_speed_squared_coefficient",true)
+    wind_speed_squared_coefficient.setDisplayName("Wind Speed Squared Coefficient.")
+    wind_speed_squared_coefficient.setDefaultValue(0.0)
+    args << wind_speed_squared_coefficient
+    
     #make an argument for material and installation cost
     material_and_installation_cost = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("material_and_installation_cost",true)
     material_and_installation_cost.setDisplayName("Increase in Material and Installation Costs for Building per Affected Floor Area ($/ft^2).")
@@ -90,6 +114,10 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
     #assign the user inputs to variables
     object = runner.getOptionalWorkspaceObjectChoiceValue("space_type",user_arguments,model)
     space_infiltration_reduction_percent = runner.getDoubleArgumentValue("space_infiltration_reduction_percent",user_arguments)
+    constant_coefficient = runner.getDoubleArgumentValue("constant_coefficient",user_arguments)
+    temperature_coefficient = runner.getDoubleArgumentValue("temperature_coefficient",user_arguments)
+    wind_speed_coefficient = runner.getDoubleArgumentValue("wind_speed_coefficient",user_arguments)
+    wind_speed_squared_coefficient = runner.getDoubleArgumentValue("wind_speed_squared_coefficient",user_arguments)
     material_and_installation_cost = runner.getDoubleArgumentValue("material_and_installation_cost",user_arguments)
     om_cost = runner.getDoubleArgumentValue("om_cost",user_arguments)
     om_frequency = runner.getIntegerArgumentValue("om_frequency",user_arguments)
@@ -121,7 +149,7 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
       runner.registerError("Please enter a value less than or equal to 100 for the Space Infiltration reduction percentage.")
       return false
     elsif space_infiltration_reduction_percent == 0
-      runner.registerInfo("No Space Infiltration adjustment requested, but some life cycle costs may still be affected.")
+      runner.registerInfo("No Space Infiltration adjustment requested, but infiltration coefficients or life cycle costs may still be affected.")
     elsif space_infiltration_reduction_percent < 1 and space_infiltration_reduction_percent > -1
       runner.registerWarning("A Space Infiltration reduction percentage of #{space_infiltration_reduction_percent} percent is abnormally low.")
     elsif space_infiltration_reduction_percent > 90
@@ -184,7 +212,7 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
     end
 
     #def to alter performance and life cycle costs of objects
-    def alter_performance(object, space_infiltration_reduction_percent, runner)
+    def alter_performance(object, space_infiltration_reduction_percent, constant_coefficient, temperature_coefficient, wind_speed_coefficient, wind_speed_squared_coefficient, runner)
 
       #edit instance based on percentage reduction
       instance = object
@@ -201,6 +229,11 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
       else
         runner.registerWarning("'#{instance.name}' is used by one or more instances and has no load values.")
       end
+      
+      instance.setConstantTermCoefficient(constant_coefficient)
+      instance.setTemperatureTermCoefficient(temperature_coefficient)
+      instance.setVelocityTermCoefficient(wind_speed_coefficient)
+      instance.setVelocitySquaredTermCoefficient(wind_speed_squared_coefficient)
 
     end #end of def alter_performance_and_lcc()
 
@@ -211,7 +244,7 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
       space_type_infiltration_objects.each do |space_type_infiltration_object|
 
         #call def to alter performance and life cycle costs
-        alter_performance(space_type_infiltration_object, space_infiltration_reduction_percent, runner)
+        alter_performance(space_type_infiltration_object, space_infiltration_reduction_percent, constant_coefficient, temperature_coefficient, wind_speed_coefficient, wind_speed_squared_coefficient, runner)
 
         #rename
         updated_instance_name = space_type_infiltration_object.setName("#{space_type_infiltration_object.name} #{space_infiltration_reduction_percent} percent reduction")
@@ -238,7 +271,7 @@ class ReduceSpaceInfiltrationByPercentage < OpenStudio::Ruleset::ModelUserScript
       space_infiltration_objects.each do |space_infiltration_object|
 
         #call def to alter performance and life cycle costs
-        alter_performance(space_infiltration_object, space_infiltration_reduction_percent, runner)
+        alter_performance(space_infiltration_object, space_infiltration_reduction_percent, constant_coefficient, temperature_coefficient, wind_speed_coefficient, wind_speed_squared_coefficient, runner)
 
         #rename
         updated_instance_name = space_infiltration_object.setName("#{space_infiltration_object.name} #{space_infiltration_reduction_percent} percent reduction")
