@@ -140,6 +140,10 @@ class SetWindowToWallRatioByFacade < OpenStudio::Ruleset::ModelUserScript
       starting_ext_window_area += ext_window_area
       
       wwr = s.windowToWallRatio * wwr_multiplier
+      if wwr > 0.99
+        runner.registerError("Requested window to wall ratio of #{wwr} for surface '#{s.name}' is too large")
+        return false
+      end
 
       new_window = s.setWindowToWallRatio(wwr, sillHeight_si.value, true)
       if new_window.empty?
