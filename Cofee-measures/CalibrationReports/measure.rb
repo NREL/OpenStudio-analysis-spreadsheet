@@ -14,6 +14,30 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
   def arguments()
     args = OpenStudio::Ruleset::OSArgumentVector.new
 
+    # Electric NMBE limit
+    electric_nmbe_limit = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("electric_nmbe_limit",true)
+    electric_nmbe_limit.setDisplayName("Electric NMBE limit (%)")
+    electric_nmbe_limit.setDefaultValue(5.0)
+    args << electric_nmbe_limit
+    
+    # Electric CVRMSE limit
+    electric_cvrmse_limit = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("electric_cvrmse_limit",true)
+    electric_cvrmse_limit.setDisplayName("Electric CVRMSE limit (%)")
+    electric_cvrmse_limit.setDefaultValue(15.0)
+    args << electric_cvrmse_limit
+    
+    # Gas NMBE limit
+    gas_nmbe_limit = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("gas_nmbe_limit",true)
+    gas_nmbe_limit.setDisplayName("Gas NMBE limit (%)")
+    gas_nmbe_limit.setDefaultValue(5.0)
+    args << gas_nmbe_limit
+    
+    # Gas CVRMSE limit
+    gas_cvrmse_limit = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("gas_cvrmse_limit",true)
+    gas_cvrmse_limit.setDisplayName("Gas CVRMSE limit (%)")
+    gas_cvrmse_limit.setDefaultValue(15.0)
+    args << gas_cvrmse_limit
+    
     return args
   end #end the arguments method
 
@@ -25,6 +49,11 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     if not runner.validateUserArguments(arguments(), user_arguments)
       return false
     end
+    
+    electric_nmbe_limit = runner.getDoubleArgumentValue('electric_nmbe_limit',user_arguments)
+    electric_cvrmse_limit = runner.getDoubleArgumentValue('electric_cvrmse_limit',user_arguments)
+    gas_nmbe_limit = runner.getDoubleArgumentValue('gas_nmbe_limit',user_arguments)
+    gas_cvrmse_limit = runner.getDoubleArgumentValue('gas_cvrmse_limit',user_arguments)
 
     os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion())
     min_version_feature1 = OpenStudio::VersionString.new("1.2.2")
@@ -153,6 +182,9 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
       runner.registerWarning("Model has no calendar year and cannot generate all data.")
     end
     
+    all_actual_consumption_values = []
+    all_modeled_consumption_values = []
+      
     # sort bills by fuel type and name
     utilityBills = model.getUtilityBills.sort {|x, y| (x.fuelType.valueDescription + x.name.get) <=> (y.fuelType.valueDescription + y.name.get)}
     
@@ -228,6 +260,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             elecActualConsumption << consumption.get.to_s
             actual_consumption += consumption.get
             actual_consumption_values << consumption.get
+            all_actual_consumption_values << consumption.get * utilityBill.consumptionUnitConversionFactor
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_actual",
                                    consumption.get,
@@ -245,6 +278,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             elecModelConsumption << temp.round.to_s
             modeled_consumption += temp
             modeled_consumption_values << temp
+            all_modeled_consumption_values << consumption.get
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_modeled",
                                    temp,
@@ -329,6 +363,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             gasActualConsumption << consumption.get.to_s
             actual_consumption += consumption.get
             actual_consumption_values << consumption.get
+            all_actual_consumption_values << consumption.get * utilityBill.consumptionUnitConversionFactor
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_actual",
                                    consumption.get,
@@ -346,6 +381,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             gasModelConsumption << temp.round.to_s
             modeled_consumption += temp
             modeled_consumption_values << temp
+            all_modeled_consumption_values << consumption.get
             if os_version >= min_version_feature1
               runner.registerValue("#{utility_bill_name}_period_#{period_index}_consumption_modeled",
                                    temp,
@@ -403,6 +439,8 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
           runner.registerValue("#{utility_bill_name}_sum_of_squares",
                                sum_squares,
                                utilityBill.consumptionUnit)
+          runner.registerValue("#{utility_bill_name}_dof",
+                               actual_consumption_values.size)
           runner.registerValue("#{utility_bill_name}_rmse",
                      rmse,
                      utilityBill.consumptionUnit + "^0.5")                     
@@ -411,7 +449,26 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
       end
      
     end
-
+    
+    if os_version >= min_version_feature1
+      if all_actual_consumption_values.size > 0 and all_actual_consumption_values.size == all_modeled_consumption_values.size
+        sum_squares = 0.0
+        all_actual_consumption_values.each_index do |i|
+          sum_squares += (all_actual_consumption_values[i] - all_modeled_consumption_values[i])**2
+        end
+        rmse = Math::sqrt(sum_squares / all_actual_consumption_values.size)
+        runner.registerValue("total_sum_of_squares",
+                             sum_squares,
+                             "kBtu")
+        runner.registerValue("total_dof",
+                             all_actual_consumption_values.size)
+        runner.registerValue("total_rmse",
+                   rmse,
+                   "kBtu^0.5")                     
+      end
+      
+    end
+      
     elecStartDate = elecStartDate[0..-2]
     elecStartDate << "],\n"
     elecEndDate = elecEndDate[0..-2]
@@ -510,33 +567,36 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     
     # write national grid specific file format, everything can be derived from reported attributes
     ngrid_result = Hash.new
-    ashrae_max_cvrmse = nil
-    ashrae_max_nmbe = nil
-    runner.result.attributes.each do |attribute|
-      if attribute.name == "ashrae_max_cvrmse"
-        ashrae_max_cvrmse = attribute.valueAsDouble
-      elsif attribute.name == "ashrae_max_nmbe"
-        ashrae_max_nmbe = attribute.valueAsDouble
-      end
-    end
     runner.result.attributes.each do |attribute|
       # skip individual period metrics
       next if /period_\d+_consumption/.match(attribute.name)
       
       if match_data = /(.*)_consumption_cvrmse/.match(attribute.name)
         cvrmse = attribute.valueAsDouble
+        
+        # this is an NGrid specifc hack
+        is_electric = /electric/i.match(match_data[1])
+        
         within_limit = false
-        if ashrae_max_cvrmse
-          within_limit = (cvrmse <= ashrae_max_cvrmse)
+        if is_electric
+          within_limit = (cvrmse <= electric_cvrmse_limit)
+        else
+          within_limit = (cvrmse <= gas_cvrmse_limit)
         end
-        ngrid_result[match_data[1] + "_cvrmse_within_ashrae14"] = within_limit
-      elsif match_data = /(.*)_consumption_nmbe/.match(attribute.name)
+        ngrid_result[match_data[1] + "_cvrmse_within_limit"] = within_limit
+      elsif match_data = /(.*)_consumption_nmbe/i.match(attribute.name)
         nmbe = attribute.valueAsDouble
+        
+        # this is an NGrid specifc hack
+        is_electric = /electric/i.match(match_data[1])
+        
         within_limit = false
-        if ashrae_max_nmbe
-          within_limit = (nmbe.abs <= ashrae_max_nmbe)
+        if is_electric
+          within_limit = (nmbe.abs <= electric_nmbe_limit)
+        else
+          within_limit = (nmbe.abs <= gas_nmbe_limit)
         end
-        ngrid_result[match_data[1] + "_nmbe_within_ashrae14"] = within_limit
+        ngrid_result[match_data[1] + "_nmbe_within_limit"] = within_limit
       end
     end
     File.open("./guideline.json","w") do |f|

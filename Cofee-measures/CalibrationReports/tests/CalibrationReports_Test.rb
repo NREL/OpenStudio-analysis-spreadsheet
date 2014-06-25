@@ -82,7 +82,7 @@ class CalibrationReports_Test < Test::Unit::TestCase
 
     # get arguments and test that they are what we are expecting
     arguments = measure.arguments()
-    assert_equal(0, arguments.size)
+    assert_equal(4, arguments.size)
 
     # set up runner, this will happen automatically when measure is run in PAT
     runner.setLastOpenStudioModelPath(OpenStudio::Path.new(modelPath()))
@@ -90,6 +90,11 @@ class CalibrationReports_Test < Test::Unit::TestCase
 
     # set argument values to good values and run the measure
     argument_map = OpenStudio::Ruleset::OSArgumentMap.new
+    argument_map["electric_nmbe_limit"] = arguments[0].clone
+    argument_map["electric_cvrmse_limit"] = arguments[1].clone
+    argument_map["gas_nmbe_limit"] = arguments[2].clone
+    argument_map["gas_cvrmse_limit"] = arguments[3].clone
+    
     measure.run(runner, argument_map)
     result = runner.result
     show_output(result)
@@ -164,7 +169,7 @@ class CalibrationReports_Test < Test::Unit::TestCase
 
     # get arguments and test that they are what we are expecting
     arguments = measure.arguments()
-    assert_equal(0, arguments.size)
+    assert_equal(4, arguments.size)
     
     # load model, remove gas bills, save to new file
     vt = OpenStudio::OSVersion::VersionTranslator.new
@@ -190,6 +195,11 @@ class CalibrationReports_Test < Test::Unit::TestCase
 
     # set argument values to good values and run the measure
     argument_map = OpenStudio::Ruleset::OSArgumentMap.new
+    argument_map["electric_nmbe_limit"] = arguments[0].clone
+    argument_map["electric_cvrmse_limit"] = arguments[1].clone
+    argument_map["gas_nmbe_limit"] = arguments[2].clone
+    argument_map["gas_cvrmse_limit"] = arguments[3].clone
+    
     measure.run(runner, argument_map)
     result = runner.result
     show_output(result)
