@@ -57,22 +57,22 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
       converted_number = OpenStudio::convert(OpenStudio::Quantity.new(number, OpenStudio::createUnit(from_unit_string).get), OpenStudio::createUnit(to_unit_string).get).get.value
     end
 
-    #create an array of roofs and find range of starting construction R-value (not just insulation layer)
+    #create an array of exterior surfaces and find range of starting construction R-value (not just insulation layer)
     surfaces = model.getSurfaces
     exterior_surfaces = []
     exterior_surface_constructions = []
     exterior_surface_construction_names = []
-    roof_resistance = []
+    exterior_surface_resistance = []
     surfaces.each do |surface|
       if surface.outsideBoundaryCondition == "Outdoors" and surface.surfaceType == "Wall"
         exterior_surfaces << surface
-        roof_const = surface.construction.get
+        exterior_surface_const = surface.construction.get
         #only add construction if it hasn't been added yet
-        if not exterior_surface_construction_names.include?(roof_const.name.to_s)
-          exterior_surface_constructions << roof_const.to_Construction.get
+        if not exterior_surface_construction_names.include?(exterior_surface_const.name.to_s)
+          exterior_surface_constructions << exterior_surface_const.to_Construction.get
         end
-        exterior_surface_construction_names << roof_const.name.to_s
-        roof_resistance << 1/roof_const.thermalConductance.to_f
+        exterior_surface_construction_names << exterior_surface_const.name.to_s
+        exterior_surface_resistance << 1/exterior_surface_const.thermalConductance.to_f
       end
     end
 
@@ -85,7 +85,7 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
     #report strings for initial condition
     initial_string = []
     exterior_surface_constructions.uniq.each do |exterior_surface_construction|
-      #unit conversion of roof insulation from SI units (M^2*K/W) to IP units (ft^2*h*R/Btu)
+      #unit conversion of exterior surface insulation from SI units (M^2*K/W) to IP units (ft^2*h*R/Btu)
       initial_conductance_ip = unit_helper(1/exterior_surface_construction.thermalConductance.to_f,"m^2*K/W", "ft^2*h*R/Btu")
       initial_string << "#{exterior_surface_construction.name.to_s} (R-#{(sprintf "%.1f",initial_conductance_ip)})"
     end
@@ -99,7 +99,7 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
     #array and counter for new constructions that are made, used for reporting final condition
     final_constructions_array = []
 
-    #loop through all constructions and materials used on roofs, edit and clone
+    #loop through all constructions and materials used on exterior walls, edit and clone
     exterior_surface_constructions.each do |exterior_surface_construction|
       construction_layers = exterior_surface_construction.layers
       max_thermal_resistance_material = ""
@@ -177,7 +177,7 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
           end
         end #end of if found material is false
       end #end of if not thermal_resistance_values.max >
-    end #end of loop through unique roof constructions
+    end #end of loop through unique exterior wall constructions
 
     #loop through construction sets used in the model
     default_construction_sets = model.getDefaultConstructionSets
@@ -185,7 +185,7 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
       if default_construction_set.directUseCount > 0
         default_surface_const_set = default_construction_set.defaultExteriorSurfaceConstructions
         if not default_surface_const_set.empty?
-          starting_construction = default_surface_const_set.get.roofCeilingConstruction
+          starting_construction = default_surface_const_set.get.wallConstruction
 
           #creating new default construction set
           new_default_construction_set = default_construction_set.clone(model)
@@ -199,7 +199,7 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
           new_default_construction_set.setDefaultExteriorSurfaceConstructions(new_default_surface_const_set)
 
           #use the hash to find the proper construction and link to new_default_surface_const_set
-          target_const = new_default_surface_const_set.roofCeilingConstruction
+          target_const = new_default_surface_const_set.wallConstruction
           if not target_const.empty?
             target_const = target_const.get.name.to_s
             found_const_flag = false
@@ -265,18 +265,18 @@ class IncreaseInsulationRValueForExteriorWallsByPercentage < OpenStudio::Ruleset
     end #end of exterior_surfaces.each do
 
     #report strings for final condition
-    final_string = []   #not all exterior roof constructions, but only new ones made. If  roof didn't have insulation and was not altered we don't want to show it
+    final_string = []   #not all exterior surface constructions, but only new ones made. If exterior surface didn't have insulation and was not altered we don't want to show it
     affected_area_si = 0
     final_constructions_array.each do |final_construction|
 
-      #unit conversion of roof insulation from SI units (M^2*K/W) to IP units (ft^2*h*R/Btu)
+      #unit conversion of exterior surface insulation from SI units (M^2*K/W) to IP units (ft^2*h*R/Btu)
       final_conductance_ip = unit_helper(1/final_construction.thermalConductance.to_f,"m^2*K/W", "ft^2*h*R/Btu")
       final_string << "#{final_construction.name.to_s} (R-#{(sprintf "%.1f",final_conductance_ip)})"
       affected_area_si = affected_area_si + final_construction.getNetArea
 
     end  #end of final_constructions_array.each do
 
-    #add not applicable test if there were exterior roof constructions but non of them were altered (already enough insulation or doesn't look like insulated wall)
+    #add not applicable test if there were exterior surface constructions but none of them were altered (already enough insulation or doesn't look like insulated wall)
     if affected_area_si == 0
       runner.registerAsNotApplicable("No exterior walls were altered.")
       return true
