@@ -61,7 +61,7 @@ class AdjustSystemEfficiencies < OpenStudio::Ruleset::ModelUserScript
     return true
   end
   
-  def modify_boiler_hot_water(component, nominal_thermal_efficiency)
+  def modify_boiler_hot_water(component, heating_efficiency_multiplier)
     nominal_thermal_efficiency = component.nominalThermalEfficiency
     new_efficiency = heating_efficiency_multiplier*nominal_thermal_efficiency
     if new_efficiency > 1
@@ -69,7 +69,12 @@ class AdjustSystemEfficiencies < OpenStudio::Ruleset::ModelUserScript
     end
     return component.setNominalThermalEfficiency(new_efficiency)
   end
-    
+  
+  def modify_chiller_electric_eir(component, cooling_cop_multiplier)
+    referenceCOP = component.referenceCOP
+    return component.setReferenceCOP(cooling_cop_multiplier*referenceCOP)
+  end
+  
   def modify_coil_heating_gas(component, heating_efficiency_multiplier)
     gas_burner_efficiency = component.gasBurnerEfficiency
     new_efficiency = heating_efficiency_multiplier*gas_burner_efficiency
@@ -175,6 +180,7 @@ class AdjustSystemEfficiencies < OpenStudio::Ruleset::ModelUserScript
     model.getPlantLoops.each do |plant_loop|
       modified = false
       plant_loop.supplyComponents.each do |component|
+        #BoilerHotWater
         if not component.to_BoilerHotWater.empty?
           component = component.to_BoilerHotWater.get
           if not modify_boiler_hot_water(component, heating_efficiency_multiplier)
@@ -182,6 +188,17 @@ class AdjustSystemEfficiencies < OpenStudio::Ruleset::ModelUserScript
             return false
           else
             num_heating_objects_modified += 1
+            modified = true
+          end
+          
+        # ChillerElectricEIR
+        elsif not component.to_ChillerElectricEIR.empty?
+          component = component.to_ChillerElectricEIR.get
+          if not modify_chiller_electric_eir(component, cooling_cop_multiplier)
+            runner.registerError("Cannot modify COP for #{component.name.get} by multiplier #{cooling_cop_multiplier}")
+            return false
+          else
+            num_cooling_objects_modified += 1
             modified = true
           end
         end

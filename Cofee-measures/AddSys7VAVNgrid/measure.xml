@@ -1,9 +1,9 @@
 <measure>
-  <name>AdjustSystemEfficiencies</name>
-  <uid>edeaff3d-3ae4-4487-b4a4-5cf08ea14510</uid>
-  <version_id>8f15e062-ee25-47f8-b5ba-d422a8c33cb1</version_id>
-  <description>Updates heating and cooling efficiencies of all equipment in a model by a multiplier.</description>
-  <modeler_description>This measure will search through all air loops, plant loops, and thermal zones in the model and adjust heating and cooling efficiencies of all relevant objects found.</modeler_description>
+  <name>Add Sys 7 - VAV Ngrid</name>
+  <uid>99fb99d0-fd54-11e3-a3ac-0800200c9a66</uid>
+  <version_id>6e005614-dbcc-4e36-8cea-a3f43dec48f6</version_id>
+  <description>Based on Add Sys 7 - VAV but exposing arguments for COP and heating eff.</description>
+  <modeler_description></modeler_description>
   <provenances/>
   <tags>
     <tag>HVAC.Whole System</tag>
@@ -29,7 +29,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>B657D363</checksum>
+      <checksum>7316ED9F</checksum>
+    </file>
+    <file>
+      <filename>AddSys7VAV_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>B232371A</checksum>
     </file>
   </files>
 </measure>

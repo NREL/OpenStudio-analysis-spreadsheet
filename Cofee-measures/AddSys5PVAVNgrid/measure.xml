@@ -1,8 +1,8 @@
 <measure>
-  <name>Add Sys 3 - PSZ-AC Ngrid</name>
+  <name>Add Sys 5 - PVAV Ngrid</name>
   <uid>af83d6ea-b7a3-405c-86e3-65da6eaf3f2c</uid>
   <version_id>64a08738-4321-43f7-91ff-8ee0f5c751ea</version_id>
-  <description>Based on Add Sys 3 - PSZ-AC but exposing arguments for COP and heating eff.</description>
+  <description>Based on Add Sys 5 - PVAV but exposing arguments for COP and heating eff.</description>
   <modeler_description></modeler_description>
   <provenances/>
   <tags>
