@@ -1,11 +1,11 @@
 <measure>
   <name>Adjust Window to Wall Ratio</name>
   <uid>aafc3640-fc91-11e3-a3ac-0800200c9a66</uid>
-  <version_id>a88a171e-c443-49b9-9c9d-c2079475eb55</version_id>
+  <version_id>6ab78cc0-5ccd-4b25-9c23-e158b3343d0d</version_id>
   <description>This measure will adjust the window to wall ratio for all exterior surfaces. If one or more windows exist on an affected wall, they will be removed and replaced with a single ribbon window. Doors will not be removed. If the requested ratio can?t be achieved then the wall will remain un-touched.</description>
-  <modeler_description>This measure identifies exterior surfaces and then it runs a method that removes existing windows and applies a new window with a specified window to wall ratio and sill height. The construction chosen for the new window is defaulted to what is assigned to the space, or inherited from a higher level object, such as the building. If the baseline model uses hard assigned constructions you may not get the expected results.&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;
-The measure doesn?t have any cost or lifecycle arguments, however If lifecycle objects exist for exterior wall and window constructions, then this measure will be able to calculate the economic impact of change in window to wall ratio.&#xd;&#xd;&#xd;&#xd;
+  <modeler_description>This measure identifies exterior surfaces and then it runs a method that removes existing windows and applies a new window with a specified window to wall ratio and sill height. The construction chosen for the new window is defaulted to what is assigned to the space, or inherited from a higher level object, such as the building. If the baseline model uses hard assigned constructions you may not get the expected results.&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;
+The measure doesn?t have any cost or lifecycle arguments, however If lifecycle objects exist for exterior wall and window constructions, then this measure will be able to calculate the economic impact of change in window to wall ratio.&#xd;&#xd;&#xd;&#xd;&#xd;
   </modeler_description>
   <provenances/>
   <tags>
@@ -42,7 +42,7 @@ The measure doesn?t have any cost or lifecycle arguments, however If lifecycle o
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>BB736461</checksum>
+      <checksum>B9F0E9BE</checksum>
     </file>
   </files>
 </measure>

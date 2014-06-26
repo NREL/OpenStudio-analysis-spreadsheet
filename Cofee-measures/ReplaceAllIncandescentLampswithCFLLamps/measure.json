@@ -1,0 +1,24 @@
+{
+  "classname": "ReplaceAllT12Lampswith25WT8Lamps",
+  "name": "replace_all_t12_lampswith25_wt8_lamps",
+  "display_name": "Replace All T12 Lampswith25 Wt8 Lamps",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "t12_to_t8_lamp_replacement",
+      "variable_type": "Bool",
+      "name": "t12_to_t8_lamp_replacement",
+      "display_name": "Replace T12s with T8s",
+      "units": null,
+      "description": null
+    }
+  ],
+  "name_xml": "Replace All T12 Lamps with 25W T8 Lamps",
+  "uid": "1a2af8c8-b302-4b35-b607-780a5dc8f836",
+  "version_id": "18cc814f-b6e5-4bed-8d50-30912ba9febb",
+  "modeler_description": "Find all lighting definitions containing \"32W T8\", create a new copy of the fixture with a 1-for-1 25W lamp replacement ",
+  "description": "Retrofit all of the T-12 lamps with low-wattage T-8 lamps.  The low-wattage T-8 lamps should be specified a 25W, with a color temperature of 3,500 - 4,100 Kelvin.  If the ballasts need to be replaced, electronic ballasts should be specified as program start ballasts, so that they can accommodate occupancy sensor controls.  The ballasts should be specified with a ballast factor of 0.88, and a power factor above 95%.  The total system Color Rendering Index (CRI) should be designed to be greater than 85%.  The electronic ballasts are designed to provide the appropriate starting and operating electricity to the lamps. Electronic ballasts operate at a higher frequency, eliminating flicker, and have a higher efficiency than magnetic ballasts.",
+  "tags": [
+    "Electric Lighting.Lighting Equipment"
+  ]
+}

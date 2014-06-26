@@ -179,7 +179,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
         when 3 
           ltg_tech_inferred = 't12_magnetic'
-          num_lamps = 4
+          num_lamps = 2
           lamp_wattage = 40
           num_ballasts = 1
           ballast_factor = 1.2
@@ -189,7 +189,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           fixture_name = "(#{num_lamps}) #{lamp_wattage}W #{technology} (#{num_ballasts}) #{ballast_factor}BF #{ballast_type}"
         when 4 
           ltg_tech_inferred = 'incandescent'
-          num_lamps = 4
+          num_lamps = 1
           lamp_wattage = 60
           technology = 'Incandescent'
           fixture_wattage = num_lamps*lamp_wattage
@@ -197,7 +197,7 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
         end
         
         # Report out the inference
-        runner.registerInfo("Inferred that '#{space_type.name}' with LPD of #{lpd_w_per_ft2.round(2)}W/ft^2 has #{ltg_tech_inferred} lights based on an LPD closest to #{ltg_tech_types[closest_ltg_type]}W/ft^2.")
+        runner.registerInfo("Inferred that '#{space_type.name}' with LPD of #{OpenStudio::toNeatString(lpd_w_per_ft2,2)} W/ft^2 has #{ltg_tech_inferred} lights based on an LPD closest to #{ltg_tech_types[closest_ltg_type]} W/ft^2.")
           
         space_type.spaces.sort.each do |space|
 
@@ -213,8 +213,10 @@ class LPDtoLamps < OpenStudio::Ruleset::ModelUserScript
           total_lighting_power_w = lpd_w_per_m2*floor_area_m2  # TODO should confirm that original light instance multiplier is 1
 
           # Calculate number of fixtures needed to hit calibrated LPD
-          num_fixtures = (total_lighting_power_w/fixture_wattage).round # Don't want partial fixtures
+          #num_fixtures = (total_lighting_power_w/fixture_wattage).round # Don't want partial fixtures
+          num_fixtures = (total_lighting_power_w/fixture_wattage) # allow partial fixtures
           # todo - confirm with Nick and Brian if they want rounding. I think they want accurate wattage and are ok with fractional number of fixtures.
+          # DLM: some of the zones in the sliced building have very small areas dont introduce rouding errors for no reason
 
           # Add a new light fixture to replace LPD 
           new_light_inst = OpenStudio::Model::Lights.new(lights_def)
