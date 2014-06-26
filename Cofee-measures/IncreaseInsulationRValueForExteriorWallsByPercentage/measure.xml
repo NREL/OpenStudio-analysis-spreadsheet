@@ -1,7 +1,7 @@
 <measure>
   <name>Increase Insulation R value For Exterior Walls By Percentage</name>
   <uid>0585a732-11be-44c2-a22e-70fa46f0e517</uid>
-  <version_id>bef5c9e8-dd0f-4943-9e9a-3f9b85354ebf</version_id>
+  <version_id>f3ad1e43-ef29-4b21-907e-4e0f13abdf5a</version_id>
   <description>Increase the R value of the insulation layer in roof constructinons by a percentage.</description>
   <modeler_description>Insulation later is inferred by finding the existing layer with the highest thermal resistance.</modeler_description>
   <provenances/>
@@ -44,6 +44,12 @@
       <checksum>0B94403D</checksum>
     </file>
     <file>
+      <filename>IncreaseInsulationRValueForExteriorWalls_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>1020054F</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
@@ -51,13 +57,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>06F6BEB7</checksum>
-    </file>
-    <file>
-      <filename>IncreaseInsulationRValueForExteriorWalls_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>1020054F</checksum>
+      <checksum>2B0F0D0D</checksum>
     </file>
   </files>
 </measure>
