@@ -68,10 +68,16 @@ false,Add Sys3 Pszac Ngrid,AddSys3PSZACNgrid,AddSys3PSZACNgrid,RubyMeasure
 false,Add Sys5 Pvav Ngrid,AddSys5PVAVNgrid,AddSys5PVAVNgrid,RubyMeasure
 "",argument,"",Heating Efficiency,heating_efficiency,Double,,0.8,""
 "",argument,"",Cooling COP,cooling_cop,Double,,3.0,""
+false,Adjust System Efficiencies,AdjustSystemEfficiencies,AdjustSystemEfficiencies,RubyMeasure
+"",argument,"",Heating Efficiency Multiplier,heating_efficiency_multiplier,Double,,1.0,""
+"",argument,"",Cooling COP Multiplier,cooling_cop_multiplier,Double,,1.0,""
 false,Adjust Thermostat Setpoints by Degrees,AdjustThermostatSetpointsByDegrees,AdjustThermostatSetpointsByDegrees,RubyMeasure
 "",argument,"",Degrees Fahrenheit to Adjust Cooling Setpoint By,cooling_adjustment,Double,,1.0,""
 "",argument,"",Degrees Fahrenheit to Adjust heating Setpoint By,heating_adjustment,Double,,-1.0,""
 "",argument,"",Alter Design Day Thermostats,alter_design_days,Bool,,false,""
+false,Adjust Window to Wall Ratios,AdjustWindowToWallRatios,AdjustWindowToWallRatios,RubyMeasure
+"",argument,"",Window to Wall Ratio Multiplier,wwr_multiplier,Double,,1.0,""
+"",argument,"",Sill Height,sillHeight,Double,in,30.0,""
 false,Assign Thermostats Basedon Standards Building Typeand Standards Space Type,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType,RubyMeasure
 false,Bar Aspect Ratio Study Sliced by Space Type Office,BarAspectRatioStudySlicedBySpaceTypeOffice,BarAspectRatioStudySlicedBySpaceTypeOffice,RubyMeasure
 "",argument,"",Total Building Floor Area,total_bldg_area_ip,Double,ft^2,10000.0,""
@@ -101,6 +107,10 @@ false,Bar Aspect Ratio Study Sliced by Space Type Retail,BarAspectRatioStudySlic
 "",argument,"",Fraction of Floor Area for Entry Space Type,entry,Double,,"",""
 "",argument,"",Fraction of Floor Area for BackSpace Space Type,back_space,Double,,"",""
 false,Calibration Reports,CalibrationReports,CalibrationReports,ReportingMeasure
+"",argument,"",Electric NMBE limit,electric_nmbe_limit,Double,%,5.0,""
+"",argument,"",Electric CVRMSE limit,electric_cvrmse_limit,Double,%,15.0,""
+"",argument,"",Gas NMBE limit,gas_nmbe_limit,Double,%,5.0,""
+"",argument,"",Gas CVRMSE limit,gas_cvrmse_limit,Double,%,15.0,""
 false,Change Building Location,ChangeBuildingLocation,ChangeBuildingLocation,RubyMeasure
 "",argument,"",Weather Directory,weather_directory,String,,"",""
 "",argument,"",Weather File Name,weather_file_name,String,,"",""

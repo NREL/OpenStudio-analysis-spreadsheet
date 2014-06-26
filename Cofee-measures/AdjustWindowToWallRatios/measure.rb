@@ -1,9 +1,9 @@
 
-class SetWindowToWallRatioByFacade < OpenStudio::Ruleset::ModelUserScript
+class AdjustWindowToWallRatios < OpenStudio::Ruleset::ModelUserScript
 
   # override name to return the name of your script
   def name
-    return "Set Window to Wall Ratio by Facade"
+    return "Adjust Window to Wall Ratios"
   end
 
   # return a vector of arguments

@@ -1,0 +1,34 @@
+{
+  "classname": "AdjustSystemEfficiencies",
+  "name": "adjust_system_efficiencies",
+  "display_name": "Adjust System Efficiencies",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "heating_efficiency_multiplier",
+      "variable_type": "Double",
+      "name": "heating_efficiency_multiplier",
+      "display_name": "Heating Efficiency Multiplier",
+      "units": null,
+      "description": null,
+      "default_value": 1.0
+    },
+    {
+      "local_variable": "cooling_cop_multiplier",
+      "variable_type": "Double",
+      "name": "cooling_cop_multiplier",
+      "display_name": "Cooling COP Multiplier",
+      "units": null,
+      "description": null,
+      "default_value": 1.0
+    }
+  ],
+  "name_xml": "AdjustSystemEfficiencies",
+  "uid": "edeaff3d-3ae4-4487-b4a4-5cf08ea14510",
+  "version_id": "aeff649c-287e-4743-9b43-6548aa865c01",
+  "modeler_description": "This measure will search through all air loops, plant loops, and thermal zones in the model and adjust heating and cooling efficiencies of all relevant objects found.",
+  "description": "Updates heating and cooling efficiencies of all equipment in a model by a multiplier.",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}
