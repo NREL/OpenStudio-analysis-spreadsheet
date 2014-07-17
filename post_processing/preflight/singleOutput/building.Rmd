@@ -1,0 +1,359 @@
+```{r echo=FALSE, include=F, error=T, message=T}
+# setup the output structure
+vout = data.frame(variable_name=rep(NA,nrow(vs)))
+
+#generate full factorial combination list for pivot variables
+paramlist = NULL
+noPivot_flag = 0
+
+if(nrow(pivots)==0){
+
+  pivotvalue = data.frame()
+  pivotvalue[1,"Preflight"] = "Analysis"
+  noPivot_flag = 1
+  }else{
+  for(p in 1:nrow(pivots)){
+    paramlist = c(paramlist, length(unique(preflight_df[,pivots$name[p]])))
+  }
+  if(nrow(pivots)!=1){
+    pivotlist=gen.factorial(paramlist,nVars=length(paramlist),center=FALSE)
+  }else{
+      pivotlist=gen.factorial(paramlist,nVars=1,center=FALSE)
+  }
+  
+  #assign specific values to pivotlist for future query calls
+  pivotvalue = data.frame()
+  for(i in 1:length(pivotlist)){
+    valuelist = unique(preflight_df[,pivots$name[i]])
+    for(j in 1:nrow(pivotlist)){
+      pivotvalue[j,pivots$name[i]] = valuelist[pivotlist[j,i]]
+    }
+  }
+}
+
+#itterate through full factorial design
+for(p in 1:nrow(pivotvalue)){
+  # container for all the xs and ys by variable
+  df_plot = list()
+  str_plot = list()
+  
+  # get list of all pivot variable values  
+  pivot_names = pivotvalue[p,]
+  
+  # downselect to the correct pivot subset
+  active_df = preflight_df
+  if(noPivot_flag == 0){
+    for(k in 1:nrow(pivots)){
+      temp1 = pivots$name[k]
+      temp2 = pivot_names[[k]]
+      active_df = active_df[eval(parse(text=paste("active_df$",temp1," == ",quote(temp2),sep=""))),]
+    }
+  }
+  
+  #get static row from the active_df
+  found_row = 0
+  row_index = 1
+  while((found_row == 0 && row_index <= nrow(active_df))){
+    col_index = 1
+    true_vector = active_df[row_index,vs[col_index,"name"]]==vs[col_index,"static_value"]
+    while((all(true_vector) && col_index<nrow(vs))){
+      col_index = col_index + 1
+      true_vector = c(true_vector, active_df[row_index,vs[col_index,"name"]]==vs[col_index,"static_value"])
+      if((col_index == nrow(vs) && all(true_vector))){
+        found_row = 1
+        static_row_index = row_index
+      }
+    }
+    row_index = row_index + 1
+  }
+  static_row = active_df[static_row_index,]
+  if(found_row==0){stop(paste("No static row found for ",pivot_names,". Please investigate.",sep=""))}
+  
+  #iterate through each variable to produce analysis
+  for(i in 1:nrow(vs)){
+    
+    #catch multipliers here
+    cv = vs$name[i]
+    cv_out = cv
+    mult_flag = 0
+    if (grepl("_multiplier", cv)) {
+      cv_out = sub("_multiplier","",cv)
+      mult_flag = 1
+    }
+    
+    #define result names
+    cdv = vs$display_name[i]
+    mv = vs$measure_name[i]
+    mdv = vs$measure_display_name[i]
+    print(paste("Processing index:",i,"    ", "Variable:",cv))
+    cv_i = paste(mv,cv_out,sep=".")
+    cv_i = paste(cv_i,"_initial",sep="")
+    cv_f = paste(mv,cv_out,sep=".")
+    cv_f = paste(cv_f,"_final",sep="")
+    
+    # add data into result dataframe
+    vout_i = i
+    vout[i,] = NA
+    vout[vout_i,'variable_name']  = cv
+    vout[vout_i,'variable_display_name']  = cdv
+    vout[vout_i,'measure_name'] = mv
+    vout[vout_i,'measure_display_name'] = mdv
+    vout[vout_i,'output_name'] = paste(mv, cv, sep = ".")
+    vout[vout_i,'error'] = F
+    vout[vout_i,'ignore'] = F
+    
+    #determine datatype for analysis and graphing
+    datatype_flag = 0
+    if(vs$value_type[i] == 'double' || vs$value_type[i] == 'integer'){datatype_flag = 1}
+    if(vs$value_type[i] == 'bool'){datatype_flag = 2}
+    if(vs$value_type[i] == 'string'){datatype_flag = 3}
+    if(datatype_flag == 0){
+      vout[vout_i,'notes'] = paste("Variable ",cv," could not be tested because it is not an integer/double/bool/string",sep="")
+      print(paste("Skiping variable",cv,"as it is not of type double/integer/bool/string"))
+      vout[vout_i,'error'] = T
+      next;
+    }
+    
+    # read through the main dataframe and select the rows that have
+    # the variable reported    
+    # todo: make sure to always echo out the initial and final values of all measures
+    missingif_flag = 0
+    if(noPivot_flag == 0){
+      collist <- c(pivots$name, cv, cv_i, cv_f, resultlist)
+      if(!all(collist %in% colnames(active_df))){
+        collist <- c(pivots$name, cv, resultlist)
+        if(all(collist %in% colnames(active_df))){
+          print(paste("Initial and Final values not found for variable",cv))
+          vout[vout_i,'notes'] = paste("Variable ",cv," was evaluated, however initial and final versions could not be found. The variable may not exist in the model, or may have changed its reference name in the output",sep="")
+          missingif_flag = 1
+        }else{
+            print(paste("Multiple values missing from variable ",cv,". The variable is being skipped",sep=""))
+            vout[vout_i,'notes'] = paste("Variable ",cv," could not be tested because its targeted columns of data could not be found",sep="")
+            next
+        }
+      }
+    }else{
+      collist <- c(cv, cv_i, cv_f, resultlist)
+      if(!all(collist %in% colnames(active_df))){
+        collist <- c(cv, resultlist)
+        if(all(collist %in% colnames(active_df))){
+          print(paste("Initial and Final values not found for variable",cv))
+          vout[vout_i,'notes'] = paste("Variable ",cv," was evaluated, however initial and final versions could not be found. The variable may not exist in the model, or may have changed its reference name in the output",sep="")
+          missingif_flag = 1
+        }else{
+            print(paste("Multiple values missing from variable ",cv,". The variable is being skipped",sep=""))
+            vout[vout_i,'notes'] = paste("Variable ",cv," could not be tested because its targeted columns of data could not be found",sep="")
+            next
+        }
+      }
+    }
+    
+    # downselect to the correct static values and perturbed variable rows
+    non_static_rows = c()
+    for(row_index in 1:nrow(active_df)){
+      if(vs[i,"static_value"]!=active_df[row_index,cv]){
+        non_static_rows = rbind(non_static_rows,active_df[row_index,])
+      }
+    }
+    analysis_df <- rbind(static_row,non_static_rows)
+    
+    if(nrow(analysis_df) > 0){
+      #set output values
+      if (mult_flag==1) {
+        vout[vout_i,'min_multiplier'] = min(analysis_df[,cv])
+        vout[vout_i,'max_multiplier'] = max(analysis_df[,cv])
+      }else{
+          vout[vout_i,'min'] = min(analysis_df[,cv])
+          vout[vout_i,'max'] = max(analysis_df[,cv])
+      }
+      if (missingif_flag == 0){
+        vout[vout_i,'min_initial'] = min(analysis_df[,cv_i])
+        vout[vout_i,'max_initial'] = max(analysis_df[,cv_i])
+        vout[vout_i,'min_final'] = min(analysis_df[,cv_f])
+        vout[vout_i,'max_final'] = max(analysis_df[,cv_f])
+        if(datatype_flag==1){
+          vout[vout_i,'input_variable_range'] = diff(range(analysis_df[,cv_f]))
+        }
+      }else{
+        if(cv=="square_footage_multiplier"){
+          cv_i = "change_geometry.total_floor_area_initial"
+          cv_f = "change_geometry.total_floor_area_final"
+          vout[vout_i,'min_initial'] = min(analysis_df[,cv_i])
+          vout[vout_i,'max_initial'] = max(analysis_df[,cv_i])
+          vout[vout_i,'min_final'] = min(analysis_df[,cv_f])
+          vout[vout_i,'max_final'] = max(analysis_df[,cv_f])
+          vout[vout_i,'notes'] = paste(vout[vout_i,'notes'],"    Initial and Final values for square_footage_multiplier have been based off of change_geometry.total_floor_area",sep="")
+          print(paste("Initial and Final values for square_footage_multiplier have been based off of change_geometry.total_floor_area",sep=""))
+          missingif_flag = 0
+        }else{
+          cv_i = cv
+          cv_f = cv
+          vout[vout_i,'min_initial'] = min(analysis_df[,cv_i])
+          vout[vout_i,'max_initial'] = max(analysis_df[,cv_i])
+          vout[vout_i,'min_final'] = min(analysis_df[,cv_f])
+          vout[vout_i,'max_final'] = max(analysis_df[,cv_f])
+          vout[vout_i,'notes'] = paste(vout[vout_i,'notes'],"    Initial and Final values for ",cv," were not found and so the Initial and Final values have been set equal to ",cv,sep="")
+          print(paste("Initial and Final values for ",cv," were not found and so the Initial and Final values have been set equal to ",cv,sep=""))
+        }
+      }
+      
+      for (j in 1:length(resultlist)){
+        res_min = paste("min",resultlist[j],sep="_")
+        vout[vout_i,res_min] = round(min(analysis_df[,resultlist[j]]),2)
+        res_max = paste("max",resultlist[j],sep="_")
+        vout[vout_i,res_max] = round(max(analysis_df[,resultlist[j]]),2)
+        res_range = paste("range",resultlist[j],sep="_")
+        vout[vout_i,res_range] = round(diff(range(analysis_df[,resultlist[j]])),2)
+      }  
+      
+      # summarize the data now and put into a structure of some sort
+      s_mult <- summary(analysis_df[,cv])["Mean"]
+      if (any(is.na(analysis_df[,cv_f]))){
+        print(paste("Variable ",cv," has an NA in the results from the E+ analysis and was thus ignored",sep=""))
+        vout[vout_i,'notes'] = paste(vout[i,'notes'],"    Variable ",cv," contains NA in its output, and thus was ignored",sep="")
+        vout[vout_i,'ignore'] = T
+      }else if(datatype_flag==1){
+        if(class(vout[vout_i,'min_final'])=="character"){
+          vout[vout_i,'min_final'] = round(type.convert(vout[vout_i,'min_final']),2)
+          vout[vout_i,'max_final'] = round(type.convert(vout[vout_i,'max_final']),2)
+        }else{
+          vout[vout_i,'min_final'] = round(vout[vout_i,'min_final'],2)
+          vout[vout_i,'max_final'] = round(vout[vout_i,'max_final'],2)
+        } 
+        for(resnum in 1:length(resultlist)){
+          lm_variables = paste(resultlist[resnum]," ~ ",cv_f,sep = "")
+          l = lm(lm_variables, data = analysis_df)
+          fit = coef(l) 
+          
+          if (is.na(fit[2])){
+            vout[vout_i,'notes'] = paste(vout[i,'notes'],"    Variable ",cv," could not be tested (no fit)",sep="")
+            print(paste("Variable ",cv," could not be tested (no fit). This element may not be present in the model",sep=""))
+            vout[vout_i,'error'] = TRUE
+            next
+          }else{ 
+            sl = round(fit[2],2)
+            int = round(fit[1],2)
+            vout[vout_i,paste('slope',resultlist[resnum],sep='_')] = sl
+            vout[vout_i,paste('intercept',resultlist[resnum],sep='_')] = int
+            
+            df_plot[[length(df_plot)+1]] = data.frame(varname=cv, vardname=cdv, resdname=resultlistd[resnum], x=analysis_df[,cv], y=analysis_df[,resultlist[resnum]],x_type="number")
+              
+            if (abs(fit[2]) < 0.001){
+              print(paste("Variable ",cv," doesn't appear to do anything significant in ",resultlist[resnum],sep=""))
+              vout[vout_i,'ignore'] = TRUE
+              vout[vout_i,'notes'] <- paste(vout[vout_i,'notes'],"    Variable ",cv," doesn't appear to do anything significant",sep="")
+            }else{
+                print(paste("Variable ",cv," had a slope of ",sl," and intercept of ",int," in output variable ",resultlist[resnum],sep=""))
+                vout[vout_i,'notes'] = paste(vout[vout_i,'notes'],"    Variable ",cv," had a slope of ",sl," and intercept of ",int," in output variable ",resultlist[resnum],sep="")
+            }         
+          }
+        }
+      }else if(datatype_flag==2){
+        for(resnum in 1:length(resultlist)){
+          for(boolindex in nrow(analysis_df)){
+            analysis_df[boolindex,cv_f] = toString(analysis_df[boolindex,cv_f])
+          }
+          df_plot[[length(df_plot)+1]] = data.frame(varname=cv, vardname=cdv, resdname=resultlistd[resnum], x=factor(c(analysis_df[,cv_f]), levels=c(analysis_df[,cv_f]), ordered=TRUE), y=analysis_df[,resultlist[resnum]],x_type="factor")
+          if(diff(range(analysis_df[,resultlist[resnum]]))<0.001){
+            print(paste("Variable ",cv," doesn't appear to do anything significant in ",resultlist[resnum],sep=""))
+            vout[vout_i,'ignore'] = TRUE
+            vout[vout_i,'notes'] <- paste(vout[vout_i,'notes'],"    Variable ",cv," doesn't appear to do anything significant",sep="")
+          }else{
+            temp_range = round(diff(range(analysis_df[,resultlist[resnum]])),2)
+            print(paste("Variable ",cv," had a range of ",temp_range," in output variable ",resultlist[resnum],sep=""))
+            vout[vout_i,'notes'] = paste(vout[vout_i,'notes'],"    Variable ",cv," had a range of ",temp_range," in output variable ",resultlist[resnum],sep="")
+          }
+        }
+      }else if(datatype_flag==3){
+        for(resnum in 1:length(resultlist)){
+          df_plot[[length(df_plot)+1]] = data.frame(varname=cv, vardname=cdv, resdname=resultlistd[resnum], x=factor(c(analysis_df[,cv_f]), levels=c(analysis_df[,cv_f]), ordered=TRUE), y=analysis_df[,resultlist[resnum]],x_type="factor")
+          if(diff(range(analysis_df[,resultlist[resnum]]))<0.001){
+            print(paste("Variable ",cv," doesn't appear to do anything significant in ",resultlist[resnum],sep=""))
+            vout[vout_i,'ignore'] = TRUE
+            vout[vout_i,'notes'] <- paste(vout[vout_i,'notes'],"    Variable ",cv," doesn't appear to do anything significant",sep="")
+          }else{
+            temp_range = round(diff(range(analysis_df[,resultlist[resnum]])),2)
+            print(paste("Variable ",cv," had a range of ",temp_range," in output variable ",resultlist[resnum],sep=""))
+            vout[vout_i,'notes'] = paste(vout[vout_i,'notes'],"    Variable ",cv," had a range of ",temp_range," in output variable ",resultlist[resnum],sep="")
+          }
+        }
+      }else{
+        print(paste("Variable ",cv," has caused an unspecified error",sep=""))
+        vout[vout_i,'error'] = TRUE
+        vout[vout_i,'notes'] <- paste(vout[vout_i,'notes'],"    Variable ",cv," has caused an error in the analysis. Please investigate",sep="")
+      }
+    }
+  }
+# containter for nrow(pivotvalue) df_plot(s) and vout(s)
+  if(p==1){
+    vout_storage = list(vout)
+    plot_storage = list(df_plot)
+    static_storage = list(static_row)
+  }else{
+    vout_storage[[p]] = vout
+    plot_storage[[p]] = df_plot
+    static_storage[[p]] = static_row
+  }
+}
+```
+
+```{r, include=F, echo=F, message=F, error=F} 
+# generate variables to feed into 'graphic.Rmd'
+# read pivot renaming csv files found in /../support_files, should they exist
+res=NULL
+title_df = data.frame()
+for(i in 1:max(nrow(pivots),1)){
+  if(file.exists(paste(wd_base,"/resources/",pivots[i,"name"],".csv",sep=""))==TRUE){
+    temppivot = read.csv(paste(wd_base,"/resources/",pivots[i,"name"],".csv",sep=""))
+    for(j in 1:length(pivotvalue[,pivots[i,"name"]])){
+      title_df[j,pivots[i,"name"]] = c(pivotvalue[j,pivots[i,"name"]])
+      for(k in 1:length(temppivot[,"pivot_id"])){
+        if(noPivot_flag==0){
+          title_df[j,pivots[i,"name"]] = gsub(temppivot[k,"pivot_id"],temppivot[k,"display_name"],title_df[j,pivots[i,"name"]])
+        }else{
+          error("This shouldn't be logically possible.")
+        }
+      }
+    }
+  }else{
+    if(noPivot_flag==0){
+      for(j in 1:length(pivotvalue)){
+      title_df[,pivots[i,"name"]] = paste(pivots[i,"display_name"]," : ",pivotvalue[j,i],sep="")
+      }
+    }else{}
+  }
+}
+
+#todo: make ordering dynamic, i.e. order for more than one pivot!
+pivotvalue = pivotvalue[order(title_df[,pivots[1,'name']])]
+title_df = as.data.frame(title_df[order(title_df[,pivots[1,'name']]),])
+
+
+# call 'graphic.Rmd'
+for(i in 1:nrow(pivotvalue)){
+  pivot_title = "### "
+  for(titleindex in 1:max(length(pivots[,"display_name"]),1)){
+    if(noPivot_flag==0){
+      pivot_title = paste(pivot_title,pivots[titleindex,"display_name"],": ",title_df[i,titleindex],", ",sep="")
+    }else{
+      pivot_title = paste(pivot_title,"Preflight: Analysis, ")
+    }
+  }
+  pivot_title = strtrim(pivot_title,nchar(pivot_title)-2)
+  res = c(res, pivot_title)
+  active_vout=vout_storage[[i]]
+  static_row=static_storage[[i]]
+  for(j in 1:length(resultlistd)){
+    res = c(res, paste("####",resultlistd[j]))
+    active_plot=list()
+    for(n in 1:length(df_plot)){
+      if(levels(plot_storage[[i]][[n]]$resdname)==resultlistd[j]){
+        active_plot[[length(active_plot)+1]] = plot_storage[[i]][[n]]
+      }  
+    }
+    res = c(res, knit_child('graphic.Rmd'))
+  }
+}
+```
+
+`r paste(res, collapse='\n')`
