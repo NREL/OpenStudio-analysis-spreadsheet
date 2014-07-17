@@ -100,8 +100,10 @@ for(i in 1:nrow(data_for_analysis)){
     png(filename=outputName,height=600,width=1000,pointsize=12)
     p=ggplot(slope_df,aes(x=factor(x=slope_df$var,levels=x_tick_labels,ordered=T),y=slope_df$slope))+
       geom_bar(aes(fill=slope_df$p_value),stat="identity")+
-      scale_fill_continuous(name = "P-Value")+
-      labs(y=paste(toString(output_df[j,"resultnamed"])," Slope",sep=""),title="Total Variable Effect")+
+      scale_fill_gradientn(name = "P-Value",limits=c(0,1),breaks=c(0.05,0.25,0.5,0.75,1),
+                           colours=c('#FFFFE5','#FFF7BC','#FEE391','#FEC44F','#FB9A29','#EC7014','#CC4C02','#993404','#662506'),
+                           values=c(0,0.025,0.05,0.075,0.1,0.25,0.5,0.75,1))+
+      guides(fill = guide_colorbar(barwidth = 1, barheight = 15))+
       theme(plot.title=element_text(size=24,face="bold"),
             axis.title.x= element_blank(),
             axis.title.y=element_text(size=18,face="bold",vjust=2),

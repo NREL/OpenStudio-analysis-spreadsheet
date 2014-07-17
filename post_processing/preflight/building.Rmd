@@ -303,8 +303,8 @@ for(p in 1:nrow(pivotvalue)){
 res=NULL
 title_df = data.frame()
 for(i in 1:max(nrow(pivots),1)){
-  if(file.exists(paste(wd_base,"/..","/support_files/",pivots[i,"name"],".csv",sep=""))==TRUE){
-    temppivot = read.csv(paste(wd_base,"/..","/support_files/",pivots[i,"name"],".csv",sep=""))
+  if(file.exists(paste(wd_base,"/resources/",pivots[i,"name"],".csv",sep=""))==TRUE){
+    temppivot = read.csv(paste(wd_base,"/resources/",pivots[i,"name"],".csv",sep=""))
     for(j in 1:length(pivotvalue[,pivots[i,"name"]])){
       title_df[j,pivots[i,"name"]] = c(pivotvalue[j,pivots[i,"name"]])
       for(k in 1:length(temppivot[,"pivot_id"])){

@@ -25,7 +25,7 @@ options(rstudio.markdownToHTML = function(inputFile, outputFile) {
   }
 )
 
-# set global chunk options: images will be 7x5 inches
+# set global chunk options
 require(knitr)
 require(ggplot2)
 require(AlgDesign)
@@ -80,7 +80,7 @@ kable(vs_p, format = "markdown", row.names=F)
 
 ```{r echo=F}
 # import 'reporting_outputs.csv'
-desired_results = read.csv(paste(wd_base,"/../support_files/reporting_outputs.csv",sep=""))
+desired_results = read.csv(paste(wd_base,"/resources/reporting_outputs.csv",sep=""))
 resultlist = NULL
 resultlistd = NULL
 for(i in 1:nrow(desired_results["resultlist"])){
@@ -100,7 +100,7 @@ for(i in 1:length(resultlist)){
 }
 
 # import building types
-buildings = read.csv(paste(wd_base,"/../support_files/buildings.csv",sep=""))
+buildings = read.csv(paste(wd_base,"/resources/buildings.csv",sep=""))
 buildings = buildings[order(buildings[,'building_name']),]
 # initialize the preflight output dataframe
 ```

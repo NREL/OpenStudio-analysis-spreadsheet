@@ -4,7 +4,7 @@ require(stats)
 require(grid)
 
 #Figure out how to handel paths for the spreadsheet repo
-setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/oatLhs")
+setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/oatLhs/iqrAnalysis")
 wd_base = "."
 
 #Load in resources datasheets dynamically
@@ -93,7 +93,10 @@ for(i in 1:length(heat_map_storage)){
   p=ggplot(active_df,aes(x=active_df$building,y=active_df$var,fill=active_df$iqr))+
     geom_tile()+
     labs(y='Variables',x='Building',title=paste(active_df[1,'result'],"Heatmap"))+
-    scale_fill_continuous(name = "IQR",low="yellow",high='red')+
+    scale_fill_gradientn(name = "IQR",
+                         colours=c('#FFFFE5','#FFF7BC','#FEE391','#FEC44F','#FB9A29',
+                                   '#EC7014','#CC4C02','#993404','#662506'))+
+    guides(fill = guide_colorbar(barwidth = 1, barheight = 15))+
     theme(plot.title=element_text(size=30,face="bold"),
           axis.title.x=element_text(size=24,face="bold"),
           axis.title.y=element_text(size=24,face="bold",vjust=2),
@@ -108,32 +111,3 @@ setwd('..')
 setwd('sensitivity_dfs')
 save(heat_map_storage,file='heatmap_df.RData')
 setwd('..')
-# 
-# cleaningScript = function(vec)
-#   for(i in 1:length(vec)){
-#     temp = vec[i]
-#     temp = gsub('&','-',temp)
-#     temp = gsub('\\(','_',temp)
-#     temp = gsub('\\)','_',temp)
-#     temp = gsub('%','_',temp)
-#     temp = gsub('/','_',temp)
-#     temp = gsub(':','_',temp)
-#     temp = gsub(';','_',temp)
-#     temp = gsub(' ','_',temp)
-#     temp = gsub('\\+','_',temp)
-#     temp = gsub('!','_',temp)
-#     temp = gsub('\\[','_',temp)
-#     temp = gsub('\\]','_',temp)
-#     temp = gsub('\\{','_',temp)
-#     temp = gsub('\\}','_',temp)
-#     temp = gsub('@','_',temp)
-#     temp = gsub('<','_',temp)
-#     temp = gsub('>','_',temp)
-#     temp = gsub('\\|','_',temp)
-#     temp = gsub('~','_',temp)
-#     temp = gsub('\\?','_',temp)
-#     temp = gsub('=','_',temp)
-#     temp = gsub('"','_',temp)
-#     vec[i] = temp
-#   }
-# return(vec)

@@ -64,6 +64,7 @@ for(i in 1:nrow(output_df)){
   p=ggplot(ploting_df,aes(x=ploting_df$building_type,y=ploting_df$input_variable,fill=ploting_df$varience))+
     geom_tile()+
     labs(y='Variables',x='Space Types',title=paste(toString(output_df[i,'resultnamed']),'Correlation'))+
+    guides(fill = guide_colorbar(barwidth = 1, barheight = 15))+
     scale_fill_gradientn(name = "Correlation",limits=c(-1,1),colours=c('#3D52A1','#3A89C9','#77B7E5','#B4DDF7',
                                                                     '#E6F5FE','#FFFAD2','#FFE3AA','#F9DB7E',
                                                                     '#ED875E','#D24D3E','#AE1C3E'))+
@@ -127,7 +128,7 @@ for(i in 1:nrow(output_df)){
     scale_fill_gradientn(name = "P-Value",limits=c(0,1),breaks=c(0.05,0.25,0.5,0.75,1),
                          colours=c('#FFFFE5','#FFF7BC','#FEE391','#FEC44F','#FB9A29','#EC7014','#CC4C02','#993404','#662506'),
                          values=c(0,0.025,0.05,0.075,0.1,0.25,0.5,0.75,1))+
-    #guides(fill = guide_colorbar(barwidth = 0.5, barheight = 10))+
+    guides(fill = guide_colorbar(barwidth = 1, barheight = 15))+
     theme(plot.title=element_text(size=30,face="bold"),
           axis.title.x=element_text(size=24,face="bold"),
           axis.title.y=element_text(size=24,face="bold",vjust=2),
