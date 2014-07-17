@@ -1,7 +1,7 @@
 #Load list of desired PCA reports and data to be used
 require(ggplot2)
 require(grid)
-setwd("C:/Users/hhorsey/Desktop/campusModeling Stuff/140709_ECQAQC_Analysis")
+setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/allLhs/sensitivityAnalysis")
 wd_base = "."
 output_df = read.csv(paste(wd_base,"resources","reporting_outputs.csv",sep="/"))
 data_for_analysis = read.csv(paste(wd_base,"resources","data.csv",sep="/"))
@@ -22,6 +22,9 @@ for(i in 1:nrow(output_df)){
 if(error_flag){
   stop(error_message)
 }
+
+#Fix non-machine readable names in all results dataframes
+
 
 #Cycle through desired outputs and produce graphs. These will be stored in wd_base/output
 if(!file.exists("post_processing_graphs")){

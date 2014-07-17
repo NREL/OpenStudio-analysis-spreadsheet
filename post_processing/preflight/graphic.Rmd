@@ -1,0 +1,72 @@
+```{r echo=F,fig.width=15,fig.height=15,out.width=800,out.height=800,error=T,message=F,fig.cap=gridcap()}
+plots = do.call("rbind",active_plot)
+ggplot(data=plots, aes(x=x, y=y, group=x_type))+ 
+  geom_point()+ 
+  xlab("")+
+  ylab("")+
+  facet_wrap(~vardname, scales='free_x')+ 
+  stat_smooth(method='lm', group="number")+ 
+  theme(strip.text.x = element_text(size=12, angle=0),
+    #panel.background = element_blank(), 
+    panel.border = element_blank(), 
+    axis.line = element_blank(),
+    strip.background = element_blank(),
+    axis.ticks=element_blank(),
+    axis.text=element_blank()
+  )
+```
+
+
+```{r echo=F, message=F, results='asis', fig.align='center', fig.width=6, error=T, message=F}
+numeric_columns = sapply(active_vout, mode) == 'numeric'
+temp_min = paste("min",resultlist[j],sep="_")
+temp_mind = paste("Minimum ",resultlistd[j],sep="")
+temp_max = paste("max",resultlist[j],sep="_")
+temp_maxd = paste("Maximum ",resultlistd[j],sep="")
+temp_range = paste("range",resultlist[j],sep="_")
+temp_slope = paste("slope",resultlist[j],sep="_")
+temp_intercept = paste("intercept",resultlist[j],sep="_")
+active_vout[numeric_columns] =  round(active_vout[numeric_columns], 2)
+active_vout = active_vout[order(active_vout[,temp_slope], active_vout[,temp_intercept], decreasing=T, na.last=T), ]
+formated_vout = data.frame()
+for(rmvindex in 1:nrow(active_vout)){
+  if(is.na(active_vout[rmvindex,"min_final"])==FALSE && is.na(active_vout[rmvindex,"max_final"])==FALSE){
+    formated_vout = rbind(formated_vout,active_vout[rmvindex,])
+  }
+}
+formated_vout[is.na(formated_vout)] = "" 
+formated_vout = formated_vout[c('variable_display_name','min_final','max_final',temp_min,temp_max,temp_slope,temp_intercept)]
+colnames(formated_vout) = c("Variable Display Name","Minimum Input Value", "Maximum Input Value",temp_mind, temp_maxd, "Slope", "Intercept")
+
+kable(formated_vout, format = "markdown", row.names=F, align='r')
+```
+
+```{r echo=F,fig.width=15,fig.height=15,out.width=800,out.height=800,error=T,message=F,fig.cap=torcap()}
+mode = static_row[[resultlist[j]]]
+ordered_vout = active_vout[order(active_vout[,temp_range], decreasing=TRUE), ]
+ordered_vout= ordered_vout[c('variable_display_name',temp_range,temp_min,temp_max)]
+colnames(ordered_vout)=c("Variable Name","Output Range","Output Min","Output Max")
+stop_index=1
+while((ordered_vout[stop_index,"Output Range"]>0.001&&stop_index<nrow(ordered_vout))){stop_index = stop_index+1}
+
+contribution_df = data.frame(variable_name = factor(c(ordered_vout[1:stop_index,"Variable Name"]), levels = c(ordered_vout[1:stop_index,"Variable Name"]), ordered=TRUE),output_min=c(ordered_vout[1:stop_index,"Output Min"]),output_max=c(ordered_vout[1:stop_index,"Output Max"]))
+
+ggplot(data=contribution_df,aes(x=variable_name,y=output_max,group=1))+
+geom_ribbon(aes(ymin=mode,ymax=output_max),fill="#AE1C3E",colour="black")+
+geom_ribbon(aes(ymin=output_min,ymax=mode),fill="#3D52A1",colour="black")+
+labs(y=paste(resultlistd[j],"  (",resultunits[j],")"),x="Variable")+
+theme(axis.title.x=element_text(size = rel(2),face="bold"),
+      axis.title.y=element_text(size=rel(2),face="bold",vjust=2),
+      axis.text.x=element_text(angle=60,hjust=1,color="black",size=rel(1.5),face="bold"),
+      axis.text.y=element_text(color="black",size=rel(1.5),face="bold"),
+      plot.margin=unit(c(1,1,5,1), "lines"))
+```
+
+
+
+```{r echo=F, message=F, results='asis', error=T, message=F}
+ordered_vout = active_vout[order(active_vout[,temp_range], decreasing=TRUE), ]
+ordered_vout= ordered_vout[c('variable_name',temp_range,'ignore','notes')]
+colnames(ordered_vout) = c("Variable Name","Output Range","Ignored", "Notes")
+kable(ordered_vout, format = "markdown", row.names=F, align='r')
+```
