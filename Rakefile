@@ -9,29 +9,39 @@ require 'openstudio-analysis'
 require 'colored'
 require 'pp'
 
+require 'rubygems'
+require 'zip'
+
 CLEAN.include("*.pem", "./projects/*.json", "*.json")
 
-def get_project()
-  # determine the project file to run.  This will list out all the xlsx files and give you a 
-  # choice from which to choose
-  puts
-  puts "Select which project to run from the list below:".cyan.underline
-  puts "Note: if this list is too long, simply remove xlsx files from the ./projects directory".cyan
-  projects = Dir.glob("./projects/*.xlsx").reject { |i| i =~ /~\$.*/ }
-  projects.each_index do |i|
-    puts "  #{i+1}) #{File.basename(projects[i])}".green
-  end
-  puts
-  print "Selection (1-#{projects.size}): ".cyan
-  n = $stdin.gets.chomp
-  n_i = n.to_i
-  if n_i == 0 || n_i > projects.size
-    puts "Could not process your selection. You entered '#{n}'".red
-    exit
-  end
+# Command-line arguments in Rake: http://viget.com/extend/protip-passing-parameters-to-your-rake-tasks
 
+def get_project(excel_file="")
+  # If excel_file is not pre-specified, request it as input
+  unless excel_file && !excel_file.empty?
+    # Determine the project file to run.  This will list out all the xlsx files and give you a 
+    # choice from which to choose
+    puts
+    puts "Select which project to run from the list below:".cyan.underline
+    puts "Note: if this list is too long, simply remove xlsx files from the ./projects directory".cyan
+    projects = Dir.glob("./projects/*.xlsx").reject { |i| i =~ /~\$.*/ }
+    projects.each_index do |i|
+      puts "  #{i+1}) #{File.basename(projects[i])}".green
+    end
+    puts
+    print "Selection (1-#{projects.size}): ".cyan
+    n = $stdin.gets.chomp
+    n_i = n.to_i
+    if n_i == 0 || n_i > projects.size
+      puts "Could not process your selection. You entered '#{n}'".red
+      exit
+    end
+    
+    excel_file = projects[n_i-1]
+  end
+  
+  # Open it
   excel = nil
-  excel_file = projects[n_i-1]
   if excel_file && File.exists?(excel_file)
     excel = OpenStudio::Analysis::Translator::Excel.new(excel_file)
     excel.process
@@ -79,25 +89,50 @@ Or run `rake clean`".red
   end
 end
 
-def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = false)
-  puts "Running the analysis"
-  if File.exists?("#{excel.cluster_name}.json") || run_vagrant || run_NREL12 || run_NREL24
-    # for each model in the excel file submit the analysis
-    server_dns = nil
-    if run_vagrant
-      server_dns = "http://localhost:8080"
-    elsif run_NREL24
-      server_dns ="http://bball-130449.nrel.gov:8080"
-    elsif run_NREL12
-      server_dns ="http://bball-129913.nrel.gov:8080"
-    else
+def configure_target_server(excel, target)
+  # Choose target server and return the DNS
+  server_dns = nil
+  case target.downcase
+  when "vagrant"
+    server_dns = "http://localhost:8080"
+  when "nrel12"
+    server_dns = "http://bball-129913.nrel.gov:8080"
+  when "nrel24"  
+    server_dns = "http://bball-130449.nrel.gov:8080"
+  when "aws"
+    if File.exists?("#{excel.cluster_name}.json")
       json = JSON.parse(File.read("#{excel.cluster_name}.json"), :symbolize_names => true)
       server_dns = "http://#{json[:server][:dns]}"
     end
+  end
+end
 
+def unzip_archive(archive, dest)
+  # Unzip an archive to a destination directory using Rubyzip gem
+  
+  # Adapted from examples at...
+  #  https://github.com/rubyzip/rubyzip
+  #  http://seenuvasan.wordpress.com/2010/09/21/unzip-files-using-ruby/
+  Zip::File.open(archive) do |zf|
+    zf.each do |f|
+      f_path = File.join(dest, f.name)
+      FileUtils.mkdir_p(File.dirname(f_path))
+      zf.extract(f, f_path) unless File.exist?(f_path) # No overwrite
+    end
+  end
+end
+
+def run_analysis(excel, target="aws", download=false)
+  puts "Running the analysis"
+  
+  # Which server?
+  server_dns = configure_target_server(excel, target)
+  
+  # Run the analysis
+  if server_dns
+    # for each model in the excel file submit the analysis
     excel.models.each do |model|
       # parse the file and check if the instance appears to be up
-
       formulation_file = "./analysis/#{model[:name]}.json"
       analysis_zip_file = "./analysis/#{model[:name]}.zip"
 
@@ -115,8 +150,8 @@ def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = fa
       }
       analysis_id = api.new_analysis(project_id, analysis_options)
 
-     if (excel.problem['analysis_type'] == 'optim') || (excel.problem['analysis_type'] == 'rgenoud')
-      run_options = {
+      if (excel.problem['analysis_type'] == 'optim') || (excel.problem['analysis_type'] == 'rgenoud')
+        run_options = {
           analysis_action: "start",
           without_delay: false, # run in background
           analysis_type: excel.problem['analysis_type'],
@@ -124,9 +159,9 @@ def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = fa
           use_server_as_worker: true,
           simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
           run_data_point_filename: excel.run_setup['run_data_point_filename']
-      }
-     else
-      run_options = {
+        }
+      else
+        run_options = {
           analysis_action: "start",
           without_delay: false, # run in background
           analysis_type: excel.problem['analysis_type'],
@@ -134,29 +169,117 @@ def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = fa
           use_server_as_worker: excel.run_setup['use_server_as_worker'],
           simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
           run_data_point_filename: excel.run_setup['run_data_point_filename']
-      }
-     end
+        }
+      end
       api.run_analysis(analysis_id, run_options)
 
-      # If the analysis is LHS, then go ahead and run batch run because there is 
-      # no explicit way to tell the system to do it
+      # If the analysis is LHS, pre-flight, or single run, then go ahead and run batch run because
+      # there is no explicit way to tell the system to do it
       if excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
         run_options = {
-            analysis_action: "start",
-            without_delay: false, # run in background
-            analysis_type: 'batch_run',
-            allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
-            use_server_as_worker: excel.run_setup['use_server_as_worker'],
-            simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
-            run_data_point_filename: excel.run_setup['run_data_point_filename']
+          analysis_action: "start",
+          without_delay: false, # run in background
+          analysis_type: 'batch_run',
+          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
+          use_server_as_worker: excel.run_setup['use_server_as_worker'],
+          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
+          run_data_point_filename: excel.run_setup['run_data_point_filename']
         }
         api.run_analysis(analysis_id, run_options)
       end
-    end
+      
+      # Report some useful info
+      puts
+      puts "Analysis type is: #{excel.problem['analysis_type']}".bold.cyan
+      puts "Server URL is: #{server_dns}".bold.cyan
+    
+      # If download option selected:
+      # a. Monitor for completiong
+      # b. Download results (R data frame and data point .zips) to ./results/#{analysis_id}
+      # c. Clean up by deleting the analysis on the server
+      if download
+        puts
+        puts "Waiting to download analysis results... ".cyan
+        
+        # These are hard coded for now...
+        check_interval = 15 # sec
+        max_time = 3600     # sec
+        
+        Timeout::timeout(max_time) {
+          begin
+            # Monitor the server and wait for it to respond
+            while true
+              print "."
+              status = api.get_analysis_status(analysis_id, 'batch_run')
+              if status && status == 'completed'
+                puts "analysis completed!"
+                
+                out_dir = "./results/#{analysis_id}"
+                FileUtils.mkdir_p(out_dir)
+                puts "Download directory is: #{out_dir}"
+                
+                # Download R data frame
+                puts
+                puts "Downloading R data frame...".cyan
+                ok, f = api.download_dataframe(analysis_id, out_dir)
+                if ok
+                  puts "Downloaded R data frame succesfully."
+                else
+                  puts "Error downloading R data frame."
+                end
+                
+                # Download all the datapoints
+                data_points = api.get_datapoint_status(analysis_id, 'completed')
+                puts
+                puts "Downloading all data points...".cyan
+                if data_points.nil? || data_points.empty?
+                  puts "\tNo completed data points found even though the analysis completed!"
 
-    puts
-    puts "Server URL is: #{server_dns}".bold.cyan
-    puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
+                else
+                  data_points.each do |dp|
+                    if dp[:final_message] == 'completed normal'
+                      puts "\tDownloading data point #{dp[:_id]}"
+                      ok, f = api.download_datapoint(dp[:_id], out_dir)
+                      
+                      if ok
+                        puts "\tExtracting data point #{dp[:_id]}"
+                        dest = File.join(File.dirname(f), File.basename(f, ".zip"))
+                        unzip_archive(f, dest)
+                        File.delete(f)
+                      else
+                        puts "\tError downloading data point #{dp[:_id]}"
+                      end
+                      
+                    else
+                      puts "\tError found in data point #{dp[:_id]}"
+                    end
+                  end
+                end
+                
+                # Clean up project
+                puts
+                puts "Cleaning up...".cyan
+                api.delete_project(project_id)
+
+                break
+              end
+
+              sleep check_interval
+            end
+            
+          # On timeout...
+          rescue TimeoutError => e
+            puts "Time expired before analysis completed! Download aborted.".bold.red
+          end
+        }
+      end
+    end
+    
+    # Final stuff
+    if target.downcase == "aws"
+      puts
+      puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
+    end
   else
     puts "There doesn't appear to be a cluster running for this project #{excel.cluster_name}"
   end
@@ -216,27 +339,39 @@ task :run do
   excel = get_project()
   excel.save_analysis()
   create_cluster(excel)
-  run_analysis(excel)
+  run_analysis(excel, "aws")
 end
 
 desc "run vagrant"
 task :run_vagrant do
   excel = get_project()
   excel.save_analysis()
-  run_analysis(excel, true)
+  run_analysis(excel, "vagrant")
 end
 
 desc "run NREL12"
 task :run_NREL12 do
   excel = get_project()
   excel.save_analysis()
-  run_analysis(excel, false, false, true)
+  run_analysis(excel, "nrel12")
 end
+
 desc "run NREL24"
 task :run_NREL24 do
   excel = get_project()
   excel.save_analysis()
-  run_analysis(excel, false, true, false)
+  run_analysis(excel, "nrel24")
+end
+
+desc "run analysis with customized options"
+task :run_custom, [:target, :project, :download] do |t, args|
+  args.with_defaults(:target => "aws", :project => nil, :download => false)
+  excel = get_project(args[:project])
+  excel.save_analysis()
+  if args[:target].downcase == "aws"
+    create_cluster(excel)
+  end
+  run_analysis(excel, args[:target], args[:download])
 end
 
 #desc "kill all running on cloud"
@@ -266,7 +401,6 @@ end
 #  api = OpenStudio::Analysis::ServerApi.new(options)
 #  api.kill_all_analyses()
 #end
-#
 
 desc "delete all projects on site"
 task :delete_all do
