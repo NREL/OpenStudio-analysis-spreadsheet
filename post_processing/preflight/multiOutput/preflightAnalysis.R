@@ -3,11 +3,13 @@ require(rmarkdown)
 
 setwd('c:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/preflight/multiOutput')
 wd_base = '.'
-# include the list of variables from just one of the dataframes before going into building-by-building results
-initializing_files = dir(paste(wd_base,"data",sep="/"))
-initializing_files=initializing_files[grepl("_metadata.RData",initializing_files)]
 
-load(paste(wd_base,"data",initializing_files[1],sep="/"))
+# import building types
+buildings = read.csv(paste(wd_base,"/resources/buildings.csv",sep=""))
+buildings = buildings[order(buildings[,'building_name']),]
+
+# include the list of variables from just one of the dataframes before going into building-by-building results
+load(toString(buildings[1,'metadata_dataframe']))
 variables_df = metadata
 
 # Read each of the variables
@@ -34,16 +36,12 @@ for(i in 1:length(resultlist)){
   resultunits = c(resultunits,variables_df[which(variables_df$name == resultlist[1]),"units"])
 }
 
-# import building types
-buildings = read.csv(paste(wd_base,"/resources/buildings.csv",sep=""))
-buildings = buildings[order(buildings[,'building_name']),]
-
 if(!file.exists("htmlPages")){
   dir.create("htmlPages")
 }
 
 # initialize the preflight output dataframe
-for(b in 1:nrow(buildings)){
+for(b in 10:nrow(buildings)){
   load(paste(buildings$results_dataframe[b]))
   project_name = buildings$building_name[b]
   preflight_df = results
