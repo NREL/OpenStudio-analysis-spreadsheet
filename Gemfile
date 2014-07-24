@@ -9,12 +9,12 @@ gem "bcl", "~> 0.5.4"
 #gem "bcl", :github => "NREL/bcl-gem"
 #gem "bcl", :path => "../bcl-gem"
 
-#gem "openstudio-aws", "~> 0.1.25"
-gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => 'develop'
+#gem "openstudio-aws", "~> 0.2.0"
+gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => 'private-keys'
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
-gem "openstudio-analysis", "~> 0.3.4"
-#gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> 'develop'
+#gem "openstudio-analysis", "~> 0.3.5"
+gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> 'develop'
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
 
 gem "colored", "~> 1.2"

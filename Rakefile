@@ -61,21 +61,38 @@ Or run `rake clean`".red
 
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
-
+    
     # Don't use the old API (Version 1)
-    aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
+    aws_options = {
+        ami_lookup_version: 2,
+        openstudio_server_version: excel.settings['openstudio_server_version']
+    }
     aws = OpenStudio::Aws::Aws.new(aws_options)
-    server_options = {instance_type: excel.settings["server_instance_type"]}
-    worker_options = {instance_type: excel.settings["worker_instance_type"]}
+    
+    server_options = {
+        instance_type: excel.settings["server_instance_type"],
+        user_id: excel.settings["user_id"]
+        # aws_key_pair_name: 'custom_key',
+        # private_key_file_name: File.expand_path('~/.ssh/private_key')
+        # optional -- will default later
+        # ebs_volume_id: nil,
+    }
 
-    # Create the server
-    aws.create_server(server_options, "#{excel.cluster_name}.json", excel.settings["user_id"])
+    worker_options = {
+        instance_type: excel.settings["worker_instance_type"],
+        user_id: excel.settings["user_id"]
+        # aws_key_pair_name: 'custom_key',
+        # private_key_file_name: File.expand_path('~/.ssh/private_key')
+    }
 
-    # Create the worker
-    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options, excel.settings["user_id"])
+    # Create the server & worker
+    aws.create_server(server_options, "#{excel.cluster_name}.json")
+    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options)
 
-    # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
-    puts "Cluster setup and awaiting analyses".cyan
+    # This saves off a file called named #{excelfile}.json that can be used to read in to run the
+    server_dns = "http://#{aws.os_aws.server.data.dns}"
+
+    puts "Cluster setup and awaiting analyses. IP address #{server_dns}".cyan
   end
 end
 
