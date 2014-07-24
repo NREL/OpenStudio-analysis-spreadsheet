@@ -14,7 +14,7 @@ gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => 'private-
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
 #gem "openstudio-analysis", "~> 0.3.5"
-gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> 'develop'
+gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> '0.3.5'
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
 
 gem "colored", "~> 1.2"

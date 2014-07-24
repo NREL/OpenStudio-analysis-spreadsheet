@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/NREL/OpenStudio-analysis-gem.git
-  revision: ee4bf3b76d0e9670364cd797583f7f2889851a12
-  branch: develop
+  revision: f8bd06c2076e720a1efe48b5521fbfb2ca75831a
+  branch: 0.3.5
   specs:
-    openstudio-analysis (0.3.4)
+    openstudio-analysis (0.3.5)
       faraday (~> 0.8)
       roo (~> 1.12)
       rubyzip (~> 1.0)
