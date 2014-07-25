@@ -10,7 +10,7 @@ gem "bcl", "~> 0.5.4"
 #gem "bcl", :path => "../bcl-gem"
 
 #gem "openstudio-aws", "~> 0.2.0"
-gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => 'private-keys'
+gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => '0.2.0'
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
 #gem "openstudio-analysis", "~> 0.3.5"

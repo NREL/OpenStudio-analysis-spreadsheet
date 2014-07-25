@@ -12,8 +12,8 @@ GIT
 
 GIT
   remote: git://github.com/NREL/OpenStudio-aws-gem.git
-  revision: 1020bd1a7b2139709f0fae110905d55148236272
-  branch: private-keys
+  revision: 03e4b85374385283c88ed617d38ca8fbe63fd422
+  branch: 0.2.0
   specs:
     openstudio-aws (0.2.0)
       aws-sdk-core (~> 2.0.0.rc9)
