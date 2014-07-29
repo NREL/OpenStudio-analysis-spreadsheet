@@ -325,7 +325,7 @@ for(i in 1:max(nrow(pivots),1)){
 }
 
 #todo: make ordering dynamic, i.e. order for more than one pivot!
-pivotvalue = pivotvalue[order(title_df[,pivots[1,'name']])]
+pivotvalue = as.data.frame(pivotvalue[order(title_df[,pivots[1,'name']]),])
 title_df = as.data.frame(title_df[order(title_df[,pivots[1,'name']]),])
 
 
