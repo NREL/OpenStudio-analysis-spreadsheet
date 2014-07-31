@@ -1,0 +1,17 @@
+{
+  "classname": "DencityReports",
+  "name": "dencity_reports",
+  "display_name": "Dencity Reports",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ],
+  "name_xml": "Dencity Reports",
+  "uid": "4f939be0-fe1c-11e3-a3ac-0800200c9a66",
+  "version_id": "4f939be3-fe1c-11e3-a3ac-0800200c9a66",
+  "modeler_description": "Add this reporting measure to the end of the workflow",
+  "description": "Default reports needed for DEnCity",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}
