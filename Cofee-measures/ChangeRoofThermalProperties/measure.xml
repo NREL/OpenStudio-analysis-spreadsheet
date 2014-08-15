@@ -1,0 +1,64 @@
+<measure>
+  <name>Change Roof Thermal Properties</name>
+  <uid>6c4eb22b-770f-456c-bcd1-084cfad89eeb</uid>
+  <version_id>30fbc32f-ff44-48b7-9b0d-e70796f09ef5</version_id>
+  <description>Allows calibration of roof by altering the thermal resistance, density, and solar absorptance of the wall constructions independently.</description>
+  <modeler_description>Tunes all roof surfaces by providing separate calibration multipliers to thermal resistance, thermal mass, and solar absorptance.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+	<tag>Calibration</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>EnvelopeAndLoadTestModel_01.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>10AA8866</checksum>
+    </file>
+    <file>
+      <filename>ReverseTranslatedModel.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>0B94403D</checksum>
+    </file>
+    <file>
+      <filename>ChangeRoofThermalProperties_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C3F2A7B7</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>DC927612</checksum>
+    </file>
+  </files>
+</measure>

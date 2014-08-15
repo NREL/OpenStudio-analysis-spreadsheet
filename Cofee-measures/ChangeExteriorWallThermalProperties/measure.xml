@@ -1,0 +1,64 @@
+<measure>
+  <name>Change Exterior Wall Thermal Properties</name>
+  <uid>a2221a95-99c2-4445-a6ff-c57d34410662</uid>
+  <version_id>39ec157b-c119-4cf7-acd4-dcf5cf425703</version_id>
+  <description>Allows calibration of exterior walls by altering the thermal resistance, density, and solar absorptance of the wall constructions independently.</description>
+  <modeler_description>Tunes all exterior wall surfaces by providing separate calibration multipliers to thermal resistance, thermal mass, and solar absorptance.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+	<tag>Calibration</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>EnvelopeAndLoadTestModel_01.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>10AA8866</checksum>
+    </file>
+    <file>
+      <filename>ReverseTranslatedModel.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>0B94403D</checksum>
+    </file>
+    <file>
+      <filename>ChangeExteriorWallThermalProperties_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>1020054F</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>2B0F0D0D</checksum>
+    </file>
+  </files>
+</measure>

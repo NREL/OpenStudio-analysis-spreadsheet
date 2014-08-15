@@ -1,0 +1,44 @@
+{
+  "classname": "ChangeRoofThermalProperties",
+  "name": "change_roof_thermal_properties",
+  "display_name": "Change Roof Thermal Properties",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "r_value_mult",
+      "variable_type": "Double",
+      "name": "r_value_mult",
+      "display_name": "Multiplier for R-value of the Roof",
+      "units": null,
+      "description": null,
+      "default_value": 1.0
+    },
+    {
+      "local_variable": "solar_abs_mult",
+      "variable_type": "Double",
+      "name": "solar_abs_mult",
+      "display_name": "Multiplier for Solar Absorptance of the outer layer of the Roof",
+      "units": null,
+      "description": null,
+      "default_value": 1.0
+    },
+    {
+      "local_variable": "thermal_mass_mult",
+      "variable_type": "Double",
+      "name": "thermal_mass_mult",
+      "display_name": "Multiplier for Thermal Mass of the Roof",
+      "units": null,
+      "description": null,
+      "default_value": 1.0
+    }
+  ],
+  "name_xml": "Change Roof Thermal Properties",
+  "uid": "6c4eb22b-770f-456c-bcd1-084cfad89eeb",
+  "version_id": "30fbc32f-ff44-48b7-9b0d-e70796f09ef5",
+  "modeler_description": "Tunes all roof surfaces by providing separate calibration multipliers to thermal resistance, thermal mass, and solar absorptance.",
+  "description": "Allows calibration of roof by altering the thermal resistance, density, and solar absorptance of the wall constructions independently.",
+  "tags": [
+    "Envelope.Opaque",
+    "Calibration"
+  ]
+}
