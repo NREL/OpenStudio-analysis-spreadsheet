@@ -1,7 +1,12 @@
 require(knitr)
+require(ggplot2)
+require(AlgDesign)
+require(grid)
+require(jpeg)
+require(biOps)
 require(rmarkdown)
 
-setwd('c:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/preflight/multiOutput')
+setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/preflight/multiOutput")
 wd_base = '.'
 
 # import building types
