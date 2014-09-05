@@ -11,7 +11,7 @@ require 'pp'
 
 CLEAN.include("*.pem", "./projects/*.json", "*.json")
 
-def get_project()
+def get_project
   # determine the project file to run.  This will list out all the xlsx files and give you a 
   # choice from which to choose
   puts
@@ -181,7 +181,7 @@ end
 
 desc "create the analysis files with more output"
 task :setup do
-  excel = get_project()
+  excel = get_project
 
   puts "Seed models are:".cyan
   excel.models.each do |model|
@@ -194,49 +194,49 @@ task :setup do
   end
 
   puts "Saving the analysis JSONS and zips".cyan
-  excel.save_analysis() # directory is define in the setup
+  excel.save_analysis # directory is define in the setup
 
   puts "Finished saving analysis into the analysis directory".cyan
 end
 
 desc "test the creation of the cluster"
 task :create_cluster do
-  excel = get_project()
+  excel = get_project
 
   create_cluster(excel)
 end
 
 desc "setup problem, start cluster, and run analysis (will submit another job if cluster is already running)"
 task :run do
-  excel = get_project()
-  excel.save_analysis()
+  excel = get_project
+  excel.save_analysis
   create_cluster(excel)
   run_analysis(excel)
 end
 
 desc "run vagrant"
 task :run_vagrant do
-  excel = get_project()
-  excel.save_analysis()
+  excel = get_project
+  excel.save_analysis
   run_analysis(excel, true)
 end
 
 desc "run NREL12"
 task :run_NREL12 do
-  excel = get_project()
-  excel.save_analysis()
+  excel = get_project
+  excel.save_analysis
   run_analysis(excel, false, false, true)
 end
 desc "run NREL24"
 task :run_NREL24 do
-  excel = get_project()
-  excel.save_analysis()
+  excel = get_project
+  excel.save_analysis
   run_analysis(excel, false, true, false)
 end
 
 #desc "kill all running on cloud"
 #task :kill_all do
-#  excel = get_project()
+#  excel = get_project
 #
 #  if File.exists?("server_data.json")
 #    # parse the file and check if the instance appears to be up
@@ -246,7 +246,7 @@ end
 #    # Project data
 #    options = {hostname: server_dns}
 #    api = OpenStudio::Analysis::ServerApi.new(options)
-#    api.kill_all_analyses()
+#    api.kill_all_analyses
 #  else
 #    puts "There doesn't appear to be a cluster running"
 #  end
@@ -259,7 +259,7 @@ end
 #  # Project data
 #  options = {hostname: server_dns}
 #  api = OpenStudio::Analysis::ServerApi.new(options)
-#  api.kill_all_analyses()
+#  api.kill_all_analyses
 #end
 #
 
@@ -273,7 +273,7 @@ task :delete_all do
     # Project data 
     options = {hostname: server_dns}
     api = OpenStudio::Analysis::ServerApi.new(options)
-    api.delete_all()
+    api.delete_all
   else
     puts "There doesn't appear to be a cluster running"
   end
@@ -287,7 +287,7 @@ task :delete_all_vagrant do
   # Project data 
   options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
-  api.delete_all()
+  api.delete_all
 end
 
 task :default do
@@ -339,7 +339,7 @@ task :update_measure_xmls do
     #  puts u
     #end
         
-    os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion())
+    os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion)
     min_os_version = OpenStudio::VersionString.new("1.4.0")
     if os_version >= min_os_version
       Dir['./**/measure.rb'].each do |m|
@@ -371,7 +371,7 @@ task :update_measures do
 
   bcl = BCL::ComponentMethods.new
   bcl.parsed_measures_path = "./measures"
-  bcl.login() # have to do this even if you don't set your username to get a session
+  bcl.login # have to do this even if you don't set your username to get a session
 
   query = 'NREL%20PNNL%2BBCL%2BGroup'
   success = bcl.measure_metadata(query, nil, true)

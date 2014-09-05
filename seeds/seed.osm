@@ -1,7 +1,7 @@
 
 OS:Version,
-  {e32ee8ca-adc9-454c-ac26-5a07865694e1}, !- Handle
-  1.0.0;                                  !- Version Identifier
+  {1a09d342-faca-4bc1-b60d-392bcbbc177a}, !- Handle
+  1.4.0;                                  !- Version Identifier
 
 OS:Schedule:Constant,
   {5362ad87-1b35-4912-9c6a-e637bd4c4ffd}, !- Handle
@@ -16,16 +16,6 @@ OS:ScheduleTypeLimits,
   1,                                      !- Upper Limit Value {BasedOnField A4}
   Discrete,                               !- Numeric Type
   Availability;                           !- Unit Type
-
-OS:Building,
-  {08678ddd-175a-469b-9626-2f02c40b6916}, ! Handle
-  Medium Office,                          ! Name
-  ,                                       ! Building Type
-  -0,                                     ! North Axis
-  ,                                       ! Nominal Floor to Floor Height
-  {f4de87b0-5d1b-454c-9fc8-3f5a824ee533}, ! Space Type Name
-  {8d276ca2-ac82-489c-8e07-395b89456514}, ! Default Construction Set Name
-  ;                                       ! Default Schedule Set Name
 
 OS:Construction,
   {a4707411-1a3e-43c1-b1c3-26a5dadf04f2}, ! Handle
@@ -395,20 +385,6 @@ OS:Material:NoMass,
   0.90000000000000002,                    ! Thermal Absorptance
   0.69999999999999996,                    ! Solar Absorptance
   0.69999999999999996;                    ! Visible Absorptance
-
-OS:Output:Variable,
-  {28cd8b45-ce04-45ff-a4d0-dfef140bee6e}, ! Handle
-  hourly* - Zone/Sys Sensible Heating Rate, ! Name
-  *,                                      ! Key Value
-  Zone/Sys Sensible Heating Rate,         ! Variable Name
-  hourly;                                 ! Reporting Frequency
-
-OS:Output:Variable,
-  {8fb61650-0f2c-4eb5-8188-e14df62eab27}, ! Handle
-  hourly* - Zone/Sys Sensible Cooling Rate, ! Name
-  *,                                      ! Key Value
-  Zone/Sys Sensible Cooling Rate,         ! Variable Name
-  hourly;                                 ! Reporting Frequency
 
 OS:People,
   {3716b196-c15b-4911-be03-65f9d5210dc6}, ! Handle
@@ -2296,7 +2272,7 @@ OS:ScheduleTypeLimits,
 OS:YearDescription,
   {809b5ab2-87e8-4866-bec9-d980e49142d1}, !- Handle
   ,                                       !- Calendar Year
-  UseWeatherFile;                         !- Day of Week for Start Day
+  Sunday;                                 !- Day of Week for Start Day
 
 OS:Space,
   {326998ce-a55f-42a6-a9a1-75728537cf95}, !- Handle
@@ -2591,25 +2567,25 @@ OS:RunPeriod,
 
 OS:WeatherFile,
   {60218bf5-2236-4f3e-a1a7-c5a95741a58f}, !- Handle
-  Denver Centennial  Golden   Nr,         !- City
+  Denver Intl Ap,                         !- City
   CO,                                     !- State Province Region
   USA,                                    !- Country
   TMY3,                                   !- Data Source
-  724666,                                 !- WMO Number
-  39.74,                                  !- Latitude {deg}
-  -105.18,                                !- Longitude {deg}
+  725650,                                 !- WMO Number
+  39.83,                                  !- Latitude {deg}
+  -104.65,                                !- Longitude {deg}
   -7,                                     !- Time Zone {hr}
-  1829,                                   !- Elevation {m}
-  file:files/USA_CO_Golden-NREL.724666_TMY3.epw, !- Url
-  72673005;                               !- Checksum
+  1650,                                   !- Elevation {m}
+  file:files/USA_CO_Denver.Intl.AP.725650_TMY3.epw, !- Url
+  E23378AA;                               !- Checksum
 
 OS:Site,
   {80df6887-aaf0-4943-9e5d-26510ac1b1f8}, !- Handle
   Site 1,                                 !- Name
-  39.74,                                  !- Latitude {deg}
-  -105.18,                                !- Longitude {deg}
+  39.83,                                  !- Latitude {deg}
+  -104.65,                                !- Longitude {deg}
   -7,                                     !- Time Zone {hr}
-  1829,                                   !- Elevation {m}
+  1650,                                   !- Elevation {m}
   ;                                       !- Terrain
 
 OS:SizingPeriod:DesignDay,
@@ -2781,4 +2757,48 @@ OS:SizingPeriod:DesignDay,
   ,                                       !- Diffuse Solar Day Schedule Name
   0.424,                                  !- ASHRAE Taub {dimensionless}
   2.025;                                  !- ASHRAE Taud {dimensionless}
+
+OS:Building,
+  {08678ddd-175a-469b-9626-2f02c40b6916}, !- Handle
+  Medium Office,                          !- Name
+  ,                                       !- Building Sector Type
+  -0,                                     !- North Axis {deg}
+  ,                                       !- Nominal Floor to Floor Height {m}
+  {f4de87b0-5d1b-454c-9fc8-3f5a824ee533}, !- Space Type Name
+  {8d276ca2-ac82-489c-8e07-395b89456514}, !- Default Construction Set Name
+  ;                                       !- Default Schedule Set Name
+
+OS:ClimateZones,
+  {03734246-7f0f-4b71-9186-8d79c77ae2e6}, !- Handle
+  ,                                       !- Active Institution
+  ,                                       !- Active Year
+  ASHRAE,                                 !- Climate Zone Institution Name 1
+  ANSI/ASHRAE Standard 169,               !- Climate Zone Document Name 1
+  2006,                                   !- Climate Zone Document Year 1
+  ,                                       !- Climate Zone Value 1
+  CEC,                                    !- Climate Zone Institution Name 2
+  California Climate Zone Descriptions,   !- Climate Zone Document Name 2
+  1995,                                   !- Climate Zone Document Year 2
+  ;                                       !- Climate Zone Value 2
+
+OS:LifeCycleCost:Parameters,
+  {25ee80aa-2927-4ab3-b84e-d3b5e76080fb}, !- Handle
+  FEMP,                                   !- Analysis Type
+  ,                                       !- Discounting Convention
+  ,                                       !- Inflation Approach
+  ,                                       !- Real Discount Rate
+  ,                                       !- Nominal Discount Rate
+  ,                                       !- Inflation
+  ,                                       !- Base Date Month
+  ,                                       !- Base Date Year
+  ,                                       !- Service Date Month
+  ,                                       !- Service Date Year
+  ,                                       !- Length of Study Period in Years
+  ,                                       !- Tax Rate
+  ,                                       !- Depreciation Method
+  Yes;                                    !- Use NIST Fuel Escalation Rates
+
+OS:StandardsInformation:Construction,
+  {a31b374a-5939-4fb1-b4ac-d65fa38901d8}, !- Handle
+  {b09a8a1c-d2ef-47c1-87d1-ebed9781986c}; !- Construction Name
 
