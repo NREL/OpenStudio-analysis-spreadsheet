@@ -1,14 +1,16 @@
 {
   "classname": "SetCOPforTwoSpeedDXCoolingUnits",
-  "path": "./measures/SetCOPforTwoSpeedDXCoolingUnits",
-  "name": "Set COP for Two Speed DX Cooling Units",
+  "name": "set_co_pfor_two_speed_dx_cooling_units",
+  "display_name": "Set Co Pfor Two Speed DX Cooling Units",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "object",
       "variable_type": "Choice",
       "name": "object",
-      "display_name": "Choose an Air Loop with a two speed DX Cooling Unit to Alter.",
+      "display_name": "Choose an Air Loop with a two speed DX Cooling Unit to Alter",
+      "units": null,
+      "description": null,
       "default_value": "*All Air Loops*",
       "choices": [
         "*All Air Loops*"
@@ -19,6 +21,8 @@
       "variable_type": "Double",
       "name": "cop_high",
       "display_name": "Rated High Speed COP",
+      "units": null,
+      "description": null,
       "default_value": 4.0
     },
     {
@@ -26,63 +30,89 @@
       "variable_type": "Double",
       "name": "cop_low",
       "display_name": "Rated Low Speed COP",
+      "units": null,
+      "description": null,
       "default_value": 4.0
     },
     {
       "local_variable": "remove_costs",
       "variable_type": "Bool",
       "name": "remove_costs",
-      "display_name": "Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units?",
+      "display_name": "Remove Baseline Costs From Effected Cooling Coil DX Two Speed Units",
+      "units": null,
+      "description": null,
       "default_value": true
     },
     {
       "local_variable": "material_cost",
       "variable_type": "Double",
       "name": "material_cost",
-      "display_name": "Material and Installation Costs per Cooling Coil DX Two Speed Unit ($).",
+      "display_name": "Material and Installation Costs per Cooling Coil DX Two Speed Unit",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "demolition_cost",
       "variable_type": "Double",
       "name": "demolition_cost",
-      "display_name": "Demolition Costs per Cooling Coil DX Two Speed Unit ($).",
+      "display_name": "Demolition Costs per Cooling Coil DX Two Speed Unit",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "years_until_costs_start",
       "variable_type": "Integer",
       "name": "years_until_costs_start",
-      "display_name": "Years Until Costs Start (whole years).",
+      "display_name": "Years Until Costs Start",
+      "units": "whole years",
+      "description": null,
       "default_value": 0
     },
     {
       "local_variable": "demo_cost_initial_const",
       "variable_type": "Bool",
       "name": "demo_cost_initial_const",
-      "display_name": "Demolition Costs Occur During Initial Construction?",
+      "display_name": "Demolition Costs Occur During Initial Construction",
+      "units": null,
+      "description": null,
       "default_value": false
     },
     {
       "local_variable": "expected_life",
       "variable_type": "Integer",
       "name": "expected_life",
-      "display_name": "Expected Life (whole years).",
+      "display_name": "Expected Life",
+      "units": "whole years",
+      "description": null,
       "default_value": 20
     },
     {
       "local_variable": "om_cost",
       "variable_type": "Double",
       "name": "om_cost",
-      "display_name": "O & M Costs per Cooling Coil DX Two Speed Unit ($).",
+      "display_name": "O & M Costs per Cooling Coil DX Two Speed Unit",
+      "units": "$",
+      "description": null,
       "default_value": 0.0
     },
     {
       "local_variable": "om_frequency",
       "variable_type": "Integer",
       "name": "om_frequency",
-      "display_name": "O & M Frequency (whole years).",
+      "display_name": "O & M Frequency",
+      "units": "whole years",
+      "description": null,
       "default_value": 1
     }
+  ],
+  "name_xml": "Set COP for Two Speed DX Cooling Units",
+  "uid": "ab217b3b-4eac-4e3c-90a3-ab8800b50cfb",
+  "version_id": "e2c11c25-6514-4b93-822c-fd5cf78401da",
+  "modeler_description": "Loop through air loops in the building and find and change the COP of any OS:Coil:Cooling:DX:TwoSpeed objects you find. Note the pre-adjusted COP and also the name of the loop. For the starting condition note the range of COP values for the units, and for the final condition do the same, to confirm that they were all changed.",
+  "description": "This measure will find two speed DX cooling units in the model and will alter the Rated HighSpeed COP to a specified value. It can be run on a single or all air loops in the model.",
+  "tags": [
+    "HVAC.Cooling"
   ]
 }

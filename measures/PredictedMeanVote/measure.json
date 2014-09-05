@@ -1,21 +1,25 @@
 {
   "classname": "PredictedMeanVote",
-  "path": "./measures/PredictedMeanVote",
-  "name": "Predicted Mean Vote",
+  "name": "predicted_mean_vote",
+  "display_name": "Predicted Mean Vote",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "comfortWarnings",
       "variable_type": "Bool",
       "name": "comfortWarnings",
-      "display_name": "Enable ASHRAE 55 Comfort Warnings?",
+      "display_name": "Enable ASHRAE 55 Comfort Warnings",
+      "units": null,
+      "description": null,
       "default_value": false
     },
     {
       "local_variable": "meanRadiantCalcType",
       "variable_type": "Choice",
       "name": "meanRadiantCalcType",
-      "display_name": "Mean Radiant Temperature Calculation Type.",
+      "display_name": "Mean Radiant Temperature Calculation Type",
+      "units": null,
+      "description": null,
       "default_value": "ZoneAveraged",
       "choices": [
         "ZoneAveraged",
@@ -27,7 +31,9 @@
       "local_variable": "workEfficiencySchedule",
       "variable_type": "Choice",
       "name": "workEfficiencySchedule",
-      "display_name": "Choose a Work Efficiency Schedule.",
+      "display_name": "Choose a Work Efficiency Schedule",
+      "units": null,
+      "description": null,
       "choices": [
 
       ]
@@ -36,7 +42,9 @@
       "local_variable": "clothingSchedule",
       "variable_type": "Choice",
       "name": "clothingSchedule",
-      "display_name": "Choose a Clothing Insulation Schedule.",
+      "display_name": "Choose a Clothing Insulation Schedule",
+      "units": null,
+      "description": null,
       "default_value": "clothing_schedule_display_names[0]",
       "choices": [
         "clothing_schedule_display_names[0]"
@@ -46,11 +54,21 @@
       "local_variable": "airVelocitySchedule",
       "variable_type": "Choice",
       "name": "airVelocitySchedule",
-      "display_name": "Choose an Air Velocity Schedule.",
+      "display_name": "Choose an Air Velocity Schedule",
+      "units": null,
+      "description": null,
       "default_value": "airVelocity_schedule_display_names[0]",
       "choices": [
         "airVelocity_schedule_display_names[0]"
       ]
     }
+  ],
+  "name_xml": "Predicted Mean Vote",
+  "uid": "d26890c0-1281-4384-a676-5d38fa2e9e75",
+  "version_id": "628c904d-0f25-4e84-8c27-909629aa5b92",
+  "modeler_description": "This will not add new people objects, but rather just extend the ones that are in the model. It will rely on schedules already made in the model instead of creating new schedules.",
+  "description": "This measure adds the necessary data to people objects to support Predicted Mean Vote output data. It also adds the variable request.",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

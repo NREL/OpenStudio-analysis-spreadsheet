@@ -1,14 +1,16 @@
 {
   "classname": "AddEnergyRecoveryVentilator",
-  "path": "./measures/AddEnergyRecoveryVentilator",
-  "name": "Add Energy Recovery Ventilator",
+  "name": "add_energy_recovery_ventilator",
+  "display_name": "Add Energy Recovery Ventilator",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "air_loop_widget",
       "variable_type": "Choice",
       "name": "air_loop_widget",
-      "display_name": "Apply the measure to ",
+      "display_name": "Apply the measure to",
+      "units": null,
+      "description": null,
       "default_value": "air_loop_display_names[0]",
       "choices": [
         "0",
@@ -20,6 +22,8 @@
       "variable_type": "Double",
       "name": "sensible_eff_at_100_heating",
       "display_name": "Sensible Effectiveness at 100% Heating Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.76
     },
     {
@@ -27,6 +31,8 @@
       "variable_type": "Double",
       "name": "latent_eff_at_100_heating",
       "display_name": "Latent Effectiveness at 100% Heating Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.68
     },
     {
@@ -34,6 +40,8 @@
       "variable_type": "Double",
       "name": "sensible_eff_at_75_heating",
       "display_name": "Sensible Effectiveness at 75% Heating Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.81
     },
     {
@@ -41,6 +49,8 @@
       "variable_type": "Double",
       "name": "latent_eff_at_75_heating",
       "display_name": "Latent Effectiveness at 75% Heating Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.73
     },
     {
@@ -48,6 +58,8 @@
       "variable_type": "Double",
       "name": "sensible_eff_at_100_cooling",
       "display_name": "Sensible Effectiveness at 100% Cooling Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.76
     },
     {
@@ -55,6 +67,8 @@
       "variable_type": "Double",
       "name": "latent_eff_at_100_cooling",
       "display_name": "Latent Effectiveness at 100% Cooling Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.68
     },
     {
@@ -62,6 +76,8 @@
       "variable_type": "Double",
       "name": "sensible_eff_at_75_cooling",
       "display_name": "Sensible Effectiveness at 75% Cooling Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.81
     },
     {
@@ -69,13 +85,17 @@
       "variable_type": "Double",
       "name": "latent_eff_at_75_cooling",
       "display_name": "Latent Effectiveness at 75% Cooling Air Flow",
+      "units": null,
+      "description": null,
       "default_value": 0.73
     },
     {
       "local_variable": "heat_exchanger_type_widget",
       "variable_type": "Choice",
       "name": "heat_exchanger_type_widget",
-      "display_name": "Heat Exchanger Type.",
+      "display_name": "Heat Exchanger Type",
+      "units": null,
+      "description": null,
       "default_value": "heat_exchanger_type_display_names[0]",
       "choices": [
         "0",
@@ -86,7 +106,17 @@
       "local_variable": "nominal_electric_power",
       "variable_type": "Double",
       "name": "nominal_electric_power",
-      "display_name": "Nominal electric power [W]"
+      "display_name": "Nominal electric power",
+      "units": null,
+      "description": null
     }
+  ],
+  "name_xml": "Add Energy Recovery Ventilator",
+  "uid": "9b530f72-e5ab-467b-acd6-b5c3458d7b55",
+  "version_id": "739acc9c-ee2b-49eb-a7b9-afc0a559ed82",
+  "modeler_description": "The measure loops through all air loops in the baseline model and identify the air loops that contain OS:AirLoopHVAC:OutdoorAirSystem objects. Users can choose one or all air loops from the drop down list to apply this measure. If an OS:HeatExchanger:AirToAir:SensibleAndLatent object is found in the selected air loop, the measure modifies the effectiveness, heat exchanger type, and electric power setting in the model based on user inputs. If no OS:HeatExchanger:AirToAir:SensibleAndLatent object is found in the selected air loop, the measure will attach a OS:HeatExchanger:AirToAir:SensibleAndLatent object to the air loop. The economizer lockout is always set to be Yes. The initial and final values of effectiveness, the heat exchanger type, and nominal electric power are reported during simulation",
+  "description": "Energy recovery ventilator transfers energy between the exhaust/relief and outdoor air streams and helps reduce building energy use. The measure adds an air-to-air heat exchanger to the air handler unit. Users can define the latent and sensible heat transfer effectiveness. ",
+  "tags": [
+    "HVAC.Energy Recovery"
   ]
 }

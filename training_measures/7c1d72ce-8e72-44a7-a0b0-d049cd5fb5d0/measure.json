@@ -1,0 +1,49 @@
+{
+  "classname": "SetWindowToWallRatioByFacade",
+  "name": "set_window_to_wall_ratio_by_facade",
+  "display_name": "Set Window to Wall Ratio by Facade",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "wwr",
+      "variable_type": "Double",
+      "name": "wwr",
+      "display_name": "Window to Wall Ratio",
+      "units": "fraction",
+      "description": null,
+      "default_value": 0.4
+    },
+    {
+      "local_variable": "sillHeight",
+      "variable_type": "Double",
+      "name": "sillHeight",
+      "display_name": "Sill Height",
+      "units": "in",
+      "description": null,
+      "default_value": 30.0
+    },
+    {
+      "local_variable": "facade",
+      "variable_type": "Choice",
+      "name": "facade",
+      "display_name": "Cardinal Direction",
+      "units": null,
+      "description": null,
+      "default_value": "South",
+      "choices": [
+        "North",
+        "East",
+        "South",
+        "West"
+      ]
+    }
+  ],
+  "name_xml": "Set Window to Wall Ratio by Facade",
+  "uid": "f347ae80-48b4-4c40-bfd4-6c5139b38136",
+  "version_id": "7c1d72ce-8e72-44a7-a0b0-d049cd5fb5d0",
+  "modeler_description": "This measure identifies exterior surfaces of the proper orientation. Then it runs a method that removes existing windows and applies a new window with a specified window to wall ratio and sill height. The construction chosen for the new window is defaulted to what is assigned to the space, or inherited from a higher level object, such as the building. If the baseline model uses hard assigned constructions you may not get the expected results. The measure doesn't have any cost or lifecycle arguments, however if lifecycle objects exist for exterior wall and window constructions, then this measure will be able to calculate the economic impact of change in window to wall ratio.",
+  "description": "This measure will set the window to wall ratio for exterior surfaces with a specified orientation. If one or more windows exist on an affected wall, they will be removed and replaced with a single ribbon window. Doors will not be removed. If the requested ratio can't be achieved then the wall will remain untouched.",
+  "tags": [
+    "Envelope.Fenestration"
+  ]
+}

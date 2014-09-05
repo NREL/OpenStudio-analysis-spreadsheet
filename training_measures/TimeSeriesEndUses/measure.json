@@ -1,0 +1,45 @@
+{
+  "classname": "TimeSeriesEndUses",
+  "name": "time_series_end_uses",
+  "display_name": "Time Series End Uses",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "meter_type",
+      "variable_type": "Choice",
+      "name": "meter_type",
+      "display_name": "Meter Type",
+      "units": null,
+      "description": null,
+      "default_value": "Facility",
+      "choices": [
+        "Facility",
+        "Building"
+      ]
+    },
+    {
+      "local_variable": "reporting_frequency",
+      "variable_type": "Choice",
+      "name": "reporting_frequency",
+      "display_name": "Reporting Frequency",
+      "units": null,
+      "description": null,
+      "default_value": "hourly",
+      "choices": [
+        "detailed",
+        "timestep",
+        "hourly",
+        "daily",
+        "monthly"
+      ]
+    }
+  ],
+  "name_xml": "TimeSeriesEndUses",
+  "uid": "477e4d05-8e52-4470-9916-185612e70812",
+  "version_id": "acdf41b5-bfc1-44d7-9065-a5a0abede699",
+  "modeler_description": "create time series for end uses",
+  "description": "create time series for end uses",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}

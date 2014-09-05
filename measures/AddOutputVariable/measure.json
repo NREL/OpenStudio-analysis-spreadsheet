@@ -1,20 +1,24 @@
 {
   "classname": "AddOutputVariable",
-  "path": "./measures/AddOutputVariable",
-  "name": "Add Output Variable",
+  "name": "add_output_variable",
+  "display_name": "Add Output Variable",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "variable_name",
       "variable_type": "String",
       "name": "variable_name",
-      "display_name": "Enter Variable Name."
+      "display_name": "Enter Variable Name",
+      "units": null,
+      "description": null
     },
     {
       "local_variable": "reporting_frequency",
       "variable_type": "Choice",
       "name": "reporting_frequency",
-      "display_name": "Reporting Frequency.",
+      "display_name": "Reporting Frequency",
+      "units": null,
+      "description": null,
       "default_value": "hourly",
       "choices": [
         "detailed",
@@ -24,5 +28,13 @@
         "monthly"
       ]
     }
+  ],
+  "name_xml": "Add Output Variable",
+  "uid": "2a058afb-e349-49ae-a4bf-2c56a42b4352",
+  "version_id": "77e9e6fc-d7e0-4768-9542-509c9b1ed665",
+  "modeler_description": "The measure just passes in the string and does not validate that it is a proper variable name. It is up to the user to know this or to look at the .rdd file from a previous simulation run.",
+  "description": "This measure adds an output variable at the requested reporting frequency.",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }

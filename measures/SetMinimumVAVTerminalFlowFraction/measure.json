@@ -1,0 +1,25 @@
+{
+  "classname": "SetMinimumVAVTerminalFlowFraction",
+  "name": "set_minimum_vav_terminal_flow_fraction",
+  "display_name": "Set Minimum Vav Terminal Flow Fraction",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "min_vav_frac",
+      "variable_type": "Double",
+      "name": "min_vav_frac",
+      "display_name": "Minimum VAV Terminal Flow Fraction",
+      "units": "%",
+      "description": null,
+      "default_value": 30.0
+    }
+  ],
+  "name_xml": "Set Minimum VAV Terminal Flow Fraction",
+  "uid": "5e2dbc3a-5a22-4e6b-93e2-a4add95e3ccc",
+  "version_id": "a94f55ef-06e6-44b3-b6ca-b930a546f919",
+  "modeler_description": "Loops through all AirLoops, setting Zone Minimum Air Flow Input Method to \"Constant\" and \"Constant Minimum Airflow Fraction\" to a user specified value for all Airterminal:SingleDuct:VAV:Reheat and Airterminal:SingleDuct:VAV:NoReheat terminals encountered.",
+  "description": "",
+  "tags": [
+    "HVAC.Ventilation"
+  ]
+}

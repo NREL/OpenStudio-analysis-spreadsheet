@@ -1,15 +1,25 @@
 {
   "classname": "SetLifecycleCostParameters",
-  "path": "./measures/SetLifecycleCostParameters",
-  "name": "Set Lifecycle Cost Parameters",
+  "name": "set_lifecycle_cost_parameters",
+  "display_name": "Set Lifecycle Cost Parameters",
   "measure_type": "RubyMeasure",
   "arguments": [
     {
       "local_variable": "study_period",
       "variable_type": "Integer",
       "name": "study_period",
-      "display_name": "Set the Length of the Study Period (years).",
+      "display_name": "Set the Length of the Study Period",
+      "units": "years",
+      "description": null,
       "default_value": 25
     }
+  ],
+  "name_xml": "Set Lifecycle Cost Parameters",
+  "uid": "2c6aee30-6e8f-49d3-99fb-7ea0b674bf6a",
+  "version_id": "5f98bee6-55c9-409f-9e05-7c0cb030b164",
+  "modeler_description": "This will eventually be in the PAT interface, but for now you can add this as a fixed measure to all of your design alternatives.",
+  "description": "This measure sets the analysis type to \"FEMP\" and has an argument for the length of the study period in years.",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
   ]
 }

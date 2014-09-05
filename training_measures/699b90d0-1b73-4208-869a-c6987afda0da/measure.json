@@ -1,0 +1,63 @@
+{
+  "classname": "SetThermostatSchedules",
+  "name": "set_thermostat_schedules",
+  "display_name": "Set Thermostat Schedules",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "zones",
+      "variable_type": "Choice",
+      "name": "zones",
+      "display_name": "Choose Thermal Zones to change thermostat schedules on",
+      "units": null,
+      "description": null,
+      "default_value": "*All Thermal Zones*",
+      "choices": [
+        "*All Thermal Zones*"
+      ]
+    },
+    {
+      "local_variable": "cooling_sch",
+      "variable_type": "Choice",
+      "name": "cooling_sch",
+      "display_name": "Choose Cooling Schedule",
+      "units": null,
+      "description": null,
+      "default_value": "*No Change*",
+      "choices": [
+        "",
+        "*No Change*"
+      ]
+    },
+    {
+      "local_variable": "heating_sch",
+      "variable_type": "Choice",
+      "name": "heating_sch",
+      "display_name": "Choose Heating Schedule",
+      "units": null,
+      "description": null,
+      "default_value": "*No Change*",
+      "choices": [
+        "",
+        "*No Change*"
+      ]
+    },
+    {
+      "local_variable": "material_cost",
+      "variable_type": "Double",
+      "name": "material_cost",
+      "display_name": "Material and Installation Costs per Thermal Zone",
+      "units": "$/thermal zone",
+      "description": null,
+      "default_value": 0.0
+    }
+  ],
+  "name_xml": "Set Thermostat Schedules",
+  "uid": "d241d623-d596-4b26-9b67-fe390be1e839",
+  "version_id": "699b90d0-1b73-4208-869a-c6987afda0da",
+  "modeler_description": "Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one.",
+  "description": "Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one",
+  "tags": [
+    "HVAC.HVAC Controls"
+  ]
+}

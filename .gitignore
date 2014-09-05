@@ -7,12 +7,7 @@
 /*.json
 aws.log
 .gitignore
-<<<<<<< HEAD
 Gemfile.lock
 faraday.log
-analysis/*.json
-analysis/*.zip
-=======
-faraday.log
 /analysis
->>>>>>> 4d245bc18a0944573f26b7b52e9f71b46bd353c2
+Cofee-measures

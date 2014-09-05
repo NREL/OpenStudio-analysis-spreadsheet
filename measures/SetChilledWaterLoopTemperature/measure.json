@@ -1,0 +1,25 @@
+{
+  "classname": "SetChilledWaterLoopTemperature",
+  "name": "set_chilled_water_loop_temperature",
+  "display_name": "Set Chilled Water Loop Temperature",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "cw_temp_f",
+      "variable_type": "Double",
+      "name": "cw_temp_f",
+      "display_name": "Desired chilled water setpoint",
+      "units": "F",
+      "description": null,
+      "default_value": 45.0
+    }
+  ],
+  "name_xml": "Set Chilled Water Loop Temperature",
+  "uid": "ec96cdda-42c7-4051-b983-06b36aac0bf4",
+  "version_id": "8e239ee9-e873-4187-a1d0-718bb9fbac53",
+  "modeler_description": "For each plantloop that contains a chiller:electric:eir, set the loop setpoint to the user specified value.  Also, set the sizing temperature of the plant to this same setpoint.",
+  "description": "",
+  "tags": [
+    "HVAC.Cooling"
+  ]
+}

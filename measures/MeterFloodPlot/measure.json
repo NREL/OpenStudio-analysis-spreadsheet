@@ -1,15 +1,25 @@
 {
   "classname": "MeterFloodPlot",
-  "path": "./measures/MeterFloodPlot",
-  "name": "Meter Flood Plot",
+  "name": "meter_flood_plot",
+  "display_name": "Meter Flood Plot",
   "measure_type": "ReportingMeasure",
   "arguments": [
     {
       "local_variable": "meter_name",
       "variable_type": "String",
       "name": "meter_name",
-      "display_name": "Enter Meter Name.",
+      "display_name": "Enter Meter Name",
+      "units": null,
+      "description": null,
       "default_value": "Electricity:Facility"
     }
+  ],
+  "name_xml": "Meter Flood Plot",
+  "uid": "1ce1e77e-993b-4719-8f03-9b21261a3c6a",
+  "version_id": "0dc250a3-eb80-4a6b-b841-945d086b5ea1",
+  "modeler_description": "To use this measure you need to also add a measure to add the meter to the model with hourly frequency.",
+  "description": "This measures generates a flood plot of the requested meter.",
+  "tags": [
+    "Reporting.QAQC"
   ]
 }
