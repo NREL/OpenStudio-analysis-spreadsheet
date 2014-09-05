@@ -7,6 +7,7 @@ Version 0.3.0
 -------------
 * Removed `rake new` method and template.xlsx. Simply copy and paste one of the template files in the projects folder.
 * Update dependencies
+* Remove old training and template excel files
 
 Version 0.2.0
 ------------------------
