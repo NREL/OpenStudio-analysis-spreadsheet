@@ -104,14 +104,11 @@ bundle exec rake run_analysis
 
 * To add a new project (spreadsheet)
 
-```
-bundle exec rake new
-```
-
-Follow the instructions.  Note that the name of the new project will become the spreadsheet but you do NOT need to provide the extension (.xlsx)
+Copy and rename one of the templates in the `projects` directory.
 
 * Kill running simulations
-Note: this has been disabled.
+
+*Note: this has been disabled.*
  
 ```
 bundle exec rake kill_all
@@ -153,5 +150,4 @@ Add this path to your environment variables.
 ## Todos
 
 * Move the analysis files under need a project specific folder (under project)
-* Renable the kill_all methods
-* Pass default options for clusters 
+* Re-enable the kill_all methods

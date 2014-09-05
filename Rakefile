@@ -179,28 +179,6 @@ def run_analysis(excel, run_vagrant = false, run_NREL24 = false, run_NREL12 = fa
   end
 end
 
-desc "create a new analysis (and spreadsheet)"
-task :new do
-  print "Name of the new project without the file extension (this will make a new spreadsheet): ".cyan
-  n = $stdin.gets.chomp
-
-  new_projectfile = nil
-  tmp_excel = "./doc/template_input.xlsx"
-  if File.exists?(tmp_excel)
-    new_projectfile = "./projects/#{n}.xlsx"
-    if File.exists?(new_projectfile)
-      puts "File already exists, rerun with a new name".red
-      exit 1
-    end
-    FileUtils.copy(tmp_excel, new_projectfile)
-  else
-    puts "Template file has been deleted (#{tmp_excel}. Best to recheckout the project".red
-  end
-  puts
-  puts "Open the excel file and add in your seed models, weather files, and measures #{new_projectfile}".cyan
-  puts "When ready, from the command line run 'rake run' and select the project of interest".cyan
-end
-
 desc "create the analysis files with more output"
 task :setup do
   excel = get_project()

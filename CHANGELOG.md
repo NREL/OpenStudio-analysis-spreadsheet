@@ -1,42 +1,29 @@
 Analysis Example Change Log
 ==================================
 
-There is no formal versioning of this project...
+There is no formal versioning of this project; however, below is a list of known changes.
 
-Unreleased Version 0.2.0
+Version 0.3.0
+-------------
+* Removed `rake new` method and template.xlsx. Simply copy and paste one of the template files in the projects folder.
+* Update dependencies
+
+Version 0.2.0
 ------------------------
-
 * Remove the sampling column
-
 * More columns for defining the outputs
 
 Version 0.1.3
 ------------
-
-### Major Changes
-
-* New Spreadsheet Setup sheet format to select instances and number of worker nodes. 
+* New Spreadsheet Setup sheet format to select instances and number of worker nodes.
 
 Version 0.1.1
 -----------
-
-### Minor Changes
-
 * AMIs in the future will not need the simulate_data_point field, rather the run_data_point_filename. Updated Rakefile to support both
 
 Version 0.1
 -------------
-
-### Major Changes (may be backwards incompatible)
-
 * Change XLSX translator to read from a "Variables" spreadsheet instead of "Sensitivity"
-
-### New Features
-
-### Resolved Issues
-
-* Added check for when weather file is a zip or an epw
-
-* Convert argument values to the right variable types
-
-* Add measure type parsing by reading the inherited class
+* [BUG FIX] Added check for when weather file is a zip or an epw
+* [BUG FIX] Convert argument values to the right variable types
+* [BUG FIX] Add measure type parsing by reading the inherited class
