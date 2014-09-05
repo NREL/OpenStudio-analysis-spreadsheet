@@ -15,7 +15,6 @@ require 'zip'
 CLEAN.include("*.pem", "./projects/*.json", "*.json")
 
 # Command-line arguments in Rake: http://viget.com/extend/protip-passing-parameters-to-your-rake-tasks
-
 def get_project(excel_file="")
   # If excel_file is not pre-specified, request it as input
   unless excel_file && !excel_file.empty?
@@ -71,21 +70,38 @@ Or run `rake clean`".red
 
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
-
+    
     # Don't use the old API (Version 1)
-    aws_options = {:ami_lookup_version => 2, :openstudio_server_version => excel.settings['openstudio_server_version']}
+    aws_options = {
+        ami_lookup_version: 2,
+        openstudio_server_version: excel.settings['openstudio_server_version']
+    }
     aws = OpenStudio::Aws::Aws.new(aws_options)
-    server_options = {instance_type: excel.settings["server_instance_type"]}
-    worker_options = {instance_type: excel.settings["worker_instance_type"]}
+    
+    server_options = {
+        instance_type: excel.settings["server_instance_type"],
+        user_id: excel.settings["user_id"]
+        # aws_key_pair_name: 'custom_key',
+        # private_key_file_name: File.expand_path('~/.ssh/private_key')
+        # optional -- will default later
+        # ebs_volume_id: nil,
+    }
 
-    # Create the server
-    aws.create_server(server_options, "#{excel.cluster_name}.json", excel.settings["user_id"])
+    worker_options = {
+        instance_type: excel.settings["worker_instance_type"],
+        user_id: excel.settings["user_id"]
+        # aws_key_pair_name: 'custom_key',
+        # private_key_file_name: File.expand_path('~/.ssh/private_key')
+    }
 
-    # Create the worker
-    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options, excel.settings["user_id"])
+    # Create the server & worker
+    aws.create_server(server_options, "#{excel.cluster_name}.json")
+    aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options)
 
-    # This saves off a file called named #{excelfile}.json that can be used to read in to run the 
-    puts "Cluster setup and awaiting analyses".cyan
+    # This saves off a file called named #{excelfile}.json that can be used to read in to run the
+    server_dns = "http://#{aws.os_aws.server.data.dns}"
+
+    puts "Cluster setup and awaiting analyses. IP address #{server_dns}".cyan
   end
 end
 
@@ -285,31 +301,9 @@ def run_analysis(excel, target="aws", download=false)
   end
 end
 
-desc "create a new analysis (and spreadsheet)"
-task :new do
-  print "Name of the new project without the file extension (this will make a new spreadsheet): ".cyan
-  n = $stdin.gets.chomp
-
-  new_projectfile = nil
-  tmp_excel = "./doc/template_input.xlsx"
-  if File.exists?(tmp_excel)
-    new_projectfile = "./projects/#{n}.xlsx"
-    if File.exists?(new_projectfile)
-      puts "File already exists, rerun with a new name".red
-      exit 1
-    end
-    FileUtils.copy(tmp_excel, new_projectfile)
-  else
-    puts "Template file has been deleted (#{tmp_excel}. Best to recheckout the project".red
-  end
-  puts
-  puts "Open the excel file and add in your seed models, weather files, and measures #{new_projectfile}".cyan
-  puts "When ready, from the command line run 'rake run' and select the project of interest".cyan
-end
-
 desc "create the analysis files with more output"
 task :setup do
-  excel = get_project()
+  excel = get_project
 
   puts "Seed models are:".cyan
   excel.models.each do |model|
@@ -322,85 +316,56 @@ task :setup do
   end
 
   puts "Saving the analysis JSONS and zips".cyan
-  excel.save_analysis() # directory is define in the setup
+  excel.save_analysis # directory is define in the setup
 
   puts "Finished saving analysis into the analysis directory".cyan
 end
 
 desc "test the creation of the cluster"
 task :create_cluster do
-  excel = get_project()
+  excel = get_project
 
   create_cluster(excel)
 end
 
 desc "setup problem, start cluster, and run analysis (will submit another job if cluster is already running)"
 task :run do
-  excel = get_project()
-  excel.save_analysis()
+  excel = get_project
+  excel.save_analysis
   create_cluster(excel)
   run_analysis(excel, "aws")
 end
 
 desc "run vagrant"
 task :run_vagrant do
-  excel = get_project()
-  excel.save_analysis()
-  run_analysis(excel, "vagrant")
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'vagrant')
 end
 
 desc "run NREL12"
 task :run_NREL12 do
-  excel = get_project()
-  excel.save_analysis()
-  run_analysis(excel, "nrel12")
-end
-
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'nrel12')
+end()
 desc "run NREL24"
 task :run_NREL24 do
-  excel = get_project()
-  excel.save_analysis()
-  run_analysis(excel, "nrel24")
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'nrel24')
 end
 
 desc "run analysis with customized options"
 task :run_custom, [:target, :project, :download] do |t, args|
   args.with_defaults(:target => "aws", :project => nil, :download => false)
   excel = get_project(args[:project])
-  excel.save_analysis()
+  excel.save_analysis
   if args[:target].downcase == "aws"
     create_cluster(excel)
   end
   run_analysis(excel, args[:target], args[:download])
 end
-
-#desc "kill all running on cloud"
-#task :kill_all do
-#  excel = get_project()
-#
-#  if File.exists?("server_data.json")
-#    # parse the file and check if the instance appears to be up
-#    json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
-#    server_dns = "http://#{json[:server][:dns]}"
-#
-#    # Project data
-#    options = {hostname: server_dns}
-#    api = OpenStudio::Analysis::ServerApi.new(options)
-#    api.kill_all_analyses()
-#  else
-#    puts "There doesn't appear to be a cluster running"
-#  end
-#end
-#
-#desc "kill all running vagrant"
-#task :kill_all_vagrant do
-#  server_dns = "http://localhost:8080"
-#
-#  # Project data
-#  options = {hostname: server_dns}
-#  api = OpenStudio::Analysis::ServerApi.new(options)
-#  api.kill_all_analyses()
-#end
 
 desc "delete all projects on site"
 task :delete_all do
@@ -412,7 +377,7 @@ task :delete_all do
     # Project data 
     options = {hostname: server_dns}
     api = OpenStudio::Analysis::ServerApi.new(options)
-    api.delete_all()
+    api.delete_all
   else
     puts "There doesn't appear to be a cluster running"
   end
@@ -426,7 +391,7 @@ task :delete_all_vagrant do
   # Project data 
   options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
-  api.delete_all()
+  api.delete_all
 end
 
 task :default do
@@ -478,7 +443,7 @@ task :update_measure_xmls do
     #  puts u
     #end
         
-    os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion())
+    os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion)
     min_os_version = OpenStudio::VersionString.new("1.4.0")
     if os_version >= min_os_version
       Dir['./**/measure.rb'].each do |m|
@@ -510,7 +475,7 @@ task :update_measures do
 
   bcl = BCL::ComponentMethods.new
   bcl.parsed_measures_path = "./measures"
-  bcl.login() # have to do this even if you don't set your username to get a session
+  bcl.login # have to do this even if you don't set your username to get a session
 
   query = 'NREL%20PNNL%2BBCL%2BGroup'
   success = bcl.measure_metadata(query, nil, true)
