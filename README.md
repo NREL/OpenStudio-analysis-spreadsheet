@@ -1,5 +1,7 @@
 # Analysis Example
 
+[![Dependency Status](https://www.versioneye.com/user/projects/540a3047ccc023a17f0001d5/badge.svg?style=flat)](https://www.versioneye.com/user/projects/540a3047ccc023a17f0001d5)
+
 This example uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon OpenStudio Cluster.
 
 ## Layout
