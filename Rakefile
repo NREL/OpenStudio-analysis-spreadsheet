@@ -348,7 +348,8 @@ task :run_NREL12 do
   excel = get_project
   excel.save_analysis
   run_analysis(excel, 'nrel12')
-end()
+end
+
 desc "run NREL24"
 task :run_NREL24 do
   excel = get_project
