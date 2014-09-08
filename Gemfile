@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem "rake", "~> 10.3.2"
 gem "rubyzip" 
 gem "git", :require => false 
+gem 'colored', '~> 1.2'
 
 # uncomment if you need to update the bcl measures
 gem "bcl", "~> 0.5.4"
@@ -16,11 +17,4 @@ gem "openstudio-aws", "~> 0.2.2"
 gem "openstudio-analysis", "~> 0.3.5"
 #gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> '0.3.5'
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
-
-gem "colored", "~> 1.2"
-
-if RUBY_PLATFORM =~ /win32/
-  gem "win32console", "~> 1.3.2", :platform => [:mswin, :mingw]
-end
-
 
