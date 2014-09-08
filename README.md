@@ -129,7 +129,11 @@ Add this path to your environment variables.
 If you just created your Amazon Web Service account and try to run the analysis, you may notice an error regarding verification of the account (see below).
 
 ```
-Aws::EC2::Errors::PendingVerification: Your account is currently being verified. Verification normally takes less than 2 hours. Until your account is verified, you may not be able to launch additional instances or create additional volumes. If you are still receiving this message after more than 2 hours, please let us know by writing to aws-verification@amazon.com. We appreciate your patience.
+Aws::EC2::Errors::PendingVerification: Your account is currently being verified. 
+Verification normally takes less than 2 hours. Until your account is verified, 
+you may not be able to launch additional instances or create additional volumes. 
+If you are still receiving this message after more than 2 hours, please let us 
+know by writing to aws-verification@amazon.com. We appreciate your patience.
 ```
 
 If this happens, wait a couple hours and try again.  You can also contact Amazon to check if they have verified your account.
