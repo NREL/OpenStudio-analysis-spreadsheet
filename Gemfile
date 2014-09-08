@@ -23,8 +23,4 @@ if RUBY_PLATFORM =~ /win32/
   gem "win32console", "~> 1.3.2", :platform => [:mswin, :mingw]
 end
 
-group :test do
-  gem "rspec", "~> 2.12"
-  gem "ci_reporter", "~> 1.9.0"
-end
 

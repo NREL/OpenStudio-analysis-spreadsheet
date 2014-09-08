@@ -20,10 +20,7 @@ GEM
       yamler
       zliby
     builder (3.2.2)
-    ci_reporter (1.9.2)
-      builder (>= 2.1.2)
     colored (1.2)
-    diff-lcs (1.2.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     git (1.2.8)
@@ -47,7 +44,7 @@ GEM
       rubyzip (~> 1.0)
       semantic (~> 1.3)
       uuid (~> 2.3)
-    openstudio-aws (0.2.0)
+    openstudio-aws (0.2.1)
       aws-sdk-core (~> 2.0.0.rc15)
       net-scp (~> 1.1)
       semantic (~> 1.3)
@@ -56,14 +53,6 @@ GEM
       nokogiri
       rubyzip
       spreadsheet (> 0.6.4)
-    rspec (2.99.0)
-      rspec-core (~> 2.99.0)
-      rspec-expectations (~> 2.99.0)
-      rspec-mocks (~> 2.99.0)
-    rspec-core (2.99.2)
-    rspec-expectations (2.99.2)
-      diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.99.2)
     ruby-ole (1.2.11.7)
     rubyXL (3.2.3)
       nokogiri (>= 1.4.4)
@@ -84,11 +73,9 @@ PLATFORMS
 
 DEPENDENCIES
   bcl (~> 0.5.4)
-  ci_reporter (~> 1.9.0)
   colored (~> 1.2)
   git
   openstudio-analysis (~> 0.3.5)
   openstudio-aws (~> 0.2.0)
   rake (~> 10.3.2)
-  rspec (~> 2.12)
   rubyzip
