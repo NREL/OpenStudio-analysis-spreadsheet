@@ -3,8 +3,14 @@ Analysis Example Change Log
 
 There is no formal versioning of this project; however, below is a list of known changes.
 
-Version 0.3.0
--------------
+Version 0.3.0-pre2
+------------------
+* [BUG FIX] AWS security group issue with new AWS users
+* [BUG FIX] training spreadsheet measure location
+* Update README with notes on running with sudo
+
+Version 0.3.0-pre1
+------------------
 * Removed `rake new` method and template.xlsx. Simply copy and paste one of the template files in the projects folder.
 * Update dependencies
 * Remove old training and template excel files
