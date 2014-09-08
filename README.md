@@ -27,12 +27,13 @@ set HTTP_PROXY_PASS=password
 
 ## Running Examples
 
-* Verify Ruby version and install RubyGem's Bundler.  In a command line call the method below. *Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo <command>` if you are using system's Ruby.*
+* Verify Ruby version and install RubyGem's Bundler.  In a command line call the method below.
 
 ```
 ruby --version
 gem install bundler
 ```
+*Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
 
 ### Using Git
 
@@ -42,7 +43,7 @@ cd os-analysis-example
 bundle 
 bundle exec rake run
 ```
-Note: Mac 10.9 users may need to call `sudo bundle`
+*Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
 
 To update simply go to the directory and call
 
@@ -121,6 +122,23 @@ C:\Ruby<RUBY_VERSION>\lib\ruby\gems\<RUBY_VERSION>\gems\libxml-ruby-<GEM_VERSION
 
 Add this path to your environment variables.
 
+## First Time Users
+
+### AWS
+
+If you just created your Amazon Web Service account and try to run the analysis, you may notice an error regarding verification of the account (see below).
+
+```
+Aws::EC2::Errors::PendingVerification: Your account is currently being verified. Verification normally takes less than 2 hours. Until your account is verified, you may not be able to launch additional instances or create additional volumes. If you are still receiving this message after more than 2 hours, please let us know by writing to aws-verification@amazon.com. We appreciate your patience.
+```
+
+If this happens, wait a couple hours and try again.  You can also contact Amazon to check if they have verified your account.
+
+### Sudo Rights and Mac/Linux
+
+Make sure that you do not run the `bundle exec rake run` command as sudo.  If you do then you will see a permission error on writing to either the .pem or .log files.  If this happens then do the following:
+* Run `sudo rake clean`
+* Remove the ~/.aws.log from your home directory. `sudo rm -f ~/.aws.log`
 
 ## Todos
 
