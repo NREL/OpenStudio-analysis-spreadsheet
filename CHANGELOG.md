@@ -2,6 +2,9 @@ Analysis Example Change Log
 ==================================
 
 There is no formal versioning of this project; however, below is a list of known changes.
+Version 0.3.0-pre3
+------------------
+* [BUG FIX] AWS-SDK-CORE had an issue in RC15 on Windows. Forced version to RC14.
 
 Version 0.3.0-pre2
 ------------------
