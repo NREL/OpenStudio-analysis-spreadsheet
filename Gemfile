@@ -9,7 +9,7 @@ gem "bcl", "~> 0.5.4"
 #gem "bcl", :github => "NREL/bcl-gem"
 #gem "bcl", :path => "../bcl-gem"
 
-gem "openstudio-aws", "~> 0.2.0"
+gem "openstudio-aws", "~> 0.2.2"
 #gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => '0.2.0'
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
@@ -25,8 +25,4 @@ if RUBY_PLATFORM =~ /win32/
   gem "win32console", "~> 1.3.2", :platform => [:mswin, :mingw]
 end
 
-group :test do
-  gem "rspec", "~> 2.12"
-  gem "ci_reporter", "~> 1.9.0"
-end
 
