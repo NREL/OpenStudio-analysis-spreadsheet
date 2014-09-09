@@ -39,7 +39,7 @@ gem install bundler
 
 ```
 git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
-cd os-analysis-example
+cd <path to download>
 bundle 
 bundle exec rake run
 ```
