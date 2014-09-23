@@ -69,7 +69,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  aws-sdk-core (= 2.0.0.rc14)
   bcl (~> 0.5.4)
   colored (~> 1.2)
   git
