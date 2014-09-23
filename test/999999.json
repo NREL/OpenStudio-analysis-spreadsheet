@@ -1,0 +1,116 @@
+{
+	"rec": {
+		"struct_id": 999999,
+		"building": {
+			"_id": {
+				"$oid": "53a46856945ab459430001fd"
+			},
+			"address": {
+				"street": "250 APOLLO DR",
+				"city": "",
+				"state": "",
+				"zip_code": "01824"
+			},
+			"characteristics": {
+				"building_type": "Office",
+				"last_tenancy_change": "2011-12-13T00:00:00Z",
+				"stories": 2,
+				"vintage_retro": null,
+				"vintage_built": 2008,
+				"gross_sqft": 104666,
+				"basement_sqft": null,
+				"ground_fl_sqft": null,
+				"roof_type": null,
+				"space_types": [{
+					"type": "officeopen",
+					"percent": 0.29
+				},
+				{
+					"type": "officeclosed",
+					"percent": 0.15
+				},
+				{
+					"type": "storage",
+					"percent": 0.14
+				},
+				{
+					"type": "corridor",
+					"percent": 0.12
+				},
+				{
+					"type": "conference",
+					"percent": 0.08
+				},
+				{
+					"type": "lobby",
+					"percent": 0.06
+				},
+				{
+					"type": "restroom",
+					"percent": 0.04
+				},
+				{
+					"type": "stair",
+					"percent": 0.03
+				},
+				{
+					"type": "printroom",
+					"percent": 0.025
+				},
+				{
+					"type": "breakroom",
+					"percent": 0.02
+				},
+				{
+					"type": "elec/mechroom",
+					"percent": 0.02
+				},
+				{
+					"type": "vending",
+					"percent": 0.02
+				},
+				{
+					"type": "it_room",
+					"percent": 0.005
+				}]
+			},
+			"geometry": {
+				"lat_lng": null,
+				"length": null,
+				"width": null,
+				"rotation": null
+			},
+			"usage": {
+				"gas_billed_url": "http://cofeerailsdev-env.elasticbeanstalk.com/analytic_records/183871/gas_billed_usage.json",
+				"electric_billed_url": "http://cofeerailsdev-env.elasticbeanstalk.com/analytic_records/183871/electric_billed_usage.json",
+				"electric_interval_urls": [{
+					"interval": 5,
+					"url": "http://cofeerailsdev-env.elasticbeanstalk.com/analytic_records/183871/electric_interval_usage.json"
+				}]
+			}
+		},
+		"site": {
+			"_id": {
+				"$oid": "53a46856945ab459430001fe"
+			},
+			"weather_ddy": "http://cofeerailsdev-env.elasticbeanstalk.com/weather/USA_MA_Boston-Logan.Intl.AP.725090_TMY3/USA_MA_Boston-Logan.Intl.AP.725090_TMY3.ddy",
+			"weather_epw": "http://cofeerailsdev-env.elasticbeanstalk.com/weather/USA_MA_Boston-Logan.Intl.AP.725090_TMY3/USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw",
+			"weather_stat": "http://cofeerailsdev-env.elasticbeanstalk.com/weather/USA_MA_Boston-Logan.Intl.AP.725090_TMY3/USA_MA_Boston-Logan.Intl.AP.725090_TMY3.stat"
+		},
+		"electric_accounts": [{
+			"data_since": "2011-12-13T00:00:00Z",
+			"ky_ba": 3931735011,
+			"ky_prem_no": 393173500,
+			"company": "Massachusetts Elec",
+			"elec_rate_schedule": "701",
+			"elec_rate_desc": "Elec G-3 Large TOU-Variable",
+			"elec_rate_type": null,
+			"billed_usage_url": "http://cofeerailsdev-env.elasticbeanstalk.com/electric_accounts/3931735011/electric_billed_usages.json",
+			"interval_meter": []
+		}],
+		"gas_accounts": [{
+			"acctnum": "04704815762",
+			"billed_usage_url": "http://cofeerailsdev-env.elasticbeanstalk.com/gas_accounts/04704815762/gas_billed_usages.json"
+		}]
+	}
+}
