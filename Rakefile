@@ -94,6 +94,7 @@ Or run `rake clean`".red
         # private_key_file_name: File.expand_path('~/.ssh/private_key')
     }
 
+    start_time = Time.now
     # Create the server & worker
     aws.create_server(server_options, "#{excel.cluster_name}.json")
     aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options)
@@ -101,7 +102,8 @@ Or run `rake clean`".red
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the
     server_dns = "http://#{aws.os_aws.server.data.dns}"
 
-    puts "Cluster setup and awaiting analyses. IP address #{server_dns}".cyan
+    puts "Cluster setup in #{(Time.now - start_time).round} seconds. Awaiting analyses.".cyan
+    puts "Server IP address #{server_dns}".cyan
   end
 end
 
@@ -294,7 +296,7 @@ def run_analysis(excel, target="aws", download=false)
     # Final stuff
     if target.downcase == "aws"
       puts
-      puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
+      puts "Make sure to check the AWS console (N. Virginia Region) and terminate any OpenStudio instances when you are finished!".bold.red
     end
   else
     puts "There doesn't appear to be a cluster running for this project #{excel.cluster_name}"
