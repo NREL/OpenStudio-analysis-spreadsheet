@@ -140,7 +140,7 @@ OS:DefaultScheduleSet,
   {6ddb1570-3fb7-43ad-a210-2b826ba7dc64}, !- People Activity Level Schedule Name
   {873b1fa6-7a26-4ed2-8087-6ccfae0ccea3}, !- Lighting Schedule Name
   {baf60d69-6d65-4898-b260-710451567e9e}, !- Electric Equipment Schedule Name
-  ,                                       !- Gas Equipment Schedule Name
+  {baf60d69-6d65-4898-b260-710451567e9e}, !- Gas Equipment Schedule Name
   ,                                       !- Hot Water Equipment Schedule Name
   {c3807d0a-9d15-405f-aa4b-04ec7afaa7ff}, !- Infiltration Schedule Name
   ,                                       !- Steam Equipment Schedule Name

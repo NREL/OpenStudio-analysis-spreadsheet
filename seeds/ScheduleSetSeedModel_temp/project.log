@@ -1,6 +1,26 @@
+[openstudio.runmanager.RunManager] <-1> Time to load for uuid: {1cead321-e5ee-45ed-a942-44a745a08f2e} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse tools for uuid: {1cead321-e5ee-45ed-a942-44a745a08f2e} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse params for uuid: {1cead321-e5ee-45ed-a942-44a745a08f2e} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse files for uuid: {1cead321-e5ee-45ed-a942-44a745a08f2e} 0
+[openstudio.runmanager.RunManager] <-1> Time to load for uuid: {fe6679ce-ed2e-4b89-9465-97d509f3d804} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse tools for uuid: {fe6679ce-ed2e-4b89-9465-97d509f3d804} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse params for uuid: {fe6679ce-ed2e-4b89-9465-97d509f3d804} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse files for uuid: {fe6679ce-ed2e-4b89-9465-97d509f3d804} 0
+[openstudio.runmanager.RunManager] <-1> Time to load for uuid: {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse tools for uuid: {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse params for uuid: {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse files for uuid: {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea} 0
+[openstudio.runmanager.RunManager] <-1> Time to load for uuid: {912fe2a5-ca30-4beb-a2bd-9862df06c489} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse tools for uuid: {912fe2a5-ca30-4beb-a2bd-9862df06c489} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse params for uuid: {912fe2a5-ca30-4beb-a2bd-9862df06c489} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse files for uuid: {912fe2a5-ca30-4beb-a2bd-9862df06c489} 0
+[openstudio.runmanager.RunManager] <-1> Time to load for uuid: {856e635e-20e3-4cd8-83a3-806a1d577f2b} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse tools for uuid: {856e635e-20e3-4cd8-83a3-806a1d577f2b} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse params for uuid: {856e635e-20e3-4cd8-83a3-806a1d577f2b} 0
+[openstudio.runmanager.RunManager] <-1> Time to parse files for uuid: {856e635e-20e3-4cd8-83a3-806a1d577f2b} 0
 [RunManager.ConfigOptions] <-1> Tools list in QSettings is from a previous version of OpenStudio, ignoring
 [RunManager.ConfigOptions] <-1> RunManager settings in QSettings is from a previous version of OpenStudio, ignoring
-[openstudio.LocalLibraryController] <-2> Creating LocalLibraryController with base app 0042F978
+[openstudio.LocalLibraryController] <-2> Creating LocalLibraryController with base app 001DF5E0
 [openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
 [openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
 [openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
@@ -36,15 +56,15 @@
 [openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
 [openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
 [openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
-[utilities.bcl.BCLMeasure] <-2> Loading measures in path: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/
-[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/CalibrationReports
-[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/CalibrationReports
-[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReplaceModel
-[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReplaceModel
-[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReportRequest
-[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReportRequest
-[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/StandardReports
-[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/StandardReports
+[utilities.bcl.BCLMeasure] <-2> Loading measures in path: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/CalibrationReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/CalibrationReports
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/ReplaceModel
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/ReplaceModel
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/ReportRequest
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/ReportRequest
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/StandardReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Program Files (x86)/OpenStudio 1.5.0/share/openstudio-1.5.0/pat/Measures/StandardReports
 [utilities.bcl.BCLMeasure] <-2> Loading measures in path: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures
 [utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerAreaToConstruction
 [utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerAreaToConstruction
@@ -402,218 +422,17 @@
 [openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
 [RunManager.ConfigOptions] <-1> Tools list in QSettings is from a previous version of OpenStudio, ignoring
 [RunManager.ConfigOptions] <-1> RunManager settings in QSettings is from a previous version of OpenStudio, ignoring
-[openstudio::ResultsTabController] <-2> searchForExistingResults C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run
-[openstudio::ResultsTabView] <-2> searchForExistingResults C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run
-[openstudio::ResultsView] <-2> Looking for existing results in: C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run
+[openstudio::ResultsTabController] <-2> searchForExistingResults C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/run
+[openstudio::ResultsTabView] <-2> searchForExistingResults C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/run
+[openstudio::ResultsView] <-2> Looking for existing results in: C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/run
 [openstudio::ResultsView] <-2> resultsGenerated  
-[openstudio.VariablesList] <-2> onAdded: OS_Facility
-[saveModel] <-2> Saved model to 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/in.osm'
-[saveModelTempDir] <-2> Copying C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources to C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp
-[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
-[copyDir] <-1> Creating directory named = 'ScheduleSetSeedModel_temp' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources'
-[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files'
-[copyDir] <-1> Creating directory named = 'files' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files'
-[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run'
-[copyDir] <-1> Creating directory named = 'run' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run'
-[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/scripts' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts'
-[copyDir] <-1> Creating directory named = 'scripts' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/scripts'
-[openstudio.osversion.VersionTranslator] <-2> Starting translation from Version 1.5.0.
-[openstudio.osversion.VersionTranslator] <-2> Initial model has 1918 objects.
-[openstudio.osversion.VersionTranslator] <-2> Final model has 1918 objects in IDF form.
-[utilities.idf.Workspace] <-2> Workspace::isValid called.
-[openstudio.osversion.VersionTranslator] <-2> Final model has 1918 objects in Model form.
-[utilities.idf.Workspace] <-1> Renamed Object of type 'OS:Schedule:Day' and named 'Schedule Day 1' to 'Schedule Day 12' to avoid a name conflict upon WorkspaceObject addition.
-[openstudio.VariablesList] <-2> onAdded: OS_DefaultScheduleSet
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
-[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Day
-[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Day
-[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
-[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
-[openstudio.runmanager.Workflow] <-2> creating workflow
-[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
-[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {1cead321-e5ee-45ed-a942-44a745a08f2e}
-[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {1cead321-e5ee-45ed-a942-44a745a08f2e}
-[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {1cead321-e5ee-45ed-a942-44a745a08f2e}
-[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
-[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {fe6679ce-ed2e-4b89-9465-97d509f3d804}
-[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {fe6679ce-ed2e-4b89-9465-97d509f3d804}
-[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {fe6679ce-ed2e-4b89-9465-97d509f3d804}
-[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
-[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea}
-[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea}
-[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea}
-[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
-[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {912fe2a5-ca30-4beb-a2bd-9862df06c489}
-[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {912fe2a5-ca30-4beb-a2bd-9862df06c489}
-[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {912fe2a5-ca30-4beb-a2bd-9862df06c489}
-[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
-[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {856e635e-20e3-4cd8-83a3-806a1d577f2b}
-[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {856e635e-20e3-4cd8-83a3-806a1d577f2b}
-[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {856e635e-20e3-4cd8-83a3-806a1d577f2b}
 [openstudio.project.ProjectDatabase] <-1> DB Message: cannot start a transaction within a transaction Unable to begin transaction
-[saveModel] <-2> Saved model to 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/in.osm'
-[saveModelTempDir] <-2> Copying C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources to C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp
-[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/scripts'
-[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files'
-[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files'
+[saveModel] <-2> Saved model to 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/in.osm'
+[saveModelTempDir] <-2> Copying C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources to C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/files'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/run'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/scripts'
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/files' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.vz8624/resources/files'
