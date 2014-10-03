@@ -1,0 +1,619 @@
+[RunManager.ConfigOptions] <-1> Tools list in QSettings is from a previous version of OpenStudio, ignoring
+[RunManager.ConfigOptions] <-1> RunManager settings in QSettings is from a previous version of OpenStudio, ignoring
+[openstudio.LocalLibraryController] <-2> Creating LocalLibraryController with base app 0042F978
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[utilities.bcl.BCLMeasure] <-2> Loading measures in path: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/CalibrationReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/CalibrationReports
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReplaceModel
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReplaceModel
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReportRequest
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/ReportRequest
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/StandardReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio/openstudiocore/src/pat_app/Measures/StandardReports
+[utilities.bcl.BCLMeasure] <-2> Loading measures in path: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerAreaToConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerAreaToConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostperAreatoUnusedConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostperAreatoUnusedConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaToBuilding
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaToBuilding
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaToElectricEquipment
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaToElectricEquipment
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaToLights
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaToLights
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaUnusedToLights
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostPerFloorAreaUnusedToLights
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostToSupplySideHVACComponentByAirLoop
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddCostToSupplySideHVACComponentByAirLoop
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddDaylightSensors
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddDaylightSensors
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddDencityMeters
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddDencityMeters
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddExteriorLights
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddExteriorLights
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddGasEquipmentLoadtoSpaceType
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddGasEquipmentLoadtoSpaceType
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddMeter
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddMeter
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddMonthlyUtilityData
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddMonthlyUtilityData
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddOutputDiagnostics
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddOutputDiagnostics
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddOutputVariable
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddOutputVariable
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddOverhangsByProjectionFactor
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddOverhangsByProjectionFactor
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddPTAC
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddPTAC
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddServiceWaterHeating
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddServiceWaterHeating
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSimplePvToShadingSurfacesByType
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSimplePvToShadingSurfacesByType
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys10ElectricWarmAirFurnace
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys10ElectricWarmAirFurnace
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys1PTACResidential
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys1PTACResidential
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys2PTHPResidential
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys2PTHPResidential
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys3PSZAC
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys3PSZAC
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys3PSZACNgrid
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys3PSZACNgrid
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys4PSZHP
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys4PSZHP
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys5PackagedVAVwReheat
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys5PackagedVAVwReheat
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys5PVAVNgrid
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys5PVAVNgrid
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys6PackagedVAVwPFPBoxes
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys6PackagedVAVwPFPBoxes
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys7VAVNgrid
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys7VAVNgrid
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys7VAVwReheat
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys7VAVwReheat
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys8VAVwPFPBoxes
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys8VAVwPFPBoxes
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys9GasFiredWarmAirFurnace
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AddSys9GasFiredWarmAirFurnace
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AdjustSystemEfficiencies
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AdjustSystemEfficiencies
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AdjustThermostatSetpointsByDegrees
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AdjustThermostatSetpointsByDegrees
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AdjustWindowToWallRatios
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AdjustWindowToWallRatios
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ElectricEquipment
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ElectricEquipment
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ElectricEquipmentControls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ElectricEquipmentControls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12EnvelopeAndEntryInfiltration
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12EnvelopeAndEntryInfiltration
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorDoorConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorDoorConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorFloorConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorFloorConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorWallConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12ExteriorWallConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12FenestrationAndDaylightingControls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12FenestrationAndDaylightingControls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12HvacDualDuctDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12HvacDualDuctDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12HvacFanCoilDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12HvacFanCoilDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12HvacGshpDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12HvacGshpDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12InteriorFinishes
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12InteriorFinishes
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12InteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12InteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12InteriorLightingControls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12InteriorLightingControls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12Kitchen
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12Kitchen
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12RoofConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12RoofConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12SlabAndBasement
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12SlabAndBasement
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12Swh
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgK12Swh
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacAshpDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacAshpDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacFanCoilDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacFanCoilDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacRadiantDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacRadiantDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacVavChW
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacVavChW
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacVavDx
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacVavDx
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacWshpDoas
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeHvacWshpDoas
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeSwh
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgOfficeSwh
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeElectricEquipment
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeElectricEquipment
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeElectricEquipmentControls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeElectricEquipmentControls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeEnvelopeAndEntryInfiltration
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeEnvelopeAndEntryInfiltration
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorDoorConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorDoorConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorFloorConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorFloorConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorWallConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeExteriorWallConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeFenestrationAndDaylightingControls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeFenestrationAndDaylightingControls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeInteriorFinishes
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeInteriorFinishes
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeInteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeInteriorLighting
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeInteriorLightingControls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeInteriorLightingControls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeRoofConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeRoofConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeSlabAndBasement
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AedgSmallToMediumOfficeSlabAndBasement
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AnalysisPeriodCashFlows
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AnalysisPeriodCashFlows
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AnnualEndUseBreakdown
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AnnualEndUseBreakdown
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignConstructionSetToBuilding
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignConstructionSetToBuilding
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignSpacesToStories
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignSpacesToStories
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignSpaceTypeBySpaceName
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignSpaceTypeBySpaceName
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignSpaceTypeToBuilding
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignSpaceTypeToBuilding
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioSlicedBySpaceType
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioSlicedBySpaceType
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudy
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudy
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeMidriseApartment
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeMidriseApartment
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeOffice
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeOffice
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeRetail
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeRetail
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeStripMall
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/BarAspectRatioStudySlicedBySpaceTypeStripMall
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/CalibrationReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/CalibrationReports
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ChangeBuildingLocation
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ChangeBuildingLocation
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/CleanupSpaceOrigins
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/CleanupSpaceOrigins
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/DencityReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/DencityReports
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/EnableDemandControlledVentilation
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/EnableDemandControlledVentilation
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/EnableEconomizerControl
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/EnableEconomizerControl
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/EnableIdealAirLoadsForAllZones
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/EnableIdealAirLoadsForAllZones
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ExportScheduleCSV
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ExportScheduleCSV
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/FindAndReplaceObjectNames
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/FindAndReplaceObjectNames
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/find_and_replace_in_all_thermal_zone_names
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/find_and_replace_in_all_thermal_zone_names
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ImportEnvelopeAndInternalLoadsFromIdf
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ImportEnvelopeAndInternalLoadsFromIdf
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ImproveFanBeltEfficiency
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ImproveFanBeltEfficiency
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ImproveMotorEfficiency
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ImproveMotorEfficiency
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForExteriorWalls
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForExteriorWalls
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForExteriorWallsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForExteriorWallsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForRoofs
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForRoofs
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForRoofsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IncreaseInsulationRValueForRoofsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/InjectOsmGeometryIntoAnExternalIdf
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/InjectOsmGeometryIntoAnExternalIdf
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IntersectSpaceGeometry
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/IntersectSpaceGeometry
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ListOfConstructions
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ListOfConstructions
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/LPDtoLamps
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/LPDtoLamps
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/MeterFlodPlot
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/MeterFlodPlot
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/meter_flood_plot
+[utilities.bcl.BCLXML] <2> 'C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/meter_flood_plot/measure.xml' does not exist
+[utilities.bcl.BCLMeasure] <2> 'C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/meter_flood_plot' is not a measure
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ModifyEnergyPlusFanVariableVolumeObjects
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ModifyEnergyPlusFanVariableVolumeObjects
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/NoOp
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/NoOp
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/NRELOpenStudioQAQCChecks
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/NRELOpenStudioQAQCChecks
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/PredictedMeanVote
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/PredictedMeanVote
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceElectricEquipmentLoadsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceElectricEquipmentLoadsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceLightingLoadsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceLightingLoadsByPercentage
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceNightTimeElectricEquipmentLoads
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceNightTimeElectricEquipmentLoads
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceNightTimeLightingLoads
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceNightTimeLightingLoads
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceSpaceInfiltrationByPercentage
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceSpaceInfiltrationByPercentage
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceVentilationByPercentage
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReduceVentilationByPercentage
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RemoveHardAssignedConstructions
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RemoveHardAssignedConstructions
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RemoveInternalLoadsDirectlyAssignedToSpaces
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RemoveInternalLoadsDirectlyAssignedToSpaces
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RemoveUnusedDefaultProfiles
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RemoveUnusedDefaultProfiles
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RenameSpaceSurfacesBasedonParentSpaceandOrientation
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RenameSpaceSurfacesBasedonParentSpaceandOrientation
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceAllIncandescentLampswithCFLLamps
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceAllIncandescentLampswithCFLLamps
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceAllT12Lampswith25WT8Lamps
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceAllT12Lampswith25WT8Lamps
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceExteriorWindowConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceExteriorWindowConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceModel
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceModel
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceThermostatSchedules
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReplaceThermostatSchedules
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReportModelChanges
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReportModelChanges
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReportVolumeAreaAndPerimeterofBuilding
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ReportVolumeAreaAndPerimeterofBuilding
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RotateBuilding
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/RotateBuilding
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetCOPforSingleSpeedDXCoolingUnits
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetCOPforSingleSpeedDXCoolingUnits
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetCOPforTwoSpeedDXCoolingUnits
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetCOPforTwoSpeedDXCoolingUnits
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetEnergyPlusInfiltrationFlowRatePerFloorArea
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetEnergyPlusInfiltrationFlowRatePerFloorArea
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetEnergyPlusLightObjectsLPD
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetEnergyPlusLightObjectsLPD
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetEnergyPlusMinimumOutdoorAirFlowRate
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetEnergyPlusMinimumOutdoorAirFlowRate
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetExtWallToGroundBoundaryConditionByStory
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetExtWallToGroundBoundaryConditionByStory
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetGasBurnerEfficiency
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetGasBurnerEfficiency
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetInteriorWallsAndFloorsToAdiabatic
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetInteriorWallsAndFloorsToAdiabatic
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetInteriorWallsToSelectedConstruction
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetInteriorWallsToSelectedConstruction
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetLifecycleCostParameters
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetLifecycleCostParameters
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetLightingLoadsByLPD
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetLightingLoadsByLPD
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetRunPeriod
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetRunPeriod
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetSpaceInfiltrationByExteriorSurfaceArea
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetSpaceInfiltrationByExteriorSurfaceArea
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetThermostatSchedules
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetThermostatSchedules
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetWindowToWallRatioByFacade
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SetWindowToWallRatioByFacade
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ShiftScheduleProfileTime
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/ShiftScheduleProfileTime
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SimplifyGeometryToSlicedBar
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SimplifyGeometryToSlicedBar
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SpaceTypeAndConstructionSetWizard
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SpaceTypeAndConstructionSetWizard
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/StandardReports
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/StandardReports
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SurfaceMatching
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SurfaceMatching
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SwapAllLightsForNewDefinition
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SwapAllLightsForNewDefinition
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SwapLightsDefinition
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/SwapLightsDefinition
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/XcelEDAReportingandQAQC
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/XcelEDAReportingandQAQC
+[utilities.bcl.BCLMeasure] <-2> Attempting to load measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/XcelEDATariffSelectionandModelSetup
+[utilities.bcl.BCLMeasure] <-2> Success loading measure: C:/Users/dgoldwas/Documents/GitHub/OpenStudio-measures/NREL working measures/XcelEDATariffSelectionandModelSetup
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.MeasureManager] <1> UUID of user measure at 'C:/Users/dgoldwas/BCL/92bee759-86ae-4617-92e2-f8e5aa9dc684/b7b17d08-3689-4228-aba5-262e08c4fdfa' conflicts with other measure, other measure will be used instead
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[RunManager.ConfigOptions] <-1> Tools list in QSettings is from a previous version of OpenStudio, ignoring
+[RunManager.ConfigOptions] <-1> RunManager settings in QSettings is from a previous version of OpenStudio, ignoring
+[openstudio::ResultsTabController] <-2> searchForExistingResults C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run
+[openstudio::ResultsTabView] <-2> searchForExistingResults C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run
+[openstudio::ResultsView] <-2> Looking for existing results in: C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run
+[openstudio::ResultsView] <-2> resultsGenerated  
+[openstudio.VariablesList] <-2> onAdded: OS_Facility
+[saveModel] <-2> Saved model to 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/in.osm'
+[saveModelTempDir] <-2> Copying C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources to C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
+[copyDir] <-1> Creating directory named = 'ScheduleSetSeedModel_temp' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources'
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files'
+[copyDir] <-1> Creating directory named = 'files' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files'
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run'
+[copyDir] <-1> Creating directory named = 'run' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run'
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/scripts' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts'
+[copyDir] <-1> Creating directory named = 'scripts' in parentDstDir = 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/scripts'
+[openstudio.osversion.VersionTranslator] <-2> Starting translation from Version 1.5.0.
+[openstudio.osversion.VersionTranslator] <-2> Initial model has 1918 objects.
+[openstudio.osversion.VersionTranslator] <-2> Final model has 1918 objects in IDF form.
+[utilities.idf.Workspace] <-2> Workspace::isValid called.
+[openstudio.osversion.VersionTranslator] <-2> Final model has 1918 objects in Model form.
+[utilities.idf.Workspace] <-1> Renamed Object of type 'OS:Schedule:Day' and named 'Schedule Day 1' to 'Schedule Day 12' to avoid a name conflict upon WorkspaceObject addition.
+[openstudio.VariablesList] <-2> onAdded: OS_DefaultScheduleSet
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
+[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Day
+[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Day
+[openstudio.VariablesList] <-2> onRemoved OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Ruleset
+[openstudio.VariablesList] <-2> onAdded: OS_ScheduleTypeLimits
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.VariablesList] <-2> onAdded: OS_Schedule_Day
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.model.YearDescription] <1> 'UseWeatherFile' is not yet a supported option for YearDescription
+[openstudio.runmanager.Workflow] <-2> creating workflow
+[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
+[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {1cead321-e5ee-45ed-a942-44a745a08f2e}
+[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {1cead321-e5ee-45ed-a942-44a745a08f2e}
+[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {1cead321-e5ee-45ed-a942-44a745a08f2e}
+[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
+[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {fe6679ce-ed2e-4b89-9465-97d509f3d804}
+[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {fe6679ce-ed2e-4b89-9465-97d509f3d804}
+[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {fe6679ce-ed2e-4b89-9465-97d509f3d804}
+[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
+[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea}
+[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea}
+[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {9816da43-eeaf-4ac2-a2be-982eb0b8b2ea}
+[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
+[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {912fe2a5-ca30-4beb-a2bd-9862df06c489}
+[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {912fe2a5-ca30-4beb-a2bd-9862df06c489}
+[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {912fe2a5-ca30-4beb-a2bd-9862df06c489}
+[openstudio.runmanager.Job_Impl] <-2> Returning previously saved outputfiles
+[openstudio.runmanager.RunManager] <-2> (C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run.db) Persisting job status for {856e635e-20e3-4cd8-83a3-806a1d577f2b}
+[openstudio.runmanager.RunManager] <-2> Deleted previous data job status for {856e635e-20e3-4cd8-83a3-806a1d577f2b}
+[openstudio.runmanager.RunManager] <-2> Not persisting, job has not actually finished {856e635e-20e3-4cd8-83a3-806a1d577f2b}
+[openstudio.project.ProjectDatabase] <-1> DB Message: cannot start a transaction within a transaction Unable to begin transaction
+[saveModel] <-2> Saved model to 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/in.osm'
+[saveModelTempDir] <-2> Copying C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources to C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/run' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/run'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/scripts' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/scripts'
+[copyDir] <-1> copyDir 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files' to 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files'
+[synchDirStructures] <-1> Synching destination 'C:/Users/dgoldwas/Documents/GitHubForks/OpenStudio-analysis-spreadsheet-COFEE/seeds/ScheduleSetSeedModel_temp/files' with source 'C:/Users/dgoldwas/AppData/Local/Temp/1/OpenStudio.wx9020/resources/files'
