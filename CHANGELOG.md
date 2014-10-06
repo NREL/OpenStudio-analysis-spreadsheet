@@ -1,11 +1,12 @@
 Analysis Example Change Log
 ==================================
 
-Version 0.3.0
+Version 0.3.0 (Not yet released)
 -------------
 * Allow AWS Tag
 * Allow No Workers
 * Removed CC2 nodes
+* Allow for multiple measure directories. 
 
 There is no formal versioning of this project; however, below is a list of known changes.
 Version 0.3.0-pre3
