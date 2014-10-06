@@ -1,6 +1,12 @@
 Analysis Example Change Log
 ==================================
 
+Version 0.3.0
+-------------
+* Allow AWS Tag
+* Allow No Workers
+* Removed CC2 nodes
+
 There is no formal versioning of this project; however, below is a list of known changes.
 Version 0.3.0-pre3
 ------------------

@@ -64,8 +64,7 @@ Or run `rake clean`".red
     puts "Validating cluster options".cyan
 
     if excel.settings['worker_nodes'].to_i == 0
-      puts 'Number of workers set to zero'.red
-      exit 1
+      puts 'Number of workers set to zero... will continue'.cyan
     end
 
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
@@ -80,7 +79,8 @@ Or run `rake clean`".red
     
     server_options = {
         instance_type: excel.settings["server_instance_type"],
-        user_id: excel.settings["user_id"]
+        user_id: excel.settings["user_id"],
+        tags: excel.aws_tags
         # aws_key_pair_name: 'custom_key',
         # private_key_file_name: File.expand_path('~/.ssh/private_key')
         # optional -- will default later
@@ -89,12 +89,14 @@ Or run `rake clean`".red
 
     worker_options = {
         instance_type: excel.settings["worker_instance_type"],
-        user_id: excel.settings["user_id"]
+        user_id: excel.settings["user_id"],
+        tags: excel.aws_tags
         # aws_key_pair_name: 'custom_key',
         # private_key_file_name: File.expand_path('~/.ssh/private_key')
     }
 
     start_time = Time.now
+
     # Create the server & worker
     aws.create_server(server_options, "#{excel.cluster_name}.json")
     aws.create_workers(excel.settings["worker_nodes"].to_i, worker_options)
