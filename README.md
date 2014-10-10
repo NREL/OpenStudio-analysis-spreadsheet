@@ -146,7 +146,7 @@ Make sure that you do not run the `bundle exec rake run` command as sudo.  If yo
 
 ### Access Errors
 
-If you experience issues accessing github.com, rubygems.org, or aws.amazon.com, make sure that the path to these sites are not blocked.  Some more information can be found in (this issue)[https://github.com/NREL/OpenStudio-analysis-gem/issues/3]
+If you experience issues accessing github.com, rubygems.org, or aws.amazon.com, make sure that the path to these sites are not blocked.  Some more information can be found in [this issue](https://github.com/NREL/OpenStudio-analysis-gem/issues/3)
 
 ## Todos
 
