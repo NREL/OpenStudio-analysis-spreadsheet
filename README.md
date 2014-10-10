@@ -122,7 +122,7 @@ C:\Ruby<RUBY_VERSION>\lib\ruby\gems\<RUBY_VERSION>\gems\libxml-ruby-<GEM_VERSION
 
 Add this path to your environment variables.
 
-## First Time Users
+## Troubleshooting
 
 ### AWS
 
@@ -144,7 +144,12 @@ Make sure that you do not run the `bundle exec rake run` command as sudo.  If yo
 * Run `sudo rake clean`
 * Remove the ~/.aws.log from your home directory. `sudo rm -f ~/.aws.log`
 
+### Access Errors
+
+If you experience issues accessing github.com, rubygems.org, or aws.amazon.com, make sure that the path to these sites are not blocked.  Some more information can be found in (this issue)[https://github.com/NREL/OpenStudio-analysis-gem/issues/3]
+
 ## Todos
 
 * Move the analysis files under need a project specific folder (under project)
 * Re-enable the kill_all methods
+
