@@ -75,7 +75,7 @@ DEPENDENCIES
   bcl (~> 0.5.4)
   colored (~> 1.2)
   git
-  openstudio-analysis (~> 0.3.6)
-  openstudio-aws (~> 0.2.5)
+  openstudio-analysis (= 0.3.6)
+  openstudio-aws (= 0.2.5)
   rake (~> 10.3.2)
   rubyzip
