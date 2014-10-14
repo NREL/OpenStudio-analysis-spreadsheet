@@ -42,6 +42,8 @@ class AnnualEndUseBreakdown < OpenStudio::Ruleset::ReportingUserScript
     sqlFile = sqlFile.get
     model.setSqlFile(sqlFile)
 
+    web_asset_path = OpenStudio::getSharedResourcesPath() / OpenStudio::Path.new("web_assets")
+
     def neat_numbers(number, roundto = 2) #round to 0 or 2)
                                           # round to zero or two decimals
       if roundto == 2

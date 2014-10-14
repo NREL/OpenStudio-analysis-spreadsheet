@@ -117,18 +117,25 @@ class SetWindowToWallRatioByFacade < OpenStudio::Ruleset::ModelUserScript
 
       next if not s.surfaceType == "Wall"
       next if not s.outsideBoundaryCondition == "Outdoors"
+      if s.space.empty?
+        runner.registerWarning("#{s.name} doesn't have a parent space and won't be included in the measure reporting or modifications.")
+        next
+      end
 
-      azimuth = OpenStudio::Quantity.new(s.azimuth,OpenStudio::createSIAngle)
-      azimuth = OpenStudio::convert(azimuth,OpenStudio::createIPAngle).get.value
+      # get the absoluteAzimuth for the surface so we can categorize it
+      absoluteAzimuth =  OpenStudio::convert(s.azimuth,"rad","deg").get + s.space.get.directionofRelativeNorth + model.getBuilding.northAxis
+      until absoluteAzimuth < 360.0
+        absoluteAzimuth = absoluteAzimuth - 360.0
+      end
 
       if facade == "North"
-        next if not (azimuth >= 315.0 or azimuth < 45.0)
+        next if not (absoluteAzimuth >= 315.0 or absoluteAzimuth < 45.0)
       elsif facade == "East"
-        next if not (azimuth >= 45.0 and azimuth < 135.0)
+        next if not (absoluteAzimuth >= 45.0 and absoluteAzimuth < 135.0)
       elsif facade == "South"
-        next if not (azimuth >= 135.0 and azimuth < 225.0)
+        next if not (absoluteAzimuth >= 135.0 and absoluteAzimuth < 225.0)
       elsif facade == "West"
-        next if not (azimuth >= 225.0 and azimuth < 315.0)
+        next if not (absoluteAzimuth >= 225.0 and absoluteAzimuth < 315.0)
       else
         runner.registerError("Unexpected value of facade: " + facade + ".")
         return false
@@ -196,18 +203,25 @@ class SetWindowToWallRatioByFacade < OpenStudio::Ruleset::ModelUserScript
     surfaces.each do |s|
       next if not s.surfaceType == "Wall"
       next if not s.outsideBoundaryCondition == "Outdoors"
+      if s.space.empty?
+        runner.registerWarning("#{s.name} doesn't have a parent space and won't be included in the measure reporting or modifications.")
+        next
+      end
 
-      azimuth = OpenStudio::Quantity.new(s.azimuth,OpenStudio::createSIAngle)
-      azimuth = OpenStudio::convert(azimuth,OpenStudio::createIPAngle).get.value
+      # get the absoluteAzimuth for the surface so we can categorize it
+      absoluteAzimuth =  OpenStudio::convert(s.azimuth,"rad","deg").get + s.space.get.directionofRelativeNorth + model.getBuilding.northAxis
+      until absoluteAzimuth < 360.0
+        absoluteAzimuth = absoluteAzimuth - 360.0
+      end
 
       if facade == "North"
-        next if not (azimuth >= 315.0 or azimuth < 45.0)
+        next if not (absoluteAzimuth >= 315.0 or absoluteAzimuth < 45.0)
       elsif facade == "East"
-        next if not (azimuth >= 45.0 and azimuth < 135.0)
+        next if not (absoluteAzimuth >= 45.0 and absoluteAzimuth < 135.0)
       elsif facade == "South"
-        next if not (azimuth >= 135.0 and azimuth < 225.0)
+        next if not (absoluteAzimuth >= 135.0 and absoluteAzimuth < 225.0)
       elsif facade == "West"
-        next if not (azimuth >= 225.0 and azimuth < 315.0)
+        next if not (absoluteAzimuth >= 225.0 and absoluteAzimuth < 315.0)
       else
         runner.registerError("Unexpected value of facade: " + facade + ".")
         return false

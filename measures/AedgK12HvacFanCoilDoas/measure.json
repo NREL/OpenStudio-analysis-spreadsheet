@@ -1,0 +1,46 @@
+{
+  "classname": "AedgK12HvacFanCoilDoas",
+  "name": "aedg_k12_hvac_fan_coil_doas",
+  "display_name": "AEDG K12 Hvac Fan Coil Doas",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "ceilingReturnPlenumSpaceType",
+      "variable_type": "Choice",
+      "name": "ceilingReturnPlenumSpaceType",
+      "display_name": "This space type should be part of a ceiling return air plenum",
+      "units": null,
+      "description": null,
+      "default_value": "We dont want a default, this is an optional argument",
+      "choices": [
+        "We dont want a default, this is an optional argument"
+      ]
+    },
+    {
+      "local_variable": "costTotalHVACSystem",
+      "variable_type": "Double",
+      "name": "costTotalHVACSystem",
+      "display_name": "Total Cost for HVAC System",
+      "units": "$",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "remake_schedules",
+      "variable_type": "Bool",
+      "name": "remake_schedules",
+      "display_name": "Apply recommended availability and ventilation schedules for air handlers",
+      "units": null,
+      "description": null,
+      "default_value": true
+    }
+  ],
+  "name_xml": "AEDG K12 HVAC Fan Coil DOAS",
+  "uid": "ed4da36e-5b88-4cce-9ee2-c5390031dd61",
+  "version_id": "40ab08cc-05c2-4d56-a312-af412aa8d3c0",
+  "modeler_description": "Airloops are dedicated to ventilation (DOAS) and have variable speed fan operation and hot and chilled water coils.  Conditioning is provided at the zone level with four pipe fan coils with cycling fan operation.  Chiller for DOAS and fan coils is water-cooled.  Packaged single zone systems have constant speed fan operation, gas furnace heating, and single speed DX cooling.",
+  "description": "Measure replaces existing HVAC system (if any) with a Fan Coil with DOAS HVAC system (one DOAS per floor).  The fan coil with DOAS system (centralized DOAS, with zone level conditioning) is applied to all space types except Cafeteria, Kitchen, Gym, and Auditorium; packaged single zone equipment is applied to those zones.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% K-12 AEDG.",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}

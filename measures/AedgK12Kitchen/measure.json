@@ -1,0 +1,34 @@
+{
+  "classname": "AedgK12Kitchen",
+  "name": "aedg_k12_kitchen",
+  "display_name": "AEDG K12 Kitchen",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "costTotalKitchenSystem",
+      "variable_type": "Double",
+      "name": "costTotalKitchenSystem",
+      "display_name": "Total Cost for Kitchen System",
+      "units": "$",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "numberOfStudents",
+      "variable_type": "Integer",
+      "name": "numberOfStudents",
+      "display_name": "Total Number of Students",
+      "units": null,
+      "description": null,
+      "default_value": 0
+    }
+  ],
+  "name_xml": "AEDG K12 Kitchen",
+  "uid": "92750b5a-7eb5-4df5-899f-c186c7c27935",
+  "version_id": "96d892e0-61cd-4885-9606-4795dfdb4d04",
+  "modeler_description": "Measure is only applied to kitchen space types.  All refrigeration systems are deleted (assumption is that refrigeration would only be needed for kitchen operations).  Gas and electric equipment are removed from kitchen spaces.  The largest kitchen space is selected as the representative space, to which AEDG recommended kitchen loads are applied.  Loads are applied on a per student basis.  The user can input number of students manually.  Otherwise, the measure will calculate the number of students from the classroom floor area.  If there is no classroom floor area, the user wil be required to specify a number of students.",
+  "description": "Measure replaces existing kitchen equipment (if any) with refrigeration, electric, and gas equipment that align with the kitchen equipment recommendations of the 50% K-12 AEDG.",
+  "tags": [
+    "Whole Building.Space Types"
+  ]
+}

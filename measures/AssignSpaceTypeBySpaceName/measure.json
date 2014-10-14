@@ -1,0 +1,45 @@
+{
+  "classname": "AssignSpaceTypeBySpaceName",
+  "name": "assign_space_type_by_space_name",
+  "display_name": "Assign Space Type by Space Name",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "search_string",
+      "variable_type": "String",
+      "name": "search_string",
+      "display_name": "String ot search for in space names",
+      "units": null,
+      "description": null
+    },
+    {
+      "local_variable": "space_type",
+      "variable_type": "Choice",
+      "name": "space_type",
+      "display_name": "Space type to assign to affected spaces",
+      "units": null,
+      "description": null,
+      "default_value": "<clear field>",
+      "choices": [
+        "<clear field>"
+      ]
+    },
+    {
+      "local_variable": "skip_already_assigned",
+      "variable_type": "Bool",
+      "name": "skip_already_assigned",
+      "display_name": "Skip spaces that already have hard assigned space types",
+      "units": null,
+      "description": null,
+      "default_value": false
+    }
+  ],
+  "name_xml": "AssignSpaceTypeBySpaceName",
+  "uid": "69ad41bb-cdfe-4a4c-a385-9efaf35b7c27",
+  "version_id": "06f8da63-d543-46b7-9785-e80361f2ae91",
+  "modeler_description": "When using this make sure the search string is specific enough so you don't inadvertently change other spaces. The search is case sensitive.",
+  "description": "Assign space type to spaces with names that include a user defined string. Optionally skip over spaces that already have space types assigned directly to the space.",
+  "tags": [
+    "Whole Building.Space Types"
+  ]
+}

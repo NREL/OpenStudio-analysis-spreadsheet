@@ -1,0 +1,46 @@
+{
+  "classname": "AedgOfficeHvacRadiantDoas",
+  "name": "aedg_office_hvac_radiant_doas",
+  "display_name": "AEDG Office Hvac Radiant Doas",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "ceilingReturnPlenumSpaceType",
+      "variable_type": "Choice",
+      "name": "ceilingReturnPlenumSpaceType",
+      "display_name": "This space type should be part of a ceiling return air plenum",
+      "units": null,
+      "description": null,
+      "default_value": "We dont want a default, this is an optional argument",
+      "choices": [
+        "We dont want a default, this is an optional argument"
+      ]
+    },
+    {
+      "local_variable": "costTotalHVACSystem",
+      "variable_type": "Double",
+      "name": "costTotalHVACSystem",
+      "display_name": "Total Cost for HVAC System",
+      "units": "$",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "remake_schedules",
+      "variable_type": "Bool",
+      "name": "remake_schedules",
+      "display_name": "Apply recommended availability and ventilation schedules for air handlers",
+      "units": null,
+      "description": null,
+      "default_value": true
+    }
+  ],
+  "name_xml": "AEDG Office HVAC Radiant with DOAS",
+  "uid": "3d7edb7b-aeff-4a59-87f2-138766b48c11",
+  "version_id": "ca187ca1-3445-473a-9bb2-d2155909ed5f",
+  "modeler_description": "Airloops are dedicated to ventilation (DOAS) and have constant speed fan operation, hot water coil heating, and single speed DX cooling.  Conditioning is provided at the zone level with low temperature radiant, high thermal mass floor slabs.  Chiller for DOAS and radiant cooling is air-cooled.",
+  "description": "Measure replaces existing HVAC system (if any) with a Radiant Heating and Cooling with DOAS HVAC system (one DOAS per floor).  The radiant with DOAS system (centralized DOAS, with zone level conditioning) is applied to all space types.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% Small and Medium Office AEDG.",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}
