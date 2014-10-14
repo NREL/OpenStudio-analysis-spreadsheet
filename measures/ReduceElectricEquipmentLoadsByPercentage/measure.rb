@@ -222,8 +222,21 @@ class ReduceElectricEquipmentLoadsByPercentage < OpenStudio::Ruleset::ModelUserS
     #report initial condition
     building = model.getBuilding
     building_equip_power = building.electricEquipmentPower
-    building_EPD =  unit_helper(building.electricEquipmentPowerPerFloorArea,"W/m^2","W/ft^2")
-    runner.registerInitialCondition("The model's initial building electric equipment power was  #{neat_numbers(building_equip_power,0)} watts, an electric equipment power density of #{neat_numbers(building_EPD)} w/ft^2.")
+
+    # test if edp can be calculated, need alternative initial and final condition if it cannot
+    building_EPD = nil
+    begin
+      building_EPD = building.electricEquipmentPowerPerFloorArea
+      rescue
+    end
+
+    if not building_EPD.nil?
+      building_EPD =  unit_helper(building.electricEquipmentPowerPerFloorArea,"W/m^2","W/ft^2")
+      runner.registerInitialCondition("The model's initial building electric equipment power was  #{neat_numbers(building_equip_power,0)} watts, an electric equipment power density of #{neat_numbers(building_EPD)} w/ft^2.")
+    else
+      # can't calculate EPD, building may not have surfaces
+      runner.registerInitialCondition("The model's initial building electric equipment power was  #{neat_numbers(building_equip_power,0)} watts.")
+    end
 
     #get space types in model
     if apply_to_building
@@ -348,7 +361,7 @@ class ReduceElectricEquipmentLoadsByPercentage < OpenStudio::Ruleset::ModelUserS
 
         #clone def if it has not already been cloned
         exist_def = space_equipment.electricEquipmentDefinition
-        if cloned_elecequip_defs.any? {|k,v| k.include? exist_def.name.get.to_s}
+        if not cloned_elecequip_defs[exist_def.name.get.to_s].nil?
           new_def = cloned_elecequip_defs[exist_def.name.get.to_s]
         else
           #clone rename and add to hash
@@ -395,8 +408,14 @@ class ReduceElectricEquipmentLoadsByPercentage < OpenStudio::Ruleset::ModelUserS
     #report final condition
     final_building = model.getBuilding
     final_building_equip_power = final_building.electricEquipmentPower
-    final_building_EPD =  unit_helper(final_building.electricEquipmentPowerPerFloorArea,"W/m^2","W/ft^2")
-    runner.registerFinalCondition("The model's final building electric equipment power was  #{neat_numbers(final_building_equip_power,0)} watts, an electric equipment power density of #{neat_numbers(final_building_EPD)} w/ft^2. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
+
+    # added if statement to have alt path if can't calculate lpd
+    if not building_EPD.nil?
+      final_building_EPD =  unit_helper(final_building.electricEquipmentPowerPerFloorArea,"W/m^2","W/ft^2")
+      runner.registerFinalCondition("The model's final building electric equipment power was  #{neat_numbers(final_building_equip_power,0)} watts, an electric equipment power density of #{neat_numbers(final_building_EPD)} w/ft^2. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
+    else
+      runner.registerFinalCondition("The model's final building electric equipment power was  #{neat_numbers(final_building_equip_power,0)} watts. Initial capital costs associated with the improvements are $#{neat_numbers(yr0_capital_totalCosts,0)}.")
+    end
 
     return true
 

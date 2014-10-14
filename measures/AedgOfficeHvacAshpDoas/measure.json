@@ -1,0 +1,46 @@
+{
+  "classname": "AedgOfficeHvacAshpDoas",
+  "name": "aedg_office_hvac_ashp_doas",
+  "display_name": "AEDG Office Hvac Ashp Doas",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "ceilingReturnPlenumSpaceType",
+      "variable_type": "Choice",
+      "name": "ceilingReturnPlenumSpaceType",
+      "display_name": "This space type should be part of a ceiling return air plenum",
+      "units": null,
+      "description": null,
+      "default_value": "We dont want a default, this is an optional argument",
+      "choices": [
+        "We dont want a default, this is an optional argument"
+      ]
+    },
+    {
+      "local_variable": "costTotalHVACSystem",
+      "variable_type": "Double",
+      "name": "costTotalHVACSystem",
+      "display_name": "Total Cost for HVAC System",
+      "units": "$",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "remake_schedules",
+      "variable_type": "Bool",
+      "name": "remake_schedules",
+      "display_name": "Apply recommended availability and ventilation schedules for air handlers",
+      "units": null,
+      "description": null,
+      "default_value": true
+    }
+  ],
+  "name_xml": "AEDG Office HVAC ASHP with DOAS",
+  "uid": "18c59c3c-d994-46a9-b3eb-39b983b93ef8",
+  "version_id": "a86998cc-b229-42e9-8f26-33c31f8f43db",
+  "modeler_description": "Airloops are dedicated to ventilation (DOAS) and have constant speed fan operation, gas furnace heating, and single speed DX cooling.  Conditioning is provided at the zone level with air sourced heat pumps with cycling fans.",
+  "description": "Measure replaces existing HVAC system (if any) with an Air Source Heat Pump (ASHP) with DOAS HVAC system (one DOAS per floor).  The ASHP with DOAS system (centralized DOAS, with zone level conditioning) is applied to all space types.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% Small and Medium Office AEDG.",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}

@@ -39,6 +39,7 @@ class RotateBuilding < OpenStudio::Ruleset::ModelUserScript
 
     #reporting initial condition of model
     building = model.getBuilding
+    runner.registerValue("orientation_initial",building.northAxis)
     runner.registerInitialCondition("The building's initial rotation was #{building.northAxis} degrees.")
 
     #report as not applicable if effective relative rotation is 0
@@ -65,6 +66,7 @@ class RotateBuilding < OpenStudio::Ruleset::ModelUserScript
     end
 
     #reporting final condition of model
+    runner.registerValue("orientation_final",building.northAxis)
     runner.registerFinalCondition("The building's final rotation is #{building.northAxis} degrees.")
 
     return true

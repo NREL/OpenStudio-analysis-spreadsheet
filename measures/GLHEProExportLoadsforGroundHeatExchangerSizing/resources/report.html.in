@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<title>Export Loads to GLHEPro</title>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dygraph/1.0.1/dygraph-combined.js"></script>
+
+<style type="text/css">
+.row{padding-top:30px;}
+</style>
+
+<script>
+// This variable will be an array of graph data
+var obj = <%= annualGraphData %>;
+
+// Create a timeseries graph of the heating and cooling data for each loop
+$(document).ready(function () {
+    $.each(obj, function (index, graphData) {
+        var graph = obj[index];
+
+        for (var i = 0; i < graph.timeseries.length; i++) {
+            graph.timeseries[i][0] = new Date(graph.timeseries[i][0]);
+        }
+        console.log(graph.timeseries);
+
+        $('#graphs').append('<div class="row jumbotron"><div id="stock_div_' + index + '" class="col-md-9"></div><div id="labels_div_' + index + '" class="col-md-3"></div></div>');
+
+        new Dygraph(document.getElementById('stock_div_' + index), graph.timeseries, {
+            title: graph.title,
+            xlabel: graph.xaxislabel,
+            ylabel: graph.yaxislabel,
+            labels: graph.labels,
+            colors: graph.colors,
+            labelsDiv: document.getElementById('labels_div_' + index),
+            labelsSeparateLines: true,
+            legend: "always",
+            showRangeSelector: true,
+            height: 320
+        });
+
+    });
+
+});
+
+</script>
+
+</head>
+<body>
+
+<div id = "graphs" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Export Loads to GLHEPro for Ground Heat Exchanger Sizing</h1>
+      <p>This measure has exported the heating and cooling loads for any heat pump loops in the model supplied by district heating and district cooling objects, the goal being to determine the required size of a ground heat exchanger.  A CSV of the hourly loads has been created, along with a .gt1 file of monthly peak loads and monthly energy.  This file can be imported into GLHEPro and used to size the ground heat exchanger as follows:</p>
+      <ol>
+        <li>Open GLHEPro (available <a href="http://www.hvac.okstate.edu/glhepro/">here</a>).</li>
+        <li>Loads &gt; Read Heat Pump Loads</li>
+        <li>Browse for the loads file in the run directory of the current model.  E.G. "../this_model/run/6-UserScript-0/mergedjob-0/Monthly Loads for Heat Pump Loop.gt1"</li>
+        <li>Confirm that the load values make sense</li>
+        <li>Enter the desired ground heat exchanger properties (see <a href="http://www.hvac.okstate.edu/glhepro/Manualv4.pdf">GLHEPro manual</a>)</li>
+        <li>Action &gt; G Function Creator</li>
+        <li>Select G-func Print Format &gt; Print EnergyPlus IDF File</li>
+        <li>Export the IDF file</li>
+        <li>Import the ground heat exhanger IDF back into your OpenStudio model using the Measure on BCL called "GLHEPro GFunction Import"</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Move the Y-Axis label out from underneath the Y-Axis values
+  $(document).ready(function () {
+    $(".dygraph-ylabel").parent().parent().css('left','-20px');  
+  });
+</script>
+
+</body>
+</html>

@@ -342,43 +342,57 @@ class ReduceNightTimeElectricEquipmentLoads < OpenStudio::Ruleset::ModelUserScri
         new_equip_sch.setName("#{equip_sch_name} NightLoadControl")
         reduced_equip_schs[equip_sch_name] = new_equip_sch
         new_equip_sch = new_equip_sch.to_ScheduleRuleset.get
+        
         #method to reduce the values in a day schedule to a give number before and after a given time
         def reduce_schedule(day_sch, before_hour, before_min, before_value, after_hour, after_min, after_value)
-            before_time = OpenStudio::Time.new(0, before_hour, before_min, 0)
-            after_time = OpenStudio::Time.new(0, after_hour, after_min, 0)
-            day_end_time = OpenStudio::Time.new(0, 24, 0, 0)
-            original_value_at_after_time = day_sch.getValue(after_time)
-            day_sch.addValue(before_time,before_value)
-            day_sch.addValue(after_time, original_value_at_after_time)
-            times = day_sch.times
-            values = day_sch.values
+          before_time = OpenStudio::Time.new(0, before_hour, before_min, 0)
+          after_time = OpenStudio::Time.new(0, after_hour, after_min, 0)
+          day_end_time = OpenStudio::Time.new(0, 24, 0, 0)
+          
+          # Special situation for when start time and end time are equal,
+          # meaning that a 24hr reduction is desired
+          if before_time == after_time
             day_sch.clearValues
+            day_sch.addValue(day_end_time, after_value)
+            return
+          end
 
-            new_times = []
-            new_values = []
-            for i in 0..(values.length - 1)
-              if times[i] >= before_time and times[i] <= after_time
-                new_times << times[i]
-                new_values << values[i]
-              end
+          original_value_at_after_time = day_sch.getValue(after_time)
+          day_sch.addValue(before_time,before_value)
+          day_sch.addValue(after_time, original_value_at_after_time)
+          times = day_sch.times
+          values = day_sch.values
+          day_sch.clearValues
+
+          new_times = []
+          new_values = []
+          for i in 0..(values.length - 1)
+            if times[i] >= before_time and times[i] <= after_time
+              new_times << times[i]
+              new_values << values[i]
             end
+          end
 
-            #add the value for the time period from after time to end of the day
-            new_times << day_end_time
-            new_values << after_value
+          #add the value for the time period from after time to end of the day
+          new_times << day_end_time
+          new_values << after_value
 
-            for i in 0..(new_values.length - 1)
-              day_sch.addValue(new_times[i], new_values[i])
-            end
+          for i in 0..(new_values.length - 1)
+            day_sch.addValue(new_times[i], new_values[i])
+          end
+        end #end reduce schedule
 
-          end #end reduce schedule
-
-        #reduce default schedule and weekdays
+        # Reduce default day schedules
+        if new_equip_sch.scheduleRules.size == 0
+          runner.registerWarning("Schedule '#{new_equip_sch.name}' applies to all days.  It has been treated as a Weekday schedule.")
+        end
+        reduce_schedule(new_equip_sch.defaultDaySchedule, wk_before_hour, wk_before_min, wk_before_value, wk_after_hour, wk_after_min, wk_after_value)
+        
+        #reduce weekdays
         new_equip_sch.scheduleRules.each do |sch_rule|
           if apply_weekday
             if sch_rule.applyMonday or sch_rule.applyTuesday or sch_rule.applyWednesday or sch_rule.applyThursday or sch_rule.applyFriday
               reduce_schedule(sch_rule.daySchedule, wk_before_hour, wk_before_min, wk_before_value, wk_after_hour, wk_after_min, wk_after_value)
-              reduce_schedule(new_equip_sch.defaultDaySchedule, wk_before_hour, wk_before_min, wk_before_value, wk_after_hour, wk_after_min, wk_after_value)
             end
           end
         end
@@ -387,7 +401,7 @@ class ReduceNightTimeElectricEquipmentLoads < OpenStudio::Ruleset::ModelUserScri
         new_equip_sch.scheduleRules.each do |sch_rule|
           if apply_saturday and sch_rule.applySaturday
             if sch_rule.applyMonday or sch_rule.applyTuesday or sch_rule.applyWednesday or sch_rule.applyThursday or sch_rule.applyFriday
-              runner.registerWarning("Rule #{sch_rule.name} for schedule '#{new_equip_sch.name}' was already edited for weekdays. It also applies to Saturdays but will follow setup values for weekdays.")
+              runner.registerWarning("Rule '#{sch_rule.name}' for schedule '#{new_equip_sch.name}' applies to both Saturdays and Weekdays.  It has been treated as a Weekday schedule.")
             else
               reduce_schedule(sch_rule.daySchedule, sat_before_hour, sat_before_min, sat_before_value, sat_after_hour, sat_after_min, sat_after_value)
             end
@@ -398,9 +412,9 @@ class ReduceNightTimeElectricEquipmentLoads < OpenStudio::Ruleset::ModelUserScri
         new_equip_sch.scheduleRules.each do |sch_rule|
           if apply_sunday and sch_rule.applySunday
             if sch_rule.applyMonday or sch_rule.applyTuesday or sch_rule.applyWednesday or sch_rule.applyThursday or sch_rule.applyFriday
-              runner.registerWarning("Rule #{sch_rule.name} for schedule '#{new_equip_sch.name}' was already edited for weekdays. It also applies to Saturdays but will follow setup values for weekdays.")
+              runner.registerWarning("Rule '#{sch_rule.name}' for schedule '#{new_equip_sch.name}' applies to both Sundays and Weekdays.  It has been  treated as a Weekday schedule.")
             elsif sch_rule.applySaturday
-              runner.registerWarning("Rule #{sch_rule.name} for schedule '#{new_equip_sch.name}' was already edited for saturdays. It also applies to Sundays but will follow setup values for weekdays.")
+              runner.registerWarning("Rule '#{sch_rule.name}' for schedule '#{new_equip_sch.name}' applies to both Saturdays and Sundays.  It has been treated as a Saturday schedule.")
             else
               reduce_schedule(sch_rule.daySchedule, sun_before_hour, sun_before_min, sun_before_value, sun_after_hour, sun_after_min, sun_after_value)
             end

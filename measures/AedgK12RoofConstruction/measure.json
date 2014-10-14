@@ -1,0 +1,34 @@
+{
+  "classname": "AedgK12RoofConstruction",
+  "name": "aedg_k12_roof_construction",
+  "display_name": "AEDG K12 Roof Construction",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "material_cost_insulation_increase_ip",
+      "variable_type": "Double",
+      "name": "material_cost_insulation_increase_ip",
+      "display_name": "Increase Cost per Area of Construction Where Insulation was Improved",
+      "units": "$/ft^2",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "material_cost_sri_increase_ip",
+      "variable_type": "Double",
+      "name": "material_cost_sri_increase_ip",
+      "display_name": "Increase Cost per Area of Construction Where Solar Reflectance Index  was Improved",
+      "units": "SRI",
+      "description": null,
+      "default_value": 0.0
+    }
+  ],
+  "name_xml": "AEDG K12 - Roof Construction",
+  "uid": "04f0c955-4885-4974-9930-13601f375d20",
+  "version_id": "55f92668-08e8-41f5-af3a-5f92a0b14709",
+  "modeler_description": "Relevant construction types are identified below. \r\n- Insulation entirely above deck (IEAD)\r\n- Attic\r\n- Metal building",
+  "description": "This measure will modify existing roof insulation levels and Solar Reflective Index (SRI) values based on roof type and climate zone. The roof type and climate zone should be set in the model prior to using this measure. If your model uses an attic, all attic surfaces should have an \"Attic' intended surface type. For attics it doesn't matter what you put for \"Standards Construction Type\". The measure will check attic insulation where the attic is adjacent to other not attic spaces.",
+  "tags": [
+    "Envelope.Opaque"
+  ]
+}

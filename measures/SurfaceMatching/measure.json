@@ -1,0 +1,17 @@
+{
+  "classname": "SurfaceMatching",
+  "name": "surface_matching",
+  "display_name": "Surface Matching",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ],
+  "name_xml": "Surface Matching",
+  "uid": "2def6daf-99c1-475d-b6b4-44f292e7e1ab",
+  "version_id": "d12cf8d0-af18-4b41-921e-d1a4ab265011",
+  "modeler_description": "The boundary condition will be changed to surface adn the surfaces will refer to each other.",
+  "description": "This will look for surfaces in adjacent spaces with similar geometry and create thermal connections between them.",
+  "tags": [
+    "Envelope.Form"
+  ]
+}

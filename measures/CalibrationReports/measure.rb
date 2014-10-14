@@ -10,18 +10,18 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
   end
 
   #define the arguments that the user will input
-  def arguments
+  def arguments()
     args = OpenStudio::Ruleset::OSArgumentVector.new
 
     return args
-  end
+  end #end the arguments method
 
   #define what happens when the measure is run
   def run(runner, user_arguments)
     super(runner, user_arguments)
 
     #use the built-in error checking
-    if not runner.validateUserArguments(arguments, user_arguments)
+    if not runner.validateUserArguments(arguments(), user_arguments)
       return false
     end
 
@@ -46,7 +46,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     #building_name = model.getBuilding.name.get
 
     web_asset_path = OpenStudio::getSharedResourcesPath() / OpenStudio::Path.new("web_assets")
-
+    
     energy = ""
 
     calibrationGuidelines = OpenStudio::Model::UtilityBill::calibrationGuidelines
@@ -94,7 +94,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     energy << ";\n"
 
     energyElec = "var consumption = {\n\t\"Electricity Consumption\":{\n\t\t\"units\":\"kWh\",\n"
-    energyDemand = "\t\"Electricity Demand\":{\n\t\t\"units\":\"kW\",\n"
+    energyDemand =  "\t\"Electricity Demand\":{\n\t\t\"units\":\"kW\",\n"
     energyGas = "\t\"Natural Gas Consumption\":{\n\t\t\"units\":\"therms\",\n"
     tempStartDate = ""
     tempEndDate = ""
@@ -105,7 +105,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     elecActualConsumption = "\t\t\t\t\"Actual\":["
     elecModelConsumption = "\t\t\t\t\"Model\":["
     actualPeakDemand = "\t\t\t\t\"Actual\":["
-    modelPeakDemand = "\t\t\t\t\"Model\":["
+    modelPeakDemand = "\t\t\t\t\"Model\":[" 
     gasActualConsumption = "\t\t\t\t\"Actual\":["
     gasModelConsumption = "\t\t\t\t\"Model\":["
     elecNMBE = "\t\t\t\t\"NMBE\":["
@@ -119,7 +119,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     if runPeriod.empty?
       runner.registerError("Model has no run period.")
     end
-
+    
     # must have a calendarYear
     yearDescription = model.yearDescription
     if yearDescription.empty?
@@ -129,13 +129,13 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     if calendarYear.empty?
       runner.registerError("Model has no calendar year.")
     end
-
+    
     model.getUtilityBills.each do |utilityBill|
 
       cvrsme = 0.0
       if not utilityBill.CVRMSE.empty?
         cvrsme = utilityBill.CVRMSE.get
-        cvrsme = sprintf "%.2f", cvrsme
+        cvrsme =  sprintf "%.2f", cvrsme
       end
 
       nmbe = 0.0
@@ -164,7 +164,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
         tempStartDate = "\"" << billingPeriod.startDate.monthOfYear.value.to_s
         tempStartDate << "/"
         tempStartDate << billingPeriod.startDate.dayOfMonth.to_s << "\""
-        tempEndDate = "\"" <<billingPeriod.endDate.monthOfYear.value.to_s
+        tempEndDate =  "\"" <<billingPeriod.endDate.monthOfYear.value.to_s
         tempEndDate << "/"
         tempEndDate << billingPeriod.endDate.dayOfMonth.to_s << "\""
 
@@ -215,7 +215,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
             demandNMBE << "0"
           end
           demandNMBE << ","
-
+          
           if not billingPeriod.consumption.empty? and not billingPeriod.modelConsumption.empty? and not billingPeriod.consumption.get == 0
             percent = 100 * ((billingPeriod.modelConsumption.get / consumptionUnitConversionFactor) - billingPeriod.consumption.get) / billingPeriod.consumption.get
             percent = sprintf "%.2f", percent
@@ -277,7 +277,7 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     demandNMBE << "]\n"
     energyElec << elecStartDate << elecEndDate << elecActualConsumption << elecModelConsumption << elecNMBE
     energyElec << "\t\t}\n" << "\t},\n"
-
+    
     energyDemand << elecStartDate << elecEndDate << actualPeakDemand << modelPeakDemand << demandNMBE
     energyDemand << "\t\t}\n" << "\t},\n"
 
@@ -302,9 +302,9 @@ class CalibrationReports < OpenStudio::Ruleset::ReportingUserScript
     # read in template
     html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.in"
     if File.exist?(html_in_path)
-      html_in_path = html_in_path
+        html_in_path = html_in_path
     else
-      html_in_path = "#{File.dirname(__FILE__)}/report.html.in"
+        html_in_path = "#{File.dirname(__FILE__)}/report.html.in"
     end
     html_in = ""
     File.open(html_in_path, 'r') do |file|

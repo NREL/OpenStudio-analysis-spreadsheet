@@ -109,7 +109,7 @@
   ],
   "name_xml": "Set COP for Two Speed DX Cooling Units",
   "uid": "ab217b3b-4eac-4e3c-90a3-ab8800b50cfb",
-  "version_id": "e2c11c25-6514-4b93-822c-fd5cf78401da",
+  "version_id": "7a7f0317-6e9b-4275-a3cc-b9438b7fa82d",
   "modeler_description": "Loop through air loops in the building and find and change the COP of any OS:Coil:Cooling:DX:TwoSpeed objects you find. Note the pre-adjusted COP and also the name of the loop. For the starting condition note the range of COP values for the units, and for the final condition do the same, to confirm that they were all changed.",
   "description": "This measure will find two speed DX cooling units in the model and will alter the Rated HighSpeed COP to a specified value. It can be run on a single or all air loops in the model.",
   "tags": [

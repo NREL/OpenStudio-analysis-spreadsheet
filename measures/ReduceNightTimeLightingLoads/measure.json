@@ -153,9 +153,9 @@
   ],
   "name_xml": "Reduce Night Time Lighting Loads",
   "uid": "93461778-59a1-49ca-8bbb-f4b939e4a9d8",
-  "version_id": "aede35f7-eabb-46e2-b754-8e90b0e03a01",
-  "modeler_description": "Make an array of space types to alter lighting schedules for. Clone and then edit the schedules. The rules will be edited based on the user arguments.  Summer and winter design day profiles will not be altered. Quantity for cost is calculated by looking at number of instances and quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.",
-  "description": "This measure lets you set the lighting schedule profile values for a specific time of day, and for specific days of the week.  This can be run across the entire model or a specific space type. Cost can be added per each light object.",
+  "version_id": "4480385a-f29e-46ce-925c-80811339a7eb",
+  "modeler_description": "This measure sets fractional lighting schedule values for all instances of the selected lights definition for a specific time of day and for specific days of the week.  The new schedules values are based on the user arguments. Summer and winter design day profiles will not be altered.  This measure clones the existing schedules, modifies them, then assigns these modified schedules to the lights instances. Costs can be added per each lights object.  Quantity for costing is calculated by looking at number of instances and their quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.",
+  "description": "Many buildings have lights that run unnecessarily at night.  Turning these lights off at night can provide energy savings without impacting the day-to-day operation of the building occupants.  Implementing this change may require coordination with after-hours cleaning and maintenance crews.",
   "tags": [
     "Electric Lighting.Electric Lighting Controls"
   ]

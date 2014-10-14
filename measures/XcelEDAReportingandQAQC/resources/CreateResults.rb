@@ -299,17 +299,76 @@ def create_results()
             end
           end
       
+          # Setup the Xcel peak demand time window
+          # in the months of June thru September
+          # between 2 am and 6 pm
+          # Per Jen Elling on 8.7.2014, it is ok NOT TO EXCLUDE weekends
+          # and holidays. Excluding them is currently difficult because 
+          # of an OS bug, and she did not think it was worth the effort to fix.
+          # This will only impact corner-case buildings that have
+          # peak demand on weekends or holidays, which is unusual.
+          june_first = OpenStudio::DateTime.new(OpenStudio::Date.new(OpenStudio::MonthOfYear.new("June"), 1), OpenStudio::Time.new(0, 0, 0, 0))
+          sept_thirtieth = OpenStudio::DateTime.new(OpenStudio::Date.new(OpenStudio::MonthOfYear.new("September"), 30), OpenStudio::Time.new(0, 24, 0, 0))
+          two_am = OpenStudio::Time.new(0, 2, 0, 0)
+          six_pm = OpenStudio::Time.new(0, 18, 0, 0)
+          
           #electricity_peak_demand
-          electricity_peak_demand = 0.0
+          electricity_peak_demand = -1.0
+          electricity_peak_demand_time = nil
           elec = @sql.timeSeries(ann_env_pd, "Zone Timestep", "Electricity:Facility", "")
           #deduce the timestep based on the hours simulated and the number of datapoints in the timeseries
           if elec.is_initialized
-            elec_peak_demand_timestep_J = OpenStudio::Quantity.new(OpenStudio::maximum(elec.get.values), joule_unit)
-            num_int = elec.get.values.size
+            elec = elec.get            
+            num_int = elec.values.size
+            int_len_hrs = OpenStudio::Quantity.new(hrs_sim/num_int, hrs_unit)
+            
+            # Put timeseries into array
+            elec_vals = []
+            ann_elec_vals = elec.values
+            for i in 0..(ann_elec_vals.size - 1)
+              elec_vals << ann_elec_vals[i]
+            end            
+ 
+            # Put values into array
+            elec_times = []
+            ann_elec_times = elec.dateTimes
+            for i in 0..(ann_elec_times.size - 1)
+              elec_times << ann_elec_times[i]
+            end
+                        
+            # Loop through the time/value pairs and find the peak
+            # excluding the times outside of the Xcel peak demand window
+            elec_times.zip(elec_vals).each do |date_time, val|
+              time = date_time.time
+              date = date_time.date
+              day_of_week = date.dayOfWeek
+              # Convert the peak demand to kW
+              val_J_per_hr = val/int_len_hrs.value
+              val_kW = OpenStudio::convert(val_J_per_hr, "J/h", "kW").get
+              
+              #puts("#{val_kW}kW; #{date}; #{time}; #{day_of_week.valueName}")
+              
+              # Skip times outside of the correct months
+              next if date_time < june_first || date_time > sept_thirtieth
+              # Skip times before 2am and after 6pm
+              next if time < two_am || time > six_pm
+              
+              #puts("VALID #{val_kW}kW; #{date}; #{time}; #{day_of_week.valueName}")
+              
+              # Check peak demand against this timestep
+              # and update if this timestep is higher.
+              if val > electricity_peak_demand
+                electricity_peak_demand = val
+                electricity_peak_demand_time = date_time
+              end
+            end
+            elec_peak_demand_timestep_J = OpenStudio::Quantity.new(electricity_peak_demand, joule_unit)
+            num_int = elec.values.size
             int_len_hrs = OpenStudio::Quantity.new(hrs_sim/num_int, hrs_unit)
             elec_peak_demand_hourly_J_per_hr = elec_peak_demand_timestep_J/int_len_hrs
             electricity_peak_demand = OpenStudio::convert(elec_peak_demand_hourly_J_per_hr, kilowatt_unit).get.value
             demand_elems << OpenStudio::Attribute.new("electricity_peak_demand", electricity_peak_demand, "kW")
+            @runner.registerInfo("Peak Demand = #{electricity_peak_demand}kW on #{electricity_peak_demand_time}")
           else
             demand_elems << OpenStudio::Attribute.new("electricity_peak_demand", 0.0, "kW")
           end
@@ -327,16 +386,62 @@ def create_results()
           end
         
           #district_cooling_peak_demand
-          district_cooling_peak_demand = 0.0
+          district_cooling_peak_demand = -1.0
+          ann_dist_clg_peak_demand_time = nil
           dist_clg = @sql.timeSeries(ann_env_pd, "Zone Timestep", "DistrictCooling:Facility", "")
           #deduce the timestep based on the hours simulated and the number of datapoints in the timeseries
           if dist_clg.is_initialized
-            dist_clg_peak_demand_timestep_J = OpenStudio::Quantity.new(OpenStudio::maximum(dist_clg.get.values), joule_unit)
-            num_int = dist_clg.get.values.size
-            int_len_hrs = OpenStudio::Quantity.new( hrs_sim/num_int, hrs_unit)
+            dist_clg = dist_clg.get            
+            num_int = dist_clg.values.size
+            int_len_hrs = OpenStudio::Quantity.new(hrs_sim/num_int, hrs_unit)
+            
+            # Put timeseries into array
+            dist_clg_vals = []
+            ann_dist_clg_vals = dist_clg.values
+            for i in 0..(ann_dist_clg_vals.size - 1)
+              dist_clg_vals << ann_dist_clg_vals[i]
+            end            
+ 
+            # Put values into array
+            dist_clg_times = []
+            ann_dist_clg_times = dist_clg.dateTimes
+            for i in 0..(ann_dist_clg_times.size - 1)
+              dist_clg_times << ann_dist_clg_times[i]
+            end
+                        
+            # Loop through the time/value pairs and find the peak
+            # excluding the times outside of the Xcel peak demand window
+            dist_clg_times.zip(dist_clg_vals).each do |date_time, val|
+              time = date_time.time
+              date = date_time.date
+              day_of_week = date.dayOfWeek
+              # Convert the peak demand to kW
+              val_J_per_hr = val/int_len_hrs.value
+              val_kW = OpenStudio::convert(val_J_per_hr, "J/h", "kW").get
+              
+              #puts("#{val_kW}kW; #{date}; #{time}; #{day_of_week.valueName}")
+              
+              # Skip times outside of the correct months
+              next if date_time < june_first || date_time > sept_thirtieth
+              # Skip times before 2am and after 6pm
+              next if time < two_am || time > six_pm
+              
+              #puts("VALID #{val_kW}kW; #{date}; #{time}; #{day_of_week.valueName}")
+              
+              # Check peak demand against this timestep
+              # and update if this timestep is higher.
+              if val > district_cooling_peak_demand
+                district_cooling_peak_demand = val
+                ann_dist_clg_peak_demand_time = date_time
+              end
+            end
+            dist_clg_peak_demand_timestep_J = OpenStudio::Quantity.new(district_cooling_peak_demand, joule_unit)
+            num_int = dist_clg.values.size
+            int_len_hrs = OpenStudio::Quantity.new(hrs_sim/num_int, hrs_unit)
             dist_clg_peak_demand_hourly_J_per_hr = dist_clg_peak_demand_timestep_J/int_len_hrs
             district_cooling_peak_demand = OpenStudio::convert(dist_clg_peak_demand_hourly_J_per_hr, kilowatt_unit).get.value
             demand_elems << OpenStudio::Attribute.new("district_cooling_peak_demand", district_cooling_peak_demand, "kW")
+            @runner.registerInfo("District Cooling Peak Demand = #{district_cooling_peak_demand}kW on #{ann_dist_clg_peak_demand_time}")
           else
             demand_elems << OpenStudio::Attribute.new("district_cooling_peak_demand", 0.0, "kW")
           end

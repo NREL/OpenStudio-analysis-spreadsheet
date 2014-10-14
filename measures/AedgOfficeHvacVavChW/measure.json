@@ -1,0 +1,46 @@
+{
+  "classname": "AedgOfficeHvacVavChW",
+  "name": "aedg_office_hvac_vav_ch_w",
+  "display_name": "AEDG Office Hvac Vav Ch W",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "ceilingReturnPlenumSpaceType",
+      "variable_type": "Choice",
+      "name": "ceilingReturnPlenumSpaceType",
+      "display_name": "This space type should be part of a ceiling return air plenum",
+      "units": null,
+      "description": null,
+      "default_value": "We dont want a default, this is an optional argument",
+      "choices": [
+        "We dont want a default, this is an optional argument"
+      ]
+    },
+    {
+      "local_variable": "costTotalHVACSystem",
+      "variable_type": "Double",
+      "name": "costTotalHVACSystem",
+      "display_name": "Total Cost for HVAC System",
+      "units": "$",
+      "description": null,
+      "default_value": 0.0
+    },
+    {
+      "local_variable": "remake_schedules",
+      "variable_type": "Bool",
+      "name": "remake_schedules",
+      "display_name": "Apply recommended availability and ventilation schedules for air handlers",
+      "units": null,
+      "description": null,
+      "default_value": true
+    }
+  ],
+  "name_xml": "AEDG Office HVAC VAV with Chilled Water Cooling",
+  "uid": "28e4e4fb-a10a-4f85-82f9-c4ad2dd3cf12",
+  "version_id": "f33d2dfa-e4ec-4790-87f7-ca59efc1796b",
+  "modeler_description": "Airloops are dedicated to the multizone VAV cooling system and have variable speed fan operation, hot water coil heating, and chilled water coil cooling.  The cold deck has outdoor air reset on the supply air temperature.  Heating is provided at the zone level with hot water baseboard heaters.  The chiller for the VAV is air-cooled.",
+  "description": "Measure replaces existing HVAC system (if any) with a high efficiency multizone variable air volume (VAV) HVAC system (one system per floor).  The multizone VAV system (centralized cooling with zone level heating) is applied to all space types.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% Small and Medium Office AEDG.",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}

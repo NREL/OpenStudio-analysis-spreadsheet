@@ -164,11 +164,11 @@ class SetCOPforTwoSpeedDXCoolingUnits < OpenStudio::Ruleset::ModelUserScript
       runner.registerWarning("The requested Rated High Speed COP of #{cop_high} seems unusually high")
     end
     if cop_low <= 0
-      runner.registerError("Please enter a positive value for Rated High Speed COP.")
+      runner.registerError("Please enter a positive value for Rated Low Speed COP.")
       return false
     end
     if cop_low > 10
-      runner.registerWarning("The requested Rated High Speed COP of #{cop_low} seems unusually high")
+      runner.registerWarning("The requested Rated Low Speed COP of #{cop_low} seems unusually high")
     end
 
     #set flags to use later

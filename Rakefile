@@ -18,7 +18,7 @@ CLEAN.include("*.pem", "./projects/*.json", "*.json")
 def get_project(excel_file="")
   # If excel_file is not pre-specified, request it as input
   unless excel_file && !excel_file.empty?
-    # Determine the project file to run.  This will list out all the xlsx files and give you a 
+    # Determine the project file to run.  This will list out all the xlsx files and give you a
     # choice from which to choose
     puts
     puts "Select which project to run from the list below:".cyan.underline
@@ -35,10 +35,10 @@ def get_project(excel_file="")
       puts "Could not process your selection. You entered '#{n}'".red
       exit
     end
-    
+
     excel_file = projects[n_i-1]
   end
-  
+
   # Open it
   excel = nil
   if excel_file && File.exists?(excel_file)
@@ -64,23 +64,23 @@ Or run `rake clean`".red
     puts "Validating cluster options".cyan
 
     if excel.settings['worker_nodes'].to_i == 0
-      puts 'Number of workers set to zero'.red
-      exit 1
+      puts 'Number of workers set to zero... will continue'.cyan
     end
 
     puts "Number of worker nodes set to #{excel.settings['worker_nodes'].to_i}".cyan
     puts "Starting cluster...".cyan
-    
+
     # Don't use the old API (Version 1)
     aws_options = {
         ami_lookup_version: 2,
         openstudio_server_version: excel.settings['openstudio_server_version']
     }
     aws = OpenStudio::Aws::Aws.new(aws_options)
-    
+
     server_options = {
         instance_type: excel.settings["server_instance_type"],
-        user_id: excel.settings["user_id"]
+        user_id: excel.settings["user_id"],
+        tags: excel.aws_tags
         # aws_key_pair_name: 'custom_key',
         # private_key_file_name: File.expand_path('~/.ssh/private_key')
         # optional -- will default later
@@ -89,10 +89,13 @@ Or run `rake clean`".red
 
     worker_options = {
         instance_type: excel.settings["worker_instance_type"],
-        user_id: excel.settings["user_id"]
+        user_id: excel.settings["user_id"],
+        tags: excel.aws_tags
         # aws_key_pair_name: 'custom_key',
         # private_key_file_name: File.expand_path('~/.ssh/private_key')
     }
+
+    start_time = Time.now
 
     # Create the server & worker
     aws.create_server(server_options, "#{excel.cluster_name}.json")
@@ -101,7 +104,8 @@ Or run `rake clean`".red
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the
     server_dns = "http://#{aws.os_aws.server.data.dns}"
 
-    puts "Cluster setup and awaiting analyses. IP address #{server_dns}".cyan
+    puts "Cluster setup in #{(Time.now - start_time).round} seconds. Awaiting analyses.".cyan
+    puts "Server IP address #{server_dns}".cyan
   end
 end
 
@@ -113,7 +117,7 @@ def configure_target_server(excel, target)
     server_dns = "http://localhost:8080"
   when "nrel12"
     server_dns = "http://bball-129913.nrel.gov:8080"
-  when "nrel24"  
+  when "nrel24"
     server_dns = "http://bball-130449.nrel.gov:8080"
   when "aws"
     if File.exists?("#{excel.cluster_name}.json")
@@ -125,7 +129,7 @@ end
 
 def unzip_archive(archive, dest)
   # Unzip an archive to a destination directory using Rubyzip gem
-  
+
   # Adapted from examples at...
   #  https://github.com/rubyzip/rubyzip
   #  http://seenuvasan.wordpress.com/2010/09/21/unzip-files-using-ruby/
@@ -140,10 +144,10 @@ end
 
 def run_analysis(excel, target="aws", download=false)
   puts "Running the analysis"
-  
+
   # Which server?
   server_dns = configure_target_server(excel, target)
-  
+
   # Run the analysis
   if server_dns
     # for each model in the excel file submit the analysis
@@ -152,7 +156,7 @@ def run_analysis(excel, target="aws", download=false)
       formulation_file = "./analysis/#{model[:name]}.json"
       analysis_zip_file = "./analysis/#{model[:name]}.zip"
 
-      # Project data 
+      # Project data
       options = {hostname: server_dns}
       api = OpenStudio::Analysis::ServerApi.new(options)
 
@@ -203,12 +207,12 @@ def run_analysis(excel, target="aws", download=false)
         }
         api.run_analysis(analysis_id, run_options)
       end
-      
+
       # Report some useful info
       puts
       puts "Analysis type is: #{excel.problem['analysis_type']}".bold.cyan
       puts "Server URL is: #{server_dns}".bold.cyan
-    
+
       # If download option selected:
       # a. Monitor for completiong
       # b. Download results (R data frame and data point .zips) to ./results/#{analysis_id}
@@ -216,11 +220,11 @@ def run_analysis(excel, target="aws", download=false)
       if download
         puts
         puts "Waiting to download analysis results... ".cyan
-        
+
         # These are hard coded for now...
         check_interval = 15 # sec
         max_time = 3600     # sec
-        
+
         Timeout::timeout(max_time) {
           begin
             # Monitor the server and wait for it to respond
@@ -229,11 +233,11 @@ def run_analysis(excel, target="aws", download=false)
               status = api.get_analysis_status(analysis_id, 'batch_run')
               if status && status == 'completed'
                 puts "analysis completed!"
-                
+
                 out_dir = "./results/#{analysis_id}"
                 FileUtils.mkdir_p(out_dir)
                 puts "Download directory is: #{out_dir}"
-                
+
                 # Download R data frame
                 puts
                 puts "Downloading R data frame...".cyan
@@ -243,7 +247,7 @@ def run_analysis(excel, target="aws", download=false)
                 else
                   puts "Error downloading R data frame."
                 end
-                
+
                 # Download all the datapoints
                 data_points = api.get_datapoint_status(analysis_id, 'completed')
                 puts
@@ -256,7 +260,7 @@ def run_analysis(excel, target="aws", download=false)
                     if dp[:final_message] == 'completed normal'
                       puts "\tDownloading data point #{dp[:_id]}"
                       ok, f = api.download_datapoint(dp[:_id], out_dir)
-                      
+
                       if ok
                         puts "\tExtracting data point #{dp[:_id]}"
                         dest = File.join(File.dirname(f), File.basename(f, ".zip"))
@@ -265,13 +269,13 @@ def run_analysis(excel, target="aws", download=false)
                       else
                         puts "\tError downloading data point #{dp[:_id]}"
                       end
-                      
+
                     else
                       puts "\tError found in data point #{dp[:_id]}"
                     end
                   end
                 end
-                
+
                 # Clean up project
                 puts
                 puts "Cleaning up...".cyan
@@ -282,7 +286,7 @@ def run_analysis(excel, target="aws", download=false)
 
               sleep check_interval
             end
-            
+
           # On timeout...
           rescue TimeoutError => e
             puts "Time expired before analysis completed! Download aborted.".bold.red
@@ -290,11 +294,11 @@ def run_analysis(excel, target="aws", download=false)
         }
       end
     end
-    
+
     # Final stuff
     if target.downcase == "aws"
       puts
-      puts "Make sure to check the AWS console and terminate any jobs when you are finished!".bold.red
+      puts "Make sure to check the AWS console (N. Virginia Region) and terminate any OpenStudio instances when you are finished!".bold.red
     end
   else
     puts "There doesn't appear to be a cluster running for this project #{excel.cluster_name}"
@@ -375,7 +379,7 @@ task :delete_all do
     json = JSON.parse(File.read("server_data.json"), :symbolize_names => true)
     server_dns = "http://#{json[:server][:dns]}"
 
-    # Project data 
+    # Project data
     options = {hostname: server_dns}
     api = OpenStudio::Analysis::ServerApi.new(options)
     api.delete_all
@@ -389,7 +393,7 @@ task :delete_all_vagrant do
   # parse the file and check if the instance appears to be up
   server_dns = "http://localhost:8080"
 
-  # Project data 
+  # Project data
   options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
   api.delete_all
@@ -405,7 +409,7 @@ task :create_measure_csv do
   require 'bcl'
 
   b = BCL::ComponentMethods.new
-  new_csv_file = "./doc/local_measures.csv"
+  new_csv_file = "./measures/local_measures.csv"
   FileUtils.rm_f(new_csv_file) if File.exists?(new_csv_file)
   csv = CSV.open(new_csv_file, "w")
   Dir.glob("./**/measure.json").each do |file|
@@ -433,8 +437,7 @@ end
 
 desc "update measure.xml files"
 task :update_measure_xmls do
-
-  begin 
+  begin
     require 'openstudio'
     require 'git'
 
@@ -443,15 +446,14 @@ task :update_measure_xmls do
     #g.status.untracked.each do |u|
     #  puts u
     #end
-        
+
     os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion)
     min_os_version = OpenStudio::VersionString.new("1.4.0")
     if os_version >= min_os_version
       Dir['./**/measure.rb'].each do |m|
-        
+
         # DLM: todo, check for untracked files in this directory and do not compute checksums if they exist
-        
-        measure = OpenStudio::BCLMeasure::load(OpenStudio::Path.new("#{File.dirname(m)}"))
+        measure = OpenStudio::BCLMeasure.load(OpenStudio::Path.new("#{File.dirname(m)}"))
         if measure.empty?
           puts "Directory #{m} is not a measure"
         else
@@ -461,26 +463,41 @@ task :update_measure_xmls do
         end
       end
     end
-    
+
   rescue LoadError
     puts 'Cannot require openstudio or git'
   end
-
 end
+
+# desc "terminate any running instances on AWS"
+# task :terminate do
+#   if @data[:location].upcase == 'AWS'
+#     puts "    Destroying Worker Nodes in Group #{@data[:group_id]}".red
+#     @aws.terminate_instances(@data[:workers].map { |w| w[:id] })
+#   end
+#
+#   puts "Log into the AWS console and verify that the instances have terminated".bold.red
+# end
 
 desc "update measures from BCL"
 task :update_measures do
   require 'bcl'
 
-  FileUtils.mkdir_p("./measures")
+  # Blow away existing measures if they exist
+  #FileUtils.rm_rf("measures") if Dir.exist? 'measures'
+
+  FileUtils.mkdir_p("measures")
 
   bcl = BCL::ComponentMethods.new
   bcl.parsed_measures_path = "./measures"
   bcl.login # have to do this even if you don't set your username to get a session
 
   query = 'NREL%20PNNL%2BBCL%2BGroup'
-  success = bcl.measure_metadata(query, nil, true)
-
+  begin
+  	success = bcl.measure_metadata(query, nil, true)
+  rescue => e
+  	puts "[ERROR] downloading new measure. #{e.message}"
+  end
 
   # delete the test files
   Dir.glob("#{bcl.parsed_measures_path}/**/tests").each do |file|

@@ -153,9 +153,9 @@
   ],
   "name_xml": "Reduce Night Time Electric Equipment Loads",
   "uid": "b446301d-8f0e-41fc-9245-c3851b8732ff",
-  "version_id": "18ca91fe-179b-461c-8da1-1d4c5341fa47",
-  "modeler_description": "Make an array of space types to alter electric equipment schedules for. Clone and then edit the schedules. The rules will be edited based on the user arguments. Summer and winter design day profiles will not be altered. Quantity for cost is calculated by looking at number of instances and quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.",
-  "description": "This measure lets you set the electric equipment schedule profile values for a specific time of day, and for specific days of the week.  This can be run across the entire model or a specific space type. Cost can be added per each equipment object.",
+  "version_id": "c37bcdea-1ee2-4838-8663-d5f7da65e82c",
+  "modeler_description": "This measure sets fractional electric equipment schedule values for all instances of the selected electric equipment definition for a specific time of day and for specific days of the week.  The new schedules values are based on the user arguments. Summer and winter design day profiles will not be altered.  This measure clones the existing schedules, modifies them, then assigns these modified schedules to the electric equipment instances. Costs can be added per each equipment object.  Quantity for costing is calculated by looking at number of instances and their quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.",
+  "description": "Many buildings have electric equipment that runs unnecessarily at night.  Turning this equipment off at night can provide energy savings without impacting the day-to-day operation of the building occupants.  Before implementing this change, make sure that equipment can be brought back online quickly enough in the morning to avoid issues with occupants overriding the controls due to productivity losses.",
   "tags": [
     "Equipment.Equipment Controls"
   ]

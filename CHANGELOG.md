@@ -1,7 +1,15 @@
 Analysis Example Change Log
 ==================================
 
-There is no formal versioning of this project; however, below is a list of known changes.
+Version 0.3.0
+-------------
+* Allow AWS Tag
+* Allow No Workers
+* Removed CC2 nodes
+* Allow for multiple measure directories
+* Update all measures
+* Default to OpenStudio 1.5.0 (Ubuntu 14 Images)
+
 Version 0.3.0-pre3
 ------------------
 * [BUG FIX] AWS-SDK-CORE had an issue in RC15 on Windows. Forced version to RC14.
