@@ -1,12 +1,14 @@
 Analysis Example Change Log
 ==================================
 
-Version 0.3.0 (Not yet released)
+Version 0.3.0
 -------------
 * Allow AWS Tag
 * Allow No Workers
 * Removed CC2 nodes
-* Allow for multiple measure directories. 
+* Allow for multiple measure directories
+* Update all measures
+* Default to OpenStudio 1.5.0 (Ubuntu 14 Images)
 
 Version 0.3.0-pre3
 ------------------
