@@ -483,15 +483,21 @@ desc "update measures from BCL"
 task :update_measures do
   require 'bcl'
 
-  FileUtils.mkdir_p("./measures")
+  # Blow away existing measures if they exist
+  #FileUtils.rm_rf("measures") if Dir.exist? 'measures'
+
+  FileUtils.mkdir_p("measures")
 
   bcl = BCL::ComponentMethods.new
   bcl.parsed_measures_path = "./measures"
   bcl.login # have to do this even if you don't set your username to get a session
 
   query = 'NREL%20PNNL%2BBCL%2BGroup'
-  success = bcl.measure_metadata(query, nil, true)
-
+  begin
+  	success = bcl.measure_metadata(query, nil, true)
+  rescue => e
+  	puts "[ERROR] downloading new measure. #{e.message}"
+  end
 
   # delete the test files
   Dir.glob("#{bcl.parsed_measures_path}/**/tests").each do |file|

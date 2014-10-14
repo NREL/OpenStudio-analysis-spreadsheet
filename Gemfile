@@ -6,7 +6,7 @@ gem "git", :require => false
 gem 'colored', '~> 1.2'
 
 # uncomment if you need to update the bcl measures
-gem "bcl", "~> 0.5.4"
+gem "bcl", "~> 0.5.5"
 #gem "bcl", :github => "NREL/bcl-gem"
 #gem "bcl", :path => "../bcl-gem"
 
