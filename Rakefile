@@ -195,7 +195,7 @@ def run_analysis(excel, target="aws", download=false)
 
       # If the analysis is LHS, pre-flight, or single run, then go ahead and run batch run because
       # there is no explicit way to tell the system to do it
-      if excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
+      if excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'doe' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
         run_options = {
           analysis_action: "start",
           without_delay: false, # run in background
