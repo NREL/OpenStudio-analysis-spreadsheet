@@ -111,10 +111,6 @@ def configure_target_server(excel, target)
   case target.downcase
   when "vagrant"
     server_dns = "http://localhost:8080"
-  when "nrel12"
-    server_dns = "http://bball-129913.nrel.gov:8080"
-  when "nrel24"  
-    server_dns = "http://bball-130449.nrel.gov:8080"
   when "nrel24a"  
     server_dns = "http://bball-130553.nrel.gov:8080"
   when "nrel24b"  
@@ -195,7 +191,7 @@ def run_analysis(excel, target="aws", download=false)
 
       # If the analysis is LHS, pre-flight, or single run, then go ahead and run batch run because
       # there is no explicit way to tell the system to do it
-      if excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
+      if excel.problem['analysis_type'] == 'doe' || excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
         run_options = {
           analysis_action: "start",
           without_delay: false, # run in background
@@ -345,20 +341,6 @@ task :run_vagrant do
   excel = get_project
   excel.save_analysis
   run_analysis(excel, 'vagrant')
-end
-
-desc "run NREL12"
-task :run_NREL12 do
-  excel = get_project
-  excel.save_analysis
-  run_analysis(excel, 'nrel12')
-end
-
-desc "run NREL24"
-task :run_NREL24 do
-  excel = get_project
-  excel.save_analysis
-  run_analysis(excel, 'nrel24')
 end
 
 desc "run NREL24a"
