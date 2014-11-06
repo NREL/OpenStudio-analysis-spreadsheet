@@ -115,10 +115,10 @@ def configure_target_server(excel, target)
   case target.downcase
   when "vagrant"
     server_dns = "http://localhost:8080"
-  when "nrel12"
-    server_dns = "http://bball-129913.nrel.gov:8080"
-  when "nrel24"
-    server_dns = "http://bball-130449.nrel.gov:8080"
+  when "nrel24a"
+    server_dns = "http://bball-130553.nrel.gov:8080"
+  when "nrel24b"
+    server_dns = "http://bball-130590.nrel.gov:8080"
   when "aws"
     if File.exists?("#{excel.cluster_name}.json")
       json = JSON.parse(File.read("#{excel.cluster_name}.json"), :symbolize_names => true)
@@ -347,18 +347,18 @@ task :run_vagrant do
   run_analysis(excel, 'vagrant')
 end
 
-desc "run NREL12"
-task :run_NREL12 do
+desc "run NREL24a"
+task :run_NREL24a do
   excel = get_project
   excel.save_analysis
-  run_analysis(excel, 'nrel12')
+  run_analysis(excel, 'nrel24a')
 end
 
-desc "run NREL24"
-task :run_NREL24 do
+desc "run NREL24b"
+task :run_NREL24b do
   excel = get_project
   excel.save_analysis
-  run_analysis(excel, 'nrel24')
+  run_analysis(excel, 'nrel24b')
 end
 
 desc "run analysis with customized options"
