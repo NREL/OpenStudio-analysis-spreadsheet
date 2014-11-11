@@ -1,6 +1,11 @@
 Analysis Example Change Log
 ==================================
 
+Version 0.3.1 (Unreleased)
+-------------
+* Support Worker Initialization and Finalization scripts
+* Update to analsis gem forcing unique measure names
+
 Version 0.3.0
 -------------
 * Allow AWS Tag
