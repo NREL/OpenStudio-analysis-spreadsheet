@@ -111,10 +111,6 @@ def configure_target_server(excel, target)
   case target.downcase
   when "vagrant"
     server_dns = "http://localhost:8080"
-  when "nrel12"
-    server_dns = "http://bball-129913.nrel.gov:8080"
-  when "nrel24"  
-    server_dns = "http://bball-130449.nrel.gov:8080"
   when "nrel24a"  
     server_dns = "http://bball-130553.nrel.gov:8080"
   when "nrel24b"  
@@ -345,20 +341,6 @@ task :run_vagrant do
   excel = get_project
   excel.save_analysis
   run_analysis(excel, 'vagrant')
-end
-
-desc "run NREL12"
-task :run_NREL12 do
-  excel = get_project
-  excel.save_analysis
-  run_analysis(excel, 'nrel12')
-end
-
-desc "run NREL24"
-task :run_NREL24 do
-  excel = get_project
-  excel.save_analysis
-  run_analysis(excel, 'nrel24')
 end
 
 desc "run NREL24a"
