@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rake", "~> 10.3.2"
+gem "rake", "~> 10.4.1"
 gem "rubyzip" 
 gem "git", :require => false 
 gem 'colored', '~> 1.2'
