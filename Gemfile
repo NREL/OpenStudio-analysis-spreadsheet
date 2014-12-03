@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rake", "~> 10.3.2"
+gem "rake", "~> 10.4.1"
 gem "rubyzip" 
 gem "git", :require => false 
 gem 'colored', '~> 1.2'
@@ -14,7 +14,7 @@ gem "openstudio-aws", "~> 0.2.2"
 #gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => '0.2.0'
 #gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
-gem "openstudio-analysis", "~> 0.3.5"
-#gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> '0.3.5'
+gem "openstudio-analysis", "~> 0.3.7"
+#gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> '0.3.7'
 #gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
 
