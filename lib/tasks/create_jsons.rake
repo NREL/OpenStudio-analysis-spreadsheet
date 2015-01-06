@@ -39,10 +39,8 @@ namespace :json do
 
           case index
             when 1
-              # make variables
-              # todo - don't variable if 'is_primary_space_type' == true
-              d = {type: 'uniform', minimum: 0.5, maximum: 0.9, mean: 0.6, static_value: 0}
-              m.make_variable('fraction_of_building_area', 'Building Area Fraction', d)
+              # make variables, expect for primary space type which should be an argument
+              m.argument_value('fraction_of_building_area', 0)
             when 2
               d = {type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.2, static_value: 0.35}
               m.make_variable('fraction_of_building_area', 'Building Area Fraction', d)
