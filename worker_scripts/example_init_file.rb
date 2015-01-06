@@ -1,9 +1,8 @@
 # This is an Example worker initilation file. The file has to follow general Ruby conventions.
 #   File name must for the snake case (underscore case) of the class name. For example: WorkerInit = worker_init
-#   
+#
 
 class ExampleInitFile
-
   # Not required but can be used to initialize variables. No arguments can be passed to this method
   def initialize
     # do nothing in this example
@@ -23,4 +22,3 @@ class ExampleInitFile
     # do nothing
   end
 end
-
