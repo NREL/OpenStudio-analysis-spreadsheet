@@ -115,6 +115,8 @@ def configure_target_server(excel, target)
     server_dns = "http://bball-130553.nrel.gov:8080"
   when "nrel24b"  
     server_dns = "http://bball-130590.nrel.gov:8080"    
+  when "nrel24"  
+    server_dns = "http://bball-130449.nrel.gov:8080"  
   when "aws"
     if File.exists?("#{excel.cluster_name}.json")
       json = JSON.parse(File.read("#{excel.cluster_name}.json"), :symbolize_names => true)
@@ -191,7 +193,7 @@ def run_analysis(excel, target="aws", download=false)
 
       # If the analysis is LHS, pre-flight, or single run, then go ahead and run batch run because
       # there is no explicit way to tell the system to do it
-      if excel.problem['analysis_type'] == 'doe' || excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
+      if excel.problem['analysis_type'] == 'repeat_run' || excel.problem['analysis_type'] == 'doe' || excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
         run_options = {
           analysis_action: "start",
           without_delay: false, # run in background
@@ -355,6 +357,13 @@ task :run_NREL24b do
   excel = get_project
   excel.save_analysis
   run_analysis(excel, 'nrel24b')
+end
+
+desc "run NREL24"
+task :run_NREL24 do
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'nrel24')
 end
 
 desc "run analysis with customized options"
