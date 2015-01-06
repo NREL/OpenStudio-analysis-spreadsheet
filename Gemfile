@@ -15,5 +15,5 @@ gem 'openstudio-aws', '= 0.2.5'
 # gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
 #gem 'openstudio-analysis', '= 0.4.1'
- gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> 'develop'
-#gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"
+gem "openstudio-analysis", :github => "NREL/OpenStudio-analysis-gem", :branch=> 'develop'
+# gem "openstudio-analysis", :path => "../OpenStudio-analysis-gem"

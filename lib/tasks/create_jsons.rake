@@ -30,17 +30,12 @@ namespace :json do
           m.argument_value('standards_bldg_and_space_type', "Office Blend #{index}")
 
           # this should be in a hash of some sort
-          m.argument_value('fraction_of_building_area', 0.0) if index == 1
-          m.argument_value('fraction_of_building_area', 0.35) if index == 2
-          m.argument_value('fraction_of_building_area', 0.07) if index == 3
-          m.argument_value('fraction_of_building_area', 0.04) if index == 4
           if index == 1
             m.argument_value('is_primary_space_type', true)
           else
             m.argument_value('is_primary_space_type', false)
           end
           m.argument_value('hvac_system_type', HVAC_SYSTEM_TYPE)
-
 
           case index
             when 1
@@ -70,10 +65,10 @@ namespace :json do
     m.argument_value('structure_id', STRUCTURE_ID)
     m.argument_value('perim_zone_depth', 10)
     # Add this back in once the right measure is in the repo
-    # m.argument_value('floor_to_floor_multiplier', 1)
+    m.argument_value('floor_to_floor_multiplier', 1)
     m.argument_value('aspect_ratio_ns_to_ew', 2)
     # Add this back in once the right measure is in the repo
-    # m.argument_value('zoning_logic', 'Each SpaceType on at Least One Story Advanced Form')
+     m.argument_value('zoning_logic', 'Each SpaceType on at Least One Story Advanced Form')
 
     m = a.workflow.add_measure_from_path('add_schedules_to_model', 'Add Schedules to Model',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_schedules_to_model')}")
