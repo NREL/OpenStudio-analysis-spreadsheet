@@ -1,10 +1,11 @@
 Analysis Example Change Log
 ==================================
 
-Version 0.3.1 (Unreleased)
+Version 0.4.0
 -------------
 * Support Worker Initialization and Finalization scripts
 * Update to analsis gem forcing unique measure names
+* OpenStudio 1.5.5 and EnergyPlus 8.2 support
 
 Version 0.3.0
 -------------
