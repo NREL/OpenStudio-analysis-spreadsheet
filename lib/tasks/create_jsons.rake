@@ -89,7 +89,7 @@ namespace :json do
     m = a.workflow.add_measure_from_path('add_infiltration_to_space_types', 'Add Infiltration to Space Types',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_infiltration_to_space_types')}")
     d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
-    m.make_variable('multiplier_occ', 'Occupancy Multiplier', d)
+    m.make_variable('multiplier_infiltration', 'Infiltration Multiplier', d)
 
     m = a.workflow.add_measure_from_path('add_constructions_to_space_types', 'Add Constructions to Space Types',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_constructions_to_space_types')}")
@@ -215,6 +215,12 @@ namespace :json do
     # a.seed_model('spec/files/small_seed.osm')
     # a.weather_file('spec/files/partial_weather.epw')
     #end
+
+    # set the weather file
+
+    #a.weather_file('weather_183871/Lawrence109_2013CST.epw')
+
+    #a.save_zip "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
 
 
   end
