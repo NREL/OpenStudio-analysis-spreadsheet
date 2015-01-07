@@ -39,9 +39,8 @@ namespace :json do
 
           case index
             when 1
-              # make variables
-              d = {type: 'uniform', minimum: 0.5, maximum: 0.9, mean: 0.6, static_value: 0}
-              m.make_variable('fraction_of_building_area', 'Building Area Fraction', d)
+              # make variables, expect for primary space type which should be an argument
+              m.argument_value('fraction_of_building_area', 0)
             when 2
               d = {type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.2, static_value: 0.35}
               m.make_variable('fraction_of_building_area', 'Building Area Fraction', d)
@@ -68,7 +67,7 @@ namespace :json do
     m.argument_value('floor_to_floor_multiplier', 1)
     m.argument_value('aspect_ratio_ns_to_ew', 2)
     # Add this back in once the right measure is in the repo
-     m.argument_value('zoning_logic', 'Each SpaceType on at Least One Story Advanced Form')
+    m.argument_value('zoning_logic', 'Each SpaceType on at Least One Story Advanced Form')
 
     m = a.workflow.add_measure_from_path('add_schedules_to_model', 'Add Schedules to Model',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_schedules_to_model')}")
@@ -77,6 +76,112 @@ namespace :json do
     d = {type: 'uniform', minimum: 16, maximum: 20, mean: 17, static_value: 17}
     m.make_variable('hoo_finish', 'Hours of Operation Finish', d)
 
+    m = a.workflow.add_measure_from_path('add_people_to_space_types', 'Add People to Space Types',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_people_to_space_types')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_occ', 'Occupancy Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_ventilation_to_space_types', 'Add Ventilation to Space Types',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_ventilation_to_space_types')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_ventilation', 'Ventilation Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_infiltration_to_space_types', 'Add Infiltration to Space Types',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_infiltration_to_space_types')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_occ', 'Occupancy Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_constructions_to_space_types', 'Add Constructions to Space Types',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_constructions_to_space_types')}")
+
+    m = a.workflow.add_measure_from_path('add_interior_constructions_to_adiabatic_surfaces', 'Add Interior Constructions to Adiabatic Surfaces',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_interior_constructions_to_adiabatic_surfaces')}")
+
+    m = a.workflow.add_measure_from_path('add_thermostats', 'Add Thermostats',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_thermostats')}")
+
+    m = a.workflow.add_measure_from_path('RotateBuilding', 'Rotate Building',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'RotateBuilding')}")
+    m.argument_value('relative_building_rotation', 0)
+
+    m = a.workflow.add_measure_from_path('add_fenestration_and_overhangs_by_space_type', 'Add Fenestration And Overhangs By SpaceType',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_fenestration_and_overhangs_by_space_type')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 2, mean: 0.125, static_value: 1}
+    m.make_variable('multiplier_wwr', 'Window to Wall Ratio Multiplier', d)
+    m.argument_value('multiplier_overhang', 1)
+    m.argument_value('multiplier_srr', 1)
+    m.argument_value('multiplier_odwr', 1)
+
+    m = a.workflow.add_measure_from_path('add_elevators_to_building', 'Add Elevators To Building',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_elevators_to_building')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_elevator_eff', 'Elevator Efficiency Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_lamps_to_spaces_by_space_type', 'Add Lamps to Spaces by Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_lamps_to_spaces_by_space_type')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_lighting', 'Lighting Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_elec_equip_to_spaces_by_space_type', 'Add Elec Equip to Spaces by Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_elec_equip_to_spaces_by_space_type')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_elec_equip', 'Electric Equipment Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_gas_equip_to_spaces_by_space_type', 'Add Gas Equip to Spaces by Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_gas_equip_to_spaces_by_space_type')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_gas_equip', 'Gas Equipment Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_water_use_connection_and_equipment', 'Add Water Use Connection and Equipment',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_water_use_connection_and_equipment')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('multiplier_water_use', 'Water Use Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_exhaust_to_zones_by_space_type', 'Add Exhaust to Zones by Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_exhaust_to_zones_by_space_type')}")
+    d = {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+    m.make_variable('exhaust_fan_eff', 'Exhaust Efficiency Multiplier', d)
+
+    m = a.workflow.add_measure_from_path('add_site_loads_to_building', 'Add Site Loads to Building',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_site_loads_to_building')}")
+    m.argument_value('multiplier_site_perim_lighting', 1)
+    m.argument_value('multiplier_site_parking_lighting', 1)
+
+    m = a.workflow.add_measure_from_path('add_system01_by_space_type', 'Add System 01 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system01_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system02_by_space_type', 'Add System 02 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system02_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system03_by_space_type', 'Add System 03 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system03_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system04_by_space_type', 'Add System 04 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system04_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system05_by_space_type', 'Add System 05 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system05_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system06_by_space_type', 'Add System 06 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system06_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system07_by_space_type', 'Add System 07 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system07_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('add_system08_by_space_type', 'Add System 08 By Space Type',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system08_by_space_type')}")
+
+    m = a.workflow.add_measure_from_path('adjust_hours_of_operation', 'Adjust Hours Of Operation',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'adjust_hours_of_operation')}")
+    m.argument_value('base_start_hoo', 8)
+    m.argument_value('base_finish_hoo', 17)
+    d = {type: 'uniform', minimum: -2, maximum: 2, mean: 0, static_value: 0}
+    m.make_variable('delta_length_hoo', 'Adjust Length of Hours of Operation', d)
+    d = {type: 'uniform', minimum: -2, maximum: 2, mean: 0, static_value: 0}
+    m.make_variable('shift_hoo', 'Shift Hours of Operation', d)
+
+    m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'coffee_annual_summary_report')}")
 
     # below is how you change argument values after it has already been added
     # go through and change the values of known fields
