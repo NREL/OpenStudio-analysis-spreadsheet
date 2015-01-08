@@ -194,8 +194,6 @@ namespace :json do
     # Save the analysis JSON
     a.save "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.json"
 
-    # TODO: zip up the files
-
     # a.analysis_type = 'single_run'
     # a.algorithm.set_attribute('sample_method', 'all_variables')
     # o = {
@@ -216,11 +214,27 @@ namespace :json do
     # a.weather_file('spec/files/partial_weather.epw')
     #end
 
-    # set the weather file
 
-    #a.weather_file('weather_183871/Lawrence109_2013CST.epw')
+    # add all the weather files that are needed.
+    a.weather_files.add_files('weather_183871/*')
 
-    #a.save_zip "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
+    # make sure to set the default weather file as well
+    a.weather_file('weather_183871/Lawrence109_2013CST.epw')
+
+    # seed model
+    a.seed_model('seeds/EmptySeedModel.osm')
+
+    # add in the other libraries
+    a.libraries.add('../cofee-measures/lib', { library_name: 'cofee'})
+    a.libraries.add('lib_m0/183871', { library_name: 'calibration_data'})
+
+
+    # add any worker init / finalization scripts - the files will run in the order that they are added
+    # this is just an example file
+    #a.worker_inits.add('project_ruby/office_blend.rb', {args: [19837,"z",{b: 'something'}]})
+    #a.worker_finalizes.add('project_ruby/office_blend.rb')
+
+    a.save_zip "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
 
 
   end
