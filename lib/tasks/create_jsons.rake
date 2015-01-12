@@ -12,6 +12,7 @@ namespace :json do
     #def create_json
     a = OpenStudio::Analysis.create(NAME)
 
+    # start of OpenStudio measures
     a.workflow.add_measure_from_path('ngrid_monthly_uility_data', 'NGrid Add Monthly Utility Data',
                                      "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'NGridAddMonthlyUtilityData')}")
     a.workflow.add_measure_from_path('calibration_reports', 'Calibration Reports',
@@ -180,6 +181,21 @@ namespace :json do
     d = {type: 'uniform', minimum: -2, maximum: 2, mean: 0, static_value: 0}
     m.make_variable('shift_hoo', 'Shift Hours of Operation', d)
 
+    m = a.workflow.EH03DualEnthalpyEconomizerControls('EH03DualEnthalpyEconomizerControls', 'EH03: Dual Enthalpy Economizer Controls',
+                                               "#{File.join(MEAURES_ROOT_DIRECTORY, 'ee', 'EH03DualEnthalpyEconomizerControls')}")
+    m.argument_value('economizer_type', "DifferentialEnthalpy")
+    m.argument_value('econoMaxDryBulbTemp', 69.0)
+    m.argument_value('econoMaxEnthalpy', 28.0)
+    m.argument_value('econoMaxDewpointTemp', 55.0)
+    m.argument_value('econoMinDryBulbTemp', -148.0)
+    m.argument_value('use_case', "Update M0 with Indemand data") # to use as an EE measure change this argument to "Apply EE to calibrated model""
+
+    # start of energy plus measures
+    m = a.workflow.ElectricityTariffModelForMA('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'ElectricityTariffModelForMA')}")
+    m.argument_value('tariff_choices', "MA-Electricity")
+
+    # start of reporting measures
     m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'coffee_annual_summary_report')}")
 
