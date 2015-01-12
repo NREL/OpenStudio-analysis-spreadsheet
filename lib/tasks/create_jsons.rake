@@ -181,6 +181,10 @@ namespace :json do
     d = {type: 'uniform', minimum: -2, maximum: 2, mean: 0, static_value: 0}
     m.make_variable('shift_hoo', 'Shift Hours of Operation', d)
 
+    # currently this gathers in demand data out of analytic record and stories it in resource.json for use by ee measures
+    m = a.workflow.gather_indemand_data('gather_indemand_data', 'Gather Indemand Data',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'ee', 'gather_indemand_data')}")
+
     m = a.workflow.EH03DualEnthalpyEconomizerControls('EH03DualEnthalpyEconomizerControls', 'EH03: Dual Enthalpy Economizer Controls',
                                                "#{File.join(MEAURES_ROOT_DIRECTORY, 'ee', 'EH03DualEnthalpyEconomizerControls')}")
     m.argument_value('economizer_type', "DifferentialEnthalpy")
