@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/NREL/OpenStudio-analysis-gem.git
-  revision: 77c07091b0ff68ab7a09389fca53c24c0134b3ac
+  revision: 52a03f0d3d55b4940a17ed249f5d219dcc21884f
   branch: develop
   specs:
     openstudio-analysis (0.4.2)
@@ -33,9 +33,9 @@ GEM
       zliby
     builder (3.2.2)
     colored (1.2)
-    faraday (0.9.0)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    git (1.2.8)
+    git (1.2.9)
     jamespath (0.5.1)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
@@ -45,7 +45,7 @@ GEM
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.1)
+    net-ssh (2.9.2)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     nokogiri (1.6.5-x86-mingw32)

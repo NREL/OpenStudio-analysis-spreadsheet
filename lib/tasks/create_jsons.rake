@@ -1,14 +1,17 @@
 desc 'run create analysis.json scripts'
-namespace :json do
-  task :office do
-    NAME = 'name of the analysis'
-    RAILS = false
-    MEAURES_ROOT_DIRECTORY = "../cofee-measures"
-    BUILDING_TYPE = 'office'
-    WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
-    HVAC_SYSTEM_TYPE = 'SysType7'
-    STRUCTURE_ID = 183871
+namespace :office do
+  NAME = 'name of the analysis'
+  RAILS = false
+  MEAURES_ROOT_DIRECTORY = "../cofee-measures"
+  BUILDING_TYPE = 'office'
+  WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
+  HVAC_SYSTEM_TYPE = 'SysType7'
+  STRUCTURE_ID = 183871
 
+  ANALYSIS_TYPE = 'single_run'
+  HOSTNAME = 'http://localhost:8080'
+
+  task :json do
     #def create_json
     a = OpenStudio::Analysis.create(NAME)
 
@@ -182,10 +185,10 @@ namespace :json do
     m.make_variable('shift_hoo', 'Shift Hours of Operation', d)
 
     # currently this gathers in demand data out of analytic record and stories it in resource.json for use by ee measures
-    m = a.workflow.gather_indemand_data('gather_indemand_data', 'Gather Indemand Data',
+    m = a.workflow.add_measure_from_path('gather_indemand_data', 'Gather Indemand Data',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'ee', 'gather_indemand_data')}")
 
-    m = a.workflow.EH03DualEnthalpyEconomizerControls('EH03DualEnthalpyEconomizerControls', 'EH03: Dual Enthalpy Economizer Controls',
+    m = a.workflow.add_measure_from_path('EH03DualEnthalpyEconomizerControls', 'EH03: Dual Enthalpy Economizer Controls',
                                                "#{File.join(MEAURES_ROOT_DIRECTORY, 'ee', 'EH03DualEnthalpyEconomizerControls')}")
     m.argument_value('economizer_type', "DifferentialEnthalpy")
     m.argument_value('econoMaxDryBulbTemp', 69.0)
@@ -195,9 +198,9 @@ namespace :json do
     m.argument_value('use_case', "Update M0 with Indemand data") # to use as an EE measure change this argument to "Apply EE to calibrated model""
 
     # start of energy plus measures
-    m = a.workflow.ElectricityTariffModelForMA('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
+    m = a.workflow.add_measure_from_path('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'ElectricityTariffModelForMA')}")
-    m.argument_value('tariff_choices', "MA-Electricity")
+    m.argument_value('tariff_type', "MA-Electricity")
 
     # start of reporting measures
     m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
@@ -211,29 +214,20 @@ namespace :json do
     m.argument_value('start_date', '2013-01-10')
     m.argument_value('end_date', '2013-12-12')
 
-    # Save the analysis JSON
-    a.save "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.json"
 
-    # a.analysis_type = 'single_run'
-    # a.algorithm.set_attribute('sample_method', 'all_variables')
-    # o = {
-    #     display_name: 'Total Natural Gas',
-    #     display_name_short: 'Total Natural Gas',
-    #     metadata_id: nil,
-    #     name: 'total_natural_gas',
-    #     units: 'MJ/m2',
-    #     objective_function: true,
-    #     objective_function_index: 0,
-    #     objective_function_target: 330.7,
-    #     scaling_factor: nil,
-    #     objective_function_group: nil
-    # }
-    # a.add_output(o)
-    #
-    # a.seed_model('spec/files/small_seed.osm')
-    # a.weather_file('spec/files/partial_weather.epw')
-    #end
-
+    o = {
+        display_name: 'Total Natural Gas',
+        display_name_short: 'Total Natural Gas',
+        metadata_id: nil,
+        name: 'total_natural_gas',
+        units: 'MJ/m2',
+        objective_function: true,
+        objective_function_index: 0,
+        objective_function_target: 330.7,
+        scaling_factor: nil,
+        objective_function_group: nil
+    }
+    a.add_output(o)
 
     # add all the weather files that are needed.
     a.weather_files.add_files('weather_183871/*')
@@ -253,9 +247,24 @@ namespace :json do
     # this is just an example file
     #a.worker_inits.add('project_ruby/office_blend.rb', {args: [19837,"z",{b: 'something'}]})
     #a.worker_finalizes.add('project_ruby/office_blend.rb')
+    # Save the analysis JSON
+    formulation_file = "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.json"
+    zip_file = "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
 
-    a.save_zip "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
+    # set the analysis type here as well. I plan on not having this required in the near future
+    a.analysis_type = ANALYSIS_TYPE
 
+    a.save formulation_file
+    a.save_zip zip_file
+  end
+
+  desc 'create and run the office json'
+  task :run => [:json] do
+    formulation_file = "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.json"
+    zip_file = "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
+
+    api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
+    api.run(formulation_file, zip_file, ANALYSIS_TYPE)
 
   end
 
