@@ -1,6 +1,6 @@
 desc 'run create analysis.json scripts'
 namespace :office do
-  NAME = 'Office - test without tariff, fixed system type arg'
+  NAME = 'Office - test with tariff, fixed system type arg, fixed supply side of water'
   RAILS = false
   #MEAURES_ROOT_DIRECTORY = "../cofee-measures"
   MEAURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
@@ -184,7 +184,7 @@ namespace :office do
     m = a.workflow.add_measure_from_path('add_system08_by_space_type', 'Add System 08 By Space Type',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system08_by_space_type')}")
 
-    m = a.workflow.add_service_water_heating_supply('add_service_water_heating_supply', 'Add Service Water Heating Supply',
+    m = a.workflow.add_measure_from_path('add_service_water_heating_supply', 'Add Service Water Heating Supply',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_service_water_heating_supply')}")
 
     m = a.workflow.add_measure_from_path('adjust_hours_of_operation', 'Adjust Hours Of Operation',
@@ -210,9 +210,9 @@ namespace :office do
     m.argument_value('use_case', "Update M0 with Indemand data") # to use as an EE measure change this argument to "Apply EE to calibrated model""
 
     # start of energy plus measures
-    #m = a.workflow.add_measure_from_path('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
-    #                                     "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'ElectricityTariffModelForMA')}")
-    #m.argument_value('tariff_type', "MA-Electricity")
+    m = a.workflow.add_measure_from_path('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'ElectricityTariffModelForMA')}")
+    m.argument_value('tariff_type', "MA-Electricity")
 
     # start of reporting measures
     m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
