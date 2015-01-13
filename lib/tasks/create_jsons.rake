@@ -40,7 +40,7 @@ namespace :office do
         (1..4).each do |index|
           m = a.workflow.add_measure_from_path("gather_space_type_ratio_data_#{index}", "Gather Space Type Ratio Data #{index}",
                                                "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'gather_space_type_ratio_data')}")
-          m.argument_value('standards_bldg_and_space_type', space_type_array[index])
+          m.argument_value('standards_bldg_and_space_type', space_type_array[index-1])
 
           # this should be in a hash of some sort
           if index == 1
