@@ -2,14 +2,16 @@ desc 'run create analysis.json scripts'
 namespace :office do
   NAME = 'name of the analysis'
   RAILS = false
-  MEAURES_ROOT_DIRECTORY = "../cofee-measures"
+  #MEAURES_ROOT_DIRECTORY = "../cofee-measures"
+  MEAURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
   BUILDING_TYPE = 'office'
   WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
   HVAC_SYSTEM_TYPE = 'SysType7'
   STRUCTURE_ID = 183871
 
   ANALYSIS_TYPE = 'single_run'
-  HOSTNAME = 'http://localhost:8080'
+  #HOSTNAME = 'http://localhost:8080'
+  HOSTNAME = 'http://bball-130590.nrel.gov:8080'
 
   task :json do
     #def create_json
@@ -25,13 +27,20 @@ namespace :office do
     m.argument_value('weather_directory', '../../weather')
     m.argument_value('weather_file_name', WEATHER_FILE_NAME)
 
+    # temp array to hold space type ratios
+    space_type_array = []
+    space_type_array << "Office BlendA"
+    space_type_array << "Office BlendB"
+    space_type_array << "Office BlendC"
+    space_type_array << "Office Restroom"
+
     case BUILDING_TYPE
       when 'office'
         # TODO: look this up from somewhere
         (1..4).each do |index|
           m = a.workflow.add_measure_from_path("gather_space_type_ratio_data_#{index}", "Gather Space Type Ratio Data #{index}",
                                                "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'gather_space_type_ratio_data')}")
-          m.argument_value('standards_bldg_and_space_type', "Office Blend #{index}")
+          m.argument_value('standards_bldg_and_space_type', space_type_array[index])
 
           # this should be in a hash of some sort
           if index == 1
@@ -239,7 +248,7 @@ namespace :office do
     a.seed_model('seeds/EmptySeedModel.osm')
 
     # add in the other libraries
-    a.libraries.add('../cofee-measures/lib', { library_name: 'cofee'})
+    a.libraries.add('../../GitHub/cofee-measures/lib', { library_name: 'cofee'})
     a.libraries.add('lib_m0/183871', { library_name: 'calibration_data'})
 
 
