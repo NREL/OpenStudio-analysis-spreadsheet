@@ -1,12 +1,12 @@
 desc 'run create analysis.json scripts'
 namespace :office do
-  NAME = 'name of the analysis'
+  NAME = 'Office - test without tariff'
   RAILS = false
   #MEAURES_ROOT_DIRECTORY = "../cofee-measures"
   MEAURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
   BUILDING_TYPE = 'office'
   WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
-  HVAC_SYSTEM_TYPE = 'SysType7'
+  HVAC_SYSTEM_TYPE = 'SysType 7'
   STRUCTURE_ID = 183871
 
   ANALYSIS_TYPE = 'single_run'
@@ -207,9 +207,9 @@ namespace :office do
     m.argument_value('use_case', "Update M0 with Indemand data") # to use as an EE measure change this argument to "Apply EE to calibrated model""
 
     # start of energy plus measures
-    m = a.workflow.add_measure_from_path('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
-                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'ElectricityTariffModelForMA')}")
-    m.argument_value('tariff_type', "MA-Electricity")
+    #m = a.workflow.add_measure_from_path('ElectricityTariffModelForMA', 'ElectricityTariffModelForMA',
+    #                                     "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'ElectricityTariffModelForMA')}")
+    #m.argument_value('tariff_type', "MA-Electricity")
 
     # start of reporting measures
     m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
