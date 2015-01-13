@@ -1,6 +1,6 @@
 desc 'run create analysis.json scripts'
 namespace :office do
-  NAME = 'Office - test without tariff'
+  NAME = 'Office - test without tariff, fixed system type arg'
   RAILS = false
   #MEAURES_ROOT_DIRECTORY = "../cofee-measures"
   MEAURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
@@ -183,6 +183,9 @@ namespace :office do
 
     m = a.workflow.add_measure_from_path('add_system08_by_space_type', 'Add System 08 By Space Type',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_system08_by_space_type')}")
+
+    m = a.workflow.add_service_water_heating_supply('add_service_water_heating_supply', 'Add Service Water Heating Supply',
+                                         "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'add_service_water_heating_supply')}")
 
     m = a.workflow.add_measure_from_path('adjust_hours_of_operation', 'Adjust Hours Of Operation',
                                          "#{File.join(MEAURES_ROOT_DIRECTORY, 'model0', 'adjust_hours_of_operation')}")
