@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/NREL/OpenStudio-analysis-gem.git
-  revision: 52a03f0d3d55b4940a17ed249f5d219dcc21884f
+  revision: 3ce05db809c31c0bb6e6413420aff78a19216708
   branch: develop
   specs:
     openstudio-analysis (0.4.2)
