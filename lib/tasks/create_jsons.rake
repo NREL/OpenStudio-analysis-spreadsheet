@@ -17,6 +17,13 @@ def create_json(structure_id, building_type, year, system_type)
   space_type_hash = {}
   # not adding system type for now
   case building_type
+    when 'LargeHotel'
+      space_type_hash["LargeHotel BlendGuest"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["LargeHotel BlendLob"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.3, mean: 0.173, static_value: 0.173}
+      space_type_hash["LargeHotel BlendFds"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.091, static_value: 0.091}
+      space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.05, mean: 0.028, static_value: 0.028}
+      space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.025, mean: 0.011, static_value: 0.011}
+      space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.015, mean: 0.008, static_value: 0.008}
     when 'MidriseApartment'
       space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'na_is_primary', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["MidriseApartment Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.028, static_value: 0.28}
@@ -32,15 +39,17 @@ def create_json(structure_id, building_type, year, system_type)
       space_type_hash["Office Elec/MechRoom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.02, mean: 0.01, static_value: 0.01}
       space_type_hash["Office PrintRoom"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.02, mean: 0.015, static_value: 0.015}
       space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.01, mean: 0.04, static_value: 0.04}
-    when 'LargeHotel'
-      space_type_hash["LargeHotel BlendGuest"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
-      space_type_hash["LargeHotel BlendLob"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.3, mean: 0.173, static_value: 0.173}
-      space_type_hash["LargeHotel BlendFds"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.091, static_value: 0.091}
-      space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.05, mean: 0.028, static_value: 0.028}
-      space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.025, mean: 0.011, static_value: 0.011}
-      space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.015, mean: 0.008, static_value: 0.008}
+    when 'Retail'
+      space_type_hash["Retail Core"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["Retail Back_Space"] = {is_primary: false, type: 'uniform', minimum: 0.025, maximum: 0.5, mean: 0.166, static_value: 0.166}
+      space_type_hash["Retail BlendFront"] = {is_primary: false, type: 'uniform', minimum: 0.025, maximum: 0.25, mean: 0.071, static_value: 0.071}
     when 'SingleMultiPlexRes'
       space_type_hash["MidriseApartment Apartment"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
+    when 'StripMall'
+      space_type_hash["StripMall WholeBuilding"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
+    when 'Warehouse'
+      space_type_hash["Warehouse BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["Warehouse Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.3, mean: 0.048, static_value: 0.048}
     else
       fail 'building type not supported'
   end
