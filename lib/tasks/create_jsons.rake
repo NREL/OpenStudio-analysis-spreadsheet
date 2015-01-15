@@ -1,6 +1,7 @@
-def create_json(analysis_name, structure_id, building_type, system_type)
+def create_json(structure_id, building_type, year, system_type)
   #def create_json
-  a = OpenStudio::Analysis.create("#{analysis_name}_#{structure_id}")
+  save_string = "#{structure_id}_#{building_type}_#{year}"
+  a = OpenStudio::Analysis.create(save_string)
 
   # start of OpenStudio measures
   a.workflow.add_measure_from_path('ngrid_monthly_uility_data', 'NGrid Add Monthly Utility Data',
@@ -12,13 +13,6 @@ def create_json(analysis_name, structure_id, building_type, system_type)
   m.argument_value('weather_directory', '../../weather')
   m.argument_value('weather_file_name', WEATHER_FILE_NAME)
 
-  # temp array to hold space type ratios
-  space_type_array = []
-  space_type_array << "Office BlendA"
-  space_type_array << "Office BlendB"
-  space_type_array << "Office BlendC"
-  space_type_array << "Office Restroom"
-
   # hash to hold space type data
   space_type_hash = {}
   # not adding system type for now
@@ -26,8 +20,6 @@ def create_json(analysis_name, structure_id, building_type, system_type)
     when 'MidriseApartment'
       space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'na_is_primary', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["MidriseApartment Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.028, static_value: 0.28}
-    when 'SingleMultiPlexRes'
-      space_type_hash["MidriseApartment Apartment"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
     when 'Office'
       space_type_hash["Office BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Office BlendB"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.1, static_value: 0.1}
@@ -40,6 +32,15 @@ def create_json(analysis_name, structure_id, building_type, system_type)
       space_type_hash["Office Elec/MechRoom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.02, mean: 0.01, static_value: 0.01}
       space_type_hash["Office PrintRoom"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.02, mean: 0.015, static_value: 0.015}
       space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.01, mean: 0.04, static_value: 0.04}
+    when 'LargeHotel'
+      space_type_hash["LargeHotel BlendGuest"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["LargeHotel BlendLob"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.3, mean: 0.173, static_value: 0.173}
+      space_type_hash["LargeHotel BlendFds"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.091, static_value: 0.091}
+      space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.05, mean: 0.028, static_value: 0.028}
+      space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.025, mean: 0.011, static_value: 0.011}
+      space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.015, mean: 0.008, static_value: 0.008}
+    when 'SingleMultiPlexRes'
+      space_type_hash["MidriseApartment Apartment"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
     else
       fail 'building type not supported'
   end
@@ -255,8 +256,8 @@ def create_json(analysis_name, structure_id, building_type, system_type)
   #a.worker_inits.add('project_ruby/office_blend.rb', {args: [19837,"z",{b: 'something'}]})
   #a.worker_finalizes.add('project_ruby/office_blend.rb')
   # Save the analysis JSON
-  formulation_file = "analysis/#{analysis_name.downcase.squeeze(' ').gsub(' ', '_')}.json"
-  zip_file = "analysis/#{analysis_name.downcase.squeeze(' ').gsub(' ', '_')}.zip"
+  formulation_file = "analysis/#{save_string.downcase.squeeze(' ').gsub(' ', '_')}.json"
+  zip_file = "analysis/#{save_string.downcase.squeeze(' ').gsub(' ', '_')}.zip"
 
   # set the analysis type here as well. I plan on not having this required in the near future
   a.analysis_type = ANALYSIS_TYPE
@@ -280,13 +281,16 @@ namespace :office do
   #HOSTNAME = 'http://localhost:8080'
   HOSTNAME = 'http://bball-130590.nrel.gov:8080'
 
+  #create_json(structure_id, building_type, year, system_type)
+
+
   task :jsons do
-    create_json('office_1987', 37149, 'Office',HVAC_SYSTEM_TYPE)
-    create_json('office_1989', 183871,'Office',HVAC_SYSTEM_TYPE)
-    create_json('office_2000', 272799, 'Office',HVAC_SYSTEM_TYPE)
-    create_json('midrise_apartment_2004', 999999, 'MidriseApartment',HVAC_SYSTEM_TYPE)
-    #create_json('DK-2001', 46568, 'DK',HVAC_SYSTEM_TYPE)
-    #create_json('large_hotel_1985', 213097, 'LargeHotel',HVAC_SYSTEM_TYPE)
+    create_json(37149, 'Office','1987', HVAC_SYSTEM_TYPE)
+    create_json(183871,'Office','1989', HVAC_SYSTEM_TYPE)
+    create_json(272799, 'Office','2000', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'MidriseApartment','2004', HVAC_SYSTEM_TYPE)
+    #create_json(46568, 'DK','2001',HVAC_SYSTEM_TYPE)
+    create_json(213097, 'LargeHotel','1985',HVAC_SYSTEM_TYPE)
   end
 
   desc 'create and run the office json'
@@ -297,12 +301,12 @@ namespace :office do
     hash[37149] = "office_1987"
     hash[183871] = "office_1989"
     hash[272799] = "office_2000"
-    hash[999999] = "midrise_apartment_2004"
-    #hash[213097] = "large_hotel_1985"
+    hash[999999] = "midriseapartment_2004"
+    hash[213097] = "largehotel_1985"
 
     hash.each do |k,v|
-      formulation_file = "analysis/#{v}_#{k}.json"
-      zip_file = "analysis/#{v}_#{k}.zip"
+      formulation_file = "analysis/#{k}_#{v}.json"
+      zip_file = "analysis/#{k}_#{v}.zip"
       api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
       api.run(formulation_file, zip_file, ANALYSIS_TYPE)
     end
