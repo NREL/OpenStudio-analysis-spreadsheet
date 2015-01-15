@@ -23,25 +23,33 @@ def create_json(analysis_name, structure_id, building_type, system_type)
   space_type_hash = {}
   # not adding system type for now
   case building_type
+    when 'MidriseApartment'
+      space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'na_is_primary', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["MidriseApartment Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.028, static_value: 0.28}
+    when 'SingleMultiPlexRes'
+      space_type_hash["MidriseApartment Apartment"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
     when 'Office'
       space_type_hash["Office BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Office BlendB"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.1, static_value: 0.1}
       space_type_hash["Office BlendC"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.3, mean: 0.07, static_value: 0.07}
       space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.04, static_value: 0.04}
-    when 'MidriseApartment'
-      space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'na_is_primary', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
-      space_type_hash["MidriseApartment Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.028, static_value: 0.28}
+    when 'OfficeData'
+      space_type_hash["Office BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["Office BlendB"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.1, static_value: 0.1}
+      space_type_hash["Office IT_Room"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.3, mean: 0.07, static_value: 0.07}
+      space_type_hash["Office Elec/MechRoom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.3, mean: 0.07, static_value: 0.07}
+      space_type_hash["Office PrintRoom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.3, mean: 0.07, static_value: 0.07}
+      space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.04, static_value: 0.04}
     else
       fail 'building type not supported'
   end
 
   # create loop for gather space type ratio instances
-  counter = 1
   space_type_hash.each do |space_type_name,values|
 
-    m = a.workflow.add_measure_from_path("gather_space_type_ratio_data_#{counter}", "Gather Space Type Ratio Data #{counter}",
+    m = a.workflow.add_measure_from_path("gather_space_type_ratio_data_#{space_type_name}", "Gather Space Type Ratio Data #{space_type_name}",
                                          "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'gather_space_type_ratio_data')}")
-    m.argument_value('standards_bldg_and_space_type', space_type_array[counter])
+    m.argument_value('standards_bldg_and_space_type', space_type_name)
 
     # this should be in a hash of some sort
     if values[:is_primary]
@@ -53,8 +61,6 @@ def create_json(analysis_name, structure_id, building_type, system_type)
     end
     m.argument_value('hvac_system_type', system_type)
 
-    # update counter
-    counter =+ 1
   end
 
   m = a.workflow.add_measure_from_path('make_envelope_from_space_type_ratios', 'Make Envelope From Space Type Ratios',
@@ -203,7 +209,8 @@ def create_json(analysis_name, structure_id, building_type, system_type)
   # start of reporting measures
   m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
                                        "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'coffee_annual_summary_report')}")
-  m = a.workflow.schedule_profile_report('schedule_profile_report', 'Schedule Profile Report',
+
+  m = a.workflow.add_measure_from_path('schedule_profile_report', 'Schedule Profile Report',
                                        "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'schedule_profile_report')}")
 
   # below is how you change argument values after it has already been added
@@ -274,15 +281,19 @@ namespace :office do
   HOSTNAME = 'http://bball-130590.nrel.gov:8080'
 
   task :jsons do
-    create_json('a', 183871,'Office',HVAC_SYSTEM_TYPE)
-    create_json('b', 999999, 'MidriseApartment',HVAC_SYSTEM_TYPE)
+    create_json('office-1989', 183871,'Office',HVAC_SYSTEM_TYPE)
+    create_json('midrise_apartment-2004', 999999, 'MidriseApartment',HVAC_SYSTEM_TYPE)
   end
 
   desc 'create and run the office json'
-  task :run => [:json] do
-    formulation_file = "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.json"
-    zip_file = "analysis/#{NAME.downcase.squeeze(' ').gsub(' ', '_')}.zip"
+  task :run => [:jsons] do
+    formulation_file = "analysis/office-1989.json"
+    zip_file = "analysis/office-1989.zip"
+    api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
+    api.run(formulation_file, zip_file, ANALYSIS_TYPE)
 
+    formulation_file = "analysis/midrise_apartment-2004.json"
+    zip_file = "analysis/midrise_apartment-2004.zip"
     api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
     api.run(formulation_file, zip_file, ANALYSIS_TYPE)
 
