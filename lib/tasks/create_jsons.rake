@@ -203,6 +203,8 @@ def create_json(analysis_name, structure_id, building_type, system_type)
   # start of reporting measures
   m = a.workflow.add_measure_from_path('coffee_annual_summary_report', 'COFFEE Annual Summary Report',
                                        "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'coffee_annual_summary_report')}")
+  m = a.workflow.schedule_profile_report('schedule_profile_report', 'Schedule Profile Report',
+                                       "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'schedule_profile_report')}")
 
   # below is how you change argument values after it has already been added
   # go through and change the values of known fields
