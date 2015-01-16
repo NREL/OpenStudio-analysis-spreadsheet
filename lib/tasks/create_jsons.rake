@@ -16,22 +16,30 @@ def create_json(structure_id, building_type, year, system_type)
   # hash to hold space type data
   space_type_hash = {}
   # not adding system type for now
+  building_static_hoo_start = nil
+  building_static_hoo_finish = nil
   case building_type
     when 'LargeHotel'
-      space_type_hash["LargeHotel BlendGuest"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["LargeHotel BlendGst"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["LargeHotel BlendLob"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.3, mean: 0.173, static_value: 0.173}
       space_type_hash["LargeHotel BlendFds"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.091, static_value: 0.091}
       space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.05, mean: 0.028, static_value: 0.028}
       space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.025, mean: 0.011, static_value: 0.011}
       space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.015, mean: 0.008, static_value: 0.008}
+      building_static_hoo_start = 6
+      building_static_hoo_finish = 22
     when 'MidriseApartment'
       space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'na_is_primary', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["MidriseApartment Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.028, static_value: 0.28}
+      building_static_hoo_start = 8
+      building_static_hoo_finish = 18
     when 'Office'
       space_type_hash["Office BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Office BlendB"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.1, static_value: 0.1}
       space_type_hash["Office BlendC"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.3, mean: 0.07, static_value: 0.07}
       space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.04, static_value: 0.04}
+      building_static_hoo_start = 8
+      building_static_hoo_finish = 17
     when 'OfficeData'
       space_type_hash["Office BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Office BlendB"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.1, static_value: 0.1}
@@ -39,17 +47,27 @@ def create_json(structure_id, building_type, year, system_type)
       space_type_hash["Office Elec/MechRoom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.02, mean: 0.01, static_value: 0.01}
       space_type_hash["Office PrintRoom"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.02, mean: 0.015, static_value: 0.015}
       space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.01, mean: 0.04, static_value: 0.04}
+      building_static_hoo_start = 8
+      building_static_hoo_finish = 17
     when 'Retail'
-      space_type_hash["Retail Core"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["Retail Retail"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Retail Back_Space"] = {is_primary: false, type: 'uniform', minimum: 0.025, maximum: 0.5, mean: 0.166, static_value: 0.166}
       space_type_hash["Retail BlendFront"] = {is_primary: false, type: 'uniform', minimum: 0.025, maximum: 0.25, mean: 0.071, static_value: 0.071}
+      building_static_hoo_start = 7
+      building_static_hoo_finish = 21
     when 'SingleMultiPlexRes'
       space_type_hash["MidriseApartment Apartment"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
+      building_static_hoo_start = 8
+      building_static_hoo_finish = 18
     when 'StripMall'
       space_type_hash["StripMall WholeBuilding"] = {is_primary: true, type: 'na_is_primary', minimum: 1.0, maximum: 1.0, mean: 1.0, static_value: 1.0}
+      building_static_hoo_start = 7
+      building_static_hoo_finish = 21
     when 'Warehouse'
       space_type_hash["Warehouse BlendA"] = {is_primary: true, type: 'uniform', type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Warehouse Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.3, mean: 0.048, static_value: 0.048}
+      building_static_hoo_start = 7
+      building_static_hoo_finish = 17
     else
       fail 'building type not supported'
   end
@@ -86,10 +104,8 @@ def create_json(structure_id, building_type, year, system_type)
 
   m = a.workflow.add_measure_from_path('add_schedules_to_model', 'Add Schedules to Model',
                                        "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_schedules_to_model')}")
-  d = {type: 'uniform', minimum: 7, maximum: 10, mean: 8, static_value: 8}
-  m.make_variable('hoo_start', 'Hours of Operation Start', d)
-  d = {type: 'uniform', minimum: 16, maximum: 20, mean: 17, static_value: 17}
-  m.make_variable('hoo_finish', 'Hours of Operation Finish', d)
+  m.argument_value('hoo_start', building_static_hoo_start)
+  m.argument_value('hoo_finish', building_static_hoo_finish)
 
   m = a.workflow.add_measure_from_path('add_people_to_space_types', 'Add People to Space Types',
                                        "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_people_to_space_types')}")
@@ -191,8 +207,8 @@ def create_json(structure_id, building_type, year, system_type)
 
   m = a.workflow.add_measure_from_path('adjust_hours_of_operation', 'Adjust Hours Of Operation',
                                        "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'adjust_hours_of_operation')}")
-  m.argument_value('base_start_hoo', 8)
-  m.argument_value('base_finish_hoo', 17)
+  m.argument_value('base_start_hoo', building_static_hoo_start)
+  m.argument_value('base_finish_hoo', building_static_hoo_finish)
   d = {type: 'uniform', minimum: -2, maximum: 2, mean: 0, static_value: 0}
   m.make_variable('delta_length_hoo', 'Adjust Length of Hours of Operation', d)
   d = {type: 'uniform', minimum: -2, maximum: 2, mean: 0, static_value: 0}
@@ -313,11 +329,11 @@ namespace :office do
     #hash[37149] = "office_1987"
     #hash[183871] = "office_1989"
     #hash[272799] = "office_2000"
-    #hash[999999] = "midriseapartment_2004"
+    hash[999999] = "midriseapartment_2004"
     hash[999999] = "warehouse_2004"
     hash[999999] = "stripmall_2004"
     hash[999999] = "retail_2004"
-    #hash[213097] = "largehotel_1985"
+    hash[213097] = "largehotel_1985"
 
     hash.each do |k,v|
       formulation_file = "analysis/#{k}_#{v}.json"
