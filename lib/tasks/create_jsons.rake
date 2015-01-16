@@ -307,18 +307,18 @@ namespace :office do
   HOSTNAME = 'http://bball-130590.nrel.gov:8080'
 
   #create_json(structure_id, building_type, year, system_type)
-
-
   task :jsons do
+    create_json(213097, 'LargeHotel','1985',HVAC_SYSTEM_TYPE)
+    create_json(999999, 'MidriseApartment','2004', HVAC_SYSTEM_TYPE)
     create_json(37149, 'Office','1987', HVAC_SYSTEM_TYPE)
     create_json(183871,'Office','1989', HVAC_SYSTEM_TYPE)
     create_json(272799, 'Office','2000', HVAC_SYSTEM_TYPE)
-    create_json(999999, 'MidriseApartment','2004', HVAC_SYSTEM_TYPE)
-    create_json(999999, 'Warehouse','2004', HVAC_SYSTEM_TYPE)
-    create_json(999999, 'StripMall','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'OfficeData','2004', HVAC_SYSTEM_TYPE)
     create_json(999999, 'Retail','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'StripMall','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'SingleMultiPlexRes','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'Warehouse','2004', HVAC_SYSTEM_TYPE)
     #create_json(46568, 'DK','2001',HVAC_SYSTEM_TYPE)
-    create_json(213097, 'LargeHotel','1985',HVAC_SYSTEM_TYPE)
   end
 
   desc 'create and run the office json'
@@ -326,14 +326,17 @@ namespace :office do
 
     # jobs to send
     hash = {}
-    #hash[37149] = "office_1987"
-    #hash[183871] = "office_1989"
-    #hash[272799] = "office_2000"
-    hash[999999] = "midriseapartment_2004"
-    hash[999999] = "warehouse_2004"
-    hash[999999] = "stripmall_2004"
-    hash[999999] = "retail_2004"
-    hash[213097] = "largehotel_1985"
+    #hash[37149] = "office_1987" # 1/16 runs
+    #hash[183871] = "office_1989" # 1/16 runs
+    #hash[272799] = "office_2000" # 1/16 runs
+    #hash[999999] = "midriseapartment_2004" # 1/16 runs
+    hash[999999] = "singlemultiplexRes_2004" # 1/16 runs
+    hash[999999] = "officedata_2004" # 1/16 runs
+    #hash[999999] = "stripmall_2004"  # 1/16 runs
+
+    #hash[999999] = "warehouse_2004"  #(failing on add fenestration I think line 28)
+    #hash[999999] = "retail_2004"  #(failing on add system type 3 - os_lib_cofee.rb:878)
+    #hash[213097] = "largehotel_1985" #(failing on make envelope - os_lib_cofee.rb:802)
 
     hash.each do |k,v|
       formulation_file = "analysis/#{k}_#{v}.json"
