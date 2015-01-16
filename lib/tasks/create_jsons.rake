@@ -298,6 +298,9 @@ namespace :office do
     create_json(183871,'Office','1989', HVAC_SYSTEM_TYPE)
     create_json(272799, 'Office','2000', HVAC_SYSTEM_TYPE)
     create_json(999999, 'MidriseApartment','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'Warehouse','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'StripMall','2004', HVAC_SYSTEM_TYPE)
+    create_json(999999, 'Retail','2004', HVAC_SYSTEM_TYPE)
     #create_json(46568, 'DK','2001',HVAC_SYSTEM_TYPE)
     create_json(213097, 'LargeHotel','1985',HVAC_SYSTEM_TYPE)
   end
@@ -307,11 +310,14 @@ namespace :office do
 
     # jobs to send
     hash = {}
-    hash[37149] = "office_1987"
-    hash[183871] = "office_1989"
-    hash[272799] = "office_2000"
-    hash[999999] = "midriseapartment_2004"
-    hash[213097] = "largehotel_1985"
+    #hash[37149] = "office_1987"
+    #hash[183871] = "office_1989"
+    #hash[272799] = "office_2000"
+    #hash[999999] = "midriseapartment_2004"
+    hash[999999] = "warehouse_2004"
+    hash[999999] = "stripmall_2004"
+    hash[999999] = "retail_2004"
+    #hash[213097] = "largehotel_1985"
 
     hash.each do |k,v|
       formulation_file = "analysis/#{k}_#{v}.json"
