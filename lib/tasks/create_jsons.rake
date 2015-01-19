@@ -420,7 +420,7 @@ namespace :office do
     # jobs to send
     hash = {}
 
-=begin
+    # test out each building type one or more times (more than once when have real anayltic records)
     hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
     hash["999999_e"] = "AutoRepair_2004" # 1/19 run (EUI 131)
     hash["999999_f"] = "AutoSales_2004" # 1/19 run (EUI 98)
@@ -436,11 +436,7 @@ namespace :office do
     hash["183871"] = "Office_1989" # 1/16 runs
     hash["272799"] = "Office_2000" # 1/16 runs
     hash["999999_a"] = "OfficeData_2004" # 1/16 runs
-    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = "OfficeData_2004"# 1/18 run
-    hash["999997"] = "OfficeData_2004"# 1/18 run
-    hash["999996"] = "OfficeData_2004"# 1/18 run
-    hash["999995"] = "OfficeData_2004"# 1/18 run
+    hash["999999_m"] = "Outpatient_2004" # 1/19 run (EUI 100)
     hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
     hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677)
     hash["999999_n"] = "Retail_2004"  # 1/18 run (EUI 58)
@@ -448,13 +444,17 @@ namespace :office do
     hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
     hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
     hash["999999_c"] = "StripMall_2004"  # 1/16 runs
+    hash["999999_t"] = "SuperMarket_2004" # 1/19 run (EUI 76)
     hash["999999_o"] = "Warehouse_2004"  # 1/18 (EUI 43)
-=end
-
-    hash["999999_m"] = "Outpatient_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:203:in)
-    hash["999999_t"] = "SuperMarket_2004" #(failing - make_envelope_from_space_type_ratios/measure.rb:350:in)
-
     #hash[46568] = "DK_????"
+
+    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
+    hash["999998"] = "OfficeData_2004"# 1/18 run
+    hash["999997"] = "OfficeData_2004"# 1/18 run
+    hash["999996"] = "OfficeData_2004"# 1/18 run
+    hash["999995"] = "OfficeData_2004"# 1/18 run
+
+    # todo - test different system types
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
@@ -471,7 +471,7 @@ namespace :office do
     # jobs to run
     hash = {}
 
-=begin
+    # test out each building type one or more times (more than once when have real anayltic records)
     hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
     hash["999999_e"] = "AutoRepair_2004" # 1/19 run (EUI 131)
     hash["999999_f"] = "AutoSales_2004" # 1/19 run (EUI 98)
@@ -487,11 +487,7 @@ namespace :office do
     hash["183871"] = "Office_1989" # 1/16 runs
     hash["272799"] = "Office_2000" # 1/16 runs
     hash["999999_a"] = "OfficeData_2004" # 1/16 runs
-    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = "OfficeData_2004"# 1/18 run
-    hash["999997"] = "OfficeData_2004"# 1/18 run
-    hash["999996"] = "OfficeData_2004"# 1/18 run
-    hash["999995"] = "OfficeData_2004"# 1/18 run
+    hash["999999_m"] = "Outpatient_2004" # 1/19 run (EUI 100)
     hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
     hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677)
     hash["999999_n"] = "Retail_2004"  # 1/18 run (EUI 58)
@@ -499,14 +495,17 @@ namespace :office do
     hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
     hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
     hash["999999_c"] = "StripMall_2004"  # 1/16 runs
+    hash["999999_t"] = "SuperMarket_2004" # 1/19 run (EUI 76)
     hash["999999_o"] = "Warehouse_2004"  # 1/18 (EUI 43)
-=end
-
-    hash["999999_m"] = "Outpatient_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:203:in)
-    hash["999999_t"] = "SuperMarket_2004" #(failing - make_envelope_from_space_type_ratios/measure.rb:350:in)
-
     #hash[46568] = "DK_????"
 
+    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
+    hash["999998"] = "OfficeData_2004"# 1/18 run
+    hash["999997"] = "OfficeData_2004"# 1/18 run
+    hash["999996"] = "OfficeData_2004"# 1/18 run
+    hash["999995"] = "OfficeData_2004"# 1/18 run
+
+    # todo - test different system types
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
