@@ -420,7 +420,8 @@ namespace :office do
     # jobs to send
     hash = {}
 
-=begin
+    # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
+
     # test out each building type one or more times (more than once when have real analytic records)
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
@@ -448,7 +449,6 @@ namespace :office do
     hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 76)
     hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # 1/18 (EUI 43)
     #hash[46568] = "DK_????"
-=end
 
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
     hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
@@ -456,7 +456,15 @@ namespace :office do
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
 
-    # todo - test different system types
+    # test different system types
+    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # 1/19 run (EUI 49, unmet htg and clg 575/393)
+    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # 1/19 run (EUI 46, unmet htg and clg 408/484)
+    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # 1/19 run (EUI 60, unmet htg and clg 1100/2495)
+    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # 1/19 run (EUI 49, unmet htg and clg 1055/2495)
+    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # 1/19 run (EUI 57, unmet htg and clg 2106/3985)
+    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # 1/19 run (EUI 57, unmet htg and clg 958/1884)
+    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # 1/19 run (EUI 56, unmet htg and clg 2105/2045)
+    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # 1/19 run (EUI 54, unmet htg and clg 959/1880)
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
@@ -474,7 +482,8 @@ namespace :office do
     # jobs to run
     hash = {}
 
-=begin
+    # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
+
     # test out each building type one or more times (more than once when have real analytic records)
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
@@ -502,7 +511,6 @@ namespace :office do
     hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 76)
     hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # 1/18 (EUI 43)
     #hash[46568] = "DK_????"
-=end
 
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
     hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
@@ -510,7 +518,15 @@ namespace :office do
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
 
-    # todo - test different system types
+    # test different system types
+    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # 1/19 run (EUI 49, unmet htg and clg 575/393)
+    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # 1/19 run (EUI 46, unmet htg and clg 408/484)
+    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # 1/19 run (EUI 60, unmet htg and clg 1100/2495)
+    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # 1/19 run (EUI 49, unmet htg and clg 1055/2495)
+    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # 1/19 run (EUI 57, unmet htg and clg 2106/3985)
+    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # 1/19 run (EUI 57, unmet htg and clg 958/1884)
+    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # 1/19 run (EUI 56, unmet htg and clg 2105/2045)
+    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # 1/19 run (EUI 54, unmet htg and clg 959/1880)
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
