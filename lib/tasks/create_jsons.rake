@@ -27,7 +27,7 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_finish = 22
     when 'AutoRepair'
       space_type_hash['AutoRepair Garage'] = {is_primary: true, type: 'uniform', minimum: 0.3, maximum: 0.8, mean: 0.65, static_value: 0.65}
-      space_type_hash['AutoRepair BlendA'] = {is_primary: false, type: 'uniform', minimum: 0.2, maximum: 0.6, mean: 0.3, static_value: 0.3}
+      space_type_hash['AutoRepair BlendFront'] = {is_primary: false, type: 'uniform', minimum: 0.2, maximum: 0.6, mean: 0.3, static_value: 0.3}
       space_type_hash['AutoRepair Restroom'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.1, mean: 0.05, static_value: 0.05}
       building_static_hoo_start = 8
       building_static_hoo_finish = 19
@@ -47,7 +47,7 @@ def create_json(structure_id, building_type, year, system_type)
     when 'ChildCare'
       space_type_hash['ChildCare BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.65, maximum: 0.9, mean: 0.8, static_value: 0.8}
       space_type_hash['ChildCare Office'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.1, static_value: 0.1}
-      space_type_hash['ChildCare Restroom '] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.1, static_value: 0.1}
+      space_type_hash['ChildCare Restroom'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.1, static_value: 0.1}
       building_static_hoo_start = 6
       building_static_hoo_finish = 19
     when 'FullServiceRestaurant'
@@ -420,11 +420,17 @@ namespace :office do
     # jobs to send
     hash = {}
 
+=begin
     hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
-    hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415) seems high
+    hash["999999_e"] = "AutoRepair_2004" # 1/19 run (EUI 131)
+    hash["999999_f"] = "AutoSales_2004" # 1/19 run (EUI 98)
+    hash["999999_g"] = "Bank_2004" # 1/19 run (EUI 48)
+    hash["999999_h"] = "ChildCare_2004" # 1/19 run (EUI 62)
+    hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415)
     hash["999999_j"] = "GasStation_2004" # 1/18 run (EUI 79)
     hash["999999_k"] = "Hospital_2004" # 1/19 run (EUI 102)
     hash["999999_l"] = "Laboratory_2004" # 1/18 run (EUI 56)
+    hash["213097"] = "LargeHotel_1985" # ryun 1/18 run (EUI 76) SWH seems way too low
     hash["999999_p"] = "MidriseApartment_2004" # 1/16 runs
     hash["37149"] = "Office_1987" # 1/16 runs
     hash["183871"] = "Office_1989" # 1/16 runs
@@ -436,24 +442,17 @@ namespace :office do
     hash["999996"] = "OfficeData_2004"# 1/18 run
     hash["999995"] = "OfficeData_2004"# 1/18 run
     hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
-    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677) seems high
+    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677)
+    hash["999999_n"] = "Retail_2004"  # 1/18 run (EUI 58)
     hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
     hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
     hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
     hash["999999_c"] = "StripMall_2004"  # 1/16 runs
+    hash["999999_o"] = "Warehouse_2004"  # 1/18 (EUI 43)
+=end
 
-    hash["999999_e"] = "AutoRepair_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:184)
-    hash["999999_f"] = "AutoSales_2004" # (failing - add_ventilation_to_space_types/measure.rb:87)
-    hash["999999_g"] = "Bank_2004" # (failing on make_envelope_from_space_type_ratios/measure.rb:184)
-    hash["999999_h"] = "ChildCare_2004" #(failing on make envelope - Expected lookup to return one space type but it was not found.",)
     hash["999999_m"] = "Outpatient_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:203:in)
     hash["999999_t"] = "SuperMarket_2004" #(failing - make_envelope_from_space_type_ratios/measure.rb:350:in)
-    hash["213097"] = "LargeHotel_1985" #(failing on make envelope - make_envelope_from_space_type_ratios/measure.rb:349 - os_lib_cofee.rb:802)
-
-    hash["999999_n"] = "Retail_2004"  #e+ ran but no hvac (failing on add_system03_by_space_type/measure.rb:53)
-
-    hash["999999_o"] = "Warehouse_2004"  #(failing on add_fenestration_and_overhangs_by_space_type/measure.rb:128:in)
-
 
     #hash[46568] = "DK_????"
 
@@ -473,40 +472,38 @@ namespace :office do
     hash = {}
 
 =begin
+    hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
+    hash["999999_e"] = "AutoRepair_2004" # 1/19 run (EUI 131)
+    hash["999999_f"] = "AutoSales_2004" # 1/19 run (EUI 98)
+    hash["999999_g"] = "Bank_2004" # 1/19 run (EUI 48)
+    hash["999999_h"] = "ChildCare_2004" # 1/19 run (EUI 62)
+    hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415)
+    hash["999999_j"] = "GasStation_2004" # 1/18 run (EUI 79)
+    hash["999999_k"] = "Hospital_2004" # 1/19 run (EUI 102)
+    hash["999999_l"] = "Laboratory_2004" # 1/18 run (EUI 56)
+    hash["213097"] = "LargeHotel_1985" # ryun 1/18 run (EUI 76) SWH seems way too low
     hash["999999_p"] = "MidriseApartment_2004" # 1/16 runs
-    hash["999999_b"] = "SingleMultiplexRes_2004" # 1/16 runs
     hash["37149"] = "Office_1987" # 1/16 runs
     hash["183871"] = "Office_1989" # 1/16 runs
     hash["272799"] = "Office_2000" # 1/16 runs
     hash["999999_a"] = "OfficeData_2004" # 1/16 runs
-    hash["999999_c"] = "StripMall_2004"  # 1/16 runs
-    hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415) seems high
-    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677) seems high
-    hash["999999_k"] = "Hospital_2004" # 1/19 run (EUI 102)
-    hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
-    hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
-    hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
     hash["999998"] = "OfficeData_2004"# 1/18 run
     hash["999997"] = "OfficeData_2004"# 1/18 run
     hash["999996"] = "OfficeData_2004"# 1/18 run
     hash["999995"] = "OfficeData_2004"# 1/18 run
+    hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
+    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677)
+    hash["999999_n"] = "Retail_2004"  # 1/18 run (EUI 58)
+    hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
+    hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
+    hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
+    hash["999999_c"] = "StripMall_2004"  # 1/16 runs
+    hash["999999_o"] = "Warehouse_2004"  # 1/18 (EUI 43)
 =end
 
-    hash["999999_d"] = "AssistedLiving_2004" #e+ failed because of missing construction
-    hash["999999_e"] = "AutoRepair_2004" #e+ ran but no or bad results, summary report did get generated
-    hash["999999_f"] = "AutoSales_2004" #e+ ran but no or bad results, summary report did get generated
-    hash["999999_g"] = "Bank_2004" #e+ ran but no or bad results, summary report did get generated
-    hash["999999_h"] = "ChildCare_2004" #e+ ran but no or bad results, summary report did get generated
-
-    # gas station has other errors as well. Seems I'm not always using return false after register error
-    hash["999999_j"] = "GasStation_2004" # (failing on add constructions - Expected lookup to return one construction set but it was not found.)
-    hash["999999_l"] = "Laboratory_2004" # (failing on add constructions - Expected lookup to return one construction set but it was not found.)
     hash["999999_m"] = "Outpatient_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:203:in)
     hash["999999_t"] = "SuperMarket_2004" #(failing - make_envelope_from_space_type_ratios/measure.rb:350:in)
-    hash["213097"] = "LargeHotel_1985" #(failing on make envelope - os_lib_cofee.rb:802)
-    hash["999999_n"] = "Retail_2004"  #(failing on add system type 3 - os_lib_cofee.rb:878)
-    hash["999999_o"] = "Warehouse_2004"  #(failing on add fenestration I think line 28) See if also failed on construction
 
     #hash[46568] = "DK_????"
 
