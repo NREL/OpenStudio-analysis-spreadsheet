@@ -420,47 +420,50 @@ namespace :office do
     # jobs to send
     hash = {}
 
-    # test out each building type one or more times (more than once when have real anayltic records)
-    hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
-    hash["999999_e"] = "AutoRepair_2004" # 1/19 run (EUI 131)
-    hash["999999_f"] = "AutoSales_2004" # 1/19 run (EUI 98)
-    hash["999999_g"] = "Bank_2004" # 1/19 run (EUI 48)
-    hash["999999_h"] = "ChildCare_2004" # 1/19 run (EUI 62)
-    hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415)
-    hash["999999_j"] = "GasStation_2004" # 1/18 run (EUI 79)
-    hash["999999_k"] = "Hospital_2004" # 1/19 run (EUI 102)
-    hash["999999_l"] = "Laboratory_2004" # 1/18 run (EUI 56)
-    hash["213097"] = "LargeHotel_1985" # ryun 1/18 run (EUI 76) SWH seems way too low
-    hash["999999_p"] = "MidriseApartment_2004" # 1/16 runs
-    hash["37149"] = "Office_1987" # 1/16 runs
-    hash["183871"] = "Office_1989" # 1/16 runs
-    hash["272799"] = "Office_2000" # 1/16 runs
-    hash["999999_a"] = "OfficeData_2004" # 1/16 runs
-    hash["999999_m"] = "Outpatient_2004" # 1/19 run (EUI 100)
-    hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
-    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677)
-    hash["999999_n"] = "Retail_2004"  # 1/18 run (EUI 58)
-    hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
-    hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
-    hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
-    hash["999999_c"] = "StripMall_2004"  # 1/16 runs
-    hash["999999_t"] = "SuperMarket_2004" # 1/19 run (EUI 76)
-    hash["999999_o"] = "Warehouse_2004"  # 1/18 (EUI 43)
+=begin
+    # test out each building type one or more times (more than once when have real analytic records)
+    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
+    hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
+    hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 98)
+    hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 48)
+    hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 62)
+    hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EU 415)
+    hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 79)
+    hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 102)
+    hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 56)
+    hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # ryun 1/18 run (EUI 76) SWH seems way too low
+    hash["999999_p"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 100)
+    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 76)
+    hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 677)
+    hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE]  # 1/18 run (EUI 58)
+    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
+    hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
+    hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # 1/16 runs
+    hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 76)
+    hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # 1/18 (EUI 43)
     #hash[46568] = "DK_????"
+=end
 
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = "OfficeData_2004"# 1/18 run
-    hash["999997"] = "OfficeData_2004"# 1/18 run
-    hash["999996"] = "OfficeData_2004"# 1/18 run
-    hash["999995"] = "OfficeData_2004"# 1/18 run
+    hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
 
     # todo - test different system types
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
-      hash_building_type = v.split("_")[0]
-      hash_year = v.split("_")[1]
-      create_json(analytic_record, hash_building_type, hash_year,HVAC_SYSTEM_TYPE)
+      hash_building_type = v[0]
+      hash_year = v[1]
+      hvac_sys = v[2]
+      create_json(analytic_record, hash_building_type, hash_year,hvac_sys)
     end
 
   end
@@ -471,45 +474,47 @@ namespace :office do
     # jobs to run
     hash = {}
 
-    # test out each building type one or more times (more than once when have real anayltic records)
-    hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
-    hash["999999_e"] = "AutoRepair_2004" # 1/19 run (EUI 131)
-    hash["999999_f"] = "AutoSales_2004" # 1/19 run (EUI 98)
-    hash["999999_g"] = "Bank_2004" # 1/19 run (EUI 48)
-    hash["999999_h"] = "ChildCare_2004" # 1/19 run (EUI 62)
-    hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415)
-    hash["999999_j"] = "GasStation_2004" # 1/18 run (EUI 79)
-    hash["999999_k"] = "Hospital_2004" # 1/19 run (EUI 102)
-    hash["999999_l"] = "Laboratory_2004" # 1/18 run (EUI 56)
-    hash["213097"] = "LargeHotel_1985" # ryun 1/18 run (EUI 76) SWH seems way too low
-    hash["999999_p"] = "MidriseApartment_2004" # 1/16 runs
-    hash["37149"] = "Office_1987" # 1/16 runs
-    hash["183871"] = "Office_1989" # 1/16 runs
-    hash["272799"] = "Office_2000" # 1/16 runs
-    hash["999999_a"] = "OfficeData_2004" # 1/16 runs
-    hash["999999_m"] = "Outpatient_2004" # 1/19 run (EUI 100)
-    hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
-    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677)
-    hash["999999_n"] = "Retail_2004"  # 1/18 run (EUI 58)
-    hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
-    hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
-    hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
-    hash["999999_c"] = "StripMall_2004"  # 1/16 runs
-    hash["999999_t"] = "SuperMarket_2004" # 1/19 run (EUI 76)
-    hash["999999_o"] = "Warehouse_2004"  # 1/18 (EUI 43)
+=begin
+    # test out each building type one or more times (more than once when have real analytic records)
+    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
+    hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
+    hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 98)
+    hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 48)
+    hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 62)
+    hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EU 415)
+    hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 79)
+    hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 102)
+    hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 56)
+    hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # ryun 1/18 run (EUI 76) SWH seems way too low
+    hash["999999_p"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 100)
+    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 76)
+    hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 677)
+    hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE]  # 1/18 run (EUI 58)
+    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
+    hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
+    hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
+    hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # 1/16 runs
+    hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 76)
+    hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # 1/18 (EUI 43)
     #hash[46568] = "DK_????"
+=end
 
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = "OfficeData_2004"# 1/18 run
-    hash["999997"] = "OfficeData_2004"# 1/18 run
-    hash["999996"] = "OfficeData_2004"# 1/18 run
-    hash["999995"] = "OfficeData_2004"# 1/18 run
+    hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
 
     # todo - test different system types
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
-      v = v.downcase
+      v = "#{v[0].downcase}_#{v[1].downcase}"
       formulation_file = "analysis/#{analytic_record}_#{v}.json"
       zip_file = "analysis/#{analytic_record}_#{v}.zip"
       api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
