@@ -176,7 +176,7 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_start = 7
       building_static_hoo_finish = 17
     else
-      fail 'building type not supported'
+      fail "#{building_type} is not a supported building type"
   end
 
   # create loop for gather space type ratio instances
@@ -420,40 +420,40 @@ namespace :office do
     # jobs to send
     hash = {}
 
-    hash[999999] = "MidriseApartment_2004" # 1/16 runs
-    hash["999999_b"] = "SingleMultiplexRes_2004" # 1/16 runs
-    hash[37149] = "Office_1987" # 1/16 runs
-    hash[183871] = "Office_1989" # 1/16 runs
-    hash[272799] = "Office_2000" # 1/16 runs
-    hash["999999_a"] = "OfficeData_2004" # 1/16 runs
-    hash["999999_c"] = "StripMall_2004"  # 1/16 runs
+    hash["999999_d"] = "AssistedLiving_2004" # 1/18 run (EUI 99)
     hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415) seems high
-    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677) seems high
+    hash["999999_j"] = "GasStation_2004" # 1/18 run (EUI 79)
     hash["999999_k"] = "Hospital_2004" # 1/19 run (EUI 102)
+    hash["999999_l"] = "Laboratory_2004" # 1/18 run (EUI 56)
+    hash["999999_p"] = "MidriseApartment_2004" # 1/16 runs
+    hash["37149"] = "Office_1987" # 1/16 runs
+    hash["183871"] = "Office_1989" # 1/16 runs
+    hash["272799"] = "Office_2000" # 1/16 runs
+    hash["999999_a"] = "OfficeData_2004" # 1/16 runs
+    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
+    hash["999998"] = "OfficeData_2004"# 1/18 run
+    hash["999997"] = "OfficeData_2004"# 1/18 run
+    hash["999996"] = "OfficeData_2004"# 1/18 run
+    hash["999995"] = "OfficeData_2004"# 1/18 run
     hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
+    hash["999999_q"] = "QuickServiceRestaurant_2004" # 1/18 run (EUI 677) seems high
     hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
+    hash["999999_b"] = "SingleMultiPlexRes_2004" # 1/16 runs
     hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
+    hash["999999_c"] = "StripMall_2004"  # 1/16 runs
 
-    hash["999999_d"] = "AssistedLiving_2004" #e+ failed because of missing construction
-    hash["999999_e"] = "AutoRepair_2004" #e+ ran but no or bad results, summary report did get generated
-    hash["999999_f"] = "AutoSales_2004" #e+ ran but no or bad results, summary report did get generated
-    hash["999999_g"] = "Bank_2004" #e+ ran but no or bad results, summary report did get generated
-    hash["999999_h"] = "ChildCare_2004" #e+ ran but no or bad results, summary report did get generated
-
-    # gas station has other errors as well. Seems I'm not always using return false after register error
-    hash["999999_j"] = "GasStation_2004" # (failing on add constructions - Expected lookup to return one construction set but it was not found.)
-    hash["999999_l"] = "Laboratory_2004" # (failing on add constructions - Expected lookup to return one construction set but it was not found.)
+    hash["999999_e"] = "AutoRepair_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:184)
+    hash["999999_f"] = "AutoSales_2004" # (failing - add_ventilation_to_space_types/measure.rb:87)
+    hash["999999_g"] = "Bank_2004" # (failing on make_envelope_from_space_type_ratios/measure.rb:184)
+    hash["999999_h"] = "ChildCare_2004" #(failing on make envelope - Expected lookup to return one space type but it was not found.",)
     hash["999999_m"] = "Outpatient_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:203:in)
     hash["999999_t"] = "SuperMarket_2004" #(failing - make_envelope_from_space_type_ratios/measure.rb:350:in)
-    hash[213097] = "LargeHotel_1985" #(failing on make envelope - os_lib_cofee.rb:802)
-    hash["999999_n"] = "Retail_2004"  #(failing on add system type 3 - os_lib_cofee.rb:878)
-    hash["999999_o"] = "Warehouse_2004"  #(failing on add fenestration I think line 28) See if also failed on construction
+    hash["213097"] = "LargeHotel_1985" #(failing on make envelope - make_envelope_from_space_type_ratios/measure.rb:349 - os_lib_cofee.rb:802)
 
-    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = "OfficeData_2004"
-    hash["999997"] = "OfficeData_2004"
-    hash["999996"] = "OfficeData_2004"
-    hash["999995"] = "OfficeData_2004"
+    hash["999999_n"] = "Retail_2004"  #e+ ran but no hvac (failing on add_system03_by_space_type/measure.rb:53)
+
+    hash["999999_o"] = "Warehouse_2004"  #(failing on add_fenestration_and_overhangs_by_space_type/measure.rb:128:in)
+
 
     #hash[46568] = "DK_????"
 
@@ -472,11 +472,12 @@ namespace :office do
     # jobs to run
     hash = {}
 
-    hash[999999] = "MidriseApartment_2004" # 1/16 runs
+=begin
+    hash["999999_p"] = "MidriseApartment_2004" # 1/16 runs
     hash["999999_b"] = "SingleMultiplexRes_2004" # 1/16 runs
-    hash[37149] = "Office_1987" # 1/16 runs
-    hash[183871] = "Office_1989" # 1/16 runs
-    hash[272799] = "Office_2000" # 1/16 runs
+    hash["37149"] = "Office_1987" # 1/16 runs
+    hash["183871"] = "Office_1989" # 1/16 runs
+    hash["272799"] = "Office_2000" # 1/16 runs
     hash["999999_a"] = "OfficeData_2004" # 1/16 runs
     hash["999999_c"] = "StripMall_2004"  # 1/16 runs
     hash["999999_i"] = "FullServiceRestaurant_2004" # 1/18 run (EU 415) seems high
@@ -485,6 +486,12 @@ namespace :office do
     hash["999999_p"] = "PrimarySchool_2004" # 1/18 run (EUI 76)
     hash["999999_r"] = "SecondarySchool_2004" # 1/18 run (EUI 73)
     hash["999999_s"] = "SmallHotel_2004" # 1/18 run (EUI 73)
+    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
+    hash["999998"] = "OfficeData_2004"# 1/18 run
+    hash["999997"] = "OfficeData_2004"# 1/18 run
+    hash["999996"] = "OfficeData_2004"# 1/18 run
+    hash["999995"] = "OfficeData_2004"# 1/18 run
+=end
 
     hash["999999_d"] = "AssistedLiving_2004" #e+ failed because of missing construction
     hash["999999_e"] = "AutoRepair_2004" #e+ ran but no or bad results, summary report did get generated
@@ -497,15 +504,9 @@ namespace :office do
     hash["999999_l"] = "Laboratory_2004" # (failing on add constructions - Expected lookup to return one construction set but it was not found.)
     hash["999999_m"] = "Outpatient_2004" # (failing - make_envelope_from_space_type_ratios/measure.rb:203:in)
     hash["999999_t"] = "SuperMarket_2004" #(failing - make_envelope_from_space_type_ratios/measure.rb:350:in)
-    hash[213097] = "LargeHotel_1985" #(failing on make envelope - os_lib_cofee.rb:802)
+    hash["213097"] = "LargeHotel_1985" #(failing on make envelope - os_lib_cofee.rb:802)
     hash["999999_n"] = "Retail_2004"  #(failing on add system type 3 - os_lib_cofee.rb:878)
     hash["999999_o"] = "Warehouse_2004"  #(failing on add fenestration I think line 28) See if also failed on construction
-
-    # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = "OfficeData_2004"
-    hash["999997"] = "OfficeData_2004"
-    hash["999996"] = "OfficeData_2004"
-    hash["999995"] = "OfficeData_2004"
 
     #hash[46568] = "DK_????"
 
