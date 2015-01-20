@@ -459,7 +459,7 @@ def create_json(structure_id, building_type, year, system_type)
     :variables => [
       {
         :name => 'multiplier_gas_equip',
-        :desc => 'Add Water Use Connection and Equipment',
+        :desc => 'Gas Equipment Multiplier',
         :value => {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
       }
     ],
@@ -734,7 +734,7 @@ def create_json(structure_id, building_type, year, system_type)
   a.seed_model(seed_model)
 
   # will be handled by cofee-grinder
-  
+
   # add in the other libraries
   a.libraries.add('../../GitHub/cofee-measures/lib', { library_name: 'cofee'})
   a.libraries.add('lib_m0/183871', { library_name: 'calibration_data'})
@@ -755,9 +755,9 @@ def create_json(structure_id, building_type, year, system_type)
   a.save_zip zip_file
 
 end
-namespace :new do
+
 desc 'run create analysis.json scripts'
-namespace :office do
+namespace :test_models do
   #NAME = 'Office - test with tariff, fixed system type arg, fixed supply side of water'
   RAILS = false
   #MEASURES_ROOT_DIRECTORY = "../cofee-measures"
@@ -900,5 +900,4 @@ namespace :office do
     end
 
   end
-end
 end
