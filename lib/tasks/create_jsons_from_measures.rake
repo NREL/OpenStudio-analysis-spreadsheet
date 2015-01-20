@@ -735,7 +735,7 @@ def create_json(structure_id, building_type, year, system_type)
 
 
 end
-
+namespace :new do
 desc 'run create analysis.json scripts'
 namespace :office do
   #NAME = 'Office - test with tariff, fixed system type arg, fixed supply side of water'
@@ -876,5 +876,5 @@ namespace :office do
     end
 
   end
-
+end
 end
