@@ -778,53 +778,60 @@ namespace :test_models do
     # jobs to send
     hash = {}
 
-    # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
-
     # test out each building type one or more times (more than once when have real analytic records)
-=begin
-    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
-    hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
-    hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 98)
-    hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 48)
-    hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 62)
-    hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EU 415)
-    hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 79)
-    hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 102)
-    hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 56)
-    hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # ryun 1/18 run (EUI 76) SWH seems way too low
-    hash["999999_p"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 100)
-    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 76)
-    hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 677)
-    hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE]  # 1/18 run (EUI 58)
-    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
-    hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
-    hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # 1/16 runs
-    hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 76)
-    hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # 1/18 (EUI 43)
+    # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
+    # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
+    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
+    hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
+    hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
+    hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # eui 48, unmet_htg_and_clg 2062/1742, dur_sec 184, notes:,notes: no errors, dominant end uses are heating lighting, and equip
+    hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1383/3771, dur_sec 181, notes: no errors, dominant end uses are heating lighting and equip
+    hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 494, unmet_htg_and_clg 662/22, dur_sec 197, notes: no errors, dominant end use is equip then swh
+    hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1561/1411, dur_sec 163, notes: no errors, dominant end use is heating then lighting and swh
+    hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # eui 104, unmet_htg_and_clg 384/1158, dur_sec 232, notes: no errors, equip is dominant load, EUI seems low
+    hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1879/1844, dur_sec 247, notes: no errors, equip is dominant load then heating and lighting
+    hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # eui 112, unmet_htg_and_clg 15/0, dur_sec 272, notes: no errors, dominant end use is equip then swh heating and lighting
+
+    # todo - missed this one because duplidate hash name, re-run single job with renamed hash.
+    hash["999999_ac"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+
+    hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1569/1521, dur_sec 205, notes: no errors, dominant end use is heating then lighting and equip
+    hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # eui 72, unmet_htg_and_clg 1517/1494, dur_sec 182, notes: no errors, dominant end use is heating then lighting and equip
+    hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # eui 67, unmet_htg_and_clg 1637/2820, dur_sec 214, notes: no errors, dominant end uses are heating lighting and equip
+    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 52 TBD, unmet_htg_and_clg 1746/2227, dur_sec 234, notes: no errors, dominant end use is equip then lighting and heating
+    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 100 TBD, unmet_htg_and_clg 677/2996, dur_sec 232, notes: no errors, dominant end use is equip then heating
+
+    # todo - look into error on this one
+    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
+
+    hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 678, unmet_htg_and_clg 550/0, dur_sec 186, notes: no errors, dominant end use is equip (gas and elec) then swh
+    hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE] # eui 58, unmet_htg_and_clg 1123/3880, dur_sec 172, notes: no errors, dominant end use is heating lighting and equip
+
+    # todo - look into error on this one
+    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE]# eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
+
+    hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # eui 87, unmet_htg_and_clg 0,0, dur_sec 107, notes: no errors, dominant end use swh
+    hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # eui 74, unmet_htg_and_clg 76/0, dur_sec 207, notes: no errors, dominant end use is equip then heating and swh
+    hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # eui 48, unmet_htg_and_clg 561/3547, dur_sec 128, notes: no errors, dominant end use is lighting then equip and heating
+    hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # eui 77, unmet_htg_and_clg 751/3215, dur_sec 188, notes: no errors, dominant end uses are heating equip and lighting
+    hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # eui 43, unmet_htg_and_clg 694/644, dur_sec 137, notes: no errors, dominant end use is heating
     #hash[46568] = "DK_????"
 
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
-    hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
-    hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
-    hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
     # test different system types
-    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # 1/19 run (EUI 49, unmet htg and clg 575/393)
-    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # 1/19 run (EUI 46, unmet htg and clg 408/484)
-    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # 1/19 run (EUI 60, unmet htg and clg 1100/2495)
-    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # 1/19 run (EUI 49, unmet htg and clg 1055/2495)
-    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # 1/19 run (EUI 57, unmet htg and clg 2106/3985)
-    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # 1/19 run (EUI 57, unmet htg and clg 958/1884)
-    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # 1/19 run (EUI 56, unmet htg and clg 2105/2045)
-=end
-    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # 1/19 run (EUI 54, unmet htg and clg 959/1880)
+    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
@@ -842,53 +849,60 @@ namespace :test_models do
     # jobs to run
     hash = {}
 
-    # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
-
     # test out each building type one or more times (more than once when have real analytic records)
-=begin
-    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
-    hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
-    hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 98)
-    hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 48)
-    hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 62)
-    hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EU 415)
-    hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 79)
-    hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 102)
-    hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 56)
-    hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # ryun 1/18 run (EUI 76) SWH seems way too low
-    hash["999999_p"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 100)
-    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 76)
-    hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 677)
-    hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE]  # 1/18 run (EUI 58)
-    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
-    hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # 1/16 runs
-    hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 73)
-    hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # 1/16 runs
-    hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 76)
-    hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # 1/18 (EUI 43)
+    # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
+    # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
+    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
+    hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
+    hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
+    hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # eui 48, unmet_htg_and_clg 2062/1742, dur_sec 184, notes:,notes: no errors, dominant end uses are heating lighting, and equip
+    hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1383/3771, dur_sec 181, notes: no errors, dominant end uses are heating lighting and equip
+    hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 494, unmet_htg_and_clg 662/22, dur_sec 197, notes: no errors, dominant end use is equip then swh
+    hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1561/1411, dur_sec 163, notes: no errors, dominant end use is heating then lighting and swh
+    hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # eui 104, unmet_htg_and_clg 384/1158, dur_sec 232, notes: no errors, equip is dominant load, EUI seems low
+    hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1879/1844, dur_sec 247, notes: no errors, equip is dominant load then heating and lighting
+    hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # eui 112, unmet_htg_and_clg 15/0, dur_sec 272, notes: no errors, dominant end use is equip then swh heating and lighting
+
+    # todo - missed this one because duplidate hash name, re-run single job with renamed hash.
+    hash["999999_ac"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+
+    hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1569/1521, dur_sec 205, notes: no errors, dominant end use is heating then lighting and equip
+    hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # eui 72, unmet_htg_and_clg 1517/1494, dur_sec 182, notes: no errors, dominant end use is heating then lighting and equip
+    hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # eui 67, unmet_htg_and_clg 1637/2820, dur_sec 214, notes: no errors, dominant end uses are heating lighting and equip
+    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 52 TBD, unmet_htg_and_clg 1746/2227, dur_sec 234, notes: no errors, dominant end use is equip then lighting and heating
+    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 100 TBD, unmet_htg_and_clg 677/2996, dur_sec 232, notes: no errors, dominant end use is equip then heating
+
+    # todo - look into error on this one
+    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
+
+    hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 678, unmet_htg_and_clg 550/0, dur_sec 186, notes: no errors, dominant end use is equip (gas and elec) then swh
+    hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE] # eui 58, unmet_htg_and_clg 1123/3880, dur_sec 172, notes: no errors, dominant end use is heating lighting and equip
+
+    # todo - look into error on this one
+    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE]# eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
+
+    hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # eui 87, unmet_htg_and_clg 0,0, dur_sec 107, notes: no errors, dominant end use swh
+    hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # eui 74, unmet_htg_and_clg 76/0, dur_sec 207, notes: no errors, dominant end use is equip then heating and swh
+    hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # eui 48, unmet_htg_and_clg 561/3547, dur_sec 128, notes: no errors, dominant end use is lighting then equip and heating
+    hash["999999_t"] = ["SuperMarket","2004",HVAC_SYSTEM_TYPE] # eui 77, unmet_htg_and_clg 751/3215, dur_sec 188, notes: no errors, dominant end uses are heating equip and lighting
+    hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # eui 43, unmet_htg_and_clg 694/644, dur_sec 137, notes: no errors, dominant end use is heating
     #hash[46568] = "DK_????"
 
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
-    hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
-    hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
-    hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
-    hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE]# 1/18 run
+    hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
     # test different system types
-    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # 1/19 run (EUI 49, unmet htg and clg 575/393)
-    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # 1/19 run (EUI 46, unmet htg and clg 408/484)
-    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # 1/19 run (EUI 60, unmet htg and clg 1100/2495)
-    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # 1/19 run (EUI 49, unmet htg and clg 1055/2495)
-    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # 1/19 run (EUI 57, unmet htg and clg 2106/3985)
-    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # 1/19 run (EUI 57, unmet htg and clg 958/1884)
-    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # 1/19 run (EUI 56, unmet htg and clg 2105/2045)
-=end
-    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # 1/19 run (EUI 54, unmet htg and clg 959/1880)
+    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
