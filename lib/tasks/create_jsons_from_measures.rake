@@ -733,6 +733,26 @@ def create_json(structure_id, building_type, year, system_type)
   # seed model
   a.seed_model(seed_model)
 
+  # will be handled by cofee-grinder
+  
+  # add in the other libraries
+  a.libraries.add('../../GitHub/cofee-measures/lib', { library_name: 'cofee'})
+  a.libraries.add('lib_m0/183871', { library_name: 'calibration_data'})
+
+
+  # add any worker init / finalization scripts - the files will run in the order that they are added
+  # this is just an example file
+  #a.worker_inits.add('project_ruby/office_blend.rb', {args: [19837,"z",{b: 'something'}]})
+  #a.worker_finalizes.add('project_ruby/office_blend.rb')
+  # Save the analysis JSON
+  formulation_file = "analysis/#{save_string.downcase.squeeze(' ').gsub(' ', '_')}.json"
+  zip_file = "analysis/#{save_string.downcase.squeeze(' ').gsub(' ', '_')}.zip"
+
+  # set the analysis type here as well. I plan on not having this required in the near future
+  a.analysis_type = ANALYSIS_TYPE
+
+  a.save formulation_file
+  a.save_zip zip_file
 
 end
 namespace :new do
