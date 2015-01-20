@@ -173,7 +173,7 @@ def create_json(structure_id, building_type, year, system_type)
   measures << {
     :name => 'ngrid_monthly_uility_data', 
     :desc => 'NGrid Add Monthly Utility Data', 
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'NGridAddMonthlyUtilityData')}"
+    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'NGridAddMonthlyUtilityData')}",
     :variables => [],
     :arguments => [
 
@@ -199,7 +199,7 @@ def create_json(structure_id, building_type, year, system_type)
   measures << {
     :name => 'calibration_reports', 
     :desc => 'Calibration Reports',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'CalibrationReports')}"
+    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'CalibrationReports')}",
     :variables => [],
     :arguments => []
   }
@@ -238,7 +238,7 @@ def create_json(structure_id, building_type, year, system_type)
     # this should be in a hash of some sort
     if values[:is_primary]
       measure[:arguments] << {
-        :name => is_primary_space_type,
+        :name => 'is_primary_space_type',
         :value => true
       }
       measure[:arguments] << {
@@ -247,14 +247,14 @@ def create_json(structure_id, building_type, year, system_type)
       }
     else
       measure[:arguments] << {
-        :name => is_primary_space_type,
+        :name => 'is_primary_space_type',
         :value => false
       }
-      measures[:variables] << 
+      measure[:variables] <<
       {
         :name => 'fraction_of_building_area',
         :desc => 'Building Area Fraction',
-        :values => values
+        :value => values
       }
     end
     measure[:arguments] << {
@@ -378,7 +378,7 @@ def create_json(structure_id, building_type, year, system_type)
   measures << {
     :name => 'RotateBuilding', 
     :desc => 'Rotate Building',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'RotateBuilding')}"
+    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'RotateBuilding')}",
     :arguments => [
       {
         :name => 'relative_building_rotation',
@@ -454,7 +454,7 @@ def create_json(structure_id, building_type, year, system_type)
   }
   measures << {
     :name => 'add_gas_equip_to_spaces_by_space_type',
-    :desc => 'Add Gas Equip to Spaces by Space Type'
+    :desc => 'Add Gas Equip to Spaces by Space Type',
     :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_gas_equip_to_spaces_by_space_type')}",
     :variables => [
       {
@@ -625,7 +625,7 @@ def create_json(structure_id, building_type, year, system_type)
     :desc => 'EH03: Dual Enthalpy Economizer Controls',
     :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ee', 'EH03DualEnthalpyEconomizerControls')}",
     :variables => [],
-    :arguments [
+    :arguments => [
       {
         :name => 'economizer_type', 
         :value => "DifferentialEnthalpy"
@@ -647,7 +647,7 @@ def create_json(structure_id, building_type, year, system_type)
         :value => -148.0
       },
       {
-        :name =>'use_case', 
+        :name => 'use_case',
         :value => "Update M0 with Indemand data"
       }
     ]
@@ -710,12 +710,12 @@ def create_json(structure_id, building_type, year, system_type)
   a = OpenStudio::Analysis.create(save_string)
 
   measures.each do |m|
-    m = a.workflow.add_measure_from_path(m[:name], m[:desc], m[:path])
+    measure = a.workflow.add_measure_from_path(m[:name], m[:desc], m[:path])
     m[:arguments].each do |a|
-      m.argument_value(a[:name], a[:value])
+      measure.argument_value(a[:name], a[:value])
     end
     m[:variables].each do |v|
-      m.make_variable(v[:name], v[:desc], v[:value])
+      measure.make_variable(v[:name], v[:desc], v[:value])
     end
   end
 
@@ -761,6 +761,7 @@ namespace :office do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
 
     # test out each building type one or more times (more than once when have real analytic records)
+=begin
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 98)
@@ -802,6 +803,7 @@ namespace :office do
     hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # 1/19 run (EUI 57, unmet htg and clg 2106/3985)
     hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # 1/19 run (EUI 57, unmet htg and clg 958/1884)
     hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # 1/19 run (EUI 56, unmet htg and clg 2105/2045)
+=end
     hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # 1/19 run (EUI 54, unmet htg and clg 959/1880)
 
     hash.each do |k,v|
@@ -823,6 +825,7 @@ namespace :office do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
 
     # test out each building type one or more times (more than once when have real analytic records)
+=begin
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # 1/18 run (EUI 99)
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 131)
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # 1/19 run (EUI 98)
@@ -864,6 +867,7 @@ namespace :office do
     hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # 1/19 run (EUI 57, unmet htg and clg 2106/3985)
     hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # 1/19 run (EUI 57, unmet htg and clg 958/1884)
     hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # 1/19 run (EUI 56, unmet htg and clg 2105/2045)
+=end
     hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # 1/19 run (EUI 54, unmet htg and clg 959/1880)
 
     hash.each do |k,v|
