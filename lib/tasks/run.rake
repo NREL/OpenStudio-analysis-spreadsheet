@@ -768,9 +768,9 @@ namespace :test_models do
   STRUCTURE_ID = 183871
 
   ANALYSIS_TYPE = 'single_run'
-  HOSTNAME = 'http://localhost:8080'
+  #HOSTNAME = 'http://localhost:8080'
   #HOSTNAME = 'http://bball-130553.nrel.gov:8080' #nrel24a
-  #HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
+  HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
 
   #create_json(structure_id, building_type, year, system_type)
   task :jsons do
@@ -791,25 +791,16 @@ namespace :test_models do
     hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # eui 104, unmet_htg_and_clg 384/1158, dur_sec 232, notes: no errors, equip is dominant load, EUI seems low
     hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1879/1844, dur_sec 247, notes: no errors, equip is dominant load then heating and lighting
     hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # eui 112, unmet_htg_and_clg 15/0, dur_sec 272, notes: no errors, dominant end use is equip then swh heating and lighting
-
-    # todo - missed this one because duplidate hash name, re-run single job with renamed hash.
-    hash["999999_ac"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-
+    hash["999999_ac"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # eui 74, unmet_htg_and_clg 0,0, dur_sec 159, notes: no errors, dominant end use is swh then heating equip and lighting
     hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1569/1521, dur_sec 205, notes: no errors, dominant end use is heating then lighting and equip
     hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # eui 72, unmet_htg_and_clg 1517/1494, dur_sec 182, notes: no errors, dominant end use is heating then lighting and equip
     hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # eui 67, unmet_htg_and_clg 1637/2820, dur_sec 214, notes: no errors, dominant end uses are heating lighting and equip
-    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 52 TBD, unmet_htg_and_clg 1746/2227, dur_sec 234, notes: no errors, dominant end use is equip then lighting and heating
-    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 100 TBD, unmet_htg_and_clg 677/2996, dur_sec 232, notes: no errors, dominant end use is equip then heating
-
-    # todo - look into error on this one
-    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
-
+    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 52, unmet_htg_and_clg 1746/2227, dur_sec 234, notes: no errors, dominant end use is equip then lighting and heating
+    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 100, unmet_htg_and_clg 677/2996, dur_sec 232, notes: no errors, dominant end use is equip then heating
+    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # eui 76, unmet_htg_and_clg 1216/3863, dur_sec 309, notes: no errors, dominant end uses are equip and heating then lighting, swh seems higher than expected
     hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 678, unmet_htg_and_clg 550/0, dur_sec 186, notes: no errors, dominant end use is equip (gas and elec) then swh
     hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE] # eui 58, unmet_htg_and_clg 1123/3880, dur_sec 172, notes: no errors, dominant end use is heating lighting and equip
-
-    # todo - look into error on this one
-    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE]# eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
-
+    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE]# eui 77, unmet_htg_and_clg 1459/3252, dur_sec 320, notes: no errors, heating is primary end use then lighting equip and swh
     hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # eui 87, unmet_htg_and_clg 0,0, dur_sec 107, notes: no errors, dominant end use swh
     hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # eui 74, unmet_htg_and_clg 76/0, dur_sec 207, notes: no errors, dominant end use is equip then heating and swh
     hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # eui 48, unmet_htg_and_clg 561/3547, dur_sec 128, notes: no errors, dominant end use is lighting then equip and heating
@@ -862,25 +853,16 @@ namespace :test_models do
     hash["999999_k"] = ["Hospital","2004",HVAC_SYSTEM_TYPE] # eui 104, unmet_htg_and_clg 384/1158, dur_sec 232, notes: no errors, equip is dominant load, EUI seems low
     hash["999999_l"] = ["Laboratory","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1879/1844, dur_sec 247, notes: no errors, equip is dominant load then heating and lighting
     hash["213097"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE] # eui 112, unmet_htg_and_clg 15/0, dur_sec 272, notes: no errors, dominant end use is equip then swh heating and lighting
-
-    # todo - missed this one because duplidate hash name, re-run single job with renamed hash.
-    hash["999999_ac"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-
+    hash["999999_ac"] = ["MidriseApartment","2004",HVAC_SYSTEM_TYPE] # eui 74, unmet_htg_and_clg 0,0, dur_sec 159, notes: no errors, dominant end use is swh then heating equip and lighting
     hash["37149"] = ["Office","1987",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1569/1521, dur_sec 205, notes: no errors, dominant end use is heating then lighting and equip
     hash["183871"] = ["Office","1989",HVAC_SYSTEM_TYPE] # eui 72, unmet_htg_and_clg 1517/1494, dur_sec 182, notes: no errors, dominant end use is heating then lighting and equip
     hash["272799"] = ["Office","2000",HVAC_SYSTEM_TYPE] # eui 67, unmet_htg_and_clg 1637/2820, dur_sec 214, notes: no errors, dominant end uses are heating lighting and equip
-    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 52 TBD, unmet_htg_and_clg 1746/2227, dur_sec 234, notes: no errors, dominant end use is equip then lighting and heating
-    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 100 TBD, unmet_htg_and_clg 677/2996, dur_sec 232, notes: no errors, dominant end use is equip then heating
-
-    # todo - look into error on this one
-    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
-
+    hash["999999_a"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # 52, unmet_htg_and_clg 1746/2227, dur_sec 234, notes: no errors, dominant end use is equip then lighting and heating
+    hash["999999_m"] = ["Outpatient","2004",HVAC_SYSTEM_TYPE] # 100, unmet_htg_and_clg 677/2996, dur_sec 232, notes: no errors, dominant end use is equip then heating
+    hash["999999_p"] = ["PrimarySchool","2004",HVAC_SYSTEM_TYPE] # eui 76, unmet_htg_and_clg 1216/3863, dur_sec 309, notes: no errors, dominant end uses are equip and heating then lighting, swh seems higher than expected
     hash["999999_q"] = ["QuickServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 678, unmet_htg_and_clg 550/0, dur_sec 186, notes: no errors, dominant end use is equip (gas and elec) then swh
     hash["999999_n"] = ["Retail","2004",HVAC_SYSTEM_TYPE] # eui 58, unmet_htg_and_clg 1123/3880, dur_sec 172, notes: no errors, dominant end use is heating lighting and equip
-
-    # todo - look into error on this one
-    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE]# eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: error - measures/add_fenestration_and_overhangs_by_space_type/measure.rb:142:in
-
+    hash["999999_r"] = ["SecondarySchool","2004",HVAC_SYSTEM_TYPE]# eui 77, unmet_htg_and_clg 1459/3252, dur_sec 320, notes: no errors, heating is primary end use then lighting equip and swh
     hash["999999_b"] = ["SingleMultiPlexRes","2004",HVAC_SYSTEM_TYPE] # eui 87, unmet_htg_and_clg 0,0, dur_sec 107, notes: no errors, dominant end use swh
     hash["999999_s"] = ["SmallHotel","2004",HVAC_SYSTEM_TYPE] # eui 74, unmet_htg_and_clg 76/0, dur_sec 207, notes: no errors, dominant end use is equip then heating and swh
     hash["999999_c"] = ["StripMall","2004",HVAC_SYSTEM_TYPE]  # eui 48, unmet_htg_and_clg 561/3547, dur_sec 128, notes: no errors, dominant end use is lighting then equip and heating
