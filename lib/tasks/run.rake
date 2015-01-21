@@ -736,7 +736,8 @@ def create_json(structure_id, building_type, year, system_type)
   # will be handled by cofee-grinder
 
   # add in the other libraries
-  a.libraries.add('../../GitHub/cofee-measures/lib', { library_name: 'cofee'})
+  #a.libraries.add('../../GitHub/cofee-measures/lib', { library_name: 'cofee'})
+  a.libraries.add('../cofee-measures/lib', { library_name: 'cofee'})
   a.libraries.add('lib_m0/183871', { library_name: 'calibration_data'})
 
 
@@ -760,17 +761,17 @@ desc 'run create analysis.json scripts'
 namespace :test_models do
   #NAME = 'Office - test with tariff, fixed system type arg, fixed supply side of water'
   RAILS = false
-  #MEASURES_ROOT_DIRECTORY = "../cofee-measures"
-  MEASURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
+  MEASURES_ROOT_DIRECTORY = "../cofee-measures"
+  #MEASURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
   BUILDING_TYPE = 'office'
   WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
   HVAC_SYSTEM_TYPE = 'SysType 7'
   STRUCTURE_ID = 183871
 
   ANALYSIS_TYPE = 'single_run'
-  #HOSTNAME = 'http://localhost:8080'
+  HOSTNAME = 'http://localhost:8080'
   #HOSTNAME = 'http://bball-130553.nrel.gov:8080' #nrel24a
-  HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
+  #HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
 
   #create_json(structure_id, building_type, year, system_type)
   task :jsons do
@@ -835,7 +836,7 @@ namespace :test_models do
   end
 
   desc 'create and run the office json'
-  task :run => [:jsons] do
+  task :queue do
 
     # jobs to run
     hash = {}
@@ -891,9 +892,20 @@ namespace :test_models do
       v = "#{v[0].downcase}_#{v[1].downcase}"
       formulation_file = "analysis/#{analytic_record}_#{v}.json"
       zip_file = "analysis/#{analytic_record}_#{v}.zip"
-      api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
-      api.run(formulation_file, zip_file, ANALYSIS_TYPE)
+      if File.exist?(formulation_file) && File.exist?(zip_file)
+        puts "Running #{analytic_record}_#{v}"
+        api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
+        api.queue_single_run(formulation_file, zip_file, ANALYSIS_TYPE)
+      else
+        puts "Could not file JSON or ZIP for #{analytic_record}_#{v}"
+      end
     end
-
   end
+
+  desc 'start the run queue'
+  task :start do
+    api = OpenStudio::Analysis::ServerApi.new( { hostname: HOSTNAME } )
+    api.run_batch_run_across_analyses(nil, nil, ANALYSIS_TYPE)
+  end
+
 end
