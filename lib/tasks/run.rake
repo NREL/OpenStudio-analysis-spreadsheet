@@ -69,7 +69,7 @@ def create_json(structure_id, building_type, year, system_type)
       space_type_hash["LargeHotel BlendGst"] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["LargeHotel BlendLob"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.3, mean: 0.173, static_value: 0.173}
       space_type_hash["LargeHotel BlendFds"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.091, static_value: 0.091}
-      space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.05, mean: 0.028, static_value: 0.028}
+      space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.028, static_value: 0.028}
       space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.025, mean: 0.011, static_value: 0.011}
       space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.015, mean: 0.008, static_value: 0.008}
       building_static_hoo_start = 6
@@ -611,6 +611,23 @@ def create_json(structure_id, building_type, year, system_type)
     ]
   }
 
+  measures << {
+      :name => 'adjust_water_heater_mixed',
+      :desc => 'Adjust Water Heater Mixed',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'adjust_water_heater_mixed')}",
+      :variables => [],
+      :arguments => [
+          {
+          :name => 'heater_thermal_efficiency',
+          :value => 0.85
+      },
+      {
+          :name => 'fuel_type',
+          :value => 'Electricity'
+      }
+    ]
+  }
+
   # currently this gathers in demand data out of analytic record and stories it in resource.json for use by ee measures
   measures << {
     :name => 'gather_indemand_data', 
@@ -782,6 +799,7 @@ namespace :test_models do
     # test out each building type one or more times (more than once when have real analytic records)
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
+
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
@@ -844,6 +862,7 @@ namespace :test_models do
     # test out each building type one or more times (more than once when have real analytic records)
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
+
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
