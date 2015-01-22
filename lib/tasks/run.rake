@@ -7,49 +7,49 @@ def create_json(structure_id, building_type, year, system_type)
   building_static_hoo_finish = nil
   case building_type
     when 'AssistedLiving'
-      space_type_hash['AssistedLiving BlendPat'] = {is_primary: true, type: 'uniform', minimum: 0.4, maximum: 0.75, mean: 0.6, static_value: 0.6}
+      space_type_hash['AssistedLiving BlendPat'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['AssistedLiving BlendCom'] = {is_primary: false, type: 'uniform', minimum: 0.2, maximum: 0.5, mean: 0.325, static_value: 0.325}
       space_type_hash['AssistedLiving Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.1, mean: 0.075, static_value: 0.075}
       building_static_hoo_start = 6
       building_static_hoo_finish = 22
     when 'AutoRepair'
-      space_type_hash['AutoRepair Garage'] = {is_primary: true, type: 'uniform', minimum: 0.3, maximum: 0.8, mean: 0.65, static_value: 0.65}
+      space_type_hash['AutoRepair Garage'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['AutoRepair BlendFront'] = {is_primary: false, type: 'uniform', minimum: 0.2, maximum: 0.6, mean: 0.3, static_value: 0.3}
-      space_type_hash['AutoRepair Restroom'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.1, mean: 0.05, static_value: 0.05}
+      space_type_hash['AutoRepair Restroom'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.1, mean: 0.05, static_value: 0.05}
       building_static_hoo_start = 8
       building_static_hoo_finish = 19
     when 'AutoSales'
-      space_type_hash['AutoSales BlendFront'] = {is_primary: true, type: 'uniform', minimum: 0.1, maximum: 0.925, mean: 0.79, static_value: 0.79}
+      space_type_hash['AutoSales BlendFront'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['AutoSales Garage'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.4, mean: 0.2, static_value: 0.2}
       space_type_hash['AutoSales Restroom'] = {is_primary: false, type: 'uniform', minimum: 0.025, maximum: 0.5, mean: 0.01, static_value: 0.01}
       building_static_hoo_start = 9
       building_static_hoo_finish = 20
     when 'Bank'
-      space_type_hash['Bank BlendFront'] = {is_primary: true, type: 'uniform', minimum: 0.7, maximum: 0.94, mean: 0.85, static_value: 0.85}
+      space_type_hash['Bank BlendFront'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['Bank Elec/MechRoom'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.05, static_value: 0.05}
       space_type_hash['Bank Restroom'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.05, static_value: 0.05}
       space_type_hash['Bank Vault'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.05, static_value: 0.05}
       building_static_hoo_start = 8
       building_static_hoo_finish = 17
     when 'ChildCare'
-      space_type_hash['ChildCare BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.65, maximum: 0.9, mean: 0.8, static_value: 0.8}
+      space_type_hash['ChildCare BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['ChildCare Office'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.2, mean: 0.1, static_value: 0.1}
       space_type_hash['ChildCare Restroom'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.1, static_value: 0.1}
       building_static_hoo_start = 6
       building_static_hoo_finish = 19
     when 'FullServiceRestaurant'
-      space_type_hash['FullServiceRestaurant Dining'] = {is_primary: true, type: 'uniform', minimum: 0.5, maximum: 0.9, mean: 0.727, static_value: 0.727}
+      space_type_hash['FullServiceRestaurant Dining'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['FullServiceRestaurant Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.5, mean: 0.273, static_value: 0.273}
       building_static_hoo_start = 7
       building_static_hoo_finish = 23
     when 'GasStation'
-      space_type_hash['GasStation Retail'] = {is_primary: true, type: 'uniform', minimum: 0.7, maximum: 0.98, mean: 0.9, static_value: 0.9}
+      space_type_hash['GasStation Retail'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['GasStation Restroom'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.05, static_value: 0.05}
       space_type_hash['GasStation ClosedOffice'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.1, mean: 0.05, static_value: 0.05}
       building_static_hoo_start = 6
       building_static_hoo_finish = 20
     when 'Hospital'
-      space_type_hash['Hospital BlendPat'] = {is_primary: true, type: 'uniform', minimum: 0.4, maximum: 0.785, mean: 0.537, static_value: 0.537}
+      space_type_hash['Hospital BlendPat'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['Hospital BlendCirc'] = {is_primary: false, type: 'uniform', minimum: 0.15, maximum: 0.35, mean: 0.322, static_value: 0.322}
       space_type_hash['Hospital Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0.025, maximum: 0.075, mean: 0.05, static_value: 0.05}
       space_type_hash['Hospital Dining'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.075, mean: 0.037, static_value: 0.037}
@@ -58,7 +58,7 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_start = 4
       building_static_hoo_finish = 22
     when 'Laboratory'
-      space_type_hash['Laboratory BlendOff'] = {is_primary: true, type: 'uniform', minimum: 0.2, maximum: 0.7, mean: 0.32, static_value: 0.32}
+      space_type_hash['Laboratory BlendOff'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['Laboratory Lab'] = {is_primary: false, type: 'uniform', minimum: 0.15, maximum: 0.35, mean: 0.25, static_value: 0.25}
       space_type_hash['Laboratory BlendCirc'] = {is_primary: false, type: 'uniform', minimum: 0.12, maximum: 0.3, mean: 0.36, static_value: 0.36}
       space_type_hash['Laboratory BlendMisc'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.1, mean: 0.03, static_value: 0.03}
@@ -70,12 +70,12 @@ def create_json(structure_id, building_type, year, system_type)
       space_type_hash["LargeHotel BlendLob"] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.3, mean: 0.173, static_value: 0.173}
       space_type_hash["LargeHotel BlendFds"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.091, static_value: 0.091}
       space_type_hash["LargeHotel BlendMisc"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.028, static_value: 0.028}
-      space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.025, mean: 0.011, static_value: 0.011}
-      space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.0, maximum: 0.015, mean: 0.008, static_value: 0.008}
+      space_type_hash["LargeHotel Kitchen"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.025, mean: 0.011, static_value: 0.011}
+      space_type_hash["LargeHotel Laundry"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.015, mean: 0.008, static_value: 0.008}
       building_static_hoo_start = 6
       building_static_hoo_finish = 22
     when 'MidriseApartment'
-      space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'na_is_primary', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
+      space_type_hash["MidriseApartment BlendA"] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["MidriseApartment Office"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.2, mean: 0.028, static_value: 0.28}
       building_static_hoo_start = 8
       building_static_hoo_finish = 18
@@ -96,25 +96,25 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_start = 8
       building_static_hoo_finish = 17
     when 'Outpatient'
-      space_type_hash['Outpatient BlendCirc'] = {is_primary: true, type: 'uniform', minimum: 0.05, maximum: 0.54, mean: 0.298, static_value: 0.298}
+      space_type_hash['Outpatient BlendCirc'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['Outpatient BlendOff'] = {is_primary: false, type: 'uniform', minimum: 0.2, maximum: 0.35, mean: 0.283, static_value: 0.283}
       space_type_hash['Outpatient BlendPat'] = {is_primary: false, type: 'uniform', minimum: 0.2, maximum: 0.35, mean: 0.253, static_value: 0.253}
-      space_type_hash['Outpatient BlendImg'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.075, mean: 0.041, static_value: 0.041}
+      space_type_hash['Outpatient BlendImg'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.075, mean: 0.041, static_value: 0.041}
       space_type_hash['Outpatient BlendMedStg'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.025, static_value: 0.025}
       space_type_hash['Outpatient BlendMisc'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.125, mean: 0.1, static_value: 0.1}
       building_static_hoo_start = 4
       building_static_hoo_finish = 22
     when 'PrimarySchool'
-      space_type_hash['PrimarySchool BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.525, maximum: 0.91, mean: 0.694, static_value: 0.694}
+      space_type_hash['PrimarySchool BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['PrimarySchool BlendOff'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.126, static_value: 0.126}
       space_type_hash['PrimarySchool Library'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.1, mean: 0.058, static_value: 0.058}
-      space_type_hash['PrimarySchool Gym'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.1, mean: 0.052, static_value: 0.052}
+      space_type_hash['PrimarySchool Gym'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.1, mean: 0.052, static_value: 0.052}
       space_type_hash['PrimarySchool Cafeteria'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.075, mean: 0.046, static_value: 0.046}
-      space_type_hash['PrimarySchool Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.05, mean: 0.024, static_value: 0.024}
+      space_type_hash['PrimarySchool Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.024, static_value: 0.024}
       building_static_hoo_start = 8
       building_static_hoo_finish = 16
     when 'QuickServiceRestaurant'
-      space_type_hash['QuickServiceRestaurant Dining'] = {is_primary: true, type: 'uniform', minimum: 0.25, maximum: 0.9, mean: 0.5, static_value: 0.5}
+      space_type_hash['QuickServiceRestaurant Dining'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['QuickServiceRestaurant Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.75, mean: 0.5, static_value: 0.5}
       building_static_hoo_start = 7
       building_static_hoo_finish = 23
@@ -125,13 +125,13 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_start = 7
       building_static_hoo_finish = 21
     when 'SecondarySchool'
-      space_type_hash['SecondarySchool BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.47, maximum: 0.815, mean: 0.589, static_value: 0.589}
+      space_type_hash['SecondarySchool BlendEdu'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['SecondarySchool BlendOff'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.11, static_value: 0.11}
       space_type_hash['SecondarySchool Gym'] = {is_primary: false, type: 'uniform', minimum: 0.1, maximum: 0.15, mean: 0.165, static_value: 0.165}
-      space_type_hash['SecondarySchool Auditorium'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.075, mean: 0.05, static_value: 0.05}
+      space_type_hash['SecondarySchool Auditorium'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.075, mean: 0.05, static_value: 0.05}
       space_type_hash['SecondarySchool Library'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.075, mean: 0.043, static_value: 0.043}
       space_type_hash['SecondarySchool Cafeteria'] = {is_primary: false, type: 'uniform', minimum: 0.015, maximum: 0.05, mean: 0.032, static_value: 0.032}
-      space_type_hash['SecondarySchool Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.03, mean: 0.011, static_value: 0.011}
+      space_type_hash['SecondarySchool Kitchen'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.03, mean: 0.011, static_value: 0.011}
       building_static_hoo_start = 8
       building_static_hoo_finish = 16
     when 'SingleMultiPlexRes'
@@ -139,11 +139,11 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_start = 8
       building_static_hoo_finish = 18
     when 'SmallHotel'
-      space_type_hash['SmallHotel BlendGuest'] = {is_primary: true, type: 'uniform', minimum: 0.34, maximum: 0.93, mean: 0.775, static_value: 0.775}
+      space_type_hash['SmallHotel BlendGuest'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['SmallHotel BlendMtg'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.4, mean: 0.11, static_value: 0.11}
       space_type_hash['SmallHotel BlendMisc'] = {is_primary: false, type: 'uniform', minimum: 0.02, maximum: 0.18, mean: 0.082, static_value: 0.082}
-      space_type_hash['SmallHotel Laundry'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.05, mean: 0.025, static_value: 0.025}
-      space_type_hash['SmallHotel Exercise'] = {is_primary: false, type: 'uniform', minimum: 0, maximum: 0.03, mean: 0.008, static_value: 0.008}
+      space_type_hash['SmallHotel Laundry'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.025, static_value: 0.025}
+      space_type_hash['SmallHotel Exercise'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.03, mean: 0.008, static_value: 0.008}
       building_static_hoo_start = 6
       building_static_hoo_finish = 22
     when 'StripMall'
@@ -151,7 +151,7 @@ def create_json(structure_id, building_type, year, system_type)
       building_static_hoo_start = 7
       building_static_hoo_finish = 21
     when 'SuperMarket' # todo - I need to make schedules for this, missed it earlier in the week. Still won't have refrigeration
-      space_type_hash['SuperMarket Sales/Produce'] = {is_primary: true, type: 'uniform', minimum: 0.45, maximum: 0.89, mean: 0.726, static_value: 0.726}
+      space_type_hash['SuperMarket Sales/Produce'] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash['SuperMarket DryStorage'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.149, static_value: 0.149}
       space_type_hash['SuperMarket Deli/Bakery'] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.25, mean: 0.104, static_value: 0.104}
       space_type_hash['SuperMarket Office'] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.021, static_value: 0.021}
