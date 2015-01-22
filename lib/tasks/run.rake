@@ -611,6 +611,8 @@ def create_json(structure_id, building_type, year, system_type)
     ]
   }
 
+# we don't want this in by default, but may use in calibration some times.
+=begin
   measures << {
       :name => 'adjust_water_heater_mixed',
       :desc => 'Adjust Water Heater Mixed',
@@ -627,6 +629,7 @@ def create_json(structure_id, building_type, year, system_type)
       }
     ]
   }
+=end
 
   # currently this gathers in demand data out of analytic record and stories it in resource.json for use by ee measures
   measures << {
