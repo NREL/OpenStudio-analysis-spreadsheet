@@ -1,6 +1,11 @@
 Analysis Example Change Log
 ==================================
 
+Version 0.4.1
+-------------
+* Bug fix for OpenStudio namespace conflicts
+* Support for EnergyPlus 8.2 and OpenStudio 1.6.0
+
 Version 0.4.0
 -------------
 * Support Worker Initialization and Finalization scripts
