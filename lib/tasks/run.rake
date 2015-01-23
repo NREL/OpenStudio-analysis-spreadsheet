@@ -668,7 +668,7 @@ def create_json(structure_id, building_type, year, system_type)
       },
       {
         :name => 'use_case',
-        :value => "Update M0 with Indemand data"
+        :value => "Apply EE to calibrated model"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
       }
     ]
   }
@@ -756,8 +756,7 @@ def create_json(structure_id, building_type, year, system_type)
   # will be handled by cofee-grinder
 
   # add in the other libraries
-  #a.libraries.add('../../GitHub/cofee-measures/lib', { library_name: 'cofee'})
-  a.libraries.add('../cofee-measures/lib', { library_name: 'cofee'})
+  a.libraries.add("#{MEASURES_ROOT_DIRECTORY}/lib", { library_name: 'cofee'})
   a.libraries.add('lib_m0/183871', { library_name: 'calibration_data'})
 
 
@@ -807,6 +806,7 @@ namespace :test_models do
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
     hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # eui 48, unmet_htg_and_clg 2062/1742, dur_sec 184, notes:,notes: no errors, dominant end uses are heating lighting, and equip
+=begin
     hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1383/3771, dur_sec 181, notes: no errors, dominant end uses are heating lighting and equip
     hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 494, unmet_htg_and_clg 662/22, dur_sec 197, notes: no errors, dominant end use is equip then swh
     hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1561/1411, dur_sec 163, notes: no errors, dominant end use is heating then lighting and swh
@@ -845,6 +845,7 @@ namespace :test_models do
     hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+=end
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
@@ -870,6 +871,7 @@ namespace :test_models do
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
     hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # eui 48, unmet_htg_and_clg 2062/1742, dur_sec 184, notes:,notes: no errors, dominant end uses are heating lighting, and equip
+=begin
     hash["999999_h"] = ["ChildCare","2004",HVAC_SYSTEM_TYPE] # eui 62, unmet_htg_and_clg 1383/3771, dur_sec 181, notes: no errors, dominant end uses are heating lighting and equip
     hash["999999_i"] = ["FullServiceRestaurant","2004",HVAC_SYSTEM_TYPE] # eui 494, unmet_htg_and_clg 662/22, dur_sec 197, notes: no errors, dominant end use is equip then swh
     hash["999999_j"] = ["GasStation","2004",HVAC_SYSTEM_TYPE] # eui 71, unmet_htg_and_clg 1561/1411, dur_sec 163, notes: no errors, dominant end use is heating then lighting and swh
@@ -908,6 +910,7 @@ namespace :test_models do
     hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+=end
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
