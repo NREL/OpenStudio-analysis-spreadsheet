@@ -36,7 +36,7 @@ GEM
     net-ssh (2.9.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
-    openstudio-analysis (0.4.1)
+    openstudio-analysis (0.4.2)
       bcl (~> 0.5.5)
       faraday (~> 0.8)
       roo (~> 1.12)
@@ -72,7 +72,7 @@ DEPENDENCIES
   bcl (~> 0.5.5)
   colored (~> 1.2)
   git
-  openstudio-analysis (= 0.4.1)
+  openstudio-analysis (= 0.4.2)
   openstudio-aws (= 0.2.5)
   rake (~> 10.4.2)
   rubyzip
