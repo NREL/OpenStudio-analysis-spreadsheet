@@ -72,7 +72,7 @@ bundle exec rake run
 
 * This will now ask which project you want to run. Select the right spreadsheet.
 
-* Note the first time you run this you will need to add in your AWS credentials in your <home-dir>/config_aws.yml file then run the `bundle exec rake run` command again.  Note that this file should only be readable by you as it contains your secret key for AWS access. The YML file will look something like:
+* Note the first time you run this you will need to add in your AWS credentials in your `<home-dir>/aws_config.yml` file then run the `bundle exec rake run` command again.  Note that this file should only be readable by you as it contains your secret key for AWS access. The YML file will look something like:
 
 
 ```
