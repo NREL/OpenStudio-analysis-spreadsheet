@@ -724,9 +724,9 @@ def create_json(structure_id, building_type, year, system_type)
   ]
 
   weather_files = [
-    'weather_183871/*'
+    "#{WEATHER_FILES_DIRECTORY}/*"
   ]
-  default_weather_file = 'weather_183871/Lawrence109_2013CST.epw'
+  default_weather_file = "#{WEATHER_FILES_DIRECTORY}/Lawrence109_2013CST.epw"
   seed_model = 'seeds/EmptySeedModel.osm'
 
 
@@ -789,6 +789,7 @@ namespace :test_models do
   #MEASURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
   BUILDING_TYPE = 'office'
   WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
+  WEATHER_FILES_DIRECTORY = 'weather_183871'
   HVAC_SYSTEM_TYPE = 'SysType 7'
   STRUCTURE_ID = 183871
 
