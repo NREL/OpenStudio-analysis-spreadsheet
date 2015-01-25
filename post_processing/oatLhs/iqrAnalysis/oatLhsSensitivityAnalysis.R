@@ -15,7 +15,7 @@ data_for_analysis = read.csv(paste(wd_base,"resources","data.csv",sep="/"))
 load(paste(wd_base,data_for_analysis[1,"metadata_dataframe"],sep="/"))
 variables_df = subset(metadata,perturbable==T)
 
-#Check existance of desired outputs
+#Check existence of desired outputs
 error_flag = F
 for(i in 1:nrow(output_df)){
   error_message = ""

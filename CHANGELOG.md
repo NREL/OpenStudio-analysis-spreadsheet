@@ -1,15 +1,19 @@
 Analysis Example Change Log
 ==================================
 
+Version 0.4.2 (Unreleased)
+-------------
+* Clean up spreadsheet instructions and typos
+
 Version 0.4.1
 -------------
-* Bug fix for OpenStudio namespace conflicts
+* Bug fix for OpenStudio name space conflicts
 * Support for EnergyPlus 8.2 and OpenStudio 1.6.0
 
 Version 0.4.0
 -------------
 * Support Worker Initialization and Finalization scripts
-* Update to analsis gem forcing unique measure names
+* Update to analysis gem forcing unique measure names
 * OpenStudio 1.5.5 and EnergyPlus 8.2 support
 
 Version 0.3.0

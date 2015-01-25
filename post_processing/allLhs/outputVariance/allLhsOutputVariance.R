@@ -3,7 +3,7 @@ require(ggplot2)
 require(reshape2)
 require(stats)
 require(grid)
-setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/allLhs/outputVarience")
+setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/allLhs/outputVariance")
 wd_base = "."
 output_df = read.csv(paste(wd_base,"resources","reporting_outputs.csv",sep="/"))
 data_for_analysis = read.csv(paste(wd_base,"resources","data.csv",sep="/"))
@@ -12,7 +12,7 @@ data_for_analysis = read.csv(paste(wd_base,"resources","data.csv",sep="/"))
 load(paste(wd_base,data_for_analysis[1,"metadata_dataframe"],sep="/"))
 variables_df = subset(metadata,perturbable==T)
 
-#Check existance of desired outputs
+#Check existence of desired outputs
 error_flag = F
 for(i in 1:nrow(output_df)){
   error_message = ""
@@ -55,13 +55,13 @@ for(i in 1:nrow(output_df)){
   for(j in 1:nrow(temp_df)){
     ploting_df[j,'building_type'] = toString(data_for_analysis[temp_df[j,'Var1'],'building_display_name'])
     ploting_df[j,'input_variable'] = variables_df[temp_df[j,'Var3'],'display_name']
-    ploting_df[j,'varience'] = temp_df[j,'value']
+    ploting_df[j,'variance'] = temp_df[j,'value']
   }
   outputName = paste(toString(output_df[i,'resultnamed']),'Correlation')
   outputName = paste(outputName,'.png',sep='')
   setwd('post_processing_graphs')
   png(filename=outputName,height=600,width=1000,pointsize=12)
-  p=ggplot(ploting_df,aes(x=ploting_df$building_type,y=ploting_df$input_variable,fill=ploting_df$varience))+
+  p=ggplot(ploting_df,aes(x=ploting_df$building_type,y=ploting_df$input_variable,fill=ploting_df$variance))+
     geom_tile()+
     labs(y='Variables',x='Space Types',title=paste(toString(output_df[i,'resultnamed']),'Correlation'))+
     guides(fill = guide_colorbar(barwidth = 1, barheight = 15))+

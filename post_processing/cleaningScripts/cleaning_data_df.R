@@ -1,5 +1,5 @@
 #This really needs to be made relative to the call location!!!!!!!!!!!!!!!!!!!
-setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/allLhs/outputVarience")
+setwd("C:/gitRepositories/OpenStudio-analysis-spreadsheet/post_processing/allLhs/outputVariance")
 wd_base = "."
 output_df = read.csv(paste(wd_base,"resources","reporting_outputs.csv",sep="/"))
 data_for_analysis = read.csv(paste(wd_base,"resources","data.csv",sep="/"))
