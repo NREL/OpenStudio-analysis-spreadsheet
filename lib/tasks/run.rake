@@ -677,6 +677,70 @@ def create_json(structure_id, building_type, year, system_type)
       }
     ]
   }
+
+  measures << {
+      :name => 'EH04ECMFanMotors',
+      :desc => 'EH04: ECM Fan Motors',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ee', 'EH04ECMFanMotors')}",
+      :variables => [],
+      :arguments => [
+          {
+              :name => 'psc_eff',
+              :value => 0.45
+          },
+          {
+              :name => 'ecm_eff',
+              :value => 0.75
+          },
+          {
+              :name => 'use_case',
+              :value => "Update M0 with Indemand data"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
+          },
+          {
+              :name => 'run_measure',
+              :value => true
+          }
+      ]
+  }
+
+  measures << {
+      :name => 'EH05EnergyManagementSystemDemandControlledVentilation',
+      :desc => 'EH05: Energy Management System-Demand Controlled Ventilation',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ee', 'EH05EnergyManagementSystemDemandControlledVentilation')}",
+      :variables => [],
+      :arguments => [
+          {
+              :name => 'use_case',
+              :value => "Apply EE to calibrated model"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
+          },
+          {
+              :name => 'run_measure',
+              :value => true
+          }
+      ]
+  }
+
+  measures << {
+      :name => 'EL03LightingControls',
+      :desc => 'EL03:Lighting Controls',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ee', 'EL03LightingControls')}",
+      :variables => [],
+      :arguments => [
+          {
+              :name => 'fixtures_per_sensor',
+              :value => 9.0
+          },
+          {
+              :name => 'use_case',
+              :value => "Apply EE to calibrated model"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
+          },
+          {
+              :name => 'run_measure',
+              :value => "Occupancy Controls and Daylighitng"
+          }
+      ]
+  }
+
   # start of energy plus measures
   measures << {
     :name => 'ElectricityTariffModelForMA', 
