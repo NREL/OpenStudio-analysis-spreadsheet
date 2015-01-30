@@ -721,6 +721,23 @@ def create_json(structure_id, building_type, year, system_type)
   }
 
   measures << {
+      :name => 'EL02LightingSystems',
+      :desc => 'EL02:Lighting Systems',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ee', 'EL02LightingSystems')}",
+      :variables => [],
+      :arguments => [
+          {
+              :name => 'use_case',
+              :value => "Apply EE to calibrated model"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
+          },
+          {
+              :name => 'run_measure',
+              :value => "LED Troffer"
+          }
+      ]
+  }
+
+  measures << {
       :name => 'EL03LightingControls',
       :desc => 'EL03:Lighting Controls',
       :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ee', 'EL03LightingControls')}",
@@ -739,6 +756,15 @@ def create_json(structure_id, building_type, year, system_type)
               :value => "Occupancy Controls and Daylighitng"
           }
       ]
+  }
+
+  # some ee measures (with the ee vs. indemand use case) need a hard sized model. Typically this would be done at the end of calibration
+  measures << {
+      :name => 'HardSizeHVAC',
+      :desc => 'Hard Size HVAC',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'hard_size_hvac')}",
+      :variables => [],
+      :arguments => []
   }
 
   # start of energy plus measures
@@ -850,7 +876,7 @@ namespace :test_models do
   #NAME = 'Office - test with tariff, fixed system type arg, fixed supply side of water'
   RAILS = false
   MEASURES_ROOT_DIRECTORY = "../cofee-measures"
-  #MEASURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
+  MEASURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
   BUILDING_TYPE = 'office'
   WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
   WEATHER_FILES_DIRECTORY = 'weather_183871'
@@ -858,8 +884,8 @@ namespace :test_models do
   STRUCTURE_ID = 183871
 
   ANALYSIS_TYPE = 'single_run'
-  HOSTNAME = 'http://localhost:8080'
-  #HOSTNAME = 'http://bball-130553.nrel.gov:8080' #nrel24a
+  #HOSTNAME = 'http://localhost:8080'
+  HOSTNAME = 'http://bball-130553.nrel.gov:8080' #nrel24a
   #HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
 
   #create_json(structure_id, building_type, year, system_type)
@@ -872,8 +898,8 @@ namespace :test_models do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
 
-    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
 =begin
+    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
     hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # eui 48, unmet_htg_and_clg 2062/1742, dur_sec 184, notes:,notes: no errors, dominant end uses are heating lighting, and equip
@@ -906,6 +932,7 @@ namespace :test_models do
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
+=end
     # test different system types
     hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
@@ -915,7 +942,6 @@ namespace :test_models do
     hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-=end
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
@@ -937,8 +963,8 @@ namespace :test_models do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
 
-    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
 =begin
+    hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
     hash["999999_g"] = ["Bank","2004",HVAC_SYSTEM_TYPE] # eui 48, unmet_htg_and_clg 2062/1742, dur_sec 184, notes:,notes: no errors, dominant end uses are heating lighting, and equip
@@ -971,6 +997,7 @@ namespace :test_models do
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
+=end
     # test different system types
     hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
@@ -980,7 +1007,6 @@ namespace :test_models do
     hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-=end
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
