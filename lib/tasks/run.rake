@@ -694,7 +694,7 @@ def create_json(structure_id, building_type, year, system_type)
           },
           {
               :name => 'use_case',
-              :value => "Update M0 with Indemand data"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
+              :value => "Apply EE to calibrated model"  # valid options are "Update M0 with Indemand data" or "Apply EE to calibrated model"
           },
           {
               :name => 'run_measure',
@@ -898,7 +898,6 @@ namespace :test_models do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
 
-=begin
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
@@ -926,13 +925,64 @@ namespace :test_models do
     hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # eui 43, unmet_htg_and_clg 694/644, dur_sec 137, notes: no errors, dominant end use is heating
     #hash[46568] = "DK_????"
 
+    # pre 1980
+    test_vintage = "1970"
+    hash["999999_d_#{test_vintage}"] = ["AssistedLiving",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_e_#{test_vintage}"] = ["AutoRepair",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_f_#{test_vintage}"] = ["AutoSales",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_g_#{test_vintage}"] = ["Bank",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_h_#{test_vintage}"] = ["ChildCare",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_i_#{test_vintage}"] = ["FullServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE] 
+    hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["213097_#{test_vintage}"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE]
+    hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_m_#{test_vintage}"] = ["Outpatient",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_p_#{test_vintage}"] = ["PrimarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_q_#{test_vintage}"] = ["QuickServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_n_#{test_vintage}"] = ["Retail",test_vintage,HVAC_SYSTEM_TYPE] 
+    hash["999999_r_#{test_vintage}"] = ["SecondarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_b_#{test_vintage}"] = ["SingleMultiPlexRes",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_s_#{test_vintage}"] = ["SmallHotel",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_c_#{test_vintage}"] = ["StripMall",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_t_#{test_vintage}"] = ["SuperMarket",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_o_#{test_vintage}"] = ["Warehouse",test_vintage,HVAC_SYSTEM_TYPE]
+
+    # 1980-2004
+    test_vintage = "1985"
+    hash["999999_d_#{test_vintage}"] = ["AssistedLiving",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_e_#{test_vintage}"] = ["AutoRepair",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_f_#{test_vintage}"] = ["AutoSales",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_g_#{test_vintage}"] = ["Bank",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_h_#{test_vintage}"] = ["ChildCare",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_i_#{test_vintage}"] = ["FullServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["213097_#{test_vintage}"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE]
+    hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_m_#{test_vintage}"] = ["Outpatient",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_p_#{test_vintage}"] = ["PrimarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_q_#{test_vintage}"] = ["QuickServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_n_#{test_vintage}"] = ["Retail",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_r_#{test_vintage}"] = ["SecondarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_b_#{test_vintage}"] = ["SingleMultiPlexRes",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_s_#{test_vintage}"] = ["SmallHotel",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_c_#{test_vintage}"] = ["StripMall",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_t_#{test_vintage}"] = ["SuperMarket",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_o_#{test_vintage}"] = ["Warehouse",test_vintage,HVAC_SYSTEM_TYPE]
+
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
     hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
-=end
     # test different system types
     hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
@@ -963,7 +1013,6 @@ namespace :test_models do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
 
-=begin
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
@@ -991,13 +1040,64 @@ namespace :test_models do
     hash["999999_o"] = ["Warehouse","2004",HVAC_SYSTEM_TYPE]  # eui 43, unmet_htg_and_clg 694/644, dur_sec 137, notes: no errors, dominant end use is heating
     #hash[46568] = "DK_????"
 
+    # pre 1980
+    test_vintage = "1970"
+    hash["999999_d_#{test_vintage}"] = ["AssistedLiving",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_e_#{test_vintage}"] = ["AutoRepair",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_f_#{test_vintage}"] = ["AutoSales",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_g_#{test_vintage}"] = ["Bank",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_h_#{test_vintage}"] = ["ChildCare",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_i_#{test_vintage}"] = ["FullServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["213097_#{test_vintage}"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE]
+    hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_m_#{test_vintage}"] = ["Outpatient",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_p_#{test_vintage}"] = ["PrimarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_q_#{test_vintage}"] = ["QuickServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_n_#{test_vintage}"] = ["Retail",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_r_#{test_vintage}"] = ["SecondarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_b_#{test_vintage}"] = ["SingleMultiPlexRes",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_s_#{test_vintage}"] = ["SmallHotel",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_c_#{test_vintage}"] = ["StripMall",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_t_#{test_vintage}"] = ["SuperMarket",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_o_#{test_vintage}"] = ["Warehouse",test_vintage,HVAC_SYSTEM_TYPE]
+
+    # 1980-2004
+    test_vintage = "1985"
+    hash["999999_d_#{test_vintage}"] = ["AssistedLiving",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_e_#{test_vintage}"] = ["AutoRepair",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_f_#{test_vintage}"] = ["AutoSales",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_g_#{test_vintage}"] = ["Bank",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_h_#{test_vintage}"] = ["ChildCare",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_i_#{test_vintage}"] = ["FullServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["213097_#{test_vintage}"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE]
+    hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_m_#{test_vintage}"] = ["Outpatient",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_p_#{test_vintage}"] = ["PrimarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_q_#{test_vintage}"] = ["QuickServiceRestaurant",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_n_#{test_vintage}"] = ["Retail",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_r_#{test_vintage}"] = ["SecondarySchool",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_b_#{test_vintage}"] = ["SingleMultiPlexRes",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_s_#{test_vintage}"] = ["SmallHotel",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_c_#{test_vintage}"] = ["StripMall",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_t_#{test_vintage}"] = ["SuperMarket",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_o_#{test_vintage}"] = ["Warehouse",test_vintage,HVAC_SYSTEM_TYPE]
+
     # add in other 9999* test files. That will test 1,2,3 story. 999999 tests 4 story
     hash["999998"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999997"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
-=end
     # test different system types
     hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
