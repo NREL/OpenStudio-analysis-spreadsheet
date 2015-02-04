@@ -263,11 +263,19 @@ def create_json(structure_id, building_type, year, system_type)
     }
     measures << measure
   end
+
   measures << 
   {
-    :name => 'make_envelope_from_space_type_ratios', 
-    :desc => 'Make Envelope From Space Type Ratios',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'make_envelope_from_space_type_ratios')}",
+    # original measure
+    #:name => 'make_envelope_from_space_type_ratios',
+    #:desc => 'Make Envelope From Space Type Ratios',
+    #:path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'make_envelope_from_space_type_ratios')}",
+
+    # version with pre-loaded resources
+    :name => 'make_envelope_from_space_type_ratios_populated_seed_model',
+    :desc => 'Make Envelope From Space Type Ratios Populated Seed Model',
+    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'make_envelope_from_space_type_ratios_populated_seed_model')}",
+
     :variables => [],
     :arguments => [
       {
@@ -294,7 +302,9 @@ def create_json(structure_id, building_type, year, system_type)
       }
     ]
   }
-  measures << 
+
+=begin
+  measures <<
   {
     :name => 'add_schedules_to_model',
     :desc => 'Add Schedules to Model',
@@ -361,6 +371,8 @@ def create_json(structure_id, building_type, year, system_type)
     :arguments => [],
     :variables => []
   }
+=end
+
   measures << {
     :name => 'add_interior_constructions_to_adiabatic_surfaces', 
     :desc => 'Add Interior Constructions to Adiabatic Surfaces',
@@ -511,69 +523,85 @@ def create_json(structure_id, building_type, year, system_type)
     ]
   }
 
-  measures << {
-    :name => 'add_system01_by_space_type', 
-    :desc => 'Add System 01 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system01_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  # this is to streamline the system to only add necessary HVAC measures
+  # written for whole building system type. Will have to update when there can be multiple in workflow
+  case system_type
 
-  measures << {
-    :name => 'add_system02_by_space_type',
-    :desc => 'Add System 02 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system02_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 1"
+    measures << {
+      :name => 'add_system01_by_space_type',
+      :desc => 'Add System 01 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system01_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
 
-  measures << {
-    :name => 'add_system03_by_space_type', 
-    :desc => 'Add System 03 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system03_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 2"
+    measures << {
+      :name => 'add_system02_by_space_type',
+      :desc => 'Add System 02 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system02_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
 
-  measures << {
-    :name => 'add_system04_by_space_type', 
-    :desc => 'Add System 04 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system04_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 3"
+    measures << {
+      :name => 'add_system03_by_space_type',
+      :desc => 'Add System 03 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system03_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
 
-  measures << {
-    :name => 'add_system05_by_space_type', 
-    :desc => 'Add System 05 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system05_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 4"
+    measures << {
+      :name => 'add_system04_by_space_type',
+      :desc => 'Add System 04 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system04_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
 
-  measures << {
-    :name => 'add_system06_by_space_type', 
-    :desc => 'Add System 06 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system06_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 5"
+    measures << {
+      :name => 'add_system05_by_space_type',
+      :desc => 'Add System 05 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system05_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
 
-  measures << {
-    :name => 'add_system07_by_space_type', 
-    :desc => 'Add System 07 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system07_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 6"
+    measures << {
+      :name => 'add_system06_by_space_type',
+      :desc => 'Add System 06 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system06_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
 
-  measures << {
-    :name => 'add_system08_by_space_type', 
-    :desc => 'Add System 08 By Space Type',
-    :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system08_by_space_type')}",
-    :variables => [],
-    :arguments => []
-  }
+  when "SysType 7"
+    measures << {
+      :name => 'add_system07_by_space_type',
+      :desc => 'Add System 07 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system07_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
+
+  when "SysType 8"
+    measures << {
+      :name => 'add_system08_by_space_type',
+      :desc => 'Add System 08 By Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'model0', 'add_system08_by_space_type')}",
+      :variables => [],
+      :arguments => []
+    }
+
+  else
+    fail "#{system_type} is not a supported system type"
+  end
 
   measures << {
     :name => 'add_service_water_heating_supply', 
@@ -631,6 +659,8 @@ def create_json(structure_id, building_type, year, system_type)
   }
 =end
 
+
+=begin
   # currently this gathers in demand data out of analytic record and stories it in resource.json for use by ee measures
   measures << {
     :name => 'gather_indemand_data', 
@@ -766,6 +796,7 @@ def create_json(structure_id, building_type, year, system_type)
       :variables => [],
       :arguments => []
   }
+=end
 
   # start of energy plus measures
   measures << {
@@ -790,6 +821,7 @@ def create_json(structure_id, building_type, year, system_type)
     :arguments => []
   }
 
+=begin
   measures << {
     :name => 'schedule_profile_report', 
     :desc => 'Schedule Profile Report',
@@ -797,6 +829,7 @@ def create_json(structure_id, building_type, year, system_type)
     :variables => [],
     :arguments => []
   }
+=end
 
   outputs = [
     {
@@ -817,7 +850,8 @@ def create_json(structure_id, building_type, year, system_type)
     "#{WEATHER_FILES_DIRECTORY}/*"
   ]
   default_weather_file = "#{WEATHER_FILES_DIRECTORY}/Lawrence109_2013CST.epw"
-  seed_model = 'seeds/EmptySeedModel.osm'
+  #seed_model = 'seeds/EmptySeedModel.osm'
+  seed_model = 'seeds/Office2004_Seed.osm'
 
 
   # configure analysis
@@ -898,6 +932,7 @@ namespace :test_models do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
 
+=begin
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
@@ -983,15 +1018,16 @@ namespace :test_models do
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
+=end
     # test different system types
-    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_u"] = ["OfficeData","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_v"] = ["OfficeData","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_w"] = ["OfficeData","2004SysType3",'SysType 3'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_x"] = ["OfficeData","2004SysType4",'SysType 4'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_y"] = ["OfficeData","2004SysType5",'SysType 5'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_z"] = ["OfficeData","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_aa"] = ["OfficeData","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_ab"] = ["OfficeData","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
@@ -1013,6 +1049,7 @@ namespace :test_models do
     # note - date is only for me looking at what vintages have been tested. There isn't currently a measure argument that uses this, it gets pulled out of teh analytic record similar to area and num floors
     # comments at end of hash entry - eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes: list dominant loads, errors, and other comments here
 
+=begin
     hash["999999_d"] = ["AssistedLiving","2004",HVAC_SYSTEM_TYPE] # eui 96, unmet_htg_and_clg 354/691, dur_sec 154, notes: no errors, dominant end use is equip
     hash["999999_e"] = ["AutoRepair","2004",HVAC_SYSTEM_TYPE] # eui 115, unmet_htg_and_clg 673/6202, dur_sec 244, notes: no errors, dominant end use is equip, very high unmet cooling maybe due to garage on main system?
     hash["999999_f"] = ["AutoSales","2004",HVAC_SYSTEM_TYPE] # eui 141, unmet_htg_and_clg 1675/2097, dur_sec 176, notes: no errors, dominant end use is heating
@@ -1098,15 +1135,16 @@ namespace :test_models do
     hash["999996"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
     hash["999995"] = ["OfficeData","2004",HVAC_SYSTEM_TYPE] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
+=end
     # test different system types
-    hash["999999_u"] = ["Office","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_v"] = ["Office","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_w"] = ["Office","2004SysType3",'SysType 3'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_x"] = ["Office","2004SysType4",'SysType 4'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_y"] = ["Office","2004SysType5",'SysType 5'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_z"] = ["Office","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_aa"] = ["Office","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
-    hash["999999_ab"] = ["Office","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_u"] = ["OfficeData","2004SysType1",'SysType 1'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_v"] = ["OfficeData","2004SysType2",'SysType 2'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_w"] = ["OfficeData","2004SysType3",'SysType 3'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_x"] = ["OfficeData","2004SysType4",'SysType 4'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_y"] = ["OfficeData","2004SysType5",'SysType 5'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_z"] = ["OfficeData","2004SysType6",'SysType 6'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_aa"] = ["OfficeData","2004SysType7",'SysType 7'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
+    hash["999999_ab"] = ["OfficeData","2004SysType8",'SysType 8'] # eui TBD, unmet_htg_and_clg TBD/TBD, dur_sec TBD, notes:
 
     hash.each do |k,v|
       analytic_record = k.split("_")[0]
