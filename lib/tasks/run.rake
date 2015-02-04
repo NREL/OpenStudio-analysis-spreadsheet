@@ -321,6 +321,7 @@ def create_json(structure_id, building_type, year, system_type)
     ],
     :variables => []
   }
+=end
 
   measures << {
     :name => 'add_people_to_space_types', 
@@ -364,6 +365,7 @@ def create_json(structure_id, building_type, year, system_type)
     ]
   }
 
+=begin
   measures << {
     :name => 'add_constructions_to_space_types', 
     :desc => 'Add Constructions to Space Types',
@@ -851,8 +853,8 @@ def create_json(structure_id, building_type, year, system_type)
   ]
   default_weather_file = "#{WEATHER_FILES_DIRECTORY}/Lawrence109_2013CST.epw"
   #seed_model = 'seeds/EmptySeedModel.osm'
-  seed_model = 'seeds/Office2004_Seed.osm'
-
+  #seed_model = 'seeds/Office2004_Seed.osm'
+  seed_model = 'seeds/Office2004_Seed_no_infil_no_air.osm'
 
   # configure analysis
   save_string = "#{structure_id}_#{building_type}_#{year}"
