@@ -875,9 +875,22 @@ def create_json(structure_id, building_type, year, system_type)
     "#{WEATHER_FILES_DIRECTORY}/*"
   ]
   default_weather_file = "#{WEATHER_FILES_DIRECTORY}/Lawrence109_2013CST.epw"
-  #seed_model = 'seeds/EmptySeedModel.osm'
-  seed_model = 'seeds/Office2004_Seed.osm'
-  #seed_model = 'seeds/Office2004_Seed_no_infil_no_air.osm'
+
+  # infered data for template
+  template = nil
+  if year < 1980
+    template = "DOE Ref Pre-1980"
+  elsif year < 2004
+    template = "DOE Ref 1980-2004"
+  else
+    template = "DOE Ref 2004"
+  end
+
+  # hard coded climate zone
+  climate_zone =  "ASHRAE 169-2006-5A"
+
+  # note - logic for template and climate zone are taken right out of cofee_helpers.rb
+  seed_model = "seeds/#{building_type}_#{template}_#{climate_zone}_seed_.osm" # will need to extend into climate zone if we have more
 
   # configure analysis
   save_string = "#{structure_id}_#{building_type}_#{year}"
@@ -934,7 +947,7 @@ desc 'run create analysis.json scripts'
 namespace :test_models do
   #NAME = 'Office - test with tariff, fixed system type arg, fixed supply side of water'
   RAILS = false
-  MEASURES_ROOT_DIRECTORY = "../cofee-measures"
+  #MEASURES_ROOT_DIRECTORY = "../cofee-measures"
   MEASURES_ROOT_DIRECTORY = "../../GitHub/cofee-measures"  # this is path I need to use - dfg
   BUILDING_TYPE = 'office'
   WEATHER_FILE_NAME = 'Lawrence109_2013CST.epw'
@@ -944,8 +957,8 @@ namespace :test_models do
 
   ANALYSIS_TYPE = 'single_run'
   #HOSTNAME = 'http://localhost:8080'
-  HOSTNAME = 'http://bball-130553.nrel.gov:8080' #nrel24a
-  #HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
+  #HOSTNAME = 'http://bball-130553.nrel.gov:8080' #nrel24a
+  HOSTNAME = 'http://bball-130590.nrel.gov:8080' #nrel24b
 
   #create_json(structure_id, building_type, year, system_type)
   task :jsons do
@@ -1113,7 +1126,7 @@ namespace :test_models do
     hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
-    hash["213097_#{test_vintage}"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE]
+    hash["213097_#{test_vintage}"] = ["LargeHotel","test_vintage",HVAC_SYSTEM_TYPE]
     hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
     hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
@@ -1139,7 +1152,7 @@ namespace :test_models do
     hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
-    hash["213097_#{test_vintage}"] = ["LargeHotel","1985",HVAC_SYSTEM_TYPE]
+    hash["213097_#{test_vintage}"] = ["LargeHotel","test_vintage",HVAC_SYSTEM_TYPE]
     hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
     hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
