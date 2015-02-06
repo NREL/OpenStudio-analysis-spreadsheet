@@ -348,9 +348,10 @@ def create_template(structure_id, building_type, year)
   # make an empty model
   #model = OpenStudio::Model::Model.new
 
-  measures.each do |m|
+  # delete resource.json before each building runs. Other wise keeps extending and breaks
+  FileUtils.rm("../resource.json")
 
-    puts "run #{m[:name]}"
+  measures.each do |m|
 
     # load the measure
     require_relative (Dir.pwd + "../" + m[:path] + "/measure.rb")
@@ -396,7 +397,7 @@ def create_template(structure_id, building_type, year)
   end
 
   #save the model
-  save_string = "#{structure_id}_#{building_type}_#{year}"
+  save_string = "#{building_type}_#{template}_#{climate_zone}"
   output_file_path = OpenStudio::Path.new("seeds/#{save_string}.osm")
   model.save(output_file_path,true)
 

@@ -1,0 +1,2756 @@
+
+OS:Version,
+  {51d82732-11ce-4403-8323-b13094c99320}, !- Handle
+  1.5.5;                                  !- Version Identifier
+
+OS:ClimateZones,
+  {135edfab-17e7-40db-a436-27d385a8cd6d}, !- Handle
+  ,                                       !- Active Institution
+  ,                                       !- Active Year
+  ASHRAE,                                 !- Climate Zone Institution Name 1
+  ANSI/ASHRAE Standard 169,               !- Climate Zone Document Name 1
+  2006,                                   !- Climate Zone Document Year 1
+  ,                                       !- Climate Zone Value 1
+  CEC,                                    !- Climate Zone Institution Name 2
+  California Climate Zone Descriptions,   !- Climate Zone Document Name 2
+  1995,                                   !- Climate Zone Document Year 2
+  ;                                       !- Climate Zone Value 2
+
+OS:YearDescription,
+  {513d8dda-86cb-442a-b01c-1f7f0e0ac70e}; !- Handle
+
+OS:RadianceParameters,
+  {270a96f1-3c86-4b75-a667-cdf22790e2c8}, !- Handle
+  1,                                      !- Accumulated Rays per Record
+  0,                                      !- Direct Threshold
+  1,                                      !- Direct Certainty
+  1,                                      !- Direct Jitter
+  1,                                      !- Direct Pretest
+  6,                                      !- Ambient Bounces VMX
+  2,                                      !- Ambient Bounces DMX
+  4050,                                   !- Ambient Divisions VMX
+  512,                                    !- Ambient Divisions DMX
+  256,                                    !- Ambient Supersamples
+  0.001,                                  !- Limit Weight VMX
+  0.001,                                  !- Limit Weight DMX
+  500,                                    !- Klems Sampling Density
+  146;                                    !- Sky Discretization Resolution
+
+OS:SimulationControl,
+  {2c487a4c-bac9-4ac5-b669-1e49d9da7c2b}, !- Handle
+  ,                                       !- Do Zone Sizing Calculation
+  ,                                       !- Do System Sizing Calculation
+  ,                                       !- Do Plant Sizing Calculation
+  No,                                     !- Run Simulation for Sizing Periods
+  ,                                       !- Run Simulation for Weather File Run Periods
+  0.04,                                   !- Loads Convergence Tolerance Value
+  ,                                       !- Temperature Convergence Tolerance Value {deltaC}
+  ,                                       !- Solar Distribution
+  ,                                       !- Maximum Number of Warmup Days
+  2;                                      !- Minimum Number of Warmup Days
+
+OS:Sizing:Parameters,
+  {dde5af6f-7923-4600-a28a-7556673a0266}, !- Handle
+  1.25,                                   !- Heating Sizing Factor
+  1.15;                                   !- Cooling Sizing Factor
+
+OS:ProgramControl,
+  {05027a99-f2b3-4aeb-afc6-1425fbb4371d}; !- Handle
+
+OS:Timestep,
+  {4ebc9f1e-4707-402e-9844-67eb1ffbd522}, !- Handle
+  2;                                      !- Number of Timesteps per Hour
+
+OS:OutputControl:ReportingTolerances,
+  {65797aa2-06a9-45fe-b69d-bc6e060399d3}; !- Handle
+
+OS:ConvergenceLimits,
+  {9fc11aba-8822-4f3d-970c-46391ba4040d}; !- Handle
+
+OS:ShadowCalculation,
+  {ca758bea-4416-4626-9bba-3d8795c79bd6}, !- Handle
+  7,                                      !- Calculation Frequency
+  15000;                                  !- Maximum Figures in Shadow Overlap Calculations
+
+OS:SurfaceConvectionAlgorithm:Inside,
+  {aaabfc36-718a-4ab0-b622-f186ebb45230}, !- Handle
+  TARP;                                   !- Algorithm
+
+OS:SurfaceConvectionAlgorithm:Outside,
+  {9a0a9f6f-4bbd-4b12-a121-9492a1fcd7d6}, !- Handle
+  DOE-2;                                  !- Algorithm
+
+OS:HeatBalanceAlgorithm,
+  {9d93e563-e1e0-46d7-9e39-d1c8aceb7212}, !- Handle
+  ConductionTransferFunction,             !- Algorithm
+  200;                                    !- Surface Temperature Upper Limit {F}
+
+OS:ZoneAirHeatBalanceAlgorithm,
+  {8520d93e-310f-4696-9bcd-36228bfdd743}, !- Handle
+  AnalyticalSolution;                     !- Algorithm
+
+OS:ZoneAirContaminantBalance,
+  {eb5fc3ae-fb22-4160-8fcb-3e3b22b000d3}; !- Handle
+
+OS:ZoneCapacitanceMultiplier:ResearchSpecial,
+  {4020ce4f-5a7a-4849-8028-8305d7b751b1}, !- Handle
+  ,                                       !- Temperature Capacity Multiplier
+  ,                                       !- Humidity Capacity Multiplier
+  ;                                       !- Carbon Dioxide Capacity Multiplier
+
+OS:RunPeriod,
+  {28df894d-6af9-4fb8-8f56-df1753344aa3}, !- Handle
+  Run Period 1,                           !- Name
+  1,                                      !- Begin Month
+  1,                                      !- Begin Day of Month
+  12,                                     !- End Month
+  31,                                     !- End Day of Month
+  ,                                       !- Use Weather File Holidays and Special Days
+  ,                                       !- Use Weather File Daylight Saving Period
+  ,                                       !- Apply Weekend Holiday Rule
+  ,                                       !- Use Weather File Rain Indicators
+  ,                                       !- Use Weather File Snow Indicators
+  ;                                       !- Number of Times Runperiod to be Repeated
+
+OS:Building,
+  {bf305633-c5a1-4881-9edf-ca5e1a8e1274}, !- Handle
+  Building 1,                             !- Name
+  ,                                       !- Building Sector Type
+  ,                                       !- North Axis {deg}
+  ,                                       !- Nominal Floor to Floor Height {m}
+  ,                                       !- Space Type Name
+  ,                                       !- Default Construction Set Name
+  {c6a8204a-b360-44a7-8ae5-aa5046c0c772}, !- Default Schedule Set Name
+  ,                                       !- Standards Number of Stories
+  ,                                       !- Standards Number of Above Ground Stories
+  Retail;                                 !- Standards Building Type
+
+OS:LifeCycleCost:Parameters,
+  {231cf8a0-f0e7-4251-a99f-11f0d464e661}, !- Handle
+  FEMP,                                   !- Analysis Type
+  ,                                       !- Discounting Convention
+  ,                                       !- Inflation Approach
+  ,                                       !- Real Discount Rate
+  ,                                       !- Nominal Discount Rate
+  ,                                       !- Inflation
+  ,                                       !- Base Date Month
+  ,                                       !- Base Date Year
+  ,                                       !- Service Date Month
+  ,                                       !- Service Date Year
+  ,                                       !- Length of Study Period in Years
+  ,                                       !- Tax Rate
+  ,                                       !- Depreciation Method
+  Yes;                                    !- Use NIST Fuel Escalation Rates
+
+OS:Facility,
+  {3ba8e45b-b833-44eb-a723-ea6c3946dc96}; !- Handle
+
+OS:SpaceType,
+  {43328ea6-687c-472b-a4ea-55c4f02936a0}, !- Handle
+  Retail|Retail|DOE Ref 2004|ASHRAE 169-2006-5A, !- Name
+  {0bddb8cf-1027-42a5-b85f-028209a0695d}, !- Default Construction Set Name
+  {c016270d-b70a-4373-9391-d7d57f07a5ab}, !- Default Schedule Set Name
+  {60cf2d14-fe9c-4594-96ca-f6508596a94c}, !- Group Rendering Name
+  {64bd63f5-7193-446c-b8e9-d844f260cd0f}, !- Design Specification Outdoor Air Object Name
+  Retail,                                 !- Standards Building Type
+  Retail;                                 !- Standards Space Type
+
+OS:Rendering:Color,
+  {60cf2d14-fe9c-4594-96ca-f6508596a94c}, !- Handle
+  Rendering Color 1,                      !- Name
+  171,                                    !- Rendering Red Value
+  222,                                    !- Rendering Green Value
+  78;                                     !- Rendering Blue Value
+
+OS:SpaceType,
+  {3210f175-7950-411f-a1a7-5ba1f2bc6c92}, !- Handle
+  Retail|Back_Space|DOE Ref 2004|ASHRAE 169-2006-5A, !- Name
+  {0bddb8cf-1027-42a5-b85f-028209a0695d}, !- Default Construction Set Name
+  {88cfe624-2def-4bf1-ba65-f79e7f110099}, !- Default Schedule Set Name
+  {d03f2f1d-5c1e-4af8-98eb-e525837da6d3}, !- Group Rendering Name
+  {1a738eab-ce77-4700-a4fb-2851c73cf3b1}, !- Design Specification Outdoor Air Object Name
+  Retail,                                 !- Standards Building Type
+  Back_Space;                             !- Standards Space Type
+
+OS:Rendering:Color,
+  {d03f2f1d-5c1e-4af8-98eb-e525837da6d3}, !- Handle
+  Rendering Color 2,                      !- Name
+  120,                                    !- Rendering Red Value
+  149,                                    !- Rendering Green Value
+  230;                                    !- Rendering Blue Value
+
+OS:SpaceType,
+  {3756b714-5ea6-4e37-971b-9e7a287fc077}, !- Handle
+  Retail|BlendFront|DOE Ref 2004|ASHRAE 169-2006-5A, !- Name
+  {0bddb8cf-1027-42a5-b85f-028209a0695d}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {da33b994-b3c9-4e8a-862d-e67f0d55cd44}, !- Group Rendering Name
+  {2609459b-c8c3-4cd1-b993-0fdc44947edf}, !- Design Specification Outdoor Air Object Name
+  Retail,                                 !- Standards Building Type
+  BlendFront;                             !- Standards Space Type
+
+OS:Rendering:Color,
+  {da33b994-b3c9-4e8a-862d-e67f0d55cd44}, !- Handle
+  Rendering Color 3,                      !- Name
+  171,                                    !- Rendering Red Value
+  222,                                    !- Rendering Green Value
+  78;                                     !- Rendering Blue Value
+
+OS:Schedule:Ruleset,
+  {c626c306-7a80-4d6f-90eb-5b4ea8562b27}, !- Handle
+  0700|2100|Retail|default|hoo,           !- Name
+  {887de78b-595c-4107-b8c8-f1cb83d6aaca}, !- Schedule Type Limits Name
+  {91c78f99-a5a3-4c30-ab01-8487e522f8a3}, !- Default Day Schedule Name
+  {5df78de9-3e28-4f34-af7c-bf348594a6ba}, !- Summer Design Day Schedule Name
+  {464dd24e-ff48-489e-ab10-220cdc5bdf10}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {91c78f99-a5a3-4c30-ab01-8487e522f8a3}, !- Handle
+  0700|2100|Retail|default|hoo Schedule Week Day, !- Name
+  {887de78b-595c-4107-b8c8-f1cb83d6aaca}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {882bef94-513a-4e59-8dfb-94ab837feace}, !- Handle
+  Schedule Day 2,                         !- Name
+  ,                                       !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {464dd24e-ff48-489e-ab10-220cdc5bdf10}, !- Handle
+  0700|2100|Retail|default|hoo Winter Design Day, !- Name
+  {887de78b-595c-4107-b8c8-f1cb83d6aaca}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {76bdecb7-a6c6-44ba-8284-36b816f778ad}, !- Handle
+  Schedule Day 3,                         !- Name
+  ,                                       !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {5df78de9-3e28-4f34-af7c-bf348594a6ba}, !- Handle
+  0700|2100|Retail|default|hoo Summer Design Day, !- Name
+  {887de78b-595c-4107-b8c8-f1cb83d6aaca}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:DefaultScheduleSet,
+  {c6a8204a-b360-44a7-8ae5-aa5046c0c772}, !- Handle
+  Building Hours of Operation,            !- Name
+  {c626c306-7a80-4d6f-90eb-5b4ea8562b27}, !- Hours of Operation Schedule Name
+  ,                                       !- Number of People Schedule Name
+  ,                                       !- People Activity Level Schedule Name
+  ,                                       !- Lighting Schedule Name
+  ,                                       !- Electric Equipment Schedule Name
+  ,                                       !- Gas Equipment Schedule Name
+  ,                                       !- Hot Water Equipment Schedule Name
+  ,                                       !- Infiltration Schedule Name
+  ,                                       !- Steam Equipment Schedule Name
+  ;                                       !- Other Equipment Schedule Name
+
+OS:ScheduleTypeLimits,
+  {887de78b-595c-4107-b8c8-f1cb83d6aaca}, !- Handle
+  OnOff,                                  !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Schedule:Ruleset,
+  {4e5c4ea8-a755-4c3d-b5a6-437275708115}, !- Handle
+  0700|2100|Retail|default|lighting,      !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  {c4446fae-e0d8-425d-99d5-b3307644abb4}, !- Default Day Schedule Name
+  {490c561f-dd26-4d8c-b904-48fe1dd16447}, !- Summer Design Day Schedule Name
+  {c83f65be-6f41-40aa-8a0b-fac97b7f8cce}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Handle
+  Lights Schedule Type Limits,            !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {c4446fae-e0d8-425d-99d5-b3307644abb4}, !- Handle
+  0700|2100|Retail|default|lighting |default, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.2,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.5,                                    !- Value Until Time 3
+  18,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.9,                                    !- Value Until Time 4
+  20,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.6,                                    !- Value Until Time 5
+  21,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.5,                                    !- Value Until Time 6
+  22,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.2,                                    !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.05;                                   !- Value Until Time 8
+
+OS:Schedule:Day,
+  {490c561f-dd26-4d8c-b904-48fe1dd16447}, !- Handle
+  0700|2100|Retail|default|lighting Summer Design Day, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.2,                                    !- Value Until Time 2
+  21,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1,                                      !- Value Until Time 3
+  22,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.2,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.05;                                   !- Value Until Time 5
+
+OS:Schedule:Day,
+  {c83f65be-6f41-40aa-8a0b-fac97b7f8cce}, !- Handle
+  0700|2100|Retail|default|lighting Winter Design Day, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.05;                                   !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {545096ac-6895-4d0b-9b7c-a2e65f9fa785}, !- Handle
+  0700|2100|Retail|default|lighting |1/1-12/31|Sat Rule, !- Name
+  {4e5c4ea8-a755-4c3d-b5a6-437275708115}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {8aa10406-44b1-45de-a7fe-c32569cf36b6}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {8aa10406-44b1-45de-a7fe-c32569cf36b6}, !- Handle
+  0700|2100|Retail|default|lighting |1/1-12/31|Sat, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.3,                                    !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.6,                                    !- Value Until Time 4
+  18,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.9,                                    !- Value Until Time 5
+  19,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.5,                                    !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.3,                                    !- Value Until Time 7
+  22,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.1,                                    !- Value Until Time 8
+  24,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.05;                                   !- Value Until Time 9
+
+OS:Schedule:Rule,
+  {6496e5b1-abf2-44e0-881f-9befc70b2a9d}, !- Handle
+  0700|2100|Retail|default|lighting |1/1-12/31|Sun Rule, !- Name
+  {4e5c4ea8-a755-4c3d-b5a6-437275708115}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {d134893e-5c22-4238-938b-3a2f91b2ebd8}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {d134893e-5c22-4238-938b-3a2f91b2ebd8}, !- Handle
+  0700|2100|Retail|default|lighting |1/1-12/31|Sun, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  10,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  12,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.4,                                    !- Value Until Time 3
+  17,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.6,                                    !- Value Until Time 4
+  18,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.4,                                    !- Value Until Time 5
+  19,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.2,                                    !- Value Until Time 6
+  24,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.05;                                   !- Value Until Time 7
+
+OS:Schedule:Ruleset,
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Handle
+  0700|2100|Retail|default|elec_equip,    !- Name
+  {82d43575-a629-4830-8096-196ae8865399}, !- Schedule Type Limits Name
+  {c6d98323-2c5f-4f2f-81cb-e29776723305}, !- Default Day Schedule Name
+  {f8d65990-f535-437b-871f-4290090dc02e}, !- Summer Design Day Schedule Name
+  {12679b8d-3c45-493f-a792-3ebb3fa0d288}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {82d43575-a629-4830-8096-196ae8865399}, !- Handle
+  Equipment Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {c6d98323-2c5f-4f2f-81cb-e29776723305}, !- Handle
+  0700|2100|Retail|default|elec_equip |default, !- Name
+  {82d43575-a629-4830-8096-196ae8865399}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.2,                                    !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.4,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.7,                                    !- Value Until Time 3
+  18,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.9,                                    !- Value Until Time 4
+  20,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.8,                                    !- Value Until Time 5
+  21,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.7,                                    !- Value Until Time 6
+  22,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.4,                                    !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.2;                                    !- Value Until Time 8
+
+OS:Schedule:Day,
+  {f8d65990-f535-437b-871f-4290090dc02e}, !- Handle
+  0700|2100|Retail|default|elec_equip Summer Design Day, !- Name
+  {82d43575-a629-4830-8096-196ae8865399}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.2,                                    !- Value Until Time 1
+  22,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.2;                                    !- Value Until Time 3
+
+OS:Schedule:Day,
+  {12679b8d-3c45-493f-a792-3ebb3fa0d288}, !- Handle
+  0700|2100|Retail|default|elec_equip Winter Design Day, !- Name
+  {82d43575-a629-4830-8096-196ae8865399}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.2;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {a468a852-2f0c-49c8-b4a5-d4b18a0cd816}, !- Handle
+  0700|2100|Retail|default|elec_equip |1/1-12/31|Sat Rule, !- Name
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {2e7da243-9bf5-4991-980c-e8577b7247f6}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {2e7da243-9bf5-4991-980c-e8577b7247f6}, !- Handle
+  0700|2100|Retail|default|elec_equip |1/1-12/31|Sat, !- Name
+  {82d43575-a629-4830-8096-196ae8865399}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.15,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.3,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.5,                                    !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.8,                                    !- Value Until Time 4
+  18,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.9,                                    !- Value Until Time 5
+  19,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.7,                                    !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.5,                                    !- Value Until Time 7
+  22,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.3,                                    !- Value Until Time 8
+  24,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.15;                                   !- Value Until Time 9
+
+OS:Schedule:Rule,
+  {ec39be12-a54a-45f0-ba27-847aa71c3be0}, !- Handle
+  0700|2100|Retail|default|elec_equip |1/1-12/31|Sun Rule, !- Name
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {b9442a63-34eb-4e97-8c65-b9035921d026}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {b9442a63-34eb-4e97-8c65-b9035921d026}, !- Handle
+  0700|2100|Retail|default|elec_equip |1/1-12/31|Sun, !- Name
+  {82d43575-a629-4830-8096-196ae8865399}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.15,                                   !- Value Until Time 1
+  10,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.3,                                    !- Value Until Time 2
+  12,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.6,                                    !- Value Until Time 3
+  17,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.8,                                    !- Value Until Time 4
+  18,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.6,                                    !- Value Until Time 5
+  19,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.4,                                    !- Value Until Time 6
+  24,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.15;                                   !- Value Until Time 7
+
+OS:Schedule:Ruleset,
+  {4c0b8152-1291-4b25-9304-c1d910df8219}, !- Handle
+  0700|2100|Retail|default|occ,           !- Name
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Schedule Type Limits Name
+  {cec81f4d-abc9-459d-bae3-5858e08e6abf}, !- Default Day Schedule Name
+  {d908671a-7d80-466e-94ab-f48c8cc562ed}, !- Summer Design Day Schedule Name
+  {9c411048-1d7d-4add-9aae-a051d4112521}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Handle
+  Occupancy Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {cec81f4d-abc9-459d-bae3-5858e08e6abf}, !- Handle
+  0700|2100|Retail|default|occ |default,  !- Name
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  11,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.5,                                    !- Value Until Time 4
+  15,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.7,                                    !- Value Until Time 5
+  16,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.8,                                    !- Value Until Time 6
+  17,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.7,                                    !- Value Until Time 7
+  19,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.5,                                    !- Value Until Time 8
+  21,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.3,                                    !- Value Until Time 9
+  24,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0;                                      !- Value Until Time 10
+
+OS:Schedule:Day,
+  {d908671a-7d80-466e-94ab-f48c8cc562ed}, !- Handle
+  0700|2100|Retail|default|occ Summer Design Day, !- Name
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  21,                                     !- Hour 4
+  0,                                      !- Minute 4
+  1,                                      !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0;                                      !- Value Until Time 5
+
+OS:Schedule:Day,
+  {9c411048-1d7d-4add-9aae-a051d4112521}, !- Handle
+  0700|2100|Retail|default|occ Winter Design Day, !- Name
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {e25eb017-bb64-4717-84c9-d1cdf6296384}, !- Handle
+  0700|2100|Retail|default|occ |1/1-12/31|Sat Rule, !- Name
+  {4c0b8152-1291-4b25-9304-c1d910df8219}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {0047c197-dab3-4c86-955a-d39f6292f6d4}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {0047c197-dab3-4c86-955a-d39f6292f6d4}, !- Handle
+  0700|2100|Retail|default|occ |1/1-12/31|Sat, !- Name
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.5,                                    !- Value Until Time 4
+  11,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.6,                                    !- Value Until Time 5
+  17,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.8,                                    !- Value Until Time 6
+  18,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.6,                                    !- Value Until Time 7
+  21,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.2,                                    !- Value Until Time 8
+  22,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.1,                                    !- Value Until Time 9
+  24,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0;                                      !- Value Until Time 10
+
+OS:Schedule:Rule,
+  {5f2402f3-d476-4f31-a682-d5fa8f5621be}, !- Handle
+  0700|2100|Retail|default|occ |1/1-12/31|Sun Rule, !- Name
+  {4c0b8152-1291-4b25-9304-c1d910df8219}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {5074e2af-4d0a-4425-8ee4-ae630337f899}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {5074e2af-4d0a-4425-8ee4-ae630337f899}, !- Handle
+  0700|2100|Retail|default|occ |1/1-12/31|Sun, !- Name
+  {b8e9765b-82b3-464c-9a1a-ac736a55aa78}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  9,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  10,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  12,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  17,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.4,                                    !- Value Until Time 4
+  18,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.2,                                    !- Value Until Time 5
+  19,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.1,                                    !- Value Until Time 6
+  24,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0;                                      !- Value Until Time 7
+
+OS:Schedule:Ruleset,
+  {55af4b11-4800-477a-b6e6-ae7df60cfd34}, !- Handle
+  0700|2100|Retail|default|hvac,          !- Name
+  {89c48f91-8e62-496d-aac9-2d416785a466}, !- Schedule Type Limits Name
+  {03763015-7173-4d27-8a0c-afbace5b52c0}, !- Default Day Schedule Name
+  {1ca38cf6-6683-4c2d-a8d7-548362bdc63f}, !- Summer Design Day Schedule Name
+  {0cbd5bac-76ca-4111-955a-e19e9c9725ec}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {89c48f91-8e62-496d-aac9-2d416785a466}, !- Handle
+  HVAC Operation Schedule Type Limits,    !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Schedule:Day,
+  {03763015-7173-4d27-8a0c-afbace5b52c0}, !- Handle
+  0700|2100|Retail|default|hvac |default, !- Name
+  {89c48f91-8e62-496d-aac9-2d416785a466}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  19,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {1ca38cf6-6683-4c2d-a8d7-548362bdc63f}, !- Handle
+  0700|2100|Retail|default|hvac Summer Design Day, !- Name
+  {89c48f91-8e62-496d-aac9-2d416785a466}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  19,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {0cbd5bac-76ca-4111-955a-e19e9c9725ec}, !- Handle
+  0700|2100|Retail|default|hvac Winter Design Day, !- Name
+  {89c48f91-8e62-496d-aac9-2d416785a466}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  19,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {a4182a84-f455-481c-96fc-520141aa8dd4}, !- Handle
+  0700|2100|Retail|default|activity,      !- Name
+  {65d441bd-a8e2-47e8-87a4-502ec84d108e}, !- Schedule Type Limits Name
+  {cf43c7d2-d79a-41af-8853-17e618ad1468}, !- Default Day Schedule Name
+  {2df30eef-804a-4d86-93b1-9cd6b50389d9}, !- Summer Design Day Schedule Name
+  {1762010e-8f4c-40d7-9326-c68a5950e25e}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {65d441bd-a8e2-47e8-87a4-502ec84d108e}, !- Handle
+  People Activity Type Limits,            !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  ActivityLevel;                          !- Unit Type
+
+OS:Schedule:Day,
+  {cf43c7d2-d79a-41af-8853-17e618ad1468}, !- Handle
+  0700|2100|Retail|default|activity |default, !- Name
+  {65d441bd-a8e2-47e8-87a4-502ec84d108e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {2df30eef-804a-4d86-93b1-9cd6b50389d9}, !- Handle
+  0700|2100|Retail|default|activity Summer Design Day, !- Name
+  {65d441bd-a8e2-47e8-87a4-502ec84d108e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {1762010e-8f4c-40d7-9326-c68a5950e25e}, !- Handle
+  0700|2100|Retail|default|activity Winter Design Day, !- Name
+  {65d441bd-a8e2-47e8-87a4-502ec84d108e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {78ac657e-7c19-4b80-88bf-ba6b5eeb3d76}, !- Handle
+  0700|2100|Retail|default|ext_lighting,  !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  {a619e97e-0f32-4aca-b131-65e72cc7f326}, !- Default Day Schedule Name
+  {411395f1-eb31-4ab8-a880-521c5e59268f}, !- Summer Design Day Schedule Name
+  {17dee45c-80c8-4bc0-b63d-52b84d896f64}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {a619e97e-0f32-4aca-b131-65e72cc7f326}, !- Handle
+  0700|2100|Retail|default|ext_lighting |default, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {411395f1-eb31-4ab8-a880-521c5e59268f}, !- Handle
+  0700|2100|Retail|default|ext_lighting Summer Design Day, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {17dee45c-80c8-4bc0-b63d-52b84d896f64}, !- Handle
+  0700|2100|Retail|default|ext_lighting Winter Design Day, !- Name
+  {bcaafa85-041c-4700-9e87-c8075493eef2}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {c6a235bc-0daa-4dfa-a258-9ba86d8faae3}, !- Handle
+  0700|2100|Retail|default|elevator,      !- Name
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Schedule Type Limits Name
+  {ea0259d2-bb26-4d41-82fd-81e6b74d33b0}, !- Default Day Schedule Name
+  {48ef41ed-211a-4dd6-a142-eafac3fade40}, !- Summer Design Day Schedule Name
+  {c744f252-432d-4fe4-a474-449cc2910fa6}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Handle
+  Elevators Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {ea0259d2-bb26-4d41-82fd-81e6b74d33b0}, !- Handle
+  0700|2100|Retail|default|elevator |default, !- Name
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  6,                                      !- Hour 2
+  30,                                     !- Minute 2
+  0.17,                                   !- Value Until Time 2
+  7,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.35,                                   !- Value Until Time 3
+  7,                                      !- Hour 4
+  30,                                     !- Minute 4
+  0.52,                                   !- Value Until Time 4
+  8,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.69,                                   !- Value Until Time 5
+  8,                                      !- Hour 6
+  30,                                     !- Minute 6
+  0.54,                                   !- Value Until Time 6
+  9,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.4,                                    !- Value Until Time 7
+  9,                                      !- Hour 8
+  30,                                     !- Minute 8
+  0.42,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.43,                                   !- Value Until Time 9
+  10,                                     !- Hour 10
+  30,                                     !- Minute 10
+  0.45,                                   !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.46,                                   !- Value Until Time 11
+  11,                                     !- Hour 12
+  30,                                     !- Minute 12
+  0.48,                                   !- Value Until Time 12
+  12,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.49,                                   !- Value Until Time 13
+  12,                                     !- Hour 14
+  30,                                     !- Minute 14
+  0.51,                                   !- Value Until Time 14
+  13,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.52,                                   !- Value Until Time 15
+  13,                                     !- Hour 16
+  30,                                     !- Minute 16
+  0.54,                                   !- Value Until Time 16
+  14,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.55,                                   !- Value Until Time 17
+  14,                                     !- Hour 18
+  30,                                     !- Minute 18
+  0.54,                                   !- Value Until Time 18
+  15,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.53,                                   !- Value Until Time 19
+  15,                                     !- Hour 20
+  30,                                     !- Minute 20
+  0.51,                                   !- Value Until Time 20
+  16,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.5,                                    !- Value Until Time 21
+  16,                                     !- Hour 22
+  30,                                     !- Minute 22
+  0.49,                                   !- Value Until Time 22
+  17,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.48,                                   !- Value Until Time 23
+  17,                                     !- Hour 24
+  30,                                     !- Minute 24
+  0.46,                                   !- Value Until Time 24
+  18,                                     !- Hour 25
+  0,                                      !- Minute 25
+  0.45,                                   !- Value Until Time 25
+  18,                                     !- Hour 26
+  30,                                     !- Minute 26
+  0.44,                                   !- Value Until Time 26
+  19,                                     !- Hour 27
+  0,                                      !- Minute 27
+  0.43,                                   !- Value Until Time 27
+  19,                                     !- Hour 28
+  30,                                     !- Minute 28
+  0.41,                                   !- Value Until Time 28
+  20,                                     !- Hour 29
+  0,                                      !- Minute 29
+  0.4,                                    !- Value Until Time 29
+  20,                                     !- Hour 30
+  30,                                     !- Minute 30
+  0.5,                                    !- Value Until Time 30
+  21,                                     !- Hour 31
+  0,                                      !- Minute 31
+  0.6,                                    !- Value Until Time 31
+  21,                                     !- Hour 32
+  30,                                     !- Minute 32
+  0.46,                                   !- Value Until Time 32
+  22,                                     !- Hour 33
+  0,                                      !- Minute 33
+  0.32,                                   !- Value Until Time 33
+  22,                                     !- Hour 34
+  30,                                     !- Minute 34
+  0.18,                                   !- Value Until Time 34
+  23,                                     !- Hour 35
+  0,                                      !- Minute 35
+  0.04,                                   !- Value Until Time 35
+  24,                                     !- Hour 36
+  0,                                      !- Minute 36
+  0;                                      !- Value Until Time 36
+
+OS:Schedule:Day,
+  {48ef41ed-211a-4dd6-a142-eafac3fade40}, !- Handle
+  0700|2100|Retail|default|elevator Summer Design Day, !- Name
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  6,                                      !- Hour 2
+  30,                                     !- Minute 2
+  0.17,                                   !- Value Until Time 2
+  7,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.35,                                   !- Value Until Time 3
+  7,                                      !- Hour 4
+  30,                                     !- Minute 4
+  0.52,                                   !- Value Until Time 4
+  8,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.69,                                   !- Value Until Time 5
+  8,                                      !- Hour 6
+  30,                                     !- Minute 6
+  0.54,                                   !- Value Until Time 6
+  9,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.4,                                    !- Value Until Time 7
+  9,                                      !- Hour 8
+  30,                                     !- Minute 8
+  0.42,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.43,                                   !- Value Until Time 9
+  10,                                     !- Hour 10
+  30,                                     !- Minute 10
+  0.45,                                   !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.46,                                   !- Value Until Time 11
+  11,                                     !- Hour 12
+  30,                                     !- Minute 12
+  0.48,                                   !- Value Until Time 12
+  12,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.49,                                   !- Value Until Time 13
+  12,                                     !- Hour 14
+  30,                                     !- Minute 14
+  0.51,                                   !- Value Until Time 14
+  13,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.52,                                   !- Value Until Time 15
+  13,                                     !- Hour 16
+  30,                                     !- Minute 16
+  0.54,                                   !- Value Until Time 16
+  14,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.55,                                   !- Value Until Time 17
+  14,                                     !- Hour 18
+  30,                                     !- Minute 18
+  0.54,                                   !- Value Until Time 18
+  15,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.53,                                   !- Value Until Time 19
+  15,                                     !- Hour 20
+  30,                                     !- Minute 20
+  0.51,                                   !- Value Until Time 20
+  16,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.5,                                    !- Value Until Time 21
+  16,                                     !- Hour 22
+  30,                                     !- Minute 22
+  0.49,                                   !- Value Until Time 22
+  17,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.48,                                   !- Value Until Time 23
+  17,                                     !- Hour 24
+  30,                                     !- Minute 24
+  0.46,                                   !- Value Until Time 24
+  18,                                     !- Hour 25
+  0,                                      !- Minute 25
+  0.45,                                   !- Value Until Time 25
+  18,                                     !- Hour 26
+  30,                                     !- Minute 26
+  0.44,                                   !- Value Until Time 26
+  19,                                     !- Hour 27
+  0,                                      !- Minute 27
+  0.43,                                   !- Value Until Time 27
+  19,                                     !- Hour 28
+  30,                                     !- Minute 28
+  0.41,                                   !- Value Until Time 28
+  20,                                     !- Hour 29
+  0,                                      !- Minute 29
+  0.4,                                    !- Value Until Time 29
+  20,                                     !- Hour 30
+  30,                                     !- Minute 30
+  0.5,                                    !- Value Until Time 30
+  21,                                     !- Hour 31
+  0,                                      !- Minute 31
+  0.6,                                    !- Value Until Time 31
+  21,                                     !- Hour 32
+  30,                                     !- Minute 32
+  0.46,                                   !- Value Until Time 32
+  22,                                     !- Hour 33
+  0,                                      !- Minute 33
+  0.32,                                   !- Value Until Time 33
+  22,                                     !- Hour 34
+  30,                                     !- Minute 34
+  0.18,                                   !- Value Until Time 34
+  23,                                     !- Hour 35
+  0,                                      !- Minute 35
+  0.04,                                   !- Value Until Time 35
+  24,                                     !- Hour 36
+  0,                                      !- Minute 36
+  0;                                      !- Value Until Time 36
+
+OS:Schedule:Day,
+  {c744f252-432d-4fe4-a474-449cc2910fa6}, !- Handle
+  0700|2100|Retail|default|elevator Winter Design Day, !- Name
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  6,                                      !- Hour 2
+  30,                                     !- Minute 2
+  0.17,                                   !- Value Until Time 2
+  7,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.35,                                   !- Value Until Time 3
+  7,                                      !- Hour 4
+  30,                                     !- Minute 4
+  0.52,                                   !- Value Until Time 4
+  8,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.69,                                   !- Value Until Time 5
+  8,                                      !- Hour 6
+  30,                                     !- Minute 6
+  0.54,                                   !- Value Until Time 6
+  9,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.4,                                    !- Value Until Time 7
+  9,                                      !- Hour 8
+  30,                                     !- Minute 8
+  0.42,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.43,                                   !- Value Until Time 9
+  10,                                     !- Hour 10
+  30,                                     !- Minute 10
+  0.45,                                   !- Value Until Time 10
+  11,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.46,                                   !- Value Until Time 11
+  11,                                     !- Hour 12
+  30,                                     !- Minute 12
+  0.48,                                   !- Value Until Time 12
+  12,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.49,                                   !- Value Until Time 13
+  12,                                     !- Hour 14
+  30,                                     !- Minute 14
+  0.51,                                   !- Value Until Time 14
+  13,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.52,                                   !- Value Until Time 15
+  13,                                     !- Hour 16
+  30,                                     !- Minute 16
+  0.54,                                   !- Value Until Time 16
+  14,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.55,                                   !- Value Until Time 17
+  14,                                     !- Hour 18
+  30,                                     !- Minute 18
+  0.54,                                   !- Value Until Time 18
+  15,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.53,                                   !- Value Until Time 19
+  15,                                     !- Hour 20
+  30,                                     !- Minute 20
+  0.51,                                   !- Value Until Time 20
+  16,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.5,                                    !- Value Until Time 21
+  16,                                     !- Hour 22
+  30,                                     !- Minute 22
+  0.49,                                   !- Value Until Time 22
+  17,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.48,                                   !- Value Until Time 23
+  17,                                     !- Hour 24
+  30,                                     !- Minute 24
+  0.46,                                   !- Value Until Time 24
+  18,                                     !- Hour 25
+  0,                                      !- Minute 25
+  0.45,                                   !- Value Until Time 25
+  18,                                     !- Hour 26
+  30,                                     !- Minute 26
+  0.44,                                   !- Value Until Time 26
+  19,                                     !- Hour 27
+  0,                                      !- Minute 27
+  0.43,                                   !- Value Until Time 27
+  19,                                     !- Hour 28
+  30,                                     !- Minute 28
+  0.41,                                   !- Value Until Time 28
+  20,                                     !- Hour 29
+  0,                                      !- Minute 29
+  0.4,                                    !- Value Until Time 29
+  20,                                     !- Hour 30
+  30,                                     !- Minute 30
+  0.5,                                    !- Value Until Time 30
+  21,                                     !- Hour 31
+  0,                                      !- Minute 31
+  0.6,                                    !- Value Until Time 31
+  21,                                     !- Hour 32
+  30,                                     !- Minute 32
+  0.46,                                   !- Value Until Time 32
+  22,                                     !- Hour 33
+  0,                                      !- Minute 33
+  0.32,                                   !- Value Until Time 33
+  22,                                     !- Hour 34
+  30,                                     !- Minute 34
+  0.18,                                   !- Value Until Time 34
+  23,                                     !- Hour 35
+  0,                                      !- Minute 35
+  0.04,                                   !- Value Until Time 35
+  24,                                     !- Hour 36
+  0,                                      !- Minute 36
+  0;                                      !- Value Until Time 36
+
+OS:Schedule:Rule,
+  {39401594-c09a-4d20-8331-8a45a9dfb654}, !- Handle
+  0700|2100|Retail|default|elevator |1/1-12/31|Sun Rule, !- Name
+  {c6a235bc-0daa-4dfa-a258-9ba86d8faae3}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {77dabbb6-57c6-473a-935f-93698331bc9e}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {77dabbb6-57c6-473a-935f-93698331bc9e}, !- Handle
+  0700|2100|Retail|default|elevator |1/1-12/31|Sun, !- Name
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {4fc505bf-1182-4979-8425-8d4bcba0ad3e}, !- Handle
+  0700|2100|Retail|default|elevator |1/1-12/31|Sat Rule, !- Name
+  {c6a235bc-0daa-4dfa-a258-9ba86d8faae3}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {e09fbe14-4e61-4ecc-bc43-8454a8fd39c2}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {e09fbe14-4e61-4ecc-bc43-8454a8fd39c2}, !- Handle
+  0700|2100|Retail|default|elevator |1/1-12/31|Sat, !- Name
+  {4030f354-a643-4033-83bb-64820273aca4}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  6,                                      !- Hour 2
+  30,                                     !- Minute 2
+  0.05,                                   !- Value Until Time 2
+  7,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.11,                                   !- Value Until Time 3
+  7,                                      !- Hour 4
+  30,                                     !- Minute 4
+  0.16,                                   !- Value Until Time 4
+  8,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.21,                                   !- Value Until Time 5
+  8,                                      !- Hour 6
+  30,                                     !- Minute 6
+  0.2,                                    !- Value Until Time 6
+  9,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.18,                                   !- Value Until Time 7
+  10,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.19,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  30,                                     !- Minute 9
+  0.2,                                    !- Value Until Time 9
+  11,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.21,                                   !- Value Until Time 10
+  12,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.22,                                   !- Value Until Time 11
+  12,                                     !- Hour 12
+  30,                                     !- Minute 12
+  0.23,                                   !- Value Until Time 12
+  13,                                     !- Hour 13
+  30,                                     !- Minute 13
+  0.24,                                   !- Value Until Time 13
+  14,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.25,                                   !- Value Until Time 14
+  14,                                     !- Hour 15
+  30,                                     !- Minute 15
+  0.23,                                   !- Value Until Time 15
+  15,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.22,                                   !- Value Until Time 16
+  15,                                     !- Hour 17
+  30,                                     !- Minute 17
+  0.2,                                    !- Value Until Time 17
+  16,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0.18,                                   !- Value Until Time 18
+  16,                                     !- Hour 19
+  30,                                     !- Minute 19
+  0.16,                                   !- Value Until Time 19
+  17,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.14,                                   !- Value Until Time 20
+  17,                                     !- Hour 21
+  30,                                     !- Minute 21
+  0.13,                                   !- Value Until Time 21
+  18,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.11,                                   !- Value Until Time 22
+  18,                                     !- Hour 23
+  30,                                     !- Minute 23
+  0.09,                                   !- Value Until Time 23
+  19,                                     !- Hour 24
+  0,                                      !- Minute 24
+  0.08,                                   !- Value Until Time 24
+  19,                                     !- Hour 25
+  30,                                     !- Minute 25
+  0.06,                                   !- Value Until Time 25
+  20,                                     !- Hour 26
+  0,                                      !- Minute 26
+  0.04,                                   !- Value Until Time 26
+  21,                                     !- Hour 27
+  0,                                      !- Minute 27
+  0.05,                                   !- Value Until Time 27
+  22,                                     !- Hour 28
+  0,                                      !- Minute 28
+  0.06,                                   !- Value Until Time 28
+  24,                                     !- Hour 29
+  0,                                      !- Minute 29
+  0;                                      !- Value Until Time 29
+
+OS:Schedule:Ruleset,
+  {d11ff3aa-e48e-4d4a-9485-62b0d6875f38}, !- Handle
+  0700|2100|Retail|default|htg_setpoint,  !- Name
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Schedule Type Limits Name
+  {7a592036-d576-4065-a10c-dcd5b15c5df4}, !- Default Day Schedule Name
+  {5f8cc25e-062a-4610-a5a3-9be82bd183e1}, !- Summer Design Day Schedule Name
+  {e14b71ce-7505-4b2f-b0bc-0478285a4553}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Handle
+  Thermostat Heating Setpoint Schedule Type Limits, !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  100,                                    !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {7a592036-d576-4065-a10c-dcd5b15c5df4}, !- Handle
+  0700|2100|Retail|default|htg_setpoint |default, !- Name
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  15.6,                                   !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  21.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  15.6;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {5f8cc25e-062a-4610-a5a3-9be82bd183e1}, !- Handle
+  0700|2100|Retail|default|htg_setpoint Summer Design Day, !- Name
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  15.6,                                   !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  21.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  15.6;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {e14b71ce-7505-4b2f-b0bc-0478285a4553}, !- Handle
+  0700|2100|Retail|default|htg_setpoint Winter Design Day, !- Name
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  15.6;                                   !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {4789c251-82f7-4f3b-8600-d892b4ca8e39}, !- Handle
+  0700|2100|Retail|default|htg_setpoint |1/1-12/31|Sat Rule, !- Name
+  {d11ff3aa-e48e-4d4a-9485-62b0d6875f38}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {180aa18c-30db-4c10-908b-59458adf650b}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {180aa18c-30db-4c10-908b-59458adf650b}, !- Handle
+  0700|2100|Retail|default|htg_setpoint |1/1-12/31|Sat, !- Name
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  15.6,                                   !- Value Until Time 1
+  22,                                     !- Hour 2
+  0,                                      !- Minute 2
+  21.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  15.6;                                   !- Value Until Time 3
+
+OS:Schedule:Rule,
+  {f5ba85c0-dd00-40bd-b80e-c4df88c51478}, !- Handle
+  0700|2100|Retail|default|htg_setpoint |1/1-12/31|Sun Rule, !- Name
+  {d11ff3aa-e48e-4d4a-9485-62b0d6875f38}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {c2a96af9-8436-43f7-8e55-37253666e836}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {c2a96af9-8436-43f7-8e55-37253666e836}, !- Handle
+  0700|2100|Retail|default|htg_setpoint |1/1-12/31|Sun, !- Name
+  {0c628683-730f-4269-ba81-1fef3fe875ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  15.6,                                   !- Value Until Time 1
+  19,                                     !- Hour 2
+  0,                                      !- Minute 2
+  21.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  15.6;                                   !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {f1d7f84c-29e7-43b8-922b-6792e5c84f80}, !- Handle
+  0700|2100|Retail|default|clg_setpoint,  !- Name
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Schedule Type Limits Name
+  {8eb61cd8-e640-41db-b3d3-f9d75914f80c}, !- Default Day Schedule Name
+  {e087b3a1-6ac8-4f96-9e42-feac3b916ef5}, !- Summer Design Day Schedule Name
+  {17649e85-ab8f-4190-a66c-5667d396688a}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Handle
+  Thermostat Cooling Setpoint Schedule Type Limits, !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  100,                                    !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {8eb61cd8-e640-41db-b3d3-f9d75914f80c}, !- Handle
+  0700|2100|Retail|default|clg_setpoint |default, !- Name
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  30.0000000000001,                       !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  24.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  30.0000000000001;                       !- Value Until Time 3
+
+OS:Schedule:Day,
+  {e087b3a1-6ac8-4f96-9e42-feac3b916ef5}, !- Handle
+  0700|2100|Retail|default|clg_setpoint Summer Design Day, !- Name
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  30.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {17649e85-ab8f-4190-a66c-5667d396688a}, !- Handle
+  0700|2100|Retail|default|clg_setpoint Winter Design Day, !- Name
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  30.0000000000001,                       !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  24.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  30.0000000000001;                       !- Value Until Time 3
+
+OS:Schedule:Rule,
+  {21619ead-aadc-42c1-aac1-9315021b5901}, !- Handle
+  0700|2100|Retail|default|clg_setpoint |1/1-12/31|Sat Rule, !- Name
+  {f1d7f84c-29e7-43b8-922b-6792e5c84f80}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {ba58b51f-dc23-419b-af00-f85f088c4318}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {ba58b51f-dc23-419b-af00-f85f088c4318}, !- Handle
+  0700|2100|Retail|default|clg_setpoint |1/1-12/31|Sat, !- Name
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  30.0000000000001,                       !- Value Until Time 1
+  22,                                     !- Hour 2
+  0,                                      !- Minute 2
+  24.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  30.0000000000001;                       !- Value Until Time 3
+
+OS:Schedule:Rule,
+  {2950c5cd-2f48-4f84-92e3-597d525e23c7}, !- Handle
+  0700|2100|Retail|default|clg_setpoint |1/1-12/31|Sun Rule, !- Name
+  {f1d7f84c-29e7-43b8-922b-6792e5c84f80}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {39b94c5c-4536-44ed-aef8-e83c222f1d7d}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {39b94c5c-4536-44ed-aef8-e83c222f1d7d}, !- Handle
+  0700|2100|Retail|default|clg_setpoint |1/1-12/31|Sun, !- Name
+  {5fe53530-ad1a-4101-8095-41f2ffaf45e6}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  30.0000000000001,                       !- Value Until Time 1
+  19,                                     !- Hour 2
+  0,                                      !- Minute 2
+  24.0000000000001,                       !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  30.0000000000001;                       !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {dca13ce3-1e5c-4d2d-9633-da8b3c9c25ea}, !- Handle
+  0700|2100|Retail|default|thermal_ctrl,  !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  {caba01e2-e52c-4bdc-aa27-15d3b9d3674d}, !- Default Day Schedule Name
+  {f92df793-cf4f-42e8-82e1-d7d37d4cb661}, !- Summer Design Day Schedule Name
+  {6e02acf9-e674-4eb5-aa4f-e2f2faf82164}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Handle
+  Dimensionless Schedule Type Limits,     !- Name
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {caba01e2-e52c-4bdc-aa27-15d3b9d3674d}, !- Handle
+  0700|2100|Retail|default|thermal_ctrl |default, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {f92df793-cf4f-42e8-82e1-d7d37d4cb661}, !- Handle
+  0700|2100|Retail|default|thermal_ctrl Summer Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {6e02acf9-e674-4eb5-aa4f-e2f2faf82164}, !- Handle
+  0700|2100|Retail|default|thermal_ctrl Winter Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {ec5695f1-2ebe-4491-ae47-40d15d8862ea}, !- Handle
+  0700|2100|Retail|default|rh,            !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  {0f7448d7-412b-4aa0-b44a-bece30fc2aea}, !- Default Day Schedule Name
+  {81a24463-03be-494d-ae4d-d94785112ff0}, !- Summer Design Day Schedule Name
+  {e16fb1fb-e5b7-42f8-9049-723490307648}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {0f7448d7-412b-4aa0-b44a-bece30fc2aea}, !- Handle
+  0700|2100|Retail|default|rh |default,   !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Day,
+  {81a24463-03be-494d-ae4d-d94785112ff0}, !- Handle
+  0700|2100|Retail|default|rh Summer Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Day,
+  {e16fb1fb-e5b7-42f8-9049-723490307648}, !- Handle
+  0700|2100|Retail|default|rh Winter Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {57210b12-34a9-4ae2-a43b-fe204fae63a5}, !- Handle
+  0700|2100|Retail|default|work_eff,      !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  {53ad2121-f206-45d1-a26f-8e4812e0065b}, !- Default Day Schedule Name
+  {098e64d3-4f31-4250-8ac0-9575a51acac5}, !- Summer Design Day Schedule Name
+  {31956770-fb3a-482e-a40f-84267c1c87b5}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Handle
+  Fraction Schedule Type Limits,          !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {53ad2121-f206-45d1-a26f-8e4812e0065b}, !- Handle
+  0700|2100|Retail|default|work_eff |default, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {098e64d3-4f31-4250-8ac0-9575a51acac5}, !- Handle
+  0700|2100|Retail|default|work_eff Summer Design Day, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {31956770-fb3a-482e-a40f-84267c1c87b5}, !- Handle
+  0700|2100|Retail|default|work_eff Winter Design Day, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {4eef1e6c-31c8-4a6f-89a3-d9808b002c92}, !- Handle
+  0700|2100|Retail|default|clothing,      !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  {44bb4d08-b2c3-4291-a503-789e54bbf474}, !- Default Day Schedule Name
+  {4894c074-e7e7-476e-a9c1-0fb1ed993f04}, !- Summer Design Day Schedule Name
+  {8d8e44db-651c-469e-ac97-76177208d103}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {44bb4d08-b2c3-4291-a503-789e54bbf474}, !- Handle
+  0700|2100|Retail|default|clothing |default, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {4894c074-e7e7-476e-a9c1-0fb1ed993f04}, !- Handle
+  0700|2100|Retail|default|clothing Summer Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {8d8e44db-651c-469e-ac97-76177208d103}, !- Handle
+  0700|2100|Retail|default|clothing Winter Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {41c9d9af-4fdf-4509-ad66-221f973086bc}, !- Handle
+  0700|2100|Retail|default|clothing |5/1-9/30|Mon/Tue/Wed/Thu/Fri/Sat/Sun Rule, !- Name
+  {4eef1e6c-31c8-4a6f-89a3-d9808b002c92}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {e07aed8b-5f81-4033-8062-6f4622aa9114}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  5,                                      !- Start Month
+  1,                                      !- Start Day
+  9,                                      !- End Month
+  30;                                     !- End Day
+
+OS:Schedule:Day,
+  {e07aed8b-5f81-4033-8062-6f4622aa9114}, !- Handle
+  0700|2100|Retail|default|clothing |5/1-9/30|Mon/Tue/Wed/Thu/Fri/Sat/Sun, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.5;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {75a9d346-fb4d-4731-b569-f00d0c732b58}, !- Handle
+  0700|2100|Retail|default|clothing |10/1-12/31|Mon/Tue/Wed/Thu/Fri/Sat/Sun Rule, !- Name
+  {4eef1e6c-31c8-4a6f-89a3-d9808b002c92}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {2c90e238-c403-409a-a9f1-d2871eb70e1d}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  10,                                     !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {2c90e238-c403-409a-a9f1-d2871eb70e1d}, !- Handle
+  0700|2100|Retail|default|clothing |10/1-12/31|Mon/Tue/Wed/Thu/Fri/Sat/Sun, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {b0854972-e6f7-4d3d-b6ec-84067aed1c7a}, !- Handle
+  0700|2100|Retail|default|air_velocity,  !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  {3c73e9a7-05e7-4cae-8551-ffadfdb53fab}, !- Default Day Schedule Name
+  {e4a654a9-cd70-4e2f-9c8a-b59e692a47e1}, !- Summer Design Day Schedule Name
+  {ae60e672-3f4c-4b70-80c0-382ceee6b53a}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {3c73e9a7-05e7-4cae-8551-ffadfdb53fab}, !- Handle
+  0700|2100|Retail|default|air_velocity |default, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Day,
+  {e4a654a9-cd70-4e2f-9c8a-b59e692a47e1}, !- Handle
+  0700|2100|Retail|default|air_velocity Summer Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Day,
+  {ae60e672-3f4c-4b70-80c0-382ceee6b53a}, !- Handle
+  0700|2100|Retail|default|air_velocity Winter Design Day, !- Name
+  {93d4eb80-72e1-4504-acac-f4cd176d5272}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Handle
+  0700|2100|Retail|default|infiltration,  !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  {9d6010ef-fe20-44be-834d-78e794aaec4b}, !- Default Day Schedule Name
+  {44f6d69f-832b-4521-aecc-af7cb91030b8}, !- Summer Design Day Schedule Name
+  {b4f96957-5576-4248-94f6-61d9e0ba101d}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {9d6010ef-fe20-44be-834d-78e794aaec4b}, !- Handle
+  0700|2100|Retail|default|infiltration |default, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {44f6d69f-832b-4521-aecc-af7cb91030b8}, !- Handle
+  0700|2100|Retail|default|infiltration Summer Design Day, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {b4f96957-5576-4248-94f6-61d9e0ba101d}, !- Handle
+  0700|2100|Retail|default|infiltration Winter Design Day, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  21,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Rule,
+  {b00bbee0-a6c1-4dbb-b6a0-b2c0d4cc5821}, !- Handle
+  0700|2100|Retail|default|infiltration |1/1-12/31|Sat Rule, !- Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {8a8dad4b-1cab-4a09-8e4d-8f8d1450ae29}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {8a8dad4b-1cab-4a09-8e4d-8f8d1450ae29}, !- Handle
+  0700|2100|Retail|default|infiltration |1/1-12/31|Sat, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  22,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Rule,
+  {b2d57227-4dbd-43a7-9a88-9894aeaf9914}, !- Handle
+  0700|2100|Retail|default|infiltration |1/1-12/31|Sun Rule, !- Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {8f0667d9-2dea-4094-b6c0-c0615533df2e}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {8f0667d9-2dea-4094-b6c0-c0615533df2e}, !- Handle
+  0700|2100|Retail|default|infiltration |1/1-12/31|Sun, !- Name
+  {ebd9d4af-40c1-4f0e-8bef-b282f1ebafd1}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {2a38f728-16e3-4c10-a748-e955fc46fbcb}, !- Handle
+  0700|2100|Retail|default|swh_target_temp, !- Name
+  {b26d7ff1-4703-4870-b0bf-de30c4979ef0}, !- Schedule Type Limits Name
+  {b3494348-8814-4ba2-8abf-2d4d69960b06}, !- Default Day Schedule Name
+  {03538fc5-3525-4d6d-b3c1-3283b5e5b6f4}, !- Summer Design Day Schedule Name
+  {97890fc7-5cef-4305-8113-51e81e58f46d}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {b26d7ff1-4703-4870-b0bf-de30c4979ef0}, !- Handle
+  Temperature Schedule Type Limits,       !- Name
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {b3494348-8814-4ba2-8abf-2d4d69960b06}, !- Handle
+  0700|2100|Retail|default|swh_target_temp |default, !- Name
+  {b26d7ff1-4703-4870-b0bf-de30c4979ef0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {03538fc5-3525-4d6d-b3c1-3283b5e5b6f4}, !- Handle
+  0700|2100|Retail|default|swh_target_temp Summer Design Day, !- Name
+  {b26d7ff1-4703-4870-b0bf-de30c4979ef0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {97890fc7-5cef-4305-8113-51e81e58f46d}, !- Handle
+  0700|2100|Retail|default|swh_target_temp Winter Design Day, !- Name
+  {b26d7ff1-4703-4870-b0bf-de30c4979ef0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:DefaultScheduleSet,
+  {88cfe624-2def-4bf1-ba65-f79e7f110099}, !- Handle
+  Retail|Back_Space|DOE Ref 2004|ASHRAE 169-2006-5A|SchSet, !- Name
+  ,                                       !- Hours of Operation Schedule Name
+  {4c0b8152-1291-4b25-9304-c1d910df8219}, !- Number of People Schedule Name
+  {a4182a84-f455-481c-96fc-520141aa8dd4}, !- People Activity Level Schedule Name
+  {4e5c4ea8-a755-4c3d-b5a6-437275708115}, !- Lighting Schedule Name
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Electric Equipment Schedule Name
+  ,                                       !- Gas Equipment Schedule Name
+  ,                                       !- Hot Water Equipment Schedule Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Infiltration Schedule Name
+  ,                                       !- Steam Equipment Schedule Name
+  ;                                       !- Other Equipment Schedule Name
+
+OS:DefaultScheduleSet,
+  {c016270d-b70a-4373-9391-d7d57f07a5ab}, !- Handle
+  Retail|Retail|DOE Ref 2004|ASHRAE 169-2006-5A|SchSet, !- Name
+  ,                                       !- Hours of Operation Schedule Name
+  {4c0b8152-1291-4b25-9304-c1d910df8219}, !- Number of People Schedule Name
+  {a4182a84-f455-481c-96fc-520141aa8dd4}, !- People Activity Level Schedule Name
+  {4e5c4ea8-a755-4c3d-b5a6-437275708115}, !- Lighting Schedule Name
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Electric Equipment Schedule Name
+  ,                                       !- Gas Equipment Schedule Name
+  ,                                       !- Hot Water Equipment Schedule Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Infiltration Schedule Name
+  ,                                       !- Steam Equipment Schedule Name
+  ;                                       !- Other Equipment Schedule Name
+
+OS:People:Definition,
+  {3bad5550-07e1-4a3f-95a1-2dadb0c87508}, !- Handle
+  Back_Space|PeopleDef,                   !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0358438216876434,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {c674af0d-a4e5-4821-935b-e8092d1972dc}, !- Handle
+  Back_Space|PeopleInst,                  !- Name
+  {3bad5550-07e1-4a3f-95a1-2dadb0c87508}, !- People Definition Name
+  {3210f175-7950-411f-a1a7-5ba1f2bc6c92}; !- Space or SpaceType Name
+
+OS:People:Definition,
+  {1ef40a08-9b7d-4a51-815c-892d83f51b58}, !- Handle
+  Entry|PeopleDef,                        !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.161458656250646,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {71717174-9678-400a-bb27-30d8435a243a}, !- Handle
+  Entry|PeopleInst,                       !- Name
+  {1ef40a08-9b7d-4a51-815c-892d83f51b58}, !- People Definition Name
+  {3756b714-5ea6-4e37-971b-9e7a287fc077}, !- Space or SpaceType Name
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Number of People Schedule Name
+  {a4182a84-f455-481c-96fc-520141aa8dd4}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0704225352112676;                     !- Multiplier
+
+OS:People:Definition,
+  {da5072eb-bd73-4b0e-ae02-2f361b71ff42}, !- Handle
+  Point_of_Sale|PeopleDef,                !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.161458656250646,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {a2d110fe-8d56-4e1d-8ad0-f33218665cce}, !- Handle
+  Point_of_Sale|PeopleInst,               !- Name
+  {da5072eb-bd73-4b0e-ae02-2f361b71ff42}, !- People Definition Name
+  {3756b714-5ea6-4e37-971b-9e7a287fc077}, !- Space or SpaceType Name
+  {84cec590-1140-44c9-8638-a5e03c17283b}, !- Number of People Schedule Name
+  {a4182a84-f455-481c-96fc-520141aa8dd4}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.929577464788732;                      !- Multiplier
+
+OS:People:Definition,
+  {23c84239-0ca6-4c6b-a514-7d2336d0e7cf}, !- Handle
+  Retail|PeopleDef,                       !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.161458656250646,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {361a0fd8-f7b6-43f3-8384-41ac90c6fe7c}, !- Handle
+  Retail|PeopleInst,                      !- Name
+  {23c84239-0ca6-4c6b-a514-7d2336d0e7cf}, !- People Definition Name
+  {43328ea6-687c-472b-a4ea-55c4f02936a0}; !- Space or SpaceType Name
+
+OS:DesignSpecification:OutdoorAir,
+  {1a738eab-ce77-4700-a4fb-2851c73cf3b1}, !- Handle
+  Retail|Back_Space|DOE Ref 2004|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0,                                      !- Outdoor Air Flow per Person {m3/s-person}
+  0.000762,                               !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {2609459b-c8c3-4cd1-b993-0fdc44947edf}, !- Handle
+  Retail|BlendFront|DOE Ref 2004|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0,                                      !- Outdoor Air Flow per Person {m3/s-person}
+  0.001524,                               !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {64bd63f5-7193-446c-b8e9-d844f260cd0f}, !- Handle
+  Retail|Retail|DOE Ref 2004|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0,                                      !- Outdoor Air Flow per Person {m3/s-person}
+  0.001524,                               !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {e2172c2a-f787-48fd-80b0-2a147db38dd0}, !- Handle
+  Back_Space|Infiltration,                !- Name
+  {3210f175-7950-411f-a1a7-5ba1f2bc6c92}, !- Space or SpaceType Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00030226,                             !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {b12ad3e9-8bec-455c-a322-985dc353958c}, !- Handle
+  Entry|Infiltration,                     !- Name
+  {3756b714-5ea6-4e37-971b-9e7a287fc077}, !- Space or SpaceType Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  2.12859154929577e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {b5ba12eb-0c4c-47a7-b3fc-86ecec89ac86}, !- Handle
+  Point_of_Sale|Infiltration,             !- Name
+  {3756b714-5ea6-4e37-971b-9e7a287fc077}, !- Space or SpaceType Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000280974084507042,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {bfcf3f54-e762-4cbc-99aa-8505d3a05ff2}, !- Handle
+  Retail|Infiltration,                    !- Name
+  {43328ea6-687c-472b-a4ea-55c4f02936a0}, !- Space or SpaceType Name
+  {2c70fa53-7968-472a-8901-3b335288c291}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00030226,                             !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:DefaultConstructionSet,
+  {0bddb8cf-1027-42a5-b85f-028209a0695d}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|Retail, !- Name
+  {0af44ca0-b082-486c-ad5f-25bc95bed0b9}, !- Default Exterior Surface Constructions Name
+  {8fc70a29-0f63-433a-a998-0a913d4d4327}, !- Default Interior Surface Constructions Name
+  {a188b0dd-0c7f-4a49-be84-6de019f2c041}, !- Default Ground Contact Surface Constructions Name
+  {78e97dc8-8285-4778-b803-663bd1c0825e}, !- Default Exterior SubSurface Constructions Name
+  {87eadcd6-8f89-4898-a9f8-118764cab3d5}, !- Default Interior SubSurface Constructions Name
+  {75d97e6c-9f6b-43ac-8878-ab5ce842d06d}, !- Interior Partition Construction Name
+  ,                                       !- Space Shading Construction Name
+  ,                                       !- Building Shading Construction Name
+  ;                                       !- Site Shading Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {0af44ca0-b082-486c-ad5f-25bc95bed0b9}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|Retail|ext_surf, !- Name
+  {d3f94a1e-fea7-41b9-86d9-dac893a33be4}, !- Floor Construction Name
+  {aec5e39b-e21a-427a-ad22-56e7de5bc1a3}, !- Wall Construction Name
+  {082124fa-8587-4e73-8e8e-eee1f6018a0c}; !- Roof Ceiling Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {8fc70a29-0f63-433a-a998-0a913d4d4327}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|Retail|int_surf, !- Name
+  {40b43808-67db-4cd1-9412-5de3b91e37cc}, !- Floor Construction Name
+  {1d055486-b53f-4037-9b6b-f01d36f0d3b8}, !- Wall Construction Name
+  {80cdd642-6064-42d7-a559-7560505ffee2}; !- Roof Ceiling Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {a188b0dd-0c7f-4a49-be84-6de019f2c041}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|Retail|ground_surf, !- Name
+  {d3f94a1e-fea7-41b9-86d9-dac893a33be4}, !- Floor Construction Name
+  {d3f94a1e-fea7-41b9-86d9-dac893a33be4}, !- Wall Construction Name
+  {d3f94a1e-fea7-41b9-86d9-dac893a33be4}; !- Roof Ceiling Construction Name
+
+OS:DefaultSubSurfaceConstructions,
+  {78e97dc8-8285-4778-b803-663bd1c0825e}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|Retail|ext_sub, !- Name
+  {ce709f70-cd8e-4762-a081-9f4ef7a66b26}, !- Fixed Window Construction Name
+  {ce709f70-cd8e-4762-a081-9f4ef7a66b26}, !- Operable Window Construction Name
+  {82a70726-515c-4495-87ca-30695fcd0f3f}, !- Door Construction Name
+  ,                                       !- Glass Door Construction Name
+  {4b21ef17-c245-483b-ac54-2f1c22a3ca61}, !- Overhead Door Construction Name
+  {44cd8d7b-4b8d-4127-b42d-79d5271088f9}, !- Skylight Construction Name
+  {e2af5d41-6bae-4763-aa78-c21e8098582f}, !- Tubular Daylight Dome Construction Name
+  {e2af5d41-6bae-4763-aa78-c21e8098582f}; !- Tubular Daylight Diffuser Construction Name
+
+OS:DefaultSubSurfaceConstructions,
+  {87eadcd6-8f89-4898-a9f8-118764cab3d5}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|Retail|int_sub, !- Name
+  {e2af5d41-6bae-4763-aa78-c21e8098582f}, !- Fixed Window Construction Name
+  {e2af5d41-6bae-4763-aa78-c21e8098582f}, !- Operable Window Construction Name
+  {5b109335-d650-4190-80b7-d948c20f2829}, !- Door Construction Name
+  ,                                       !- Glass Door Construction Name
+  ,                                       !- Overhead Door Construction Name
+  ,                                       !- Skylight Construction Name
+  ,                                       !- Tubular Daylight Dome Construction Name
+  ;                                       !- Tubular Daylight Diffuser Construction Name
+
+OS:Construction,
+  {aec5e39b-e21a-427a-ad22-56e7de5bc1a3}, !- Handle
+  ASHRAE 90.1-2004 ExtWall Mass ClimateZone 5, !- Name
+  ,                                       !- Surface Rendering Name
+  {0c386a2f-ddc1-46cd-9781-d867ed85f1ff}, !- Layer 1
+  {0fd1ff76-5e5f-4287-8cb3-f0831991de9d}, !- Layer 2
+  {8f71661b-4bd5-4003-93c8-3f0545d52202}, !- Layer 3
+  {8b4e7808-2e38-4353-b151-b98896748521}; !- Layer 4
+
+OS:StandardsInformation:Construction,
+  {e477dc7e-c10e-4ba7-9e6b-1f17ee0aed0b}, !- Handle
+  {aec5e39b-e21a-427a-ad22-56e7de5bc1a3}, !- Construction Name
+  ExteriorWall,                           !- Intended Surface Type
+  Mass;                                   !- Standards Construction Type
+
+OS:Material,
+  {0c386a2f-ddc1-46cd-9781-d867ed85f1ff}, !- Handle
+  1IN Stucco,                             !- Name
+  Smooth,                                 !- Roughness
+  0.0253,                                 !- Thickness {m}
+  0.691799999999999,                      !- Conductivity {W/m-K}
+  1858,                                   !- Density {kg/m3}
+  836.999999999999,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.92,                                   !- Solar Absorptance
+  0.92;                                   !- Visible Absorptance
+
+OS:Material,
+  {0fd1ff76-5e5f-4287-8cb3-f0831991de9d}, !- Handle
+  8IN CONCRETE HW RefBldg,                !- Name
+  Rough,                                  !- Roughness
+  0.2032,                                 !- Thickness {m}
+  1.311,                                  !- Conductivity {W/m-K}
+  2240,                                   !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {8f71661b-4bd5-4003-93c8-3f0545d52202}, !- Handle
+  Mass NonRes Wall Insulation-1.43,       !- Name
+  MediumRough,                            !- Roughness
+  0.0495494599433394,                     !- Thickness {m}
+  0.049,                                  !- Conductivity {W/m-K}
+  265,                                    !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {8b4e7808-2e38-4353-b151-b98896748521}, !- Handle
+  1/2IN Gypsum,                           !- Name
+  Smooth,                                 !- Roughness
+  0.0127,                                 !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  784.9,                                  !- Density {kg/m3}
+  830.000000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.4,                                    !- Solar Absorptance
+  0.4;                                    !- Visible Absorptance
+
+OS:Construction,
+  {d3f94a1e-fea7-41b9-86d9-dac893a33be4}, !- Handle
+  ExtSlab 4in ClimateZone 1-8,            !- Name
+  ,                                       !- Surface Rendering Name
+  {e7935b8c-0c78-44f8-81b7-14797923366f}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {23cd5a58-075d-4d29-bf7b-e7fdd908e11e}, !- Handle
+  {d3f94a1e-fea7-41b9-86d9-dac893a33be4}, !- Construction Name
+  ExteriorFloor,                          !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {e7935b8c-0c78-44f8-81b7-14797923366f}, !- Handle
+  MAT-CC05 4 HW CONCRETE,                 !- Name
+  Rough,                                  !- Roughness
+  0.1016,                                 !- Thickness {m}
+  1.311,                                  !- Conductivity {W/m-K}
+  2240,                                   !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.85,                                   !- Solar Absorptance
+  0.85;                                   !- Visible Absorptance
+
+OS:Construction,
+  {082124fa-8587-4e73-8e8e-eee1f6018a0c}, !- Handle
+  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 5-6, !- Name
+  ,                                       !- Surface Rendering Name
+  {ab867b76-c3e2-464b-86bc-17e25c0b3bbd}, !- Layer 1
+  {e911b3f4-66cb-4be4-bba2-4630b2a3e18f}, !- Layer 2
+  {db621e0f-ddd6-4c60-aa2d-52dfb29cf541}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {995979fe-2403-4b7a-930b-17a91925c8f2}, !- Handle
+  {082124fa-8587-4e73-8e8e-eee1f6018a0c}, !- Construction Name
+  ExteriorRoof,                           !- Intended Surface Type
+  IEAD;                                   !- Standards Construction Type
+
+OS:Material,
+  {ab867b76-c3e2-464b-86bc-17e25c0b3bbd}, !- Handle
+  Roof Membrane,                          !- Name
+  VeryRough,                              !- Roughness
+  0.0095,                                 !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  1121.29,                                !- Density {kg/m3}
+  1460,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {e911b3f4-66cb-4be4-bba2-4630b2a3e18f}, !- Handle
+  IEAD NonRes Roof Insulation-2.85,       !- Name
+  MediumRough,                            !- Roughness
+  0.127338688569477,                      !- Thickness {m}
+  0.049,                                  !- Conductivity {W/m-K}
+  265,                                    !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {db621e0f-ddd6-4c60-aa2d-52dfb29cf541}, !- Handle
+  Metal Decking,                          !- Name
+  MediumSmooth,                           !- Roughness
+  0.0015,                                 !- Thickness {m}
+  45.006,                                 !- Conductivity {W/m-K}
+  7680,                                   !- Density {kg/m3}
+  418.4,                                  !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {1d055486-b53f-4037-9b6b-f01d36f0d3b8}, !- Handle
+  Interior Wall,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {b8f982c8-929d-4f98-811f-a984c211ad0d}, !- Layer 1
+  {6f27f0ff-5d32-41dd-a0b6-8578e1e97615}, !- Layer 2
+  {b8f982c8-929d-4f98-811f-a984c211ad0d}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {353dcbf7-78f7-485a-b3e6-832e96302576}, !- Handle
+  {1d055486-b53f-4037-9b6b-f01d36f0d3b8}, !- Construction Name
+  InteriorWall,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {b8f982c8-929d-4f98-811f-a984c211ad0d}, !- Handle
+  G01a 19mm gypsum board,                 !- Name
+  MediumSmooth,                           !- Roughness
+  0.019,                                  !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  800,                                    !- Density {kg/m3}
+  1090,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.4,                                    !- Solar Absorptance
+  0.4;                                    !- Visible Absorptance
+
+OS:Material:AirGap,
+  {6f27f0ff-5d32-41dd-a0b6-8578e1e97615}, !- Handle
+  F04 Wall air space resistance,          !- Name
+  0.15;                                   !- Thermal Resistance {m2-K/W}
+
+OS:Construction,
+  {40b43808-67db-4cd1-9412-5de3b91e37cc}, !- Handle
+  Interior Floor,                         !- Name
+  ,                                       !- Surface Rendering Name
+  {6dc73424-f21a-4962-8bf7-fb0c43b7ffec}, !- Layer 1
+  {d5fced65-78c9-48ab-867e-95d2db8f1b85}, !- Layer 2
+  {46a6a2ce-2541-417e-ba58-3ff681149985}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {dd55b239-a2e7-4605-89c7-80bb652bf2be}, !- Handle
+  {40b43808-67db-4cd1-9412-5de3b91e37cc}, !- Construction Name
+  InteriorFloor,                          !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {6dc73424-f21a-4962-8bf7-fb0c43b7ffec}, !- Handle
+  F16 Acoustic tile,                      !- Name
+  MediumSmooth,                           !- Roughness
+  0.0191,                                 !- Thickness {m}
+  0.06,                                   !- Conductivity {W/m-K}
+  368,                                    !- Density {kg/m3}
+  590.000000000002,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.3,                                    !- Solar Absorptance
+  0.3;                                    !- Visible Absorptance
+
+OS:Material:AirGap,
+  {d5fced65-78c9-48ab-867e-95d2db8f1b85}, !- Handle
+  F05 Ceiling air space resistance,       !- Name
+  0.18;                                   !- Thermal Resistance {m2-K/W}
+
+OS:Material,
+  {46a6a2ce-2541-417e-ba58-3ff681149985}, !- Handle
+  M11 100mm lightweight concrete,         !- Name
+  MediumRough,                            !- Roughness
+  0.1016,                                 !- Thickness {m}
+  0.53,                                   !- Conductivity {W/m-K}
+  1280,                                   !- Density {kg/m3}
+  840.000000000002,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.5,                                    !- Solar Absorptance
+  0.5;                                    !- Visible Absorptance
+
+OS:Construction,
+  {80cdd642-6064-42d7-a559-7560505ffee2}, !- Handle
+  Interior Ceiling,                       !- Name
+  ,                                       !- Surface Rendering Name
+  {46a6a2ce-2541-417e-ba58-3ff681149985}, !- Layer 1
+  {d5fced65-78c9-48ab-867e-95d2db8f1b85}, !- Layer 2
+  {6dc73424-f21a-4962-8bf7-fb0c43b7ffec}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {fe125a47-054e-4cce-9c2c-dd85e3136bb3}, !- Handle
+  {80cdd642-6064-42d7-a559-7560505ffee2}, !- Construction Name
+  InteriorCeiling,                        !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Construction,
+  {ce709f70-cd8e-4762-a081-9f4ef7a66b26}, !- Handle
+  ASHRAE 90.1-2004 ExtWindow ClimateZone 4-6, !- Name
+  ,                                       !- Surface Rendering Name
+  {5eb00572-b991-41aa-a59b-44ed2314ada8}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {a4000df5-6f50-45a1-901e-82b82614d089}, !- Handle
+  {ce709f70-cd8e-4762-a081-9f4ef7a66b26}, !- Construction Name
+  ExteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:SimpleGlazingSystem,
+  {5eb00572-b991-41aa-a59b-44ed2314ada8}, !- Handle
+  Fixed Window 3.24/0.39/0.31,            !- Name
+  3.23646,                                !- U-Factor {W/m2-K}
+  0.39,                                   !- Solar Heat Gain Coefficient
+  0.31;                                   !- Visible Transmittance
+
+OS:Construction,
+  {82a70726-515c-4495-87ca-30695fcd0f3f}, !- Handle
+  Exterior Door,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {a6fe2125-34b8-4289-b358-f2252cd7132d}, !- Layer 1
+  {e3286ad5-cee9-46db-8d36-43ecd44cc956}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {9481c785-5a5e-47b4-8d0d-2d7bcf248717}, !- Handle
+  {82a70726-515c-4495-87ca-30695fcd0f3f}, !- Construction Name
+  ExteriorDoor,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {a6fe2125-34b8-4289-b358-f2252cd7132d}, !- Handle
+  F08 Metal surface,                      !- Name
+  Smooth,                                 !- Roughness
+  0.0008,                                 !- Thickness {m}
+  45.2800000000001,                       !- Conductivity {W/m-K}
+  7823.99999999999,                       !- Density {kg/m3}
+  500,                                    !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {e3286ad5-cee9-46db-8d36-43ecd44cc956}, !- Handle
+  I01 25mm insulation board,              !- Name
+  MediumRough,                            !- Roughness
+  0.0254,                                 !- Thickness {m}
+  0.03,                                   !- Conductivity {W/m-K}
+  43,                                     !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {4b21ef17-c245-483b-ac54-2f1c22a3ca61}, !- Handle
+  Exterior Door - Non-Swinging,           !- Name
+  ,                                       !- Surface Rendering Name
+  {a6fe2125-34b8-4289-b358-f2252cd7132d}, !- Layer 1
+  {bb8ffe21-6ed6-4634-baad-82a47da10ef8}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {9453e823-dac1-4ca6-8b43-8299cba2cdea}, !- Handle
+  {4b21ef17-c245-483b-ac54-2f1c22a3ca61}, !- Construction Name
+  ExteriorDoor,                           !- Intended Surface Type
+  NonSwinging;                            !- Standards Construction Type
+
+OS:Material,
+  {bb8ffe21-6ed6-4634-baad-82a47da10ef8}, !- Handle
+  I02 50mm insulation board,              !- Name
+  MediumRough,                            !- Roughness
+  0.0508,                                 !- Thickness {m}
+  0.03,                                   !- Conductivity {W/m-K}
+  43,                                     !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {44cd8d7b-4b8d-4127-b42d-79d5271088f9}, !- Handle
+  ASHRAE 90.1-2004 Skylight ClimateZone 4-5, !- Name
+  ,                                       !- Surface Rendering Name
+  {824ee472-793b-407c-98a2-edcf1761e81c}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {2d2d2b51-2de8-477f-bfe0-8e793ae1651f}, !- Handle
+  {44cd8d7b-4b8d-4127-b42d-79d5271088f9}, !- Construction Name
+  ExteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:SimpleGlazingSystem,
+  {824ee472-793b-407c-98a2-edcf1761e81c}, !- Handle
+  Skylight no curb 2.1-5 per 90.12004 CZ 4-5, !- Name
+  3.91800170536831,                       !- U-Factor {W/m2-K}
+  0.39,                                   !- Solar Heat Gain Coefficient
+  0.2;                                    !- Visible Transmittance
+
+OS:Construction,
+  {e2af5d41-6bae-4763-aa78-c21e8098582f}, !- Handle
+  Interior Window,                        !- Name
+  ,                                       !- Surface Rendering Name
+  {a9bbdda8-44b5-4da8-b700-f4582cf59f32}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {1b5ec255-76d0-4841-afde-bd24aa4695f8}, !- Handle
+  {e2af5d41-6bae-4763-aa78-c21e8098582f}, !- Construction Name
+  InteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:Glazing,
+  {a9bbdda8-44b5-4da8-b700-f4582cf59f32}, !- Handle
+  Clear 3mm,                              !- Name
+  SpectralAverage,                        !- Optical Data Type
+  ,                                       !- Window Glass Spectral Data Set Name
+  0.00299999999999999,                    !- Thickness {m}
+  0.837,                                  !- Solar Transmittance at Normal Incidence
+  0.075,                                  !- Front Side Solar Reflectance at Normal Incidence
+  0,                                      !- Back Side Solar Reflectance at Normal Incidence
+  0.898,                                  !- Visible Transmittance at Normal Incidence
+  0.081,                                  !- Front Side Visible Reflectance at Normal Incidence
+  0,                                      !- Back Side Visible Reflectance at Normal Incidence
+  0,                                      !- Infrared Transmittance at Normal Incidence
+  0.84,                                   !- Front Side Infrared Hemispherical Emissivity
+  0.84,                                   !- Back Side Infrared Hemispherical Emissivity
+  0.9,                                    !- Conductivity {W/m-K}
+  1,                                      !- Dirt Correction Factor for Solar and Visible Transmittance
+  No;                                     !- Solar Diffusing
+
+OS:Construction,
+  {5b109335-d650-4190-80b7-d948c20f2829}, !- Handle
+  Interior Door,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {30ea2aac-3fa5-42f4-83cc-715ec88a243e}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {63988683-4562-4f80-9d42-cf7c18002069}, !- Handle
+  {5b109335-d650-4190-80b7-d948c20f2829}, !- Construction Name
+  InteriorDoor,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {30ea2aac-3fa5-42f4-83cc-715ec88a243e}, !- Handle
+  G05 25mm wood,                          !- Name
+  MediumSmooth,                           !- Roughness
+  0.0254,                                 !- Thickness {m}
+  0.15,                                   !- Conductivity {W/m-K}
+  608,                                    !- Density {kg/m3}
+  1630,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.5,                                    !- Solar Absorptance
+  0.5;                                    !- Visible Absorptance
+
+OS:Construction,
+  {75d97e6c-9f6b-43ac-8878-ab5ce842d06d}, !- Handle
+  Interior Partition,                     !- Name
+  ,                                       !- Surface Rendering Name
+  {30ea2aac-3fa5-42f4-83cc-715ec88a243e}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {86d798dc-65de-4c80-805a-40da0dd02609}, !- Handle
+  {75d97e6c-9f6b-43ac-8878-ab5ce842d06d}, !- Construction Name
+  InteriorPartition,                      !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+

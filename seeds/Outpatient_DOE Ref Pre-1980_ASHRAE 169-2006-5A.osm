@@ -1,0 +1,3544 @@
+
+OS:Version,
+  {2c75ad67-fc50-44ed-a6f6-ce38fc3d9b1e}, !- Handle
+  1.5.5;                                  !- Version Identifier
+
+OS:ClimateZones,
+  {135edfab-17e7-40db-a436-27d385a8cd6d}, !- Handle
+  ,                                       !- Active Institution
+  ,                                       !- Active Year
+  ASHRAE,                                 !- Climate Zone Institution Name 1
+  ANSI/ASHRAE Standard 169,               !- Climate Zone Document Name 1
+  2006,                                   !- Climate Zone Document Year 1
+  ,                                       !- Climate Zone Value 1
+  CEC,                                    !- Climate Zone Institution Name 2
+  California Climate Zone Descriptions,   !- Climate Zone Document Name 2
+  1995,                                   !- Climate Zone Document Year 2
+  ;                                       !- Climate Zone Value 2
+
+OS:YearDescription,
+  {513d8dda-86cb-442a-b01c-1f7f0e0ac70e}; !- Handle
+
+OS:RadianceParameters,
+  {270a96f1-3c86-4b75-a667-cdf22790e2c8}, !- Handle
+  1,                                      !- Accumulated Rays per Record
+  0,                                      !- Direct Threshold
+  1,                                      !- Direct Certainty
+  1,                                      !- Direct Jitter
+  1,                                      !- Direct Pretest
+  6,                                      !- Ambient Bounces VMX
+  2,                                      !- Ambient Bounces DMX
+  4050,                                   !- Ambient Divisions VMX
+  512,                                    !- Ambient Divisions DMX
+  256,                                    !- Ambient Supersamples
+  0.001,                                  !- Limit Weight VMX
+  0.001,                                  !- Limit Weight DMX
+  500,                                    !- Klems Sampling Density
+  146;                                    !- Sky Discretization Resolution
+
+OS:SimulationControl,
+  {2c487a4c-bac9-4ac5-b669-1e49d9da7c2b}, !- Handle
+  ,                                       !- Do Zone Sizing Calculation
+  ,                                       !- Do System Sizing Calculation
+  ,                                       !- Do Plant Sizing Calculation
+  No,                                     !- Run Simulation for Sizing Periods
+  ,                                       !- Run Simulation for Weather File Run Periods
+  0.04,                                   !- Loads Convergence Tolerance Value
+  ,                                       !- Temperature Convergence Tolerance Value {deltaC}
+  ,                                       !- Solar Distribution
+  ,                                       !- Maximum Number of Warmup Days
+  2;                                      !- Minimum Number of Warmup Days
+
+OS:Sizing:Parameters,
+  {dde5af6f-7923-4600-a28a-7556673a0266}, !- Handle
+  1.25,                                   !- Heating Sizing Factor
+  1.15;                                   !- Cooling Sizing Factor
+
+OS:ProgramControl,
+  {05027a99-f2b3-4aeb-afc6-1425fbb4371d}; !- Handle
+
+OS:Timestep,
+  {4ebc9f1e-4707-402e-9844-67eb1ffbd522}, !- Handle
+  2;                                      !- Number of Timesteps per Hour
+
+OS:OutputControl:ReportingTolerances,
+  {65797aa2-06a9-45fe-b69d-bc6e060399d3}; !- Handle
+
+OS:ConvergenceLimits,
+  {9fc11aba-8822-4f3d-970c-46391ba4040d}; !- Handle
+
+OS:ShadowCalculation,
+  {ca758bea-4416-4626-9bba-3d8795c79bd6}, !- Handle
+  7,                                      !- Calculation Frequency
+  15000;                                  !- Maximum Figures in Shadow Overlap Calculations
+
+OS:SurfaceConvectionAlgorithm:Inside,
+  {aaabfc36-718a-4ab0-b622-f186ebb45230}, !- Handle
+  TARP;                                   !- Algorithm
+
+OS:SurfaceConvectionAlgorithm:Outside,
+  {9a0a9f6f-4bbd-4b12-a121-9492a1fcd7d6}, !- Handle
+  DOE-2;                                  !- Algorithm
+
+OS:HeatBalanceAlgorithm,
+  {9d93e563-e1e0-46d7-9e39-d1c8aceb7212}, !- Handle
+  ConductionTransferFunction,             !- Algorithm
+  200;                                    !- Surface Temperature Upper Limit {F}
+
+OS:ZoneAirHeatBalanceAlgorithm,
+  {8520d93e-310f-4696-9bcd-36228bfdd743}, !- Handle
+  AnalyticalSolution;                     !- Algorithm
+
+OS:ZoneAirContaminantBalance,
+  {eb5fc3ae-fb22-4160-8fcb-3e3b22b000d3}; !- Handle
+
+OS:ZoneCapacitanceMultiplier:ResearchSpecial,
+  {4020ce4f-5a7a-4849-8028-8305d7b751b1}, !- Handle
+  ,                                       !- Temperature Capacity Multiplier
+  ,                                       !- Humidity Capacity Multiplier
+  ;                                       !- Carbon Dioxide Capacity Multiplier
+
+OS:RunPeriod,
+  {28df894d-6af9-4fb8-8f56-df1753344aa3}, !- Handle
+  Run Period 1,                           !- Name
+  1,                                      !- Begin Month
+  1,                                      !- Begin Day of Month
+  12,                                     !- End Month
+  31,                                     !- End Day of Month
+  ,                                       !- Use Weather File Holidays and Special Days
+  ,                                       !- Use Weather File Daylight Saving Period
+  ,                                       !- Apply Weekend Holiday Rule
+  ,                                       !- Use Weather File Rain Indicators
+  ,                                       !- Use Weather File Snow Indicators
+  ;                                       !- Number of Times Runperiod to be Repeated
+
+OS:Building,
+  {bf305633-c5a1-4881-9edf-ca5e1a8e1274}, !- Handle
+  Building 1,                             !- Name
+  ,                                       !- Building Sector Type
+  ,                                       !- North Axis {deg}
+  ,                                       !- Nominal Floor to Floor Height {m}
+  ,                                       !- Space Type Name
+  ,                                       !- Default Construction Set Name
+  {6df7b646-ac3b-41b1-a13f-1f8892744b55}, !- Default Schedule Set Name
+  ,                                       !- Standards Number of Stories
+  ,                                       !- Standards Number of Above Ground Stories
+  Outpatient;                             !- Standards Building Type
+
+OS:LifeCycleCost:Parameters,
+  {231cf8a0-f0e7-4251-a99f-11f0d464e661}, !- Handle
+  FEMP,                                   !- Analysis Type
+  ,                                       !- Discounting Convention
+  ,                                       !- Inflation Approach
+  ,                                       !- Real Discount Rate
+  ,                                       !- Nominal Discount Rate
+  ,                                       !- Inflation
+  ,                                       !- Base Date Month
+  ,                                       !- Base Date Year
+  ,                                       !- Service Date Month
+  ,                                       !- Service Date Year
+  ,                                       !- Length of Study Period in Years
+  ,                                       !- Tax Rate
+  ,                                       !- Depreciation Method
+  Yes;                                    !- Use NIST Fuel Escalation Rates
+
+OS:Facility,
+  {3ba8e45b-b833-44eb-a723-ea6c3946dc96}; !- Handle
+
+OS:SpaceType,
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Handle
+  Outpatient|BlendCirc|DOE Ref Pre-1980|ASHRAE 169-2006-5A, !- Name
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {c103aeb8-7fb9-4ae0-a45e-4be3a26ed5a1}, !- Group Rendering Name
+  {3a8ffd33-333d-4d9d-8cc7-f6445cfe6c2a}, !- Design Specification Outdoor Air Object Name
+  Outpatient,                             !- Standards Building Type
+  BlendCirc;                              !- Standards Space Type
+
+OS:Rendering:Color,
+  {c103aeb8-7fb9-4ae0-a45e-4be3a26ed5a1}, !- Handle
+  Rendering Color 1,                      !- Name
+  169,                                    !- Rendering Red Value
+  31,                                     !- Rendering Green Value
+  31;                                     !- Rendering Blue Value
+
+OS:SpaceType,
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Handle
+  Outpatient|BlendOff|DOE Ref Pre-1980|ASHRAE 169-2006-5A, !- Name
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {b2455200-45c1-45fd-9632-d58b1f36038b}, !- Group Rendering Name
+  {e426bbea-38f6-4e4f-bfa3-6bbc04918ca9}, !- Design Specification Outdoor Air Object Name
+  Outpatient,                             !- Standards Building Type
+  BlendOff;                               !- Standards Space Type
+
+OS:Rendering:Color,
+  {b2455200-45c1-45fd-9632-d58b1f36038b}, !- Handle
+  Rendering Color 2,                      !- Name
+  120,                                    !- Rendering Red Value
+  230,                                    !- Rendering Green Value
+  199;                                    !- Rendering Blue Value
+
+OS:SpaceType,
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Handle
+  Outpatient|BlendPat|DOE Ref Pre-1980|ASHRAE 169-2006-5A, !- Name
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {8f1a8351-43d2-46a8-a0e8-7cfb23db37c0}, !- Group Rendering Name
+  {c6d7e266-a73a-40c5-a43a-f51e3209840a}, !- Design Specification Outdoor Air Object Name
+  Outpatient,                             !- Standards Building Type
+  BlendPat;                               !- Standards Space Type
+
+OS:Rendering:Color,
+  {8f1a8351-43d2-46a8-a0e8-7cfb23db37c0}, !- Handle
+  Rendering Color 3,                      !- Name
+  136,                                    !- Rendering Red Value
+  78,                                     !- Rendering Green Value
+  222;                                    !- Rendering Blue Value
+
+OS:SpaceType,
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Handle
+  Outpatient|BlendImg|DOE Ref Pre-1980|ASHRAE 169-2006-5A, !- Name
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {08a9972d-4ea9-4bc0-8921-a757acfd7cb8}, !- Group Rendering Name
+  {1e967ddf-7757-4967-8627-d4e68d2f8af8}, !- Design Specification Outdoor Air Object Name
+  Outpatient,                             !- Standards Building Type
+  BlendImg;                               !- Standards Space Type
+
+OS:Rendering:Color,
+  {08a9972d-4ea9-4bc0-8921-a757acfd7cb8}, !- Handle
+  Rendering Color 4,                      !- Name
+  169,                                    !- Rendering Red Value
+  31,                                     !- Rendering Green Value
+  159;                                    !- Rendering Blue Value
+
+OS:SpaceType,
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Handle
+  Outpatient|BlendMedStg|DOE Ref Pre-1980|ASHRAE 169-2006-5A, !- Name
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {a4df02ff-83f1-4f36-b99d-fe2691ce60eb}, !- Group Rendering Name
+  {fb17d47c-3ff7-484f-a83c-5fc16502d6b9}, !- Design Specification Outdoor Air Object Name
+  Outpatient,                             !- Standards Building Type
+  BlendMedStg;                            !- Standards Space Type
+
+OS:Rendering:Color,
+  {a4df02ff-83f1-4f36-b99d-fe2691ce60eb}, !- Handle
+  Rendering Color 5,                      !- Name
+  204,                                    !- Rendering Red Value
+  120,                                    !- Rendering Green Value
+  230;                                    !- Rendering Blue Value
+
+OS:SpaceType,
+  {732abadc-bb74-4ab5-9b6b-bf6845f211be}, !- Handle
+  Outpatient|BlendMisc|DOE Ref Pre-1980|ASHRAE 169-2006-5A, !- Name
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {eda2c123-d3ef-410f-a6c6-f218a578c2a3}, !- Group Rendering Name
+  {357061b9-c7c0-4f87-8f2c-201fce3a259b}, !- Design Specification Outdoor Air Object Name
+  Outpatient,                             !- Standards Building Type
+  BlendMisc;                              !- Standards Space Type
+
+OS:Rendering:Color,
+  {eda2c123-d3ef-410f-a6c6-f218a578c2a3}, !- Handle
+  Rendering Color 6,                      !- Name
+  120,                                    !- Rendering Red Value
+  149,                                    !- Rendering Green Value
+  230;                                    !- Rendering Blue Value
+
+OS:Schedule:Ruleset,
+  {4f221b8e-d1e0-46e4-8490-0496c0dbfe2b}, !- Handle
+  0400|2200|Outpatient|default|hoo,       !- Name
+  {927987ec-1e3c-4a63-9405-14c4e466c3ed}, !- Schedule Type Limits Name
+  {6457cb58-4203-4e85-beb4-83c29702353a}, !- Default Day Schedule Name
+  {f417d0c9-f383-44b1-8382-1e1a1d19b364}, !- Summer Design Day Schedule Name
+  {9baea49b-5b7b-4929-859a-9d18481c2753}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {6457cb58-4203-4e85-beb4-83c29702353a}, !- Handle
+  0400|2200|Outpatient|default|hoo Schedule Week Day, !- Name
+  {927987ec-1e3c-4a63-9405-14c4e466c3ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  22,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {93928fb6-aa73-469c-90fd-b7a36ded1b42}, !- Handle
+  Schedule Day 2,                         !- Name
+  ,                                       !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {9baea49b-5b7b-4929-859a-9d18481c2753}, !- Handle
+  0400|2200|Outpatient|default|hoo Winter Design Day, !- Name
+  {927987ec-1e3c-4a63-9405-14c4e466c3ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {f7c29f54-6a9f-499c-90a3-c20b5c7c6346}, !- Handle
+  Schedule Day 3,                         !- Name
+  ,                                       !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {f417d0c9-f383-44b1-8382-1e1a1d19b364}, !- Handle
+  0400|2200|Outpatient|default|hoo Summer Design Day, !- Name
+  {927987ec-1e3c-4a63-9405-14c4e466c3ed}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:DefaultScheduleSet,
+  {6df7b646-ac3b-41b1-a13f-1f8892744b55}, !- Handle
+  Building Hours of Operation,            !- Name
+  {4f221b8e-d1e0-46e4-8490-0496c0dbfe2b}, !- Hours of Operation Schedule Name
+  ,                                       !- Number of People Schedule Name
+  ,                                       !- People Activity Level Schedule Name
+  ,                                       !- Lighting Schedule Name
+  ,                                       !- Electric Equipment Schedule Name
+  ,                                       !- Gas Equipment Schedule Name
+  ,                                       !- Hot Water Equipment Schedule Name
+  ,                                       !- Infiltration Schedule Name
+  ,                                       !- Steam Equipment Schedule Name
+  ;                                       !- Other Equipment Schedule Name
+
+OS:ScheduleTypeLimits,
+  {927987ec-1e3c-4a63-9405-14c4e466c3ed}, !- Handle
+  OnOff,                                  !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Schedule:Ruleset,
+  {69172375-24cb-4309-aee3-bcb7f32ce9e3}, !- Handle
+  0400|2200|Outpatient|default|htg_setpoint, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  {0bfad47e-e2b9-4d2a-81c6-89baa5b2ca2a}, !- Default Day Schedule Name
+  {8af3d419-b03f-40e0-9277-4adb5e7cc818}, !- Summer Design Day Schedule Name
+  {f0213f69-a631-4191-a800-8281d9c067b5}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Handle
+  Thermostat Heating Setpoint Schedule Type Limits, !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  100,                                    !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {0bfad47e-e2b9-4d2a-81c6-89baa5b2ca2a}, !- Handle
+  0400|2200|Outpatient|default|htg_setpoint |default, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  5,                                      !- Hour 1
+  0,                                      !- Minute 1
+  18.3,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  21.1,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  18.3;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {8af3d419-b03f-40e0-9277-4adb5e7cc818}, !- Handle
+  0400|2200|Outpatient|default|htg_setpoint Summer Design Day, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  5,                                      !- Hour 1
+  0,                                      !- Minute 1
+  18.3,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  21.1,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  18.3;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {f0213f69-a631-4191-a800-8281d9c067b5}, !- Handle
+  0400|2200|Outpatient|default|htg_setpoint Winter Design Day, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  18.3;                                   !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {309fca6d-419a-4fc6-a0b1-4e76b35c0e8c}, !- Handle
+  0400|2200|Outpatient|default|htg_setpoint |1/1-12/31|Sat/Sun Rule, !- Name
+  {69172375-24cb-4309-aee3-bcb7f32ce9e3}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {dc1428b3-4334-4d3b-8ee0-ad190adc228b}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {dc1428b3-4334-4d3b-8ee0-ad190adc228b}, !- Handle
+  0400|2200|Outpatient|default|htg_setpoint |1/1-12/31|Sat/Sun, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  18.3;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {323f78e6-32bd-40b7-a898-0e6131457418}, !- Handle
+  0400|2200|Outpatient|default|thermal_ctrl, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  {e4da763e-35bf-41b3-a163-247b5dfb612f}, !- Default Day Schedule Name
+  {35d78f64-86bf-432d-a128-3af6a29b7ecf}, !- Summer Design Day Schedule Name
+  {16cdc1fa-55c3-4c84-84ab-2ce8edd411e7}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Handle
+  Dimensionless Schedule Type Limits,     !- Name
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {e4da763e-35bf-41b3-a163-247b5dfb612f}, !- Handle
+  0400|2200|Outpatient|default|thermal_ctrl |default, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {35d78f64-86bf-432d-a128-3af6a29b7ecf}, !- Handle
+  0400|2200|Outpatient|default|thermal_ctrl Summer Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {16cdc1fa-55c3-4c84-84ab-2ce8edd411e7}, !- Handle
+  0400|2200|Outpatient|default|thermal_ctrl Winter Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Handle
+  0400|2200|Outpatient|default|activity,  !- Name
+  {ca49ca17-2020-4acc-b388-154ab2e5ec1b}, !- Schedule Type Limits Name
+  {00af2092-e645-466e-8d34-2a4c29211b74}, !- Default Day Schedule Name
+  {2f1b26c6-6084-492a-9abe-484f73e3ba38}, !- Summer Design Day Schedule Name
+  {53ffdbd7-c96b-4a63-a1b9-ece0bd1d60c2}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {ca49ca17-2020-4acc-b388-154ab2e5ec1b}, !- Handle
+  People Activity Type Limits,            !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  ActivityLevel;                          !- Unit Type
+
+OS:Schedule:Day,
+  {00af2092-e645-466e-8d34-2a4c29211b74}, !- Handle
+  0400|2200|Outpatient|default|activity |default, !- Name
+  {ca49ca17-2020-4acc-b388-154ab2e5ec1b}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {2f1b26c6-6084-492a-9abe-484f73e3ba38}, !- Handle
+  0400|2200|Outpatient|default|activity Summer Design Day, !- Name
+  {ca49ca17-2020-4acc-b388-154ab2e5ec1b}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {53ffdbd7-c96b-4a63-a1b9-ece0bd1d60c2}, !- Handle
+  0400|2200|Outpatient|default|activity Winter Design Day, !- Name
+  {ca49ca17-2020-4acc-b388-154ab2e5ec1b}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {81136511-95be-4855-a1e5-bf390793364c}, !- Handle
+  0400|2200|Outpatient|OR|clg_setpoint,   !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  {3c30dc93-1fa1-41de-8fc4-21d419f5a986}, !- Default Day Schedule Name
+  {1d129cc4-e3ca-4da9-8312-49c9fd286ab4}, !- Summer Design Day Schedule Name
+  {83f51e3b-0e3e-4fad-a66d-bc30b1f7c197}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Handle
+  Thermostat Cooling Setpoint Schedule Type Limits, !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  100,                                    !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {3c30dc93-1fa1-41de-8fc4-21d419f5a986}, !- Handle
+  0400|2200|Outpatient|OR|clg_setpoint |default, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  22.2,                                   !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  18.3,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  22.2;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {1d129cc4-e3ca-4da9-8312-49c9fd286ab4}, !- Handle
+  0400|2200|Outpatient|OR|clg_setpoint Summer Design Day, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  22.2;                                   !- Value Until Time 1
+
+OS:Schedule:Day,
+  {83f51e3b-0e3e-4fad-a66d-bc30b1f7c197}, !- Handle
+  0400|2200|Outpatient|OR|clg_setpoint Winter Design Day, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  22.2,                                   !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  18.3,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  22.2;                                   !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {f0ff431e-6be7-46c6-8272-60be16b357db}, !- Handle
+  0400|2200|Outpatient|default|lighting,  !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  {7975c96b-a046-4258-8fab-70451c246eec}, !- Default Day Schedule Name
+  {5320dcbc-4cb8-4a7c-9e4a-fc2b42f3c05d}, !- Summer Design Day Schedule Name
+  {045dedae-c8f4-422a-94d2-a1b8ff5e382d}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Handle
+  Lights Schedule Type Limits,            !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {7975c96b-a046-4258-8fab-70451c246eec}, !- Handle
+  0400|2200|Outpatient|default|lighting |default, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.1,                                    !- Value Until Time 1
+  6,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.3,                                    !- Value Until Time 2
+  7,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.6,                                    !- Value Until Time 3
+  18,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.9,                                    !- Value Until Time 4
+  20,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.6,                                    !- Value Until Time 5
+  22,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.3,                                    !- Value Until Time 6
+  24,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.1;                                    !- Value Until Time 7
+
+OS:Schedule:Day,
+  {5320dcbc-4cb8-4a7c-9e4a-fc2b42f3c05d}, !- Handle
+  0400|2200|Outpatient|default|lighting Summer Design Day, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.1,                                    !- Value Until Time 1
+  22,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.1;                                    !- Value Until Time 3
+
+OS:Schedule:Day,
+  {045dedae-c8f4-422a-94d2-a1b8ff5e382d}, !- Handle
+  0400|2200|Outpatient|default|lighting Winter Design Day, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.1;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {bb5c1f8f-76bb-4de9-a252-aa585e4d8672}, !- Handle
+  0400|2200|Outpatient|default|lighting |1/1-12/31|Sat Rule, !- Name
+  {f0ff431e-6be7-46c6-8272-60be16b357db}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {dcc40ecf-30bc-4bcb-b796-e307c5003206}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {dcc40ecf-30bc-4bcb-b796-e307c5003206}, !- Handle
+  0400|2200|Outpatient|default|lighting |1/1-12/31|Sat, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.1,                                    !- Value Until Time 1
+  9,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.3,                                    !- Value Until Time 2
+  15,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.4,                                    !- Value Until Time 3
+  20,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.3,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.1;                                    !- Value Until Time 5
+
+OS:Schedule:Rule,
+  {f808ef55-cd7a-4caf-ac7c-97cf67d82327}, !- Handle
+  0400|2200|Outpatient|default|lighting |1/1-12/31|Sun Rule, !- Name
+  {f0ff431e-6be7-46c6-8272-60be16b357db}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {763d6075-f1ce-482a-9ef4-4ea0b965891b}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {763d6075-f1ce-482a-9ef4-4ea0b965891b}, !- Handle
+  0400|2200|Outpatient|default|lighting |1/1-12/31|Sun, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.05;                                   !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {484192bd-3bd0-4398-9559-1d892c8bc470}, !- Handle
+  0400|2200|Outpatient|default|air_velocity, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  {d37df22c-3097-4c22-8f49-455aca414d61}, !- Default Day Schedule Name
+  {8d3e1878-f0ae-4ff6-a4f9-676b4b451d04}, !- Summer Design Day Schedule Name
+  {ef88164d-bb92-48cb-bd28-1b88d653ecc0}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {d37df22c-3097-4c22-8f49-455aca414d61}, !- Handle
+  0400|2200|Outpatient|default|air_velocity |default, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Day,
+  {8d3e1878-f0ae-4ff6-a4f9-676b4b451d04}, !- Handle
+  0400|2200|Outpatient|default|air_velocity Summer Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Day,
+  {ef88164d-bb92-48cb-bd28-1b88d653ecc0}, !- Handle
+  0400|2200|Outpatient|default|air_velocity Winter Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {9ac773a4-0da2-4367-89be-dba7dd4fd28e}, !- Handle
+  0400|2200|Outpatient|OR|htg_setpoint,   !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  {8fe0c366-471b-428e-839d-deb3f30f021d}, !- Default Day Schedule Name
+  {40029589-b785-4a65-b84e-748212d9734f}, !- Summer Design Day Schedule Name
+  {bbad4bf5-4153-4843-a0c0-016e3aa504ac}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {8fe0c366-471b-428e-839d-deb3f30f021d}, !- Handle
+  0400|2200|Outpatient|OR|htg_setpoint |default, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  18.3;                                   !- Value Until Time 1
+
+OS:Schedule:Day,
+  {40029589-b785-4a65-b84e-748212d9734f}, !- Handle
+  0400|2200|Outpatient|OR|htg_setpoint Summer Design Day, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  18.3;                                   !- Value Until Time 1
+
+OS:Schedule:Day,
+  {bbad4bf5-4153-4843-a0c0-016e3aa504ac}, !- Handle
+  0400|2200|Outpatient|OR|htg_setpoint Winter Design Day, !- Name
+  {116952ef-21b4-40f9-9557-45767174359a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  18.3;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {13528183-42b2-486f-bf09-a2edff36c817}, !- Handle
+  0400|2200|Outpatient|default|hvac,      !- Name
+  {12c144b6-f5ba-4949-9238-b6a8595d1113}, !- Schedule Type Limits Name
+  {9b42e25d-9ec8-4191-8530-b5e99d964d71}, !- Default Day Schedule Name
+  {0d3145ed-41e6-4c21-9035-baede1f15866}, !- Summer Design Day Schedule Name
+  {9fecb540-8cef-4e39-85bc-2b948617bfac}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {12c144b6-f5ba-4949-9238-b6a8595d1113}, !- Handle
+  HVAC Operation Schedule Type Limits,    !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Schedule:Day,
+  {9b42e25d-9ec8-4191-8530-b5e99d964d71}, !- Handle
+  0400|2200|Outpatient|default|hvac |default, !- Name
+  {12c144b6-f5ba-4949-9238-b6a8595d1113}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {0d3145ed-41e6-4c21-9035-baede1f15866}, !- Handle
+  0400|2200|Outpatient|default|hvac Summer Design Day, !- Name
+  {12c144b6-f5ba-4949-9238-b6a8595d1113}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {9fecb540-8cef-4e39-85bc-2b948617bfac}, !- Handle
+  0400|2200|Outpatient|default|hvac Winter Design Day, !- Name
+  {12c144b6-f5ba-4949-9238-b6a8595d1113}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {e623a8a7-8636-44c5-ae91-bb503da93f6a}, !- Handle
+  0400|2200|Outpatient|MRI|elec_equip,    !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  {12b55bf5-91a4-4032-a74b-3d9a516898d5}, !- Default Day Schedule Name
+  {145ffa68-2524-45f5-afb6-3c7216eaf435}, !- Summer Design Day Schedule Name
+  {3d1b6421-36be-48fc-8d5d-7f396fed8767}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Handle
+  Equipment Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {12b55bf5-91a4-4032-a74b-3d9a516898d5}, !- Handle
+  0400|2200|Outpatient|MRI|elec_equip |default, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.96,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.01;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {145ffa68-2524-45f5-afb6-3c7216eaf435}, !- Handle
+  0400|2200|Outpatient|MRI|elec_equip Summer Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.01;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {3d1b6421-36be-48fc-8d5d-7f396fed8767}, !- Handle
+  0400|2200|Outpatient|MRI|elec_equip Winter Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.01;                                   !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {648bcb17-c33e-4cd0-a541-8b3a52703a05}, !- Handle
+  0400|2200|Outpatient|MRI|elec_equip |1/1-12/31|Sun Rule, !- Name
+  {e623a8a7-8636-44c5-ae91-bb503da93f6a}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {67348de2-6310-4865-83eb-6f3be8cfde56}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {67348de2-6310-4865-83eb-6f3be8cfde56}, !- Handle
+  0400|2200|Outpatient|MRI|elec_equip |1/1-12/31|Sun, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.01;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {b82a7e07-5540-4fb0-9969-617aac097128}, !- Handle
+  0400|2200|Outpatient|default|swh_target_temp, !- Name
+  {d3bef80e-0026-4dfd-894d-218ef0a6775f}, !- Schedule Type Limits Name
+  {99bd241e-3599-4892-943b-c580d56a3acc}, !- Default Day Schedule Name
+  {01c3f813-82c2-43d9-a81f-e663066a5ee4}, !- Summer Design Day Schedule Name
+  {b8e25115-00c7-4818-ba41-7c1538c5eb07}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {d3bef80e-0026-4dfd-894d-218ef0a6775f}, !- Handle
+  Temperature Schedule Type Limits,       !- Name
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {99bd241e-3599-4892-943b-c580d56a3acc}, !- Handle
+  0400|2200|Outpatient|default|swh_target_temp |default, !- Name
+  {d3bef80e-0026-4dfd-894d-218ef0a6775f}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {01c3f813-82c2-43d9-a81f-e663066a5ee4}, !- Handle
+  0400|2200|Outpatient|default|swh_target_temp Summer Design Day, !- Name
+  {d3bef80e-0026-4dfd-894d-218ef0a6775f}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {b8e25115-00c7-4818-ba41-7c1538c5eb07}, !- Handle
+  0400|2200|Outpatient|default|swh_target_temp Winter Design Day, !- Name
+  {d3bef80e-0026-4dfd-894d-218ef0a6775f}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {0e6a9c68-4eb5-4f9a-b132-10bdc88b96a3}, !- Handle
+  0400|2200|Outpatient|default|rh,        !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  {f973d98e-6479-47d5-9b9d-9da68d098ce2}, !- Default Day Schedule Name
+  {e25c8666-3806-4d41-aee6-9717f8ab651f}, !- Summer Design Day Schedule Name
+  {fcc0794c-095e-49a9-875d-af6de6484a29}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {f973d98e-6479-47d5-9b9d-9da68d098ce2}, !- Handle
+  0400|2200|Outpatient|default|rh |default, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Day,
+  {e25c8666-3806-4d41-aee6-9717f8ab651f}, !- Handle
+  0400|2200|Outpatient|default|rh Summer Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Day,
+  {fcc0794c-095e-49a9-875d-af6de6484a29}, !- Handle
+  0400|2200|Outpatient|default|rh Winter Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {80dbb0a5-0d66-4242-bab0-c1f6df774b1c}, !- Handle
+  0400|2200|Outpatient|default|clothing,  !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  {8bacf462-6558-4e90-9c84-ba623df1cf50}, !- Default Day Schedule Name
+  {786b2162-2b71-4ea9-a7e3-a4299ad8a873}, !- Summer Design Day Schedule Name
+  {00a117df-8971-47c8-a544-95343fb89d95}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {8bacf462-6558-4e90-9c84-ba623df1cf50}, !- Handle
+  0400|2200|Outpatient|default|clothing |default, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {786b2162-2b71-4ea9-a7e3-a4299ad8a873}, !- Handle
+  0400|2200|Outpatient|default|clothing Summer Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {00a117df-8971-47c8-a544-95343fb89d95}, !- Handle
+  0400|2200|Outpatient|default|clothing Winter Design Day, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {d22df5ec-49db-4bd6-838b-c456a2eaf636}, !- Handle
+  0400|2200|Outpatient|default|clothing |5/1-9/30|Mon/Tue/Wed/Thu/Fri/Sat/Sun Rule, !- Name
+  {80dbb0a5-0d66-4242-bab0-c1f6df774b1c}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {85178c7b-a300-4196-b403-c177e7249687}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  5,                                      !- Start Month
+  1,                                      !- Start Day
+  9,                                      !- End Month
+  30;                                     !- End Day
+
+OS:Schedule:Day,
+  {85178c7b-a300-4196-b403-c177e7249687}, !- Handle
+  0400|2200|Outpatient|default|clothing |5/1-9/30|Mon/Tue/Wed/Thu/Fri/Sat/Sun, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.5;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {7d34a51e-41ec-42dc-8502-f0778e3727cf}, !- Handle
+  0400|2200|Outpatient|default|clothing |10/1-12/31|Mon/Tue/Wed/Thu/Fri/Sat/Sun Rule, !- Name
+  {80dbb0a5-0d66-4242-bab0-c1f6df774b1c}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {89c56922-f18f-433a-9384-30e5d764d33b}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  10,                                     !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {89c56922-f18f-433a-9384-30e5d764d33b}, !- Handle
+  0400|2200|Outpatient|default|clothing |10/1-12/31|Mon/Tue/Wed/Thu/Fri/Sat/Sun, !- Name
+  {a1a5af1d-5393-4aab-a629-95a65f7a68c8}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {25271e36-47dd-402c-9970-c6c61cd3bb41}, !- Handle
+  0400|2200|Outpatient|Xray|elec_equip,   !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  {a1e3531f-3aea-4edf-b4c4-d5dbea92c14f}, !- Default Day Schedule Name
+  {8330f436-0d3a-487a-b050-a0d7be736a7b}, !- Summer Design Day Schedule Name
+  {42a51217-143c-4b13-ae88-d959f3bc3e0a}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {a1e3531f-3aea-4edf-b4c4-d5dbea92c14f}, !- Handle
+  0400|2200|Outpatient|Xray|elec_equip |default, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.96,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.01;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {8330f436-0d3a-487a-b050-a0d7be736a7b}, !- Handle
+  0400|2200|Outpatient|Xray|elec_equip Summer Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  6,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.01;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {42a51217-143c-4b13-ae88-d959f3bc3e0a}, !- Handle
+  0400|2200|Outpatient|Xray|elec_equip Winter Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.01;                                   !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {be5e33ce-0cfa-4143-b58c-b749f7c7705b}, !- Handle
+  0400|2200|Outpatient|Xray|elec_equip |1/1-12/31|Sun Rule, !- Name
+  {25271e36-47dd-402c-9970-c6c61cd3bb41}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {3e946e0d-bfb2-440e-9fb1-b17a25c82b4f}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {3e946e0d-bfb2-440e-9fb1-b17a25c82b4f}, !- Handle
+  0400|2200|Outpatient|Xray|elec_equip |1/1-12/31|Sun, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.01;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {3cfa1787-2463-4e2e-9d9e-5b61a7e70d25}, !- Handle
+  0400|2200|Outpatient|default|ext_lighting, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  {39570840-4679-4c87-a82c-39c69a000171}, !- Default Day Schedule Name
+  {cc948dcd-95cf-40a0-ae77-b97629a3cb3a}, !- Summer Design Day Schedule Name
+  {b0d5857a-1f1e-4f31-bbf5-28e57acd07b9}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {39570840-4679-4c87-a82c-39c69a000171}, !- Handle
+  0400|2200|Outpatient|default|ext_lighting |default, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {cc948dcd-95cf-40a0-ae77-b97629a3cb3a}, !- Handle
+  0400|2200|Outpatient|default|ext_lighting Summer Design Day, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {b0d5857a-1f1e-4f31-bbf5-28e57acd07b9}, !- Handle
+  0400|2200|Outpatient|default|ext_lighting Winter Design Day, !- Name
+  {17274bb7-040b-4ff9-86f8-579b8d337de3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {bb32f54c-f145-4080-8e59-a41f24defc45}, !- Handle
+  0400|2200|Outpatient|default|swh,       !- Name
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Schedule Type Limits Name
+  {8ebb4c2a-be40-4d90-98f9-e7ace1062bbb}, !- Default Day Schedule Name
+  {dbcd7dc9-751c-49bc-b72a-833ec167beac}, !- Summer Design Day Schedule Name
+  {68f9b50a-bb32-4eec-8a14-ff77d78416d3}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Handle
+  Water Use Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {8ebb4c2a-be40-4d90-98f9-e7ace1062bbb}, !- Handle
+  0400|2200|Outpatient|default|swh |default, !- Name
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.17,                                   !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.58,                                   !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.66,                                   !- Value Until Time 4
+  11,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.78,                                   !- Value Until Time 5
+  12,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.82,                                   !- Value Until Time 6
+  13,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.71,                                   !- Value Until Time 7
+  14,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.82,                                   !- Value Until Time 8
+  15,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.78,                                   !- Value Until Time 9
+  16,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.74,                                   !- Value Until Time 10
+  17,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.63,                                   !- Value Until Time 11
+  18,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.41,                                   !- Value Until Time 12
+  21,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.18,                                   !- Value Until Time 13
+  22,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.1,                                    !- Value Until Time 14
+  24,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.01;                                   !- Value Until Time 15
+
+OS:Schedule:Day,
+  {dbcd7dc9-751c-49bc-b72a-833ec167beac}, !- Handle
+  0400|2200|Outpatient|default|swh Summer Design Day, !- Name
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.17,                                   !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.58,                                   !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.66,                                   !- Value Until Time 4
+  11,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.78,                                   !- Value Until Time 5
+  12,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.82,                                   !- Value Until Time 6
+  13,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.71,                                   !- Value Until Time 7
+  14,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.82,                                   !- Value Until Time 8
+  15,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.78,                                   !- Value Until Time 9
+  16,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.74,                                   !- Value Until Time 10
+  17,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.63,                                   !- Value Until Time 11
+  18,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.41,                                   !- Value Until Time 12
+  21,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.18,                                   !- Value Until Time 13
+  22,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.1,                                    !- Value Until Time 14
+  24,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.01;                                   !- Value Until Time 15
+
+OS:Schedule:Day,
+  {68f9b50a-bb32-4eec-8a14-ff77d78416d3}, !- Handle
+  0400|2200|Outpatient|default|swh Winter Design Day, !- Name
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.17,                                   !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.58,                                   !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.66,                                   !- Value Until Time 4
+  11,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.78,                                   !- Value Until Time 5
+  12,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.82,                                   !- Value Until Time 6
+  13,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.71,                                   !- Value Until Time 7
+  14,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.82,                                   !- Value Until Time 8
+  15,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.78,                                   !- Value Until Time 9
+  16,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.74,                                   !- Value Until Time 10
+  17,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.63,                                   !- Value Until Time 11
+  18,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.41,                                   !- Value Until Time 12
+  21,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.18,                                   !- Value Until Time 13
+  22,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.1,                                    !- Value Until Time 14
+  24,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.01;                                   !- Value Until Time 15
+
+OS:Schedule:Rule,
+  {93387874-0324-48b2-9998-f6d8faa8c100}, !- Handle
+  0400|2200|Outpatient|default|swh |1/1-12/31|Sat Rule, !- Name
+  {bb32f54c-f145-4080-8e59-a41f24defc45}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {569150d4-35b6-40a9-8cac-763bd5203048}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {569150d4-35b6-40a9-8cac-763bd5203048}, !- Handle
+  0400|2200|Outpatient|default|swh |1/1-12/31|Sat, !- Name
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.01,                                   !- Value Until Time 1
+  9,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.2,                                    !- Value Until Time 2
+  10,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.28,                                   !- Value Until Time 3
+  12,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.3,                                    !- Value Until Time 4
+  14,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.24,                                   !- Value Until Time 5
+  17,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.23,                                   !- Value Until Time 6
+  18,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.1,                                    !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.01;                                   !- Value Until Time 8
+
+OS:Schedule:Rule,
+  {7f5f7ccf-ff4c-4eee-98dc-fa8d05cb3090}, !- Handle
+  0400|2200|Outpatient|default|swh |1/1-12/31|Sun Rule, !- Name
+  {bb32f54c-f145-4080-8e59-a41f24defc45}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {ba41563b-1dea-4aef-ae2f-6e4bddc6e883}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {ba41563b-1dea-4aef-ae2f-6e4bddc6e883}, !- Handle
+  0400|2200|Outpatient|default|swh |1/1-12/31|Sun, !- Name
+  {b0bef8ed-5655-4809-8b2d-3b476c30935d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.01,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {cf3e4175-595b-4cfd-8dd5-442093728fd6}, !- Handle
+  0400|2200|Outpatient|default|clg_setpoint, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  {7daa2d48-264c-4d83-92be-06892ce0b88b}, !- Default Day Schedule Name
+  {2c3aa82d-6dea-4aa3-9b4f-51e5749058ab}, !- Summer Design Day Schedule Name
+  {6df8bf98-add6-45a6-9d4b-760e91a4927e}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {7daa2d48-264c-4d83-92be-06892ce0b88b}, !- Handle
+  0400|2200|Outpatient|default|clg_setpoint |default, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  5,                                      !- Hour 1
+  0,                                      !- Minute 1
+  25.0000000000001,                       !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  22.2,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  25.0000000000001;                       !- Value Until Time 3
+
+OS:Schedule:Day,
+  {2c3aa82d-6dea-4aa3-9b4f-51e5749058ab}, !- Handle
+  0400|2200|Outpatient|default|clg_setpoint Summer Design Day, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  25.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {6df8bf98-add6-45a6-9d4b-760e91a4927e}, !- Handle
+  0400|2200|Outpatient|default|clg_setpoint Winter Design Day, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  5,                                      !- Hour 1
+  0,                                      !- Minute 1
+  25.0000000000001,                       !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  22.2,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  25.0000000000001;                       !- Value Until Time 3
+
+OS:Schedule:Rule,
+  {e3176bcd-3123-4b65-8bb0-d8d24d0c5c03}, !- Handle
+  0400|2200|Outpatient|default|clg_setpoint |1/1-12/31|Sat/Sun Rule, !- Name
+  {cf3e4175-595b-4cfd-8dd5-442093728fd6}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {dccf30bf-378f-4023-a037-5bd73a322569}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {dccf30bf-378f-4023-a037-5bd73a322569}, !- Handle
+  0400|2200|Outpatient|default|clg_setpoint |1/1-12/31|Sat/Sun, !- Name
+  {2c94a564-d661-46db-a21e-607648254efc}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  25.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Handle
+  0400|2200|Outpatient|default|elec_equip, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  {e03bb96a-b66c-4b94-b580-7054e3496ba5}, !- Default Day Schedule Name
+  {7086b364-26a0-4619-a842-3386bb9ed6a6}, !- Summer Design Day Schedule Name
+  {200bbcf4-4301-49b1-94fe-ba190e34bb0f}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {e03bb96a-b66c-4b94-b580-7054e3496ba5}, !- Handle
+  0400|2200|Outpatient|default|elec_equip |default, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.3,                                    !- Value Until Time 1
+  6,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  18,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1,                                      !- Value Until Time 3
+  20,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.5,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.3;                                    !- Value Until Time 5
+
+OS:Schedule:Day,
+  {7086b364-26a0-4619-a842-3386bb9ed6a6}, !- Handle
+  0400|2200|Outpatient|default|elec_equip Summer Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {200bbcf4-4301-49b1-94fe-ba190e34bb0f}, !- Handle
+  0400|2200|Outpatient|default|elec_equip Winter Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.3;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {30b8ffe5-765b-43a7-b484-36d925419814}, !- Handle
+  0400|2200|Outpatient|default|elec_equip |1/1-12/31|Sat Rule, !- Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {9d2bc621-2d8f-4580-83b0-b2e3de888ae2}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {9d2bc621-2d8f-4580-83b0-b2e3de888ae2}, !- Handle
+  0400|2200|Outpatient|default|elec_equip |1/1-12/31|Sat, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.3,                                    !- Value Until Time 1
+  9,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  15,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.8,                                    !- Value Until Time 3
+  20,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.5,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.3;                                    !- Value Until Time 5
+
+OS:Schedule:Rule,
+  {a2968659-5674-403a-97cc-cba101e98403}, !- Handle
+  0400|2200|Outpatient|default|elec_equip |1/1-12/31|Sun Rule, !- Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {2b931b10-fdcb-4eb3-84c9-abc2205fc72d}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {2b931b10-fdcb-4eb3-84c9-abc2205fc72d}, !- Handle
+  0400|2200|Outpatient|default|elec_equip |1/1-12/31|Sun, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.3,                                    !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.3;                                    !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {ac024436-e2c2-418b-85a5-e8be6d437864}, !- Handle
+  0400|2200|Outpatient|default|work_eff,  !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  {1a0cffd6-0267-4156-88e0-32d776e34abd}, !- Default Day Schedule Name
+  {9eb7fcc4-c9ff-4247-b6e8-ad2a3fa508ab}, !- Summer Design Day Schedule Name
+  {4296744d-cee3-4beb-ac95-4d8d43a9126f}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Handle
+  Fraction Schedule Type Limits,          !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {1a0cffd6-0267-4156-88e0-32d776e34abd}, !- Handle
+  0400|2200|Outpatient|default|work_eff |default, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {9eb7fcc4-c9ff-4247-b6e8-ad2a3fa508ab}, !- Handle
+  0400|2200|Outpatient|default|work_eff Summer Design Day, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {4296744d-cee3-4beb-ac95-4d8d43a9126f}, !- Handle
+  0400|2200|Outpatient|default|work_eff Winter Design Day, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Handle
+  0400|2200|Outpatient|default|infiltration, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  {b99aca61-8665-4b2b-9016-eb477732458e}, !- Default Day Schedule Name
+  {ca35e7c0-d446-4921-998d-9b8a12e87c65}, !- Summer Design Day Schedule Name
+  {337559cb-c427-48e4-bb65-1c6eb047d303}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {b99aca61-8665-4b2b-9016-eb477732458e}, !- Handle
+  0400|2200|Outpatient|default|infiltration |default, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.5;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {ca35e7c0-d446-4921-998d-9b8a12e87c65}, !- Handle
+  0400|2200|Outpatient|default|infiltration Summer Design Day, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.5;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {337559cb-c427-48e4-bb65-1c6eb047d303}, !- Handle
+  0400|2200|Outpatient|default|infiltration Winter Design Day, !- Name
+  {f97d9a04-4535-431a-94df-9c458ef2ff28}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.5;                                    !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {699a7e24-58e1-4d2c-8e77-5b9afd5a45a4}, !- Handle
+  0400|2200|Outpatient|default|occ,       !- Name
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Schedule Type Limits Name
+  {f17d0603-1342-41b5-bae4-8a3e5d1d3313}, !- Default Day Schedule Name
+  {5848a552-72ee-4a27-80ac-f616ace04fea}, !- Summer Design Day Schedule Name
+  {5cde3fe0-a091-4a99-be47-0638f9588678}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Handle
+  Occupancy Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {f17d0603-1342-41b5-bae4-8a3e5d1d3313}, !- Handle
+  0400|2200|Outpatient|default|occ |default, !- Name
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  6,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.2,                                    !- Value Until Time 2
+  7,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.5,                                    !- Value Until Time 3
+  18,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.9,                                    !- Value Until Time 4
+  20,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.5,                                    !- Value Until Time 5
+  22,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.2,                                    !- Value Until Time 6
+  24,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.05;                                   !- Value Until Time 7
+
+OS:Schedule:Day,
+  {5848a552-72ee-4a27-80ac-f616ace04fea}, !- Handle
+  0400|2200|Outpatient|default|occ Summer Design Day, !- Name
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  6,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.2,                                    !- Value Until Time 2
+  20,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1,                                      !- Value Until Time 3
+  22,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.2,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.05;                                   !- Value Until Time 5
+
+OS:Schedule:Day,
+  {5cde3fe0-a091-4a99-be47-0638f9588678}, !- Handle
+  0400|2200|Outpatient|default|occ Winter Design Day, !- Name
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {0e670a04-7368-41b6-bc32-a297159b49ea}, !- Handle
+  0400|2200|Outpatient|default|occ |1/1-12/31|Sat Rule, !- Name
+  {699a7e24-58e1-4d2c-8e77-5b9afd5a45a4}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {59e3932f-6cc5-4344-b387-a2279a6796db}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {59e3932f-6cc5-4344-b387-a2279a6796db}, !- Handle
+  0400|2200|Outpatient|default|occ |1/1-12/31|Sat, !- Name
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  9,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.2,                                    !- Value Until Time 2
+  15,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.3,                                    !- Value Until Time 3
+  20,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.2,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.05;                                   !- Value Until Time 5
+
+OS:Schedule:Rule,
+  {e0490a25-684a-4d5b-98f1-75c1d4f7f62f}, !- Handle
+  0400|2200|Outpatient|default|occ |1/1-12/31|Sun Rule, !- Name
+  {699a7e24-58e1-4d2c-8e77-5b9afd5a45a4}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {beef8cb9-9d95-4620-9ce3-763c906833fc}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {beef8cb9-9d95-4620-9ce3-763c906833fc}, !- Handle
+  0400|2200|Outpatient|default|occ |1/1-12/31|Sun, !- Name
+  {41328c3b-1175-4785-b9d1-3b1cec06c9e3}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.05,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {4ac5726a-60d1-438d-9033-932bafdcc7ae}, !- Handle
+  0400|2200|Outpatient|default|elevator,  !- Name
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Schedule Type Limits Name
+  {246b10ad-31b0-4645-9380-f66476dc5a48}, !- Default Day Schedule Name
+  {ffef5579-6c3d-475e-8cff-49f9f4067026}, !- Summer Design Day Schedule Name
+  {219d23d4-8e3f-43ab-89dd-d4172478dbd2}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Handle
+  Elevators Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {246b10ad-31b0-4645-9380-f66476dc5a48}, !- Handle
+  0400|2200|Outpatient|default|elevator |default, !- Name
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.75,                                   !- Value Until Time 3
+  12,                                     !- Hour 4
+  0,                                      !- Minute 4
+  1,                                      !- Value Until Time 4
+  13,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.75,                                   !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  1,                                      !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.52,                                   !- Value Until Time 7
+  22,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.28,                                   !- Value Until Time 8
+  24,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.05;                                   !- Value Until Time 9
+
+OS:Schedule:Day,
+  {ffef5579-6c3d-475e-8cff-49f9f4067026}, !- Handle
+  0400|2200|Outpatient|default|elevator Summer Design Day, !- Name
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.75,                                   !- Value Until Time 3
+  12,                                     !- Hour 4
+  0,                                      !- Minute 4
+  1,                                      !- Value Until Time 4
+  13,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.75,                                   !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  1,                                      !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.52,                                   !- Value Until Time 7
+  22,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.28,                                   !- Value Until Time 8
+  24,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.05;                                   !- Value Until Time 9
+
+OS:Schedule:Day,
+  {219d23d4-8e3f-43ab-89dd-d4172478dbd2}, !- Handle
+  0400|2200|Outpatient|default|elevator Winter Design Day, !- Name
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.75,                                   !- Value Until Time 3
+  12,                                     !- Hour 4
+  0,                                      !- Minute 4
+  1,                                      !- Value Until Time 4
+  13,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.75,                                   !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  1,                                      !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.52,                                   !- Value Until Time 7
+  22,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.28,                                   !- Value Until Time 8
+  24,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.05;                                   !- Value Until Time 9
+
+OS:Schedule:Rule,
+  {48b3b7dc-5d21-4378-93f7-734f0825049e}, !- Handle
+  0400|2200|Outpatient|default|elevator |1/1-12/31|Sat Rule, !- Name
+  {4ac5726a-60d1-438d-9033-932bafdcc7ae}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {2ab7c1ab-139f-4450-86c3-94b50ea00124}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {2ab7c1ab-139f-4450-86c3-94b50ea00124}, !- Handle
+  0400|2200|Outpatient|default|elevator |1/1-12/31|Sat, !- Name
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.4,                                    !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.46,                                   !- Value Until Time 3
+  12,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.7,                                    !- Value Until Time 4
+  17,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.51,                                   !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.25,                                   !- Value Until Time 6
+  24,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.05;                                   !- Value Until Time 7
+
+OS:Schedule:Rule,
+  {42dd01d0-1271-4683-9913-38ab122ffe19}, !- Handle
+  0400|2200|Outpatient|default|elevator |1/1-12/31|Sun Rule, !- Name
+  {4ac5726a-60d1-438d-9033-932bafdcc7ae}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {a378cdd2-1864-49d6-b5cb-13e3557a3989}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {a378cdd2-1864-49d6-b5cb-13e3557a3989}, !- Handle
+  0400|2200|Outpatient|default|elevator |1/1-12/31|Sun, !- Name
+  {54bb6d4e-41a6-4326-baf5-5289bb76bd6d}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  16,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.4,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.05;                                   !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {10c23b1e-b8ed-4606-b1eb-4386c208aac1}, !- Handle
+  0400|2200|Outpatient|default|gas_equip, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  {dc1a06da-3e94-4cc8-812f-35dc50dc3085}, !- Default Day Schedule Name
+  {51c12c1e-85c7-49f3-8ff8-c45b08489dbe}, !- Summer Design Day Schedule Name
+  {3653939c-7184-4fb0-86f6-1e9cd27901e7}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {dc1a06da-3e94-4cc8-812f-35dc50dc3085}, !- Handle
+  0400|2200|Outpatient|default|gas_equip |default, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.3,                                    !- Value Until Time 1
+  6,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  18,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1,                                      !- Value Until Time 3
+  20,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.5,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.3;                                    !- Value Until Time 5
+
+OS:Schedule:Day,
+  {51c12c1e-85c7-49f3-8ff8-c45b08489dbe}, !- Handle
+  0400|2200|Outpatient|default|gas_equip Summer Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {3653939c-7184-4fb0-86f6-1e9cd27901e7}, !- Handle
+  0400|2200|Outpatient|default|gas_equip Winter Design Day, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.3;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {2102444f-dedc-44c5-8f79-2b338d5d7263}, !- Handle
+  0400|2200|Outpatient|default|gas_equip |1/1-12/31|Sat Rule, !- Name
+  {10c23b1e-b8ed-4606-b1eb-4386c208aac1}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {287291f8-3cf6-488f-aeb3-cb1ae3554dc6}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {287291f8-3cf6-488f-aeb3-cb1ae3554dc6}, !- Handle
+  0400|2200|Outpatient|default|gas_equip |1/1-12/31|Sat, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.3,                                    !- Value Until Time 1
+  9,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  15,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.8,                                    !- Value Until Time 3
+  20,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.5,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.3;                                    !- Value Until Time 5
+
+OS:Schedule:Rule,
+  {6d2698f0-c38d-4c0e-92cc-066fad238d67}, !- Handle
+  0400|2200|Outpatient|default|gas_equip |1/1-12/31|Sun Rule, !- Name
+  {10c23b1e-b8ed-4606-b1eb-4386c208aac1}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {d5ac87cf-9c66-41d2-b0ca-4ab25ece054a}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {d5ac87cf-9c66-41d2-b0ca-4ab25ece054a}, !- Handle
+  0400|2200|Outpatient|default|gas_equip |1/1-12/31|Sun, !- Name
+  {939e4c7c-a1dc-47ab-8046-db6b27e9c39e}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.3,                                    !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.5,                                    !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.3;                                    !- Value Until Time 3
+
+OS:People:Definition,
+  {12b7f4ea-0e6e-4f98-bcbc-63bbdac20d78}, !- Handle
+  Cafe|PeopleDef,                         !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  1.000397834129,                         !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {f89d1708-50a6-45ea-aefd-46c12aff6cdb}, !- Handle
+  Cafe|PeopleInst,                        !- Name
+  {12b7f4ea-0e6e-4f98-bcbc-63bbdac20d78}, !- People Definition Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0369127516778523;                     !- Multiplier
+
+OS:People:Definition,
+  {e3f8a800-681d-4be2-8bfb-41fb70aea319}, !- Handle
+  Lobby|PeopleDef,                        !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.2999901833137,                        !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {019f4903-35f0-4143-9818-f6f09c69cfbf}, !- Handle
+  Lobby|PeopleInst,                       !- Name
+  {e3f8a800-681d-4be2-8bfb-41fb70aea319}, !- People Definition Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.197986577181208;                      !- Multiplier
+
+OS:People:Definition,
+  {5c5ce6cb-d65e-4b64-9c7f-3c697d2e6af4}, !- Handle
+  MRI|PeopleDef,                          !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {f5df00cb-5f3b-43e6-b23c-2ae45bb3b8a5}, !- Handle
+  MRI|PeopleInst,                         !- Name
+  {5c5ce6cb-d65e-4b64-9c7f-3c697d2e6af4}, !- People Definition Name
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.292682926829268;                      !- Multiplier
+
+OS:People:Definition,
+  {36070f42-d449-41d6-8533-3e4301b7ab3c}, !- Handle
+  MRI_Control|PeopleDef,                  !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {11abd51b-b59d-4f28-bd1f-e333e2764bf2}, !- Handle
+  MRI_Control|PeopleInst,                 !- Name
+  {36070f42-d449-41d6-8533-3e4301b7ab3c}, !- People Definition Name
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.121951219512195;                      !- Multiplier
+
+OS:People:Definition,
+  {2c7d0309-5324-4bba-a0d8-ed367b3d72d2}, !- Handle
+  Xray|PeopleDef,                         !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {099cc075-4105-4880-9920-0e1065daec79}, !- Handle
+  Xray|PeopleInst,                        !- Name
+  {2c7d0309-5324-4bba-a0d8-ed367b3d72d2}, !- People Definition Name
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Space or SpaceType Name
+  {25271e36-47dd-402c-9970-c6c61cd3bb41}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.585365853658537;                      !- Multiplier
+
+OS:People:Definition,
+  {a45b4fb3-af05-4b4b-9db5-21e405bd38b5}, !- Handle
+  IT_Room|PeopleDef,                      !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0500521834377002,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {b4de1360-0c49-41c1-bbcf-7717877769db}, !- Handle
+  IT_Room|PeopleInst,                     !- Name
+  {a45b4fb3-af05-4b4b-9db5-21e405bd38b5}, !- People Definition Name
+  {732abadc-bb74-4ab5-9b6b-bf6845f211be}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.03;                                   !- Multiplier
+
+OS:People:Definition,
+  {74bb4743-b36e-489a-8452-d09f7a5ba2d5}, !- Handle
+  DressingRoom|PeopleDef,                 !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0500521834377002,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {8bc70da0-a8b0-4818-8d67-c064eb4d2ec4}, !- Handle
+  DressingRoom|PeopleInst,                !- Name
+  {74bb4743-b36e-489a-8452-d09f7a5ba2d5}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.00790513833992095;                    !- Multiplier
+
+OS:People:Definition,
+  {17d88b6d-4932-4627-8029-3bb504eaab8d}, !- Handle
+  Exam|PeopleDef,                         !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {81592ce7-fef4-42a9-8851-d0e494e8e45b}, !- Handle
+  Exam|PeopleInst,                        !- Name
+  {17d88b6d-4932-4627-8029-3bb504eaab8d}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.450592885375494;                      !- Multiplier
+
+OS:People:Definition,
+  {4a273d1b-5c8d-4676-8e8a-95f91d51937a}, !- Handle
+  OR|PeopleDef,                           !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {c5f42a1c-d6ae-40c2-b0f6-367464ca7b68}, !- Handle
+  OR|PeopleInst,                          !- Name
+  {4a273d1b-5c8d-4676-8e8a-95f91d51937a}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.150197628458498;                      !- Multiplier
+
+OS:People:Definition,
+  {3f2bc9cd-10db-4a3f-93bb-4e2e81772c36}, !- Handle
+  PACU|PeopleDef,                         !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {5711c071-79fe-48c7-875f-4b1873c4aa1a}, !- Handle
+  PACU|PeopleInst,                        !- Name
+  {3f2bc9cd-10db-4a3f-93bb-4e2e81772c36}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.102766798418972;                      !- Multiplier
+
+OS:People:Definition,
+  {3b78ef77-4332-4171-93d1-f91f9298565b}, !- Handle
+  PhysicalTherapy|PeopleDef,              !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {097fff65-6f4f-4425-85a2-3b788c8457c6}, !- Handle
+  PhysicalTherapy|PeopleInst,             !- Name
+  {3b78ef77-4332-4171-93d1-f91f9298565b}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.201581027667984;                      !- Multiplier
+
+OS:People:Definition,
+  {0aa0a0cb-7e3e-4d1e-9251-4e3fe86696fc}, !- Handle
+  PreOp|PeopleDef,                        !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0999967277712333,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {b8196e8d-cb1a-4171-9c20-2e0dc9c25171}, !- Handle
+  PreOp|PeopleInst,                       !- Name
+  {0aa0a0cb-7e3e-4d1e-9251-4e3fe86696fc}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0553359683794466;                     !- Multiplier
+
+OS:People:Definition,
+  {eace5645-bed6-4807-899a-ea2e30bd9fed}, !- Handle
+  ProcedureRoom|PeopleDef,                !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {93c7b3ff-4081-4e86-925c-a00a2b033140}, !- Handle
+  ProcedureRoom|PeopleInst,               !- Name
+  {eace5645-bed6-4807-899a-ea2e30bd9fed}, !- People Definition Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0316205533596838;                     !- Multiplier
+
+OS:People:Definition,
+  {ebdccdb6-6049-4d90-b806-f3300861b4d6}, !- Handle
+  Conference|PeopleDef,                   !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.499983638856167,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {8b0f0daa-664d-4334-82fa-55bf99e23bc7}, !- Handle
+  Conference|PeopleInst,                  !- Name
+  {ebdccdb6-6049-4d90-b806-f3300861b4d6}, !- People Definition Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0318021201413428;                     !- Multiplier
+
+OS:People:Definition,
+  {3c9dd91b-c98b-4441-b4c8-f0e87bfd07cf}, !- Handle
+  LockerRoom|PeopleDef,                   !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.150048911208934,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {f3c61ab8-8ef2-4103-ae09-244e1c8a74a2}, !- Handle
+  LockerRoom|PeopleInst,                  !- Name
+  {3c9dd91b-c98b-4441-b4c8-f0e87bfd07cf}, !- People Definition Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0742049469964664;                     !- Multiplier
+
+OS:People:Definition,
+  {981e8459-ea11-4b3b-8ead-ae40ac0a51b2}, !- Handle
+  Lounge|PeopleDef,                       !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.150048911208934,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {9a85a048-9911-4c6b-80a5-573bcfd29700}, !- Handle
+  Lounge|PeopleInst,                      !- Name
+  {981e8459-ea11-4b3b-8ead-ae40ac0a51b2}, !- People Definition Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.11660777385159;                       !- Multiplier
+
+OS:People:Definition,
+  {01693bb0-765d-4213-b27b-56690277369f}, !- Handle
+  NurseStation|PeopleDef,                 !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {e8424c51-95c4-4a95-87eb-da35133911d9}, !- Handle
+  NurseStation|PeopleInst,                !- Name
+  {01693bb0-765d-4213-b27b-56690277369f}, !- People Definition Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.0742049469964664;                     !- Multiplier
+
+OS:People:Definition,
+  {aa6e8dc1-0b3e-4d8f-97a8-6a182bf77d08}, !- Handle
+  Office|PeopleDef,                       !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0500521834377002,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {bd442cad-1ff6-4234-bcc3-5384c8cfd9cc}, !- Handle
+  Office|PeopleInst,                      !- Name
+  {aa6e8dc1-0b3e-4d8f-97a8-6a182bf77d08}, !- People Definition Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.703180212014134;                      !- Multiplier
+
+OS:People:Definition,
+  {5d4deb84-8085-49a5-89ea-33c75b8c83d4}, !- Handle
+  CleanWork|PeopleDef,                    !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {53b3ee00-9f27-4059-b955-55a73c5683ae}, !- Handle
+  CleanWork|PeopleInst,                   !- Name
+  {5d4deb84-8085-49a5-89ea-33c75b8c83d4}, !- People Definition Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.32;                                   !- Multiplier
+
+OS:People:Definition,
+  {97082bb5-d6b6-4ba6-9f35-e4387e9765a4}, !- Handle
+  Soil Work|PeopleDef,                    !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.199993455542467,                      !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {0cf7394f-39ab-4613-af22-988c5dcae59a}, !- Handle
+  Soil Work|PeopleInst,                   !- Name
+  {97082bb5-d6b6-4ba6-9f35-e4387e9765a4}, !- People Definition Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {879bd6f9-5b8c-4ac7-9ba9-4b63f3a43dcf}, !- Number of People Schedule Name
+  {9e140ee0-3e0e-40a4-a7f4-d7531a6503ff}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.4;                                    !- Multiplier
+
+OS:DesignSpecification:OutdoorAir,
+  {3a8ffd33-333d-4d9d-8cc7-f6445cfe6c2a}, !- Handle
+  Outpatient|BlendCirc|DOE Ref Pre-1980|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0.00798388067169076,                    !- Outdoor Air Flow per Person {m3/s-person}
+  0.000520103355704698,                   !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {1e967ddf-7757-4967-8627-d4e68d2f8af8}, !- Handle
+  Outpatient|BlendImg|DOE Ref Pre-1980|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0,                                      !- Outdoor Air Flow per Person {m3/s-person}
+  0.001524,                               !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {357061b9-c7c0-4f87-8f2c-201fce3a259b}, !- Handle
+  Outpatient|BlendMisc|DOE Ref Pre-1980|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0.009438948864,                         !- Outdoor Air Flow per Person {m3/s-person}
+  0.00622554,                             !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {c6d7e266-a73a-40c5-a43a-f51e3209840a}, !- Handle
+  Outpatient|BlendPat|DOE Ref Pre-1980|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0.00149113459079124,                    !- Outdoor Air Flow per Person {m3/s-person}
+  0.000927652173913043,                   !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0.545454545454545,                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {e426bbea-38f6-4e4f-bfa3-6bbc04918ca9}, !- Handle
+  Outpatient|BlendOff|DOE Ref Pre-1980|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0.00789101728402635,                    !- Outdoor Air Flow per Person {m3/s-person}
+  5.65441696113074e-005,                  !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {fb17d47c-3ff7-484f-a83c-5fc16502d6b9}, !- Handle
+  Outpatient|BlendMedStg|DOE Ref Pre-1980|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0,                                      !- Outdoor Air Flow per Person {m3/s-person}
+  0.00438912,                             !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {e154c34f-dc86-418c-b76f-003e9e53ab12}, !- Handle
+  Cafe|Infiltration,                      !- Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  4.1853744966443e-005,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {503c4e69-671b-45b0-9293-1ad463694e9e}, !- Handle
+  Hall|Infiltration,                      !- Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000726733208053691,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {6f5942c5-f3ef-4cb5-82a0-7b81e4603991}, !- Handle
+  Lobby|Infiltration,                     !- Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000224488268456376,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {121478a1-9c61-4e30-8e78-7ae4c39bf3e1}, !- Handle
+  Stair|Infiltration,                     !- Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  6.08781744966443e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {15a8aea4-1368-47bc-a280-10c8c2ca7efd}, !- Handle
+  Toilet|Infiltration,                    !- Name
+  {2fd45b8e-91af-4ccd-bc33-21254759a9de}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  7.99026040268456e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {f4f89955-95f5-46f8-9dbb-43a5d435552f}, !- Handle
+  MRI|Infiltration,                       !- Name
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000331860292682927,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {478ceda2-1c9e-4a66-bc5a-9b26aa8108c6}, !- Handle
+  MRI_Control|Infiltration,               !- Name
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00013827512195122,                    !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {8e76914e-ab15-48e1-97a1-ab343b803713}, !- Handle
+  Xray|Infiltration,                      !- Name
+  {51e63abe-e422-4bc6-b69b-7d3985781fc8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000663720585365854,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {61db2b8a-9122-4b2e-bf8e-d623ab098be6}, !- Handle
+  Elec/MechRoom|Infiltration,             !- Name
+  {732abadc-bb74-4ab5-9b6b-bf6845f211be}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00019275552,                          !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {4bedec12-df58-421e-8387-9a0b391b5e9c}, !- Handle
+  IT_Room|Infiltration,                   !- Name
+  {732abadc-bb74-4ab5-9b6b-bf6845f211be}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  3.401568e-005,                          !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {fc145c12-df5c-44ca-b3a5-e00395af3e05}, !- Handle
+  Janitor|Infiltration,                   !- Name
+  {732abadc-bb74-4ab5-9b6b-bf6845f211be}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.0009070848,                           !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {17858ed4-05d6-408c-a373-879686832e03}, !- Handle
+  DressingRoom|Infiltration,              !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  8.96328853754941e-006,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {eb101c54-56ad-458b-82e9-c94fe9e8db70}, !- Handle
+  Exam|Infiltration,                      !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000510907446640316,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {849cd0cf-32a3-4151-8223-5fef7ba184c3}, !- Handle
+  OR|Infiltration,                        !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000170302482213439,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {cffbe1e3-b30d-4138-9b89-e4df192291b5}, !- Handle
+  PACU|Infiltration,                      !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000116522750988142,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {f5b43a9f-287d-4e88-908f-61d8a557810d}, !- Handle
+  PhysicalTherapy|Infiltration,           !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00022856385770751,                    !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {89900350-f3a8-4dda-8feb-9aec2d5c8fcd}, !- Handle
+  PreOp|Infiltration,                     !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  6.27430197628459e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {b1495d6b-112c-4f0d-bb33-ba94bd871115}, !- Handle
+  ProcedureRoom|Infiltration,             !- Name
+  {96a12c7b-12a0-4e11-aa1a-11e043bb74e8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  3.58531541501976e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {334aaf03-a0db-4ae1-b737-22b1be1de47e}, !- Handle
+  Conference|Infiltration,                !- Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  3.60590247349823e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {111de883-1115-49e5-85e5-af79b3be145d}, !- Handle
+  LockerRoom|Infiltration,                !- Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  8.41377243816255e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {7f5d2bad-1098-4095-be28-0ed4f45baaf4}, !- Handle
+  Lounge|Infiltration,                    !- Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000132216424028269,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {c1c48116-995c-499c-8b6e-e1c78fbc4a66}, !- Handle
+  NurseStation|Infiltration,              !- Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  8.41377243816255e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {27b914e2-35b0-459d-ad86-8a6889428d83}, !- Handle
+  Office|Infiltration,                    !- Name
+  {b0d7b0d0-eb80-4449-9bca-42243a4692a8}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000797305102473498,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {a1612439-3ca1-4e92-ac50-615ac58df2aa}, !- Handle
+  Anesthesia|Infiltration,                !- Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00013606272,                          !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {99498045-5171-4e92-bb03-474f7b6e8ccd}, !- Handle
+  BioHazard|Infiltration,                 !- Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  9.070848e-005,                          !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {62afca08-c8b8-44f0-b490-46a3b44de445}, !- Handle
+  CleanWork|Infiltration,                 !- Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00036283392,                          !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {d8b124e1-48bc-4dbe-a45d-e6e4985fad79}, !- Handle
+  MedGas|Infiltration,                    !- Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  9.070848e-005,                          !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {38e7bb60-0dfd-48b2-afa4-fcde0549efc6}, !- Handle
+  Soil Work|Infiltration,                 !- Name
+  {d661c604-2288-4dc6-9b35-9b5980d8cde4}, !- Space or SpaceType Name
+  {0b7d1bb7-12dc-4623-ad60-7ee507dc298b}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.0004535424,                           !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:DefaultConstructionSet,
+  {75fac498-48a7-4875-a482-fa0e9f1af95b}, !- Handle
+  DOE Ref Pre-1980|ASHRAE 169-2006-5A|Outpatient, !- Name
+  {54e683c6-3d9a-4249-a290-c649373374cb}, !- Default Exterior Surface Constructions Name
+  {58a158ae-d3c9-476d-81f6-6b61a394617f}, !- Default Interior Surface Constructions Name
+  {07f88218-a084-46e3-81f8-bca59b58deec}, !- Default Ground Contact Surface Constructions Name
+  {2a051a49-99ca-4d58-9f66-5211ed2d7499}, !- Default Exterior SubSurface Constructions Name
+  {688b28df-eccb-4528-ae23-1ce6547f54e7}, !- Default Interior SubSurface Constructions Name
+  {b98a45fb-4f20-410b-ac14-d226d520a0d9}, !- Interior Partition Construction Name
+  ,                                       !- Space Shading Construction Name
+  ,                                       !- Building Shading Construction Name
+  ;                                       !- Site Shading Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {54e683c6-3d9a-4249-a290-c649373374cb}, !- Handle
+  DOE Ref Pre-1980|ASHRAE 169-2006-5A|Outpatient|ext_surf, !- Name
+  {8b92c26d-8de6-496c-9a9b-d77179b2df84}, !- Floor Construction Name
+  {d5dabfcf-2041-4c80-910f-362304eb0ed1}, !- Wall Construction Name
+  {f9a6bf6b-d2d2-4418-bb71-e7368ad21c9d}; !- Roof Ceiling Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {58a158ae-d3c9-476d-81f6-6b61a394617f}, !- Handle
+  DOE Ref Pre-1980|ASHRAE 169-2006-5A|Outpatient|int_surf, !- Name
+  {80a07325-3660-406f-9b57-cf1efc95235d}, !- Floor Construction Name
+  {cc30fc8e-5ab8-4386-b195-a3a1fae11246}, !- Wall Construction Name
+  {6770af43-04a6-410d-820d-9377f0e4a538}; !- Roof Ceiling Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {07f88218-a084-46e3-81f8-bca59b58deec}, !- Handle
+  DOE Ref Pre-1980|ASHRAE 169-2006-5A|Outpatient|ground_surf, !- Name
+  {8b92c26d-8de6-496c-9a9b-d77179b2df84}, !- Floor Construction Name
+  {8b92c26d-8de6-496c-9a9b-d77179b2df84}, !- Wall Construction Name
+  {8b92c26d-8de6-496c-9a9b-d77179b2df84}; !- Roof Ceiling Construction Name
+
+OS:DefaultSubSurfaceConstructions,
+  {2a051a49-99ca-4d58-9f66-5211ed2d7499}, !- Handle
+  DOE Ref Pre-1980|ASHRAE 169-2006-5A|Outpatient|ext_sub, !- Name
+  {9eeba87e-110f-4428-b578-ddf6c578fe5a}, !- Fixed Window Construction Name
+  {9eeba87e-110f-4428-b578-ddf6c578fe5a}, !- Operable Window Construction Name
+  {6f97436b-8521-4bb2-b524-8b831a221a55}, !- Door Construction Name
+  ,                                       !- Glass Door Construction Name
+  {6e8f39d5-724b-4db0-a9f1-8972c486da68}, !- Overhead Door Construction Name
+  {ae31eddf-b201-40f0-b856-763dcb005e97}, !- Skylight Construction Name
+  {7a144c2b-079a-4e59-823c-81e42cfcab16}, !- Tubular Daylight Dome Construction Name
+  {7a144c2b-079a-4e59-823c-81e42cfcab16}; !- Tubular Daylight Diffuser Construction Name
+
+OS:DefaultSubSurfaceConstructions,
+  {688b28df-eccb-4528-ae23-1ce6547f54e7}, !- Handle
+  DOE Ref Pre-1980|ASHRAE 169-2006-5A|Outpatient|int_sub, !- Name
+  {7a144c2b-079a-4e59-823c-81e42cfcab16}, !- Fixed Window Construction Name
+  {7a144c2b-079a-4e59-823c-81e42cfcab16}, !- Operable Window Construction Name
+  {fdc47b44-cc4b-4ec0-83ff-205ba329ad8a}, !- Door Construction Name
+  ,                                       !- Glass Door Construction Name
+  ,                                       !- Overhead Door Construction Name
+  ,                                       !- Skylight Construction Name
+  ,                                       !- Tubular Daylight Dome Construction Name
+  ;                                       !- Tubular Daylight Diffuser Construction Name
+
+OS:Construction,
+  {d5dabfcf-2041-4c80-910f-362304eb0ed1}, !- Handle
+  CBECS Before-1980 ExtWall SteelFrame ClimateZone 5a, !- Name
+  ,                                       !- Surface Rendering Name
+  {421e4d20-9d79-451b-8f52-7c4758c0cb6a}, !- Layer 1
+  {3d89c6c4-a420-4ad1-a4e8-1adadedf4ad2}, !- Layer 2
+  {3b37a877-9d88-4df7-b6d3-ddc88bb2779b}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {d9029155-f53d-417b-a79a-a9c9461fc4fb}, !- Handle
+  {d5dabfcf-2041-4c80-910f-362304eb0ed1}, !- Construction Name
+  ExteriorWall,                           !- Intended Surface Type
+  SteelFramed;                            !- Standards Construction Type
+
+OS:Material,
+  {421e4d20-9d79-451b-8f52-7c4758c0cb6a}, !- Handle
+  Wood Siding,                            !- Name
+  MediumSmooth,                           !- Roughness
+  0.01,                                   !- Thickness {m}
+  0.11,                                   !- Conductivity {W/m-K}
+  544.62,                                 !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.78,                                   !- Solar Absorptance
+  0.78;                                   !- Visible Absorptance
+
+OS:Material,
+  {3d89c6c4-a420-4ad1-a4e8-1adadedf4ad2}, !- Handle
+  Steel Frame NonRes Wall Insulation-1.13, !- Name
+  MediumRough,                            !- Roughness
+  0.0396399760059273,                     !- Thickness {m}
+  0.049,                                  !- Conductivity {W/m-K}
+  265,                                    !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {3b37a877-9d88-4df7-b6d3-ddc88bb2779b}, !- Handle
+  1/2IN Gypsum,                           !- Name
+  Smooth,                                 !- Roughness
+  0.0127,                                 !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  784.9,                                  !- Density {kg/m3}
+  830.000000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.4,                                    !- Solar Absorptance
+  0.4;                                    !- Visible Absorptance
+
+OS:Construction,
+  {8b92c26d-8de6-496c-9a9b-d77179b2df84}, !- Handle
+  ExtSlabCarpet 8in ClimateZone 1-8,      !- Name
+  ,                                       !- Surface Rendering Name
+  {06bdd0e3-3fcc-4102-bb12-3a0dc8544816}, !- Layer 1
+  {5e165f0b-ffbd-4142-89e5-beab92fc2bcd}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {d2027d2a-4847-481c-b24c-60ab376e0a0c}, !- Handle
+  {8b92c26d-8de6-496c-9a9b-d77179b2df84}, !- Construction Name
+  ExteriorFloor,                          !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {06bdd0e3-3fcc-4102-bb12-3a0dc8544816}, !- Handle
+  MAT-CC05 8 HW CONCRETE,                 !- Name
+  Rough,                                  !- Roughness
+  0.2032,                                 !- Thickness {m}
+  1.311,                                  !- Conductivity {W/m-K}
+  2240,                                   !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.85,                                   !- Solar Absorptance
+  0.85;                                   !- Visible Absorptance
+
+OS:Material:NoMass,
+  {5e165f0b-ffbd-4142-89e5-beab92fc2bcd}, !- Handle
+  CP02 CARPET PAD,                        !- Name
+  Smooth,                                 !- Roughness
+  0.1,                                    !- Thermal Resistance {m2-K/W}
+  0.9,                                    !- Thermal Absorptance
+  0.8,                                    !- Solar Absorptance
+  0.8;                                    !- Visible Absorptance
+
+OS:Construction,
+  {f9a6bf6b-d2d2-4418-bb71-e7368ad21c9d}, !- Handle
+  CBECS Before-1980 ExtRoof IEAD ClimateZone 5a, !- Name
+  ,                                       !- Surface Rendering Name
+  {2e9af297-582b-4fc6-8a8a-b3b44c3eefce}, !- Layer 1
+  {eb58db6d-d088-407c-b1d6-80f6f2377833}, !- Layer 2
+  {206218bd-9984-4072-b6ab-5a862f9bb34f}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {69750612-66d0-427f-a5c4-055e812184f2}, !- Handle
+  {f9a6bf6b-d2d2-4418-bb71-e7368ad21c9d}, !- Construction Name
+  ExteriorRoof,                           !- Intended Surface Type
+  IEAD;                                   !- Standards Construction Type
+
+OS:Material,
+  {2e9af297-582b-4fc6-8a8a-b3b44c3eefce}, !- Handle
+  Roof Membrane,                          !- Name
+  VeryRough,                              !- Roughness
+  0.0095,                                 !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  1121.29,                                !- Density {kg/m3}
+  1460,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {eb58db6d-d088-407c-b1d6-80f6f2377833}, !- Handle
+  IEAD NonRes Roof Insulation-2.50,       !- Name
+  MediumRough,                            !- Roughness
+  0.110216071059399,                      !- Thickness {m}
+  0.049,                                  !- Conductivity {W/m-K}
+  265,                                    !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {206218bd-9984-4072-b6ab-5a862f9bb34f}, !- Handle
+  Metal Decking,                          !- Name
+  MediumSmooth,                           !- Roughness
+  0.0015,                                 !- Thickness {m}
+  45.006,                                 !- Conductivity {W/m-K}
+  7680,                                   !- Density {kg/m3}
+  418.4,                                  !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {cc30fc8e-5ab8-4386-b195-a3a1fae11246}, !- Handle
+  Interior Wall,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {e2535974-ee83-4509-902e-4e99e6d5181e}, !- Layer 1
+  {fd354783-a95a-4d1d-804d-4dfa9c5ad5e2}, !- Layer 2
+  {e2535974-ee83-4509-902e-4e99e6d5181e}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {b35cec86-aede-4a3c-89c2-a9e769cc4562}, !- Handle
+  {cc30fc8e-5ab8-4386-b195-a3a1fae11246}, !- Construction Name
+  InteriorWall,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {e2535974-ee83-4509-902e-4e99e6d5181e}, !- Handle
+  G01a 19mm gypsum board,                 !- Name
+  MediumSmooth,                           !- Roughness
+  0.019,                                  !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  800,                                    !- Density {kg/m3}
+  1090,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.4,                                    !- Solar Absorptance
+  0.4;                                    !- Visible Absorptance
+
+OS:Material:AirGap,
+  {fd354783-a95a-4d1d-804d-4dfa9c5ad5e2}, !- Handle
+  F04 Wall air space resistance,          !- Name
+  0.15;                                   !- Thermal Resistance {m2-K/W}
+
+OS:Construction,
+  {80a07325-3660-406f-9b57-cf1efc95235d}, !- Handle
+  Interior Floor,                         !- Name
+  ,                                       !- Surface Rendering Name
+  {6081495f-2379-407a-be7a-c35f038a6205}, !- Layer 1
+  {2689c6e4-dd5f-40f0-ab86-efd2f6fd1a33}, !- Layer 2
+  {0b61950e-fb5c-43c8-9fbd-ae51be4eecd7}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {83896150-782e-43db-8bbc-45359f327add}, !- Handle
+  {80a07325-3660-406f-9b57-cf1efc95235d}, !- Construction Name
+  InteriorFloor,                          !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {6081495f-2379-407a-be7a-c35f038a6205}, !- Handle
+  F16 Acoustic tile,                      !- Name
+  MediumSmooth,                           !- Roughness
+  0.0191,                                 !- Thickness {m}
+  0.06,                                   !- Conductivity {W/m-K}
+  368,                                    !- Density {kg/m3}
+  590.000000000002,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.3,                                    !- Solar Absorptance
+  0.3;                                    !- Visible Absorptance
+
+OS:Material:AirGap,
+  {2689c6e4-dd5f-40f0-ab86-efd2f6fd1a33}, !- Handle
+  F05 Ceiling air space resistance,       !- Name
+  0.18;                                   !- Thermal Resistance {m2-K/W}
+
+OS:Material,
+  {0b61950e-fb5c-43c8-9fbd-ae51be4eecd7}, !- Handle
+  M11 100mm lightweight concrete,         !- Name
+  MediumRough,                            !- Roughness
+  0.1016,                                 !- Thickness {m}
+  0.53,                                   !- Conductivity {W/m-K}
+  1280,                                   !- Density {kg/m3}
+  840.000000000002,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.5,                                    !- Solar Absorptance
+  0.5;                                    !- Visible Absorptance
+
+OS:Construction,
+  {6770af43-04a6-410d-820d-9377f0e4a538}, !- Handle
+  Interior Ceiling,                       !- Name
+  ,                                       !- Surface Rendering Name
+  {0b61950e-fb5c-43c8-9fbd-ae51be4eecd7}, !- Layer 1
+  {2689c6e4-dd5f-40f0-ab86-efd2f6fd1a33}, !- Layer 2
+  {6081495f-2379-407a-be7a-c35f038a6205}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {cae60677-b266-4877-99c9-57903dbc6afd}, !- Handle
+  {6770af43-04a6-410d-820d-9377f0e4a538}, !- Construction Name
+  InteriorCeiling,                        !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Construction,
+  {9eeba87e-110f-4428-b578-ddf6c578fe5a}, !- Handle
+  CBECS Before-1980 ExtWindow ClimateZone 5-8, !- Name
+  ,                                       !- Surface Rendering Name
+  {7b2e8c77-103a-4ca2-86ab-e7ed1f03d622}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {85fb1ade-5ecf-4c5f-9401-71a155f2ea27}, !- Handle
+  {9eeba87e-110f-4428-b578-ddf6c578fe5a}, !- Construction Name
+  ExteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:SimpleGlazingSystem,
+  {7b2e8c77-103a-4ca2-86ab-e7ed1f03d622}, !- Handle
+  Fixed Window 3.53/0.41/0.32,            !- Name
+  3.52036,                                !- U-Factor {W/m2-K}
+  0.41,                                   !- Solar Heat Gain Coefficient
+  0.32;                                   !- Visible Transmittance
+
+OS:Construction,
+  {6f97436b-8521-4bb2-b524-8b831a221a55}, !- Handle
+  Exterior Door,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {b49759ab-0c2d-444f-a1af-1f91c0c4c78c}, !- Layer 1
+  {1d16b544-34c0-4315-919a-09a92326a2a8}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {27cbb0ca-448f-434d-a505-89d4f9d4b433}, !- Handle
+  {6f97436b-8521-4bb2-b524-8b831a221a55}, !- Construction Name
+  ExteriorDoor,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {b49759ab-0c2d-444f-a1af-1f91c0c4c78c}, !- Handle
+  F08 Metal surface,                      !- Name
+  Smooth,                                 !- Roughness
+  0.0008,                                 !- Thickness {m}
+  45.2800000000001,                       !- Conductivity {W/m-K}
+  7823.99999999999,                       !- Density {kg/m3}
+  500,                                    !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {1d16b544-34c0-4315-919a-09a92326a2a8}, !- Handle
+  I01 25mm insulation board,              !- Name
+  MediumRough,                            !- Roughness
+  0.0254,                                 !- Thickness {m}
+  0.03,                                   !- Conductivity {W/m-K}
+  43,                                     !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {6e8f39d5-724b-4db0-a9f1-8972c486da68}, !- Handle
+  Exterior Door - Non-Swinging,           !- Name
+  ,                                       !- Surface Rendering Name
+  {b49759ab-0c2d-444f-a1af-1f91c0c4c78c}, !- Layer 1
+  {5167a1ca-c148-4084-b2fb-ce4deb169913}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {6bdd75c6-374c-48be-9239-876d6a585593}, !- Handle
+  {6e8f39d5-724b-4db0-a9f1-8972c486da68}, !- Construction Name
+  ExteriorDoor,                           !- Intended Surface Type
+  NonSwinging;                            !- Standards Construction Type
+
+OS:Material,
+  {5167a1ca-c148-4084-b2fb-ce4deb169913}, !- Handle
+  I02 50mm insulation board,              !- Name
+  MediumRough,                            !- Roughness
+  0.0508,                                 !- Thickness {m}
+  0.03,                                   !- Conductivity {W/m-K}
+  43,                                     !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {ae31eddf-b201-40f0-b856-763dcb005e97}, !- Handle
+  ASHRAE 90.1-2004 Skylight ClimateZone 4-5, !- Name
+  ,                                       !- Surface Rendering Name
+  {bb22aa67-c28f-4c73-8169-a6860873329e}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {b3627684-e9fe-47e1-8633-c9ec87fa5f9e}, !- Handle
+  {ae31eddf-b201-40f0-b856-763dcb005e97}, !- Construction Name
+  ExteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:SimpleGlazingSystem,
+  {bb22aa67-c28f-4c73-8169-a6860873329e}, !- Handle
+  Skylight no curb 2.1-5 per 90.12004 CZ 4-5, !- Name
+  3.91800170536831,                       !- U-Factor {W/m2-K}
+  0.39,                                   !- Solar Heat Gain Coefficient
+  0.2;                                    !- Visible Transmittance
+
+OS:Construction,
+  {7a144c2b-079a-4e59-823c-81e42cfcab16}, !- Handle
+  Interior Window,                        !- Name
+  ,                                       !- Surface Rendering Name
+  {2d4e77fe-0d22-40b5-bc7f-ffd68ac7e0e2}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {7a44cf4f-720f-4d10-b5b1-d0bde6d4905f}, !- Handle
+  {7a144c2b-079a-4e59-823c-81e42cfcab16}, !- Construction Name
+  InteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:Glazing,
+  {2d4e77fe-0d22-40b5-bc7f-ffd68ac7e0e2}, !- Handle
+  Clear 3mm,                              !- Name
+  SpectralAverage,                        !- Optical Data Type
+  ,                                       !- Window Glass Spectral Data Set Name
+  0.00299999999999999,                    !- Thickness {m}
+  0.837,                                  !- Solar Transmittance at Normal Incidence
+  0.075,                                  !- Front Side Solar Reflectance at Normal Incidence
+  0,                                      !- Back Side Solar Reflectance at Normal Incidence
+  0.898,                                  !- Visible Transmittance at Normal Incidence
+  0.081,                                  !- Front Side Visible Reflectance at Normal Incidence
+  0,                                      !- Back Side Visible Reflectance at Normal Incidence
+  0,                                      !- Infrared Transmittance at Normal Incidence
+  0.84,                                   !- Front Side Infrared Hemispherical Emissivity
+  0.84,                                   !- Back Side Infrared Hemispherical Emissivity
+  0.9,                                    !- Conductivity {W/m-K}
+  1,                                      !- Dirt Correction Factor for Solar and Visible Transmittance
+  No;                                     !- Solar Diffusing
+
+OS:Construction,
+  {fdc47b44-cc4b-4ec0-83ff-205ba329ad8a}, !- Handle
+  Interior Door,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {2b0e77ad-118e-4936-ad1d-e165af09defa}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {ec61282a-cb81-4215-a8b5-327fdcce5afc}, !- Handle
+  {fdc47b44-cc4b-4ec0-83ff-205ba329ad8a}, !- Construction Name
+  InteriorDoor,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {2b0e77ad-118e-4936-ad1d-e165af09defa}, !- Handle
+  G05 25mm wood,                          !- Name
+  MediumSmooth,                           !- Roughness
+  0.0254,                                 !- Thickness {m}
+  0.15,                                   !- Conductivity {W/m-K}
+  608,                                    !- Density {kg/m3}
+  1630,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.5,                                    !- Solar Absorptance
+  0.5;                                    !- Visible Absorptance
+
+OS:Construction,
+  {b98a45fb-4f20-410b-ac14-d226d520a0d9}, !- Handle
+  Interior Partition,                     !- Name
+  ,                                       !- Surface Rendering Name
+  {2b0e77ad-118e-4936-ad1d-e165af09defa}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {c9fd8726-88bc-406d-863b-3dafdd9ef67c}, !- Handle
+  {b98a45fb-4f20-410b-ac14-d226d520a0d9}, !- Construction Name
+  InteriorPartition,                      !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+

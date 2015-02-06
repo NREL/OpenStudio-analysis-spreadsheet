@@ -1,0 +1,2859 @@
+
+OS:Version,
+  {863497ca-00c9-4bbd-a64f-7b5d1bcdee08}, !- Handle
+  1.5.5;                                  !- Version Identifier
+
+OS:ClimateZones,
+  {135edfab-17e7-40db-a436-27d385a8cd6d}, !- Handle
+  ,                                       !- Active Institution
+  ,                                       !- Active Year
+  ASHRAE,                                 !- Climate Zone Institution Name 1
+  ANSI/ASHRAE Standard 169,               !- Climate Zone Document Name 1
+  2006,                                   !- Climate Zone Document Year 1
+  ,                                       !- Climate Zone Value 1
+  CEC,                                    !- Climate Zone Institution Name 2
+  California Climate Zone Descriptions,   !- Climate Zone Document Name 2
+  1995,                                   !- Climate Zone Document Year 2
+  ;                                       !- Climate Zone Value 2
+
+OS:YearDescription,
+  {513d8dda-86cb-442a-b01c-1f7f0e0ac70e}; !- Handle
+
+OS:RadianceParameters,
+  {270a96f1-3c86-4b75-a667-cdf22790e2c8}, !- Handle
+  1,                                      !- Accumulated Rays per Record
+  0,                                      !- Direct Threshold
+  1,                                      !- Direct Certainty
+  1,                                      !- Direct Jitter
+  1,                                      !- Direct Pretest
+  6,                                      !- Ambient Bounces VMX
+  2,                                      !- Ambient Bounces DMX
+  4050,                                   !- Ambient Divisions VMX
+  512,                                    !- Ambient Divisions DMX
+  256,                                    !- Ambient Supersamples
+  0.001,                                  !- Limit Weight VMX
+  0.001,                                  !- Limit Weight DMX
+  500,                                    !- Klems Sampling Density
+  146;                                    !- Sky Discretization Resolution
+
+OS:SimulationControl,
+  {2c487a4c-bac9-4ac5-b669-1e49d9da7c2b}, !- Handle
+  ,                                       !- Do Zone Sizing Calculation
+  ,                                       !- Do System Sizing Calculation
+  ,                                       !- Do Plant Sizing Calculation
+  No,                                     !- Run Simulation for Sizing Periods
+  ,                                       !- Run Simulation for Weather File Run Periods
+  0.04,                                   !- Loads Convergence Tolerance Value
+  ,                                       !- Temperature Convergence Tolerance Value {deltaC}
+  ,                                       !- Solar Distribution
+  ,                                       !- Maximum Number of Warmup Days
+  2;                                      !- Minimum Number of Warmup Days
+
+OS:Sizing:Parameters,
+  {dde5af6f-7923-4600-a28a-7556673a0266}, !- Handle
+  1.25,                                   !- Heating Sizing Factor
+  1.15;                                   !- Cooling Sizing Factor
+
+OS:ProgramControl,
+  {05027a99-f2b3-4aeb-afc6-1425fbb4371d}; !- Handle
+
+OS:Timestep,
+  {4ebc9f1e-4707-402e-9844-67eb1ffbd522}, !- Handle
+  2;                                      !- Number of Timesteps per Hour
+
+OS:OutputControl:ReportingTolerances,
+  {65797aa2-06a9-45fe-b69d-bc6e060399d3}; !- Handle
+
+OS:ConvergenceLimits,
+  {9fc11aba-8822-4f3d-970c-46391ba4040d}; !- Handle
+
+OS:ShadowCalculation,
+  {ca758bea-4416-4626-9bba-3d8795c79bd6}, !- Handle
+  7,                                      !- Calculation Frequency
+  15000;                                  !- Maximum Figures in Shadow Overlap Calculations
+
+OS:SurfaceConvectionAlgorithm:Inside,
+  {aaabfc36-718a-4ab0-b622-f186ebb45230}, !- Handle
+  TARP;                                   !- Algorithm
+
+OS:SurfaceConvectionAlgorithm:Outside,
+  {9a0a9f6f-4bbd-4b12-a121-9492a1fcd7d6}, !- Handle
+  DOE-2;                                  !- Algorithm
+
+OS:HeatBalanceAlgorithm,
+  {9d93e563-e1e0-46d7-9e39-d1c8aceb7212}, !- Handle
+  ConductionTransferFunction,             !- Algorithm
+  200;                                    !- Surface Temperature Upper Limit {F}
+
+OS:ZoneAirHeatBalanceAlgorithm,
+  {8520d93e-310f-4696-9bcd-36228bfdd743}, !- Handle
+  AnalyticalSolution;                     !- Algorithm
+
+OS:ZoneAirContaminantBalance,
+  {eb5fc3ae-fb22-4160-8fcb-3e3b22b000d3}; !- Handle
+
+OS:ZoneCapacitanceMultiplier:ResearchSpecial,
+  {4020ce4f-5a7a-4849-8028-8305d7b751b1}, !- Handle
+  ,                                       !- Temperature Capacity Multiplier
+  ,                                       !- Humidity Capacity Multiplier
+  ;                                       !- Carbon Dioxide Capacity Multiplier
+
+OS:RunPeriod,
+  {28df894d-6af9-4fb8-8f56-df1753344aa3}, !- Handle
+  Run Period 1,                           !- Name
+  1,                                      !- Begin Month
+  1,                                      !- Begin Day of Month
+  12,                                     !- End Month
+  31,                                     !- End Day of Month
+  ,                                       !- Use Weather File Holidays and Special Days
+  ,                                       !- Use Weather File Daylight Saving Period
+  ,                                       !- Apply Weekend Holiday Rule
+  ,                                       !- Use Weather File Rain Indicators
+  ,                                       !- Use Weather File Snow Indicators
+  ;                                       !- Number of Times Runperiod to be Repeated
+
+OS:Building,
+  {bf305633-c5a1-4881-9edf-ca5e1a8e1274}, !- Handle
+  Building 1,                             !- Name
+  ,                                       !- Building Sector Type
+  ,                                       !- North Axis {deg}
+  ,                                       !- Nominal Floor to Floor Height {m}
+  ,                                       !- Space Type Name
+  ,                                       !- Default Construction Set Name
+  {77f286af-4c0c-40f4-8f8d-a9307fe1fa78}, !- Default Schedule Set Name
+  ,                                       !- Standards Number of Stories
+  ,                                       !- Standards Number of Above Ground Stories
+  MidriseApartment;                       !- Standards Building Type
+
+OS:LifeCycleCost:Parameters,
+  {231cf8a0-f0e7-4251-a99f-11f0d464e661}, !- Handle
+  FEMP,                                   !- Analysis Type
+  ,                                       !- Discounting Convention
+  ,                                       !- Inflation Approach
+  ,                                       !- Real Discount Rate
+  ,                                       !- Nominal Discount Rate
+  ,                                       !- Inflation
+  ,                                       !- Base Date Month
+  ,                                       !- Base Date Year
+  ,                                       !- Service Date Month
+  ,                                       !- Service Date Year
+  ,                                       !- Length of Study Period in Years
+  ,                                       !- Tax Rate
+  ,                                       !- Depreciation Method
+  Yes;                                    !- Use NIST Fuel Escalation Rates
+
+OS:Facility,
+  {3ba8e45b-b833-44eb-a723-ea6c3946dc96}; !- Handle
+
+OS:SpaceType,
+  {f4d13b6c-dfea-4fab-ac96-5f1391905c23}, !- Handle
+  MidriseApartment|BlendA|DOE Ref 2004|ASHRAE 169-2006-5A, !- Name
+  {a54234b4-fcb0-4e6f-a8f0-d14e2aecdbb6}, !- Default Construction Set Name
+  ,                                       !- Default Schedule Set Name
+  {a51156c3-ebec-4f24-85c5-aa7d147950fd}, !- Group Rendering Name
+  {534192e1-f95e-465e-947a-4f485256ef6b}, !- Design Specification Outdoor Air Object Name
+  MidriseApartment,                       !- Standards Building Type
+  BlendA;                                 !- Standards Space Type
+
+OS:Rendering:Color,
+  {a51156c3-ebec-4f24-85c5-aa7d147950fd}, !- Handle
+  Rendering Color 1,                      !- Name
+  78,                                     !- Rendering Red Value
+  167,                                    !- Rendering Green Value
+  222;                                    !- Rendering Blue Value
+
+OS:SpaceType,
+  {1a04edef-cf39-4b1f-967f-c9c6432769f4}, !- Handle
+  MidriseApartment|Office|DOE Ref 2004|ASHRAE 169-2006-5A, !- Name
+  {a54234b4-fcb0-4e6f-a8f0-d14e2aecdbb6}, !- Default Construction Set Name
+  {595bcf02-e7a2-40f7-9e4a-b6e0333d067b}, !- Default Schedule Set Name
+  {724af344-2310-41d0-90da-336d6315a031}, !- Group Rendering Name
+  {a9c8bd8f-b4c1-4ff3-99a9-ae1bb4bc9ac0}, !- Design Specification Outdoor Air Object Name
+  MidriseApartment,                       !- Standards Building Type
+  Office;                                 !- Standards Space Type
+
+OS:Rendering:Color,
+  {724af344-2310-41d0-90da-336d6315a031}, !- Handle
+  Rendering Color 2,                      !- Name
+  120,                                    !- Rendering Red Value
+  230,                                    !- Rendering Green Value
+  199;                                    !- Rendering Blue Value
+
+OS:Schedule:Ruleset,
+  {4902f0ba-ecff-4307-ba95-5747381a9f39}, !- Handle
+  0800|1800|MidriseApartment|default|hoo, !- Name
+  {8bfe946d-7de5-4d13-9982-dfe8e2c31259}, !- Schedule Type Limits Name
+  {56cd85ed-0445-4357-8bde-25b87d595cd6}, !- Default Day Schedule Name
+  {53f3a27b-ab93-419a-9bc6-42f94e7d1883}, !- Summer Design Day Schedule Name
+  {9b9fd3ed-8b6c-4242-bf4f-0c78ae0a4d2a}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {56cd85ed-0445-4357-8bde-25b87d595cd6}, !- Handle
+  0800|1800|MidriseApartment|default|hoo Schedule Week Day, !- Name
+  {8bfe946d-7de5-4d13-9982-dfe8e2c31259}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {fe048bc3-6701-4bb9-937c-5cec05d02be3}, !- Handle
+  Schedule Day 2,                         !- Name
+  ,                                       !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {9b9fd3ed-8b6c-4242-bf4f-0c78ae0a4d2a}, !- Handle
+  0800|1800|MidriseApartment|default|hoo Winter Design Day, !- Name
+  {8bfe946d-7de5-4d13-9982-dfe8e2c31259}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {2ee60837-f256-448d-8571-0ec451d3f4d0}, !- Handle
+  Schedule Day 3,                         !- Name
+  ,                                       !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {53f3a27b-ab93-419a-9bc6-42f94e7d1883}, !- Handle
+  0800|1800|MidriseApartment|default|hoo Summer Design Day, !- Name
+  {8bfe946d-7de5-4d13-9982-dfe8e2c31259}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:DefaultScheduleSet,
+  {77f286af-4c0c-40f4-8f8d-a9307fe1fa78}, !- Handle
+  Building Hours of Operation,            !- Name
+  {4902f0ba-ecff-4307-ba95-5747381a9f39}, !- Hours of Operation Schedule Name
+  ,                                       !- Number of People Schedule Name
+  ,                                       !- People Activity Level Schedule Name
+  ,                                       !- Lighting Schedule Name
+  ,                                       !- Electric Equipment Schedule Name
+  ,                                       !- Gas Equipment Schedule Name
+  ,                                       !- Hot Water Equipment Schedule Name
+  ,                                       !- Infiltration Schedule Name
+  ,                                       !- Steam Equipment Schedule Name
+  ;                                       !- Other Equipment Schedule Name
+
+OS:ScheduleTypeLimits,
+  {8bfe946d-7de5-4d13-9982-dfe8e2c31259}, !- Handle
+  OnOff,                                  !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Schedule:Ruleset,
+  {eb2bd32e-04dc-49e7-befe-8552ff9b76d3}, !- Handle
+  0800|1800|MidriseApartment|xApartment|lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {fc86ad83-326f-45f4-a1d2-075728ce31b7}, !- Default Day Schedule Name
+  {6be3672e-8afd-475b-9072-e4065be8c4a2}, !- Summer Design Day Schedule Name
+  {f8415977-eb61-4025-8e79-715c5fff1c7f}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Handle
+  Lights Schedule Type Limits,            !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {fc86ad83-326f-45f4-a1d2-075728ce31b7}, !- Handle
+  0800|1800|MidriseApartment|xApartment|lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.07,                                   !- Value Until Time 1
+  5,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.19,                                   !- Value Until Time 2
+  6,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.39,                                   !- Value Until Time 3
+  7,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.44,                                   !- Value Until Time 4
+  8,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.39,                                   !- Value Until Time 5
+  9,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.17,                                   !- Value Until Time 6
+  15,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.12,                                   !- Value Until Time 7
+  16,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.21,                                   !- Value Until Time 8
+  17,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.44,                                   !- Value Until Time 9
+  18,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.62,                                   !- Value Until Time 10
+  19,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.83,                                   !- Value Until Time 11
+  20,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.99,                                   !- Value Until Time 12
+  21,                                     !- Hour 13
+  0,                                      !- Minute 13
+  1,                                      !- Value Until Time 13
+  22,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.69,                                   !- Value Until Time 14
+  23,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.38,                                   !- Value Until Time 15
+  24,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.16;                                   !- Value Until Time 16
+
+OS:Schedule:Day,
+  {6be3672e-8afd-475b-9072-e4065be8c4a2}, !- Handle
+  0800|1800|MidriseApartment|xApartment|lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.07,                                   !- Value Until Time 1
+  5,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.19,                                   !- Value Until Time 2
+  8,                                      !- Hour 3
+  0,                                      !- Minute 3
+  1,                                      !- Value Until Time 3
+  9,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.17,                                   !- Value Until Time 4
+  15,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.12,                                   !- Value Until Time 5
+  16,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.21,                                   !- Value Until Time 6
+  23,                                     !- Hour 7
+  0,                                      !- Minute 7
+  1,                                      !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.16;                                   !- Value Until Time 8
+
+OS:Schedule:Day,
+  {f8415977-eb61-4025-8e79-715c5fff1c7f}, !- Handle
+  0800|1800|MidriseApartment|xApartment|lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.07;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {f4e7a881-b514-406c-9052-1359665296cb}, !- Handle
+  0800|1800|MidriseApartment|default|clg_setpoint, !- Name
+  {d7bd2cde-119d-4a1b-9984-191e9c81593a}, !- Schedule Type Limits Name
+  {088cd515-df48-4c46-9751-474c855495aa}, !- Default Day Schedule Name
+  {b0f3e5a1-b5e1-4db2-b843-f327d4c5eb09}, !- Summer Design Day Schedule Name
+  {84d3a451-f4d5-4fd5-b88a-b6ade04930e2}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {d7bd2cde-119d-4a1b-9984-191e9c81593a}, !- Handle
+  Thermostat Cooling Setpoint Schedule Type Limits, !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  100,                                    !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {088cd515-df48-4c46-9751-474c855495aa}, !- Handle
+  0800|1800|MidriseApartment|default|clg_setpoint |default, !- Name
+  {d7bd2cde-119d-4a1b-9984-191e9c81593a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  23.8888888888889;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {b0f3e5a1-b5e1-4db2-b843-f327d4c5eb09}, !- Handle
+  0800|1800|MidriseApartment|default|clg_setpoint Summer Design Day, !- Name
+  {d7bd2cde-119d-4a1b-9984-191e9c81593a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  23.8888888888889;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {84d3a451-f4d5-4fd5-b88a-b6ade04930e2}, !- Handle
+  0800|1800|MidriseApartment|default|clg_setpoint Winter Design Day, !- Name
+  {d7bd2cde-119d-4a1b-9984-191e9c81593a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  23.8888888888889;                       !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {382fca32-2bf6-4270-8447-06fd6904c667}, !- Handle
+  0800|1800|MidriseApartment|default|work_eff, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  {8d867b48-ac7c-45cc-8153-b9f48bf88a6d}, !- Default Day Schedule Name
+  {aa3278ba-6a39-4581-8bfb-b449d72234fe}, !- Summer Design Day Schedule Name
+  {75da30a4-f20a-428a-9665-07a818a1be95}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Handle
+  Fraction Schedule Type Limits,          !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {8d867b48-ac7c-45cc-8153-b9f48bf88a6d}, !- Handle
+  0800|1800|MidriseApartment|default|work_eff |default, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {aa3278ba-6a39-4581-8bfb-b449d72234fe}, !- Handle
+  0800|1800|MidriseApartment|default|work_eff Summer Design Day, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {75da30a4-f20a-428a-9665-07a818a1be95}, !- Handle
+  0800|1800|MidriseApartment|default|work_eff Winter Design Day, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {3fd0cf36-79b3-43c8-90ab-9d87414c657f}, !- Handle
+  0800|1800|MidriseApartment|default|rh,  !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  {f3da5897-1174-4581-ba5d-2a8501ba3410}, !- Default Day Schedule Name
+  {a9eae1c6-74dd-4764-a6be-36c66e220fc9}, !- Summer Design Day Schedule Name
+  {010cce7a-7924-44dd-93a0-e9e0bab7ea93}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Handle
+  Dimensionless Schedule Type Limits,     !- Name
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {f3da5897-1174-4581-ba5d-2a8501ba3410}, !- Handle
+  0800|1800|MidriseApartment|default|rh |default, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Day,
+  {a9eae1c6-74dd-4764-a6be-36c66e220fc9}, !- Handle
+  0800|1800|MidriseApartment|default|rh Summer Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Day,
+  {010cce7a-7924-44dd-93a0-e9e0bab7ea93}, !- Handle
+  0800|1800|MidriseApartment|default|rh Winter Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  50;                                     !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {120a65f2-5be7-45cf-bb91-7926ddaa1873}, !- Handle
+  0800|1800|MidriseApartment|Office|lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {8b8df1fd-a1f1-436e-aba1-cfddbfa33237}, !- Default Day Schedule Name
+  {f7ec58ee-7da2-4d25-8c8c-b7de1bc2fe3f}, !- Summer Design Day Schedule Name
+  {e8ace2ea-e69d-48cf-add9-2393fb108ab5}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {8b8df1fd-a1f1-436e-aba1-cfddbfa33237}, !- Handle
+  0800|1800|MidriseApartment|Office|lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.18,                                   !- Value Until Time 1
+  12,                                     !- Hour 2
+  30,                                     !- Minute 2
+  0.9,                                    !- Value Until Time 2
+  13,                                     !- Hour 3
+  30,                                     !- Minute 3
+  0.8,                                    !- Value Until Time 3
+  18,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.9,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.18;                                   !- Value Until Time 5
+
+OS:Schedule:Day,
+  {f7ec58ee-7da2-4d25-8c8c-b7de1bc2fe3f}, !- Handle
+  0800|1800|MidriseApartment|Office|lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.18,                                   !- Value Until Time 1
+  18,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.18;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {e8ace2ea-e69d-48cf-add9-2393fb108ab5}, !- Handle
+  0800|1800|MidriseApartment|Office|lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.18;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {a232d474-697e-4fa0-928b-d460a0320c43}, !- Handle
+  0800|1800|MidriseApartment|default|elevator, !- Name
+  {acc355d2-23a6-4794-a5a7-bda2736e9a50}, !- Schedule Type Limits Name
+  {6559d909-da52-4944-a7cd-f8326072b0fc}, !- Default Day Schedule Name
+  {4b3c5401-6983-4413-966d-c96b2e025411}, !- Summer Design Day Schedule Name
+  {98a21194-97f6-410c-80bd-e8f1cfaff69f}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {acc355d2-23a6-4794-a5a7-bda2736e9a50}, !- Handle
+  Elevators Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {6559d909-da52-4944-a7cd-f8326072b0fc}, !- Handle
+  0800|1800|MidriseApartment|default|elevator |default, !- Name
+  {acc355d2-23a6-4794-a5a7-bda2736e9a50}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  5,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  6,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  7,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.4,                                    !- Value Until Time 4
+  9,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.5,                                    !- Value Until Time 5
+  10,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.35,                                   !- Value Until Time 6
+  16,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.15,                                   !- Value Until Time 7
+  17,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.35,                                   !- Value Until Time 8
+  19,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.5,                                    !- Value Until Time 9
+  21,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.4,                                    !- Value Until Time 10
+  22,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.3,                                    !- Value Until Time 11
+  23,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.2,                                    !- Value Until Time 12
+  24,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.1;                                    !- Value Until Time 13
+
+OS:Schedule:Day,
+  {4b3c5401-6983-4413-966d-c96b2e025411}, !- Handle
+  0800|1800|MidriseApartment|default|elevator Summer Design Day, !- Name
+  {acc355d2-23a6-4794-a5a7-bda2736e9a50}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  5,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  6,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  7,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.4,                                    !- Value Until Time 4
+  9,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.5,                                    !- Value Until Time 5
+  10,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.35,                                   !- Value Until Time 6
+  16,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.15,                                   !- Value Until Time 7
+  17,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.35,                                   !- Value Until Time 8
+  19,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.5,                                    !- Value Until Time 9
+  21,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.4,                                    !- Value Until Time 10
+  22,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.3,                                    !- Value Until Time 11
+  23,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.2,                                    !- Value Until Time 12
+  24,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.1;                                    !- Value Until Time 13
+
+OS:Schedule:Day,
+  {98a21194-97f6-410c-80bd-e8f1cfaff69f}, !- Handle
+  0800|1800|MidriseApartment|default|elevator Winter Design Day, !- Name
+  {acc355d2-23a6-4794-a5a7-bda2736e9a50}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  4,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.05,                                   !- Value Until Time 1
+  5,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.1,                                    !- Value Until Time 2
+  6,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.2,                                    !- Value Until Time 3
+  7,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.4,                                    !- Value Until Time 4
+  9,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.5,                                    !- Value Until Time 5
+  10,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.35,                                   !- Value Until Time 6
+  16,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.15,                                   !- Value Until Time 7
+  17,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.35,                                   !- Value Until Time 8
+  19,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.5,                                    !- Value Until Time 9
+  21,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.4,                                    !- Value Until Time 10
+  22,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.3,                                    !- Value Until Time 11
+  23,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.2,                                    !- Value Until Time 12
+  24,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.1;                                    !- Value Until Time 13
+
+OS:Schedule:Ruleset,
+  {0b129502-e4bf-4468-8c60-197d3689029d}, !- Handle
+  0800|1800|MidriseApartment|default|swh, !- Name
+  {70b8f5fe-71cf-4509-823b-82980e48e68f}, !- Schedule Type Limits Name
+  {5cc6a14e-5910-47c6-b62a-aa893ee01771}, !- Default Day Schedule Name
+  {bf1b9227-6c51-46bc-abae-5bcc24ad0599}, !- Summer Design Day Schedule Name
+  {feb2596e-df74-4aa1-a9ca-dcb6bbd40939}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {70b8f5fe-71cf-4509-823b-82980e48e68f}, !- Handle
+  Water Use Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {5cc6a14e-5910-47c6-b62a-aa893ee01771}, !- Handle
+  0800|1800|MidriseApartment|default|swh |default, !- Name
+  {70b8f5fe-71cf-4509-823b-82980e48e68f}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.08,                                   !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.04,                                   !- Value Until Time 2
+  4,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.01,                                   !- Value Until Time 3
+  5,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.04,                                   !- Value Until Time 4
+  6,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.27,                                   !- Value Until Time 5
+  7,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.94,                                   !- Value Until Time 6
+  8,                                      !- Hour 7
+  0,                                      !- Minute 7
+  1,                                      !- Value Until Time 7
+  9,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.96,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.84,                                   !- Value Until Time 9
+  11,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.76,                                   !- Value Until Time 10
+  12,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.61,                                   !- Value Until Time 11
+  13,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.53,                                   !- Value Until Time 12
+  14,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.47,                                   !- Value Until Time 13
+  15,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.41,                                   !- Value Until Time 14
+  16,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.47,                                   !- Value Until Time 15
+  17,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.55,                                   !- Value Until Time 16
+  18,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.73,                                   !- Value Until Time 17
+  19,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0.86,                                   !- Value Until Time 18
+  20,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.82,                                   !- Value Until Time 19
+  21,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.75,                                   !- Value Until Time 20
+  22,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.61,                                   !- Value Until Time 21
+  23,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.53,                                   !- Value Until Time 22
+  24,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.29;                                   !- Value Until Time 23
+
+OS:Schedule:Day,
+  {bf1b9227-6c51-46bc-abae-5bcc24ad0599}, !- Handle
+  0800|1800|MidriseApartment|default|swh Summer Design Day, !- Name
+  {70b8f5fe-71cf-4509-823b-82980e48e68f}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.08,                                   !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.04,                                   !- Value Until Time 2
+  4,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.01,                                   !- Value Until Time 3
+  5,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.04,                                   !- Value Until Time 4
+  6,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.27,                                   !- Value Until Time 5
+  7,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.94,                                   !- Value Until Time 6
+  8,                                      !- Hour 7
+  0,                                      !- Minute 7
+  1,                                      !- Value Until Time 7
+  9,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.96,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.84,                                   !- Value Until Time 9
+  11,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.76,                                   !- Value Until Time 10
+  12,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.61,                                   !- Value Until Time 11
+  13,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.53,                                   !- Value Until Time 12
+  14,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.47,                                   !- Value Until Time 13
+  15,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.41,                                   !- Value Until Time 14
+  16,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.47,                                   !- Value Until Time 15
+  17,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.55,                                   !- Value Until Time 16
+  18,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.73,                                   !- Value Until Time 17
+  19,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0.86,                                   !- Value Until Time 18
+  20,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.82,                                   !- Value Until Time 19
+  21,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.75,                                   !- Value Until Time 20
+  22,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.61,                                   !- Value Until Time 21
+  23,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.53,                                   !- Value Until Time 22
+  24,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.29;                                   !- Value Until Time 23
+
+OS:Schedule:Day,
+  {feb2596e-df74-4aa1-a9ca-dcb6bbd40939}, !- Handle
+  0800|1800|MidriseApartment|default|swh Winter Design Day, !- Name
+  {70b8f5fe-71cf-4509-823b-82980e48e68f}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.08,                                   !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.04,                                   !- Value Until Time 2
+  4,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.01,                                   !- Value Until Time 3
+  5,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.04,                                   !- Value Until Time 4
+  6,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.27,                                   !- Value Until Time 5
+  7,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.94,                                   !- Value Until Time 6
+  8,                                      !- Hour 7
+  0,                                      !- Minute 7
+  1,                                      !- Value Until Time 7
+  9,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.96,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.84,                                   !- Value Until Time 9
+  11,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.76,                                   !- Value Until Time 10
+  12,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.61,                                   !- Value Until Time 11
+  13,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.53,                                   !- Value Until Time 12
+  14,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.47,                                   !- Value Until Time 13
+  15,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.41,                                   !- Value Until Time 14
+  16,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.47,                                   !- Value Until Time 15
+  17,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.55,                                   !- Value Until Time 16
+  18,                                     !- Hour 17
+  0,                                      !- Minute 17
+  0.73,                                   !- Value Until Time 17
+  19,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0.86,                                   !- Value Until Time 18
+  20,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.82,                                   !- Value Until Time 19
+  21,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.75,                                   !- Value Until Time 20
+  22,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.61,                                   !- Value Until Time 21
+  23,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.53,                                   !- Value Until Time 22
+  24,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.29;                                   !- Value Until Time 23
+
+OS:Schedule:Ruleset,
+  {983a8309-b946-40a6-90b7-894832b72bc1}, !- Handle
+  0800|1800|MidriseApartment|default|ext_lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {728382ea-6e08-44ab-b980-405ec56fe331}, !- Default Day Schedule Name
+  {c7406897-080d-4267-8f9a-4b1a0aa0a1ae}, !- Summer Design Day Schedule Name
+  {2b3fe415-dd5a-43a6-b2b0-8225bc7dc95e}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {728382ea-6e08-44ab-b980-405ec56fe331}, !- Handle
+  0800|1800|MidriseApartment|default|ext_lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {c7406897-080d-4267-8f9a-4b1a0aa0a1ae}, !- Handle
+  0800|1800|MidriseApartment|default|ext_lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {2b3fe415-dd5a-43a6-b2b0-8225bc7dc95e}, !- Handle
+  0800|1800|MidriseApartment|default|ext_lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {28222733-696f-4eac-94ca-709895d6665f}, !- Handle
+  0800|1800|MidriseApartment|Apartment|hvac, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  {efab4baa-9812-40e1-9527-9857029646e6}, !- Default Day Schedule Name
+  {1ad18955-b880-446d-bbea-ae4f83a16b40}, !- Summer Design Day Schedule Name
+  {eef2ee54-aa2c-4dd3-9312-b486a8072a14}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Handle
+  HVAC Operation Schedule Type Limits,    !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Schedule:Day,
+  {efab4baa-9812-40e1-9527-9857029646e6}, !- Handle
+  0800|1800|MidriseApartment|Apartment|hvac |default, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {1ad18955-b880-446d-bbea-ae4f83a16b40}, !- Handle
+  0800|1800|MidriseApartment|Apartment|hvac Summer Design Day, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {eef2ee54-aa2c-4dd3-9312-b486a8072a14}, !- Handle
+  0800|1800|MidriseApartment|Apartment|hvac Winter Design Day, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {8eb72fb9-0b5e-432c-af9b-f4fb1ebebb5c}, !- Handle
+  0800|1800|MidriseApartment|default|activity, !- Name
+  {f3a347f6-acf3-438d-af50-239ba1609439}, !- Schedule Type Limits Name
+  {c12e79d7-fa04-4e4a-9ee0-2023d52e10a9}, !- Default Day Schedule Name
+  {d60307d4-28a0-4390-bef9-5175763e976e}, !- Summer Design Day Schedule Name
+  {1a7d7340-e70a-4e36-95aa-faf29a5406af}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {f3a347f6-acf3-438d-af50-239ba1609439}, !- Handle
+  People Activity Type Limits,            !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  ActivityLevel;                          !- Unit Type
+
+OS:Schedule:Day,
+  {c12e79d7-fa04-4e4a-9ee0-2023d52e10a9}, !- Handle
+  0800|1800|MidriseApartment|default|activity |default, !- Name
+  {f3a347f6-acf3-438d-af50-239ba1609439}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {d60307d4-28a0-4390-bef9-5175763e976e}, !- Handle
+  0800|1800|MidriseApartment|default|activity Summer Design Day, !- Name
+  {f3a347f6-acf3-438d-af50-239ba1609439}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {1a7d7340-e70a-4e36-95aa-faf29a5406af}, !- Handle
+  0800|1800|MidriseApartment|default|activity Winter Design Day, !- Name
+  {f3a347f6-acf3-438d-af50-239ba1609439}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  120;                                    !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {9b891f0e-886c-4870-bc49-c11481db4713}, !- Handle
+  0800|1800|MidriseApartment|Office|elec_equip, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  {d656a468-9dae-427f-877b-359a19a5bb01}, !- Default Day Schedule Name
+  {c527b20b-458b-4e87-a407-36bb10c206d4}, !- Summer Design Day Schedule Name
+  {772ca003-cd62-4606-afdd-fd58bc0c849a}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Handle
+  Equipment Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {d656a468-9dae-427f-877b-359a19a5bb01}, !- Handle
+  0800|1800|MidriseApartment|Office|elec_equip |default, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  12,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  13,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.5,                                    !- Value Until Time 3
+  17,                                     !- Hour 4
+  0,                                      !- Minute 4
+  1,                                      !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0;                                      !- Value Until Time 5
+
+OS:Schedule:Day,
+  {c527b20b-458b-4e87-a407-36bb10c206d4}, !- Handle
+  0800|1800|MidriseApartment|Office|elec_equip Summer Design Day, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {772ca003-cd62-4606-afdd-fd58bc0c849a}, !- Handle
+  0800|1800|MidriseApartment|Office|elec_equip Winter Design Day, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {4db9b1a7-0ba5-420e-b1ec-1c7dac6ddfd0}, !- Handle
+  0800|1800|MidriseApartment|default|thermal_ctrl, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  {898712d4-662f-46de-8069-e4c377c98dd0}, !- Default Day Schedule Name
+  {9c0f93f4-165b-4218-ab61-c7f23320d10b}, !- Summer Design Day Schedule Name
+  {fee7d4e1-b6f5-4e1f-af9f-32b14d30bbd4}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {898712d4-662f-46de-8069-e4c377c98dd0}, !- Handle
+  0800|1800|MidriseApartment|default|thermal_ctrl |default, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {9c0f93f4-165b-4218-ab61-c7f23320d10b}, !- Handle
+  0800|1800|MidriseApartment|default|thermal_ctrl Summer Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {fee7d4e1-b6f5-4e1f-af9f-32b14d30bbd4}, !- Handle
+  0800|1800|MidriseApartment|default|thermal_ctrl Winter Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  4;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {141b1484-01cb-4ec5-8788-1fdca40828c7}, !- Handle
+  0800|1800|MidriseApartment|default|air_velocity, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  {691f85fe-23d6-4939-8fe1-8787353bb74c}, !- Default Day Schedule Name
+  {16b9c65c-ce9a-4ebe-8c1f-e74609518a9f}, !- Summer Design Day Schedule Name
+  {18f4f11e-6d66-415a-85a9-f280c0d1fb58}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {691f85fe-23d6-4939-8fe1-8787353bb74c}, !- Handle
+  0800|1800|MidriseApartment|default|air_velocity |default, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Day,
+  {16b9c65c-ce9a-4ebe-8c1f-e74609518a9f}, !- Handle
+  0800|1800|MidriseApartment|default|air_velocity Summer Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Day,
+  {18f4f11e-6d66-415a-85a9-f280c0d1fb58}, !- Handle
+  0800|1800|MidriseApartment|default|air_velocity Winter Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.200152;                               !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {0dfe1ec3-4616-4296-a656-b03979f2c116}, !- Handle
+  0800|1800|MidriseApartment|Apartment|lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {54522c6b-e168-40f1-ab3f-9511b2b7e6a5}, !- Default Day Schedule Name
+  {5d226168-d640-4fc3-992f-b0ea59eb8664}, !- Summer Design Day Schedule Name
+  {87280f4b-8c02-4d60-80a1-b6bd47a5830b}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {54522c6b-e168-40f1-ab3f-9511b2b7e6a5}, !- Handle
+  0800|1800|MidriseApartment|Apartment|lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  3,                                      !- Hour 1
+  30,                                     !- Minute 1
+  0.07,                                   !- Value Until Time 1
+  4,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.16,                                   !- Value Until Time 2
+  4,                                      !- Hour 3
+  30,                                     !- Minute 3
+  0.26,                                   !- Value Until Time 3
+  5,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.35,                                   !- Value Until Time 4
+  7,                                      !- Hour 5
+  30,                                     !- Minute 5
+  0.44,                                   !- Value Until Time 5
+  8,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.36,                                   !- Value Until Time 6
+  8,                                      !- Hour 7
+  30,                                     !- Minute 7
+  0.28,                                   !- Value Until Time 7
+  9,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.2,                                    !- Value Until Time 8
+  14,                                     !- Hour 9
+  30,                                     !- Minute 9
+  0.12,                                   !- Value Until Time 9
+  15,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.22,                                   !- Value Until Time 10
+  15,                                     !- Hour 11
+  30,                                     !- Minute 11
+  0.32,                                   !- Value Until Time 11
+  16,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.41,                                   !- Value Until Time 12
+  16,                                     !- Hour 13
+  30,                                     !- Minute 13
+  0.51,                                   !- Value Until Time 13
+  17,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.61,                                   !- Value Until Time 14
+  17,                                     !- Hour 15
+  30,                                     !- Minute 15
+  0.71,                                   !- Value Until Time 15
+  18,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.8,                                    !- Value Until Time 16
+  18,                                     !- Hour 17
+  30,                                     !- Minute 17
+  0.9,                                    !- Value Until Time 17
+  21,                                     !- Hour 18
+  0,                                      !- Minute 18
+  1,                                      !- Value Until Time 18
+  21,                                     !- Hour 19
+  30,                                     !- Minute 19
+  0.81,                                   !- Value Until Time 19
+  22,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.63,                                   !- Value Until Time 20
+  22,                                     !- Hour 21
+  30,                                     !- Minute 21
+  0.44,                                   !- Value Until Time 21
+  23,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.26,                                   !- Value Until Time 22
+  24,                                     !- Hour 23
+  0,                                      !- Minute 23
+  0.07;                                   !- Value Until Time 23
+
+OS:Schedule:Day,
+  {5d226168-d640-4fc3-992f-b0ea59eb8664}, !- Handle
+  0800|1800|MidriseApartment|Apartment|lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  3,                                      !- Hour 1
+  30,                                     !- Minute 1
+  0.07,                                   !- Value Until Time 1
+  4,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.16,                                   !- Value Until Time 2
+  4,                                      !- Hour 3
+  30,                                     !- Minute 3
+  0.26,                                   !- Value Until Time 3
+  8,                                      !- Hour 4
+  0,                                      !- Minute 4
+  1,                                      !- Value Until Time 4
+  8,                                      !- Hour 5
+  30,                                     !- Minute 5
+  0.28,                                   !- Value Until Time 5
+  9,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.2,                                    !- Value Until Time 6
+  14,                                     !- Hour 7
+  30,                                     !- Minute 7
+  0.12,                                   !- Value Until Time 7
+  15,                                     !- Hour 8
+  0,                                      !- Minute 8
+  0.22,                                   !- Value Until Time 8
+  22,                                     !- Hour 9
+  30,                                     !- Minute 9
+  1,                                      !- Value Until Time 9
+  23,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.26,                                   !- Value Until Time 10
+  24,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.07;                                   !- Value Until Time 11
+
+OS:Schedule:Day,
+  {87280f4b-8c02-4d60-80a1-b6bd47a5830b}, !- Handle
+  0800|1800|MidriseApartment|Apartment|lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.07;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {b6cefc31-f3b0-4840-8a88-028cfd9f9486}, !- Handle
+  0800|1800|MidriseApartment|default|htg_setpoint, !- Name
+  {9bd357bd-0f37-4ae4-b5e4-e68579a2f61a}, !- Schedule Type Limits Name
+  {741e4579-4342-49e3-a2f8-8860aaaa6c5e}, !- Default Day Schedule Name
+  {23d851d6-b277-45fe-b133-8068f3a249c5}, !- Summer Design Day Schedule Name
+  {77f6feee-0e49-4e65-b481-d19b8369ab73}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {9bd357bd-0f37-4ae4-b5e4-e68579a2f61a}, !- Handle
+  Thermostat Heating Setpoint Schedule Type Limits, !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  100,                                    !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {741e4579-4342-49e3-a2f8-8860aaaa6c5e}, !- Handle
+  0800|1800|MidriseApartment|default|htg_setpoint |default, !- Name
+  {9bd357bd-0f37-4ae4-b5e4-e68579a2f61a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  21.1111111111111;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {23d851d6-b277-45fe-b133-8068f3a249c5}, !- Handle
+  0800|1800|MidriseApartment|default|htg_setpoint Summer Design Day, !- Name
+  {9bd357bd-0f37-4ae4-b5e4-e68579a2f61a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  21.1111111111111;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {77f6feee-0e49-4e65-b481-d19b8369ab73}, !- Handle
+  0800|1800|MidriseApartment|default|htg_setpoint Winter Design Day, !- Name
+  {9bd357bd-0f37-4ae4-b5e4-e68579a2f61a}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  21.1111111111111;                       !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {bce4639d-79a8-450e-8712-e4ed701801ea}, !- Handle
+  0800|1800|MidriseApartment|Apartment|gas_equip, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  {b4fcdd8c-039f-42e1-ae94-321e26c9fca1}, !- Default Day Schedule Name
+  {dc4d5f59-c0c5-438a-8993-97a94a7f8772}, !- Summer Design Day Schedule Name
+  {1c970dd8-7868-47a9-9ef2-1e687898d621}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {b4fcdd8c-039f-42e1-ae94-321e26c9fca1}, !- Handle
+  0800|1800|MidriseApartment|Apartment|gas_equip |default, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.45,                                   !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.41,                                   !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.39,                                   !- Value Until Time 3
+  5,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.38,                                   !- Value Until Time 4
+  6,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.43,                                   !- Value Until Time 5
+  7,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.54,                                   !- Value Until Time 6
+  8,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.65,                                   !- Value Until Time 7
+  9,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.66,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.67,                                   !- Value Until Time 9
+  11,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.69,                                   !- Value Until Time 10
+  12,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.7,                                    !- Value Until Time 11
+  13,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.69,                                   !- Value Until Time 12
+  14,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.66,                                   !- Value Until Time 13
+  15,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.65,                                   !- Value Until Time 14
+  16,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.68,                                   !- Value Until Time 15
+  17,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.8,                                    !- Value Until Time 16
+  19,                                     !- Hour 17
+  0,                                      !- Minute 17
+  1,                                      !- Value Until Time 17
+  20,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0.93,                                   !- Value Until Time 18
+  21,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.89,                                   !- Value Until Time 19
+  22,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.85,                                   !- Value Until Time 20
+  23,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.71,                                   !- Value Until Time 21
+  24,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.58;                                   !- Value Until Time 22
+
+OS:Schedule:Day,
+  {dc4d5f59-c0c5-438a-8993-97a94a7f8772}, !- Handle
+  0800|1800|MidriseApartment|Apartment|gas_equip Summer Design Day, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {1c970dd8-7868-47a9-9ef2-1e687898d621}, !- Handle
+  0800|1800|MidriseApartment|Apartment|gas_equip Winter Design Day, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.38;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {60e224d6-cf2f-4486-bdd6-101d3b9f4f92}, !- Handle
+  0800|1800|MidriseApartment|default|hw_loop_temp, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  {bf7e63b2-eadb-407c-9294-96f21ac18cdb}, !- Default Day Schedule Name
+  {da27ac22-52c3-407f-895c-b7a48c96d92e}, !- Summer Design Day Schedule Name
+  {dd6df4cc-e663-4ace-a65a-a12ddf342a4f}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Handle
+  Temperature Schedule Type Limits,       !- Name
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Temperature;                            !- Unit Type
+
+OS:Schedule:Day,
+  {bf7e63b2-eadb-407c-9294-96f21ac18cdb}, !- Handle
+  0800|1800|MidriseApartment|default|hw_loop_temp |default, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {da27ac22-52c3-407f-895c-b7a48c96d92e}, !- Handle
+  0800|1800|MidriseApartment|default|hw_loop_temp Summer Design Day, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {dd6df4cc-e663-4ace-a65a-a12ddf342a4f}, !- Handle
+  0800|1800|MidriseApartment|default|hw_loop_temp Winter Design Day, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  60.0000000000001;                       !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {87189d20-e987-470b-b492-d842e8495a8d}, !- Handle
+  0800|1800|MidriseApartment|default|infiltration, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  {9b7158b0-3cd1-4c38-8295-c4e3d7ee81ec}, !- Default Day Schedule Name
+  {2f99e971-4fcf-4e10-9bed-58d161df52bc}, !- Summer Design Day Schedule Name
+  {387c2f5d-921c-48c7-a73b-3a6482ed2908}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {9b7158b0-3cd1-4c38-8295-c4e3d7ee81ec}, !- Handle
+  0800|1800|MidriseApartment|default|infiltration |default, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {2f99e971-4fcf-4e10-9bed-58d161df52bc}, !- Handle
+  0800|1800|MidriseApartment|default|infiltration Summer Design Day, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {387c2f5d-921c-48c7-a73b-3a6482ed2908}, !- Handle
+  0800|1800|MidriseApartment|default|infiltration Winter Design Day, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {1043cfd7-8523-4740-8896-cf0cadac955c}, !- Handle
+  0800|1800|MidriseApartment|default|swh_target_temp, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  {f95402ed-f626-4d3c-922f-e76a83da981f}, !- Default Day Schedule Name
+  {6d92b082-cfce-45af-973d-ac535a1dc86f}, !- Summer Design Day Schedule Name
+  {12ffe5e7-24fc-47e4-9f1a-f10a6624940b}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {f95402ed-f626-4d3c-922f-e76a83da981f}, !- Handle
+  0800|1800|MidriseApartment|default|swh_target_temp |default, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  71.1111111111111;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {6d92b082-cfce-45af-973d-ac535a1dc86f}, !- Handle
+  0800|1800|MidriseApartment|default|swh_target_temp Summer Design Day, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  71.1111111111111;                       !- Value Until Time 1
+
+OS:Schedule:Day,
+  {12ffe5e7-24fc-47e4-9f1a-f10a6624940b}, !- Handle
+  0800|1800|MidriseApartment|default|swh_target_temp Winter Design Day, !- Name
+  {e8a9d3dc-5f36-43fe-9d11-9ca05cebf0cf}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  71.1111111111111;                       !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {183683ca-976f-492f-b645-007be77a6f17}, !- Handle
+  0800|1800|MidriseApartment|Apartment|elec_equip, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  {48e03728-20ac-4642-acd1-788cafc0d4f1}, !- Default Day Schedule Name
+  {df161875-f5b6-44b8-bf30-de99c4a42762}, !- Summer Design Day Schedule Name
+  {c4ff2048-bf77-4c03-8f41-33154d7d6138}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {48e03728-20ac-4642-acd1-788cafc0d4f1}, !- Handle
+  0800|1800|MidriseApartment|Apartment|elec_equip |default, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  1,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.45,                                   !- Value Until Time 1
+  2,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.41,                                   !- Value Until Time 2
+  3,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.39,                                   !- Value Until Time 3
+  5,                                      !- Hour 4
+  0,                                      !- Minute 4
+  0.38,                                   !- Value Until Time 4
+  6,                                      !- Hour 5
+  0,                                      !- Minute 5
+  0.43,                                   !- Value Until Time 5
+  7,                                      !- Hour 6
+  0,                                      !- Minute 6
+  0.54,                                   !- Value Until Time 6
+  8,                                      !- Hour 7
+  0,                                      !- Minute 7
+  0.65,                                   !- Value Until Time 7
+  9,                                      !- Hour 8
+  0,                                      !- Minute 8
+  0.66,                                   !- Value Until Time 8
+  10,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.67,                                   !- Value Until Time 9
+  11,                                     !- Hour 10
+  0,                                      !- Minute 10
+  0.69,                                   !- Value Until Time 10
+  12,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.7,                                    !- Value Until Time 11
+  13,                                     !- Hour 12
+  0,                                      !- Minute 12
+  0.69,                                   !- Value Until Time 12
+  14,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.66,                                   !- Value Until Time 13
+  15,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0.65,                                   !- Value Until Time 14
+  16,                                     !- Hour 15
+  0,                                      !- Minute 15
+  0.68,                                   !- Value Until Time 15
+  17,                                     !- Hour 16
+  0,                                      !- Minute 16
+  0.8,                                    !- Value Until Time 16
+  19,                                     !- Hour 17
+  0,                                      !- Minute 17
+  1,                                      !- Value Until Time 17
+  20,                                     !- Hour 18
+  0,                                      !- Minute 18
+  0.93,                                   !- Value Until Time 18
+  21,                                     !- Hour 19
+  0,                                      !- Minute 19
+  0.89,                                   !- Value Until Time 19
+  22,                                     !- Hour 20
+  0,                                      !- Minute 20
+  0.85,                                   !- Value Until Time 20
+  23,                                     !- Hour 21
+  0,                                      !- Minute 21
+  0.71,                                   !- Value Until Time 21
+  24,                                     !- Hour 22
+  0,                                      !- Minute 22
+  0.58;                                   !- Value Until Time 22
+
+OS:Schedule:Day,
+  {df161875-f5b6-44b8-bf30-de99c4a42762}, !- Handle
+  0800|1800|MidriseApartment|Apartment|elec_equip Summer Design Day, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {c4ff2048-bf77-4c03-8f41-33154d7d6138}, !- Handle
+  0800|1800|MidriseApartment|Apartment|elec_equip Winter Design Day, !- Name
+  {e7d3efa3-49bf-4536-95eb-621048690955}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.38;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {80b93f74-fbcd-45d0-9873-02d6c52a75df}, !- Handle
+  0800|1800|MidriseApartment|Corridor|lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {2679ab1a-7e1f-4565-80b6-261d7811b7a3}, !- Default Day Schedule Name
+  {4d89c799-88cc-4f27-8dca-bd779a4577d2}, !- Summer Design Day Schedule Name
+  {ce9c1edb-c5be-4c0a-be53-dc655b4f7a39}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {2679ab1a-7e1f-4565-80b6-261d7811b7a3}, !- Handle
+  0800|1800|MidriseApartment|Corridor|lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {4d89c799-88cc-4f27-8dca-bd779a4577d2}, !- Handle
+  0800|1800|MidriseApartment|Corridor|lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {ce9c1edb-c5be-4c0a-be53-dc655b4f7a39}, !- Handle
+  0800|1800|MidriseApartment|Corridor|lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {f1976443-8d38-4cb1-ba82-c21d6e496db3}, !- Handle
+  0800|1800|MidriseApartment|xOffice|lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {a8dc8709-f78d-4379-990c-c1698484bd10}, !- Default Day Schedule Name
+  {ea35dce0-8028-43f2-baeb-f512d07ce954}, !- Summer Design Day Schedule Name
+  {d8bd5a70-4ada-4b48-b372-683ebae3328d}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {a8dc8709-f78d-4379-990c-c1698484bd10}, !- Handle
+  0800|1800|MidriseApartment|xOffice|lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.18,                                   !- Value Until Time 1
+  12,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.9,                                    !- Value Until Time 2
+  13,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.8,                                    !- Value Until Time 3
+  17,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.9,                                    !- Value Until Time 4
+  24,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.18;                                   !- Value Until Time 5
+
+OS:Schedule:Day,
+  {ea35dce0-8028-43f2-baeb-f512d07ce954}, !- Handle
+  0800|1800|MidriseApartment|xOffice|lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0.18,                                   !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.18;                                   !- Value Until Time 3
+
+OS:Schedule:Day,
+  {d8bd5a70-4ada-4b48-b372-683ebae3328d}, !- Handle
+  0800|1800|MidriseApartment|xOffice|lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.18;                                   !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {7310a004-0df4-4154-856f-54c60525bb9f}, !- Handle
+  0800|1800|MidriseApartment|xCorridor|lighting, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  {690574ad-a2c7-4b79-a9ab-4f00bcfef38f}, !- Default Day Schedule Name
+  {43d14dec-2a45-419a-933d-a935e7d6fe2a}, !- Summer Design Day Schedule Name
+  {bbd6ce8d-3b3c-4b07-8e8c-6cd0b058c88d}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {690574ad-a2c7-4b79-a9ab-4f00bcfef38f}, !- Handle
+  0800|1800|MidriseApartment|xCorridor|lighting |default, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {43d14dec-2a45-419a-933d-a935e7d6fe2a}, !- Handle
+  0800|1800|MidriseApartment|xCorridor|lighting Summer Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {bbd6ce8d-3b3c-4b07-8e8c-6cd0b058c88d}, !- Handle
+  0800|1800|MidriseApartment|xCorridor|lighting Winter Design Day, !- Name
+  {2183d0cf-5d2c-48e2-9117-a4ba0b8105e0}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {6f2991bb-1fcb-4c32-ab2f-9ba18130de0e}, !- Handle
+  0800|1800|MidriseApartment|Office|infiltration, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  {c389b0fb-e7cd-48ef-9522-b9d2beb1ae17}, !- Default Day Schedule Name
+  {50f34a4b-a21d-4cd0-a3f6-6c7c8642bd05}, !- Summer Design Day Schedule Name
+  {54288c1e-9cba-446e-aa89-803235f4562d}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {c389b0fb-e7cd-48ef-9522-b9d2beb1ae17}, !- Handle
+  0800|1800|MidriseApartment|Office|infiltration |default, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.25,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {50f34a4b-a21d-4cd0-a3f6-6c7c8642bd05}, !- Handle
+  0800|1800|MidriseApartment|Office|infiltration Summer Design Day, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.25,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {54288c1e-9cba-446e-aa89-803235f4562d}, !- Handle
+  0800|1800|MidriseApartment|Office|infiltration Winter Design Day, !- Name
+  {969b5a33-827e-4b8a-a6df-a3541ba9be77}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.25,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {ca06f0d4-fba7-465e-9dbb-86f1b9555c6a}, !- Handle
+  0800|1800|MidriseApartment|Corridor|hvac, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  {4b0a5cb7-2e6a-4dc0-86ef-24d930c73359}, !- Default Day Schedule Name
+  {c2864d10-02cc-4f06-bd98-ba224ac89434}, !- Summer Design Day Schedule Name
+  {d863ca3e-4243-496d-952b-cc6b5a651ae6}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {4b0a5cb7-2e6a-4dc0-86ef-24d930c73359}, !- Handle
+  0800|1800|MidriseApartment|Corridor|hvac |default, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {c2864d10-02cc-4f06-bd98-ba224ac89434}, !- Handle
+  0800|1800|MidriseApartment|Corridor|hvac Summer Design Day, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Day,
+  {d863ca3e-4243-496d-952b-cc6b5a651ae6}, !- Handle
+  0800|1800|MidriseApartment|Corridor|hvac Winter Design Day, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1;                                      !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {526cf916-9d32-4979-b6ed-8f5236a65be2}, !- Handle
+  0800|1800|MidriseApartment|Office|hvac, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  {dda459e8-244e-424a-9cad-28643040ff4e}, !- Default Day Schedule Name
+  {230292bb-06df-4878-b9fb-609c56fb1dbf}, !- Summer Design Day Schedule Name
+  {9db5d06d-a6ca-414a-baa2-6d9cfe2d8015}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {dda459e8-244e-424a-9cad-28643040ff4e}, !- Handle
+  0800|1800|MidriseApartment|Office|hvac |default, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {230292bb-06df-4878-b9fb-609c56fb1dbf}, !- Handle
+  0800|1800|MidriseApartment|Office|hvac Summer Design Day, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {9db5d06d-a6ca-414a-baa2-6d9cfe2d8015}, !- Handle
+  0800|1800|MidriseApartment|Office|hvac Winter Design Day, !- Name
+  {ff468ce4-b3c0-4eda-ac66-fcd38017d6db}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  17,                                     !- Hour 2
+  0,                                      !- Minute 2
+  1,                                      !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0;                                      !- Value Until Time 3
+
+OS:Schedule:Ruleset,
+  {ed8818e2-2bfb-41bf-b4cf-fe4bdf20e48b}, !- Handle
+  0800|1800|MidriseApartment|default|clothing, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  {d035847a-015a-4db9-91cc-b59be02e3318}, !- Default Day Schedule Name
+  {10ea1bd4-021d-4776-aa2d-18ca53a78c92}, !- Summer Design Day Schedule Name
+  {8b22a7dc-9f6c-444f-9ff6-992bccd29e20}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {d035847a-015a-4db9-91cc-b59be02e3318}, !- Handle
+  0800|1800|MidriseApartment|default|clothing |default, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.9;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {10ea1bd4-021d-4776-aa2d-18ca53a78c92}, !- Handle
+  0800|1800|MidriseApartment|default|clothing Summer Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.9;                                    !- Value Until Time 1
+
+OS:Schedule:Day,
+  {8b22a7dc-9f6c-444f-9ff6-992bccd29e20}, !- Handle
+  0800|1800|MidriseApartment|default|clothing Winter Design Day, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.9;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {8ac67617-ec50-4625-9724-f8e1dd5c849c}, !- Handle
+  0800|1800|MidriseApartment|default|clothing |7/1-9/30|Mon/Tue/Wed/Thu/Fri/Sat/Sun Rule, !- Name
+  {ed8818e2-2bfb-41bf-b4cf-fe4bdf20e48b}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {fb095f69-e482-4a1a-b146-49ca179ebd29}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  7,                                      !- Start Month
+  1,                                      !- Start Day
+  9,                                      !- End Month
+  30;                                     !- End Day
+
+OS:Schedule:Day,
+  {fb095f69-e482-4a1a-b146-49ca179ebd29}, !- Handle
+  0800|1800|MidriseApartment|default|clothing |7/1-9/30|Mon/Tue/Wed/Thu/Fri/Sat/Sun, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0.7;                                    !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {47ca2f23-d6be-4dce-9f4a-5366fd31533b}, !- Handle
+  0800|1800|MidriseApartment|default|clothing |12/1-3/31|Mon/Tue/Wed/Thu/Fri/Sat/Sun Rule, !- Name
+  {ed8818e2-2bfb-41bf-b4cf-fe4bdf20e48b}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {80b977fb-33ed-4bf2-be3c-0437c9f1f0e7}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  Yes,                                    !- Apply Monday
+  Yes,                                    !- Apply Tuesday
+  Yes,                                    !- Apply Wednesday
+  Yes,                                    !- Apply Thursday
+  Yes,                                    !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  12,                                     !- Start Month
+  1,                                      !- Start Day
+  3,                                      !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {80b977fb-33ed-4bf2-be3c-0437c9f1f0e7}, !- Handle
+  0800|1800|MidriseApartment|default|clothing |12/1-3/31|Mon/Tue/Wed/Thu/Fri/Sat/Sun, !- Name
+  {97abe73c-dff4-4694-beab-758971c8a2a9}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  1.3;                                    !- Value Until Time 1
+
+OS:Schedule:Ruleset,
+  {4b1e1acb-0641-4c8e-8b40-b946801dc949}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  {4cffb7d8-6262-4335-939d-c4aa668c2ed7}, !- Default Day Schedule Name
+  {2d5de243-8747-432d-b46c-931c40f1e69f}, !- Summer Design Day Schedule Name
+  {e2c6bb37-fb42-49c1-aa7e-234965da336e}; !- Winter Design Day Schedule Name
+
+OS:ScheduleTypeLimits,
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Handle
+  Occupancy Schedule Type Limits,         !- Name
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
+  Continuous,                             !- Numeric Type
+  Dimensionless;                          !- Unit Type
+
+OS:Schedule:Day,
+  {4cffb7d8-6262-4335-939d-c4aa668c2ed7}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ |default, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.85,                                   !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.39,                                   !- Value Until Time 3
+  16,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.25,                                   !- Value Until Time 4
+  17,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.3,                                    !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.52,                                   !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.87,                                   !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  1;                                      !- Value Until Time 8
+
+OS:Schedule:Day,
+  {2d5de243-8747-432d-b46c-931c40f1e69f}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ Summer Design Day, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  9,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  16,                                     !- Hour 2
+  0,                                      !- Minute 2
+  0.25,                                   !- Value Until Time 2
+  24,                                     !- Hour 3
+  0,                                      !- Minute 3
+  1;                                      !- Value Until Time 3
+
+OS:Schedule:Day,
+  {e2c6bb37-fb42-49c1-aa7e-234965da336e}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ Winter Design Day, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:Schedule:Rule,
+  {7d0f0d89-a595-46b5-aa03-01710021bb1e}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ |1/1-12/31|Sun Rule, !- Name
+  {4b1e1acb-0641-4c8e-8b40-b946801dc949}, !- Schedule Ruleset Name
+  0,                                      !- Rule Order
+  {bb241d8b-9b81-4840-86e4-9d95889521a2}, !- Day Schedule Name
+  Yes,                                    !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  ,                                       !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {bb241d8b-9b81-4840-86e4-9d95889521a2}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ |1/1-12/31|Sun, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.9775,                                 !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.4485,                                 !- Value Until Time 3
+  16,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.2875,                                 !- Value Until Time 4
+  17,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.345,                                  !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.598,                                  !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.87,                                   !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  1;                                      !- Value Until Time 8
+
+OS:Schedule:Rule,
+  {bda92f53-071c-47e0-b55b-e2d112e54524}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ |1/1-12/31|Sat Rule, !- Name
+  {4b1e1acb-0641-4c8e-8b40-b946801dc949}, !- Schedule Ruleset Name
+  1,                                      !- Rule Order
+  {7eea73cb-67eb-45ec-8e27-3483fb9ff846}, !- Day Schedule Name
+  ,                                       !- Apply Sunday
+  ,                                       !- Apply Monday
+  ,                                       !- Apply Tuesday
+  ,                                       !- Apply Wednesday
+  ,                                       !- Apply Thursday
+  ,                                       !- Apply Friday
+  Yes,                                    !- Apply Saturday
+  ,                                       !- Apply Holiday
+  DateRange,                              !- Date Specification Type
+  1,                                      !- Start Month
+  1,                                      !- Start Day
+  12,                                     !- End Month
+  31;                                     !- End Day
+
+OS:Schedule:Day,
+  {7eea73cb-67eb-45ec-8e27-3483fb9ff846}, !- Handle
+  0800|1800|MidriseApartment|Apartment|occ |1/1-12/31|Sat, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  7,                                      !- Hour 1
+  0,                                      !- Minute 1
+  1,                                      !- Value Until Time 1
+  8,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.9775,                                 !- Value Until Time 2
+  9,                                      !- Hour 3
+  0,                                      !- Minute 3
+  0.4485,                                 !- Value Until Time 3
+  16,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.2875,                                 !- Value Until Time 4
+  17,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.345,                                  !- Value Until Time 5
+  18,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0.598,                                  !- Value Until Time 6
+  21,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.87,                                   !- Value Until Time 7
+  24,                                     !- Hour 8
+  0,                                      !- Minute 8
+  1;                                      !- Value Until Time 8
+
+OS:Schedule:Ruleset,
+  {eac3a90b-8d10-4089-b706-e6c5218aa79b}, !- Handle
+  0800|1800|MidriseApartment|Office|occ,  !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  {af2eb9b4-6641-4e18-8ea2-3f6c682eaa1c}, !- Default Day Schedule Name
+  {c5364a1d-80b1-45f3-b4cd-5e8bf1b45be3}, !- Summer Design Day Schedule Name
+  {11208425-2994-4776-a58c-e3824fba3ed4}; !- Winter Design Day Schedule Name
+
+OS:Schedule:Day,
+  {af2eb9b4-6641-4e18-8ea2-3f6c682eaa1c}, !- Handle
+  0800|1800|MidriseApartment|Office|occ |default, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  9,                                      !- Hour 2
+  0,                                      !- Minute 2
+  0.87,                                   !- Value Until Time 2
+  9,                                      !- Hour 3
+  30,                                     !- Minute 3
+  0.54,                                   !- Value Until Time 3
+  10,                                     !- Hour 4
+  0,                                      !- Minute 4
+  0.34,                                   !- Value Until Time 4
+  11,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.87,                                   !- Value Until Time 5
+  11,                                     !- Hour 6
+  30,                                     !- Minute 6
+  0.54,                                   !- Value Until Time 6
+  12,                                     !- Hour 7
+  0,                                      !- Minute 7
+  0.34,                                   !- Value Until Time 7
+  12,                                     !- Hour 8
+  30,                                     !- Minute 8
+  0.76,                                   !- Value Until Time 8
+  13,                                     !- Hour 9
+  0,                                      !- Minute 9
+  0.91,                                   !- Value Until Time 9
+  15,                                     !- Hour 10
+  30,                                     !- Minute 10
+  0.95,                                   !- Value Until Time 10
+  16,                                     !- Hour 11
+  0,                                      !- Minute 11
+  0.19,                                   !- Value Until Time 11
+  16,                                     !- Hour 12
+  30,                                     !- Minute 12
+  0.14,                                   !- Value Until Time 12
+  17,                                     !- Hour 13
+  0,                                      !- Minute 13
+  0.13,                                   !- Value Until Time 13
+  24,                                     !- Hour 14
+  0,                                      !- Minute 14
+  0;                                      !- Value Until Time 14
+
+OS:Schedule:Day,
+  {c5364a1d-80b1-45f3-b4cd-5e8bf1b45be3}, !- Handle
+  0800|1800|MidriseApartment|Office|occ Summer Design Day, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  8,                                      !- Hour 1
+  0,                                      !- Minute 1
+  0,                                      !- Value Until Time 1
+  15,                                     !- Hour 2
+  30,                                     !- Minute 2
+  1,                                      !- Value Until Time 2
+  16,                                     !- Hour 3
+  0,                                      !- Minute 3
+  0.19,                                   !- Value Until Time 3
+  16,                                     !- Hour 4
+  30,                                     !- Minute 4
+  0.14,                                   !- Value Until Time 4
+  17,                                     !- Hour 5
+  0,                                      !- Minute 5
+  0.13,                                   !- Value Until Time 5
+  24,                                     !- Hour 6
+  0,                                      !- Minute 6
+  0;                                      !- Value Until Time 6
+
+OS:Schedule:Day,
+  {11208425-2994-4776-a58c-e3824fba3ed4}, !- Handle
+  0800|1800|MidriseApartment|Office|occ Winter Design Day, !- Name
+  {f635e77a-c32e-432d-9446-bca2646a2225}, !- Schedule Type Limits Name
+  ,                                       !- Interpolate to Timestep
+  24,                                     !- Hour 1
+  0,                                      !- Minute 1
+  0;                                      !- Value Until Time 1
+
+OS:DefaultScheduleSet,
+  {595bcf02-e7a2-40f7-9e4a-b6e0333d067b}, !- Handle
+  MidriseApartment|Office|DOE Ref 2004|ASHRAE 169-2006-5A|SchSet, !- Name
+  ,                                       !- Hours of Operation Schedule Name
+  {eac3a90b-8d10-4089-b706-e6c5218aa79b}, !- Number of People Schedule Name
+  {8eb72fb9-0b5e-432c-af9b-f4fb1ebebb5c}, !- People Activity Level Schedule Name
+  {120a65f2-5be7-45cf-bb91-7926ddaa1873}, !- Lighting Schedule Name
+  {9b891f0e-886c-4870-bc49-c11481db4713}, !- Electric Equipment Schedule Name
+  ,                                       !- Gas Equipment Schedule Name
+  {0b129502-e4bf-4468-8c60-197d3689029d}, !- Hot Water Equipment Schedule Name
+  {6f2991bb-1fcb-4c32-ab2f-9ba18130de0e}, !- Infiltration Schedule Name
+  ,                                       !- Steam Equipment Schedule Name
+  ;                                       !- Other Equipment Schedule Name
+
+OS:People:Definition,
+  {e9b35f33-2aca-4312-8f5c-bee44ecbb3a9}, !- Handle
+  Office|PeopleDef,                       !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0227118509792575,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {500811e2-b86a-4160-8d86-5a650a9072dc}, !- Handle
+  Office|PeopleInst,                      !- Name
+  {e9b35f33-2aca-4312-8f5c-bee44ecbb3a9}, !- People Definition Name
+  {1a04edef-cf39-4b1f-967f-c9c6432769f4}; !- Space or SpaceType Name
+
+OS:People:Definition,
+  {21767fc5-15ef-4ead-b833-50f1b730b730}, !- Handle
+  Apartment|PeopleDef,                    !- Name
+  People/Area,                            !- Number of People Calculation Method
+  ,                                       !- Number of People {people}
+  0.0283090843959466,                     !- People per Space Floor Area {person/m2}
+  ,                                       !- Space Floor Area per Person {m2/person}
+  0.3;                                    !- Fraction Radiant
+
+OS:People,
+  {2ae8f2ad-fd42-496d-8de6-d667a659db3e}, !- Handle
+  Apartment|PeopleInst,                   !- Name
+  {21767fc5-15ef-4ead-b833-50f1b730b730}, !- People Definition Name
+  {f4d13b6c-dfea-4fab-ac96-5f1391905c23}, !- Space or SpaceType Name
+  {183683ca-976f-492f-b645-007be77a6f17}, !- Number of People Schedule Name
+  {8eb72fb9-0b5e-432c-af9b-f4fb1ebebb5c}, !- Activity Level Schedule Name
+  ,                                       !- Surface Name/Angle Factor List Name
+  ,                                       !- Work Efficiency Schedule Name
+  ,                                       !- Clothing Insulation Schedule Name
+  ,                                       !- Air Velocity Schedule Name
+  0.898148148148148;                      !- Multiplier
+
+OS:DesignSpecification:OutdoorAir,
+  {a9c8bd8f-b4c1-4ff3-99a9-ae1bb4bc9ac0}, !- Handle
+  MidriseApartment|Office|DOE Ref 2004|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0.009438948864,                         !- Outdoor Air Flow per Person {m3/s-person}
+  0,                                      !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:DesignSpecification:OutdoorAir,
+  {534192e1-f95e-465e-947a-4f485256ef6b}, !- Handle
+  MidriseApartment|BlendA|DOE Ref 2004|ASHRAE 169-2006-5A|OutdoorAir, !- Name
+  Sum,                                    !- Outdoor Air Method
+  0,                                      !- Outdoor Air Flow per Person {m3/s-person}
+  2.58703703703704e-005,                  !- Outdoor Air Flow per Floor Area {m3/s-m2}
+  ,                                       !- Outdoor Air Flow Rate {m3/s}
+  0,                                      !- Outdoor Air Flow Air Changes per Hour {1/hr}
+  ;                                       !- Outdoor Air Flow Rate Fraction Schedule Name
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {63bb676f-a79c-4e15-b683-98c9b7ecfae8}, !- Handle
+  Office|Infiltration,                    !- Name
+  {1a04edef-cf39-4b1f-967f-c9c6432769f4}, !- Space or SpaceType Name
+  {6f2991bb-1fcb-4c32-ab2f-9ba18130de0e}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.00030226,                             !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {cd0cea1a-775d-490c-8050-521290919917}, !- Handle
+  Apartment|Infiltration,                 !- Name
+  {f4d13b6c-dfea-4fab-ac96-5f1391905c23}, !- Space or SpaceType Name
+  {87189d20-e987-470b-b492-d842e8495a8d}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  0.000271474259259259,                   !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:SpaceInfiltration:DesignFlowRate,
+  {3a0b6c72-02a3-4ada-823d-f22bae3d778c}, !- Handle
+  Corridor|Infiltration,                  !- Name
+  {f4d13b6c-dfea-4fab-ac96-5f1391905c23}, !- Space or SpaceType Name
+  {87189d20-e987-470b-b492-d842e8495a8d}, !- Schedule Name
+  Flow/ExteriorArea,                      !- Design Flow Rate Calculation Method
+  ,                                       !- Design Flow Rate {m3/s}
+  ,                                       !- Flow per Space Floor Area {m3/s-m2}
+  3.07857407407408e-005,                  !- Flow per Exterior Surface Area {m3/s-m2}
+  ,                                       !- Air Changes per Hour {1/hr}
+  ,                                       !- Constant Term Coefficient
+  ,                                       !- Temperature Term Coefficient
+  ,                                       !- Velocity Term Coefficient
+  ;                                       !- Velocity Squared Term Coefficient
+
+OS:DefaultConstructionSet,
+  {a54234b4-fcb0-4e6f-a8f0-d14e2aecdbb6}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|MidriseApartment, !- Name
+  {3eaac5b5-22cd-496b-a458-1b217bae7a28}, !- Default Exterior Surface Constructions Name
+  {d3ba5b26-e223-45d5-a8e4-6fd6978c716c}, !- Default Interior Surface Constructions Name
+  {2344f90b-8300-488a-8b2b-a2c40b5c6f2b}, !- Default Ground Contact Surface Constructions Name
+  {22acd64c-9c9f-4417-91e3-3014edf45e23}, !- Default Exterior SubSurface Constructions Name
+  {f4b4f59f-922f-40a0-8c46-8d423cb369ae}, !- Default Interior SubSurface Constructions Name
+  {b6700517-e4d8-4ecd-a5fa-0b7e2f854413}, !- Interior Partition Construction Name
+  ,                                       !- Space Shading Construction Name
+  ,                                       !- Building Shading Construction Name
+  ;                                       !- Site Shading Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {3eaac5b5-22cd-496b-a458-1b217bae7a28}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|MidriseApartment|ext_surf, !- Name
+  {d31956b6-9193-42e3-9944-ec3159571835}, !- Floor Construction Name
+  {727fe832-788a-496b-85d0-7a77c1c88e76}, !- Wall Construction Name
+  {b7c3c9ec-d5da-4e03-832d-557e0e68aa6a}; !- Roof Ceiling Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {d3ba5b26-e223-45d5-a8e4-6fd6978c716c}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|MidriseApartment|int_surf, !- Name
+  {a87304ff-518a-456f-8e9d-3aad73548982}, !- Floor Construction Name
+  {8782d924-9497-4dc3-9356-e406d9b9272b}, !- Wall Construction Name
+  {05830cf4-cce6-4319-91db-9ebd82cbb53a}; !- Roof Ceiling Construction Name
+
+OS:DefaultSurfaceConstructions,
+  {2344f90b-8300-488a-8b2b-a2c40b5c6f2b}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|MidriseApartment|ground_surf, !- Name
+  {d31956b6-9193-42e3-9944-ec3159571835}, !- Floor Construction Name
+  {d31956b6-9193-42e3-9944-ec3159571835}, !- Wall Construction Name
+  {d31956b6-9193-42e3-9944-ec3159571835}; !- Roof Ceiling Construction Name
+
+OS:DefaultSubSurfaceConstructions,
+  {22acd64c-9c9f-4417-91e3-3014edf45e23}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|MidriseApartment|ext_sub, !- Name
+  {0c19a63a-4a98-46a5-b9e4-dbad2ea73737}, !- Fixed Window Construction Name
+  {0c19a63a-4a98-46a5-b9e4-dbad2ea73737}, !- Operable Window Construction Name
+  {13388d8d-16bb-4b5e-8c8e-7ea4d198544f}, !- Door Construction Name
+  ,                                       !- Glass Door Construction Name
+  {c8c1c530-dc07-43af-9091-3903708a880b}, !- Overhead Door Construction Name
+  {533d1c42-b22a-4d99-8af1-4e68b9205b05}, !- Skylight Construction Name
+  {c2ea715e-68c3-40b1-98b3-3c7381d9c803}, !- Tubular Daylight Dome Construction Name
+  {c2ea715e-68c3-40b1-98b3-3c7381d9c803}; !- Tubular Daylight Diffuser Construction Name
+
+OS:DefaultSubSurfaceConstructions,
+  {f4b4f59f-922f-40a0-8c46-8d423cb369ae}, !- Handle
+  DOE Ref 2004|ASHRAE 169-2006-5A|MidriseApartment|int_sub, !- Name
+  {c2ea715e-68c3-40b1-98b3-3c7381d9c803}, !- Fixed Window Construction Name
+  {c2ea715e-68c3-40b1-98b3-3c7381d9c803}, !- Operable Window Construction Name
+  {61ccf5de-b1bf-434a-879d-a5e84efb2978}, !- Door Construction Name
+  ,                                       !- Glass Door Construction Name
+  ,                                       !- Overhead Door Construction Name
+  ,                                       !- Skylight Construction Name
+  ,                                       !- Tubular Daylight Dome Construction Name
+  ;                                       !- Tubular Daylight Diffuser Construction Name
+
+OS:Construction,
+  {727fe832-788a-496b-85d0-7a77c1c88e76}, !- Handle
+  ASHRAE 90.1-2004 ExtWall SteelFrame ClimateZone alt-res 4-6, !- Name
+  ,                                       !- Surface Rendering Name
+  {9a40ea56-2ebf-45b0-82ad-317bb8a54bbe}, !- Layer 1
+  {9f281d7b-657b-46f9-9a61-d606432f65ba}, !- Layer 2
+  {efbbaac1-c475-46db-968d-36fb1fbcba04}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {5eec67e7-aede-4055-9351-4c83f68added}, !- Handle
+  {727fe832-788a-496b-85d0-7a77c1c88e76}, !- Construction Name
+  ExteriorWall,                           !- Intended Surface Type
+  SteelFramed;                            !- Standards Construction Type
+
+OS:Material,
+  {9a40ea56-2ebf-45b0-82ad-317bb8a54bbe}, !- Handle
+  Wood Siding,                            !- Name
+  MediumSmooth,                           !- Roughness
+  0.01,                                   !- Thickness {m}
+  0.11,                                   !- Conductivity {W/m-K}
+  544.62,                                 !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.78,                                   !- Solar Absorptance
+  0.78;                                   !- Visible Absorptance
+
+OS:Material,
+  {9f281d7b-657b-46f9-9a61-d606432f65ba}, !- Handle
+  Steel Frame NonRes Wall Insulation-2.75, !- Name
+  MediumRough,                            !- Roughness
+  0.119161363096001,                      !- Thickness {m}
+  0.049,                                  !- Conductivity {W/m-K}
+  265,                                    !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {efbbaac1-c475-46db-968d-36fb1fbcba04}, !- Handle
+  1/2IN Gypsum,                           !- Name
+  Smooth,                                 !- Roughness
+  0.0127,                                 !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  784.9,                                  !- Density {kg/m3}
+  830.000000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.4,                                    !- Solar Absorptance
+  0.4;                                    !- Visible Absorptance
+
+OS:Construction,
+  {d31956b6-9193-42e3-9944-ec3159571835}, !- Handle
+  ExtSlabCarpet 4in ClimateZone 1-8,      !- Name
+  ,                                       !- Surface Rendering Name
+  {8d4c48cb-aae0-48d7-a2a2-9dc34ae41b15}, !- Layer 1
+  {3ecd9033-a01d-4f86-a570-c6e29039d72f}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {ff6d077d-7414-4c5f-b3d3-9b61f047b584}, !- Handle
+  {d31956b6-9193-42e3-9944-ec3159571835}, !- Construction Name
+  ExteriorFloor,                          !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {8d4c48cb-aae0-48d7-a2a2-9dc34ae41b15}, !- Handle
+  MAT-CC05 4 HW CONCRETE,                 !- Name
+  Rough,                                  !- Roughness
+  0.1016,                                 !- Thickness {m}
+  1.311,                                  !- Conductivity {W/m-K}
+  2240,                                   !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.85,                                   !- Solar Absorptance
+  0.85;                                   !- Visible Absorptance
+
+OS:Material:NoMass,
+  {3ecd9033-a01d-4f86-a570-c6e29039d72f}, !- Handle
+  CP02 CARPET PAD,                        !- Name
+  Smooth,                                 !- Roughness
+  0.1,                                    !- Thermal Resistance {m2-K/W}
+  0.9,                                    !- Thermal Absorptance
+  0.8,                                    !- Solar Absorptance
+  0.8;                                    !- Visible Absorptance
+
+OS:Construction,
+  {b7c3c9ec-d5da-4e03-832d-557e0e68aa6a}, !- Handle
+  ASHRAE 90.1-2004 ExtRoof IEAD ClimateZone 5-6, !- Name
+  ,                                       !- Surface Rendering Name
+  {48dbbc08-3a09-4c84-91b3-e4e04a875afb}, !- Layer 1
+  {cd9c2f32-e17d-4097-a047-43b3b1977fa7}, !- Layer 2
+  {774627fc-e3a3-47b4-8317-c18e58c136eb}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {5751d0c1-eed3-41cd-ac0e-633d4b462fbf}, !- Handle
+  {b7c3c9ec-d5da-4e03-832d-557e0e68aa6a}, !- Construction Name
+  ExteriorRoof,                           !- Intended Surface Type
+  IEAD;                                   !- Standards Construction Type
+
+OS:Material,
+  {48dbbc08-3a09-4c84-91b3-e4e04a875afb}, !- Handle
+  Roof Membrane,                          !- Name
+  VeryRough,                              !- Roughness
+  0.0095,                                 !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  1121.29,                                !- Density {kg/m3}
+  1460,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {cd9c2f32-e17d-4097-a047-43b3b1977fa7}, !- Handle
+  IEAD NonRes Roof Insulation-2.85,       !- Name
+  MediumRough,                            !- Roughness
+  0.127338688569477,                      !- Thickness {m}
+  0.049,                                  !- Conductivity {W/m-K}
+  265,                                    !- Density {kg/m3}
+  836.800000000001,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {774627fc-e3a3-47b4-8317-c18e58c136eb}, !- Handle
+  Metal Decking,                          !- Name
+  MediumSmooth,                           !- Roughness
+  0.0015,                                 !- Thickness {m}
+  45.006,                                 !- Conductivity {W/m-K}
+  7680,                                   !- Density {kg/m3}
+  418.4,                                  !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {8782d924-9497-4dc3-9356-e406d9b9272b}, !- Handle
+  Interior Wall,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {d18ee062-bbed-4e96-bc3c-f429a5069009}, !- Layer 1
+  {04a611d6-64b7-481e-9502-23c5ce2d776c}, !- Layer 2
+  {d18ee062-bbed-4e96-bc3c-f429a5069009}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {31625a21-ca3b-4618-9e6a-de93eb3ec0e1}, !- Handle
+  {8782d924-9497-4dc3-9356-e406d9b9272b}, !- Construction Name
+  InteriorWall,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {d18ee062-bbed-4e96-bc3c-f429a5069009}, !- Handle
+  G01a 19mm gypsum board,                 !- Name
+  MediumSmooth,                           !- Roughness
+  0.019,                                  !- Thickness {m}
+  0.16,                                   !- Conductivity {W/m-K}
+  800,                                    !- Density {kg/m3}
+  1090,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.4,                                    !- Solar Absorptance
+  0.4;                                    !- Visible Absorptance
+
+OS:Material:AirGap,
+  {04a611d6-64b7-481e-9502-23c5ce2d776c}, !- Handle
+  F04 Wall air space resistance,          !- Name
+  0.15;                                   !- Thermal Resistance {m2-K/W}
+
+OS:Construction,
+  {a87304ff-518a-456f-8e9d-3aad73548982}, !- Handle
+  Interior Floor,                         !- Name
+  ,                                       !- Surface Rendering Name
+  {ec553346-eb74-43f4-8a8c-8b578f9dfb53}, !- Layer 1
+  {bb492b64-6638-461f-b767-b34504e1bccf}, !- Layer 2
+  {b3e6122f-fa69-4d53-9118-c1b5e6b37cdf}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {83514378-57b9-45b9-9017-ff72ec71e1e1}, !- Handle
+  {a87304ff-518a-456f-8e9d-3aad73548982}, !- Construction Name
+  InteriorFloor,                          !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {ec553346-eb74-43f4-8a8c-8b578f9dfb53}, !- Handle
+  F16 Acoustic tile,                      !- Name
+  MediumSmooth,                           !- Roughness
+  0.0191,                                 !- Thickness {m}
+  0.06,                                   !- Conductivity {W/m-K}
+  368,                                    !- Density {kg/m3}
+  590.000000000002,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.3,                                    !- Solar Absorptance
+  0.3;                                    !- Visible Absorptance
+
+OS:Material:AirGap,
+  {bb492b64-6638-461f-b767-b34504e1bccf}, !- Handle
+  F05 Ceiling air space resistance,       !- Name
+  0.18;                                   !- Thermal Resistance {m2-K/W}
+
+OS:Material,
+  {b3e6122f-fa69-4d53-9118-c1b5e6b37cdf}, !- Handle
+  M11 100mm lightweight concrete,         !- Name
+  MediumRough,                            !- Roughness
+  0.1016,                                 !- Thickness {m}
+  0.53,                                   !- Conductivity {W/m-K}
+  1280,                                   !- Density {kg/m3}
+  840.000000000002,                       !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.5,                                    !- Solar Absorptance
+  0.5;                                    !- Visible Absorptance
+
+OS:Construction,
+  {05830cf4-cce6-4319-91db-9ebd82cbb53a}, !- Handle
+  Interior Ceiling,                       !- Name
+  ,                                       !- Surface Rendering Name
+  {b3e6122f-fa69-4d53-9118-c1b5e6b37cdf}, !- Layer 1
+  {bb492b64-6638-461f-b767-b34504e1bccf}, !- Layer 2
+  {ec553346-eb74-43f4-8a8c-8b578f9dfb53}; !- Layer 3
+
+OS:StandardsInformation:Construction,
+  {d9f37b75-010a-4f0b-a035-96459dfc7971}, !- Handle
+  {05830cf4-cce6-4319-91db-9ebd82cbb53a}, !- Construction Name
+  InteriorCeiling,                        !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Construction,
+  {0c19a63a-4a98-46a5-b9e4-dbad2ea73737}, !- Handle
+  ASHRAE 90.1-2004 ExtWindow ClimateZone alt-res 4-6, !- Name
+  ,                                       !- Surface Rendering Name
+  {59ae99e2-8904-49ba-b81e-df6242f6ac3c}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {ac44f3c3-339d-4213-a7dd-842e77dc351f}, !- Handle
+  {0c19a63a-4a98-46a5-b9e4-dbad2ea73737}, !- Construction Name
+  ExteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:SimpleGlazingSystem,
+  {59ae99e2-8904-49ba-b81e-df6242f6ac3c}, !- Handle
+  Fixed Window 3.81/0.39/0.27,            !- Name
+  2.95256,                                !- U-Factor {W/m2-K}
+  0.39,                                   !- Solar Heat Gain Coefficient
+  0.27;                                   !- Visible Transmittance
+
+OS:Construction,
+  {13388d8d-16bb-4b5e-8c8e-7ea4d198544f}, !- Handle
+  Exterior Door,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {db75e67e-5f32-45cb-b85e-52fabf137dc9}, !- Layer 1
+  {54ac0753-36c8-497e-99e6-4b9fd7fa9577}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {f08aa25f-4245-4130-a241-45e24e1df4ba}, !- Handle
+  {13388d8d-16bb-4b5e-8c8e-7ea4d198544f}, !- Construction Name
+  ExteriorDoor,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {db75e67e-5f32-45cb-b85e-52fabf137dc9}, !- Handle
+  F08 Metal surface,                      !- Name
+  Smooth,                                 !- Roughness
+  0.0008,                                 !- Thickness {m}
+  45.2800000000001,                       !- Conductivity {W/m-K}
+  7823.99999999999,                       !- Density {kg/m3}
+  500,                                    !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.7,                                    !- Solar Absorptance
+  0.7;                                    !- Visible Absorptance
+
+OS:Material,
+  {54ac0753-36c8-497e-99e6-4b9fd7fa9577}, !- Handle
+  I01 25mm insulation board,              !- Name
+  MediumRough,                            !- Roughness
+  0.0254,                                 !- Thickness {m}
+  0.03,                                   !- Conductivity {W/m-K}
+  43,                                     !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {c8c1c530-dc07-43af-9091-3903708a880b}, !- Handle
+  Exterior Door - Non-Swinging,           !- Name
+  ,                                       !- Surface Rendering Name
+  {db75e67e-5f32-45cb-b85e-52fabf137dc9}, !- Layer 1
+  {4a44db0c-82b7-4f3e-91b8-b86d9cce916f}; !- Layer 2
+
+OS:StandardsInformation:Construction,
+  {1bc8acd1-10ed-4fba-b528-a47afe3f007e}, !- Handle
+  {c8c1c530-dc07-43af-9091-3903708a880b}, !- Construction Name
+  ExteriorDoor,                           !- Intended Surface Type
+  NonSwinging;                            !- Standards Construction Type
+
+OS:Material,
+  {4a44db0c-82b7-4f3e-91b8-b86d9cce916f}, !- Handle
+  I02 50mm insulation board,              !- Name
+  MediumRough,                            !- Roughness
+  0.0508,                                 !- Thickness {m}
+  0.03,                                   !- Conductivity {W/m-K}
+  43,                                     !- Density {kg/m3}
+  1210,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.6,                                    !- Solar Absorptance
+  0.6;                                    !- Visible Absorptance
+
+OS:Construction,
+  {533d1c42-b22a-4d99-8af1-4e68b9205b05}, !- Handle
+  ASHRAE 90.1-2004 Skylight ClimateZone 4-5, !- Name
+  ,                                       !- Surface Rendering Name
+  {d48035e9-6a3a-458e-a1f7-f4cb029bae3a}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {702d9f76-4d6f-4a26-af06-e287aea2705a}, !- Handle
+  {533d1c42-b22a-4d99-8af1-4e68b9205b05}, !- Construction Name
+  ExteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:SimpleGlazingSystem,
+  {d48035e9-6a3a-458e-a1f7-f4cb029bae3a}, !- Handle
+  Skylight no curb 2.1-5 per 90.12004 CZ 4-5, !- Name
+  3.91800170536831,                       !- U-Factor {W/m2-K}
+  0.39,                                   !- Solar Heat Gain Coefficient
+  0.2;                                    !- Visible Transmittance
+
+OS:Construction,
+  {c2ea715e-68c3-40b1-98b3-3c7381d9c803}, !- Handle
+  Interior Window,                        !- Name
+  ,                                       !- Surface Rendering Name
+  {80eaf4e5-5e5a-49fb-8209-4816e2b59735}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {0318d5ed-a4bb-45bb-8dc1-be206e4fc795}, !- Handle
+  {c2ea715e-68c3-40b1-98b3-3c7381d9c803}, !- Construction Name
+  InteriorWindow,                         !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:WindowMaterial:Glazing,
+  {80eaf4e5-5e5a-49fb-8209-4816e2b59735}, !- Handle
+  Clear 3mm,                              !- Name
+  SpectralAverage,                        !- Optical Data Type
+  ,                                       !- Window Glass Spectral Data Set Name
+  0.00299999999999999,                    !- Thickness {m}
+  0.837,                                  !- Solar Transmittance at Normal Incidence
+  0.075,                                  !- Front Side Solar Reflectance at Normal Incidence
+  0,                                      !- Back Side Solar Reflectance at Normal Incidence
+  0.898,                                  !- Visible Transmittance at Normal Incidence
+  0.081,                                  !- Front Side Visible Reflectance at Normal Incidence
+  0,                                      !- Back Side Visible Reflectance at Normal Incidence
+  0,                                      !- Infrared Transmittance at Normal Incidence
+  0.84,                                   !- Front Side Infrared Hemispherical Emissivity
+  0.84,                                   !- Back Side Infrared Hemispherical Emissivity
+  0.9,                                    !- Conductivity {W/m-K}
+  1,                                      !- Dirt Correction Factor for Solar and Visible Transmittance
+  No;                                     !- Solar Diffusing
+
+OS:Construction,
+  {61ccf5de-b1bf-434a-879d-a5e84efb2978}, !- Handle
+  Interior Door,                          !- Name
+  ,                                       !- Surface Rendering Name
+  {22da2eeb-61a8-4043-ac51-b73f1e01b5c5}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {606cd9a6-1dbf-4725-8397-a84a86837e45}, !- Handle
+  {61ccf5de-b1bf-434a-879d-a5e84efb2978}, !- Construction Name
+  InteriorDoor,                           !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
+OS:Material,
+  {22da2eeb-61a8-4043-ac51-b73f1e01b5c5}, !- Handle
+  G05 25mm wood,                          !- Name
+  MediumSmooth,                           !- Roughness
+  0.0254,                                 !- Thickness {m}
+  0.15,                                   !- Conductivity {W/m-K}
+  608,                                    !- Density {kg/m3}
+  1630,                                   !- Specific Heat {J/kg-K}
+  0.9,                                    !- Thermal Absorptance
+  0.5,                                    !- Solar Absorptance
+  0.5;                                    !- Visible Absorptance
+
+OS:Construction,
+  {b6700517-e4d8-4ecd-a5fa-0b7e2f854413}, !- Handle
+  Interior Partition,                     !- Name
+  ,                                       !- Surface Rendering Name
+  {22da2eeb-61a8-4043-ac51-b73f1e01b5c5}; !- Layer 1
+
+OS:StandardsInformation:Construction,
+  {4416c41f-4220-4d71-bf53-36b8758a4c1c}, !- Handle
+  {b6700517-e4d8-4ecd-a5fa-0b7e2f854413}, !- Construction Name
+  InteriorPartition,                      !- Intended Surface Type
+  ;                                       !- Standards Construction Type
+
