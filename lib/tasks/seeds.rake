@@ -1,3 +1,7 @@
+require 'openstudio'
+require 'openstudio/ruleset/ShowRunnerOutput'
+require 'fileutils'
+
 def create_template(structure_id, building_type, year)
 
   #measures_root_directory = "../cofee-measures"
@@ -192,23 +196,23 @@ def create_template(structure_id, building_type, year)
     # this should be in a hash of some sort
     if values[:is_primary]
       measure[:arguments] << {
-        :name => 'is_primary_space_type',
-        :value => true
+        :name => 'fraction_of_building_area',
+        :value => values[:static_value]
       }
       measure[:arguments] << {
-        :name => 'fraction_of_building_area', 
-        :value => values[:static_value]
+        :name => 'is_primary_space_type',
+        :value => true
+
       }
     else
       measure[:arguments] << {
+        :name => 'fraction_of_building_area',
+        :value => values[:static_value]
+      }
+      measure[:arguments] <<
+      {
         :name => 'is_primary_space_type',
         :value => false
-      }
-      measure[:variables] <<
-      {
-        :name => 'fraction_of_building_area',
-        :desc => 'Building Area Fraction',
-        :value => values
       }
     end
     measure[:arguments] << {
@@ -272,42 +276,40 @@ def create_template(structure_id, building_type, year)
     :name => 'add_people_to_space_types', 
     :desc => 'Add People to Space Types',
     :path => "#{File.join(measures_root_directory, 'model0', 'add_people_to_space_types')}",
-    :arguments => [],
-    :variables => [
+    :arguments => [
       {
         :name => 'multiplier_occ',
-        :desc => 'Occupancy Multiplier',
-        :value => {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+        :value => 1.0
       }
-    ]
+    ],
+    :variables => []
   }
   
   measures << {
     :name => 'add_ventilation_to_space_types', 
     :desc => 'Add Ventilation to Space Types',
     :path => "#{File.join(measures_root_directory, 'model0', 'add_ventilation_to_space_types')}",
-    :arguments => [],
-    :variables => [
+    :arguments => [
       {
         :name => 'multiplier_ventilation',
-        :desc => 'Ventilation Multiplier',
-        :value => {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+        :value => 1.0
       }
-    ]
+
+    ],
+    :variables => []
   }
 
   measures << {
     :name => 'add_infiltration_to_space_types', 
     :desc => 'Add Infiltration to Space Types',
     :path => "#{File.join(measures_root_directory, 'model0', 'add_infiltration_to_space_types')}",
-    :arguments => [],
-    :variables => [
+    :arguments => [
       {
         :name => 'multiplier_infiltration',
-        :desc => 'Infiltration Multiplier',
-        :value => {type: 'uniform', minimum: 0.1, maximum: 3, mean: 1, static_value: 1}
+        :value => 1.0
       }
-    ]
+    ],
+    :variables => []
   }
 
   measures << {
@@ -318,31 +320,85 @@ def create_template(structure_id, building_type, year)
     :variables => []
   }
 
-  # pick seed model
-  seed_model = nil
+  # infered data for template
+  template = nil
+  if year.to_i < 1980
+    template = "DOE Ref Pre-1980"
+  elsif year.to_i < 2004
+    template = "DOE Ref 1980-2004"
+  else
+    template = "DOE Ref 2004"
+  end
 
-  # load seed model
+  # hard coded climate zone
+  climate_zone =  "ASHRAE 169-2006-5A"
 
-  puts "#{building_type}_#{year}_ClimateZone"
+  puts "Creating #{building_type}_#{template}_#{climate_zone}.osm"
+
+  # create an instance of a runner
+  runner = OpenStudio::Ruleset::OSRunner.new
+
+  # load the test model
+  translator = OpenStudio::OSVersion::VersionTranslator.new
+  path = OpenStudio::Path.new("#{Dir.pwd}/seeds/EmptySeedModel.osm")
+  model = translator.loadModel(path)
+  #assert((not model.empty?))
+  model = model.get
+
+  # make an empty model
+  #model = OpenStudio::Model::Model.new
 
   measures.each do |m|
 
     puts "run #{m[:name]}"
 
-    # measure = a.workflow.add_measure_from_path(m[:name], m[:desc], m[:path])
-    # m[:arguments].each do |a|
-    #   measure.argument_value(a[:name], a[:value])
-    # end
-    # m[:variables].each do |v|
-    #   measure.make_variable(v[:name], v[:desc], v[:value])
-    # end
+    # load the measure
+    require_relative (Dir.pwd + "../" + m[:path] + "/measure.rb")
+
+    # infer snake case
+    measure_class = "#{m[:name]}".split('_').collect(&:capitalize).join
+
+    if measure_class.include? "GatherSpaceTypeRatioData"
+      measure_class = "GatherSpaceTypeRatioData" # this is needed to get class correctly
+    end
+
+    # create an instance of the measure
+    measure = eval(measure_class).new
+
+    # get arguments
+    arguments = measure.arguments(model)
+    argument_map = OpenStudio::Ruleset.convertOSArgumentVectorToMap(arguments)
+
+    # get argument values
+    arg_value = []
+    m[:arguments].each do |a|
+      #measure.argument_value(a[:name], a[:value])
+      arg_value << a[:value]
+    end
+    #m[:variables].each do |v|
+    #  measure.make_variable(v[:name], v[:desc], v[:value])
+    #end
+
+    # set argument values
+    count = -1
+    arguments.each do |arg|
+      temp_arg_var = arguments[count += 1].clone
+      temp_arg_var.setValue(arg_value[count]) #assert(temp_arg_var.setValue(arg_value[count]))
+      argument_map[arg.name] = temp_arg_var
+    end
+
+    # run the measure
+    measure.run(model, runner, argument_map)
+    result = runner.result
+    show_output(result)
+    #assert_equal("Success", result.value.valueName)
 
   end
 
-  # setup name for seed model
+  #save the model
   save_string = "#{structure_id}_#{building_type}_#{year}"
-
-  # save model
+  output_file_path = OpenStudio::Path.new("seeds/#{save_string}.osm")
+  model.save(output_file_path,true)
 
 end
 
