@@ -90,9 +90,9 @@ def create_json(structure_id, building_type, year, system_type)
       space_type_hash["Office BlendA"] = {is_primary: true, type: 'uniform', minimum: 0.0, maximum: 0.0, mean: 0.0, static_value: 0.0}
       space_type_hash["Office BlendB"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.15, mean: 0.1, static_value: 0.1}
       space_type_hash["Office IT_Room"] = {is_primary: false, type: 'uniform', minimum: 0.35, maximum: 0.65, mean: 0.5, static_value: 0.5}
-      space_type_hash["Office Elec/MechRoom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.02, mean: 0.01, static_value: 0.01}
+      space_type_hash["Office Elec/MechRoom"] = {is_primary: false, type: 'uniform', minimum: 0.005, maximum: 0.02, mean: 0.01, static_value: 0.01}
       space_type_hash["Office PrintRoom"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.02, mean: 0.015, static_value: 0.015}
-      space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.05, maximum: 0.01, mean: 0.04, static_value: 0.04}
+      space_type_hash["Office Restroom"] = {is_primary: false, type: 'uniform', minimum: 0.01, maximum: 0.05, mean: 0.04, static_value: 0.04}
       building_static_hoo_start = 8
       building_static_hoo_finish = 17
     when 'Outpatient'
@@ -1065,9 +1065,9 @@ namespace :test_models do
     hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
-    hash["213097_#{test_vintage}"] = ["LargeHotel",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_ad_#{test_vintage}"] = ["LargeHotel",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
-    hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_ae_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_m_#{test_vintage}"] = ["Outpatient",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_p_#{test_vintage}"] = ["PrimarySchool",test_vintage,HVAC_SYSTEM_TYPE]
@@ -1206,9 +1206,9 @@ namespace :test_models do
     hash["999999_j_#{test_vintage}"] = ["GasStation",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_k_#{test_vintage}"] = ["Hospital",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_l_#{test_vintage}"] = ["Laboratory",test_vintage,HVAC_SYSTEM_TYPE]
-    hash["213097_#{test_vintage}"] = ["LargeHotel",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_ad_#{test_vintage}"] = ["LargeHotel",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_ac_#{test_vintage}"] = ["MidriseApartment",test_vintage,HVAC_SYSTEM_TYPE]
-    hash["272799_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
+    hash["999999_ae_#{test_vintage}"] = ["Office",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_a_#{test_vintage}"] = ["OfficeData",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_m_#{test_vintage}"] = ["Outpatient",test_vintage,HVAC_SYSTEM_TYPE]
     hash["999999_p_#{test_vintage}"] = ["PrimarySchool",test_vintage,HVAC_SYSTEM_TYPE]
