@@ -117,7 +117,7 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip)
   default_weather_file = "#{WEATHER_FILES_DIRECTORY}/#{WEATHER_FILE_NAME}"
 
   # define path to seed model
-  seed_model = "seeds/EmptySeedModel.osm"
+  seed_model = "seeds/empty_seed.osm"
 
   # save path
   save_string = "#{building_type}_#{template}_#{climate_zone}"
@@ -181,7 +181,7 @@ end
 namespace :test_models do
 
   # set constants
-  MEASURES_ROOT_DIRECTORY = "../OpenStudio-measures"
+  MEASURES_ROOT_DIRECTORY = "../OpenStudio-measures/NREL working measures"
   WEATHER_FILE_NAME = "USA_CO_Golden-NREL.724666_TMY3.epw"
   WEATHER_FILES_DIRECTORY = "C:/EnergyPlusV8-2-0/WeatherData"
   ANALYSIS_TYPE = 'single_run'

@@ -14,6 +14,8 @@ require 'zip'
 
 CLEAN.include('*.pem', './projects/*.json', '*.json')
 
+Dir.glob('lib/tasks/*.rake').each {|r| import r}
+
 # Command-line arguments in Rake: http://viget.com/extend/protip-passing-parameters-to-your-rake-tasks
 def get_project(excel_file = '')
   # If excel_file is not pre-specified, request it as input
