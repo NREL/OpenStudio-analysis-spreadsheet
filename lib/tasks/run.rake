@@ -58,7 +58,6 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
   # start of reporting measures
 
   # adding annual_end_use_breakdown
-=begin
   measures << {
       :name => 'annual_end_use_breakdown',
       :desc => 'Annual End Use Breakdown',
@@ -66,7 +65,6 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       :variables => [],
       :arguments => []
   }
-=end
 
   # create analysis if requested
   if settings[:make_json]
@@ -167,13 +165,17 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       # load the measure
       require_relative (Dir.pwd + "../" + m[:path] + "/measure.rb")
 
-      # todo - skip from this loop if it is an E+ or Reporting measure
-
       # infer snake case
       measure_class = "#{m[:name]}".split('_').collect(&:capitalize).join
 
       # create an instance of the measure
       measure = eval(measure_class).new
+
+      # skip from this loop if it is an E+ or Reporting measure
+      if not measure.is_a?(OpenStudio::Ruleset::ModelUserScript)
+        puts "Skipping #{measure.name}. It isn't a model measure."
+        next
+      end
 
       # get arguments
       arguments = measure.arguments(model)
@@ -252,7 +254,7 @@ namespace :test_models do
 
   end
 
-  desc 'create and run the office json'
+  desc 'queue the jsons'
   task :queue do
 
     # jobs to run
