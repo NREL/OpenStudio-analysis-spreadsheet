@@ -4,100 +4,58 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip)
   measures = []
 
   # start of OpenStudio measures
+
+  # adding space_type_and_construction_set_wizard
+  arguments = [] # :value is just a value
+  variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
+  arguments << {:name => 'buildingType', :desc => 'Building Type', :value => building_type}
+  arguments << {:name => 'template', :desc => 'Template', :value => template}
+  arguments << {:name => 'climateZone', :desc => 'Climate Zone', :value => climate_zone}
+  arguments << {:name => 'createConstructionSet', :desc => 'Create Construction Set?', :value => true}
+  arguments << {:name => 'setBuildingDefaults', :desc => 'Set Building Defaults Using New Objects?', :value => true}
   measures << {
       :name => 'space_type_and_construction_set_wizard',
       :desc => 'Space Type And Construction Set Wizard',
       :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'SpaceTypeAndConstructionSetWizard')}",
-      :arguments => [
-          {
-              :name => 'buildingType',
-              :desc => 'Building Type',
-              :value => building_type
-          },
-          {
-              :name => 'template',
-              :desc => 'Template',
-              :value => template
-          },
-          {
-              :name => 'climateZone',
-              :desc => 'Climate Zone',
-              :value => climate_zone
-          },
-          {
-              :name => 'createConstructionSet',
-              :desc => 'Create Construction Set?',
-              :value => true
-          },
-          {
-              :name => 'setBuildingDefaults',
-              :desc => 'Set Building Defaults Using New Objects?',
-              :value => true
-          }
-      ],
-      :variables => []
+      :arguments => arguments,
+      :variables => variables
   }
 
+  # adding bar_aspect_ratio_study
+  arguments = [] # :value is just a value
+  variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
+  arguments << {:name => 'total_bldg_area_ip', :desc => 'Total Building Floor Area (ft^2).', :value => total_bldg_area_ip}
+  arguments << {:name => 'surface_matching', :desc => 'Surface Matching', :value => true}
+  arguments << {:name => 'make_zones', :desc => 'Make Zones', :value => true}
+  variables << {:name => 'ns_to_ew_ratio', :desc => 'Ratio of North/South Facade Length Relative to East/West Facade Length.', :value => {type: 'uniform', minimum: 0.2, maximum: 5.0, mean: 2.0, static_value: 2.0}}
+  variables << {:name => 'num_floors', :desc => 'Number of Floors.', :value => {type: 'uniform', minimum: 1, maximum: 10, mean: 2, static_value: 2}}
+  variables << {:name => 'floor_to_floor_height_ip', :desc => 'Floor to Floor Height.', :value => {type: 'uniform', minimum: 8, maximum: 20, mean: 10, static_value: 10}}
   measures << {
       :name => 'bar_aspect_ratio_study',
       :desc => 'Bar Aspect Ratio Study',
       :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'BarAspectRatioStudy')}",
-      :arguments => [
-          {
-              :name => 'total_bldg_area_ip',
-              :desc => 'Total Building Floor Area (ft^2).',
-              :value => total_bldg_area_ip
-          },
-          {
-              :name => 'surface_matching',
-              :desc => 'Surface Matching',
-              :value => true
-          },
-          {
-              :name => 'make_zones',
-              :desc => 'Make Zones',
-              :value => true
-          }
-      ],
-      :variables => [
-          {
-              :name => 'ns_to_ew_ratio',
-              :desc => 'Ratio of North/South Facade Length Relative to East/West Facade Length.',
-              :value => {type: 'uniform', minimum: 0.2, maximum: 5.0, mean: 2.0, static_value: 2.0}
-          },
-          {
-              :name => 'num_floors',
-              :desc => 'Number of Floors.',
-              :value => {type: 'uniform', minimum: 1, maximum: 10, mean: 2, static_value: 2}
-          },
-          {
-              :name => 'floor_to_floor_height_ip',
-              :desc => 'Floor to Floor Height.',
-              :value => {type: 'uniform', minimum: 8, maximum: 20, mean: 10, static_value: 10}
-          }
-      ]
+      :arguments => arguments,
+      :variables => variables
   }
 
+  # adding set_building_location
+  arguments = [] # :value is just a value
+  variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
+  arguments << {:name => 'weather_directory', :desc => 'Weather Directory', :value => "../../weather"}
+  arguments << {:name => 'weather_file_name', :desc => 'Weather File Name', :value => WEATHER_FILE_NAME}
   measures << {
       :name => 'set_building_location',
       :desc => 'Set Building Location And Design Days',
       :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'ChangeBuildingLocation')}",
-      :variables => [],
-      :arguments => [
-          {
-              :name => "weather_directory",
-              :value => "../../weather"
-          },
-          {
-              :name => "weather_file_name",
-              :value => WEATHER_FILE_NAME
-          },
-      ]
+      :arguments => arguments,
+      :variables => variables
   }
 
   # start of energy plus measures
 
   # start of reporting measures
+
+  # adding annual_end_use_breakdown
   measures << {
       :name => 'annual_end_use_breakdown',
       :desc => 'Annual End Use Breakdown',
