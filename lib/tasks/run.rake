@@ -38,6 +38,31 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       :variables => variables
   }
 
+  # populate hash for wwr measure
+  wwr_hash = {}
+  wwr_hash["North"] = {type: 'uniform', minimum: 0, maximum: 0.6, mean: 0.4, static_value: 0.4}
+  wwr_hash["East"] = {type: 'uniform', minimum: 0, maximum: 0.6, mean: 0.15, static_value: 0.15}
+  wwr_hash["South"] = {type: 'uniform', minimum: 0, maximum: 0.6, mean: 0.4, static_value: 0.4}
+  wwr_hash["West"] = {type: 'uniform', minimum: 0, maximum: 0.6, mean: 0.15, static_value: 0.15}
+
+  # loop through four instances of the
+  # note: measure description and variable names need to be unique.
+  wwr_hash.each do |facade,wwr|
+    # adding bar_aspect_ratio_study
+    arguments = [] # :value is just a value
+    variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
+    variables << {:name => 'wwr', :desc => "#{facade}|Window to Wall Ratio (fraction)", :value => wwr} # keep name unique if used as variable
+    arguments << {:name => 'sillHeight', :desc => "Sill Height (in)", :value => 30.0}
+    arguments << {:name => 'facade', :desc => 'Cardinal Direction.', :value => facade}
+    measures << {
+        :name => "#{facade.downcase}|set_window_to_wall_ratio_by_facade", #keep this snake_case with a "|" separating the unique prefix.
+        :desc => "#{facade}|Set Window to Wall Ratio by Facade",
+        :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'SetWindowToWallRatioByFacade')}",
+        :arguments => arguments,
+        :variables => variables
+    }
+  end
+
   # adding set_building_location
   arguments = [] # :value is just a value
   variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
@@ -164,8 +189,9 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       # load the measure
       require_relative (Dir.pwd + "../" + m[:path] + "/measure.rb")
 
-      # infer snake case
-      measure_class = "#{m[:name]}".split('_').collect(&:capitalize).join
+      # infer class from name
+      name_without_prefix = m[:name].split("|")
+      measure_class = "#{name_without_prefix.last}".split('_').collect(&:capitalize).join
 
       # create an instance of the measure
       measure = eval(measure_class).new
