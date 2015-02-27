@@ -38,11 +38,11 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       :variables => variables
   }
 
-=begin
   # adding set_building_location
   arguments = [] # :value is just a value
   variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
   arguments << {:name => 'weather_directory', :desc => 'Weather Directory', :value => "../../weather"}
+  #arguments << {:name => 'weather_directory', :desc => 'Weather Directory', :value => "../../../OpenStudio-analysis-spreadsheet/weather"}
   arguments << {:name => 'weather_file_name', :desc => 'Weather File Name', :value => WEATHER_FILE_NAME}
   measures << {
       :name => 'change_building_location',
@@ -51,7 +51,6 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       :arguments => arguments,
       :variables => variables
   }
-=end
 
   # start of energy plus measures
 
@@ -133,7 +132,7 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
   # create analysis if requested
   if settings[:make_osm]
 
-    # todo - change directory I'm running measure from (breaks measures like ChangeBuildingLocation)
+    # todo - to accommodate measures with string/path arguments it would be better for this section to run on the contents of the zip file. Then paths would match what happens on the server.
 
     # define path to seed model
     seed_model = seed_model
@@ -181,6 +180,25 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
       arguments = measure.arguments(model)
       argument_map = OpenStudio::Ruleset.convertOSArgumentVectorToMap(arguments)
 
+      # todo - could be better to just run on contents of zip file instead of doing this
+      # adjust path of arguments using shared resources to work on local run
+      m[:arguments].each do |a|
+        if a[:value].to_s.include? "../../weather"
+          a[:value] = a[:value].gsub("../../weather","../../../OpenStudio-analysis-spreadsheet/weather")
+        end
+        if a[:value].to_s.include? "../../lib"
+          a[:value] = a[:value].gsub("../../lib","../../../OpenStudio-analysis-spreadsheet/lib")
+        end
+      end
+      m[:variables].each do |v|
+        if v[:value][:static_value].to_s.include? "../../weather"
+          v[:value][:static_value] = v[:value][:static_value].gsub("../../weather","../../../OpenStudio-analysis-spreadsheet/weather")
+        end
+        if v[:value][:static_value].to_s.include? "../../lib"
+          v[:value][:static_value] = v[:value][:static_value].gsub("../../lib","../../../OpenStudio-analysis-spreadsheet/lib")
+        end
+      end
+
       # get argument values
       args_hash = {}
       m[:arguments].each do |a|
@@ -200,6 +218,9 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
         argument_map[arg.name] = temp_arg_var
       end
 
+      # just added as test of where measure is running from
+      #puts "Measure is running from #{Dir.pwd}"
+
       # run the measure
       measure.run(model, runner, argument_map)
       result = runner.result
@@ -212,6 +233,8 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
     output_file_path = OpenStudio::Path.new("analysis_local/#{save_string}.osm")
     puts "Saving #{output_file_path}"
     model.save(output_file_path,true)
+
+    # todo - look at ChnageBuildingLocation, it things it is in files, not weather? Can I save the folder like app does
 
     # todo - add support for E+ and reporting measures (will require E+ run)
 
@@ -232,8 +255,8 @@ namespace :test_models do
 
   # set constants
   MEASURES_ROOT_DIRECTORY = "../OpenStudio-measures/NREL working measures"
-  WEATHER_FILE_NAME = "USA_CO_Golden-NREL.724666_TMY3.epw"
-  WEATHER_FILES_DIRECTORY = "C:/EnergyPlusV8-2-0/WeatherData"
+  WEATHER_FILE_NAME = "USA_CO_Denver.Intl.AP.725650_TMY3.epw"
+  WEATHER_FILES_DIRECTORY = "weather"
   SEED_FILE_NAME = "empty_seed.osm"
   SEED_FILES_DIRECTORY = "seeds"
   ANALYSIS_TYPE = 'single_run'
