@@ -11,3 +11,4 @@ Gemfile.lock
 faraday.log
 /analysis
 Cofee-measures
+/analysis_local
