@@ -45,8 +45,8 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
   wwr_hash["South"] = {type: 'uniform', minimum: 0, maximum: 0.6, mean: 0.4, static_value: 0.4}
   wwr_hash["West"] = {type: 'uniform', minimum: 0, maximum: 0.6, mean: 0.15, static_value: 0.15}
 
-  # loop through four instances of the
-  # note: measure description and variable names need to be unique.
+  # loop through instances for wwr
+  # note: measure description and variable names need to be unique for each instance
   wwr_hash.each do |facade,wwr|
     # adding bar_aspect_ratio_study
     arguments = [] # :value is just a value
@@ -61,6 +61,63 @@ def create_json(building_type, template, climate_zone, total_bldg_area_ip,settin
         :arguments => arguments,
         :variables => variables
     }
+  end
+
+  # adding assign_thermostats_basedon_standards_building_typeand_standards_space_type
+  measures << {
+      :name => 'assign_thermostats_basedon_standards_building_typeand_standards_space_type',
+      :desc => 'Assign Thermostats Basedon Standards Building Typeand Standards Space Type',
+      :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'AssignThermostatsBasedonStandardsBuildingTypeandStandardsSpaceType')}",
+      :variables => [],
+      :arguments => []
+  }
+
+  # use case statement to choose HVAC based on building type
+  case building_type
+
+    when "Office"
+
+      # adding aedg_office_hvac_ashp_doas
+      arguments = [] # :value is just a value
+      variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
+      arguments << {:name => 'ceilingReturnPlenumSpaceType', :desc => 'This space type should be part of a ceiling return air plenum.', :value => nil} # this is an optional argument
+      arguments << {:name => 'costTotalHVACSystem', :desc => 'Total Cost for HVAC System ($).', :value => 0.0}
+      arguments << {:name => 'remake_schedules', :desc => 'Apply recommended availability and ventilation schedules for air handlers?"', :value => true}
+      measures << {
+          :name => 'aedg_office_hvac_ashp_doas',
+          :desc => 'AEDG Office Hvac Ashp Doas',
+          :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'AedgOfficeHvacAshpDoas')}",
+          :arguments => arguments,
+          :variables => variables
+      }
+
+    when "PrimarySchool" , "SecondarySchool"
+
+      # adding aedg_k12_hvac_dual_duct_doas
+      arguments = [] # :value is just a value
+      variables = [] # :value needs to be a hash {type: nil,  minimum: nil, maximum: nil, mean: nil, status_value: nil}
+      arguments << {:name => 'ceilingReturnPlenumSpaceType', :desc => 'This space type should be part of a ceiling return air plenum.', :value => nil} # this is an optional argument
+      arguments << {:name => 'costTotalHVACSystem', :desc => 'Total Cost for HVAC System ($).', :value => 0.0}
+      arguments << {:name => 'remake_schedules', :desc => 'Apply recommended availability and ventilation schedules for air handlers?"', :value => true}
+      measures << {
+          :name => 'aedg_k12_hvac_dual_duct_doas',
+          :desc => 'AEDG K12 Hvac Dual Duct Doas',
+          :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'AedgK12HvacDualDuctDoas')}",
+          :arguments => arguments,
+          :variables => variables
+      }
+
+    else
+
+      # adding enable_ideal_air_loads_for_all_zones
+      measures << {
+          :name => 'enable_ideal_air_loads_for_all_zones',
+          :desc => 'Enable Ideal Air Loads For All Zones',
+          :path => "#{File.join(MEASURES_ROOT_DIRECTORY, 'EnableIdealAirLoadsForAllZones')}",
+          :variables => [],
+          :arguments => []
+      }
+
   end
 
   # adding set_building_location
@@ -273,6 +330,8 @@ def populate_value_sets()
   value_sets = []
   value_sets << {:building_type => "Office", :template => "DOE Ref 2004", :climate_zone => "ASHRAE 169-2006-5B", :area => 50000.0}
   value_sets << {:building_type => "LargeHotel", :template => "DOE Ref 2004", :climate_zone => "ASHRAE 169-2006-5B", :area => 50000.0}
+  value_sets << {:building_type => "Warehouse", :template => "DOE Ref 1980-2004", :climate_zone => "ASHRAE 169-2006-5B", :area => 50000.0}
+  value_sets << {:building_type => "SecondarySchool", :template => "DOE Ref 1980-2004", :climate_zone => "ASHRAE 169-2006-3A", :area => 50000.0}
 
   return value_sets
 end
