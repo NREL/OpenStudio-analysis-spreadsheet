@@ -1,0 +1,34 @@
+{
+  "classname": "SetHeatingandCoolingSizingFactors",
+  "name": "set_heatingand_cooling_sizing_factors",
+  "display_name": "Set Heatingand Cooling Sizing Factors",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "htg_sz_factor",
+      "variable_type": "Double",
+      "name": "htg_sz_factor",
+      "display_name": "Heating Sizing Factor (eg 15 = 125% of required heating capacity",
+      "units": null,
+      "description": null,
+      "default_value": 1.25
+    },
+    {
+      "local_variable": "clg_sz_factor",
+      "variable_type": "Double",
+      "name": "clg_sz_factor",
+      "display_name": "Coolinig Sizing Factor (eg 15 = 115% of required cooling capacity",
+      "units": null,
+      "description": null,
+      "default_value": 1.15
+    }
+  ],
+  "name_xml": "Set Heating and Cooling Sizing Factors",
+  "uid": "e9267250-ea12-4edf-9756-7b43282246bf",
+  "version_id": "46cd0919-2c4a-46a2-93e2-860703c5d918",
+  "modeler_description": "Set the whole-model heating sizing factor and the whole-model cooling sizing factor to user specified values.",
+  "description": "",
+  "tags": [
+    "HVAC.Whole System"
+  ]
+}

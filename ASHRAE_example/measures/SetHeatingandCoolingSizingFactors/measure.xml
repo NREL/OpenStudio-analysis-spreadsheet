@@ -1,0 +1,41 @@
+<measure>
+  <name>Set Heating and Cooling Sizing Factors</name>
+  <uid>e9267250-ea12-4edf-9756-7b43282246bf</uid>
+  <version_id>46cd0919-2c4a-46a2-93e2-860703c5d918</version_id>
+  <description></description>
+  <modeler_description>Set the whole-model heating sizing factor and the whole-model cooling sizing factor to user specified values.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Whole System</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>SetHeatingandCoolingSizingFactors_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>DED5F65F</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.3</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>BB1EDC63</checksum>
+    </file>
+  </files>
+</measure>

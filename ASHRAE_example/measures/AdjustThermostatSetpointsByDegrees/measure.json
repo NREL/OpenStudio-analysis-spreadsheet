@@ -1,0 +1,43 @@
+{
+  "classname": "AdjustThermostatSetpointsByDegrees",
+  "name": "adjust_thermostat_setpoints_by_degrees",
+  "display_name": "Adjust Thermostat Setpoints by Degrees",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+    {
+      "local_variable": "cooling_adjustment",
+      "variable_type": "Double",
+      "name": "cooling_adjustment",
+      "display_name": "Degrees Fahrenheit to Adjust Cooling Setpoint By",
+      "units": null,
+      "description": null,
+      "default_value": 1.0
+    },
+    {
+      "local_variable": "heating_adjustment",
+      "variable_type": "Double",
+      "name": "heating_adjustment",
+      "display_name": "Degrees Fahrenheit to Adjust heating Setpoint By",
+      "units": null,
+      "description": null,
+      "default_value": -1.0
+    },
+    {
+      "local_variable": "alter_design_days",
+      "variable_type": "Bool",
+      "name": "alter_design_days",
+      "display_name": "Alter Design Day Thermostats",
+      "units": null,
+      "description": null,
+      "default_value": false
+    }
+  ],
+  "name_xml": "Adjust Thermostat Setpoints by Degrees",
+  "uid": "6e1f34f9-92e1-44ea-9279-de0b9b64f6a1",
+  "version_id": "12df347b-7909-4bd4-af6b-c5a5825d175d",
+  "modeler_description": "This measure will clone all of the schedules that are used as heating and cooling setpoints for thermal zones. The clones are hooked up to the thermostat in place of the original schedules. Then the schedules are adjusted by the specified values. There is a checkbox to determine if the thermostat for design days should be altered.",
+  "description": "This measure adjusts heating and cooling setpoints by a user specified number of degrees. This is applied throughout the entire building.",
+  "tags": [
+    "HVAC.HVAC Controls"
+  ]
+}

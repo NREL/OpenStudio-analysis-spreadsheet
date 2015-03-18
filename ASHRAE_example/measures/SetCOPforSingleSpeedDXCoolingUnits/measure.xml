@@ -1,0 +1,47 @@
+<measure>
+  <name>Set COP for Single Speed DX Cooling Units</name>
+  <uid>4a737582-b5fc-477a-89e9-f8501af13b10</uid>
+  <version_id>f67ce7bf-06ff-419d-beea-6789f567b4f2</version_id>
+  <description>This measure will find single speed DX cooling units in the model and will alter the Rated COP to a specified value. It can be run on a single or all air loops in the model.</description>
+  <modeler_description>Loop through air loops in the building and find and change the COP of any OS:Coil:Cooling:DX:SingleSpeed objects you find. Note the pre-adjusted COP and also the name of the loop. For the starting condition note the range of COP values for the units, and for the final condition do the same, to confirm that they were all changed.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Cooling</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>0320_ModelWithHVAC_01.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>049F3417</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.10.2</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>080FF27A</checksum>
+    </file>
+    <file>
+      <filename>SetCOPforSingleSpeedDXCoolingUnits_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>401534CC</checksum>
+    </file>
+  </files>
+</measure>

@@ -113,17 +113,19 @@ def configure_target_server(excel, target)
   # Choose target server and return the DNS
   server_dns = nil
   case target.downcase
-  when 'vagrant'
-    server_dns = 'http://localhost:8080'
-  when 'nrel24a'
-    server_dns = 'http://bball-130553.nrel.gov:8080'
-  when 'nrel24b'
-    server_dns = 'http://bball-130590.nrel.gov:8080'
-  when 'aws'
-    if File.exist?("#{excel.cluster_name}.json")
-      json = JSON.parse(File.read("#{excel.cluster_name}.json"), symbolize_names: true)
-      server_dns = "http://#{json[:server][:dns]}"
-    end
+    when 'vagrant'
+      server_dns = 'http://localhost:8080'
+    when 'nrel24a'
+      server_dns = 'http://bball-130553.nrel.gov:8080'
+    when 'nrel24b'
+      server_dns = 'http://bball-130590.nrel.gov:8080'
+  when "nrel24"  
+    server_dns = "http://bball-130449.nrel.gov:8080"  
+    when 'aws'
+      if File.exist?("#{excel.cluster_name}.json")
+        json = JSON.parse(File.read("#{excel.cluster_name}.json"), symbolize_names: true)
+        server_dns = "http://#{json[:server][:dns]}"
+      end
   end
 end
 
@@ -361,7 +363,14 @@ task :run_NREL24b do
   run_analysis(excel, 'nrel24b')
 end
 
-desc 'run analysis with customized options'
+desc "run NREL24"
+task :run_NREL24 do
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'nrel24')
+end
+
+desc "run analysis with customized options"
 task :run_custom, [:target, :project, :download] do |t, args|
   args.with_defaults(target: 'aws', project: nil, download: false)
   excel = get_project(args[:project])

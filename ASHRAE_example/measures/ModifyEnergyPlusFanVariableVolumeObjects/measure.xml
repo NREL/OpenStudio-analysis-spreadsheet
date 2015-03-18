@@ -1,0 +1,47 @@
+<measure>
+  <name>Modify EnergyPlus Fan Variable Volume Objects</name>
+  <uid>14a9aa83-b4de-48b4-ba65-dad6f102ffcb</uid>
+  <version_id>2d970fea-7fac-4378-9f00-7f30e026f2f3</version_id>
+  <description>Set the Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model. Input values are in SI units.</description>
+  <modeler_description>Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model will be set to the requested SI value.</modeler_description>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Distribution</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>Test.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BCF2DBB8</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.1.0</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>7A9B3787</checksum>
+    </file>
+    <file>
+      <filename>ModifyEnergyPlusFanVariableVolumeObjects_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>F937148D</checksum>
+    </file>
+  </files>
+</measure>

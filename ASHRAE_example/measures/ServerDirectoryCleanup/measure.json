@@ -1,0 +1,16 @@
+{
+  "classname": "ServerDirectoryCleanup",
+  "name": "server_directory_cleanup",
+  "display_name": "Server Directory Cleanup",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+  ],
+  "name_xml": "Server Directory Cleanup",
+  "uid": "ec7d04ad-0b7b-495b-825a-e1b6d28d1d3f",
+  "version_id": "a751684d-8efa-4592-aaf2-7fce478a1a09",
+  "modeler_description": "Use during large server runs, when individual sequel files and the like will not be needed.",
+  "description": "Removes a significant portion of the saved results from each run, helping to alleviate memory problems.",
+  "tags": [
+    "Calibration"
+  ]
+}
