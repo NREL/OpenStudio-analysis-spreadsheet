@@ -155,60 +155,23 @@ def run_analysis(excel, target = 'aws', download = false)
     # for each model in the excel file submit the analysis
     excel.models.each do |model|
       # parse the file and check if the instance appears to be up
-      formulation_file = "./analysis/#{model[:name]}.json"
-      analysis_zip_file = "./analysis/#{model[:name]}.zip"
+
+      file_name = nil
+      if excel.models.size > 1
+        file_name = "#{excel.name.snake_case} #{model[:name]}".snake_case
+      else
+        file_name = "#{excel.name.snake_case}".snake_case
+      end
+
+      formulation_file = "./analysis/#{file_name}.json"
+      analysis_zip_file = "./analysis/#{file_name}.zip"
 
       # Project data
       options = { hostname: server_dns }
       api = OpenStudio::Analysis::ServerApi.new(options)
 
-      project_options = {}
-      project_id = api.new_project(project_options)
-
-      analysis_options = {
-        formulation_file: formulation_file,
-        upload_file: analysis_zip_file,
-        reset_uuids: true
-      }
-      analysis_id = api.new_analysis(project_id, analysis_options)
-
-      if (excel.problem['analysis_type'] == 'optim') || (excel.problem['analysis_type'] == 'rgenoud')
-        run_options = {
-          analysis_action: 'start',
-          without_delay: false, # run in background
-          analysis_type: excel.problem['analysis_type'],
-          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
-          use_server_as_worker: true,
-          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
-          run_data_point_filename: excel.run_setup['run_data_point_filename']
-        }
-      else
-        run_options = {
-          analysis_action: 'start',
-          without_delay: false, # run in background
-          analysis_type: excel.problem['analysis_type'],
-          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
-          use_server_as_worker: excel.run_setup['use_server_as_worker'],
-          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
-          run_data_point_filename: excel.run_setup['run_data_point_filename']
-        }
-      end
-      api.run_analysis(analysis_id, run_options)
-
-      # If the analysis is LHS, pre-flight, or single run, then go ahead and run batch run because
-      # there is no explicit way to tell the system to do it
-      if excel.problem['analysis_type'] == 'lhs' || excel.problem['analysis_type'] == 'repeat_run' || excel.problem['analysis_type'] == 'doe' || excel.problem['analysis_type'] == 'preflight' || excel.problem['analysis_type'] == 'single_run'
-        run_options = {
-          analysis_action: 'start',
-          without_delay: false, # run in background
-          analysis_type: 'batch_run',
-          allow_multiple_jobs: excel.run_setup['allow_multiple_jobs'],
-          use_server_as_worker: excel.run_setup['use_server_as_worker'],
-          simulate_data_point_filename: excel.run_setup['simulate_data_point_filename'],
-          run_data_point_filename: excel.run_setup['run_data_point_filename']
-        }
-        api.run_analysis(analysis_id, run_options)
-      end
+      analysis_id = api.run(formulation_file, analysis_zip_file, excel.problem['analysis_type'],
+              excel.run_setup['allow_multiple_jobs'], true, excel.run_setup['run_data_point_filename'])
 
       # Report some useful info
       puts
