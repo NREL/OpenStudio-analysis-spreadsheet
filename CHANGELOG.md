@@ -1,13 +1,15 @@
 Analysis Example Change Log
 ==================================
 
-Version 0.4.2 (Unreleased)
+Version 0.4.2
 -------------
 * Clean up spreadsheet instructions and typos
+* New AMIs by default that are more secure
+* Upgrade dependencies of OpenStudio AWS and OpenStudio Analysis
 
 Version 0.4.1
 -------------
-* Bug fix for OpenStudio name space conflicts
+* [BUG FIX] OpenStudio name space conflicts
 * Support for EnergyPlus 8.2 and OpenStudio 1.6.0
 
 Version 0.4.0
