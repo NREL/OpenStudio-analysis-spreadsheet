@@ -72,27 +72,27 @@ Or run `rake clean`".red
 
     # Don't use the old API (Version 1)
     aws_options = {
-      ami_lookup_version: 2,
-      openstudio_server_version: excel.settings['openstudio_server_version']
+        ami_lookup_version: 2,
+        openstudio_server_version: excel.settings['openstudio_server_version']
     }
     aws = OpenStudio::Aws::Aws.new(aws_options)
 
     server_options = {
-      instance_type: excel.settings['server_instance_type'],
-      user_id: excel.settings['user_id'],
-      tags: excel.aws_tags
-      # aws_key_pair_name: 'custom_key',
-      # private_key_file_name: File.expand_path('~/.ssh/private_key')
-      # optional -- will default later
-      # ebs_volume_id: nil,
+        instance_type: excel.settings['server_instance_type'],
+        user_id: excel.settings['user_id'],
+        tags: excel.aws_tags
+        # aws_key_pair_name: 'custom_key',
+        # private_key_file_name: File.expand_path('~/.ssh/private_key')
+        # optional -- will default later
+        # ebs_volume_id: nil,
     }
 
     worker_options = {
-      instance_type: excel.settings['worker_instance_type'],
-      user_id: excel.settings['user_id'],
-      tags: excel.aws_tags
-      # aws_key_pair_name: 'custom_key',
-      # private_key_file_name: File.expand_path('~/.ssh/private_key')
+        instance_type: excel.settings['worker_instance_type'],
+        user_id: excel.settings['user_id'],
+        tags: excel.aws_tags
+        # aws_key_pair_name: 'custom_key',
+        # private_key_file_name: File.expand_path('~/.ssh/private_key')
     }
 
     start_time = Time.now
@@ -119,8 +119,8 @@ def configure_target_server(excel, target)
       server_dns = 'http://bball-130553.nrel.gov:8080'
     when 'nrel24b'
       server_dns = 'http://bball-130590.nrel.gov:8080'
-  when "nrel24"  
-    server_dns = "http://bball-130449.nrel.gov:8080"  
+    when "nrel24"
+      server_dns = "http://bball-130449.nrel.gov:8080"
     when 'aws'
       if File.exist?("#{excel.cluster_name}.json")
         json = JSON.parse(File.read("#{excel.cluster_name}.json"), symbolize_names: true)
@@ -167,11 +167,11 @@ def run_analysis(excel, target = 'aws', download = false)
       analysis_zip_file = "./analysis/#{file_name}.zip"
 
       # Project data
-      options = { hostname: server_dns }
+      options = {hostname: server_dns}
       api = OpenStudio::Analysis::ServerApi.new(options)
 
       analysis_id = api.run(formulation_file, analysis_zip_file, excel.problem['analysis_type'],
-              excel.run_setup['allow_multiple_jobs'], true, excel.run_setup['run_data_point_filename'])
+                            excel.run_setup['allow_multiple_jobs'], true, excel.run_setup['run_data_point_filename'])
 
       # Report some useful info
       puts
@@ -188,7 +188,7 @@ def run_analysis(excel, target = 'aws', download = false)
 
         # These are hard coded for now...
         check_interval = 15 # sec
-        max_time = 3600     # sec
+        max_time = 3600 # sec
 
         Timeout.timeout(max_time) do
           begin
@@ -252,7 +252,7 @@ def run_analysis(excel, target = 'aws', download = false)
               sleep check_interval
             end
 
-          # On timeout...
+              # On timeout...
           rescue TimeoutError => e
             puts 'Time expired before analysis completed! Download aborted.'.bold.red
           end
@@ -344,6 +344,31 @@ task :run_custom, [:target, :project, :download] do |t, args|
   run_analysis(excel, args[:target], args[:download])
 end
 
+desc "terminate running aws instances"
+task :terminate do
+  Dir['*.json'].each do |json|
+    # Read the JSON
+    aws_options = {
+        ami_lookup_version: 2,
+    }
+    aws = OpenStudio::Aws::Aws.new(aws_options)
+    aws.load_instance_info_from_file(json)
+
+    puts "AWS server instance found with IP: #{aws.os_aws.server.ip}"
+    puts "AWS worker instances found with IPs: #{aws.os_aws.workers.map{|w| w.ip}.join(', ')}"
+
+    if aws.os_aws.server.ip
+      print "Do you want to terminate the AWS instances node [Y/N]? "
+      if $stdin.gets.chomp.downcase == 'y'
+        puts "Terminating ..."
+        aws.terminate
+        File.delete(json)
+        puts "Make sure to verify that the instances have terminated via the AWS Console!".cyan
+      end
+    end
+  end
+end
+
 desc 'delete all projects on site'
 task :delete_all do
   if File.exist?('server_data.json')
@@ -352,7 +377,7 @@ task :delete_all do
     server_dns = "http://#{json[:server][:dns]}"
 
     # Project data
-    options = { hostname: server_dns }
+    options = {hostname: server_dns}
     api = OpenStudio::Analysis::ServerApi.new(options)
     api.delete_all
   else
@@ -366,7 +391,7 @@ task :delete_all_vagrant do
   server_dns = 'http://localhost:8080'
 
   # Project data
-  options = { hostname: server_dns }
+  options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
   api.delete_all
 end
