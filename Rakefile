@@ -12,7 +12,7 @@ require 'pp'
 require 'rubygems'
 require 'zip'
 
-CLEAN.include('*.pem', './projects/*.json', '*.json')
+CLEAN.include('*.pem', '*.pub', './projects/*.json', '*.json', 'faraday.log')
 
 # Command-line arguments in Rake: http://viget.com/extend/protip-passing-parameters-to-your-rake-tasks
 def get_project(excel_file = '')
