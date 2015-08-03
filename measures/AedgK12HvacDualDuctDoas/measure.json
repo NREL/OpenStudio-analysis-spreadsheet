@@ -5,42 +5,39 @@
   "measure_type": "RubyMeasure",
   "arguments": [
     {
-      "local_variable": "ceilingReturnPlenumSpaceType",
-      "variable_type": "Choice",
       "name": "ceilingReturnPlenumSpaceType",
       "display_name": "This space type should be part of a ceiling return air plenum",
+      "variable_type": "Choice",
+      "local_variable": "ceilingReturnPlenumSpaceType",
       "units": null,
-      "description": null,
       "default_value": "We dont want a default, this is an optional argument",
       "choices": [
         "We dont want a default, this is an optional argument"
       ]
     },
     {
-      "local_variable": "costTotalHVACSystem",
-      "variable_type": "Double",
       "name": "costTotalHVACSystem",
       "display_name": "Total Cost for HVAC System",
+      "variable_type": "Double",
+      "local_variable": "costTotalHVACSystem",
       "units": "$",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "remake_schedules",
-      "variable_type": "Bool",
       "name": "remake_schedules",
       "display_name": "Apply recommended availability and ventilation schedules for air handlers",
+      "variable_type": "Bool",
+      "local_variable": "remake_schedules",
       "units": null,
-      "description": null,
       "default_value": true
     }
   ],
   "name_xml": "AEDG K12 HVAC Dual Duct DOAS",
   "uid": "e45f7185-15c2-40da-be15-2e8406f96dba",
-  "version_id": "fe876769-09cb-4007-8bfa-33183b0b3283",
-  "modeler_description": "Airloops are dedicated to central cooling and have variable speed fan operation and hot and chilled water coils.  The DOAS is approximated using a four pipe fan coil at the zone level.  Heating is provided at the zone level with hot water baseboard heaters.  Chiller for DOAS and cooling duct paths is air-cooled.  Packaged single zone systems have constant speed fan operation, gas furnace heating, and single speed DX cooling.",
-  "description": "Measure replaces existing HVAC system (if any) with a Dual Duct with DOAS HVAC system (one system per floor).  The dual duct system (separate variable speed air delivery paths for cooling and DOAS, with zone level heating) is applied to all space types except Cafeteria, Kitchen, Gym, and Auditorium; packaged single zone equipment is applied to those zones.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% K-12 AEDG.",
+  "version_id": "5dc66ca7-1091-4acb-af80-cbb1643d15c0",
   "tags": [
     "HVAC.Whole System"
-  ]
+  ],
+  "modeler_description_xml": "Airloops are dedicated to central cooling and have variable speed fan operation and hot and chilled water coils.  The DOAS is approximated using a four pipe fan coil at the zone level.  Heating is provided at the zone level with hot water baseboard heaters.  Chiller for DOAS and cooling duct paths is air-cooled.  Packaged single zone systems have constant speed fan operation, gas furnace heating, and single speed DX cooling.",
+  "description_xml": "Measure replaces existing HVAC system (if any) with a Dual Duct with DOAS HVAC system (one system per floor).  The dual duct system (separate variable speed air delivery paths for cooling and DOAS, with zone level heating) is applied to all space types except Cafeteria, Kitchen, Gym, and Auditorium; packaged single zone equipment is applied to those zones.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% K-12 AEDG."
 }

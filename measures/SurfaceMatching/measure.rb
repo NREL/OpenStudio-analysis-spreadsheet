@@ -19,7 +19,13 @@ class SurfaceMatching < OpenStudio::Ruleset::ModelUserScript
   #define the arguments that the user will input
   def arguments(model)
     args = OpenStudio::Ruleset::OSArgumentVector.new
-    
+
+    #make an argument to remove existing costs
+    intersect_surfaces = OpenStudio::Ruleset::OSArgument::makeBoolArgument("intersect_surfaces",true)
+    intersect_surfaces.setDisplayName("Intersect Surfaces Before Matching?")
+    intersect_surfaces.setDefaultValue(true)
+    args << intersect_surfaces
+
     return args
   end #end the arguments method
 
@@ -33,6 +39,7 @@ class SurfaceMatching < OpenStudio::Ruleset::ModelUserScript
     end
 
     #assign the user inputs to variables
+    intersect_surfaces = runner.getBoolArgumentValue("intersect_surfaces",user_arguments)
 
     # matched surface counter
     initialMatchedSurfaceCounter = 0
@@ -53,8 +60,15 @@ class SurfaceMatching < OpenStudio::Ruleset::ModelUserScript
       spaces << space
     end
 
+    # intersect surfaces
+    if intersect_surfaces
+      OpenStudio::Model.intersectSurfaces(spaces)
+      runner.registerInfo("Intersecting surfaces, this will create additional geometry.")
+    end
+
     #match surfaces for each space in the vector
     OpenStudio::Model.matchSurfaces(spaces)
+    runner.registerInfo("Matching surfaces..")
 
     # matched surface counter
     finalMatchedSurfaceCounter = 0

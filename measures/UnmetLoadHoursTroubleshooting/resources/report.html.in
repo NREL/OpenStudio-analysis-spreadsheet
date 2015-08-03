@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Unmet Load Hours Troubleshooting Report</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dygraph/1.0.1/dygraph-combined.js"></script>
+<style>
+body {
+  position: relative;
+  height: 100%;
+}
+
+#tocItems > .nav > li > a {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tocItems {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.legend {
+    float:right;
+    height: 110px;
+    width: 130px;
+}
+
+.btn {
+    margin: 0px 3px;
+}
+</style>
+<script type="text/javascript">
+// Create a timeseries graph of the data for each zone
+$(document).ready(function () {
+
+    function barChartPlotter(e) {
+        var ctx = e.drawingContext;
+        var points = e.points;
+        var y_bottom = e.dygraph.toDomYCoord(0);
+
+        // The RGBColorParser class is provided by rgbcolor.js, which is
+        // packed in with dygraphs.
+        var color = new RGBColorParser(e.color);
+        color.r = Math.floor((255 + color.r) / 2);
+        color.g = Math.floor((255 + color.g) / 2);
+        color.b = Math.floor((255 + color.b) / 2);
+        ctx.fillStyle = color.toRGB();
+
+        // Find the minimum separation between x-values.
+        // This determines the bar width.
+        var min_sep = Infinity;
+        for (var i = 1; i < points.length; i++) {
+          var sep = points[i].canvasx - points[i - 1].canvasx;
+          if (sep < min_sep) min_sep = sep;
+        }
+        var bar_width = Math.floor(2.0 / 3 * min_sep);
+
+        // Do the actual plotting.
+        for (var i = 0; i < points.length; i++) {
+          var p = points[i];
+          var center_x = p.canvasx;
+
+          ctx.fillRect(center_x - bar_width / 2, p.canvasy,
+              bar_width, y_bottom - p.canvasy);
+
+          ctx.strokeRect(center_x - bar_width / 2, p.canvasy,
+              bar_width, y_bottom - p.canvasy);
+        }
+    };
+
+    $.each(nine, function (index, graphData) {
+        var graph = nine[index];
+
+        var HEATING = 1;
+        var COOLING = -1;
+
+        var highlights = [];
+        var current = [0,0,-2];
+        var currentDirection = 0;
+
+        for (var i = 0; i < graph.timeseries.length; i++) {
+            graph.timeseries[i][0] = new Date(graph.timeseries[i][0]);
+            if ( graph.timeseries[i][1] < graph.timeseries[i][2]) {
+                currentDirection = -1;
+            } else if ( graph.timeseries[i][1] > graph.timeseries[i][3] ) {
+                currentDirection = 1;
+            } else {
+                currentDirection = 0;
+            }
+
+            // update endpoint
+            // if the currentDirection != dir of current interval, close off current interval,
+            // if dir != 0, store,
+            // create new one.
+
+            current[1] = graph.timeseries[i][0];
+            if ( currentDirection != current[2] ){
+                if ( current[2] != 0 ) {
+                    highlights.push( current );
+                }
+                current = [graph.timeseries[i][0],graph.timeseries[i][0],currentDirection];
+            }
+
+            if ( i == graph.timeseries.length - 1 && currentDirection != 0 ){
+                highlights.push( current );
+            }
+        }
+
+        graph.highlights = highlights;
+
+        $('#graphs').append('<div class="row jumbotron"><div id="series_div_' + index + '" class="col-md-9"></div><div id="labels_div_' + index + '" class="legend" style="margin-right: 56px"></div></div>');
+
+        g = new Dygraph(document.getElementById('series_div_' + index), graph.timeseries, {
+            title: graph.title,
+            xlabel: graph.xaxislabel,
+            ylabel: graph.yaxislabel,
+            y2label: graph.yaxis2label,
+            series : {
+                "Missed Heat": {
+                    axis : 'y2'
+                    //fillGraph: true,
+                    //fillAlpha: 0.8
+                    //plotter: barChartPlotter
+                },
+                "Missed Cool": {
+                    axis : 'y2'
+                    //fillGraph: true,
+                    //fillAlpha: 0.8
+                    //plotter: barChartPlotter
+                }
+            },
+            axes: {
+              y2: {
+                // set axis-related properties here
+                labelsKMB: true
+              }
+            },
+            labels: graph.labels,
+            colors: graph.colors,
+            labelsDiv: document.getElementById('labels_div_' + index),
+            labelsSeparateLines: true,
+            legend: "always",
+            showRangeSelector: true,
+            height: 320,
+            hideOverlayOnMouseOut: false,
+            underlayCallback: function(canvas, area, g) {
+                function highlight_period(x_start, x_end, direction) {
+
+                  if ( direction == HEATING ) { canvas.fillStyle = "rgba(0, 100, 255, 0.25)"; }
+                  else if ( direction == COOLING ) { canvas.fillStyle = "rgba(255, 100, 0, 0.25)"; }
+                  else { return; }
+
+                  var canvas_left_x = g.toDomXCoord(x_start);
+                  var canvas_right_x = g.toDomXCoord(x_end);
+                  var canvas_width = canvas_right_x - canvas_left_x;
+                  canvas.fillRect(canvas_left_x, area.y, canvas_width, area.h);
+                };
+
+                for ( var i=0; i < graph.highlights.length; i++ ){
+                    highlight_period( graph.highlights[i][0], graph.highlights[i][1], graph.highlights[i][2] );
+                };
+            }
+        });
+
+
+        g.zoneName = graph.title;
+        graph.g = g;
+
+        graph.g.setVisibility( 3, false );
+        graph.g.setVisibility( 4, false );
+
+        $('#series_div_' + index ).append( "<button type='button' id='difference_switch_" + index  + "' onclick='switchVisible(" + index + ", 0)' class='btn btn-info btn-xs' style='margin-left: 56px'>Show Differences</button>");
+        $('#series_div_' + index ).append( "<button type='button' id='setpoint_switch_" + index  + "' onclick='switchVisible(" + index + ", 1)' class='btn btn-info btn-xs active'>Show Setpoints</button>");
+        //$('#series_div_' + index ).append( "<button type='button' id='data_export_" + index + "' onclick='exportData(" + index + ")' class='btn btn-default btn-xs'>Export</button>" );
+        switchVisible( index, 1 );
+    });
+});
+
+function switchVisible( index, state ) {
+    var graph = nine[index];
+
+    if ( state == 0 ) {
+        graph.g.setVisibility( 1, false );
+        graph.g.setVisibility( 2, false );
+        graph.g.setVisibility( 3, true );
+        graph.g.setVisibility( 4, true );
+        $('#difference_switch_' + index ).addClass('active');
+        $('#setpoint_switch_' + index ).removeClass('active');
+        graph.title = graph.g.zoneName + " - Unmet Hours - Differences"
+        $('#series_div_' + index ).find('.dygraph-title').html( graph.title );
+    } else {
+        graph.g.setVisibility( 1, true );
+        graph.g.setVisibility( 2, true );
+        graph.g.setVisibility( 3, false );
+        graph.g.setVisibility( 4, false );
+        $('#difference_switch_' + index ).removeClass('active');
+        $('#setpoint_switch_' + index ).addClass('active');
+        graph.title = graph.g.zoneName + " - Unmet Hours - Setpoints"
+        $('#series_div_' + index ).find('.dygraph-title').html( graph.title );
+    }
+}
+
+function exportData( index ){
+
+    var graph = nine[index];
+    var csvContent = "data:text/csv;charset=utf-8,";
+    csvContent = graph.timeseries.join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    window.open(encodedUri);
+}
+</script>
+<script type="text/javascript">
+// This variable will be an array of graph data
+var nine = <%= @test_nine_data %>;
+</script>
+
+<link rel="stylesheet" type="text/css" href="./style_resource.css">
+
+</head>
+<body data-spy="scroll" data-target="#tocItems">
+
+<div id="content" class="container-fluid">
+
+  <div id="toc" class="col-md-3" role="complementary">
+    <div id="tocItems" class="hidden-print well affix" role="complementary" style="margin-top: 40px;">
+      <ul class="nav nav-pills nav-stacked" role="navigation">
+          <li><a href="#summary_tbl">Annual Hours Unmet</a></li>
+          <li><a href="#check_1">Reporting Tolerance Check</a></li>
+          <li><a href="#check_2">Weather File Check</a></li>
+          <li><a href="#check_3">Slave Zones Check</a></li>
+          <li><a href="#check_4">Thermostat Check</a></li>
+          <li><a href="#check_5">Plant Temp Check</a></li>
+          <li><a href="#check_6">Airloop Dsn Temp Check</a></li>
+          <li><a href="#check_7">Airloop Temp Check</a></li>
+          <li><a href="#check_8">Unmet Hours Graphs</a></li>
+      </ul>
+    </div>
+  </div>  
+
+  <div class="col-md-9" style="padding-top:25px;" role="main">
+  
+    <h1>Unmet Hours Troubleshooting</h1>
+    <p>In EnergyPlus, the setpoint is considered unmet when the zone temperature is above/below the cooling/heating setpoint by more than the output control reporting tolerance.</p>
+    <p>This report helps identify some of the common causes of unmet hours in a simulation.  It does not catch every possible cause.</p>
+  
+    <h3 id="summary_tbl">Hours Setpoints Unmet Annually</h3>
+
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>Zone</th>
+            <th>During Heating [hr]</th>
+            <th>During Cooling [hr]</th>
+            <th>During Occupied Heating [hr]</th>
+            <th>During Occupied Cooling [hr]</th>
+        </tr>
+    <% @measureMetrics[:zone_collection].each do | zoneMetrics | %>
+        <tr>
+            <td><%= zoneMetrics[:name] %></td>
+            <td><%= zoneMetrics[:TimeSetpointNotMet][:dur_heating] %></td>
+            <td><%= zoneMetrics[:TimeSetpointNotMet][:dur_cooling] %></td>
+            <td><%= zoneMetrics[:TimeSetpointNotMet][:dur_heating_occ] %></td>
+            <td><%= zoneMetrics[:TimeSetpointNotMet][:dur_cooling_occ] %></td>
+        </tr>
+    <% end %>
+    </table>
+
+    <h3 id="check_1">1. Check the output control reporting tolerances.</h3>
+    
+    <% if @metrics[:toleranceTimeHeatSetUnmet] == 0.2 %>
+    <p>Setpoint Tolerance for heating is set to the EnergyPlus default value of <strong><%= @metrics[:toleranceTimeHeatSetUnmetF] %> F</strong>. This
+    tolerance is appropriate for HVAC systems with precision grade heating and cooling system components. If appropriate
+    consider widening heating tolerance. This will reduce the number of unmet heating hours across
+    all zones in your model.</p>
+    <% elsif ( @metrics[:toleranceTimeHeatSetUnmet] < 1.0 ) %>
+    <p>Setpoint Tolerance for heating is set to <strong>less than 1.8 F</strong>. Typical digital thermostat accuracy of
+    +/- 1 F	may be more appropriately modelled using a larger tolerance. Pneumatic thermostats, in addition to having a
+    tendency to drift, may have a larger accuracy tolerances greater than +/- 1F. Consider increasing the tolerance for
+    heating time not met to a more realistic level for your model. This will reduce the number of unmet heating hours across
+    all zones in your model.</p>
+    <% else %>
+    
+    <% end %>
+
+    <% if @metrics[:toleranceTimeCoolSetUnmet] == 0.2 %>
+    <p>Setpoint Tolerance for cooling is set to the EnergyPlus default value of <strong><%= @metrics[:toleranceTimeCoolSetUnmetF] %> F</strong>. This
+        tolerance is appropriate for HVAC systems with precision grade cooling system components. If appropriate
+        consider widening cooling tolerances. This will reduce the number of unmet cooling hours across
+        all zones in your model.</p>
+    <% elsif ( @metrics[:toleranceTimeCoolSetUnmet] < 1.0 ) %>
+    <p>Setpoint Tolerance for cooling is set to <strong>less than 1.8 F</strong>. Typical digital thermostat accuracy of
+        +/- 1 F	may be more appropriately modelled using a larger tolerance. Pneumatic thermostats, in addition to having a
+        tendency to drift, may have a larger accuracy tolerances greater than +/- 1F. Consider increasing the tolerance for
+        cooling time not met to a more realistic level for your model. This will reduce the number of unmet cooling hours across
+        all zones in your model.</p>
+    <% else %>
+    
+    <% end %>
+
+    <h3 id="check_2">2. Check for matching design days and weather files.</h3>
+    
+    <% if @metrics[:fileMatch] == :no_design_days %>
+      <p>Model has no design days.</p>
+    <% elsif @metrics[:fileMatch] == :no_weather_file %>
+      <p>Model has no weather file assigned.</p>
+    <% elsif @metrics[:fileMatch] == :unmatched_design_day_file %>
+      <p>Design days do not appear to match the weather file. Mismatching design days and weather files
+        coupled with autosized model objects can result in excessive unmet heating and/or cooling hours. Check the
+        design days and run period weather files.</p>
+    <% else %>
+    
+    <% end %>
+
+    <h3 id="check_3">3. Check if zones are 'slave zones' of single zone systems.</h3>
+    <p>Note: In the case of a single zone system, only the control zone's thermostat controls the heating/cooling.  
+      If additional zones are connected to this system, they will likely have unmet hours unless their
+      loads are very similar to those of the control zone.</p>
+    
+    <% @measureMetrics[:zone_collection].each do | zoneMetrics | %>
+    
+      <% if zoneMetrics[:test_four_state] == :no_airloops %>
+          
+      <% elsif ( zoneMetrics[:test_four_state] == :failed ) %>
+          <p>AirLoop <strong><%= zoneMetrics[:loopName] %></strong> is a single zone system, but it is serving multiple zones.  It is controlled by <strong><%= zoneMetrics[:managerControlledZoneName] %></strong>.
+            Thermal Zone <strong><%= zoneMetrics[:name] %></strong> is connected to this system as a slave zone, and has 
+            <% if zoneMetrics[:unmet_heating_hrs] > 50 %>
+               <strong><%= zoneMetrics[:unmet_heating_hrs] %> </strong> unmet heating hours
+            <% end %>
+            <% if zoneMetrics[:unmet_cooling_hrs] > 50 %>
+               and <strong><%= zoneMetrics[:unmet_cooling_hrs] %> </strong> unmet cooling hours.
+            <% end %>
+          </p>
+      <% end %>
+      
+    <% end %>
+    
+    <h3 id="check_4">4. Check thermostat schedules for step changes.</h3>
+    <p>Note: step changes in thermostats (typically to represent nighttime set back/set up) may be completely appropriate.  However, depending on the timestep chosen,
+      the capacity of the HVAC system, and the capacitance of the building, the HVAC system may not be able to bring the zone back quickly. This can be seen by 
+      looking at the timeseries data in the graphs at the end of this report.  If the unmet hours always occur immediately following a set back/set up, this is likely the issue.</p>
+    
+    <% @measureMetrics[:zone_collection].each do | zoneMetrics | %>
+
+      <% if zoneMetrics[:test_five_state] == :failed %>
+          <% if zoneMetrics[:unmet_heating_hrs] > 50 then %>
+
+              <% zoneMetrics[:thermostat_setpoints_for_underperforming][:heatChanges].each do | period_name, count | %>
+                  <p>Schedule <strong><%= zoneMetrics[:heating_schedule_name] %></strong> contains a Run Period named <strong><%= period_name %></strong> that has <strong><%= count %></strong> step changes in
+                  hourly heating Thermostat settings that are <strong> >= 3 F</strong>. The inability for heating equipment to respond rapidly to this change in heating T-Stat
+                  setpoint may be the cause of the <strong><%= zoneMetrics[:unmet_heating_hrs] %></strong> unmet heating hours occurring in Thermal Zone <strong><%=zoneMetrics[:name] %></strong>.</p>
+              <% end %>
+
+          <% end %>
+          <% if zoneMetrics[:unmet_cooling_hrs] > 50 then %>
+
+              <% zoneMetrics[:thermostat_setpoints_for_underperforming][:coolChanges].each do | period_name, count | %>
+                  <p>Schedule <strong><%= zoneMetrics[:cooling_schedule_name] %></strong> contains a Run Period named <strong><%= period_name %></strong> that has <strong><%= count %></strong> step changes in
+                  hourly cooling Thermostat settings that are <strong> >= 3 F</strong>. The inability for cooling equipment to respond rapidly to this change in cooling T-Stat
+                  setpoint may be the cause of the <strong><%= zoneMetrics[:unmet_cooling_hrs] %></strong> unmet cooling hours occurring in Thermal Zone <strong><%=zoneMetrics[:name] %></strong>.</p>
+              <% end %>
+
+          <% end %>
+
+      <% end %>
+
+    <% end %>
+
+    <h3 id="check_5">5. Check for differences between the design and operation temperature in plant loops.</h3>
+    <p>Note: this check will only be performed for plant loops controlled by a SetpointManager:Scheduled (green icon).</p>
+    
+    <% if ( @measureMetrics[:test_six_state] == :no_plant_loops ) then %>
+        
+    <% else %>
+       
+      <% @measureMetrics[:plant_loop_temp_vs_setpoints].each do | loop_name, data | %>
+          
+        <% if ( data[:state] == :failed ) then %>
+          <% if ( data[:loop_type] == "Heating" ) then %>
+               <p>Heating Plant Loop <strong><%= loop_name %></strong> has a design loop exit temperature of <strong><%= data[:exit_temp].round(1) %> F</strong>, but in operation,
+                  it is being controlled to hit <strong><%= data[:set_max].round(1) %> F </strong> by a scheduled controller using schedule <strong><%= data[:schedule_name] %></strong>. 
+                  This mismatch between sizing and operational values may cause unmet heating hours for thermal zones connected to this Heating Plant Loop. </p>
+          <% elsif ( data[:loop_type] == "Cooling") %>
+              <p>Cooling Plant Loop <strong><%= loop_name %></strong> has a design loop exit temperature of <strong><%= data[:exit_temp].round(1) %> F</strong>, but in operation,
+                  it is being controlled to hit <strong><%= data[:set_min].round(1) %> F </strong> by a scheduled controller using schedule <strong><%= data[:schedule_name] %></strong>. 
+                  This mismatch between sizing and operational values may cause unmet cooling hours for thermal zones connected to this Cooling Plant Loop. </p>
+          <% end %>
+        <% end %>
+         
+      <% end %>
+        
+    <% end %>
+
+    <h3 id="check_6">6. Check design cooling and heating supply air temperatures in airloops.</h3>
+
+    <% if @measureMetrics[:test_seven_state] == :no_airloops then %>
+        
+    <% else %>
+        <% @measureMetrics[:airloop_reasonable_setting].each do | loop_name, data | %>
+        <p>
+        <% if ( data[:reheat] ) then %>
+          <% if ( data[:centralHeatingTempF] > 70 ) then %>
+              Air loop <strong><%= loop_name %></strong> is a reheat system, but has a design heating supply air temperatures of <strong><%= data[:centralHeatingTempF].round(1) %> F</strong>, which is significantly higher than
+              the nominally expected minimum value of 55 F. This constraint may be the cause of unmet heating hours for thermal zones associated with this air loop.
+          <% end %>
+        <% else %>
+          <% if ( data[:centralHeatingTempF] < 90 ) then %>
+              Air loop <strong><%= loop_name %></strong> is not a reheat system, but has a design heating supply air temperatures of <strong><%= data[:centralHeatingTempF].round(1) %> F</strong>, which is less than
+              the nominally expected minimum value of 90 F. This constraint may be the cause of unmet heating hours for thermal zones associated with this air loop.
+          <% end %>         
+        <% end %>
+        <% if ( data[:centralCoolingTempF] > 65 ) then %>
+            Air loop <strong><%= loop_name %></strong> has a design cooling supply air temperatures of <strong><%= data[:centralCoolingTempF].round(1) %> F</strong>, which is greater than
+            the nominally expected maximum value of 55 F. This constraint may be the cause of unmet cooling hours for thermal zones associated with this air loop.
+        <% end %>
+        </p>
+        <% end %>
+    <% end %>
+    
+    <h3 id="check_7">7. Check for differences between the design and operation temperatures in air loops.</h3>
+    <p>Note: this check will only be performed for air loops controlled by a SetpointManager:Scheduled (green icon).</p>
+    
+    <% if @measureMetrics[:test_eight_state] == :no_airloops then %>
+        
+    <% else %>
+        <% @measureMetrics[:air_loop_vs_schedule_temp].each do | loop_name, data | %>
+            <p>
+            <% if ( data[:status] == :no_scheduled_manager ) then %>
+                
+            <% else %>
+                <% if ( data[:heating_status] == :failed ) then %>
+                    Air Loop <strong><%= loop_name %></strong> has a design central heating supply air temperature of <strong><%= data[:centralHeatingTemp].round(1) %> F</strong>, but in operation,
+                    it is being controlled to hit <strong><%= data[:maxSetpointValue].round(1) %> F</strong> by a controller using schedule <strong><%= data[:scheduleName] %></strong>.
+                    This mismatch between sizing and operational values may cause unmet heating hours for thermal zones connected to this Air Loop.
+                <% end %>
+                <% if ( data[:cooling_status] == :failed ) then %>
+                    Air Loop <strong><%= loop_name %></strong> has a design central cooling supply air temperature of <strong><%= data[:centralCoolingTemp].round(1) %> F</strong>, but in operation,
+                    it is being controlled to hit <strong><%= data[:minSetpointValue].round(1) %> F</strong> by a controller using schedule <strong><%= data[:scheduleName] %></strong>.
+                    This mismatch between sizing and operational values may cause unmet cooling hours for thermal zones connected to this Air Loop.
+                <% end %>
+            <% end %>
+            </p>
+        <% end %>
+    <% end %>
+    </p>
+
+    <h3 id="check_8">8. Unmet Hours Timeseries Graphs.</h3>
+    
+    <div id = "graphs" class="container"/>
+
+  </div>
+    
+</body>
+</html>

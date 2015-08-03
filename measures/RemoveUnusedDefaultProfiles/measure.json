@@ -9,9 +9,9 @@
   "name_xml": "RemoveUnusedDefaultProfiles",
   "uid": "c6940cf1-1950-4ae7-a842-1e211b737497",
   "version_id": "cda05746-a992-4935-a186-1c613737a968",
-  "modeler_description": "This measure is intended to cleanup ScheduleRuleset objects in our template files. These schedules did not use the default profile. The lowest priority rule will become the new default.",
-  "description": "This measure will remove unused default profiles that existed in some older OpenStudio templates. It will remove some EnergyPlus warnings that had appeared in the past.",
   "tags": [
     "Whole Building.Whole Building Schedules"
-  ]
+  ],
+  "modeler_description_xml": "This measure is intended to cleanup ScheduleRuleset objects in our template files. These schedules did not use the default profile. The lowest priority rule will become the new default.",
+  "description_xml": "This measure will remove unused default profiles that existed in some older OpenStudio templates. It will remove some EnergyPlus warnings that had appeared in the past."
 }

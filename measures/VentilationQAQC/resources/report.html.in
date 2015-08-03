@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ventilation and Infiltration Report</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dygraph/1.0.1/dygraph-combined.js"></script>
+<script type="text/javascript">
+// Create a timeseries graph of the data for each zone
+$(document).ready(function () {
+
+    $.each(obj, function (index, graphData) {
+        var graph = obj[index];
+
+        for (var i = 0; i < graph.timeseries.length; i++) {
+            graph.timeseries[i][0] = new Date(graph.timeseries[i][0]);
+        }
+        //console.log(graph.timeseries);
+
+        $('#graphs').append('<div class="row jumbotron"><div id="series_div_' + index + '" class="col-md-9"></div><div id="labels_div_' + index + '" class="legend" style="margin-right: 56px"></div></div>');
+
+        new Dygraph(document.getElementById('series_div_' + index), graph.timeseries, {
+            title: graph.title,
+            xlabel: graph.xaxislabel,
+            ylabel: graph.yaxislabel,
+            labels: graph.labels,
+            colors: graph.colors,
+            labelsDiv: document.getElementById('labels_div_' + index),
+            labelsSeparateLines: true,
+            legend: "always",
+            showRangeSelector: true,
+            height: 320
+        });
+
+//        $('#series_div_' + index ).append( "<button type='button' id='data_export_" + index + "' onclick='exportData(" + index + ")' class='btn btn-default btn-xs'>Export</button>" );
+
+    });
+
+});
+
+function exportData( index ){
+
+    var graph = obj[index];
+    var csvContent = "data:text/csv;charset=utf-8,";
+    csvContent = graph.timeseries.join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    window.open(encodedUri);
+}
+</script>
+<script type="text/javascript">
+// This variable will be an array of graph data
+var obj = <%= annualGraphData %>;
+</script>
+
+<style type="text/css">
+.warn{ background-color: #ffff99; }
+
+.legend {
+    float:right;
+    height: 110px;
+    width: 180px;
+}
+
+.btn {
+    margin: 0px 3px;
+}
+
+</style>
+
+</head>
+<body data-spy="scroll" data-target="#tocItems">
+
+<div id="content" class="container-fluid">
+
+  <div id="toc" class="col-md-3" role="complementary">
+    <div id="tocItems" class="hidden-print well affix" role="complementary" style="margin-top: 40px;">
+      <ul class="nav nav-pills nav-stacked" role="navigation">
+          <li><a href="#summary_tbl">Summary</a></li>
+          <li><a href="#warning_list">Warnings</a></li>
+          <li><a href="#timeseries">Infiltration Graphs</a></li>
+      </ul>
+    </div>
+  </div> 
+
+  <div class="col-md-9" style="padding-top:25px;" role="main">
+    
+    <h1>Ventilation and Infiltration Report</h1>
+
+    <h3 id="summary_tbl">Summary</h3>
+    
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th style="text-align:center">Space</th>
+            <th style="text-align:center">Design Infiltration Rate(ACH)</th>
+            <th style="text-align:center">Ventilation Rate (cfm/person)</th>
+        </tr>
+        <% spaceCollection.each do |space|
+            name_class = "";
+            ach_class = space[:airChangesPerHour] > 0.6 ? "warn" : ""
+            vent_class = space[:outsideAirPerPerson] > 25 ? "warn" : ""
+        %>
+        <tr>
+            <td class="<%= name_class %>" style="text-align:center"><%= space[:name] %></td>
+            <td class="<%= ach_class %>" style="text-align:center"><%= space[:airChangesPerHour].round(2) %></td>
+            <td class="<%= vent_class %>" style="text-align:center"><%= space[:outsideAirPerPerson].round(2) %></td>
+        </tr>
+        <% end %>
+    </table>
+
+    <p>Yellow cells indicate cells > 0.6 ACH infiltration or ventilation rate > 25 cfm/person</p>
+
+    <h3 id="warning_list">Warnings</h3>
+    <% if warnings.any? %>
+      <% warnings.each do |w| %>
+        <p><%= w %></p>
+      <% end %>
+    <% end %>
+
+    <h3 id="timeseries">Infiltration Timeseries</h3>
+   
+    <div id = "graphs" class="container">
+            
+  </div>
+
+</div>
+
+</body>
+</html>

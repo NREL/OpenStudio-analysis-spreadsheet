@@ -165,7 +165,7 @@ class AedgK12Kitchen < OpenStudio::Ruleset::ModelUserScript
     standardBuildingType = false
     if model.building.is_initialized
       if model.building.get.standardsBuildingType.is_initialized
-        standardBuildingType = model.building.standardsBuildingType.get
+        standardBuildingType = model.building.get.standardsBuildingType.get
       end  
     end
     unless standardBuildingType

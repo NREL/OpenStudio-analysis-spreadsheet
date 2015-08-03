@@ -1,0 +1,17 @@
+{
+  "classname": "VentilationQAQC",
+  "name": "ventilation_qaqc",
+  "display_name": "Ventilation Qaqc",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ],
+  "name_xml": "ventilation_qaqc",
+  "uid": "429b770a-1ede-42e2-84d2-50d4758633a2",
+  "version_id": "a6c8e4a2-b63b-44d4-8a21-71efa5e77b51",
+  "tags": [
+    "Reporting.QAQC"
+  ],
+  "modeler_description_xml": "This measure will retrieve all OS:DesignSpecificationOutdoorAir and OS:SpaceInfiltrationDesignFlowRate objects associated with any spaces present in the model. If multiple space OS:SpaceInfiltrationDesignFlowRate objects are attached to a space, the measure will collapse them into a single object. Regardless of the method of entry of OS:DesignSpecificationOutdoorAir object flow rates, they will be converted into a common cfm/person metric. Regardless of the method of entry of OS:SpaceInfiltrationDesignFlowRate object flow rates, they will be converted into a common ACH metric. Error and warning messages may be written depending on the levels of cfm/person/space and ACH/space associated with the selected thermal zone(s). ",
+  "description_xml": "This measure asks the user to select a thermal zone (or all zones) and generates a Quality Assurance Report relating to ventilation and infiltration model objects. The QA report consists of two sections: 1) A table listing each space and associated (total of space) ventilation and infiltration metrics and 2) an interactive time series chart plotting both the zone mechanical ventilation rate and the zone Infiltration mass flow rate. Error or warning messages may be triggered based on the resulting cfm/person and ACH for each space associated with the selected thermal zone(s)."
+}

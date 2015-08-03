@@ -1,6 +1,6 @@
 
 Version,
-  7.2.0.006;                              ! Version Identifier
+  8.1.0.009;                              !- Version Identifier
 
 UtilityCost:Tariff,
   Commercial,                             !- Name
@@ -20,7 +20,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.110784495;                            !- Cost per Unit Value or Variable Name
+  0.117881298;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialSummerOffPeakEnergyCharge,    !- Name
@@ -28,7 +28,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.110784495;                            !- Cost per Unit Value or Variable Name
+  0.117881298;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialWinterOnPeakEnergyCharge,     !- Name
@@ -36,7 +36,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.084499452;                            !- Cost per Unit Value or Variable Name
+  0.08976106079999999;                    !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialWinterOffPeakEnergyCharge,    !- Name
@@ -44,7 +44,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.084499452;                            !- Cost per Unit Value or Variable Name
+  0.08976106079999999;                    !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialSummerDemandCharge,           !- Name
@@ -67,36 +67,29 @@ Schedule:Compact,
   number,                                 !- Schedule Type Limits Name
   Through: 5/31,                          !- Field 1
   For: AllDays,                           !- Field 2
-  Until: 24:00,                           ! Field 3
-  1,                                      !- Field 3
+  Until: 24:00,                           !- Field 3
+  1,                                      !- Field 4
   Through: 9/30,                          !- Field 5
   For: AllDays,                           !- Field 6
-  Until: 24:00,                           ! Field 7
-  3,                                      !- Field 7
+  Until: 24:00,                           !- Field 7
+  3,                                      !- Field 8
   Through: 12/31,                         !- Field 9
   For: AllDays,                           !- Field 10
-  Until: 24:00,                           ! Field 11
-  1;                                      !- Field 11
+  Until: 24:00,                           !- Field 11
+  1;                                      !- Field 12
 
 Schedule:Compact,
   TimeOfDaySchedule,                      !- Name
   number,                                 !- Schedule Type Limits Name
   Through: 12/31,                         !- Field 1
   For: Weekdays,                          !- Field 2
-  Until: 9:00,                            ! Field 3
-  3,                                      !- Field 3
-  Until: 21:00,                           ! Field 5
-  1,                                      !- Field 4
-  Until: 24:00,                           ! Field 7
-  3,                                      !- Field 5
-  For: AllOtherDays,                      !- Field 6
-  Until: 24:00,                           ! Field 10
-  3;                                      !- Field 7
+  Until: 9:00,                            !- Field 3
+  3,                                      !- Field 4
+  Until: 21:00,                           !- Field 5
+  1,                                      !- Field 6
+  Until: 24:00,                           !- Field 7
+  3,                                      !- Field 8
+  For: AllOtherDays,                      !- Field 9
+  Until: 24:00,                           !- Field 10
+  3;                                      !- Field 11
 
-ScheduleTypeLimits,
-  number,                  !- Name
-  0,                       !- Lower Limit Value
-  ,                        !- Upper Limit Value
-  Continuous,              !- Numeric Type
-  Dimensionless;           !- Unit Type
-  

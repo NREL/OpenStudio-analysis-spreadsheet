@@ -36,7 +36,7 @@ class AddOutputDiagnostics < OpenStudio::Ruleset::WorkspaceUserScript
     choices << "ReportDuringWarmup"
     choices << "ReportDetailedWarmupConvergence"
     outputDiagnostic = OpenStudio::Ruleset::OSArgument::makeChoiceArgument("outputDiagnostic", choices,true)
-    outputDiagnostic.setDisplayName("Ouput Diagnostic Value.")
+    outputDiagnostic.setDisplayName("Output Diagnostic Value.")
     outputDiagnostic.setDefaultValue("DisplayExtraWarnings")
     args << outputDiagnostic
     

@@ -9,9 +9,9 @@
   "name_xml": "RemoveInternalLoadsDirectlyAssignedToSpaces",
   "uid": "3f63ab7c-7f04-4479-b7ed-a19362cbb615",
   "version_id": "14d8d7fc-d01c-43c5-ae6b-15ffbd365fd4",
-  "modeler_description": " If you just assign space types without removing loads assigned directly to space, you can end up with double loads.",
-  "description": "This will removed all internal loads assigned directly to spaces. This can be useful if your model started as an IDF, and now you want to assign space types.",
   "tags": [
     "Whole Building.Space Types"
-  ]
+  ],
+  "modeler_description_xml": " If you just assign space types without removing loads assigned directly to space, you can end up with double loads.",
+  "description_xml": "This will removed all internal loads assigned directly to spaces. This can be useful if your model started as an IDF, and now you want to assign space types."
 }

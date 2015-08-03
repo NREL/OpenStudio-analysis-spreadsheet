@@ -1,0 +1,24 @@
+{
+  "classname": "OpenStudioResults",
+  "name": "open_studio_results",
+  "display_name": "Open Studio Results",
+  "measure_type": "ReportingMeasure",
+  "description": "This measure creates high level tables and charts pulling both from model inputs and EnergyPlus results. It has building level information as well as detail on space types, thermal zones, HVAC systems, envelope characteristics, and economics. Click the heading above a chart to view a table of the chart data.",
+  "modeler_description": "For the most part consumption data comes from the tabular EnergyPlus results, however there are a few requests added for time series results. Space type and loop details come from the OpenStudio model. The code for this is modular, making it easy to use as a template for your own custom reports. The structure of the report uses bootstrap, and the graphs use dimple js.",
+  "arguments": [
+    {
+      "name": "method_name",
+      "display_name": "display_name",
+      "variable_type": "Bool",
+      "local_variable": "arg",
+      "units": null,
+      "default_value": true
+    }
+  ],
+  "name_xml": "open_studio_results",
+  "uid": "a25386cd-60e4-46bc-8b11-c755f379d916",
+  "version_id": "801a3f00-62db-4154-b5fc-31695495368c",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}

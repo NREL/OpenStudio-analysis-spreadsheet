@@ -1,0 +1,17 @@
+{
+  "classname": "EnableIdealAirLoadsForAllZones",
+  "name": "enable_ideal_air_loads_for_all_zones",
+  "display_name": "Enable Ideal Air Loads For All Zones",
+  "measure_type": "RubyMeasure",
+  "arguments": [
+
+  ],
+  "name_xml": "Enable Ideal Air Loads For All Zones",
+  "uid": "f70d4a3d-8b93-4fef-b679-858fe1e05acc",
+  "version_id": "6dc56105-27af-4841-8630-3f4e808e27c7",
+  "tags": [
+    "HVAC.Whole System"
+  ],
+  "modeler_description_xml": "This doesn't clean up any air or plant loops that are left. It was developed to use on models without HVAC. If you use it in another way you may have to clean up remaining objects prior to running a simulation.",
+  "description_xml": "This will enable Ideal Air Loads for all thermal zones in the model. This will result in disconnecting any pre-existing HVAC systems from the zones."
+}

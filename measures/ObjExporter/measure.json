@@ -1,0 +1,17 @@
+{
+  "classname": "ObjExporter",
+  "name": "obj_exporter",
+  "display_name": "Obj Exporter",
+  "measure_type": "RubyMeasure",
+  "description": "Exports the OpenStudio model in Wavefront OBJ format for viewing in common 3D engines.  One free viewer is available at http://www.open3mod.com/.",
+  "modeler_description": "",
+  "arguments": [
+
+  ],
+  "name_xml": "obj_exporter",
+  "uid": "cb9bde0a-3b21-486b-b451-2455d2539ccc",
+  "version_id": "13dcd8fd-4c24-4249-be86-91ae67b7cb9b",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}

@@ -386,7 +386,7 @@ class AddDaylightSensors < OpenStudio::Ruleset::ModelUserScript
 
     end #end spaces_using_space_type_without_sensors.each do
 
-    if sensor_count == 0 or costs_requested == false
+    if sensor_count == 0 and costs_requested == false
       runner.registerAsNotApplicable("No spaces that currently don't have sensor required a new sensor, and no lifecycle costs objects were requested.")
       return true
     end

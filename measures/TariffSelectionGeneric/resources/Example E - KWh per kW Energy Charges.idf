@@ -1,0 +1,27 @@
+UtilityCost:Tariff,
+  ExampleE,                     ! Name
+    ElectricityPurchased:Facility,  !- Output Meter Name
+  KWh,                          ! Conversion Factor Choice
+  ,                             ! Energy Conversion Factor
+  ,                             ! Demand Conversion Factor
+  ,                             ! Time of Use Period Schedule Name
+  ,                             ! Season Schedule Name
+  ,                             ! Month Schedule Name
+  ,                             ! Demand Window Length
+  14;                           ! Monthly Charge or Variable Name
+
+
+UtilityCost:Charge:Block,
+  BlockEnergyCharge,            ! Charge Variable Name
+  ExampleE,                     ! Tariff Name
+  totalEnergy,                  ! Source Variable
+  Annual,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  ,                             ! Remaining Into Variable
+  totalDemand,                  ! Block Size Multiplier Value or Variable Name
+  200,                          ! Block Size 1 Value or Variable Name
+  0.08756,                      ! Block 1 Cost per Unit Value or Variable Name
+  200,                          ! Block Size 2 Value or Variable Name
+  0.06812,                      ! Block 2 Cost per Unit Value or Variable Name
+  remaining,                    ! Block Size 3 Value or Variable Name
+  0.05029;                      ! Block 3 Cost per Unit Value or Variable Name

@@ -5,21 +5,20 @@
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
-      "local_variable": "minOutdoorAirFlow",
-      "variable_type": "Double",
       "name": "minOutdoorAirFlow",
       "display_name": "Minimum Outdoor Air Flow Rate",
+      "variable_type": "Double",
+      "local_variable": "minOutdoorAirFlow",
       "units": "m^3/s",
-      "description": null,
       "default_value": 10.76
     }
   ],
   "name_xml": "Set EnergyPlus Minimum Outdoor Air Flow Rate",
   "uid": "a8990018-b866-4be6-94ef-67733a053776",
   "version_id": "8ef65886-e988-4362-9467-54aaf73ac284",
-  "modeler_description": "Controller:OutdoorAir objects will have the \"Minimum Outdoor Air Flow Rate\" set to the requested SI value.",
-  "description": "Set the Minimum Outdoor Air FLow Rate for all Controller:OutdoorAir objects in the model. Input values are in SI units.",
   "tags": [
     "HVAC.Ventilation"
-  ]
+  ],
+  "modeler_description_xml": "Controller:OutdoorAir objects will have the \"Minimum Outdoor Air Flow Rate\" set to the requested SI value.",
+  "description_xml": "Set the Minimum Outdoor Air FLow Rate for all Controller:OutdoorAir objects in the model. Input values are in SI units."
 }

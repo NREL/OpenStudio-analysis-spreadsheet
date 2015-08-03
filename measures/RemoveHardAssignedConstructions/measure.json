@@ -5,21 +5,20 @@
   "measure_type": "RubyMeasure",
   "arguments": [
     {
-      "local_variable": "preserve_adiabatic",
-      "variable_type": "Bool",
       "name": "preserve_adiabatic",
       "display_name": "Preserve Hard Assigned Constructions for Adiabatic Surfaces",
+      "variable_type": "Bool",
+      "local_variable": "preserve_adiabatic",
       "units": null,
-      "description": null,
       "default_value": true
     }
   ],
   "name_xml": "Remove Hard Assigned Constructions",
   "uid": "277c4962-17e7-46fa-a5f3-643218b2a513",
   "version_id": "1fbccf16-fab3-4e4d-96a7-51be4080a6b8",
-  "modeler_description": "This is classified under opaque, but it also affects fenestration surfaces.",
-  "description": "This will remove all construction assignments from made directly to surfaces or sub-surfaces. This may useful if you started with an Imported IDF file and now want to use construction sets.",
   "tags": [
     "Envelope.Opaque"
-  ]
+  ],
+  "modeler_description_xml": "This is classified under opaque, but it also affects fenestration surfaces.",
+  "description_xml": "This will remove all construction assignments from made directly to surfaces or sub-surfaces. This may useful if you started with an Imported IDF file and now want to use construction sets."
 }

@@ -1,0 +1,36 @@
+{
+  "classname": "ViewData",
+  "name": "view_data",
+  "display_name": "View Data",
+  "measure_type": "ReportingMeasure",
+  "description": "Visualize energy simulation data plotted on an OpenStudio model in a web based viewer",
+  "modeler_description": "Converts the OpenStudio model to vA3C JSON format and r",
+  "arguments": [
+    {
+      "name": "variable_name",
+      "display_name": "Variable Name",
+      "variable_type": "String",
+      "local_variable": "variable_name",
+      "units": null,
+      "default_value": "Surface Outside Face Temperature"
+    },
+    {
+      "name": "reporting_frequency",
+      "display_name": "Reporting Frequency",
+      "variable_type": "Choice",
+      "local_variable": "reporting_frequency",
+      "units": null,
+      "default_value": "Hourly",
+      "choices": [
+        "Timestep",
+        "Hourly"
+      ]
+    }
+  ],
+  "name_xml": "view_data",
+  "uid": "18cf0de7-48b8-48dc-ab68-0dd29f0b8bd0",
+  "version_id": "f6bf291d-abae-4b80-bcfd-759938a9bae7",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}

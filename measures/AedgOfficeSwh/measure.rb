@@ -28,7 +28,7 @@ class AedgOfficeSwh < OpenStudio::Ruleset::ModelUserScript
     
     # make an argument for material and installation cost
     costTotalSwhSystem = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("costTotalSwhSystem",true)
-    costTotalSwhSystem.setDisplayName("Total Cost for Kitchen System ($).")
+    costTotalSwhSystem.setDisplayName("Total Cost for SWH System ($).")
     costTotalSwhSystem.setDefaultValue(0.0)
     args << costTotalSwhSystem
     
@@ -74,7 +74,7 @@ class AedgOfficeSwh < OpenStudio::Ruleset::ModelUserScript
     costTotalSwhSystem = runner.getDoubleArgumentValue("costTotalSwhSystem",user_arguments)
     numberOfEmployees = runner.getIntegerArgumentValue("numberOfEmployees",user_arguments)
     # default building/space types
-    standardBuildingTypeTest = "Office"
+    standardBuildingTypeTest = ["Office"]
     primarySpaceType = "Office"
     swhSpaceType = "Restroom"
     # water use equipment inputs
@@ -85,7 +85,7 @@ class AedgOfficeSwh < OpenStudio::Ruleset::ModelUserScript
     standardBuildingType = false
     if model.building.is_initialized
       if model.building.get.standardsBuildingType.is_initialized
-        standardBuildingType = model.building.standardsBuildingType.get
+        standardBuildingType = model.building.get.standardsBuildingType.get
       end  
     end
     unless standardBuildingType

@@ -1,0 +1,17 @@
+{
+  "classname": "ZoneReport",
+  "name": "zone_report",
+  "display_name": "Zone Report",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ],
+  "name_xml": "zone_report",
+  "uid": "f3531642-27ce-4624-95ab-0bfcd5b9f5fe",
+  "version_id": "8c6db912-1b96-4a1a-89ba-f4e1463e0681",
+  "tags": [
+    "Reporting.QAQC"
+  ],
+  "modeler_description_xml": " This measure will not report uncontrolled air terminals, or zone level radiant HVAC equipment.",
+  "description_xml": " This measure provides Thermal Zone level HVAC information.  Output includes thermal zone equipment descriptions and details, zone sizing information for heating and cooling, and a disaggregation of the contributions of envelope and internal gains to the HVAC loads."
+}

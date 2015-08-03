@@ -66,7 +66,7 @@ class AedgK12ExteriorLighting < OpenStudio::Ruleset::ModelUserScript
 
     #make an argument for walkwayPlazaSpecialLighting
     walkwayPlazaSpecialLighting = OpenStudio::Ruleset::OSArgument::makeDoubleArgument("walkwayPlazaSpecialLighting",true)
-    walkwayPlazaSpecialLighting.setDisplayName("Gound Coverage Area for Walkway and Plaza Lighting (ft^2)")
+    walkwayPlazaSpecialLighting.setDisplayName("Ground Coverage Area for Walkway and Plaza Lighting (ft^2)")
     walkwayPlazaSpecialLighting.setDefaultValue(0.0)
     args << walkwayPlazaSpecialLighting
 

@@ -5,30 +5,28 @@
   "measure_type": "RubyMeasure",
   "arguments": [
     {
-      "local_variable": "costTotalSwhSystem",
-      "variable_type": "Double",
       "name": "costTotalSwhSystem",
       "display_name": "Total Cost for Kitchen System",
+      "variable_type": "Double",
+      "local_variable": "costTotalSwhSystem",
       "units": "$",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "numberOfStudents",
-      "variable_type": "Integer",
       "name": "numberOfStudents",
       "display_name": "Total Number of Students",
+      "variable_type": "Integer",
+      "local_variable": "numberOfStudents",
       "units": null,
-      "description": null,
       "default_value": 0
     }
   ],
   "name_xml": "AEDG K12 SWH",
   "uid": "081b3ccb-fc4a-48f7-ad50-87c90c20f9f9",
-  "version_id": "e7013db0-b7b5-4a36-91c3-e58e31aeedea",
-  "modeler_description": "Measure is applied to restroom and kitchen space types for both primary and secondary schools, and to gyms for secondary schools.  All existing swh systems are deleted.  The largest kitchen and gym spaces are selected as representative spaces, to which the corresponding AEDG recommended swh loads are applied.  For restrooms, the total SWH load is divided evenly among the restroom spaces in the model.  Loads are applied on a per student basis.  The user can input number of students manually.  Otherwise, the measure will calculate the number of students from the classroom floor area.  If there is no classroom floor area, the user wil be required to specify a number of students.",
-  "description": "Measure replaces existing swh equipment (if any) with the swh equipment recommendations of the 50% K-12 AEDG.",
+  "version_id": "92893fdc-8d7d-4ed0-ba1d-8409ffc8d310",
   "tags": [
     "Service Water Heating.Water Heating"
-  ]
+  ],
+  "modeler_description_xml": "Measure is applied to restroom and kitchen space types for both primary and secondary schools, and to gyms for secondary schools.  All existing swh systems are deleted.  The largest kitchen and gym spaces are selected as representative spaces, to which the corresponding AEDG recommended swh loads are applied.  For restrooms, the total SWH load is divided evenly among the restroom spaces in the model.  Loads are applied on a per student basis.  The user can input number of students manually.  Otherwise, the measure will calculate the number of students from the classroom floor area.  If there is no classroom floor area, the user wil be required to specify a number of students.",
+  "description_xml": "Measure replaces existing swh equipment (if any) with the swh equipment recommendations of the 50% K-12 AEDG."
 }

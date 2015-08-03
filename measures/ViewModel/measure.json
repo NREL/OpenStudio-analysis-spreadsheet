@@ -1,0 +1,17 @@
+{
+  "classname": "ViewModel",
+  "name": "view_model",
+  "display_name": "View Model",
+  "measure_type": "RubyMeasure",
+  "description": "Visualize an OpenStudio model in a web based viewer",
+  "modeler_description": "Converts the OpenStudio model to vA3C JSON format and r",
+  "arguments": [
+
+  ],
+  "name_xml": "view_model",
+  "uid": "f4669f10-fda5-489d-8e1c-7ca3c2d40378",
+  "version_id": "198bbad3-dfb1-4973-9a2b-1111b2780b3f",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}

@@ -1,0 +1,66 @@
+  GroundHeatTransfer:Control,
+    Control1,                !- Name
+    no,                      !- Run Basement Preprocessor
+    yes;                     !- Run Slab Preprocessor
+
+!---------------------------------------------------------------
+
+  GroundHeatTransfer:Slab:Materials,
+    2,                       !- NMAT: Number of materials
+    0.158,                   !- ALBEDO: Surface Albedo: No Snow
+    0.379,                   !- ALBEDO: Surface Albedo: Snow
+    0.95,                    !- EPSLW: Surface Emissivity: No Snow
+    0.95,                    !- EPSLW: Surface Emissivity: Snow
+    0.75,                    !- Z0: Surface Roughness: No Snow {cm}
+    0.05,                    !- Z0: Surface Roughness: Snow {cm}
+    6.13,                    !- HIN: Indoor HConv: Downward Flow {W/m2-K}
+    9.26;                    !- HIN: Indoor HConv: Upward {W/m2-K}
+
+  GroundHeatTransfer:Slab:MatlProps,
+    2300,                    !- RHO: Slab Material density {kg/m3}
+    1200,                    !- RHO: Soil Density {kg/m3}
+    650,                     !- CP: Slab CP {J/kg-K}
+    1200,                    !- CP: Soil CP {J/kg-K}
+    0.9,                     !- TCON: Slab k {W/m-K}
+    1;                       !- TCON: Soil k {W/m-K}
+
+  GroundHeatTransfer:Slab:BoundConds,
+    TRUE,                    !- EVTR: Is surface evapotranspiration modeled
+    TRUE,                    !- FIXBC: is the lower boundary at a fixed temperature
+    10,                      !- TDEEPin {C}
+    False,                   !- USRHflag: Is the ground surface h specified by the user?
+    ;                        !- USERH: User specified ground surface heat transfer coefficient {W/m2-K}
+
+  GroundHeatTransfer:Slab:BldgProps,
+    10,                      !- IYRS: Number of years to iterate
+    0,                       !- Shape: Slab shape
+    4,                       !- HBLDG: Building height {m}
+    22,                      !- TIN1: January Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN2: February Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN3: March Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN4: April Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN5: May Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN6: June Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN7: July Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN8: August Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN9: September Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN10: October Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN11: November Indoor Average Temperature Setpoint {C}
+    22,                      !- TIN12: December Indoor Average Temperature Setpoint {C}
+    0,                       !- TINAmp: Daily Indoor sine wave variation amplitude {deltaC}
+    0.10;                    !- ConvTol: Convergence Tolerance
+
+  GroundHeatTransfer:Slab:Insulation,
+    0,                       !- RINS: R value of under slab insulation {m2-K/W}
+    0,                       !- DINS: Width of strip of under slab insulation {m}
+    2.0,                     !- RVINS: R value of vertical insulation {m2-K/W}
+    2.0,                     !- ZVINS: Depth of vertical insulation {m}
+    1;                       !- IVINS: Flag: Is there vertical insulation
+
+ !note the following object is not used in the original slab example file.
+
+  GroundHeatTransfer:Slab:EquivalentSlab,
+    10,                      !- APRatio: The area to perimeter ratio for this slab {m}
+    0.2,                   !- SLABDEPTH: Thickness of slab on grade {m}
+    15,                     !- CLEARANCE: Distance from edge of slab to domain edge {m}
+    10;                     !- ZCLEARANCE: Distance from bottom of slab to domain bottom {m}

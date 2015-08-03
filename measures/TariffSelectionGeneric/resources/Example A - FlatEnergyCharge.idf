@@ -1,0 +1,20 @@
+UtilityCost:Tariff,
+  ExampleA,                     ! Name
+    ElectricityPurchased:Facility,  !- Output Meter Name
+  kWh,                          ! Conversion Factor Choice
+  ,                             ! Energy Conversion Factor
+  ,                             ! Demand Conversion Factor
+  ,                             ! Time of Use Period Schedule Name
+  ,                             ! Season Schedule Name
+  ,                             ! Month Schedule Name
+  ,                             ! Demand Window Length
+  2.51;                         ! Monthly Charge or Variable Name
+
+
+UtilityCost:Charge:Simple,
+  FlatEnergyCharge,             ! Charge Variable Name
+  ExampleA,                     ! Tariff Name
+  totalEnergy,                  ! Source Variable
+  Annual,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  0.055342;                     ! Cost Per Unit Value or Variable Name

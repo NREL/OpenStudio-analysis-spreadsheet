@@ -5,21 +5,20 @@
   "measure_type": "ReportingMeasure",
   "arguments": [
     {
-      "local_variable": "interval_arg",
-      "variable_type": "Integer",
       "name": "interval",
       "display_name": "Time Interval",
+      "variable_type": "Integer",
+      "local_variable": "interval_arg",
       "units": "minutes",
-      "description": null,
       "default_value": 60
     }
   ],
   "name_xml": "Export Schedule CSV",
   "uid": "6fc1a46d-4912-47af-8ace-a7c453fbe363",
   "version_id": "8658341b-9def-4b38-862d-939d49ddbf17",
-  "modeler_description": "Only schedules of type ScheduleDay are exported.",
-  "description": "This script exports a CSV file containing values for each schedule in the model at a specified interval.",
   "tags": [
     "Reporting.QAQC"
-  ]
+  ],
+  "modeler_description_xml": "Only schedules of type ScheduleDay are exported.",
+  "description_xml": "This script exports a CSV file containing values for each schedule in the model at a specified interval."
 }

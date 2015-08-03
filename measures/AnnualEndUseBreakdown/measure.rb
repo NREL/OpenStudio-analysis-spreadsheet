@@ -1,295 +1,114 @@
 require 'erb'
 
+require "#{File.dirname(__FILE__)}/resources/os_lib_reporting"
+require "#{File.dirname(__FILE__)}/resources/os_lib_schedules"
+
 #start the measure
 class AnnualEndUseBreakdown < OpenStudio::Ruleset::ReportingUserScript
   
   #define the name that a user will see, this method may be deprecated as
   #the display name in PAT comes from the name field in measure.xml
   def name
-    return "AnnualEndUseBreakdown"
+    return "Annual End Use Breakdown"
   end
   
   #define the arguments that the user will input
   def arguments()
     args = OpenStudio::Ruleset::OSArgumentVector.new
-    
+
+    # todo - add bool arguments to decide what tables to generate, default all to true.
+
     return args
   end #end the arguments method
 
   #define what happens when the measure is run
   def run(runner, user_arguments)
     super(runner, user_arguments)
-    
+
     #use the built-in error checking 
     if not runner.validateUserArguments(arguments(), user_arguments)
       return false
     end
 
-    # get the last model and sql file
-    
-    model = runner.lastOpenStudioModel
-    if model.empty?
-      runner.registerError("Cannot find last model.")
-      return false
-    end
-    model = model.get
-    
-    sqlFile = runner.lastEnergyPlusSqlFile
-    if sqlFile.empty?
-      runner.registerError("Cannot find last sql file.")
-      return false
-    end
-    sqlFile = sqlFile.get
-    model.setSqlFile(sqlFile)
+    # get sql, model, and web assets
+    setup = OsLib_Reporting.setup(runner)
+    model = setup[:model]
+    sqlFile = setup[:sqlFile]
+    web_asset_path = setup[:web_asset_path]
 
-    web_asset_path = OpenStudio::getSharedResourcesPath() / OpenStudio::Path.new("web_assets")
+    # create an array of tables to loop through in erb file
+    @tables = []
 
-    def neat_numbers(number, roundto = 2) #round to 0 or 2)
-                                          # round to zero or two decimals
-      if roundto == 2
-        number = sprintf "%.2f", number
-      else
-        number = number.round
-      end
-      #regex to add commas
-      number.to_s.reverse.gsub(%r{([0-9]{3}(?=([0-9])))}, "\\1,").reverse
-    end #end def pretty_numbers
+    # get general building information
+    @tables <<  OsLib_Reporting.general_building_information_table(model,sqlFile,runner)
 
-    # unit conversion flag
-    # this measure assumes tabular data comes in as si units, and only needs to be converted if user wants si
-    units = "ip"  #expected values are "si" or "ip"
+    # get space type breakdown table and pie chart
+    @tables << OsLib_Reporting.output_data_space_type_breakdown_table(model,sqlFile,runner)
 
-    # output title
-    output_gen = "\""
-    output_gen << "<b>General Building Information </b><br>"
+    # get end use table and pie chart
+    @tables << OsLib_Reporting.output_data_end_use_table_pie_data(model,sqlFile,runner)
 
-    # net site energy
-    if units == "si"
-      output_gen << "Net Site Energy = " << neat_numbers(OpenStudio::convert(sqlFile.netSiteEnergy.get,"GJ","MJ").get,0) << " (MJ)<br>" 
-    else
-      output_gen << "Net Site Energy = " << neat_numbers(OpenStudio::convert(sqlFile.netSiteEnergy.get,"GJ","kBtu").get,0) << " (kBtu)<br>" 
-    end
+    # get end use by electricity table and pie chart
+    @tables << OsLib_Reporting.output_data_end_use_electricity_table_pie_data(model,sqlFile,runner)
 
-    # total building area
-    query = "SELECT Value FROM tabulardatawithstrings WHERE "
-    query << "ReportName='AnnualBuildingUtilityPerformanceSummary' and " # Notice no space in SystemSummary
-    query << "ReportForString='Entire Facility' and "
-    query << "TableName='Building Area' and "
-    query << "RowName='Total Building Area' and "
-    query << "ColumnName='Area' and "
-    query << "Units='m2';"
-    query_results = sqlFile.execAndReturnFirstDouble(query)
-    if query_results.empty?
-      runner.registerError("Did not find value for total building area.")
-      return false
-    else
-      if units == "si"
-        output_gen << "Total Building Area: #{neat_numbers(query_results.get,0)}" << " (m2)<br>"
-      else
-        output_gen << "Total Building Area: #{neat_numbers(OpenStudio::convert(query_results.get,"m^2","ft^2").get,0)}" << " (ft2)<br>"
-      end
-    end
+    # get end use by gas table and pie chart
+    @tables << OsLib_Reporting.output_data_end_use_gas_table_pie_data(model,sqlFile,runner)
 
-    #EUI
-    eui =  sqlFile.netSiteEnergy.get / query_results.get
-    if units == "si"
-      output_gen << "EUI: #{neat_numbers(OpenStudio::convert(eui,"GJ/m^2","MJ/m^2").get)}" << " (MJ/m2)<br>"
-      eui_final_con = "EUI: #{neat_numbers(OpenStudio::convert(eui,"GJ/m^2","MJ/m^2").get)}" << " (MJ/m2)<br>"
-    else
-      output_gen << "EUI: #{neat_numbers(OpenStudio::convert(eui,"GJ/m^2","kBtu/ft^2").get)}" << " (kBtu/ft2)<br>"
-      eui_final_con = "EUI: #{neat_numbers(OpenStudio::convert(eui,"GJ/m^2","kBtu/ft^2").get)}" << " (kBtu/ft2)<br>"
-    end
+    # get end use table and pie chart
+    @tables << OsLib_Reporting.output_data_energy_use_table_pie_data(model,sqlFile,runner)
 
-    # extra line break
-    output_gen << "<br>"
-    output_gen << "\""
+    # get advisory messages table
+    @tables << OsLib_Reporting.advisory_messages_table(model,sqlFile,runner)
 
-    # output title
-    output_spaceType = "\""
-    output_spaceType << "<b>Space Type Breakdown</b><br>"
+    # get space type detail table
+    @tables << OsLib_Reporting.output_data_space_type_details_table(model,sqlFile,runner)
 
-    # create array for space type graph data
-    data_spaceType = []
+    # todo - could be nice to add story summary, area per story, count of zones and spaces. Should list air loops on that story, or should air loop list stories it is used on
 
-    spaceTypes = model.getSpaceTypes
+    # air loop summary
+    @tables << OsLib_Reporting.output_data_air_loops_table(model,sqlFile,runner)
 
-    spaceTypes.sort.each do |spaceType|
-      if spaceType.floorArea > 0
+    # plant loop summary
+    @tables << OsLib_Reporting.output_data_plant_loops_table(model,sqlFile,runner)
 
-        # get color
-        color = spaceType.renderingColor
-        if not color.empty?
-          color = color.get
-          red = color.renderingRedValue
-          green = color.renderingGreenValue
-          blue = color.renderingBlueValue
-        else
-          rgb = [20,20,20] #maybe do random or let d3 pick color instead of this?
-        end
+    # zone equipment summary
+    @tables << OsLib_Reporting.output_data_zone_equipment_table(model,sqlFile,runner)
 
-        if units == "si"
-          output_spaceType << "#{spaceType.name.get}: #{neat_numbers(spaceType.floorArea,0)} (m2)<br>"
-          temp_array = ['{"label":"',spaceType.name.get,'", "value":',spaceType.floorArea,', "red":"',red,'"',', "green":"',green,'"',', "blue":"',blue,'"','}']
-        else
-          output_spaceType << "#{spaceType.name.get}: #{neat_numbers(OpenStudio::convert(spaceType.floorArea,"m^2","ft^2").get,0)} (ft2)<br>"
-          temp_array = ['{"label":"',spaceType.name.get,'", "value":',OpenStudio::convert(spaceType.floorArea,"m^2","ft^2"),', "red":"',red,'"',', "green":"',green,'"',', "blue":"',blue,'"','}']
-        end
-        data_spaceType << temp_array.join
-      end
-    end
+    # get fenestration data table
+    @tables << OsLib_Reporting.fenestration_data_table(model,sqlFile,runner)
 
-    spaces = model.getSpaces
+    # summary of exterior constructions used in the model for base surfaces
+    @tables << OsLib_Reporting.surface_data_table(model,sqlFile,runner)
 
-    #count area of spaces that have no space type
-    noSpaceTypeAreaCounter = 0
+    # summary of exterior constructions used in the model for sub surfaces
+    @tables << OsLib_Reporting.sub_surface_data_table(model,sqlFile,runner)
 
-    spaces.each do |space|
-      if space.spaceType.empty?
-        noSpaceTypeAreaCounter = noSpaceTypeAreaCounter + space.floorArea
-      end
-    end
+    # create table for service water heating
+    @tables << OsLib_Reporting.water_use_data_table(model,sqlFile,runner)
 
-    if noSpaceTypeAreaCounter > 0
-      if units == "si"
-        output_spaceType << "No SpaceType Assigned: #{neat_numbers(noSpaceTypeAreaCounter,0)} (m2) <br>"
-        temp_array = ['{"label":"','No SpaceType Assigned','", "value":',noSpaceTypeAreaCounter,', "red": 240, "green": 240, "blue": 240}']
-      else
-        output_spaceType << "No SpaceType Assigned: #{neat_numbers(OpenStudio::convert(noSpaceTypeAreaCounter,"m^2","ft^2").get,0)} (ft2)<br>"
-        temp_array = ['{"label":"','No SpaceType Assigned','", "value":',OpenStudio::convert(noSpaceTypeAreaCounter,"m^2","ft^2"),', "red": 240, "green": 240, "blue": 240}']
-      end
-      data_spaceType << temp_array.join
-    end
+    # todo - update this to be custom load table, ad user arg with default string of "Elev"
+    # elevators from model
+    #@tables << OsLib_Reporting.elevator_data_table(model,sqlFile,runner)
 
-    # extra line break
-    output_spaceType << "<br>"
-    output_spaceType << "\""
-    data_spaceType_merge = data_spaceType.join(",")
-
-    # output title
-    output_endUse = "\""
-    output_endUse << "<b>LEED Summary - EAp2-18. End Use Percentage</b><br>"
-
-    # create array for end use graph data
-    data_endUse = []
-
-    # list of lead end uses
-    endUseLeedCats = []
-    endUseLeedCats << "Interior Lighting"
-    endUseLeedCats << "Space Heating"
-    endUseLeedCats << "Space Cooling"
-    endUseLeedCats << "Fans-Interior"
-    endUseLeedCats << "Service Water Heating"
-    endUseLeedCats << "Receptacle Equipment"
-    endUseLeedCats << "Miscellaneous"
-
-    #list of colors per end uses matching standard report
-    endUseLeedCatColors = []
-    endUseLeedCatColors << "#F7DF10" # interior lighting
-    endUseLeedCatColors << "#EF1C21" # heating
-    endUseLeedCatColors << "#0071BD" # cooling
-    endUseLeedCatColors << "#FF79AD" # fans
-    endUseLeedCatColors << "#FFB239" # water systems
-    endUseLeedCatColors << "#4A4D4A" # interior equipment
-    endUseLeedCatColors << "#669933" # misc - not from standard report
-
-    # loop through end uses from LEED end use percentage table
-    endUseLeedCats.length.times do |i|
-      # Retrieve end use percentages from LEED table
-      query = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='LEEDsummary' and RowName= '#{endUseLeedCats[i]}' and ColumnName='Percent' and Units='%';"
-      endUseLeedValue = sqlFile.execAndReturnFirstDouble(query)
-      if endUseLeedValue.empty?
-        runner.registerError("Did not find value for #{endUseLeedCats[i]}.")
-        return false
-      else
-        output_endUse << "#{endUseLeedCats[i]}: #{endUseLeedValue.get}" << " (%)<br>"
-        if endUseLeedValue.get > 0
-          temp_array = ['{"label":"',endUseLeedCats[i],'", "value":',endUseLeedValue.get,', "color":"',endUseLeedCatColors[i],'"}']
-          data_endUse << temp_array.join
-        end
-      end
-    end # endUseLeedCats.each do
-
-    # extra line break
-    output_endUse << "<br>"
-    output_endUse << "\""
-    data_endUse_merge = data_endUse.join(",")
-
-    # output title
-    output_energyUse = "\""
-    output_energyUse << "<b>LEED Summary - EAp2-6. Energy Use Summary</b><br>"
-
-    # create array for end use graph data
-    data_energyUse = []
-
-    # list of lead end uses
-    energyUseLeedCats = []
-    energyUseLeedCats << "Electricity"
-    energyUseLeedCats << "Natural Gas"
-    energyUseLeedCats << "Additional"
-    #energyUseLeedCats << "Total"
-
-    # loop through end uses from LEED end use percentage table
-    energyUseLeedCats.each do |energyUseLeedCat|
-      # Retrieve end use percentages from LEED table
-      query = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='LEEDsummary' and RowName= '#{energyUseLeedCat}' and ColumnName='Total Energy Use' and Units='GJ';"
-      energyUseLeedValue = sqlFile.execAndReturnFirstDouble(query)
-      if energyUseLeedValue.empty?
-        runner.registerError("Did not find value for #{energyUseLeedCat}.")
-        return false
-      else
-        if units == "si"
-          output_energyUse << "#{energyUseLeedCat}: #{neat_numbers(OpenStudio::convert(energyUseLeedValue.get,"GJ","MJ").get,0)}" << " (MJ)<br>"
-        else
-          output_energyUse << "#{energyUseLeedCat}: #{neat_numbers(OpenStudio::convert(energyUseLeedValue.get,"GJ","kBtu").get,0)}" << " (kBtu)<br>"
-        end
-        if energyUseLeedValue.get > 0
-          temp_array = ['{"label":"',energyUseLeedCat,'", "value":',energyUseLeedValue.get,'}']
-          data_energyUse << temp_array.join
-        end
-      end
-    end # energyUseLeedCats.each do
-
-    # extra line break
-    output_energyUse << "<br>"
-    output_energyUse << "\""
-    data_energyUse_merge = data_energyUse.join(",")
-
-    # create strign for LEED advisories
-    advisoriesLeed = []
-    advisoriesLeed << "Number of hours heating loads not met"
-    advisoriesLeed << "Number of hours cooling loads not met"
-    advisoriesLeed << "Number of hours not met"
-
-    # output title
-    output_advisory = "\""
-    output_advisory << "<b>LEED Summary - EAp2-2. Advisory Messages</b><br>"
-
-    # loop through advisory messages
-    advisoriesLeed.each do |advisoryLeed|
-      # Retrieve end use percentages from LEED table
-      query = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='LEEDsummary' and RowName= '#{advisoryLeed}' and ColumnName='Data';"
-      advisoryLeedValue = sqlFile.execAndReturnFirstDouble(query)
-      if advisoryLeedValue.empty?
-        runner.registerError("Did not find value for #{advisoryLeed}.")
-        return false
-      else
-        output_advisory << "#{advisoryLeed}: #{neat_numbers(advisoryLeedValue.get,0)}" << " (hr)<br>"
-      end
-    end # advisoriesLeed.each do
-
-
-    output_advisory << "<br>"
-    output_advisory << "\""
+    # create table for exterior lights
+    @tables << OsLib_Reporting.exterior_light_data_table(model,sqlFile,runner)
 
     #reporting final condition
     runner.registerInitialCondition("Gathering data from EnergyPlus SQL file and OSM model.")
 
+    # create excel file (todo - turn back on once support gem)
+    #book = OsLib_Reporting.create_xls()
+    #@tables.each do |table|
+    #  my_data = OsLib_Reporting.write_xls(table,book)
+    #end
+    #file = OsLib_Reporting.save_xls(book)
+
     # read in template
-    html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.in"
+    html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.erb"
     if File.exist?(html_in_path)
-        html_in_path = html_in_path
+      html_in_path = html_in_path
     else
-        html_in_path = "#{File.dirname(__FILE__)}/report.html.in"
+      html_in_path = "#{File.dirname(__FILE__)}/report.html.erb"
     end
     html_in = ""
     File.open(html_in_path, 'r') do |file|
@@ -304,7 +123,7 @@ class AnnualEndUseBreakdown < OpenStudio::Ruleset::ReportingUserScript
     html_out_path = "./report.html"
     File.open(html_out_path, 'w') do |file|
       file << html_out
-      # make sure data is written to the disk one way or the other      
+      # make sure data is written to the disk one way or the other
       begin
         file.fsync
       rescue
@@ -316,7 +135,7 @@ class AnnualEndUseBreakdown < OpenStudio::Ruleset::ReportingUserScript
     sqlFile.close()
 
     #reporting final condition
-    runner.registerFinalCondition("Generated #{html_out_path}. #{eui_final_con}")
+    runner.registerFinalCondition("Generated #{html_out_path}.")
 
     return true
  

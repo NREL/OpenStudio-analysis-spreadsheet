@@ -1,9 +1,9 @@
 
 Version,
-  7.2.0.006;                              ! Version Identifier
+  8.1.0.009;                              !- Version Identifier
 
 UtilityCost:Tariff,
-  Non-XcelGasInterruptible,           !- Name
+  Non - Xcel Gas Interruptible,           !- Name
   Gas:Facility,                           !- Output Meter Name
   MMBtu,                                  !- Conversion Factor Choice
   ,                                       !- Energy Conversion Factor
@@ -16,17 +16,17 @@ UtilityCost:Tariff,
 
 UtilityCost:Charge:Simple,
   FlatEnergyCharge-Gas,                   !- Name
-  Non-XcelGasInterruptible,           !- Tariff Name
+  Non - Xcel Gas Interruptible,           !- Tariff Name
   totalEnergy,                            !- Source Variable
   Annual,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  6.76615;                                !- Cost per Unit Value or Variable Name
+  4.9217383587997245;                     !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   FlatDemandCharge-Gas,                   !- Name
-  Non-XcelGasInterruptible,           !- Tariff Name
+  Non - Xcel Gas Interruptible,           !- Tariff Name
   totalDemand,                            !- Source Variable
   Annual,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  0.0;                                    !- Cost per Unit Value or Variable Name
+  8.276175;                               !- Cost per Unit Value or Variable Name
 

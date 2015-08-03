@@ -1,0 +1,76 @@
+UtilityCost:Tariff,
+  ExampleF,                     ! Name
+    ElectricityPurchased:Facility,  !- Output Meter Name
+  kWh,                          ! Conversion Factor Choice
+  ,                             ! Energy Conversion Factor
+  ,                             ! Demand Conversion Factor
+  TimeOfDaySchedule,            ! Time of Use Period Schedule Name
+  TwoSeasonSchedule,            ! Season Schedule Name
+  ,                             ! Month Schedule Name
+  ,                             ! Demand Window Length
+  37.75;                        ! Monthly Charge or Variable Name
+
+
+UtilityCost:Charge:Simple,
+  SummerOnPeak,                 ! Charge Variable Name
+  ExampleF,                     ! Tariff Name
+  peakEnergy,                   ! Source Variable
+  Summer,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  0.14009;                      ! Cost per Unit Value or Variable Name
+
+
+UtilityCost:Charge:Simple,
+  SummerOffPeak,                ! Charge Variable Name
+  ExampleF,                     ! Tariff Name
+  offPeakEnergy,                ! Source Variable
+  Summer,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  0.06312;                      ! Cost per Unit Value or Variable Name
+
+
+UtilityCost:Charge:Simple,
+  WinterOnPeak,                 ! Charge Variable Name
+  ExampleF,                     ! Tariff Name
+  peakEnergy,                   ! Source Variable
+  Winter,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  0.08315;                      ! Cost per Unit Value or Variable Name
+
+
+UtilityCost:Charge:Simple,
+  WinterOffPeak,                ! Charge Variable Name
+  ExampleF,                     ! Tariff Name
+  offPeakEnergy,                ! Source Variable
+  Winter,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  0.02420;                      ! Cost per Unit Value or Variable Name
+
+
+UtilityCost:Qualify,
+  MinDemand,                    ! Name
+  ExampleF,                     ! Tariff Name
+  TotalDemand,                  ! Variable Name
+  Minimum,                      ! Qualify Type
+  50,                           ! Threshold Value or Variable Name
+  Annual,                       ! Season
+  Count,                        ! Threshold Test
+  1;                            ! Number of Months
+
+
+Schedule:Compact, TwoSeasonSchedule, number,
+Through: 5/31, For: AllDays,  Until: 24:00, 1,
+Through: 9/30, For: AllDays,  Until: 24:00, 3,
+Through: 12/31, For: AllDays, Until: 24:00, 1;
+
+
+Schedule:Compact, TimeOfDaySchedule, number,
+Through: 5/31, For: AllDays,  Until: 15:00, 3,
+                              Until: 22:00, 1,
+                              Until: 24:00, 3,
+Through: 9/30, For: AllDays,  Until: 10:00, 3,
+                              Until: 19:00, 1,
+                              Until: 24:00, 3,
+Through: 12/31, For: AllDays, Until: 15:00, 3,
+                              Until: 22:00, 1,
+                              Until: 24:00, 3;

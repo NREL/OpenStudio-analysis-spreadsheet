@@ -9,9 +9,9 @@
   "name_xml": "Assign Spaces to Stories",
   "uid": "2c91fe40-db31-4334-a1dd-817cd419f1b6",
   "version_id": "cf22b301-f7ce-4a98-8029-c120144d2f80",
-  "modeler_description": "If spaces are already assigned to stories, the will be left alone.",
-  "description": "This measure will look as space geometry and assign each space to a story, creating new stories as necessary.",
   "tags": [
     "Envelope.Form"
-  ]
+  ],
+  "modeler_description_xml": "If spaces are already assigned to stories, the will be left alone.",
+  "description_xml": "This measure will look as space geometry and assign each space to a story, creating new stories as necessary."
 }

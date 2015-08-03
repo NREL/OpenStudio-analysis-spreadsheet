@@ -1,0 +1,48 @@
+  UtilityCost:Tariff,
+    IN_EIAMonthlyRateGas,    !- Name
+    Gas:Facility,            !- Output Meter Name
+    MCF,                     !- Conversion Factor Choice
+    ,                        !- Energy Conversion Factor
+    ,                        !- Demand Conversion Factor
+    ,                        !- Time of Use Period Schedule Name
+    ,                        !- Season Schedule Name
+    ,                        !- Month Schedule Name
+    ,                        !- Demand Window Length
+    0.0,                     !- Monthly Charge or Variable Name
+    ,                        !- Minimum Monthly Charge or Variable Name
+    ,                        !- Real Time Pricing Charge Schedule Name
+    ,                        !- Customer Baseline Load Schedule Name
+    Comm Gas;                !- Group Name
+
+  UtilityCost:Charge:Simple,
+    MonthlyRateGasCharge,    !- Name
+    IN_EIAMonthlyRateGas,    !- Tariff Name
+    totalEnergy,             !- Source Variable
+    Annual,                  !- Season
+    EnergyCharges,           !- Category Variable Name
+    IN_MonthlyGasRates;      !- Cost per Unit Value or Variable Name
+
+  UtilityCost:Variable,
+    IN_MonthlyGasRates,      !- Name
+    IN_EIAMonthlyRateGas,    !- Tariff Name
+    Currency,                !- Variable Type
+    8.22,                    !- January Value
+    7.51,                    !- February Value
+    8.97,                    !- March Value
+    9.01,                    !- April Value
+    9.16,                    !- May Value
+    10.44,                   !- June Value
+    10.32,                   !- July Value
+    10.13,                   !- August Value
+    9.20,                    !- September Value
+    8.18,                    !- October Value
+    7.83,                    !- November Value
+    7.63;                    !- December Value
+
+  UtilityCost:Charge:Simple,
+    TaxofEightPercent,       !- Name
+    IN_EIAMonthlyRateGas,    !- Tariff Name
+    SubTotal,                !- Source Variable
+    Annual,                  !- Season
+    Taxes,                   !- Category Variable Name
+    0.08;                    !- Cost per Unit Value or Variable Name

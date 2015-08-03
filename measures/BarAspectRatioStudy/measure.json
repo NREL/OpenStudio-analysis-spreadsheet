@@ -5,66 +5,60 @@
   "measure_type": "RubyMeasure",
   "arguments": [
     {
-      "local_variable": "total_bldg_area_ip",
-      "variable_type": "Double",
       "name": "total_bldg_area_ip",
       "display_name": "Total Building Floor Area",
+      "variable_type": "Double",
+      "local_variable": "total_bldg_area_ip",
       "units": "ft^2",
-      "description": null,
       "default_value": 10000.0
     },
     {
-      "local_variable": "ns_to_ew_ratio",
-      "variable_type": "Double",
       "name": "ns_to_ew_ratio",
       "display_name": "Ratio of North/South Facade Length Relative to East/West Facade Length",
+      "variable_type": "Double",
+      "local_variable": "ns_to_ew_ratio",
       "units": null,
-      "description": null,
       "default_value": 2.0
     },
     {
-      "local_variable": "num_floors",
-      "variable_type": "Integer",
       "name": "num_floors",
       "display_name": "Number of Floors",
+      "variable_type": "Integer",
+      "local_variable": "num_floors",
       "units": null,
-      "description": null,
       "default_value": 2
     },
     {
-      "local_variable": "floor_to_floor_height_ip",
-      "variable_type": "Double",
       "name": "floor_to_floor_height_ip",
       "display_name": "Floor to Floor Height",
+      "variable_type": "Double",
+      "local_variable": "floor_to_floor_height_ip",
       "units": "ft",
-      "description": null,
       "default_value": 10.0
     },
     {
-      "local_variable": "surface_matching",
-      "variable_type": "Bool",
       "name": "surface_matching",
       "display_name": "Surface Matching",
+      "variable_type": "Bool",
+      "local_variable": "surface_matching",
       "units": null,
-      "description": null,
       "default_value": true
     },
     {
-      "local_variable": "make_zones",
-      "variable_type": "Bool",
       "name": "make_zones",
       "display_name": "Make Thermal Zones from Spaces",
+      "variable_type": "Bool",
+      "local_variable": "make_zones",
       "units": null,
-      "description": null,
       "default_value": true
     }
   ],
   "name_xml": "Bar Aspect Ratio Study",
   "uid": "3dcac94d-8a2e-43b6-8698-a3a4e8f3903f",
   "version_id": "2ed355fb-64f8-4896-a2f2-4fef9f498bcd",
-  "modeler_description": "This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.",
-  "description": "This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.",
   "tags": [
     "Envelope.Form"
-  ]
+  ],
+  "modeler_description_xml": "This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.",
+  "description_xml": "This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height."
 }

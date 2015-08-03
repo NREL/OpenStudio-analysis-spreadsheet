@@ -1,9 +1,9 @@
 
 Version,
-  7.2.0.006;                              ! Version Identifier
+  8.1.0.009;                              !- Version Identifier
 
 UtilityCost:Tariff,
-  SmallCG,                               !- Name
+  Small CG,                               !- Name
   Gas:Facility,                           !- Output Meter Name
   MMBtu,                                  !- Conversion Factor Choice
   ,                                       !- Energy Conversion Factor
@@ -16,11 +16,11 @@ UtilityCost:Tariff,
 
 UtilityCost:Charge:Simple,
   FlatEnergyCharge-Gas,                   !- Name
-  SmallCG,                               !- Tariff Name
+  Small CG,                               !- Tariff Name
   totalEnergy,                            !- Source Variable
   Annual,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  6.295536525;                            !- Cost per Unit Value or Variable Name
+  5.950592169838135;                      !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   FlatDemandCharge-Gas,                   !- Name

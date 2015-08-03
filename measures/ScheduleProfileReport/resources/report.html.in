@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ruleset Schedule Profile</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="file:///<%= web_asset_path %>/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="file:///<%= web_asset_path %>/jquery.min.js"></script>
+<script type="text/javascript" src="file:///<%= web_asset_path %>/d3.min.js"></script>
+</head>
+<body>
+
+<table class="table table-striped">
+
+  <% graph_hash.each do |k,v| %>
+      <tr>
+
+        <div id="chartContainer">
+        <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+
+        <script type="text/javascript">
+        var svg = dimple.newSvg("body", 450,500);
+        var data = [<%= v %>];
+
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(60, 100, 340, 250)
+        var x = myChart.addCategoryAxis("x", "Time");
+        x.addOrderRule("Time");
+        myChart.addMeasureAxis("y", "Value");
+        var s = myChart.addSeries("Type", dimple.plot.line);
+        s.addOrderRule("Type");
+        s.interpolation = "step";
+        var myLegend = myChart.addLegend(60, 10, 300, 100, "left");
+
+        myLegend._getEntries = function () {
+            var entries = [];
+            if (this.series) {
+                this.series.forEach(function (series) {
+                    var data = series._positionData;
+                    data.forEach(function (row) {
+                        var index = -1,
+                            j,
+                            field = ((series.plot.grouped && !series.x._hasCategories() && !series.y._hasCategories() && row.aggField.length < 2 ? "All" : row.aggField.slice(-1)[0]));
+                        for (j = 0; j < entries.length; j += 1) {
+                            if (entries[j].key === field) {
+                                index = j;
+                                break;
+                            }
+                        }
+                        if (index === -1 && series.chart._assignedColors[field]) {
+                            entries.push({
+                                key: field,
+                                fill: series.chart._assignedColors[field].fill,
+                                stroke: series.chart._assignedColors[field].stroke,
+                                opacity: series.chart._assignedColors[field].opacity,
+                                series: series,
+                                aggField: row.aggField
+                            });
+                            index = entries.length - 1;
+                        }
+                    });
+                }, this);
+            }
+
+            // PUT YOUR SORTING LOGIC HERE
+            // For example to sort numeric values ascending
+            entries.sort(function (a, b) { return parseFloat(a.key) - parseFloat(b.key); });
+
+            return entries;
+        };
+
+        myChart.draw();
+        </script>
+        </div>
+
+      </tr>
+  <% end %>
+
+</table>
+
+
+</body>
+</html>

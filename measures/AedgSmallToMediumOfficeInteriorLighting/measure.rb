@@ -153,7 +153,7 @@ class AedgSmallToMediumOfficeInteriorLighting < OpenStudio::Ruleset::ModelUserSc
       end
 
       # adjust schedules as necessary only hard assign if the default schedule was never used
-      if defaultUsedAtLeastOnce == false and oldElecEquip.size > 0
+      if defaultUsedAtLeastOnce == false and oldLights.size > 0
         # retrieve hard assigned schedule
         newLight.setSchedule(oldScheduleHash.sort.reverse[0][0])
       else

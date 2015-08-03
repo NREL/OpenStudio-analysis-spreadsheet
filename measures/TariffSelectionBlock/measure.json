@@ -1,0 +1,87 @@
+{
+  "classname": "TariffSelectionBlock",
+  "name": "tariff_selection_block",
+  "display_name": "Tariff Selection Block",
+  "measure_type": "EnergyPlusMeasure",
+  "description": "This measure sets block rates for electricity, and flat rates for gas, water, district heating, and district cooling.",
+  "modeler_description": "Will add the necessary UtilityCost objects into the model.",
+  "arguments": [
+    {
+      "name": "demand_window_length",
+      "display_name": "Demand Window Length",
+      "variable_type": "Choice",
+      "local_variable": "demand_window_length",
+      "units": null,
+      "default_value": "QuarterHour",
+      "choices": [
+        "QuarterHour",
+        "HalfHour",
+        "FullHour",
+        "Day",
+        "Week"
+      ]
+    },
+    {
+      "name": "elec_block_values",
+      "display_name": "Electric Block Rate Ceiling Values",
+      "variable_type": "String",
+      "local_variable": "elec_block_values",
+      "units": "kWh",
+      "default_value": "200,1000"
+    },
+    {
+      "name": "elec_block_costs",
+      "display_name": "Electric Block Rate Costs",
+      "variable_type": "String",
+      "local_variable": "elec_block_costs",
+      "units": "$/kWh",
+      "default_value": "0.07,0.06"
+    },
+    {
+      "name": "elec_remaining_rate",
+      "display_name": "Electric Rate for Remaining",
+      "variable_type": "Double",
+      "local_variable": "elec_remaining_rate",
+      "units": "$/kWh",
+      "default_value": 0.05
+    },
+    {
+      "name": "gas_rate",
+      "display_name": "Gas Rate",
+      "variable_type": "Double",
+      "local_variable": "gas_rate",
+      "units": "$/therm",
+      "default_value": 0.5
+    },
+    {
+      "name": "water_rate",
+      "display_name": "Water Rate",
+      "variable_type": "Double",
+      "local_variable": "water_rate",
+      "units": "$/gal",
+      "default_value": 0.005
+    },
+    {
+      "name": "disthtg_rate",
+      "display_name": "District Heating Rate",
+      "variable_type": "Double",
+      "local_variable": "disthtg_rate",
+      "units": "$/kBtu",
+      "default_value": 0.2
+    },
+    {
+      "name": "distclg_rate",
+      "display_name": "District Cooling Rate",
+      "variable_type": "Double",
+      "local_variable": "distclg_rate",
+      "units": "$/kBtu",
+      "default_value": 0.2
+    }
+  ],
+  "name_xml": "tariff_selection_block",
+  "uid": "42e9f831-f39a-4709-a79b-41db49c94f8c",
+  "version_id": "0004b483-a08b-4e29-a016-65590abc25cb",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
+  ]
+}

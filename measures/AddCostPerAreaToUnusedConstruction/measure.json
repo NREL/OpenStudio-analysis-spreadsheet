@@ -5,95 +5,86 @@
   "measure_type": "RubyMeasure",
   "arguments": [
     {
-      "local_variable": "construction",
-      "variable_type": "Choice",
       "name": "construction",
       "display_name": "Choose a Construction to Add Costs to",
+      "variable_type": "Choice",
+      "local_variable": "construction",
       "units": null,
-      "description": null,
       "choices": [
 
       ]
     },
     {
-      "local_variable": "remove_costs",
-      "variable_type": "Bool",
       "name": "remove_costs",
       "display_name": "Remove Existing Costs",
+      "variable_type": "Bool",
+      "local_variable": "remove_costs",
       "units": null,
-      "description": null,
       "default_value": true
     },
     {
-      "local_variable": "material_cost_ip",
-      "variable_type": "Double",
       "name": "material_cost_ip",
       "display_name": "Material and Installation Costs for Construction per Area Used",
+      "variable_type": "Double",
+      "local_variable": "material_cost_ip",
       "units": "$/ft^2",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "demolition_cost_ip",
-      "variable_type": "Double",
       "name": "demolition_cost_ip",
       "display_name": "Demolition Costs for Construction per Area Used",
+      "variable_type": "Double",
+      "local_variable": "demolition_cost_ip",
       "units": "$/ft^2",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "years_until_costs_start",
-      "variable_type": "Integer",
       "name": "years_until_costs_start",
       "display_name": "Years Until Costs Start",
+      "variable_type": "Integer",
+      "local_variable": "years_until_costs_start",
       "units": "whole years",
-      "description": null,
       "default_value": 0
     },
     {
-      "local_variable": "demo_cost_initial_const",
-      "variable_type": "Bool",
       "name": "demo_cost_initial_const",
       "display_name": "Demolition Costs Occur During Initial Construction",
+      "variable_type": "Bool",
+      "local_variable": "demo_cost_initial_const",
       "units": null,
-      "description": null,
       "default_value": false
     },
     {
-      "local_variable": "expected_life",
-      "variable_type": "Integer",
       "name": "expected_life",
       "display_name": "Expected Life",
+      "variable_type": "Integer",
+      "local_variable": "expected_life",
       "units": "whole years",
-      "description": null,
       "default_value": 20
     },
     {
-      "local_variable": "om_cost_ip",
-      "variable_type": "Double",
       "name": "om_cost_ip",
       "display_name": "O & M Costs for Construction per Area Used",
+      "variable_type": "Double",
+      "local_variable": "om_cost_ip",
       "units": "$/ft^2",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "om_frequency",
-      "variable_type": "Integer",
       "name": "om_frequency",
       "display_name": "O & M Frequency",
+      "variable_type": "Integer",
+      "local_variable": "om_frequency",
       "units": "whole years",
-      "description": null,
       "default_value": 1
     }
   ],
   "name_xml": "Add Cost per Area to Unused Construction",
   "uid": "ad632782-125f-45c8-a9cf-516e184b418a",
   "version_id": "1a065b57-548a-44ae-b6de-44ef5edb564e",
-  "modeler_description": "The use case for this is a construction that is not used in the baseline but will be used after other measures are run. For example adding overhangs to the Building.",
-  "description": "This measure is the same as \"Add Cost per Area to Construction\" except that it only offers constructions that are not used on any surfaces in the baseline construction.",
   "tags": [
     "Economics.Life Cycle Cost Analysis"
-  ]
+  ],
+  "modeler_description_xml": "The use case for this is a construction that is not used in the baseline but will be used after other measures are run. For example adding overhangs to the Building.",
+  "description_xml": "This measure is the same as \"Add Cost per Area to Construction\" except that it only offers constructions that are not used on any surfaces in the baseline construction."
 }

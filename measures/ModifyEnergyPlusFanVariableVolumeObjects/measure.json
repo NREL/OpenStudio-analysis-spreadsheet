@@ -5,30 +5,28 @@
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
-      "local_variable": "pressureRise",
-      "variable_type": "Double",
       "name": "pressureRise",
       "display_name": "Pressure Rise",
+      "variable_type": "Double",
+      "local_variable": "pressureRise",
       "units": "Pa",
-      "description": null,
       "default_value": 10.76
     },
     {
-      "local_variable": "maximumFlowRate",
-      "variable_type": "Double",
       "name": "maximumFlowRate",
       "display_name": "Maximum Flow Rate",
+      "variable_type": "Double",
+      "local_variable": "maximumFlowRate",
       "units": "m^3/s",
-      "description": null,
       "default_value": 10.76
     }
   ],
   "name_xml": "Modify EnergyPlus Fan Variable Volume Objects",
   "uid": "14a9aa83-b4de-48b4-ba65-dad6f102ffcb",
   "version_id": "dd27aa12-ecc6-4034-ad65-af9952d33105",
-  "modeler_description": "Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model will be set to the requested SI value.",
-  "description": "Set the Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model. Input values are in SI units.",
   "tags": [
     "HVAC.Distribution"
-  ]
+  ],
+  "modeler_description_xml": "Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model will be set to the requested SI value.",
+  "description_xml": "Set the Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model. Input values are in SI units."
 }

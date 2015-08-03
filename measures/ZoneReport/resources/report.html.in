@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zone Report</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dygraph/1.0.1/dygraph-combined.js"></script>
+<style>
+body {
+  position: relative;
+  height: 100%;
+}
+
+#tocItems > .nav > li > a {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tocItems {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+td.equipmentCategory{
+	font-weight:bold;
+}
+
+td.valWide{
+	text-align:center;
+}
+
+.dygraph-legend {
+    float: left;
+    top: -270px;
+    background-color: transparent !important;
+    left: 810px !important;
+    position: relative;
+}
+</style>
+<script type="text/javascript">
+// Create a timeseries graph of the data for each zone
+$(document).ready(function () {
+
+    function stackedColumnPlotter(e) {
+        // We need to handle all the series simultaneously.
+        if (e.seriesIndex !== 0) return;
+
+        var g = e.dygraph;
+        var ctx = e.drawingContext;
+        var sets = e.allSeriesPoints;
+
+        ctx.fillStyle="#000000";
+        ctx.fillRect( 0, e.dygraph.toDomYCoord(0), 940, 2 );
+
+        // Find the minimum separation between x-values.
+        // This determines the bar width.
+        var min_sep = Infinity;
+        for (var j = 0; j < sets.length; j++) {
+            var points = sets[j];
+            for (var i = 1; i < points.length; i++) {
+                var sep = points[i].canvasx - points[i - 1].canvasx;
+                if (sep < min_sep) min_sep = sep;
+            }
+        }
+        var bar_width = Math.floor(2.0 / 2.6 * min_sep);
+
+        var fillColors = [];
+        var strokeColors = g.getColors();
+        for (var i = 0; i < strokeColors.length; i++) {
+            var color = new RGBColorParser(strokeColors[i]);
+            color.r = Math.floor((255 + color.r) / 2);
+            color.g = Math.floor((255 + color.g) / 2);
+            color.b = Math.floor((255 + color.b) / 2);
+            fillColors.push(color.toRGB());
+        }
+
+        var ranges = []
+
+        for (var j = 0; j < sets.length; j++) {
+            ctx.fillStyle = fillColors[j];
+            ctx.strokeStyle = strokeColors[j];
+            // Category 0 is used for min/max graph autoscaling; don't plot category 0
+            // The last category is used for spacing; don't plot the last category
+            for (var i = 1; i<sets[j].length-1; i++) {
+                var p = sets[j][i];
+                var center_x = p.canvasx;
+                var x_left = center_x - (bar_width / 2);
+                var x_right = center_x + (bar_width / 2);
+
+                if (p.yval != 0) {
+
+                    var from = 0
+                    var to = 0
+                    var r = ranges[p.xval] || [0.0, 0.0]
+
+                    if (p.yval >= 0) {
+                        to = r[0]
+                        r[0] = from = to + p.yval
+                    }
+                    else {
+                        from = r[1]
+                        r[1] = to = from + p.yval
+                    }
+
+                    ranges[p.xval] = r
+
+                    var y_top = e.dygraph.toDomYCoord(from)
+                    var y_bottom = e.dygraph.toDomYCoord(to)
+                    var bar_height = y_bottom-y_top
+
+                    ctx.fillRect(x_left, y_top,
+                        bar_width, bar_height);
+
+                    ctx.strokeRect(x_left, y_top,
+                        bar_width, bar_height);
+
+                    //ctx.fillStyle = fillColors[j];
+                    //fillstring = fillColors[j].substring(4);
+
+                    ctx.fillStyle="rgba( 0, 0, 0, 0.70)";
+                    ctx.font = '16px sans-serif';
+                    ctx.fillText(p.name + " " + p.yval, x_left + 10, y_top + ( bar_height / 2 ));
+
+                    ctx.fillStyle = fillColors[j];
+                }
+            }
+        }
+    };
+
+    $.each(graph_data, function (index, graphData) {
+        var graph = graph_data[index];
+
+        $('#graphs_' + index).append('<div><div id="data_div_' + index + '"></div><div id="labels_div_' + index + '" class="dygraph-legend" style="margin-right: 56px"></div></div>');
+
+        g = new Dygraph(document.getElementById('data_div_' + index), graph.data, {
+            title: graph.title,
+            xlabel: graph.xaxislabel,
+            ylabel: graph.yaxislabel,
+            labels: graph.labels,
+            colors: graph.colors,
+            labelsDiv: document.getElementById('labels_div_' + index),
+            labelsSeparateLines: true,
+            labelsShowZeroValues: false,
+            showLabelsOnHighlight: false,
+            legend: "never",
+            height: 520,
+            axes: {
+                x: {
+                    axisLabelFormatter: function(d, gran) {
+                        switch(d){
+                            case 1: return "Net Heating"; break;
+                            case 2: return "Heating"; break;
+                            case 3: return "Cooling"; break;
+                            case 4: return "Net Cooling"; break;
+                            default: return "";
+                        }
+                    }
+                }
+            },
+            plotter: stackedColumnPlotter,
+            highlightCircleSize:0,
+            highlightCallback: highlightCol
+        });
+
+        var annotations = []
+        for (var i=1; i<graph.data.length-1; ++i) { // First and last points are not shown on graph
+            points = graph.data[i]
+            for (var e=1; e<points.length; ++e) {
+                if (points[e] != 0) {
+                    var labeltext = graph.labels[e] + ": " + points[e]
+                    a = {series:graph.labels[e] , x:points[0], shortText:labeltext, text:labeltext, cssClass:'stackedbarlabel', width:100}
+                    annotations.push(a)
+                }
+            }
+        }
+        //g.setAnnotations(annotations)
+
+        $('#series_div_' + index ).append( "<button type='button' id='data_export_" + index + "' onclick='exportData(" + index + ")' class='btn btn-default btn-xs'>Export</button>" );
+    });
+});
+
+function highlightCol( event, x, points, row, seriesName ){
+    for (var e = 0 ; e < points.length; ++e ) {
+        if ( points[e] != 0 ) {
+            //alert( points[e].name + "-" +  points[e].yval );
+        }
+    }
+
+
+}
+
+function exportData( index ){
+
+    var graph = graph_data[index];
+    var csvContent = "data:text/csv;charset=utf-8,";
+    csvContent = graph.data.join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    window.open(encodedUri);
+}
+</script>
+<script type="text/javascript">
+var graph_data = <%= @graph_data %>;
+</script>
+
+</head>
+<body data-spy="scroll" data-target="#tocItems">
+
+<div id="content" class="container-fluid">
+
+  <div id="toc" class="col-md-3" role="complementary">
+    <div id="tocItems" class="hidden-print well affix" role="complementary" style="margin-top: 40px;">
+      <ul class="nav nav-pills nav-stacked" role="navigation">
+        <% counter = 0 %>
+        <% zone_collection.each do |z| %>
+        
+          <li>
+            <a href="#zone_<%= counter %>"><%= z[:name] %></a>
+          </li>
+          <% counter = counter + 1 %>
+        <% end %>
+      </ul>
+    </div>
+  </div>  
+
+  <div class="col-md-9" style="padding-top:25px;" role="main">
+    
+      <h1>Zone Equipment Report</h1>
+
+      <% counter = 0 %>
+      <% zone_collection.each do |z| %>
+      <h3 id="zone_<%= counter %>"><%= z[:name] %></h3>
+        
+      <h4>Zone Equipment Summary</h4>
+      
+      <table class="table table-striped table-bordered table-condensed zoneGrid">
+          <% report_sort_order = {"Heating" => 0, "Backup Heating" => 1, "Cooling" => 2, "Fans" => 3} %>
+          <% z[:equipment].sort_by{|k,v| report_sort_order[k]}.each do |reporting_type, equipments| %>
+              <% type_properties = equipments[0].keys %>
+              <% type_properties.each_with_index do |key, i| %>
+              <tr>
+                  <td class="equipmentCategory"><%= i == 0 ? reporting_type : "&nbsp;" %></td>
+                  <td class="propertyName"><%= key %></td>
+                  <% (0...max_zone_equipments).each do |equip_index| %>
+                      <% if equip_index < equipments.length
+                          value = equipments[equip_index][key]
+                          if value.kind_of?(Array) %>
+                          <td class="valWide"><%= "#{value[0]} #{value[1]}" %></td>
+                          <% else %>
+                          <td class="valWide"><%= value %></td>
+                          <% end %>
+                      <% else %>
+                      <td>&nbsp;</td>
+                      <% end %>
+                  <% end %>
+              </tr>
+              <% end %>
+          <% end %>
+      </table>
+        
+      <h4>Zone Sizing and Load Summary</h4>
+      
+      <table class="table table-striped table-bordered table-condensed zoneGrid">
+          <tr>
+              <td>Zone Name</td><td><%=z[:name]%></td><td>Zone Size (ft2)</td><td><%=z[:area]%></td>
+          </tr>
+          <tr>
+              <td>Unmet Load Hours (Htg)</td><td><%=z[:vals][:vp]%></td><td>Unmet Load Hours (Clg)</td><td><%=z[:vals][:vq]%></td>
+          </tr>
+      </table>
+
+      <table class="table table-striped table-bordered table-condensed">
+          <tr>
+              <td>Zone Load Summary</td><td>Zone Conditioned</td><td>Peak kBtu/hr/ft2</td><td>Time of Peak</td><td> kBtu/ft2 per Run Period</td>
+          </tr>
+          <tr><td>Heating Loads</td><td><%=z[:vals][:vf]%></td><td><%=z[:vals][:vae]%></td><td><%=z[:vals][:vaf]%></td><td><%=z[:vals][:vad]%></td></tr>
+          <tr><td>Cooling Loads</td><td><%=z[:vals][:vf]%></td><td><%=z[:vals][:vah]%></td><td><%=z[:vals][:vai]%></td><td><%=z[:vals][:vag]%></td></tr>
+      </table>
+
+      <table class="table table-striped table-bordered table-condensed">
+          <tr>
+              <td>Zone HVAC Sizing Summary</td><td>User Design Load (kBtu/hr)</td><td>Date/Time of Peak</td><td>User Design Airflow (ft3/min)</td>
+          </tr>
+          <tr><td>Heating Loads</td><td><%=z[:vals][:vg]%></td><td><%=z[:vals][:vo]%></td><td><%=z[:vals][:vh]%></td></tr>
+          <tr><td>Cooling Loads</td><td><%=z[:vals][:vi]%></td><td><%=z[:vals][:vn]%></td><td><%=z[:vals][:vj]%></td></tr>
+      </table>
+
+      <table class="table table-striped table-bordered table-condensed">
+          <tr>
+              <td colspan="2">Int Lighting, Equip & People - Density</td><td>Avg Vent (ACH)</td><td>Avg Infil (ACH)</td>
+          </tr>
+          <tr><td>Lights - Density (W/ft2)</td><td><%=z[:vals][:va]%></td><td><%=z[:vals][:vk]%></td><td><%=z[:vals][:vl]%></td></tr>
+          <tr><td>People - Density (ft2/Person)</td><td><%=z[:vals][:vm]%></td><td></td><td></td></tr>
+          <tr><td>Plug and Process Density (W/ft2)</td><td><%=z[:vals][:vd]%></td><td>Zone Lights - EFLH</td><td><%=z[:vals][:vb]%></td></tr>
+      </table>
+
+      <table class="table table-striped table-bordered table-condensed">
+          <tr>
+              <td></td><td>Peak Heating Load (Btu/hr/ft2)</td><td>Peak Cooling Load (Btu/hr/ft2)</td>
+          </tr>
+          <tr><td>Date/Time of Peak</td><td><%=z[:vals][:vbh]%></td><td><%=z[:vals][:vcg]%></td></tr>
+          <tr><td>People</td><td><%=z[:vals][:vaj]%></td><td><%=z[:vals][:vbi]%></td></tr>
+          <tr><td>Interior Lights</td><td><%=z[:vals][:vak]%></td><td><%=z[:vals][:vbj]%></td></tr>
+          <tr><td>Interior Equipment</td><td><%=z[:vals][:val]%></td><td><%=z[:vals][:vbk]%></td></tr>
+          <tr><td>Refrigeration</td><td><%=z[:vals][:vam]%></td><td><%=z[:vals][:vbl]%></td></tr>
+          <tr><td>Other</td><td><%=z[:vals][:sumOtherHeating]%></td><td><%=z[:vals][:sumOtherCooling]%></td></tr>
+          <tr><td>Infiltration</td><td><%=z[:vals][:vaq]%></td><td><%=z[:vals][:vbp]%></td></tr>
+          <tr><td>Zone Ventilation</td><td><%=z[:vals][:var]%></td><td><%=z[:vals][:vbq]%></td></tr>
+          <tr><td>Interzone Mixing</td><td><%=z[:vals][:vas]%></td><td><%=z[:vals][:vbr]%></td></tr>
+          <tr><td>Walls / Doors</td><td><%=z[:vals][:sumWallDoorHeating]%></td><td><%=z[:vals][:sumWallDoorCooling]%></td></tr>
+          <tr><td>Roof/Ceiling</td><td><%=z[:vals][:sumRoofCeilingHeating]%></td><td><%=z[:vals][:sumRoofCeilingCooling]%></td></tr>
+          <tr><td>Floor</td><td><%=z[:vals][:sumFloorHeating]%></td><td><%=z[:vals][:sumFloorCooling]%></td></tr>
+          <tr><td>Windows</td><td><%=z[:vals][:sumWindowsHeating]%></td><td><%=z[:vals][:sumWindowsCooling]%></td></tr>
+          <tr><td>Total</td><td><%=z[:vals][:sumHeatingTotal]%></td><td><%=z[:vals][:sumCoolingTotal]%></td></tr>
+      </table>
+
+      <table class="table table-striped table-bordered table-condensed">
+          <tr>
+              <td colspan="2">Int Lighting and Equip - Metered Usage (Run Period)</td><td colspan="2">Int Lighting, Equip , Htg and Clg Loads - Peak  </td><td>Time of Peak</td>
+          </tr>
+          <tr><td>Int Lighting (kWh)</td><td><%=z[:vals][:vc]%></td><td>Int Lighting (kW)</td><td><%=z[:vals][:vv]%></td><td><%=z[:vals][:vw]%></td></tr>
+          <tr><td>Int Equip - Elec  (kWh)</td><td><%=z[:vals][:vs]%></td><td>Int Equip - Elec  (kW)</td><td><%=z[:vals][:vy]%></td><td><%=z[:vals][:vz]%></td></tr>
+          <tr><td>Int Equip - Steam (kBtu)</td><td><%=z[:vals][:vaa]%></td><td>Int Equip - Steam (kBtu/Hr)</td><td><%=z[:vals][:vab]%></td><td><%=z[:vals][:vac]%></td></tr>
+          <tr><td>Int Equip - Gas  (Therms)</td><td><%=z[:vals][:vr]%></td><td>Int Equip - Gas  (KBtu/Hr)</td><td><%=z[:vals][:vt]%></td><td><%=z[:vals][:vu]%></td></tr>
+      </table>
+
+      <h4>Peak Load Contributions</h4>
+
+      <div id="graphs_<%= counter %>" class="zoneChart zoneGrid" style="background-color: white"></div>
+
+      <% counter = counter + 1 %>
+      <% end %>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -2,6 +2,10 @@
 class XcelEDAReportingandQAQC < OpenStudio::Ruleset::ReportingUserScript
 def create_results()  
     
+    # get the current version of OS being used to determine if sql query
+    # changes are needed (for when E+ changes).
+    os_version = OpenStudio::VersionString.new(OpenStudio::openStudioVersion())
+    
     #create an attribute vector to hold results
     result_elems = OpenStudio::AttributeVector.new
     
@@ -86,7 +90,14 @@ def create_results()
     #loop through each year and record the cash flow
     for i in 0..(length_yrs - 1) do
       new_yr = base_yr + i
-      yr = "January           #{new_yr.round}"
+      
+      yr = nil
+      if os_version > OpenStudio::VersionString.new("1.5.3")
+        yr = "January         #{new_yr.round}"
+      else
+        yr = "January           #{new_yr.round}"
+      end
+      
       ann_cap_cash = 0.0
       ann_om_cash = 0.0
       ann_energy_cash = 0.0
@@ -301,7 +312,7 @@ def create_results()
       
           # Setup the Xcel peak demand time window
           # in the months of June thru September
-          # between 2 am and 6 pm
+          # between 2 pm and 6 pm
           # Per Jen Elling on 8.7.2014, it is ok NOT TO EXCLUDE weekends
           # and holidays. Excluding them is currently difficult because 
           # of an OS bug, and she did not think it was worth the effort to fix.
@@ -309,7 +320,7 @@ def create_results()
           # peak demand on weekends or holidays, which is unusual.
           june_first = OpenStudio::DateTime.new(OpenStudio::Date.new(OpenStudio::MonthOfYear.new("June"), 1), OpenStudio::Time.new(0, 0, 0, 0))
           sept_thirtieth = OpenStudio::DateTime.new(OpenStudio::Date.new(OpenStudio::MonthOfYear.new("September"), 30), OpenStudio::Time.new(0, 24, 0, 0))
-          two_am = OpenStudio::Time.new(0, 2, 0, 0)
+          two_pm = OpenStudio::Time.new(0, 14, 0, 0)
           six_pm = OpenStudio::Time.new(0, 18, 0, 0)
           
           #electricity_peak_demand
@@ -350,8 +361,8 @@ def create_results()
               
               # Skip times outside of the correct months
               next if date_time < june_first || date_time > sept_thirtieth
-              # Skip times before 2am and after 6pm
-              next if time < two_am || time > six_pm
+              # Skip times before 2pm and after 6pm
+              next if time < two_pm || time > six_pm
               
               #puts("VALID #{val_kW}kW; #{date}; #{time}; #{day_of_week.valueName}")
               
@@ -370,6 +381,7 @@ def create_results()
             demand_elems << OpenStudio::Attribute.new("electricity_peak_demand", electricity_peak_demand, "kW")
             @runner.registerInfo("Peak Demand = #{electricity_peak_demand}kW on #{electricity_peak_demand_time}")
           else
+            @runner.registerError("Peak Demand timeseries (Electricity:Facility at zone timestep) could not be found, cannot determine the informatino needed to calculate savings or incentives.")
             demand_elems << OpenStudio::Attribute.new("electricity_peak_demand", 0.0, "kW")
           end
           
@@ -423,8 +435,8 @@ def create_results()
               
               # Skip times outside of the correct months
               next if date_time < june_first || date_time > sept_thirtieth
-              # Skip times before 2am and after 6pm
-              next if time < two_am || time > six_pm
+              # Skip times before 2pm and after 6pm
+              next if time < two_pm || time > six_pm
               
               #puts("VALID #{val_kW}kW; #{date}; #{time}; #{day_of_week.valueName}")
               
@@ -456,13 +468,16 @@ def create_results()
         
       #utility_cost
       utility_cost_elems = OpenStudio::AttributeVector.new
-              
+      annual_utility_cost_map = {}   
+          
         #electricity
         electricity = @sql.annualTotalCost(OpenStudio::FuelType.new("Electricity"))
         if electricity.is_initialized
           utility_cost_elems << OpenStudio::Attribute.new("electricity", electricity.get, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Electricity").valueName] = electricity.get
         else
           utility_cost_elems << OpenStudio::Attribute.new("electricity", 0.0, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Electricity").valueName] = 0.0
         end
 
         #electricity_consumption_charge and electricity_demand_charge
@@ -495,50 +510,84 @@ def create_results()
         #gas
         gas = @sql.annualTotalCost(OpenStudio::FuelType.new("Gas"))
         if gas.is_initialized
-          utility_cost_elems << OpenStudio::Attribute.new("gas", gas.get, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Gas").valueName] = gas.get
         else
-          utility_cost_elems << OpenStudio::Attribute.new("gas", 0.0, "dollars")
-        end
-        
-        #other_energy
-        other_energy = @sql.annualTotalCost(OpenStudio::FuelType.new("Diesel")) #TODO all other fuel types
-        if other_energy.is_initialized
-          utility_cost_elems << OpenStudio::Attribute.new("other_energy", other_energy.get, "dollars")
-        else
-          utility_cost_elems << OpenStudio::Attribute.new("other_energy", 0.0, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Gas").valueName] = 0.0
         end
         
         #district_cooling
-        district_cooling = @sql.annualTotalCost(OpenStudio::FuelType.new("DistrictCooling"))
-        if district_cooling.is_initialized
-          utility_cost_elems << OpenStudio::Attribute.new("district_cooling", district_cooling.get, "dollars")
+        dist_clg_cost_row_query = "SELECT RowID FROM tabulardatawithstrings WHERE ReportName='Economics Results Summary Report' AND ReportForString='Entire Facility' AND TableName='Tariff Summary' AND Value='DISTRICTCOOLING:FACILITY'"
+        dist_clg_row_id = @sql.execAndReturnFirstDouble(dist_clg_cost_row_query)
+        if dist_clg_row_id.is_initialized
+          dist_clg_cost_query = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='Economics Results Summary Report' AND ReportForString='Entire Facility' AND TableName='Tariff Summary' AND RowID=#{dist_clg_row_id.get} and ColumnName='Annual Cost (~~$~~)'"
+          district_cooling = @sql.execAndReturnFirstDouble(dist_clg_cost_query)
+          if district_cooling.is_initialized
+            annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictCooling").valueName] = district_cooling.get
+          else
+            annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictCooling").valueName] = 0.0
+          end
         else
-          utility_cost_elems << OpenStudio::Attribute.new("district_cooling", 0.0, "dollars")
-        end
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictCooling").valueName] = 0.0          
+        end 
         
         #district_heating
-        district_heating = @sql.annualTotalCost(OpenStudio::FuelType.new("DistrictHeating"))
-        if district_heating.is_initialized
-          utility_cost_elems << OpenStudio::Attribute.new("district_heating", district_heating.get, "dollars")
+        dist_htg_cost_row_query = "SELECT RowID FROM tabulardatawithstrings WHERE ReportName='Economics Results Summary Report' AND ReportForString='Entire Facility' AND TableName='Tariff Summary' AND Value='DISTRICTHEATING:FACILITY'"
+        dist_htg_row_id = @sql.execAndReturnFirstDouble(dist_htg_cost_row_query)
+        if dist_htg_row_id.is_initialized
+          dist_htg_cost_query = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='Economics Results Summary Report' AND ReportForString='Entire Facility' AND TableName='Tariff Summary' AND RowID=#{dist_htg_row_id.get} and ColumnName='Annual Cost (~~$~~)'"
+          district_heating = @sql.execAndReturnFirstDouble(dist_htg_cost_query)
+          if district_heating.is_initialized
+            annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictHeating").valueName] = district_heating.get
+          else
+            annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictHeating").valueName] = 0.0
+          end
         else
-          utility_cost_elems << OpenStudio::Attribute.new("district_heating", 0.0, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictHeating").valueName] = 0.0
         end
         
         #water
         water = @sql.annualTotalCost(OpenStudio::FuelType.new("Water"))
         if water.is_initialized
-          utility_cost_elems << OpenStudio::Attribute.new("water", water.get, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Water").valueName] = water.get
         else
-          utility_cost_elems << OpenStudio::Attribute.new("water", 0.0, "dollars")
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Water").valueName] = 0.0
         end
         
         #total
-        total = @sql.annualTotalUtilityCost
+        total_query = "SELECT Value from tabulardatawithstrings where (reportname = 'Economics Results Summary Report') and (ReportForString = 'Entire Facility') and (TableName = 'Annual Cost') and (ColumnName ='Total') and (((RowName = 'Cost') and (Units = '~~$~~')) or (RowName = 'Cost (~~$~~)'))"
+        total = @sql.execAndReturnFirstDouble(total_query)        
+
+        #other_energy
+        # Subtract off the already accounted for fuel types from the total
+        # to account for fuels on custom meters where the fuel type is not known.
+        prev_tot = 0.0
+        annual_utility_cost_map.each do |fuel, val|
+          prev_tot += val
+        end
+        if total.is_initialized
+          other_val = total.get - prev_tot
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("AdditionalFuel").valueName] = other_val
+        else
+          annual_utility_cost_map[OpenStudio::EndUseFuelType.new("AdditionalFuel").valueName] = 0.0
+        end    
+    
+        # export remaining costs in the correct order
+        # gas
+        utility_cost_elems << OpenStudio::Attribute.new("gas", annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Gas").valueName], "dollars")
+        # other_energy
+        utility_cost_elems << OpenStudio::Attribute.new("other_energy", annual_utility_cost_map[OpenStudio::EndUseFuelType.new("AdditionalFuel").valueName], "dollars")        
+        # district_cooling
+        utility_cost_elems << OpenStudio::Attribute.new("district_cooling", annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictCooling").valueName], "dollars")   
+        # district_heating
+        utility_cost_elems << OpenStudio::Attribute.new("district_heating", annual_utility_cost_map[OpenStudio::EndUseFuelType.new("DistrictHeating").valueName], "dollars")
+        # water
+        utility_cost_elems << OpenStudio::Attribute.new("water", annual_utility_cost_map[OpenStudio::EndUseFuelType.new("Water").valueName], "dollars")
+        # total
         if total.is_initialized
           utility_cost_elems << OpenStudio::Attribute.new("total", total.get, "dollars")
         else
           utility_cost_elems << OpenStudio::Attribute.new("total", 0.0, "dollars")
-        end
+        end 
     
         #end_uses - utility costs by end use using average blended cost  
         end_uses_elems = OpenStudio::AttributeVector.new
@@ -556,7 +605,7 @@ def create_results()
             #loop through all the fuel types
             end_use_fuel_types.each do |end_use_fuel_type|
               #get the annual total cost for this fuel type
-              ann_cost = @sql.annualTotalCost(fuel_type_map[end_use_fuel_type.value]); 
+              ann_cost = annual_utility_cost_map[end_use_fuel_type.valueName]
               #get the total annual usage for this fuel type in all end use categories
               #loop through all end uses, adding the annual usage value to the aggregator
               ann_usg = 0.0
@@ -565,8 +614,8 @@ def create_results()
               end
               #figure out the annual blended rate for this fuel type
               avg_ann_rate = 0.0
-              if ann_cost.is_initialized and ann_usg > 0
-                avg_ann_rate = ann_cost.get/ann_usg
+              if ann_cost > 0 && ann_usg > 0
+                avg_ann_rate = ann_cost/ann_usg
               end
               #for each end use category, figure out the cost if using
               #the avg ann rate; add this cost to the map

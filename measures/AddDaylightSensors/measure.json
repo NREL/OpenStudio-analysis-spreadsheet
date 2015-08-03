@@ -5,32 +5,29 @@
   "measure_type": "RubyMeasure",
   "arguments": [
     {
-      "local_variable": "space_type",
-      "variable_type": "Choice",
       "name": "space_type",
       "display_name": "Add Daylight Sensors to Spaces of This Space Type",
+      "variable_type": "Choice",
+      "local_variable": "space_type",
       "units": null,
-      "description": null,
       "choices": [
 
       ]
     },
     {
-      "local_variable": "setpoint",
-      "variable_type": "Double",
       "name": "setpoint",
       "display_name": "Daylighting Setpoint",
+      "variable_type": "Double",
+      "local_variable": "setpoint",
       "units": "fc",
-      "description": null,
       "default_value": 45.0
     },
     {
-      "local_variable": "control_type",
-      "variable_type": "Choice",
       "name": "control_type",
       "display_name": "Daylighting Control Type",
+      "variable_type": "Choice",
+      "local_variable": "control_type",
       "units": null,
-      "description": null,
       "default_value": "Continuous/Off",
       "choices": [
         "None",
@@ -40,102 +37,92 @@
       ]
     },
     {
-      "local_variable": "min_power_fraction",
-      "variable_type": "Double",
       "name": "min_power_fraction",
       "display_name": "Daylighting Minimum Input Power Fraction",
+      "variable_type": "Double",
+      "local_variable": "min_power_fraction",
       "units": "min = 0 max = 0.6",
-      "description": null,
       "default_value": 0.3
     },
     {
-      "local_variable": "min_light_fraction",
-      "variable_type": "Double",
       "name": "min_light_fraction",
       "display_name": "Daylighting Minimum Light Output Fraction",
+      "variable_type": "Double",
+      "local_variable": "min_light_fraction",
       "units": "min = 0 max = 0.6",
-      "description": null,
       "default_value": 0.2
     },
     {
-      "local_variable": "height",
-      "variable_type": "Double",
       "name": "height",
       "display_name": "Sensor Height",
+      "variable_type": "Double",
+      "local_variable": "height",
       "units": "inches",
-      "description": null,
       "default_value": 30.0
     },
     {
-      "local_variable": "material_cost",
-      "variable_type": "Double",
       "name": "material_cost",
       "display_name": "Material and Installation Costs per Space for Daylight Sensor",
+      "variable_type": "Double",
+      "local_variable": "material_cost",
       "units": "$",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "demolition_cost",
-      "variable_type": "Double",
       "name": "demolition_cost",
       "display_name": "Demolition Costs per Space for Daylight Sensor",
+      "variable_type": "Double",
+      "local_variable": "demolition_cost",
       "units": "$",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "years_until_costs_start",
-      "variable_type": "Integer",
       "name": "years_until_costs_start",
       "display_name": "Years Until Costs Start",
+      "variable_type": "Integer",
+      "local_variable": "years_until_costs_start",
       "units": "whole years",
-      "description": null,
       "default_value": 0
     },
     {
-      "local_variable": "demo_cost_initial_const",
-      "variable_type": "Bool",
       "name": "demo_cost_initial_const",
       "display_name": "Demolition Costs Occur During Initial Construction",
+      "variable_type": "Bool",
+      "local_variable": "demo_cost_initial_const",
       "units": null,
-      "description": null,
       "default_value": false
     },
     {
-      "local_variable": "expected_life",
-      "variable_type": "Integer",
       "name": "expected_life",
       "display_name": "Expected Life",
+      "variable_type": "Integer",
+      "local_variable": "expected_life",
       "units": "whole years",
-      "description": null,
       "default_value": 20
     },
     {
-      "local_variable": "om_cost",
-      "variable_type": "Double",
       "name": "om_cost",
       "display_name": "O & M Costs per Space for Daylight Sensor",
+      "variable_type": "Double",
+      "local_variable": "om_cost",
       "units": "$",
-      "description": null,
       "default_value": 0.0
     },
     {
-      "local_variable": "om_frequency",
-      "variable_type": "Integer",
       "name": "om_frequency",
       "display_name": "O & M Frequency",
+      "variable_type": "Integer",
+      "local_variable": "om_frequency",
       "units": "whole years",
-      "description": null,
       "default_value": 1
     }
   ],
-  "name_xml": "Add Daylight Sensor at Center of  Spaces with a Specified Space Type Assigned",
+  "name_xml": "Add Daylight Sensor at the Center of Spaces with a Specified Space Type Assigned",
   "uid": "62babdc7-c81e-4dfd-96e8-af1628a55167",
-  "version_id": "20fbacf6-f174-400f-aae5-8b02bdd865ac",
-  "modeler_description": "Make an array of the spaces that meet the criteria. Locate the sensor x and y values by averaging the min and max X and Y values from floor surfaces in the space. If a space already has a daylighting control, do not add a new one and leave the original in place. Warn the user if the space isn't assigned to a thermal zone, or if the space doesn't have any translucent surfaces. Note that the cost is added to the space not the sensor. If the sensor is removed at a later date, the cost will remain.",
-  "description": "This measure will add daylighting controls to spaces that that have space types assigned with names containing the string in the argument. You can also add a cost per space for sensors added to the model.",
+  "version_id": "a97dd2ed-74e5-4f9d-bde3-17849ef6426f",
   "tags": [
     "Electric Lighting.Electric Lighting Controls"
-  ]
+  ],
+  "modeler_description_xml": "Make an array of the spaces that meet the criteria. Locate the sensor x and y values by averaging the min and max X and Y values from floor surfaces in the space. If a space already has a daylighting control, do not add a new one and leave the original in place. Warn the user if the space isn't assigned to a thermal zone, or if the space doesn't have any translucent surfaces. Note that the cost is added to the space not the sensor. If the sensor is removed at a later date, the cost will remain.",
+  "description_xml": "This measure will add daylighting controls to spaces that that have space types assigned with names containing the string in the argument. You can also add a cost per space for sensors added to the model."
 }

@@ -1,9 +1,9 @@
 
 Version,
-  7.2.0.006;                              ! Version Identifier
+  8.1.0.009;                              !- Version Identifier
 
 UtilityCost:Tariff,
-  PrimaryGeneral,                        !- Name
+  Primary General,                        !- Name
   ElectricityPurchased:Facility,          !- Output Meter Name
   kWh,                                    !- Conversion Factor Choice
   ,                                       !- Energy Conversion Factor
@@ -15,88 +15,81 @@ UtilityCost:Tariff,
   0.0;                                    !- Monthly Charge or Variable Name
 
 UtilityCost:Charge:Simple,
-  PrimaryGeneralSummerOnPeakEnergyCharge, !- Name
-  PrimaryGeneral,                        !- Tariff Name
+  Primary GeneralSummerOnPeakEnergyCharge, !- Name
+  Primary General,                        !- Tariff Name
   peakEnergy,                             !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.0375846591;                           !- Cost per Unit Value or Variable Name
+  0.04495546164;                          !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
-  PrimaryGeneralSummerOffPeakEnergyCharge, !- Name
-  PrimaryGeneral,                        !- Tariff Name
+  Primary GeneralSummerOffPeakEnergyCharge, !- Name
+  Primary General,                        !- Tariff Name
   offPeakEnergy,                          !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.0283791591;                           !- Cost per Unit Value or Variable Name
+  0.03286336164;                          !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
-  PrimaryGeneralWinterOnPeakEnergyCharge, !- Name
-  PrimaryGeneral,                        !- Tariff Name
+  Primary GeneralWinterOnPeakEnergyCharge, !- Name
+  Primary General,                        !- Tariff Name
   peakEnergy,                             !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.0413025591;                           !- Cost per Unit Value or Variable Name
+  0.04670476164;                          !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
-  PrimaryGeneralWinterOffPeakEnergyCharge, !- Name
-  PrimaryGeneral,                        !- Tariff Name
+  Primary GeneralWinterOffPeakEnergyCharge, !- Name
+  Primary General,                        !- Tariff Name
   offPeakEnergy,                          !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.0310362591;                           !- Cost per Unit Value or Variable Name
+  0.03408226164;                          !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
-  PrimaryGeneralSummerDemandCharge,      !- Name
-  PrimaryGeneral,                        !- Tariff Name
+  Primary GeneralSummerDemandCharge,      !- Name
+  Primary General,                        !- Tariff Name
   totalDemand,                            !- Source Variable
   summer,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  18.9786062;                             !- Cost per Unit Value or Variable Name
+  19.338918479999993;                     !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
-  PrimaryGeneralWinterDemandCharge,      !- Name
-  PrimaryGeneral,                        !- Tariff Name
+  Primary GeneralWinterDemandCharge,      !- Name
+  Primary General,                        !- Tariff Name
   totalDemand,                            !- Source Variable
   winter,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  15.4770431;                             !- Cost per Unit Value or Variable Name
+  15.819855239999999;                     !- Cost per Unit Value or Variable Name
 
 Schedule:Compact,
   TwoSeasonSchedule,                      !- Name
   number,                                 !- Schedule Type Limits Name
   Through: 5/31,                          !- Field 1
   For: AllDays,                           !- Field 2
-  Until: 24:00,                           ! Field 3
-  1,                                      !- Field 3
+  Until: 24:00,                           !- Field 3
+  1,                                      !- Field 4
   Through: 9/30,                          !- Field 5
   For: AllDays,                           !- Field 6
-  Until: 24:00,                           ! Field 7
-  3,                                      !- Field 7
+  Until: 24:00,                           !- Field 7
+  3,                                      !- Field 8
   Through: 12/31,                         !- Field 9
   For: AllDays,                           !- Field 10
-  Until: 24:00,                           ! Field 11
-  1;                                      !- Field 11
+  Until: 24:00,                           !- Field 11
+  1;                                      !- Field 12
 
 Schedule:Compact,
   TimeOfDaySchedule,                      !- Name
   number,                                 !- Schedule Type Limits Name
   Through: 12/31,                         !- Field 1
   For: Weekdays,                          !- Field 2
-  Until: 9:00,                            ! Field 3
-  3,                                      !- Field 3
-  Until: 21:00,                           ! Field 5
-  1,                                      !- Field 4
-  Until: 24:00,                           ! Field 7
-  3,                                      !- Field 5
-  For: AllOtherDays,                      !- Field 6
-  Until: 24:00,                           ! Field 10
-  3;                                      !- Field 7
+  Until: 9:00,                            !- Field 3
+  3,                                      !- Field 4
+  Until: 21:00,                           !- Field 5
+  1,                                      !- Field 6
+  Until: 24:00,                           !- Field 7
+  3,                                      !- Field 8
+  For: AllOtherDays,                      !- Field 9
+  Until: 24:00,                           !- Field 10
+  3;                                      !- Field 11
 
-ScheduleTypeLimits,
-  number,                  !- Name
-  0,                       !- Lower Limit Value
-  ,                        !- Upper Limit Value
-  Continuous,              !- Numeric Type
-  Dimensionless;           !- Unit Type
-  

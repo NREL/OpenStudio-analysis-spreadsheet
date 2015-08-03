@@ -1,0 +1,159 @@
+{
+  "classname": "TariffSelectionTimeAndDateDependant",
+  "name": "tariff_selection_time_and_date_dependant",
+  "display_name": "Tariff Selection Time And Date Dependant",
+  "measure_type": "EnergyPlusMeasure",
+  "description": "This measure sets flat rates for gas, water, district heating, and district cooling but has on seasonal and off peak rates for electricity. It exposes inputs for the time of day and day of year where peak rates should be applied.",
+  "modeler_description": "Will add the necessary UtilityCost objects and associated schedule into the model.",
+  "arguments": [
+    {
+      "name": "demand_window_length",
+      "display_name": "Demand Window Length",
+      "variable_type": "Choice",
+      "local_variable": "demand_window_length",
+      "units": null,
+      "default_value": "QuarterHour",
+      "choices": [
+        "QuarterHour",
+        "HalfHour",
+        "FullHour",
+        "Day",
+        "Week"
+      ]
+    },
+    {
+      "name": "summer_start_month",
+      "display_name": "Month Summer Begins",
+      "variable_type": "Integer",
+      "local_variable": "summer_start_month",
+      "units": null,
+      "default_value": 5
+    },
+    {
+      "name": "summer_start_day",
+      "display_name": "Day Summer Begins",
+      "variable_type": "Integer",
+      "local_variable": "summer_start_day",
+      "units": null,
+      "default_value": 1
+    },
+    {
+      "name": "summer_end_month",
+      "display_name": "Month Summer Ends",
+      "variable_type": "Integer",
+      "local_variable": "summer_end_month",
+      "units": null,
+      "default_value": 9
+    },
+    {
+      "name": "summer_end_day",
+      "display_name": "Day Summer Ends",
+      "variable_type": "Integer",
+      "local_variable": "summer_end_day",
+      "units": null,
+      "default_value": 1
+    },
+    {
+      "name": "peak_start_hour",
+      "display_name": "Hour Peak Begins",
+      "variable_type": "Double",
+      "local_variable": "peak_start_hour",
+      "units": null,
+      "default_value": 12.0
+    },
+    {
+      "name": "peak_end_hour",
+      "display_name": "Hour Peak Ends",
+      "variable_type": "Double",
+      "local_variable": "peak_end_hour",
+      "units": null,
+      "default_value": 18.0
+    },
+    {
+      "name": "elec_rate_sum_peak",
+      "display_name": "Electric Rate Summer On-Peak",
+      "variable_type": "Double",
+      "local_variable": "elec_rate_sum_peak",
+      "units": "$/kWh",
+      "default_value": 0.06
+    },
+    {
+      "name": "elec_rate_sum_nonpeak",
+      "display_name": "Electric Rate Summer Off-Peak",
+      "variable_type": "Double",
+      "local_variable": "elec_rate_sum_nonpeak",
+      "units": "$/kWh",
+      "default_value": 0.04
+    },
+    {
+      "name": "elec_rate_nonsum_peak",
+      "display_name": "Electric Rate Not Summer On-Peak",
+      "variable_type": "Double",
+      "local_variable": "elec_rate_nonsum_peak",
+      "units": "$/kWh",
+      "default_value": 0.05
+    },
+    {
+      "name": "elec_rate_nonsum_nonpeak",
+      "display_name": "Electric Rate Not Summer Off-Peak",
+      "variable_type": "Double",
+      "local_variable": "elec_rate_nonsum_nonpeak",
+      "units": "$/kWh",
+      "default_value": 0.03
+    },
+    {
+      "name": "elec_demand_sum",
+      "display_name": "Electric Peak Demand Charge Summer",
+      "variable_type": "Double",
+      "local_variable": "elec_demand_sum",
+      "units": "$/kW",
+      "default_value": 15.0
+    },
+    {
+      "name": "elec_demand_nonsum",
+      "display_name": "Electric Peak Demand Charge Not Summer",
+      "variable_type": "Double",
+      "local_variable": "elec_demand_nonsum",
+      "units": "$/kW",
+      "default_value": 10.0
+    },
+    {
+      "name": "gas_rate",
+      "display_name": "Gas Rate",
+      "variable_type": "Double",
+      "local_variable": "gas_rate",
+      "units": "$/therm",
+      "default_value": 0.5
+    },
+    {
+      "name": "water_rate",
+      "display_name": "Water Rate",
+      "variable_type": "Double",
+      "local_variable": "water_rate",
+      "units": "$/gal",
+      "default_value": 0.005
+    },
+    {
+      "name": "disthtg_rate",
+      "display_name": "District Heating Rate",
+      "variable_type": "Double",
+      "local_variable": "disthtg_rate",
+      "units": "$/kBtu",
+      "default_value": 0.2
+    },
+    {
+      "name": "distclg_rate",
+      "display_name": "District Cooling Rate",
+      "variable_type": "Double",
+      "local_variable": "distclg_rate",
+      "units": "$/kBtu",
+      "default_value": 0.2
+    }
+  ],
+  "name_xml": "tariff_selection_time_and_date_dependant",
+  "uid": "a890e296-b357-432f-8d53-6428d9bf3c0a",
+  "version_id": "ea4e019a-ea84-458a-99a1-ac80baa06a5c",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
+  ]
+}

@@ -113,15 +113,6 @@ class MeterFloodPlot < OpenStudio::Ruleset::ReportingUserScript
         min_value = value_array.min
         max_value = value_array.max
 
-        #add in data to represent scale
-        scale_step_key = (max_value-min_value)/24
-        for i in 0..23
-          for j in 0..6
-            temp_array = ['{value:',min_value + (i*scale_step_key),', hour:',i,', day:',372+j,'},']
-            output_hourly_plr << temp_array.join
-          end
-        end
-
       else
         runner.registerWarning("Did not find hourly variable named #{meter_name}.  Cannot produce the requested plot.")
         return true
@@ -133,6 +124,9 @@ class MeterFloodPlot < OpenStudio::Ruleset::ReportingUserScript
     end
 
     value_range = ['{"low": ',min_value,', "high": ',max_value,'}']
+
+    # prepare data for report.html
+    output_hourly_plr = output_hourly_plr.join
     value_range = value_range.join
 
     color_scale_values = []

@@ -1,0 +1,48 @@
+{
+  "classname": "RemoveOrphanObjectsAndUnusedResources",
+  "name": "remove_orphan_objects_and_unused_resources",
+  "display_name": "Remove Orphan Objects And Unused Resources",
+  "measure_type": "RubyMeasure",
+  "description": "This is the start of a measure that will have expanded functionality over time. It will have two distinct functions. One will be to remove orphan objects. This will typically include things that should never have been left alone and often are not visible in the GUI. This would include load instances without a space or space type, and surfaces without a space.\r\n\r\nA second functionality is to remove unused resources. This will include things like space types, schedules, constructions, and materials. There will be a series of checkboxes to enable/disable this purge. There wont be an option for the orphan objects. They will always be removed.",
+  "modeler_description": "Purging objects like space types, schedules, and constructions requires a specific sequence to be most effective. This measure will first remove unused space types, then load defs, schedules sets, schedules,  construction sets, constructions, and then materials. A space type having a construction set assign, will show that construction set as used even if no spaces are assigned to that space type. That is why order is important.",
+  "arguments": [
+    {
+      "name": "remove_unused_space_types",
+      "display_name": "Remove Unused Space Types",
+      "variable_type": "Bool",
+      "local_variable": "remove_unused_space_types",
+      "units": null,
+      "default_value": false
+    },
+    {
+      "name": "remove_unused_load_defs",
+      "display_name": "Remove Unused Load Definitions",
+      "variable_type": "Bool",
+      "local_variable": "remove_unused_load_defs",
+      "units": null,
+      "default_value": false
+    },
+    {
+      "name": "remove_unused_schedules",
+      "display_name": "Remove Unused Schedules Sets and Schedules",
+      "variable_type": "Bool",
+      "local_variable": "remove_unused_schedules",
+      "units": null,
+      "default_value": false
+    },
+    {
+      "name": "remove_unused_constructions",
+      "display_name": "Remove Unused Construction Sets, Constructions, and Materials",
+      "variable_type": "Bool",
+      "local_variable": "remove_unused_constructions",
+      "units": null,
+      "default_value": false
+    }
+  ],
+  "name_xml": "remove_orphan_objects_and_unused_resources",
+  "uid": "ef16c322-0300-404c-8b9b-c5f5dc2e74b8",
+  "version_id": "8e942e28-6938-4c86-a215-4fc0d1373822",
+  "tags": [
+    "Whole Building.Space Types"
+  ]
+}

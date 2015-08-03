@@ -1,9 +1,9 @@
 
 Version,
-  7.2.0.006;                              ! Version Identifier
+  8.1.0.009;                              !- Version Identifier
 
 UtilityCost:Tariff,
-  Non-XcelGasFirm,                    !- Name
+  Non - Xcel Gas Firm,                    !- Name
   Gas:Facility,                           !- Output Meter Name
   MMBtu,                                  !- Conversion Factor Choice
   ,                                       !- Energy Conversion Factor
@@ -16,15 +16,15 @@ UtilityCost:Tariff,
 
 UtilityCost:Charge:Simple,
   FlatEnergyCharge-Gas,                   !- Name
-  Non-XcelGasFirm,                    !- Tariff Name
+  Non - Xcel Gas Firm,                    !- Tariff Name
   totalEnergy,                            !- Source Variable
   Annual,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  7.75641;                                !- Cost per Unit Value or Variable Name
+  5.950592169838135;                      !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   FlatDemandCharge-Gas,                   !- Name
-  Non-XcelGasFirm,                    !- Tariff Name
+  Non - Xcel Gas Firm,                    !- Tariff Name
   totalDemand,                            !- Source Variable
   Annual,                                 !- Season
   DemandCharges,                          !- Category Variable Name

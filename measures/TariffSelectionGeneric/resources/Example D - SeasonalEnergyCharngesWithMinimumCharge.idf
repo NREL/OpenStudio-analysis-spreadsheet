@@ -1,0 +1,50 @@
+UtilityCost:Tariff,
+  ExampleD,                     ! Name
+    ElectricityPurchased:Facility,  !- Output Meter Name
+  KWh,                          ! Conversion Factor Choice
+  ,                             ! Energy Conversion Factor
+  ,                             ! Demand Conversion Factor
+  ,                             ! Time of Use Period Schedule Name
+  TwoSeasonSchedule,            ! Season Schedule Name
+  ,                             ! Month Schedule Name
+  ,                             ! Demand Window Length
+  ,                             ! Monthly Charge or Variable Name
+  7.00;                         ! Minimum Monthly Charge or Variable Name
+
+
+UtilityCost:Charge:Block,
+  WinterEnergyCost,             ! Charge Variable Name
+  ExampleD,                     ! Tariff Name
+  totalEnergy,                  ! Source Variable
+  Winter,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  ,                             ! Remaining Into Variable
+  ,                             ! Block Size Multiplier Value or Variable Name
+  650,                          ! Block Size 1 Value or Variable Name
+  0.04385,                      ! Block 1 Cost per Unit Value or Variable Name
+  350,                          ! Block Size 2 Value or Variable Name
+  0.03763,                      ! Block 2 Cost per Unit Value or Variable Name
+  remaining,                    ! Block Size 3 Value or Variable Name
+  0.03704;                      ! Block 3 Cost per Unit Value or Variable Name
+
+
+UtilityCost:Charge:Block,
+  SummerEnergyCost,             ! Charge Variable Name
+  ExampleD,                     ! Tariff Name
+  totalEnergy,                  ! Source Variable
+  Summer,                       ! Season
+  EnergyCharges,                ! Category Variable Name
+  ,                             ! Remaining Into Variable
+  ,                             ! Block Size Multiplier Value or Variable Name
+  650,                          ! Block Size 1 Value or Variable Name
+  0.08385,                      ! Block 1 Cost per Unit Value or Variable Name
+  350,                          ! Block Size 2 Value or Variable Name
+  0.07588,                      ! Block 2 Cost per Unit Value or Variable Name
+  remaining,                    ! Block Size 3 Value or Variable Name
+  0.07103;                      ! Block 3 Cost per Unit Value or Variable Name
+
+
+Schedule:Compact, TwoSeasonSchedule, number,
+Through: 5/31, For: AllDays, Until: 24:00, 1,
+Through: 9/30, For: AllDays, Until: 24:00, 3,
+Through: 12/31, For: AllDays, Until: 24:00, 1;

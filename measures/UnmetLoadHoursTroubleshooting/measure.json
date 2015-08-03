@@ -1,0 +1,17 @@
+{
+  "classname": "UnmetLoadHoursTroubleshooting",
+  "name": "unmet_load_hours_troubleshooting",
+  "display_name": "Unmet Load Hours Troubleshooting",
+  "measure_type": "ReportingMeasure",
+  "arguments": [
+
+  ],
+  "name_xml": "unmet_load_hours_troubleshooting",
+  "uid": "6e9727aa-b460-4294-9870-b63ec6417977",
+  "version_id": "90872227-36ab-46f6-8d2c-643362ea4279",
+  "tags": [
+    "Reporting.Troubleshooting"
+  ],
+  "modeler_description_xml": "This measure performs a series of logic checks against model inputs for diagnosing common issues responsible for unmet cooling and heating hours. The measure will also create a time series interactive chart (using dygraph libraries) to provide a visual inspection of when unmet heating and cooling hours are occurring.\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\n  ",
+  "description_xml": "Unmet load hours are any hours of operation when conditioned spaces are outside the throttling range for heating or cooling controls. That is, they are the hours in a year that the HVAC system serving a space cannot maintain space setpoint. This measure performs a series of checks against various model input variables and when applicable informs the user of possible sources of unmet cooling and heating hours. The measure also creates a dynamic time series plot of unmet cooling and heating hours, by zone - whose patterns may be interpreted to assist in troubleshooting unmet cooling and heating hours. Prior to running this measure, users will need to add the following output variables to their model: 1) Zone Mean Air Temperature,hourly  2) Zone Thermostat Heating Setpoint Temperature, hourly 3) Zone Thermostat Cooling Setpoint Temperature, hourly 4) Zone People Occupant Count, hourly using the AddOutputVariable OS measure, or the add output variables screen in the OpenStudio application.\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\n"
+}

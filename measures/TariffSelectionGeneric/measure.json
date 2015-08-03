@@ -1,0 +1,27 @@
+{
+  "classname": "TariffSelectionGeneric",
+  "name": "tariff_selection_generic",
+  "display_name": "Tariff Selection Generic",
+  "measure_type": "EnergyPlusMeasure",
+  "arguments": [
+    {
+      "name": "meter",
+      "display_name": "Select a Tariff for meter}",
+      "variable_type": "Choice",
+      "local_variable": "tar",
+      "units": null,
+      "default_value": "chs[0]",
+      "choices": [
+        "chs[0]"
+      ]
+    }
+  ],
+  "name_xml": "tariff_selection_generic",
+  "uid": "d65ae535-f0ea-4745-9f5b-8d42c7070741",
+  "version_id": "464a1fd8-4ccf-45f2-a7fa-6f002306512c",
+  "tags": [
+    "Economics.Life Cycle Cost Analysis"
+  ],
+  "modeler_description_xml": "The timestep for the simulation will be changed to four timesteps per hour to me more compatable with a variety of demand window lnegths that may be in tariff objects in the resources directory.",
+  "description_xml": "This measure creates tariff objets from pre-poulated IDF files in the measures \"resoruces\" directory."
+}

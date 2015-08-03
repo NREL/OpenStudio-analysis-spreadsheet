@@ -1,9 +1,9 @@
 
 Version,
-  7.2.0.006;                              ! Version Identifier
+  8.1.0.009;                              !- Version Identifier
 
 UtilityCost:Tariff,
-  ResidentialGas,                        !- Name
+  Residential Gas,                        !- Name
   Gas:Facility,                           !- Output Meter Name
   MMBtu,                                  !- Conversion Factor Choice
   ,                                       !- Energy Conversion Factor
@@ -12,19 +12,19 @@ UtilityCost:Tariff,
   ,                                       !- Season Schedule Name
   ,                                       !- Month Schedule Name
   Day,                                    !- Demand Window Length
-  0.0;                                    !- Monthly Charge or Variable Name
+  11.15;                                  !- Monthly Charge or Variable Name
 
 UtilityCost:Charge:Simple,
   FlatEnergyCharge-Gas,                   !- Name
-  ResidentialGas,                        !- Tariff Name
+  Residential Gas,                        !- Tariff Name
   totalEnergy,                            !- Source Variable
   Annual,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  5.174;                                  !- Cost per Unit Value or Variable Name
+  7.2716426;                              !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   FlatDemandCharge-Gas,                   !- Name
-  ResidentialGas,                        !- Tariff Name
+  Residential Gas,                        !- Tariff Name
   totalDemand,                            !- Source Variable
   Annual,                                 !- Season
   DemandCharges,                          !- Category Variable Name

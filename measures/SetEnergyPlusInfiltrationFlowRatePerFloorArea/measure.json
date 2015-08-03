@@ -5,21 +5,20 @@
   "measure_type": "EnergyPlusMeasure",
   "arguments": [
     {
-      "local_variable": "flowPerZoneFloorArea",
-      "variable_type": "Double",
       "name": "flowPerZoneFloorArea",
       "display_name": "Flow per Zone Floor Area",
+      "variable_type": "Double",
+      "local_variable": "flowPerZoneFloorArea",
       "units": "m^3/s-m^2",
-      "description": null,
       "default_value": 10.76
     }
   ],
   "name_xml": "Set EnergyPlus Infiltration Flow Rate Per Floor Area",
   "uid": "854932e4-c005-4922-a047-ddc641f5fd2c",
   "version_id": "580c701a-7983-4130-9996-859103b418d1",
-  "modeler_description": "Affected infiltration objects will have \"Design Flor Rate Calculation Method\" set to \"Flow/Area\" and the \"Flow per Zone Floor Area\" set to the requested SI value.",
-  "description": "Set the flow rate per floor area value for all infiltration objects in the model. Input values are in SI units.",
   "tags": [
     "Envelope.Infiltration"
-  ]
+  ],
+  "modeler_description_xml": "Affected infiltration objects will have \"Design Flor Rate Calculation Method\" set to \"Flow/Area\" and the \"Flow per Zone Floor Area\" set to the requested SI value.",
+  "description_xml": "Set the flow rate per floor area value for all infiltration objects in the model. Input values are in SI units."
 }
