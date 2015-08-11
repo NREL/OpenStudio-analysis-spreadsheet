@@ -6,13 +6,13 @@ require "#{File.dirname(__FILE__)}/../measure.rb"
 
 require 'test/unit'
 
-class NGridAddMonthlyUtilityData_Test < Test::Unit::TestCase
+class AddMonthlyJSONUtilityData_Test < Test::Unit::TestCase
 
   
-  def test_NGridAddMonthlyUtilityData
+  def test_AddMonthlyJSONUtilityData
      
     # create an instance of the measure
-    measure = NGridAddMonthlyUtilityData.new
+    measure = AddMonthlyJSONUtilityData.new
     
     # create an instance of a runner
     runner = OpenStudio::Ruleset::OSRunner.new
@@ -23,8 +23,8 @@ class NGridAddMonthlyUtilityData_Test < Test::Unit::TestCase
     # get arguments and test that they are what we are expecting
     arguments = measure.arguments(model)
     assert_equal(4, arguments.size)
-    assert_equal("electric_json", arguments[0].name)
-    assert_equal("gas_json", arguments[1].name)
+    assert_equal("json", arguments[0].name)
+    assert_equal("json", arguments[1].name)
     assert_equal("start_date", arguments[2].name)
     assert_equal("end_date", arguments[3].name)
     
@@ -32,12 +32,12 @@ class NGridAddMonthlyUtilityData_Test < Test::Unit::TestCase
     argument_map = OpenStudio::Ruleset::OSArgumentMap.new
     
     electric_json = arguments[0].clone
-    assert(electric_json.setValue(File.dirname(__FILE__) + "/electric_billed_usages.json"))
-    argument_map["electric_json"] = electric_json
+    assert(electric_json.setValue(File.dirname(__FILE__) + "/electric.json"))
+    argument_map["json"] = electric_json
     
     gas_json = arguments[1].clone
-    assert(gas_json.setValue(File.dirname(__FILE__) + "/gas_billed_usages.json"))
-    argument_map["gas_json"] = gas_json
+    assert(gas_json.setValue(File.dirname(__FILE__) + "/gas.json"))
+    argument_map["json"] = gas_json
     
     start_date = arguments[2].clone
     assert(start_date.setValue("2012-06-19"))
