@@ -16,6 +16,7 @@ CLEAN.include('*.pem', '*.pub', './projects/*.json', '*.json', 'faraday.log')
 
 # Command-line arguments in Rake: http://viget.com/extend/protip-passing-parameters-to-your-rake-tasks
 def get_project(excel_file = '')
+   puts "DEPRICATION WARNING -- Rakefile interface is being depricated for running analyses. Please begin to use the cli. For help type 'bundle exec ruby cli.rb -h'.".red
   # If excel_file is not pre-specified, request it as input
   unless excel_file && !excel_file.empty?
     # Determine the project file to run.  This will list out all the xlsx files and give you a
