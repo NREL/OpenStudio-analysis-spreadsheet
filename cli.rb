@@ -441,3 +441,7 @@ erred ||= nil
 
 # Non-zero exit if errors in queued_tasks
 fail erred if erred
+
+# Puts completed
+puts 'INFO: STATUS COMPLETE'
+return 0
