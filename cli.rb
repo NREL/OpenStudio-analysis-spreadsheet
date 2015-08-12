@@ -162,7 +162,7 @@ def run_queued_tasks(analysis_type, download_dir, flags, timeout)
     server_status = @server_api.get_analysis_status(@analysis_id, analysis_type)
      if server_status == 'completed' || server_status == 'failed'
       begin
-        puts 'INFO: ANALYSIS STATUS -- Analysis has completed. Attempting to execute queued tasks.' if server_status == 'started'
+        puts 'INFO: ANALYSIS STATUS -- Analysis has completed. Attempting to execute queued tasks.' if server_status == 'completed'
         puts 'WARN: ANALYSIS STATUS -- Attempting to execute queued tasks on failed analysis.' if server_status == 'failed'
         # Download results and metadata rdataframe
         if flags[:download] && flags[:rdata]
