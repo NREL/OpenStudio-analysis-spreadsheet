@@ -169,6 +169,7 @@ def run_queued_tasks(analysis_type, download_dir, flags, timeout)
           @server_api.download_dataframe(@analysis_id, 'rdata', download_dir) #results
           @server_api.download_variables(@analysis_id, 'rdata', download_dir) # metadata
           completed[:rdata] = true
+          puts 'INFO: DOWNLOAD STATUS -- RDataFrames have been downloaded.'
         end
 
         # Download results and metadata csv
@@ -176,11 +177,13 @@ def run_queued_tasks(analysis_type, download_dir, flags, timeout)
           @server_api.download_dataframe(@analysis_id, 'csv', download_dir)
           @server_api.download_variables(@analysis_id, 'csv', download_dir)
           completed[:csv] = true
+          puts 'INFO: DOWNLOAD STATUS -- CSVs have been downloaded.'
         end
 
         # Download datapoint directories
         if flags[:download] && flags[:zip]
           dps = @server_api.get_datapoint_status(@analysis_id, 'completed')
+          dps_error_count = 0
           if dps.nil? || dps.empty?
             puts 'WARN: ZIP DOWNLOAD -- No datapoints found. Analysis completed with no datapoints'.red
           else
@@ -192,10 +195,12 @@ def run_queued_tasks(analysis_type, download_dir, flags, timeout)
                 File.delete(f)
               else
                 puts "ERROR: ZIP DOWNLOAD -- Failed to download data point #{dp[:_id]}"
+                dps_error_count += 1
               end
             end
           end
           completed[:zip] = true
+          puts "INFO: DOWNLOAD STATUS -- Zip file download complete. #{dps_error_count} of #{dps.count} datapoints failed to download."
         end
 
         # Stop aws instance
@@ -443,5 +448,4 @@ erred ||= nil
 fail erred if erred
 
 # Puts completed
-puts 'INFO: STATUS COMPLETE'
-return 0
+puts 'STATUS: COMPLETE'
