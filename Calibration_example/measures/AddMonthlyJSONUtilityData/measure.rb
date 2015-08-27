@@ -81,6 +81,12 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
     remove_utility_bill_data.setDefaultValue(false)
     args << remove_utility_bill_data
     
+    #make an end date argument
+    set_runperiod = OpenStudio::Ruleset::OSArgument::makeBoolArgument("set_runperiod",true)
+    set_runperiod.setDisplayName("Set RunPeriod in model")
+    set_runperiod.setDefaultValue(false)
+    args << set_runperiod
+    
     return args
   end #end the arguments method
 
@@ -102,6 +108,7 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
     start_date = runner.getStringArgumentValue("start_date",user_arguments)
     end_date = runner.getStringArgumentValue("end_date",user_arguments)
     remove_utility_bill_data = runner.getBoolArgumentValue("remove_existing_data",user_arguments)
+    set_runperiod = runner.getBoolArgumentValue("set_runperiod",user_arguments)
     
     # set start date
     if date = year_month_day(start_date)
@@ -111,10 +118,12 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
       # actual year of start date
       yearDescription = model.getYearDescription()
       yearDescription.setCalendarYear(date[0])
-      
-      runPeriod = model.getRunPeriod()
-      runPeriod.setBeginMonth(date[1])
-      runPeriod.setBeginDayOfMonth(date[2])
+      if set_runperiod
+        runPeriod = model.getRunPeriod()
+        runPeriod.setBeginMonth(date[1])
+        runPeriod.setBeginDayOfMonth(date[2])
+        runner.registerInfo("RunPeriod start date set to #{start_date}")
+      end
     else
       runner.registerError("Unknown start date '#{start_date}'")
       fail "Unknown start date '#{start_date}'"
@@ -125,10 +134,12 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
     if date = year_month_day(end_date)
       
       end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(date[1]), date[2], date[0])
-      
-      runPeriod = model.getRunPeriod()
-      runPeriod.setEndMonth(date[1])
-      runPeriod.setEndDayOfMonth(date[2])
+      if set_runperiod
+        runPeriod = model.getRunPeriod()
+        runPeriod.setEndMonth(date[1])
+        runPeriod.setEndDayOfMonth(date[2])
+        runner.registerInfo("RunPeriod end date set to #{end_date}")
+      end
     else
       runner.registerError("Unknown end date '#{end_date}'")
       fail "Unknown end date '#{end_date}'"
