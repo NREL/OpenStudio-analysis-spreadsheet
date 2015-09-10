@@ -21,11 +21,18 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
   
   def year_month_day(str)
     result = nil
-    if match_data = /(\d+)-(\d+)-(\d+)/.match(str)
-      year = match_data[1].to_i
-      month = match_data[2].to_i
-      day = match_data[3].to_i
-      result = [year, month, day]
+    if match_data = /(\d+)(\D)(\d+)(\D)(\d+)/.match(str)
+      if match_data[1].size == 4 #yyyy-mm-dd
+        year = match_data[1].to_i
+        month = match_data[3].to_i
+        day = match_data[5].to_i
+        result = [year, month, day]
+      elsif match_data[5].size == 4 #mm-dd-yyyy
+        year = match_data[5].to_i
+        month = match_data[1].to_i
+        day = match_data[3].to_i
+        result = [year, month, day]     
+      end
     else
       puts "no match for '#{str}'"
     end
@@ -165,9 +172,12 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
       utilityBill.setConsumptionUnit("#{consumption_unit}")
 
       json_data['data'].each do |period|
-        from_date = period['from'] ? Time.iso8601(period['from']).strftime("%Y%m%dT%H%M%S") : nil
-        to_date = period['to'] ? Time.iso8601(period['to']).strftime("%Y%m%dT%H%M%S") : nil
-
+        begin
+          from_date = period['from'] ? Time.iso8601(period['from']).strftime("%Y%m%dT%H%M%S") : nil
+          to_date = period['to'] ? Time.iso8601(period['to']).strftime("%Y%m%dT%H%M%S") : nil
+        rescue ArgumentError => e
+          runner.registerError("Unknown date format in period '#{period}'")
+        end
         if from_date.nil? or to_date.nil?
           runner.registerError("Unknown date format in period '#{period}'")
           fail "Unknown date format in period '#{period}'"
