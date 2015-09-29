@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Timeseries Diff | OpenStudio</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="file:///C:/openstudio_git/OpenStudio/openstudiocore/resources/web_assets/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+body {
+    font: 10px sans-serif;
+    min-width: 750px;
+}
+table {
+    max-width:700px;
+}
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.bar {
+    fill: steelblue;
+}
+.x.axis path {
+    display: none;
+}
+.chartInfo h6 {
+    display: inline;
+}
+</style>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="file:///C:/openstudio_git/OpenStudio/openstudiocore/resources/web_assets/jquery.min.js"></script>
+</head>
+<body>
+<div id="varString" class="chartInfo"></div>
+<div id="chart-0"></div>
+<div id="table-0" ></div>
+<script type="text/javascript">
+    function numFormat(n) {
+        var parts = n.toString().split(".");
+        return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+    }
+
+    $(document).ready(function() {
+
+    var options = {
+        chart: {
+            renderTo: 'container',
+            type: 'spline'
+        },
+        series: [{}]
+    };
+
+    $.getJSON("timeseries_#{csv_var}.json", function(data) {
+        options.series[0].data = data.data_mtr;
+        options.series[1].data = data.data_sim;
+        options.series[2].data = data.data_diff;
+        var chart = new Highcharts.Chart(options);
+    });
+
+});
+</script>
+</body>
+</html>
