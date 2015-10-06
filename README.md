@@ -1,8 +1,24 @@
-# Analysis Example
+# Analysis Examples
 
 [![Dependency Status](https://www.versioneye.com/user/projects/540a3047ccc023a17f0001d5/badge.svg?style=flat)](https://www.versioneye.com/user/projects/540a3047ccc023a17f0001d5)
 
-This example uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon OpenStudio Cluster.
+The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon OpenStudio Cluster.  Example analysis are:
+
+* Monthly Utility Data Calibration
+![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324111/7887be68-6c44-11e5-86de-9d004585ad8e.png)
+
+* Timeseries Calibration
+* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324119/7d4919ce-6c44-11e5-982a-2216095b523d.png)
+* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324120/7ec41f60-6c44-11e5-941d-208286a63b32.png)
+* 
+* Optimization
+* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324114/7a4e536a-6c44-11e5-9c64-57ef26658ed3.png)
+* 
+* Design of Experiments
+* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324117/7bc4e34e-6c44-11e5-8bee-894b4412043d.png)
+* 
+* Uncertainty Quantification
+* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324123/802cc5fa-6c44-11e5-86d8-c8db0302d514.png)
 
 ## Layout
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
