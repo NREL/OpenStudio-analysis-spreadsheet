@@ -33,6 +33,14 @@ The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setu
 * Single Run
 * Repeat Run
 
+## OpenStudio Server
+  The analysis spreadsheet submits jobs/problems to the OpenStudio Server https://github.com/NREL/OpenStudio-server.
+  The architecture of the OS-Server:
+  ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324109/764a00e8-6c44-11e5-8e96-828a06c8df63.png)
+  
+## User Documentation
+  https://github.com/NREL/OpenStudio-analysis-spreadsheet/blob/develop/documentation/spreadsheet_userguide_prerelease.pdf
+
 ## Layout
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
 * Projects - List of projects in the form of analysis spreadsheets. These are the file that you should edit and copy.
