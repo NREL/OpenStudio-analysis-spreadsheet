@@ -8,17 +8,30 @@ The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setu
 ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324111/7887be68-6c44-11e5-86de-9d004585ad8e.png)
 
 * Timeseries Calibration
-* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324119/7d4919ce-6c44-11e5-982a-2216095b523d.png)
-* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324120/7ec41f60-6c44-11e5-941d-208286a63b32.png)
-* 
+![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324119/7d4919ce-6c44-11e5-982a-2216095b523d.png)
+![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324120/7ec41f60-6c44-11e5-941d-208286a63b32.png)
+ 
 * Optimization
-* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324114/7a4e536a-6c44-11e5-9c64-57ef26658ed3.png)
-* 
+![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324114/7a4e536a-6c44-11e5-9c64-57ef26658ed3.png)
+
 * Design of Experiments
-* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324117/7bc4e34e-6c44-11e5-8bee-894b4412043d.png)
-* 
+![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324117/7bc4e34e-6c44-11e5-8bee-894b4412043d.png)
+
 * Uncertainty Quantification
-* ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324123/802cc5fa-6c44-11e5-86d8-c8db0302d514.png)
+![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324123/802cc5fa-6c44-11e5-86d8-c8db0302d514.png)
+
+## Available Algorithms
+* NSGA2 (Nondominated Sorting Genetic Algorithm 2) multi-objective optimization
+* SPEA2 (Strength Pareto Evolutionary Algorithm 2) multi-objective optimization
+* RGenoud (R version of GENetic Optimization Using Derivaties) single-objective optimization
+* PSO (Particle Swarm Optimization) single-objective optimization
+* Optim (Gradient based) single-objective optimization
+* Latin Hypercube Sampling (LHS)
+* Full Factorial Design of Experiments
+* Parallel Batch Running
+* Preflight [min/median/max] test
+* Single Run
+* Repeat Run
 
 ## Layout
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
