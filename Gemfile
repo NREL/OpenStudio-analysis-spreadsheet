@@ -10,8 +10,8 @@ gem 'bcl', '~> 0.5.5'
 # gem "bcl", :github => "NREL/bcl-gem"
 # gem "bcl", :path => "../bcl-gem"
 
-# gem 'openstudio-aws', '= 0.3.0'
-gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => 'develop'
+gem 'openstudio-aws', '= 0.3.2'
+# gem "openstudio-aws", :github => "NREL/OpenStudio-aws-gem", :branch => 'develop'
 # gem "openstudio-aws", :path => "../OpenStudio-aws-gem"
 
 gem 'openstudio-analysis', '= 0.4.3'
