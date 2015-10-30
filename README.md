@@ -41,6 +41,9 @@ The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setu
 ## User Documentation
   https://github.com/NREL/OpenStudio-analysis-spreadsheet/blob/develop/documentation/spreadsheet_userguide_prerelease.pdf
 
+## List of OS-Server versions on Amazon
+  http://s3.amazonaws.com//openstudio-resources/server/api/v2/amis.json
+
 ## Layout
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
 * Projects - List of projects in the form of analysis spreadsheets. These are the file that you should edit and copy.
