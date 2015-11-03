@@ -99,8 +99,13 @@ Or run `rake clean`".red
     start_time = Time.now
 
     # Create the server & worker
-    aws.create_server(server_options, "#{excel.cluster_name}.json")
+    aws.create_server(server_options)
+    aws.save_cluster_info "#{excel.cluster_name}.json"
+    aws.print_connection_info
+
     aws.create_workers(excel.settings['worker_nodes'].to_i, worker_options)
+    aws.save_cluster_info "#{excel.cluster_name}.json"
+    aws.print_connection_info
 
     # This saves off a file called named #{excelfile}.json that can be used to read in to run the
     server_dns = "http://#{aws.os_aws.server.data.dns}"
