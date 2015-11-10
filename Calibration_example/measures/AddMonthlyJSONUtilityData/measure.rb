@@ -183,10 +183,12 @@ class AddMonthlyJSONUtilityData < OpenStudio::Ruleset::ModelUserScript
           fail "Unknown date format in period '#{period}'"
           return false
         end
-
+        #runner.registerInfo("GC.start")
+        #GC.start
         period_start_date = OpenStudio::DateTime.fromISO8601(from_date).get.date
         #period_start_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(from_date[1]), from_date[2], from_date[0])
-        period_end_date = OpenStudio::DateTime.fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
+        #period_end_date = OpenStudio::DateTime.fromISO8601(to_date).get.date - OpenStudio::Time.new(1.0)
+        period_end_date = OpenStudio::DateTime.fromISO8601(to_date).get.date
         #period_end_date = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(to_date[1]), to_date[2], to_date[0])
         
         if (period_start_date < start_date) or (period_end_date > end_date)
