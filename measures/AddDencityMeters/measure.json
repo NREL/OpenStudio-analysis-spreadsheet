@@ -1,0 +1,13 @@
+{
+  "classname": "AddDencityMeters",
+  "name": "AddDencityMeters",
+  "display_name": "Add DEnCity Meters",
+  "measure_type": "RubyMeasure",
+  "description": "",
+  "modeler_description": "",
+  "arguments": [],
+  "name_xml": "add_dencity_meters",
+  "uid": "ad52d81c-1d9a-46c0-b9bf-a9667c5873a7",
+  "version_id": "748c7a0c-d205-4ba5-a544-9525cf300f38",
+  "tags": []
+}
