@@ -336,6 +336,11 @@ optparse = OptionParser.new do |opts|
     options[:download_directory] = download_directory
   end
 
+  options[:push_to_dencity] = false
+  opts.on('-e', '--push_to_dencity', 'push analysis to DEnCity database') do 
+    options[:push_to_dencity] = true
+  end
+
   options[:rdata] = false
   opts.on('-r', '--rdataframe', 'download rdataframe results and metadata files') do
     options[:rdata] = true
@@ -430,11 +435,14 @@ begin
     fail "ERROR: Target #{options[:target]} server at #{@server_api.hostname} not responding".red
   end
 
+
   # Run project on target server
-  @analysis_id = @server_api.run("#{temp_filepath}.json","#{temp_filepath}.zip",aws_instance_options[:analysis_type])
+  puts "push_to_dencity = #{options[:push_to_dencity]}"
+  puts "command to run: #{temp_filepath}.json, #{temp_filepath}.zip, #{aws_instance_options[:analysis_type]}, push_to_dencity = true}"
+  @analysis_id = @server_api.run("#{temp_filepath}.json", "#{temp_filepath}.zip", aws_instance_options[:analysis_type], true, true, options[:push_to_dencity])
 ensure
   #Ensure resource cleanup
-  FileUtils.rm_r '.temp'
+  #FileUtils.rm_r '.temp'
 end
 
 # Determine if there are queued tasks
