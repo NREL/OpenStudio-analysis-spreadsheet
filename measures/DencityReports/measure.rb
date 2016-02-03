@@ -343,7 +343,7 @@ class DencityReports < OpenStudio::Ruleset::ReportingUserScript
       runner.registerValue("number_of_floors", number_of_floors, "")
       metadata[metadata.length] = ["number_of_floors", "Number of Floors", "Number of Floors", "Total number of storeys in the building", "none", "double", "FALSE"]
 
-      building_type = building.standardsBuildingType if building.standardsBuildingType.is_initialized
+      building_type = building.standardsBuildingType.to_s if building.standardsBuildingType.is_initialized
       building_type ||= "NIL"
       runner.registerValue("building_type", building_type, "")
       metadata[metadata.length] = ["building_type", "Building Type", "Bldg Type", "Building type as defined by the modeler", "none", "string", "FALSE"]
