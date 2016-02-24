@@ -275,7 +275,7 @@ class CalibrationReportsEnhanced < OpenStudio::Ruleset::ReportingUserScript
           if not consumption.empty?
             hasElec = true
             temp = consumption.get / consumptionUnitConversionFactor
-            elecModelConsumption << temp.round.to_s
+            elecModelConsumption << temp.round(2).to_s
             modeled_consumption += temp
             modeled_consumption_values << temp
             all_modeled_consumption_values << consumption.get
@@ -378,7 +378,7 @@ class CalibrationReportsEnhanced < OpenStudio::Ruleset::ReportingUserScript
           if not consumption.empty?
             hasGas = true
             temp = consumption.get / consumptionUnitConversionFactor
-            gasModelConsumption << temp.round.to_s
+            gasModelConsumption << temp.round(2).to_s
             modeled_consumption += temp
             modeled_consumption_values << temp
             all_modeled_consumption_values << consumption.get
