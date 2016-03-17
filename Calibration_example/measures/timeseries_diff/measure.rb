@@ -92,7 +92,13 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     norm.setDisplayName("norm of the difference of csv and sql")
     norm.setDescription("norm of the difference of csv and sql")
     norm.setDefaultValue(1)
-    args << norm     
+    args << norm   
+
+    scale = OpenStudio::Ruleset::OSArgument.makeDoubleArgument("scale", true)
+    scale.setDisplayName("scale factor to apply to the difference")
+    scale.setDescription("scale factor to apply to the difference")
+    scale.setDefaultValue(1)
+    args << scale     
 
     find_avail = OpenStudio::Ruleset::OSArgument.makeBoolArgument("find_avail", true)
     find_avail.setDisplayName("find_avail")
@@ -161,7 +167,8 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     seconds = runner.getBoolArgumentValue("seconds", user_arguments)
     sql_key = runner.getStringArgumentValue("sql_key", user_arguments)
     sql_var = runner.getStringArgumentValue("sql_var", user_arguments)
-    norm = runner.getStringArgumentValue("norm", user_arguments)
+    norm = runner.getDoubleArgumentValue("norm", user_arguments)
+    scale = runner.getDoubleArgumentValue("scale", user_arguments)
     find_avail = runner.getBoolArgumentValue("find_avail", user_arguments) 
     compute_diff = runner.getBoolArgumentValue("compute_diff", user_arguments) 
     verbose_messages = runner.getBoolArgumentValue("verbose_messages", user_arguments)
@@ -439,6 +446,8 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
                   else
                     dif = (mtr.to_f - sim.to_f).abs
                   end
+                  #apply scale factor
+                  dif = dif.to_f * scale.to_f
                   temp_sim << [etim,sim.to_f]
                   temp_mtr << [etim,mtr.to_f] 
                   temp_norm << [etim,dif.to_f]                  
