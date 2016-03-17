@@ -3,6 +3,7 @@
 
 require 'csv'
 require 'time'
+require 'json'
 
 # start the measure
 class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
@@ -66,7 +67,7 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     sql_key = OpenStudio::Ruleset::OSArgument.makeStringArgument("sql_key", true)
     sql_key.setDisplayName("SQL key")
     sql_key.setDescription("SQL key")
-    sql_key.setDefaultValue("Whole Building")
+    sql_key.setDefaultValue("")
     args << sql_key  
 
     sql_var = OpenStudio::Ruleset::OSArgument.makeStringArgument("sql_var", true)
@@ -74,6 +75,18 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     sql_var.setDescription("SQL var")
     sql_var.setDefaultValue("Facility Total Electric Demand Power")
     args << sql_var    
+    
+    stp = OpenStudio::Ruleset::OSArgument.makeStringArgument("stp", true)
+    stp.setDisplayName("Timeseries Timestep")
+    stp.setDescription("Timeseries Timestep")
+    stp.setDefaultValue("Zone Timestep")
+    args << stp
+    
+    env = OpenStudio::Ruleset::OSArgument.makeStringArgument("env", true)
+    env.setDisplayName("availableEnvPeriods")
+    env.setDescription("availableEnvPeriods")
+    env.setDefaultValue("RUN PERIOD 1")
+    args << env
     
     norm = OpenStudio::Ruleset::OSArgument.makeDoubleArgument("norm", true)
     norm.setDisplayName("norm of the difference of csv and sql")
@@ -98,6 +111,18 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     verbose_messages.setDescription("verbose_messages")
     verbose_messages.setDefaultValue(true)
     args << verbose_messages  
+    
+    algorithm_download = OpenStudio::Ruleset::OSArgument.makeBoolArgument("algorithm_download", true)
+    algorithm_download.setDisplayName("algorithm_download")
+    algorithm_download.setDescription("algorithm_download")
+    algorithm_download.setDefaultValue(false)
+    args << algorithm_download  
+    
+    plot_flag = OpenStudio::Ruleset::OSArgument.makeBoolArgument("plot_flag", true)
+    plot_flag.setDisplayName("plot_flag timeseries data")
+    plot_flag.setDescription("plot_flag timeseries data")
+    plot_flag.setDefaultValue(true)
+    args << plot_flag
 
     return args
   end
@@ -140,6 +165,38 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     find_avail = runner.getBoolArgumentValue("find_avail", user_arguments) 
     compute_diff = runner.getBoolArgumentValue("compute_diff", user_arguments) 
     verbose_messages = runner.getBoolArgumentValue("verbose_messages", user_arguments)
+    algorithm_download = runner.getBoolArgumentValue("algorithm_download", user_arguments)
+    plot_flag = runner.getBoolArgumentValue("plot_flag", user_arguments)
+    env = runner.getStringArgumentValue("env", user_arguments)
+    stp = runner.getStringArgumentValue("stp", user_arguments)
+    
+    # Method to translate from OpenStudio's time formatting
+    # to Javascript time formatting
+    # OpenStudio time
+    # 2009-May-14 00:10:00   Raw string
+    # Javascript time
+    # 2009/07/12 12:34:56
+    def to_JSTime(os_time)
+      js_time = os_time.to_s
+      # Replace the '-' with '/'
+      js_time = js_time.gsub('-','/')
+      # Replace month abbreviations with numbers
+      js_time = js_time.gsub('Jan','01')
+      js_time = js_time.gsub('Feb','02')
+      js_time = js_time.gsub('Mar','03')
+      js_time = js_time.gsub('Apr','04')
+      js_time = js_time.gsub('May','05')
+      js_time = js_time.gsub('Jun','06')
+      js_time = js_time.gsub('Jul','07')
+      js_time = js_time.gsub('Aug','08')
+      js_time = js_time.gsub('Sep','09')
+      js_time = js_time.gsub('Oct','10')
+      js_time = js_time.gsub('Nov','11')
+      js_time = js_time.gsub('Dec','12')
+      
+      return js_time
+
+    end 
     
     diff = [0.0]
     simdata = [0.0]
@@ -150,12 +207,11 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     cal = {1=>'January',2=>'February',3=>'March',4=>'April',5=>'May',6=>'June',7=>'July',8=>'August',9=>'September',10=>'October',11=>'November',12=>'December'}
     runner.registerInfo("csv_name: #{csv_name}")
     
-    csv = CSV.read(csv_name)
+    csv = CSV.read(csv_name, :encoding => 'ISO-8859-1')
     #sql = OpenStudio::SqlFile.new(OpenStudio::Path.new('sim.sql'))
     sql = sqlFile
-    env = sql.availableEnvPeriods[0]
+    #env = sql.availableEnvPeriods[3]
     runner.registerInfo("env: #{env}")
-    stp = 'Zone Timestep'
     runner.registerInfo("map: #{map}")
     runner.registerInfo("")
     
@@ -263,6 +319,8 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
       end
     end
     runner.registerInfo("timezone = #{tz}")
+    #export for plotting
+    all_series = []
     csv[0].each do |hdr|
       if (hdr.to_s != csv_time_header.to_s)
         if !map.key? hdr
@@ -277,13 +335,32 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
         diff_index = map[hdr][:index]
         runner.registerInfo("var: #{var}")
         runner.registerInfo("key: #{key}")        
-        #runner.registerInfo("diff_index: #{diff_index}")  
+        runner.registerInfo("sqlcall: #{env},#{stp},#{var},#{key}")  
         if sql.timeSeries(env,stp,var,key).is_initialized
           ser = sql.timeSeries(env,stp,var,key).get
         else
           runner.registerWarning("sql.timeSeries not initialized env: #{env},stp: #{stp},var: #{var},key: #{key}.")
           next
-        end    
+        end
+        date_times = ser.dateTimes
+        first_date = date_times[0]
+        last_date = date_times[-1]
+ 
+        # Store the timeseries data to hash for later
+        # export to the HTML file
+        series = {}
+        series["name"] = "#{key} Simulated"
+        series["type"] = "#{var}"
+        series["units"] = ser.units
+        series["color"] = "blue"
+        data = []    
+        series2 = {}
+        series2["name"] = "#{key} Metered"
+        series2["type"] = "#{var}"
+        series2["units"] = ser.units
+        series2["color"] = "red"
+        data2 = []          
+        
         csv.each_index do |row|
           if row > 0
             if csv[row][0].nil?
@@ -307,7 +384,9 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
             if year == nil
               dat = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(cal[mon]),day)
             else
-              dat = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(cal[mon]),day,year)
+              #dat = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(cal[mon]),day,year)
+              #hack since year is not in the sql file correctly
+              dat = OpenStudio::Date.new(OpenStudio::MonthOfYear.new(cal[mon]),day)
             end
             if sec == nil
               tim = OpenStudio::Time.new(0,hou,min,0)
@@ -315,6 +394,10 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
               tim = OpenStudio::Time.new(0,hou,min,sec)
             end            
             dtm = OpenStudio::DateTime.new(dat,tim)
+            if !(dtm >= first_date && dtm <= last_date)
+              runner.registerWarning("CSV DateTime #{dtm} is not in SQL Timeseries Dates")
+              next
+            end
             if year == nil
               if sec == nil
                 etim = Time.new(2009, mon, day, hou, min, 0, tz).to_i * 1000
@@ -323,9 +406,13 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
               end
             else
               if sec == nil
-                etim = Time.new(year, mon, day, hou, min, 0, tz).to_i * 1000
+              #hack since year is not in the sql file correctly
+                #etim = Time.new(year, mon, day, hou, min, 0, tz).to_i * 1000
+                etim = Time.new(2009, mon, day, hou, min, 0, tz).to_i * 1000
               else
-                etim = Time.new(year, mon, day, hou, min, sec, tz).to_i * 1000
+              #hack since year is not in the sql file correctly
+                #etim = Time.new(year, mon, day, hou, min, sec, tz).to_i * 1000
+                etim = Time.new(2009, mon, day, hou, min, sec, tz).to_i * 1000
               end
             end
             runner.registerInfo("dtm: #{dtm}") if verbose_messages
@@ -333,7 +420,18 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
               if col > 0
                 mtr = csv[row][col].to_s
                 if csv[0][col] == hdr
-                  sim = ser.value(dtm) 
+                  sim = ser.value(dtm)
+                  #store timeseries for plotting
+                  point = {}
+                  point["y"] = sim.round(2)
+                  point["time"] = to_JSTime(dtm)
+                  data << point
+                  point2 = {}
+                  point2["y"] = mtr.to_f.round(2)
+                  point2["time"] = to_JSTime(dtm)
+                  data2 << point2
+
+                  
                   if norm == 1
                     dif = mtr.to_f - sim.to_f
                   elsif norm == 2  
@@ -356,21 +454,69 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
             end
           end
         end
+        series["data"] = data
+        series2["data"] = data2
+        all_series << series
+        all_series << series2
       else
         runner.registerInfo("Found Time Header: #{csv_time_header}")
       end
     end
  
     results = {"metadata" => {"tz" => tzs.to_i, "variables" => {"variable" => csv_var, "variable_display_name" => csv_var_dn}}, "data_mtr" => temp_mtr, "data_sim" => temp_sim, "data_diff" => temp_norm}
-    runner.registerInfo("Saving timeseries_#{csv_var}.json")
+    runner.registerInfo("Saving timeseries_#{csv_var}.json") 
     FileUtils.mkdir_p(File.dirname("timeseries_#{csv_var}.json")) unless Dir.exist?(File.dirname("timeseries_#{csv_var}.json"))
     File.open("timeseries_#{csv_var}.json", 'wb') {|f| f << JSON.pretty_generate(results)}
+    FileUtils.mkdir_p(File.dirname("allseries_#{csv_var}.json")) unless Dir.exist?(File.dirname("allseries_#{csv_var}.json"))
+    File.open("allseries_#{csv_var}.json", 'wb') {|f| f << JSON.pretty_generate(all_series)}
+    #check if analysis directory exists on server
+    if algorithm_download
+      if File.basename(File.expand_path(File.join(Dir.pwd,"../../../"))).split('_')[0] == "analysis"
+        runner.registerInfo("Copying timeseries_#{csv_var}.json to downloads directory")  
+        directory_name = File.expand_path(File.join(Dir.pwd,"../../../downloads"))
+        Dir.mkdir(directory_name) unless File.exists?(directory_name)
+        FileUtils.cp("timeseries_#{csv_var}.json",directory_name) 
+        FileUtils.cp("allseries_#{csv_var}.json",directory_name)
+      end
+    end  
     
-    runner.registerInfo("results: #{results}")
+    runner.registerInfo("results: #{results}") if verbose_messages
     runner.registerValue("diff", diff[0], "")
     runner.registerValue("simdata", simdata[0], "")
     runner.registerValue("csvdata", csvdata[0], "")
 
+    if plot_flag
+      runner.registerInfo("start plotting")
+      all_series = all_series.to_json
+      # read in template
+      html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.erb"
+      if File.exist?(html_in_path)
+          html_in_path = html_in_path
+      else
+          html_in_path = "#{File.dirname(__FILE__)}/report.html.erb"
+      end
+      html_in = ""
+      File.open(html_in_path, 'r') do |file|
+        html_in = file.read
+      end
+
+      # configure template with variable values
+      renderer = ERB.new(html_in)
+      html_out = renderer.result(binding)
+      
+      # write html file
+      html_out_path = "./report_#{csv_var}.html"
+      File.open(html_out_path, 'w') do |file|
+        file << html_out
+        # make sure data is written to the disk one way or the other
+        begin
+          file.fsync
+        rescue
+          file.flush
+        end
+      end
+    end
+    sql.close()
     return true
 
   end

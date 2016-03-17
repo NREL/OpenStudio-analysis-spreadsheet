@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+.xline {
+  stroke-width: 1;
+  fill: none;
+  clip-path: url(#clip);
+}
+
+</style>
+<title>Timeseries</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="timeseriesplot" class="container">
+  <h1 id="plottitle">Timeseries Plot</h1>
+</div>
+<script>
+
+var allSeries = <%= all_series %>;
+
+// Set the overall plot heading
+$("#plottitle").text(allSeries[0].type);
+
+// Define size and margins of chart
+var margin = {top: 10, right: 350, bottom: 100, left: 40},
+    margin2 = {top: 430, right: 350, bottom: 20, left: 40},
+    width = 1500 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom,
+    height2 = 500 - margin2.top - margin2.bottom;
+
+var parseDate = d3.time.format("%b %Y").parse;
+
+// Determine the bounds of the chart
+var x_min = new Date('January 1, 3000 00:00:00');
+var x_max = new Date('January 1, 1900 00:00:00');
+var y_min = Number.POSITIVE_INFINITY;
+var y_max = Number.NEGATIVE_INFINITY;
+$.each(allSeries, function(index, all_series) {
+  var series = allSeries[index];
+  
+  this_x_min = d3.min(series.data.map(function(d) { return new Date(d.time); }))
+  this_x_max = d3.max(series.data.map(function(d) { return new Date(d.time); }))
+  this_y_min = d3.min(series.data.map(function(d) { return d.y; }))
+  this_y_max = d3.max(series.data.map(function(d) { return d.y; }))
+  
+  if (this_x_min < x_min) x_min = this_x_min;
+  if (this_x_max > x_max) x_max = this_x_max;
+  if (this_y_min < y_min) y_min = this_y_min;
+  if (this_y_max > y_max) y_max = this_y_max;  
+  
+});
+// Log the bounds for debugging 
+console.log("x_min = " + x_min)
+console.log("x_max = " + x_max)
+console.log("y_min = " + y_min)
+console.log("y_max = " + y_max)  
+
+// Increase the y max by a little for readability
+y_max = y_max + ((y_max - y_min) * 0.25);
+  
+// Horizontal axis scale
+var x_extent = [this.x_min, this.x_max];
+
+// Vertical axis scale
+var y_extent = [this.y_min, this.y_max];
+
+// Create the x and y scales (width on page) for both chart areas    
+var x = d3.time.scale().range([0, width]),
+    x2 = d3.time.scale().range([0, width]),
+    y = d3.scale.linear().range([height, 0]),
+    y2 = d3.scale.linear().range([height2, 0]);
+  
+// Create the x and y domains (extent of the data) for both chart areas  
+x.domain(x_extent);
+y.domain(y_extent);
+x2.domain(x.domain());
+y2.domain(y.domain());  
+  
+// Create and position axes
+var xAxis = d3.svg.axis().scale(x).orient("bottom"),
+    xAxis2 = d3.svg.axis().scale(x2).orient("bottom"),
+    yAxis = d3.svg.axis().scale(y).orient("left"),
+    yAxis2 = d3.svg.axis().scale(y2).orient("left");
+
+// Create the selector 
+var brush = d3.svg.brush()
+    .x(x2)
+    .on("brush", brushed);
+
+// Function to create lines in the focus area    
+var line = d3.svg.line()
+    .x(function(d) { return x(new Date(d.time)); })
+    .y(function(d) { return y(d.y); });
+
+// Function to create lines in the context area    
+var line2 = d3.svg.line()
+    .x(function(d) { return x2(new Date(d.time)); })
+    .y(function(d) { return y2(d.y); });    
+
+// Create the overall SVG    
+var svg = d3.select("#timeseriesplot").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
+
+svg.append("defs").append("clipPath")
+    .attr("id", "clip")
+  .append("rect")
+    .attr("width", width)
+    .attr("height", height);
+
+// Draw the focus section (main plot)    
+var focus = svg.append("g")
+    .attr("class", "focus")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Draw the focus x and y axes
+focusaxis = focus.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + height + ")")
+  .call(xAxis);
+  
+focusaxis.append("text")
+      .text(allSeries[0].type + " [" + allSeries[0].units + "]")
+      .attr("transform", "rotate (-90, 0, 0) translate(" + (height / 5) + "," + (-1*(margin.left / 2 + 10)) + ")"); // TODO dynamically account for width of axis label to center
+
+focus.append("g")
+  .attr("class", "y axis")
+  .call(yAxis);   
+       
+// Draw the context section (selector)
+var context = svg.append("g")
+  .attr("class", "context")
+  .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+
+// Draw the context x axis 
+context.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + height2 + ")")
+  .call(xAxis2); 
+  
+// Draw the brush selector for the context  
+context.append("g")
+    .attr("class", "x brush")
+    .call(brush)
+  .selectAll("rect")
+    .attr("y", -6)
+    .attr("height", height2 + 7);
+
+// Setup the spacing for the legends
+var legendSpacing = 25;
+    
+// Create a legend for the data series
+var primlegend = focus.append("g")
+  .attr("class", "w axis")
+  .attr("transform", "translate(" + (width + 10) + ",0)");
+
+// TODO make series toggle-able
+primlegend.append("text").text("Series Names")
+  //.style("cursor", " pointer")
+  .attr("y", legendSpacing * 1)
+  .attr("class", "noselect");
+    
+// Define the color scale
+var c20 = d3.scale.category20();
+c20.domain([1, allSeries.length]);   
+    
+// Plot each series
+var i = 1;
+$.each(allSeries, function(index, all_series) {
+  var series = allSeries[index];
+  
+  // Generate a color
+  var lineColor = series.color  
+  
+  // Plot on the focus
+  focus.append("path")
+  .datum(series.data)
+  .attr("class", "xline")
+  .attr("d", line)
+  .style("stroke", lineColor);
+  
+  // Plot on the context
+  // Note that line2 uses the x2 and y2 scales
+  context.append("path")
+  .datum(series.data)
+  .attr("class", "xline")
+  .attr("d", line2)
+  .style("stroke", lineColor);
+  
+  // Add the series name to the legend
+  primlegend.append("text").text(series.name + " [" + series.units + "]")
+    .style("cursor", " pointer")
+    .attr("y", legendSpacing * (i + 1))
+    .attr("class", "noselect")
+    .style("fill", lineColor);    
+  
+  i += 1;
+  
+});
+
+// Define what to do when the selector is moved around
+function brushed() {
+  console.log("Brushed")
+  x.domain(brush.empty() ? x2.domain() : brush.extent());
+  focus.selectAll(".xline").attr("d", line);
+  focus.selectAll(".x.axis").call(xAxis);
+}
+
+</script>
