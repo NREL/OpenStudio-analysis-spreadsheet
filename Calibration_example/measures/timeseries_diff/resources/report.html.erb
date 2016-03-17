@@ -44,8 +44,8 @@ var allSeries = <%= all_series %>;
 $("#plottitle").text(allSeries[0].type);
 
 // Define size and margins of chart
-var margin = {top: 10, right: 350, bottom: 100, left: 40},
-    margin2 = {top: 430, right: 350, bottom: 20, left: 40},
+var margin = {top: 10, right: 350, bottom: 100, left: 100},
+    margin2 = {top: 430, right: 350, bottom: 20, left: 100},
     width = 1500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom,
     height2 = 500 - margin2.top - margin2.bottom;
@@ -101,7 +101,7 @@ y2.domain(y.domain());
 // Create and position axes
 var xAxis = d3.svg.axis().scale(x).orient("bottom"),
     xAxis2 = d3.svg.axis().scale(x2).orient("bottom"),
-    yAxis = d3.svg.axis().scale(y).orient("left"),
+    yAxis = d3.svg.axis().scale(y).tickFormat(d3.format(".2e")).orient("left"),
     yAxis2 = d3.svg.axis().scale(y2).orient("left");
 
 // Create the selector 
@@ -143,7 +143,7 @@ focusaxis = focus.append("g")
   
 focusaxis.append("text")
       .text(allSeries[0].type + " [" + allSeries[0].units + "]")
-      .attr("transform", "rotate (-90, 0, 0) translate(" + (height / 5) + "," + (-1*(margin.left / 2 + 10)) + ")"); // TODO dynamically account for width of axis label to center
+      .attr("transform", "rotate (-90, 0, 0) translate(" + (height / 5) + "," + (-1*(margin.left / 2 + 20)) + ")"); // TODO dynamically account for width of axis label to center
 
 focus.append("g")
   .attr("class", "y axis")
