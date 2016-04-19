@@ -125,8 +125,12 @@ def configure_target_server(excel, target)
       server_dns = 'http://bball-130553.nrel.gov:8080'
     when 'nrel24b'
       server_dns = 'http://bball-130590.nrel.gov:8080'
-    when "nrel24"
-      server_dns = "http://bball-130449.nrel.gov:8080"
+    when 'nrel24'
+      server_dns = 'http://bball-130449.nrel.gov:8080'
+    when 'local_development'
+      server_dns = 'http://localhost:3000'
+    when 'local'
+      server_dns = 'http://localhost:3000'
     when 'aws'
       if File.exist?("#{excel.cluster_name}.json")
         json = JSON.parse(File.read("#{excel.cluster_name}.json"), symbolize_names: true)
@@ -176,8 +180,13 @@ def run_analysis(excel, target = 'aws', download = false)
       options = {hostname: server_dns}
       api = OpenStudio::Analysis::ServerApi.new(options)
 
-      analysis_id = api.run(formulation_file, analysis_zip_file, excel.problem['analysis_type'],
-                            excel.run_setup['allow_multiple_jobs'], true, excel.run_setup['run_data_point_filename'])
+      analysis_id = api.run(formulation_file,
+                            analysis_zip_file,
+                            excel.problem['analysis_type'],
+                            excel.run_setup['allow_multiple_jobs'],
+                            true,
+                            false, # push to dencity
+                            excel.run_setup['run_data_point_filename'])
 
       # Report some useful info
       puts
@@ -316,6 +325,20 @@ task :run_vagrant do
   excel = get_project
   excel.save_analysis
   run_analysis(excel, 'vagrant')
+end
+
+desc 'run local (localhost:8080)'
+task :run_local do
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'local')
+end
+
+desc 'run local development (localhost:3000)'
+task :run_local_development do
+  excel = get_project
+  excel.save_analysis
+  run_analysis(excel, 'local_development')
 end
 
 desc 'run NREL24a'
