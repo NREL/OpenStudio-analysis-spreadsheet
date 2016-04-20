@@ -384,7 +384,7 @@ class TariffSelectionTimeAndDateDependant < OpenStudio::Ruleset::WorkspaceUserSc
         ElectricityTariffWinterDemandCharge, !- Name
         Electricity Tariff,                      !- Tariff Name
         totalDemand,                            !- Source Variable
-        summer,                                 !- Season
+        winter,                                 !- Season
         DemandCharges,                          !- Category Variable Name
         #{args['elec_demand_nonsum']};          !- Cost per Unit Value or Variable Name
         "

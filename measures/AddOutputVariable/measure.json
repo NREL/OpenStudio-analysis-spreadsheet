@@ -23,13 +23,22 @@
         "timestep",
         "hourly",
         "daily",
-        "monthly"
+        "monthly",
+        "runperiod"
       ]
+    },
+    {
+      "name": "key_value",
+      "display_name": "Enter Key Name",
+      "variable_type": "String",
+      "local_variable": "key_value",
+      "units": null,
+      "default_value": "*"
     }
   ],
-  "name_xml": "Add Output Variable",
+  "name_xml": "add_output_variable",
   "uid": "2a058afb-e349-49ae-a4bf-2c56a42b4352",
-  "version_id": "77e9e6fc-d7e0-4768-9542-509c9b1ed665",
+  "version_id": "5c642e53-bb93-47c3-bafb-5ef672afdc55",
   "tags": [
     "Reporting.QAQC"
   ],

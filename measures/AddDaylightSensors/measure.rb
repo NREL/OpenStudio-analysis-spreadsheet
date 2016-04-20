@@ -236,19 +236,9 @@ class AddDaylightSensors < OpenStudio::Ruleset::ModelUserScript
       return counter
     end #end of def get_total_costs_for_objects(objects)
 
-    #setup OpenStudio units that we will need
-    unit_setpoint_ip = OpenStudio::createUnit("fc").get
-    unit_setpoint_si = OpenStudio::createUnit("lux").get
-    unit_height_ip = OpenStudio::createUnit("ft").get
-    unit_height_si = OpenStudio::createUnit("m").get
-
-    #define starting units
-    setpoint_ip = OpenStudio::Quantity.new(setpoint, unit_setpoint_ip)
-    height_ip = OpenStudio::Quantity.new(height/12, unit_height_ip)
-
     #unit conversion from IP units to SI units
-    setpoint_si = OpenStudio::convert(setpoint_ip, unit_setpoint_si).get
-    height_si = OpenStudio::convert(height_ip, unit_height_si).get
+    setpoint_si = OpenStudio.convert(setpoint,'fc','lux').get
+    height_si = OpenStudio.convert(height,'in','m').get
 
     #variable to tally the area to which the overall measure is applied
     area = 0
@@ -334,14 +324,16 @@ class AddDaylightSensors < OpenStudio::Ruleset::ModelUserScript
       sensor.setName("#{space.name} daylighting control")
       x_pos = (xmin + xmax) / 2
       y_pos = (ymin + ymax) / 2
-      z_pos = zmin + height_si.value #put it 1 meter above the floor
+      z_pos = zmin + height_si #put it 1 meter above the floor
       new_point = OpenStudio::Point3d.new(x_pos, y_pos, z_pos)
       sensor.setPosition(new_point)
-      sensor.setIlluminanceSetpoint(setpoint)
+      sensor.setIlluminanceSetpoint(setpoint_si)
       sensor.setLightingControlType(control_type)
       sensor.setMinimumInputPowerFractionforContinuousDimmingControl(min_power_fraction)
       sensor.setMinimumLightOutputFractionforContinuousDimmingControl(min_light_fraction)
       sensor.setSpace(space)
+      puts sensor
+
 
       #add lifeCycleCost objects if there is a non-zero value in one of the cost arguments
       if costs_requested == true

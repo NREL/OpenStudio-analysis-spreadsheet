@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>View OpenStudio Model</title>
+<title><%=title%></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
-<script src="https://mrdoob.github.io/three.js/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.rawgit.com/mrdoob/three.js/r71/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenLite.min.js"></script>
 </head>
@@ -131,6 +131,7 @@ var settings = {
   showWindows: getBoolFromLocalStorage('showWindows', true),
   showDoors: getBoolFromLocalStorage('showDoors', true),
   showShading: getBoolFromLocalStorage('showShading', true),
+  showPartitions: getBoolFromLocalStorage('showPartitions', true),
   showWireframe: getBoolFromLocalStorage('showWireframe', true),
   xView: function() {setAllCameraAngles(0, 0, 1);},
   yView: function() {setAllCameraAngles(-90, 0, 1);},
@@ -152,7 +153,7 @@ var settings = {
 
 var getColor = function (x, min, max, palette) {
 
-  if (!x){
+  if (x == null){
     return new THREE.Color(255, 255, 255);
   }
   
@@ -599,7 +600,7 @@ function init() {
     shininess: 50,
     side: THREE.DoubleSide
   });
-
+  
   materials = parseMaterials(os_data.materials);
 
   renderer.domElement.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -690,6 +691,9 @@ function selectObject(object) {
         removeMaterial(back_intersected);
       }
     }
+    if (isData && intersected) {
+      update();
+    }
   }
 }
 
@@ -725,32 +729,47 @@ function onDocumentMouseClick(event) {
       var txt = 'Name: ' + intersected.userData.name + '<br>';
       switch (settings.renderBy) {
         case "Surface Type":
-          txt += 'Surface Type: ' + intersected.userData.surfaceType + '<br>' +
-                'Space Name: ' + intersected.userData.spaceName;
+          txt += 'Surface Type: ' + intersected.userData.surfaceType + '<br>';
+          if (intersected.userData.spaceName){
+            txt += 'Space Name: ' + intersected.userData.spaceName;
+          }
           break;
         case "Normal":
-          txt += 'Surface Type: ' + intersected.userData.surfaceType + '<br>' +
-                'Space Name: ' + intersected.userData.spaceName;
+          txt += 'Surface Type: ' + intersected.userData.surfaceType + '<br>'
+          if (intersected.userData.spaceName){
+            txt += 'Space Name: ' + intersected.userData.spaceName;
+          }
           break;
         case "Boundary":
-          txt += 'Outside Boundary Condition: ' + intersected.userData.outsideBoundaryCondition + '<br>' +
-                'Sun Exposure: ' + intersected.userData.sunExposure + '<br>' +
-                'Wind Exposure: ' + intersected.userData.windExposure;
+          if (intersected.userData.outsideBoundaryCondition){
+            txt += 'Outside Boundary Condition: ' + intersected.userData.outsideBoundaryCondition + '<br>';
+          }
+          txt += 'Sun Exposure: ' + intersected.userData.sunExposure + '<br>';
+          txt += 'Wind Exposure: ' + intersected.userData.windExposure;
           break;
         case "Construction":
-          txt += 'Construction Name: ' + intersected.userData.constructionName;
+          if (intersected.userData.constructionName){
+            txt += 'Construction Name: ' + intersected.userData.constructionName;
+          }
           break;
         case "Thermal Zone":
-          txt += 'Thermal Zone: ' + intersected.userData.thermalZoneName;
+          if (intersected.userData.thermalZoneName){
+            txt += 'Thermal Zone: ' + intersected.userData.thermalZoneName;
+          }
           break;
         case "Space Type":
-          txt += 'Space Type: ' + intersected.userData.spaceTypeName;
+          if (intersected.userData.spaceTypeName){
+            txt += 'Space Type: ' + intersected.userData.spaceTypeName;
+          }
           break;
         case "Building Story":
-          txt += 'Story Name: ' + intersected.userData.buildingStoryName;
+          if (intersected.userData.buildingStoryName){
+            txt += 'Story Name: ' + intersected.userData.buildingStoryName;
+          }
           break;
         case "Data":
-          if (intersected.userData.variableValue != '') {
+          // in javascript (0 == '' == false)
+          if (intersected.userData.variableValue !== '') {
             txt += 'Variable: <span id="balloon-variable-name">' + intersected.userData.variableName + '</span><br>';
             txt += 'Key: <span id="balloon-variable-key-name">' + intersected.userData.variableKeyName + '</span><br>';
             txt += 'Date: <span id="balloon-variable-date">' + intersected.userData.variableDate + '</span><br>';
@@ -924,9 +943,18 @@ var update = function (value) {
       object.visible = false;
     }else if (!settings.showWindows && surfaceType.indexOf('Window') > -1){
       object.visible = false;
+    }else if (!settings.showWindows && surfaceType.indexOf('GlassDoor') > -1){
+      // hide these with doors
+      //object.visible = false;
+    }else if (!settings.showWindows && surfaceType.indexOf('Skylight') > -1){
+      object.visible = false;
+    }else if (!settings.showWindows && surfaceType.indexOf('TubularDaylight') > -1){
+      object.visible = false;
     }else if (!settings.showDoors && surfaceType.indexOf('Door') > -1){
       object.visible = false;
     }else if (!settings.showShading && (surfaceType.indexOf('Shading') > -1)){
+      object.visible = false;
+    }else if (!settings.showPartitions && (surfaceType == 'InteriorPartitionSurface')){
       object.visible = false;
     }
 
@@ -971,17 +999,17 @@ var update = function (value) {
         var value = null;
         var keyName = '';
         var object_variables = object.userData.variables.filter(function(x){return x.name == settings.variableName;});
-        if (object_variables.length){
+        if (object_variables.length > 0){
           var object_variable = object_variables[0];
-          if (object_variable.valueIndex){
+          if (object_variable.valueIndex !== null){
             value = variable.values[object_variable.valueIndex][i];
           }
-          if (object_variable.keyName){
+          if (object_variable.keyName !== null){
             keyName = object_variable.keyName;
           }
         }
-
-        if (value) {
+       
+        if (value !== null) {
           object.userData.variableName = settings.variableName;
           object.userData.variableDate = date;
           object.userData.variableTime = time;
@@ -1063,6 +1091,8 @@ var updateVariable = function (variableName) {
   if (variables.length){
     variable = variables[0];
   }
+  updateColorBar();
+  update();
 };
 
 document.addEventListener('DOMContentLoaded', function(event) {
@@ -1124,6 +1154,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
     setLocalStorage('showShading', value);
     update(value);
   });
+  f1.add(settings, 'showPartitions').name('Show Partitions').onChange(function(value) {
+    removeSelection();
+    setLocalStorage('showPartitions', value);
+    update(value);
+  });  
   f1.add(settings, 'showWireframe').name('Show Wireframe').onChange(function(value) {
     removeSelection();
     setLocalStorage('showWireframe', value);

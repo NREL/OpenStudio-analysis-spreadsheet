@@ -17,7 +17,7 @@ class AddOutputVariable < OpenStudio::Ruleset::ModelUserScript
   def arguments(model)
     args = OpenStudio::Ruleset::OSArgumentVector.new
     
-    #make an argument for the varialbe name
+    #make an argument for the variable name
     variable_name = OpenStudio::Ruleset::OSArgument::makeStringArgument("variable_name",true)
     variable_name.setDisplayName("Enter Variable Name.")
     args << variable_name
@@ -29,10 +29,18 @@ class AddOutputVariable < OpenStudio::Ruleset::ModelUserScript
     reporting_frequency_chs << "hourly"
     reporting_frequency_chs << "daily"
     reporting_frequency_chs << "monthly"
+    reporting_frequency_chs << "runperiod"
     reporting_frequency = OpenStudio::Ruleset::OSArgument::makeChoiceArgument('reporting_frequency', reporting_frequency_chs, true)
     reporting_frequency.setDisplayName("Reporting Frequency.")
     reporting_frequency.setDefaultValue("hourly")
-    args << reporting_frequency    
+    args << reporting_frequency
+
+    #make an argument for the key_value
+    key_value = OpenStudio::Ruleset::OSArgument::makeStringArgument("key_value",true)
+    key_value.setDisplayName("Enter Key Name.")
+    key_value.setDescription("Enter * for all objects or the full name of a specific object to.")
+    key_value.setDefaultValue("*")
+    args << key_value
 
     return args
   end #end the arguments method
@@ -48,12 +56,19 @@ class AddOutputVariable < OpenStudio::Ruleset::ModelUserScript
 
     #assign the user inputs to variables
     variable_name = runner.getStringArgumentValue("variable_name",user_arguments)
-    reporting_frequency = runner.getStringArgumentValue("reporting_frequency",user_arguments) 
-    
+    reporting_frequency = runner.getStringArgumentValue("reporting_frequency",user_arguments)
+    key_value = runner.getStringArgumentValue("key_value",user_arguments)
+
     #check the user_name for reasonableness
     if variable_name == ""
       runner.registerError("No variable name was entered.")
       return false
+    end
+
+    #check the user_name for reasonableness
+    if key_value == ""
+      runner.registerInfo("Blank key isn't valid. Changing key to *")
+      key_value == "*"
     end
     
     outputVariables = model.getOutputVariables    
@@ -63,7 +78,9 @@ class AddOutputVariable < OpenStudio::Ruleset::ModelUserScript
 
     outputVariable = OpenStudio::Model::OutputVariable.new(variable_name,model)
     outputVariable.setReportingFrequency(reporting_frequency)
-    runner.registerInfo("Adding output variable for #{outputVariable.variableName} reporting #{reporting_frequency}")
+    outputVariable.setKeyValue(key_value)
+    runner.registerInfo("Adding output variable for #{outputVariable.variableName} reporting #{reporting_frequency}.")
+    runner.registerInfo("Key value for variable is #{outputVariable.keyValue}.")
 
     outputVariables = model.getOutputVariables    
     #reporting final condition of model

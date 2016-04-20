@@ -3,7 +3,7 @@
   "name": "remove_orphan_objects_and_unused_resources",
   "display_name": "Remove Orphan Objects And Unused Resources",
   "measure_type": "RubyMeasure",
-  "description": "This is the start of a measure that will have expanded functionality over time. It will have two distinct functions. One will be to remove orphan objects. This will typically include things that should never have been left alone and often are not visible in the GUI. This would include load instances without a space or space type, and surfaces without a space.\r\n\r\nA second functionality is to remove unused resources. This will include things like space types, schedules, constructions, and materials. There will be a series of checkboxes to enable/disable this purge. There wont be an option for the orphan objects. They will always be removed.",
+  "description": "This is the start of a measure that will have expanded functionality over time. It will have two distinct functions. One will be to remove orphan objects. This will typically include things that should never have been left alone and often are not visible in the GUI. This would include load instances without a space or space type, and surfaces without a space.\n\nA second functionality is to remove unused resources. This will include things like space types, schedules, constructions, and materials. There will be a series of checkboxes to enable/disable this purge. There wont be an option for the orphan objects. They will always be removed.",
   "modeler_description": "Purging objects like space types, schedules, and constructions requires a specific sequence to be most effective. This measure will first remove unused space types, then load defs, schedules sets, schedules,  construction sets, constructions, and then materials. A space type having a construction set assign, will show that construction set as used even if no spaces are assigned to that space type. That is why order is important.",
   "arguments": [
     {
@@ -40,8 +40,8 @@
     }
   ],
   "name_xml": "remove_orphan_objects_and_unused_resources",
-  "uid": "ef16c322-0300-404c-8b9b-c5f5dc2e74b8",
-  "version_id": "8e942e28-6938-4c86-a215-4fc0d1373822",
+  "uid": "c618f299-a245-49ce-a119-82eb54007ede",
+  "version_id": "a971c58d-9138-407f-a4d6-459923bd9e05",
   "tags": [
     "Whole Building.Space Types"
   ]

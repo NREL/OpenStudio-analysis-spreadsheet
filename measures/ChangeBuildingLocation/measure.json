@@ -8,23 +8,49 @@
       "name": "weather_directory",
       "display_name": "Weather Directory",
       "variable_type": "String",
-      "local_variable": "arg",
-      "units": "nil"
+      "local_variable": "weather_directory",
+      "units": null
     },
     {
       "name": "weather_file_name",
       "display_name": "Weather File Name",
       "variable_type": "String",
-      "local_variable": "arg2",
+      "local_variable": "weather_file_name",
       "units": null
+    },
+    {
+      "name": "climate_zone",
+      "display_name": "Climate Zone",
+      "variable_type": "Choice",
+      "local_variable": "climate_zone",
+      "units": null,
+      "choices": [
+        "1A",
+        "1B",
+        "2A",
+        "2B",
+        "3A",
+        "3B",
+        "3C",
+        "4A",
+        "4B",
+        "4C",
+        "5A",
+        "5B",
+        "5C",
+        "6A",
+        "6B",
+        "7",
+        "8"
+      ]
     }
   ],
-  "name_xml": "Change Building Location",
+  "name_xml": "change_building_location",
   "uid": "d4db4971-f5ba-11e3-a3ac-0800200c9a66",
-  "version_id": "df273d60-e271-4d2a-896d-962b46b8a113",
+  "version_id": "41077121-3475-4a7e-b232-6e808c7c0065",
   "tags": [
     "Whole Building.Space Types"
   ],
-  "modeler_description_xml": "This will result in a model that links to a weather file on your local machine. If you send the resulting file to someone they will also need access to that weather file at the expected location. The design day and water main information is save within the OSM. The \"Weather File Name\" argument expects the path to an epw. The measure expects a .ddy and optionally a .stat file of the same name. Since this measure uses a string argument to represent a path to a file, it won't run correctly for cloud simulations.",
-  "description_xml": "This will set a weather file for the simulation, add design days, and optionally set water main temperatures for your model."
+  "modeler_description_xml": "Change the building location",
+  "description_xml": "Change the building location"
 }

@@ -1,0 +1,58 @@
+{
+  "classname": "FanAssistNightVentilation",
+  "name": "fan_assist_night_ventilation",
+  "display_name": "Fan Assist Night Ventilation",
+  "measure_type": "RubyMeasure",
+  "description": "This measure is meant to roughly model the impact of fan assisted night ventilation. The user needs to have a ventilation schedule in the model, operable windows where natural ventilation is desired, and air walls or interior operable windows in walls and floors to define the path of air through the building. The user specified flow rate is proportionally split up based on the area of exterior operable windows. The size of interior air walls and windows doesnt matter.",
+  "modeler_description": "Its up to the modeler to choose a flow rate that is approriate for the fenestration and interior openings within the building. Each zone with operable windows will get a zone ventilation object. The measure will first look for a celing opening to find a connection for zone a zone mixing object. If a ceiling isnt found, then it looks for a wall. Dont provide more than one ceiling paths or more than one wall path. The",
+  "arguments": [
+    {
+      "name": "design_flow_rate",
+      "display_name": "Exhaust Flow Rate",
+      "variable_type": "Double",
+      "local_variable": "design_flow_rate",
+      "units": "cfm",
+      "default_value": 1000.0
+    },
+    {
+      "name": "fan_pressure_rise",
+      "display_name": "Fan Pressure Rise",
+      "variable_type": "Double",
+      "local_variable": "fan_pressure_rise",
+      "units": "Pa",
+      "default_value": 500.0
+    },
+    {
+      "name": "efficiency",
+      "display_name": "Fan Total Efficiency",
+      "variable_type": "Double",
+      "local_variable": "efficiency",
+      "units": null,
+      "default_value": 0.65
+    },
+    {
+      "name": "ventilation_schedule",
+      "display_name": "Choose a Ventilation Schedule",
+      "variable_type": "Choice",
+      "local_variable": "ventilation_schedule",
+      "units": null,
+      "choices": [
+
+      ]
+    },
+    {
+      "name": "min_outdoor_temp",
+      "display_name": "Minimum Outdoor Temperature",
+      "variable_type": "Double",
+      "local_variable": "min_outdoor_temp",
+      "units": "F",
+      "default_value": 55.0
+    }
+  ],
+  "name_xml": "fan_assist_night_ventilation",
+  "uid": "5e77cb11-0fa9-432b-97bd-87c40949ee1f",
+  "version_id": "2c1e9141-9a09-4e80-b4d2-04a2a68512c0",
+  "tags": [
+    "HVAC.Ventilation"
+  ]
+}

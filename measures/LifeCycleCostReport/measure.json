@@ -1,0 +1,24 @@
+{
+  "classname": "LifeCycleCostReport",
+  "name": "life_cycle_cost_report",
+  "display_name": "Life Cycle Cost Report",
+  "measure_type": "RubyMeasure",
+  "description": "Lists all LifeCycle Cost objects in the model as well as the LifeCycle Cost Parameter object",
+  "modeler_description": "Separate tables are made for costs tagged as Construction, Maintainance, and Salvage.",
+  "arguments": [
+    {
+      "name": "method_name",
+      "display_name": "display_name",
+      "variable_type": "Bool",
+      "local_variable": "arg",
+      "units": null,
+      "default_value": true
+    }
+  ],
+  "name_xml": "life_cycle_cost_report",
+  "uid": "ae699b16-e6e9-4d8d-acd7-4ed4c51a7239",
+  "version_id": "2e29b4f1-adb8-4c11-8729-b3008d5068d6",
+  "tags": [
+    "Reporting.QAQC"
+  ]
+}

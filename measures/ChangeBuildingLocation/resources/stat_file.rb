@@ -19,16 +19,6 @@
 
 require 'pathname'
 
-# Core Extension for Ruby 1.8.7 to convert to UTF-8
-if RUBY_VERSION < "1.9"
-  require 'iconv'
-  class String
-    def force_encoding(enc)
-      ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', self + ' ')[0..-2]
-    end
-  end
-end
-
 module EnergyPlus
   class StatFile
     attr_accessor :path
@@ -72,7 +62,8 @@ module EnergyPlus
       else
         mean = ""
       end
-      mean
+
+      mean.to_f
     end
 
     # max - min of the mean monthly dry bulbs
@@ -83,7 +74,7 @@ module EnergyPlus
         delta_t = ""
       end
 
-      delta_t
+      delta_t.to_f
     end
 
     private
@@ -91,13 +82,14 @@ module EnergyPlus
     # initialize
     def init
       if @path.exist?
-        text = File.read(@path).force_encoding("iso-8859-1")
-        parse(text)
+        File.open(@path) do |f|
+          text = f.read.force_encoding("iso-8859-1")
+          parse(text)
+        end
       end
     end
 
     def parse(text)
-
       # get lat, lon, gmt
       regex = /\{(N|S)\s*([0-9]*).\s*([0-9]*)'\}\s*\{(E|W)\s*([0-9]*).\s*([0-9]*)'\}\s*\{GMT\s*(.*)\s*Hours\}/
       match_data = text.match(regex)
@@ -133,7 +125,7 @@ module EnergyPlus
       end
 
       # get heating and cooling degree days
-      cdd10Regex = /-\s*(.*) annual \(standard\) cooling degree-days \(10.*C baseline\)/
+      cdd10Regex = /-\s*(.*) annual.*cooling degree-days \(10.C baseline\)/
       match_data = text.match(cdd10Regex)
       if match_data.nil?
         puts "Can't find CDD 10"
@@ -142,7 +134,7 @@ module EnergyPlus
         @cdd10 = match_data[1].to_f
       end
 
-      hdd10Regex = /-\s*(.*) annual \(standard\) heating degree-days \(10.*C baseline\)/
+      hdd10Regex = /-\s*(.*) annual.*heating degree-days \(10.C baseline\)/
       match_data = text.match(hdd10Regex)
       if match_data.nil?
         puts "Can't find HDD 10"
@@ -151,7 +143,7 @@ module EnergyPlus
         @hdd10 = match_data[1].to_f
       end
 
-      cdd18Regex = /-\s*(.*) annual \(standard\) cooling degree-days \(18.3.*C baseline\)/
+      cdd18Regex = /-\s*(.*) annual.*cooling degree-days \(18.*C baseline\)/
       match_data = text.match(cdd18Regex)
       if match_data.nil?
         puts "Can't find CDD 18"
@@ -160,7 +152,7 @@ module EnergyPlus
         @cdd18 = match_data[1].to_f
       end
 
-      hdd18Regex = /-\s*(.*) annual \(standard\) heating degree-days \(18.3.*C baseline\)/
+      hdd18Regex = /-\s*(.*) annual.*heating degree-days \(18.*C baseline\)/
       match_data = text.match(hdd18Regex)
       if match_data.nil?
         puts "Can't find HDD 18"

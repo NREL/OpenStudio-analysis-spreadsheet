@@ -1,0 +1,23 @@
+{
+  "classname": "HVACPsychrometricChart",
+  "name": "hvac_psychrometric_chart",
+  "display_name": "Hvac Psychrometric Chart",
+  "measure_type": "ReportingMeasure",
+  "description": "A psychrometric chart shows the relationship between air temperature and humidity conditions.",
+  "modeler_description": "WARNING: the report takes a long time to r",
+  "arguments": [
+    {
+      "name": "air_loop_name",
+      "display_name": "Air Loop Name",
+      "variable_type": "String",
+      "local_variable": "air_loop_name",
+      "units": null
+    }
+  ],
+  "name_xml": "hvac_psychrometric_chart",
+  "uid": "97213780-0727-4462-8ec0-9a6c3e475cd6",
+  "version_id": "0f021c21-eb1b-43c8-8194-39f79b70f6ea",
+  "tags": [
+    "Reporting.Troubleshooting"
+  ]
+}

@@ -7,7 +7,8 @@
 
 # Author: Nicholas Long
 # Simple measure to load the EPW file and DDY file
-require "#{File.dirname(__FILE__)}/resources/stat_file"
+require_relative 'resources/stat_file'
+require_relative 'resources/epw'
 
 class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
 
@@ -31,16 +32,39 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
   def arguments(model)
     args = OpenStudio::Ruleset::OSArgumentVector.new
 
-    arg = OpenStudio::Ruleset::OSArgument.makeStringArgument('weather_directory', true)
-    arg.setDisplayName("Weather Directory")
-    #arg.setDescription("Relative directory to weather files from analysis directory")
+    weather_directory = OpenStudio::Ruleset::OSArgument.makeStringArgument('weather_directory', true)
+    weather_directory.setDisplayName("Weather Directory")
+    weather_directory.setDescription("Relative directory to weather files from analysis directory")
     #arg.setUnits(nil)
-    args << arg
+    args << weather_directory
 
-    arg2 = OpenStudio::Ruleset::OSArgument.makeStringArgument('weather_file_name', true)
-    arg2.setDisplayName("Weather File Name")
-    #arg.setDescription("Name of the weather file to change to. This is the filename with the extension (e.g. NewWeather.epw)")
-    args << arg2
+    weather_file_name = OpenStudio::Ruleset::OSArgument.makeStringArgument('weather_file_name', true)
+    weather_file_name.setDisplayName("Weather File Name")
+    weather_file_name.setDescription("Name of the weather file to change to. This is the filename with the extension (e.g. NewWeather.epw).")
+    args << weather_file_name
+
+    #make choice argument for facade
+    choices = OpenStudio::StringVector.new
+    choices << "1A"
+    choices << "1B"
+    choices << "2A"
+    choices << "2B"
+    choices << "3A"
+    choices << "3B"
+    choices << "3C"
+    choices << "4A"
+    choices << "4B"
+    choices << "4C"
+    choices << "5A"
+    choices << "5B"
+    choices << "5C"
+    choices << "6A"
+    choices << "6B"
+    choices << "7"
+    choices << "8"
+    climate_zone = OpenStudio::Ruleset::OSArgument::makeChoiceArgument("climate_zone", choices,true)
+    climate_zone.setDisplayName("Climate Zone.")
+    args << climate_zone
 
     args
   end
@@ -54,39 +78,47 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
       return false
     end
 
-    # report initial condition
-    site = model.getSite
-    initial_design_days = model.getDesignDays
-    if site.weatherFile.is_initialized
-      weather = site.weatherFile.get
-      runner.registerInitialCondition("The initial weather file path was '#{weather.path.get}' and the model had #{initial_design_days.size} design days.")
+    # todo - create initial condition
+    if not model.getWeatherFile.city == ''
+      runner.registerInitialCondition("The initial weather file is #{model.getWeatherFile.city} and the model has #{model.getDesignDays.size} design day objects")
     else
-      runner.registerInitialCondition("The initial weather file has not been set and the model had #{initial_design_days.size} design days.")
+      runner.registerInitialCondition("No weather file is set. The model has #{model.getDesignDays.size} design day objects")
     end
 
     # grab the initial weather file
     @weather_directory = runner.getStringArgumentValue("weather_directory", user_arguments)
     weather_file_name = runner.getStringArgumentValue("weather_file_name", user_arguments)
+    climate_zone = runner.getStringArgumentValue("climate_zone",user_arguments)
 
     #Add Weather File
     unless (Pathname.new @weather_directory).absolute?
       @weather_directory = File.expand_path(File.join(File.dirname(__FILE__), @weather_directory))
     end
+
+    # todo - add error checking if epw not found
+
+    # Check if the weather file is a ZIP, if so, then unzip and read the EPW file.
     weather_file = File.join(@weather_directory, weather_file_name)
-    if File.exists?(weather_file) and weather_file_name.downcase.include? ".epw"
-        epw_file = OpenStudio::EpwFile.new(weather_file)
-    else
-      runner.registerError("'#{weather_file}' does not exist or is not an .epw file.")
-      return false
-    end
 
-    OpenStudio::Model::WeatherFile.setWeatherFile(model, epw_file).get
-    runner.registerInfo("Setting weather file.")
+    # Parse the EPW manually because OpenStudio can't handle multiyear weather files (or DATA PERIODS with YEARS)
+    epw_file = OpenStudio::Weather::Epw.load(weather_file)
 
-    weather_name = "#{epw_file.city}_#{epw_file.stateProvinceRegion}_#{epw_file.country}"
-    weather_lat = epw_file.latitude
-    weather_lon = epw_file.longitude
-    weather_time = epw_file.timeZone
+    weather_file = model.getWeatherFile
+    weather_file.setCity(epw_file.city)
+    weather_file.setStateProvinceRegion(epw_file.state)
+    weather_file.setCountry(epw_file.country)
+    weather_file.setDataSource(epw_file.data_type)
+    weather_file.setWMONumber(epw_file.wmo.to_s)
+    weather_file.setLatitude(epw_file.lat)
+    weather_file.setLongitude(epw_file.lon)
+    weather_file.setTimeZone(epw_file.gmt)
+    weather_file.setElevation(epw_file.elevation)
+    weather_file.setString(10, "file:///#{epw_file.filename}")
+
+    weather_name = "#{epw_file.city}_#{epw_file.state}_#{epw_file.country}"
+    weather_lat = epw_file.lat
+    weather_lon = epw_file.lon
+    weather_time = epw_file.gmt
     weather_elev = epw_file.elevation
 
     # Add or update site data
@@ -96,61 +128,78 @@ class ChangeBuildingLocation < OpenStudio::Ruleset::ModelUserScript
     site.setLongitude(weather_lon)
     site.setTimeZone(weather_time)
     site.setElevation(weather_elev)
-    runner.registerInfo("Setting site data.")
 
-    # TODO: Add or update ground temperature data
+    # Set climate zone
+    climateZones = model.getClimateZones
+    climateZones.setClimateZone("ASHRAE",climate_zone)
 
     # Add SiteWaterMainsTemperature -- via parsing of STAT file.
-    stat_filename = "#{File.join(File.dirname(weather_file), File.basename(weather_file, '.*'))}.stat"
-    if File.exist? stat_filename
-      stat_file = EnergyPlus::StatFile.new(stat_filename)
-      water_temp = model.getSiteWaterMainsTemperature
-      water_temp.setAnnualAverageOutdoorAirTemperature(stat_file.mean_dry_bulb)
-      water_temp.setMaximumDifferenceInMonthlyAverageOutdoorAirTemperatures(stat_file.delta_dry_bulb)
-      runner.registerInfo("Setting water main temperatures.")
-      puts "mean dry bulb is #{stat_file.mean_dry_bulb}"
-      puts "delta dry bulb is #{stat_file.delta_dry_bulb}"
-      puts water_temp
-    else
-      runner.registerWarning("Can't access STAT file to set water main temperatures.")
+    stat_file = "#{File.join(File.dirname(epw_file.filename), File.basename(epw_file.filename, '.*'))}.stat"
+    unless File.exist? stat_file
+      runner.registerInfo "Could not find STAT file by filename, looking in the directory"
+      stat_files = Dir["#{File.dirname(epw_file.filename)}/*.stat"]
+      if stat_files.size > 1
+        runner.registerError("More than one stat file in the EPW directory")
+        return false
+      end
+      if stat_files.size == 0
+        runner.registerError("Cound not find the stat file in the EPW directory")
+        return false
+      end
+
+      runner.registerInfo "Using STAT file: #{stat_files.first}"
+      stat_file = stat_files.first
     end
+    unless stat_file
+      runner.registerError "Could not find stat file"
+      return false
+    end
+
+    stat_file = EnergyPlus::StatFile.new(stat_file)
+    water_temp = model.getSiteWaterMainsTemperature
+    water_temp.setAnnualAverageOutdoorAirTemperature(stat_file.mean_dry_bulb)
+    water_temp.setMaximumDifferenceInMonthlyAverageOutdoorAirTemperatures(stat_file.delta_dry_bulb)
+    runner.registerInfo("mean dry bulb is #{stat_file.mean_dry_bulb}")
+    runner.registerInfo("delta dry bulb is #{stat_file.delta_dry_bulb}")
 
     # Remove all the Design Day objects that are in the file
     model.getObjectsByType("OS:SizingPeriod:DesignDay".to_IddObjectType).each { |d| d.remove }
 
-    # Load in the ddy file based on convention that it is in the same directory and has the same basename as the weather
-    ddy_file = "#{File.join(File.dirname(weather_file), File.basename(weather_file, '.*'))}.ddy"
-    if File.exist? ddy_file
-      ddy_model = OpenStudio::EnergyPlus.loadAndTranslateIdf(ddy_file).get
-      ddy_model.getObjectsByType("OS:SizingPeriod:DesignDay".to_IddObjectType).each do |d|
-        # grab only the ones that matter
-        ddy_list = /(Htg 99.6. Condns DB)|(Clg .4. Condns WB=>MDB)|(Clg .4% Condns DB=>MWB)/
-        if d.name.get =~ ddy_list
-          puts "Adding object #{d.name}"
-          runner.registerInfo("Adding design day '#{d.name}'.")
-
-          # add the object to the existing model
-          #model << d.clone
-          model.addObject(d.clone)
-          #model.addObject(d.clone.get)
-          #model.addObjects(d.clone)
-          #d.clone(model)
-          #d.to_ModelObject.get.clone(model)
-        end
+    # find the ddy files
+    ddy_file = "#{File.join(File.dirname(epw_file.filename), File.basename(epw_file.filename, '.*'))}.ddy"
+    unless File.exist? ddy_file
+      ddy_files = Dir["#{File.dirname(epw_file.filename)}/*.ddy"]
+      if ddy_files.size > 1
+        runner.registerError("More than one stat file in the EPW directory")
+        return false
       end
-    else
-      runner.registerError("Could not find DDY file for #{ddy_file}.")
-      return false
+      if ddy_files.size == 0
+        runner.registerError("could not find the stat file in the EPW directory")
+        return false
+      end
+
+      ddy_file = ddy_files.first
     end
 
-    # report final condition
-    final_design_days = model.getDesignDays
-    if site.weatherFile.is_initialized
-      weather = site.weatherFile.get
-      runner.registerFinalCondition("The final weather file path was '#{weather.path.get}' and the model has #{final_design_days.size} design days.")
-    else
-      runner.registerFinalCondition("The final weather file has not been set and the model has #{final_design_days.size} design days.")
+    unless ddy_file
+      runner.registerError "Could not find DDY file for #{ddy_file}"
+      return error
     end
+
+    ddy_model = OpenStudio::EnergyPlus.loadAndTranslateIdf(ddy_file).get
+    ddy_model.getObjectsByType("OS:SizingPeriod:DesignDay".to_IddObjectType).each do |d|
+      # grab only the ones that matter
+      ddy_list = /(Htg 99.6. Condns DB)|(Clg .4. Condns WB=>MDB)|(Clg .4% Condns DB=>MWB)/
+      if d.name.get =~ ddy_list
+        runner.registerInfo("Adding object #{d.name}")
+
+        # add the object to the existing model
+        model.addObject(d.clone)
+      end
+    end
+
+    # todo - add final condition
+    runner.registerFinalCondition("The final weather file is #{model.getWeatherFile.city} and the model has #{model.getDesignDays.size} design day objects")
 
     true
   end

@@ -7,12 +7,18 @@
   "modeler_description": "Converts the OpenStudio model to vA3C JSON format and r",
   "arguments": [
     {
-      "name": "variable_name",
-      "display_name": "Variable Name",
-      "variable_type": "String",
-      "local_variable": "variable_name",
+      "name": "file_source",
+      "display_name": "Model Source",
+      "variable_type": "Choice",
+      "local_variable": "file_source",
       "units": null,
-      "default_value": "Surface Outside Face Temperature"
+      "default_value": "Last OSM",
+      "choices": [
+        "Last OSM",
+        "Last IDF",
+        "Timestep",
+        "Hourly"
+      ]
     },
     {
       "name": "reporting_frequency",
@@ -22,14 +28,40 @@
       "units": null,
       "default_value": "Hourly",
       "choices": [
+        "Last OSM",
+        "Last IDF",
         "Timestep",
         "Hourly"
       ]
+    },
+    {
+      "name": "variable1_name",
+      "display_name": "Variable 1 Name",
+      "variable_type": "String",
+      "local_variable": "variable1_name",
+      "units": null,
+      "default_value": "Surface Outside Face Temperature"
+    },
+    {
+      "name": "variable2_name",
+      "display_name": "Variable 2 Name",
+      "variable_type": "String",
+      "local_variable": "variable2_name",
+      "units": null,
+      "default_value": "Surface Inside Face Temperature"
+    },
+    {
+      "name": "variable3_name",
+      "display_name": "Variable 3 Name",
+      "variable_type": "String",
+      "local_variable": "variable3_name",
+      "units": null,
+      "default_value": "Zone Mean Radiant Temperature"
     }
   ],
   "name_xml": "view_data",
   "uid": "18cf0de7-48b8-48dc-ab68-0dd29f0b8bd0",
-  "version_id": "f6bf291d-abae-4b80-bcfd-759938a9bae7",
+  "version_id": "a1c7fcb1-f03b-4366-960a-3f34d10ff893",
   "tags": [
     "Reporting.QAQC"
   ]

@@ -169,6 +169,23 @@ A second functionality is to remove unused resources. This will include things l
       runner.registerInfo("No orphan interior partition surfaces were found")
     end
 
+    # find and remove orphan LifeCycleCost objects
+    lcc_objects = model.getObjectsByType("OS:LifeCycleCost".to_IddObjectType)
+    #make an array to store the names of the orphan LifeCycleCost objects
+    orphaned_lcc_objects = Array.new
+    #loop through all LifeCycleCost objects, checking for missing Item Name
+    lcc_objects.each do |lcc_object|
+      if lcc_object.isEmpty(4)
+        orphaned_lcc_objects << lcc_object.handle
+        puts "**(removing object)#{lcc_object.name} is not connected to any model object"
+        runner.registerInfo("Removing orphan lifecycle cost named #{lcc_object.name}")
+        lcc_object.remove
+      end
+    end
+    #summarize the results
+    if not orphaned_lcc_objects.length > 0
+      runner.registerInfo("no orphaned LifeCycleCost objects were found")
+    end
 
     # todo - remove surfaces that would trigger error in E+ (less than 3 vertices or too small.)
 

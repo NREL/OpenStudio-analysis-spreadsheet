@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.rhline {
+  stroke: blue;
+  stroke-width: 1;
+  fill: none;
+}
+.rhtext {
+  fill: blue;
+}
+.tdbline {
+  stroke: green;
+  stroke-width: 1;
+  fill: none;
+}
+.tdbtext {
+  fill: green;
+}
+.wline {
+  stroke: red;
+  stroke-width: 1;
+  fill: none;
+}
+.wtext {
+  fill: red;
+}
+.hline {
+  stroke: black;
+  stroke-width: 1;
+  fill: none;
+}
+.htext {
+  fill: black;
+}
+.twbline {
+  stroke: orange;
+  stroke-width: 1;
+  fill: none;
+}
+.twbtext {
+  fill: orange;
+}
+.tdpline {
+  stroke: dimgray;
+  stroke-width: 1;
+  fill: none;
+}
+.tdptext {
+  fill: dimgray;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.brush .extent {
+  stroke: #fff;
+  fill: grey;
+  fill-opacity: .750;
+  shape-rendering: crispEdges;
+}
+.brush .background {
+  fill: grey;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.7;
+}
+.grid path {
+  stroke-width: 0;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+</style>
+<title>HVAC Psychrometric Chart</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div id="psychart" class="container"></div>
+<script>
+
+// This variable will be an array of data series to graph
+var obj = <%= all_series %>;
+
+$(document).ready(function() {
+  var elev = 1828; // 6,000 ft
+
+  var pc = new PsychrometricChart(elev);
+
+  pc.drawChart("#psychart");
+
+  var i = 1;
+  $.each(obj, function(index, all_series) {
+    var series = obj[index];
+
+    pc.addPoints(series, i);
+
+    i += 1;
+    
+  });
+
+});
+
+function PsychrometricChart(elevation) {
+
+  // Specify the bounds of the chart // TODO make input params?
+  this.tdb_min = -23.3; // -10F
+  this.tdb_max = 48.9; // 120F
+  this.w_min = 0;
+  this.w_max = 0.035;
+  this.elev = elevation;
+  this.pb = pbFnElev(this.elev);
+
+  // Specify the overall size of the chart plus range selector, etc.
+  this.svgheight = 1000;
+  this.svgwidth = 1200;
+
+  // Setup the margins around the chart and date range selector
+  this.chartmargin = {
+    top: 50,
+    right: 100,
+    bottom: 70,
+    left: 100
+  };
+  this.selectmargin = {
+    top: 0,
+    right: 100,
+    bottom: 50,
+    left: 100
+  };
+
+  // Determine the size of the chart and the selector
+  // based on a fraction of the overall desired size
+  this.chartheightfrac = 0.7;
+  this.totalchartheight = this.svgheight * this.chartheightfrac;
+  this.totalselectheight = this.svgheight * (1 - this.chartheightfrac);
+  this.chartheight = this.totalchartheight - this.chartmargin.top - this.chartmargin.bottom;
+  this.selectheight = this.totalselectheight - this.selectmargin.bottom - this.selectmargin.top;
+  this.chartwidth = this.svgwidth - this.chartmargin.left - this.chartmargin.right;
+  this.selectwidth = this.svgwidth - this.selectmargin.left - this.selectmargin.right;
+  this.reflegendheight = this.chartheight / 4;
+  this.reflegendwidth = this.chartwidth / 4;
+
+  // Setup the spacing for the legends
+  this.legendSpacing = 25;
+
+  // Horizontal axis scale SI (C)
+  this.tdb_extent = [this.tdb_min, this.tdb_max];
+  this.tdb_scale = d3.scale.linear()
+    .range([0, this.chartwidth])
+    .domain(this.tdb_extent);
+
+  // Horizontal axis scale IP (F)
+  this.tdb_extent_F = [10, 120];
+  this.tdb_scale_F = d3.scale.linear()
+    .range([0, this.chartwidth])
+    .domain(this.tdb_extent_F);
+
+  // Vertical axis scale SI (C)
+  this.w_extent = [this.w_min, this.w_max];
+  this.w_scale = d3.scale.linear()
+    .range([this.chartheight, 0])
+    .domain(this.w_extent);
+
+  // Generates a line scaled to the x/y axes
+  this.addLine = d3.svg.line()
+    .x(function(d) {
+      return this.tdb_scale(d.tdb);
+    })
+    .y(function(d) {
+      return this.w_scale(d.w);
+    })
+    .interpolate("linear");
+
+  // Draw the chart, including the reference lines
+  // and the date range selector
+  this.drawChart = function(idOfElementToAppendTo) {
+
+    // Make an svg area for the chart, including the range selector
+    this.svg = d3.select(idOfElementToAppendTo)
+      .append("svg")
+      .attr("class", "svg-psych").attr("id", "svg-psych")
+      .attr("height", this.svgheight)
+      .attr("width", this.svgwidth);
+
+    // Make a group for the main chart body
+    this.chartbody = this.svg.append("g")
+      .attr("transform", "translate(" + this.chartmargin.left + "," + this.chartmargin.top + ")");
+
+    // Make a clipping mask to keep the lines inside the chart body
+    this.chartbody.append("defs")
+      .append("clipPath")
+      .attr("id", "clip")
+      .append("rect")
+      .attr("width", this.chartwidth)
+      .attr("height", this.chartheight);
+
+    // Draw the reference lines inside the chart body group
+    this.draw_w_lines();
+    this.draw_tdb_lines();
+    this.draw_h_lines();
+    this.draw_rh_lines();
+    this.draw_twb_lines();
+    this.draw_tdp_lines();
+    this.draw_rh_mask();
+
+    // Temporarily draw the points representing the chart bounds
+    var corners = {
+      name: "series 2",
+      color: "black",
+      data: [{
+        tdb: this.tdb_min,
+        w: this.w_min
+      }, {
+        tdb: this.tdb_max,
+        w: this.w_min
+      }, {
+        tdb: this.tdb_min,
+        w: this.w_max
+      }, {
+        tdb: this.tdb_max,
+        w: this.w_max
+      }]
+    };
+    //this.addPoints(corners);
+
+    // Create the horizontal dry bulb temperature (tdb) scale
+    var tdb_axis = d3.svg.axis().scale(this.tdb_scale);
+    var tdb_axis_F = d3.svg.axis().scale(this.tdb_scale_F);
+
+    // Create the vertical humidity ratio (w) scale
+    var w_axis = d3.svg.axis().scale(this.w_scale).orient("right");
+
+    // Create a group containing tdb axis
+    this.tdbaxis = this.chartbody.append("g")
+      .attr("class", "tdb axis")
+      .attr("id", "tdb-axis-C")
+      .attr("transform", "translate(0," + (this.chartheight) + ")")
+      .call(tdb_axis);
+
+    // Create a group containing the w axis
+    this.waxis = this.chartbody.append("g")
+      .attr("class", "w axis")
+      .attr("transform", "translate(" + (this.chartwidth) + ",0)")
+      .call(w_axis);
+
+    // Label the tdb axis
+    this.tdbaxis.append("text")
+      .text("Dry-bulb Temperature [°C]")
+      .attr("class", "tdb-unit").attr("id", "tdb-axis-C-label")
+      .attr("x", (this.chartwidth / 2)) // TODO dynamically account for width of axis label to center
+      .attr("y", 50);
+
+    // Label the w axis
+    this.waxis.append("text")
+      .text("Humidity Ratio [kg water/ kg dry air] ")
+      .attr("transform", "rotate (-90, 0, 0) translate(" + -1 * (this.chartheight / 2) + "," + (this.chartmargin.right / 2 + 10) + ")"); // TODO dynamically account for width of axis label to center
+
+    // Create a legend for the data series
+    this.primlegend = this.chartbody.append("g")
+      .attr("class", "w axis")
+      .attr("transform", "translate(" + (this.chartwidth / 3) + ",0)");
+
+    this.primlegend.append("text").text("Series Names")
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 1)
+      .attr("class", "noselect");     
+      
+    // Create a legend for the reference lines
+    this.legend = this.chartbody.append("g")
+      .attr("class", "w axis")
+      .attr("transform", "translate(" + (this.chartmargin.left / 2) + ",0)");
+
+    this.legend.append("text").text("Reference Lines (Click to Toggle On/Off)")
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 1)
+      .attr("class", "noselect");
+
+    this.legend.append("text").text("Dry Bulb Temperature")
+      .on("click", toggletdblines)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 2)
+      .attr("class", "tdbtext noselect");
+
+    this.legend.append("text").text("Relative Humidity")
+      .on("click", togglerhlines)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 3)
+      .attr("class", "rhtext noselect");
+
+    this.legend.append("text").text("Humidity Ratio")
+      .on("click", togglewlines)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 4)
+      .attr("class", "wtext noselect");
+
+    this.legend.append("text").text("Enthalpy")
+      .on("click", togglehlines)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 5)
+      .attr("class", "htext noselect");
+
+    this.legend.append("text").text("Wet Bulb Temperature")
+      .on("click", toggletwblines)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 6)
+      .attr("class", "twbtext noselect");
+
+    this.legend.append("text").text("Dew Point Temperature")
+      .on("click", toggletdplines)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * 7)
+      .attr("class", "tdptext noselect");
+
+    function togglerhlines() {
+      // Select the reference lines
+      var refLines = d3.selectAll("path.rhline");
+      // Determine if current line is visible
+      if (refLines.attr("active")) {
+        refLines.style("display", "none");
+        refLines.attr("active", null);
+      } else {
+        refLines.style("display", "inherit");
+        refLines.attr("active", true);
+      }
+    }
+
+    function toggletdblines() {
+      // Select the reference lines
+      var refLines = d3.selectAll("path.tdbline");
+      // Determine if current line is visible
+      if (refLines.attr("active")) {
+        refLines.style("display", "none");
+        refLines.attr("active", null);
+      } else {
+        refLines.style("display", "inherit");
+        refLines.attr("active", true);
+      }
+    }
+
+    function togglewlines() {
+      // Select the reference lines
+      var refLines = d3.selectAll("path.wline");
+      // Determine if current line is visible
+      if (refLines.attr("active")) {
+        refLines.style("display", "none");
+        refLines.attr("active", null);
+      } else {
+        refLines.style("display", "inherit");
+        refLines.attr("active", true);
+      }
+    }
+
+    function togglehlines() {
+      // Select the reference lines
+      var refLines = d3.selectAll("path.hline");
+      // Determine if current line is visible
+      if (refLines.attr("active")) {
+        refLines.style("display", "none");
+        refLines.attr("active", null);
+      } else {
+        refLines.style("display", "inherit");
+        refLines.attr("active", true);
+      }
+    }
+
+    function toggletwblines() {
+      // Select the reference lines
+      var refLines = d3.selectAll("path.twbline");
+      // Determine if current line is visible
+      if (refLines.attr("active")) {
+        refLines.style("display", "none");
+        refLines.attr("active", null);
+      } else {
+        refLines.style("display", "inherit");
+        refLines.attr("active", true);
+      }
+    }
+
+    function toggletdplines() {
+      // Select the reference lines
+      var refLines = d3.selectAll("path.tdpline");
+      // Determine if current line is visible
+      if (refLines.attr("active")) {
+        refLines.style("display", "none");
+        refLines.attr("active", null);
+      } else {
+        refLines.style("display", "inherit");
+        refLines.attr("active", true);
+      }
+    }
+
+    var startDate = Date.parse("2009/01/01 01:00:00"); // TODO pull start and end date from 1st data series
+    var endDate = Date.parse("2010/01/01 01:00:00");
+    var startHour = 0;
+    var endHour = 24;
+
+    // Create an x scale for the selector (date range)
+    this.sel_x_scale = d3.time.scale()
+      .domain([startDate, endDate])
+      .range([0, this.selectwidth]);
+
+    // Create a y scale for the selector (hour range)
+    this.sel_y_scale = d3.scale.linear()
+      .domain([startHour, endHour])
+      .range([0, this.selectheight]);
+
+    var brush = d3.svg.brush()
+      .x(this.sel_x_scale)
+      .y(this.sel_y_scale)
+      .on("brush", brushed);
+
+    // Make a group for the selector
+    this.selector = this.svg.append("g")
+      .attr("class", "x brush")
+      .attr("id", "selector")
+      .attr("transform", "translate(" + this.selectmargin.left + "," + (this.chartmargin.top + this.chartheight + this.chartmargin.bottom + this.selectmargin.top) + ")")
+      .call(brush);
+
+    this.selector.selectAll(".background")
+      //.attr("height", this.selectheight)
+      .style("visibility", "visible");
+
+    // Create the selector date x axis
+    var selector_axis = d3.svg.axis().scale(this.sel_x_scale)
+      .orient("bottom")
+      .tickFormat(d3.time.format("%b-%d"));
+
+    // Create a group containing selector date axis
+    this.selectoraxis = this.selector.append("g")
+      .attr("class", "selector axis")
+      .attr("id", "selector-x-axis")
+      .attr("transform", "translate(0," + (this.selectheight) + ")")
+      .call(selector_axis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("transform", function(d) {
+        return "rotate(-65)";
+      });
+
+    // Create the selector time x axis
+    selector_axis = d3.svg.axis().scale(this.sel_y_scale)
+      .orient("left");
+    //.tickFormat(d3.time.format("%H")); // TODO figure out how to format ticks as time
+
+    // Create a group containing selector time axis
+    this.selectoraxis = this.selector.append("g")
+      .attr("class", "selector axis")
+      .attr("id", "selector-y-axis")
+      .call(selector_axis)
+      .selectAll("text")
+      .style("text-anchor", "end");
+
+    function brushed() {
+      var s = brush.extent();
+      var ldb = s[0][0];
+      var udb = s[1][0];
+      var ltb = s[0][1];
+      var utb = s[1][1];
+      // TODO implement brush snapping on the Y (time) axis of selector
+      // like seen here: http://bl.ocks.org/mbostock/6232620
+      console.log("lower date bound =" + ldb + ", upper date bound = " + udb);
+      console.log("lower time bound =" + ltb + ", upper time bound = " + utb);
+
+      // Select all the circles
+      var circles = d3.selectAll("circle");
+
+      // Hide circles before and after selected range
+      var hiddenCircles = circles.filter(function(d) {
+        return (Date.parse(d.time) <= ldb || Date.parse(d.time) >= udb);
+      });
+      hiddenCircles.style("visibility", "hidden");
+
+      // Show circles in the selected range // TODO make this filter function easier to read!
+      var visibleCircles = circles.filter(function(d) {
+        return (new Date(d.time) > ldb && new Date(d.time) < udb && new Date(d.time).getHours() > ltb && new Date(d.time).getHours() < utb);
+      });
+      visibleCircles.style("visibility", "visible");
+    }
+
+
+
+  };
+
+  // Make a group for the month buttons
+  // this.selector = this.svg.append("g")
+  // .attr("class", "x brush")
+  // .attr("id", "selector")
+  // .attr("transform", "translate(" + this.selectmargin.left + "," + (this.chartmargin.top + this.chartheight + this.chartmargin.bottom + this.selectmargin.top) + ")")
+  // .call(brush);
+
+
+  this.draw_w_lines = function() {
+    // Draw the horizontal humidity ratio lines
+    // at .001 intervals
+    for (var wIter = this.w_min; wIter <= this.w_max; wIter += 0.001) {
+      var psychLine = [];
+      for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 0.5) {
+        psychLine.push({
+          tdb: tdbIter,
+          w: wIter
+        });
+      }
+      this.chartbody.append("path")
+        .attr("d", this.addLine(psychLine))
+        .attr("class", "wline")
+        .attr("active", true)
+        .attr("clip-path", "url(#clip)");
+    }
+  };
+
+  this.draw_tdb_lines = function() {
+    // Draw the vertical dry bulb temperature lines
+    // at 5F intervals (2.78 delta-C)
+    for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 2.78) {
+      var psychLine = [];
+      for (var wIter = this.w_min; wIter <= this.w_max; wIter += 0.001) {
+        psychLine.push({
+          tdb: tdbIter,
+          w: wIter
+        });
+      }
+      this.chartbody.append("path")
+        .attr("d", this.addLine(psychLine))
+        .attr("class", "tdbline")
+        .attr("active", true)
+        .attr("clip-path", "url(#clip)");
+    }
+  };
+
+  this.draw_rh_lines = function() {
+    // Calculate the rh lines
+    // at 10% rh intervals
+    for (var rhIter = 0; rhIter <= 1; rhIter += 0.1) {
+      var psychLine = [];
+      //console.log(rhIter + " %RH")
+      for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 0.5) {
+        var w = psyWFnTdbRhPb(tdbIter, rhIter, this.pb);
+        psychLine.push({
+          tdb: tdbIter,
+          w: w
+        });
+        //console.log("---tdb = " + tdbIter + ", rh = " + rhIter + " => w = " + w)
+      }
+      this.chartbody.append("path")
+        .attr("d", this.addLine(psychLine))
+        .attr("class", "rhline")
+        .attr("active", true)
+        .attr("clip-path", "url(#clip)");
+    }
+  };
+
+  this.draw_h_lines = function() {
+    // Calculate the enthalpy lines
+    // at 5Btu/lb dry air (11630 J/kg) intervals
+    for (var hIter = 15000; hIter <= 139560; hIter += 11630) { // TODO calc min/max h from limits
+      var psychLine = [];
+      //console.log("enthalpy (h) = " + hIter)
+      for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 2) {
+        var w = psyWFnTdbH(tdbIter, hIter);
+        psychLine.push({
+          tdb: tdbIter,
+          w: w
+        });
+        //console.log("---tdb = " + tdbIter + ", h = " + hIter + " => w = " + w)
+      }
+      this.chartbody.append("path")
+        .attr("d", this.addLine(psychLine))
+        .attr("class", "hline")
+        .attr("active", true)
+        .attr("clip-path", "url(#clip)");
+    }
+  };
+
+  this.draw_twb_lines = function() {
+    // Calculate the wetbulb lines
+    // at 5C intervals
+    for (var twbIter = 0; twbIter <= 100; twbIter += 1) { // TODO calc min/max h from limits
+      var psychLine = [];
+      console.log("twb (C) = " + twbIter);
+      for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 2) {
+        var w = psyWFnTdbTwbPb(tdbIter, twbIter, this.pb);
+        psychLine.push({
+          tdb: tdbIter,
+          w: w
+        });
+        console.log("---tdb = " + tdbIter + ", twb = " + twbIter + " => w = " + w);
+      }
+      this.chartbody.append("path")
+        .attr("d", this.addLine(psychLine))
+        .attr("class", "twbline")
+        .attr("active", true)
+        .attr("clip-path", "url(#clip)");
+    }
+  };
+
+  this.draw_tdp_lines = function() {
+    // Calculate the dew-point lines
+    // at 5C intervals
+    for (var tdpIter = -20; tdpIter <= 100; tdpIter += 1) { // TODO calc min/max h from limits
+      var psychLine = [];
+      console.log("tdp (C) = " + tdpIter);
+      for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 2) {
+        var w = psyWFnTdpPb(tdpIter, this.pb);
+        psychLine.push({
+          tdb: tdbIter,
+          w: w
+        });
+        console.log("---tdb = " + tdbIter + ", tdp = " + tdpIter + " => w = " + w);
+      }
+      this.chartbody.append("path")
+        .attr("d", this.addLine(psychLine))
+        .attr("class", "tdpline")
+        .attr("active", true)
+        .attr("clip-path", "url(#clip)");
+    }
+  };
+
+  this.draw_rh_mask = function() {
+    // Calculate the rh line at 100%
+    // and use to make a mask to cover the upper
+    // left region of the chart
+
+    var rhMax = 1;
+    var psychLine = [];
+    for (var tdbIter = this.tdb_min; tdbIter <= this.tdb_max; tdbIter += 0.5) {
+      var w = psyWFnTdbRhPb(tdbIter, rhMax, this.pb);
+      psychLine.push({
+        tdb: tdbIter,
+        w: w
+      });
+      //console.log("---tdb = " + tdbIter + ", rh = " + rhMax + " => w = " + w)
+    }
+    //var wMax = psyWFnTdbRhPb(tdbIter, , this.pb)
+    psychLine.push({
+      tdb: this.tdb_min,
+      w: this.w_max
+    });
+    this.chartbody.append("path") // TODO Change this to a clipping mask instead of a shape with fill
+      .attr("d", this.addLine(psychLine))
+      .attr("class", "rhmask")
+      .attr("clip-path", "url(#clip)")
+      .attr("stroke", "white") // TODO use CSS to style?
+      .attr("fill", "white"); // TODO use CSS to style?
+  };
+
+  this.addPoints = function(series, i) {
+
+    // Assign this chart to a variable
+    // so that we can use its info inside the d3 functions
+    pc = this;
+
+    // Add the series name to the legend
+    this.primlegend.append("text").text(series.name)
+      .style("cursor", " pointer")
+      .attr("y", this.legendSpacing * (i + 1))
+      .attr("class", "noselect")
+      .style("fill", series.color);
+    
+    // Add a group to hold the points in the series
+    var seriesGroup = this.chartbody.append("g")
+      .attr("class", "psych-series");
+
+    var points = seriesGroup.selectAll("circle")
+      .data(series.data)
+      .enter()
+      .append("circle");
+
+    var pointAttributes = points.attr("cx", function(d) {
+        return pc.tdb_scale(d.tdb);
+      }) //
+      .attr("cy", function(d) {
+        return pc.w_scale(d.w);
+      })
+      .attr("r", 4)
+      .style("fill", series.color)
+      .style("fill-opacity", 0.3)
+      .append("svg:title")
+      .text(function(d) {
+        return d.time + ": Tdb = " + d.tdb.toFixed(1) + "C, W = " + d.w.toFixed(3) + "lb H2O/lb dry air";
+      });
+
+  };
+
+}
+
+// This library of psychrometric calculations was adapted from the EnergyPlus
+// psychrometric calculations (C++) which can be found here:
+// https://github.com/NREL/EnergyPlus/blob/149f03ea2ce84582828f037faf768892ca674f09/src/EnergyPlus/Psychrometrics.hh
+// The calculation methodologies are unchanged, however, the mechanisms for caching
+// function results for later use, and the logging of error messages was removed.
+
+var KELVIN_CONV = 273.15;
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides barometric pressure as a function
+// of elevation.
+function pbFnElev(
+  elev // elevation (Meters)
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     Andrew Parker
+  //    DATE WRITTEN  Dec 9, 2014
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // A Quick Derivation relating altitude to air pressure
+  // 2004 Portland State Aerospace Society
+  // http://psas.pdx.edu/RocketScience/PressureAltitude_Derived.pdf
+  // Equation 9
+
+  var pb = 100 * Math.pow(((44331.514 - elev) / 11880.516), (1 / 0.1902632)); // Barometric Pressure {Pa}
+
+  return pb;
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the saturation pressure as a function of temperature.
+function psyPsatFnTemp(
+  tdb // dry-bulb temperature {C}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    NA
+  //    RE-ENGINEERED Nov 2003; Rahul Chillar
+
+  // METHODOLOGY EMPLOYED:
+  // Hyland & Wexler Formulation, range -100C to 200C
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 2005, Chap 6 (Psychrometrics), Eqn 5 & 6.
+  // Compared to Table 3 values (August 2007) with average error of 0.00%, max .30%,
+  // min -.39%. (Spreadsheet available on request - Lawrie).
+
+  // Return value
+  var pb; // result=> saturation pressure {Pascals}
+
+  // Convert temperature from Centigrade to Kelvin.
+  var tkel = tdb + KELVIN_CONV; // Dry-bulb in REAL(r64) for function passing
+
+  // If below -100C,set value of Pressure corresponding to Saturation Temperature of -100C.
+  if (tkel < 173.15) {
+    pb = 0.0017;
+
+    // If below freezing, calculate saturation pressure over ice.
+  } else if (tkel < KELVIN_CONV) { // tkel >= 173.15
+    var C1 = -5674.5359; // Coefficient for TKel < KelvinConvK
+    var C2 = 6.3925247; // Coefficient for TKel < KelvinConvK
+    var C3 = -0.9677843e-2; // Coefficient for TKel < KelvinConvK
+    var C4 = 0.62215701e-6; // Coefficient for TKel < KelvinConvK
+    var C5 = 0.20747825e-8; // Coefficient for TKel < KelvinConvK
+    var C6 = -0.9484024e-12; // Coefficient for TKel < KelvinConvK
+    var C7 = 4.1635019; // Coefficient for TKel < KelvinConvK
+    pb = Math.exp(C1 / tkel + C2 + tkel * (C3 + tkel * (C4 + tkel * (C5 + C6 * tkel))) + C7 * Math.log(tkel));
+
+    // If above freezing, calculate saturation pressure over liquid water.
+  } else if (tkel <= 473.15) { // tkel >= 173.15 // tkel >= KELVIN_CONV
+    var C8 = -5800.2206; // Coefficient for TKel >= KelvinConvK
+    var C9 = 1.3914993; // Coefficient for TKel >= KelvinConvK
+    var C10 = -0.048640239; // Coefficient for TKel >= KelvinConvK
+    var C11 = 0.41764768e-4; // Coefficient for TKel >= KelvinConvK
+    var C12 = -0.14452093e-7; // Coefficient for TKel >= KelvinConvK
+    var C13 = 6.5459673; // Coefficient for TKel >= KelvinConvK
+    pb = Math.exp(C8 / tkel + C9 + tkel * (C10 + tkel * (C11 + tkel * C12)) + C13 * Math.log(tkel));
+
+    // If above 200C, set value of Pressure corresponding to Saturation Temperature of 200C.
+  } else { // tkel >= 173.15 // tkel >= KELVIN_CONV // tkel > 473.15
+    pb = 1555000;
+  }
+
+  return pb;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides density of air as a function of barometric
+// pressure, dry bulb temperature, and humidity ratio.
+function psyRhoAirFnPbTdbW(
+  pb, // barometric pressure (Pascals)
+  tdb, // dry bulb temperature (Celsius)
+  w // humidity ratio (kgWater/kgDryAir)
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     G. S. Wright
+  //    DATE WRITTEN  June 2, 1994
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // ideal gas law
+  //  universal gas const for air 287 J/(kg K)
+  //  air/water molecular mass ratio 28.9645/18.01534
+
+  // REFERENCES:
+  // Wylan & Sontag, Fundamentals of Classical Thermodynamics.
+  // ASHRAE handbook 1985 Fundamentals, Ch. 6, eqn. (6),(26)
+
+  var rhoair = pb / (287 * (tdb + KELVIN_CONV) * (1 + 1.6077687 * Math.max(w, 1e-5)));
+
+  return rhoair;
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides latent energy of air as function of humidity ratio and temperature.
+function psyHfgAirFnWTdb(
+  w, // humidity ratio {kgWater/kgDryAir} !unused1208
+  tdb // input temperature {Celsius}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     Richard Liesen
+  //    DATE WRITTEN  May, 2001
+  //    MODIFIED    June, 2002
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // calculates hg and then hf and the difference is Hfg.
+
+  // REFERENCES:
+  // see ASHRAE Fundamentals psychrometric Chapter
+  // USAGE: hfg = psyHfgAirFnWTdb(w,tdb)
+
+  // Return value
+  // result => heat of vaporization for moist air {J/kg}
+
+  // This formulation currently does not use W since it returns results that are in J/kg and the
+  // amount of energy is on a per unit of moisture basis.
+
+  tdb = Math.max(tdb, 0); // input temperature {Celsius} - corrected for >= 0C
+
+  var hfg = (2500940 + 1858.95 * Temperature) - (4180 * Temperature); // enthalpy of the gas - enthalpy of the fluid
+
+  return hfg;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides latent energy of the moisture as a gas in the air as
+// function of humidity ratio and temperature.
+function psyHgAirFnWTdb(
+  w, // humidity ratio {kgWater/kgDryAir} !unused1208
+  tdb // input temperature {Celsius}
+) {
+
+  // FUNCTION INFORMATION:
+  //    AUTHOR     Richard Liesen
+  //    DATE WRITTEN  May, 2001
+  //    MODIFIED    June, 2002
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // see ASHRAE Fundamentals psychrometric Chapter
+  // USAGE: hg = psyHgAirFnWTdb(w,tdb)
+
+  // This formulation currently does not use W since it returns results that are in J/kg and the
+  // amount of energy is on a per unit of moisture basis.
+
+  var hg = 2500940 + 1858.95 * tdb; // enthalpy of the gas {units?}
+
+  return hg;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function calculates the enthalpy {J/kg} from dry-bulb temperature and humidity ratio.
+function psyHFnTdbW(
+  tdb, // dry-bulb temperature {C}
+  w // humidity ratio
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P100, EQN 32
+
+  // calculate enthalpy
+
+  var h = 1.00484e3 * tdb + Math.max(w, 1e-5) * (2.50094e6 + 1.85895e3 * tdb); // enthalpy {J/kg}
+
+  return h;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the heat capacity of air {J/kg-C} as function of humidity ratio.
+function psyCpAirFnWTdb(
+  w, // humidity ratio {kgWater/kgDryAir}
+  tdb // input temperature {Celsius}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     J. C. VanderZee
+  //    DATE WRITTEN  Feb. 1994
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // take numerical derivative of psyHFnTdbW function
+
+  // REFERENCES:
+  // see psyHFnTdbW ref. to ASHRAE Fundamentals
+  // USAGE: cpa = psyCpAirFnWTdb(w,tdb)
+
+  // compute heat capacity of air
+  w = Math.max(w, 1e-5);
+
+  var cpa = (psyHFnTdbW(tdb + 0.1, w) - psyHFnTdbW(tdb, w)) * 10; // result => heat capacity of air {J/kg-C}
+
+  return cpa;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides air temperature from enthalpy and humidity ratio.
+function psyTdbFnHW(
+  h, // enthalpy {J/kg}
+  w // humidity ratio
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     J. C. VanderZee
+  //    DATE WRITTEN  Feb. 1994
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P100, EQN 32
+  //  by inverting function psyHFnTdbW
+
+  w = Math.max(w, 1e-5); // humidity ratio
+
+  var tdb = (h - 2.50094e6 * w) / (1.00484e3 + 1.85895e3 * w); // result=> dry-bulb temperature {C}
+
+  return tdb;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the Vapor Density in air as a
+// function of dry bulb temperature, and Relative Humidity.
+function psyRhovFnTdbRhLBnd0C(
+  tdb, // dry-bulb temperature {C}
+  rh // relative humidity value (0-1)
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     R. J. Liesen
+  //    DATE WRITTEN  July 2000
+  //    MODIFIED    Name change to signify derivation and temperatures were used
+  //           with 0C as minimum; LKL January 2008
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // ideal gas law
+  // Universal gas const for water vapor 461.52 J/(kg K)
+
+  // REFERENCES:
+  // ASHRAE handbook 1993 Fundamentals,
+
+  var rhoVaporDensity = rh / (461.52 * (tdb + KELVIN_CONV)) * Math.exp(23.7093 - 4111 / ((tdb + KELVIN_CONV) - 35.45)); // Vapor density in air
+
+  return rhoVaporDensity;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the Vapor Density in air as a
+// function of dry bulb temperature, Humidity Ratio, and Barometric Pressure.
+function psyRhovFnTdbWPb(
+  tdb, // dry-bulb temperature {C}
+  w, // humidity ratio
+  pb // Barometric Pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     R. J. Liesen
+  //    DATE WRITTEN  July 2000
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // ideal gas law
+  // Universal gas const for water vapor 461.52 J/(kg K)
+
+  // REFERENCES:
+  // ASHRAE handbook 1993 Fundamentals,
+
+  w = Math.max(w, 1e-5); // humidity ratio
+
+  var rhoAir = w * pb / (461.52 * (tdb + KELVIN_CONV) * (w + 0.62198));
+
+  return rhoAir;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the Relative Humidity in air as a
+// function of dry bulb temperature and Vapor Density.
+function psyRhFnTdbRhovLBnd0C(
+  tdb, // dry-bulb temperature {C}
+  rhovapor // vapor density in air {kg/m3}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     R. J. Liesen
+  //    DATE WRITTEN  July 2000
+  //    MODIFIED    Name change to signify derivation and temperatures were used
+  //           with 0C as minimum; LKL January 2008
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // ideal gas law
+  // Universal gas const for water vapor 461.52 J/(kg K)
+
+  // REFERENCES:
+  // ASHRAE handbook 1993 Fundamentals,
+
+  var rh = rhovapor > 0 ? rhovapor * 461.52 * (tdb + KELVIN_CONV) * Math.exp(-23.7093 + 4111 / ((tdb + KELVIN_CONV) - 35.45)) : 0;
+
+  if ((rh < 0) || (rh > 1)) {
+    rh = Math.min(Math.max(rh, 0.01), 1);
+  }
+
+  return rh;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the specific volume from dry-bulb temperature,
+// humidity ratio and barometric pressure.
+function psyVFnTdbWPb(
+  tdb, // dry-bulb temperature {C}
+  w, // humidity ratio
+  pb // barometric pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P99, EQN 28
+
+  w = Math.max(w, 1e-5); // humidity ratio
+
+  var v = 1.59473e2 * (1 + 1.6078 * w) * (1.8 * tdb + 492) / pb; // specific volume {m3/kg}
+
+  return v;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the humidity ratio from dry-bulb temperature
+// and enthalpy.
+function psyWFnTdbH(
+  tdb, // dry-bulb temperature {C}
+  h // enthalpy {J/kg}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P100, EQN 32
+
+  var w = (h - 1.00484e3 * tdb) / (2.50094e6 + 1.85895e3 * tdb); // humidity ratio
+
+  // Validity test
+  if (w < 0) {
+    w = 1e-5;
+  }
+
+  return w;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the Vapor Density in air as a
+// function of dry bulb temperature, and Relative Humidity.
+function psyRhovFnTdbRh(
+  tdb, // dry-bulb temperature {C}
+  rh // relative humidity value (0-1)
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     R. J. Liesen
+  //    DATE WRITTEN  July 2000
+  //    MODIFIED    Change temperature range applied (determine pws); Aug 2007; LKL
+  //           Function is continuous over temperature spectrum
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // ideal gas law
+  // Universal gas const for water vapor 461.52 J/(kg K)
+
+  // REFERENCES:
+  // ASHRAE handbook 1993 Fundamentals, ??
+  // Used values from Table 2, HOF 2005, Chapter 6, to verify that these values match (at saturation)
+  // values from psyRhFnTdbWPb
+
+  var rhovapordensity = (psyPsatFnTemp(tdb) * rh) / (461.52 * (tdb + KELVIN_CONV)); // Vapor density in air
+
+  return rhovapordensity;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the Relative Humidity in air as a
+// function of dry bulb temperature and Vapor Density.	
+function psyRhFnTdbRhov(
+  tdb, // dry-bulb temperature {C}
+  rhovapor // vapor density in air {kg/m3}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     R. J. Liesen
+  //    DATE WRITTEN  July 2000
+  //    MODIFIED    Change temperature range applied (determine pws); Aug 2007; LKL
+  //           Function is continuous over temperature spectrum
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // ideal gas law
+  // Universal gas const for water vapor 461.52 J/(kg K)
+
+  // REFERENCES:
+  // ASHRAE handbook 1993 Fundamentals,
+  // Used values from Table 2, HOF 2005, Chapter 6, to verify that these values match (at saturation)
+  // values from psyRhFnTdbWPb
+
+  // FUNCTION PARAMETER DEFINITIONS:
+
+  var rh = rhovapor > 0 ? rhovapor * 461.52 * (tdb + KELVIN_CONV) / psyPsatFnTemp(tdb) : 0.0;
+
+  if ((rh < 0) || (rh > 1)) {
+    rh = Math.min(Math.max(rh, 0.01), 1);
+  }
+
+  return rh;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the relative humidity value (0-1) as a result of
+// dry-bulb temperature, humidity ratio and barometric pressure.
+function psyRhFnTdbWPb(
+  tdb, // dry-bulb temperature {C}
+  w, // humidity ratio
+  pb // barometric pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     Richard J. Liesen
+  //    DATE WRITTEN  Nov 1988
+  //    MODIFIED    Aug 1989, Michael J. Witte
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK FUNDAMENTALS 1985, P6.12, EQN 10,21,23
+
+  // FUNCTION PARAMETER DEFINITIONS:
+
+  var pws = psyPsatFnTemp(tdb); // Pressure -- saturated for pure water
+
+  // Find Degree Of Saturation
+  w = Math.max(w, 1e-5); // humidity ratio
+  var u = w / (0.62198 * pws / (pb - pws)); // Degree of Saturation
+
+  // Calculate The Relative Humidity
+  var rh = u / (1 - (1 - u) * (pws / pb));
+
+  // Validity test
+  if ((rh < 0) || (rh > 1)) {
+    rh = Math.min(Math.max(rh, 0.01), 1);
+  }
+
+  return rh;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the humidity ratio from dew-point temperature
+// and barometric pressure.
+function psyWFnTdpPb(
+  tdp, // dew-point temperature {C}
+  pb // barometric pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P99, EQN 22
+
+  // FUNCTION PARAMETER DEFINITIONS:
+
+  var pdew = psyPsatFnTemp(tdp); // saturation pressure at dew-point temperature {Pascals}
+
+  var w = pdew * 0.62198 / (pb - pdew); // humidity ratio
+
+  // Validity test
+  if (w < 0) {
+    w = 1e-5;
+  }
+
+  return w;
+
+}
+
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the humidity ratio from dry-bulb temperature,
+// relative humidty (value) and barometric pressure.
+function psyWFnTdbRhPb(
+  tdb, // dry-bulb temperature {C}
+  rh, // relative humidity value (0-1)
+  pb // barometric pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P99, EQN 22
+
+  // FUNCTION PARAMETER DEFINITIONS:
+
+  var pdew = rh * psyPsatFnTemp(tdb); // Pressure at dew-point temperature {Pascals}
+
+  // Numeric error check when the temperature and rh values cause Pdew to equal or exceed
+  // barometric pressure which is physically impossible. An approach limit of 1000 pascals
+  // was chosen to keep the numerics stable as the denominator approaches 0.
+  // THIS EQUATION IN SI UNIT IS FROM ASHRAE HANDBOOK OF FUNDAMENTALS PAGE 99 EQUATION 22
+  var w = pdew * 0.62198 / Math.max(pb - pdew, 1000); // humidity ratio
+
+
+  // Validity test
+  if (w < 0) {
+    w = 1e-5;
+  }
+
+  return w;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the humidity ratio from dry-bulb temperature,
+// wet-bulb temperature and barometric pressure.
+function psyWFnTdbTwbPb(
+  tdb, // dry-bulb temperature {C}
+  twb, // wet-bulb temperature {C}
+  pb // barometric pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P99, EQ 22,35
+
+  // FUNCTION PARAMETER DEFINITIONS:
+
+  // Validity check
+  if (twb > tdb) {
+    twb = tdb;
+  }
+
+  // Calculation
+  var pwet = psyPsatFnTemp(twb); // Pressure at wet-bulb temperature {Pascals}
+  var wwb = 0.62198 * pwet / (pb - pwet); // Humidity ratio at wet-bulb temperature
+  var w = ((2501 - 2.381 * twb) * wwb - (tdb - twb)) / (2501 + 1.805 * tdb - 4.186 * twb); // humidity ratio
+
+  // Validity check
+  if (w < 0) {
+    w = psyWFnTdbRhPb(tdb, 0.0001, pb);
+  }
+
+  return w;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides air enthalpy from temperature and relative humidity.
+function psyHFnTdbRhPb(
+  tdb, // dry-bulb temperature {C}
+  rh, // relative humidity value (0 - 1)
+  pb // barometric pressure (N/M**2) {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     J. C. VanderZee
+  //    DATE WRITTEN  Feb. 1994
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P100, EQN 32
+  //  by using functions psyWFnTdbRhPb and psyHFnTdbW
+
+  return psyHFnTdbW(tdb, Math.max(psyWFnTdbRhPb(tdb, rh, pb), 1e-5)); // enthalpy {J/kg}
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function calculates the dew-point temperature {C} from humidity ratio and pressure.
+function psyTdpFnWPb(
+  w, // humidity ratio
+  pb // barometric pressure (N/M**2) {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  // METHODOLOGY EMPLOYED:
+  // na
+
+  // REFERENCES:
+  // ASHRAE HANDBOOK OF FUNDAMENTALS, 1972, P.99, EQN 22
+
+  w = Math.max(w, 1e-5); // limited humidity ratio
+
+  var pdew = pb * W0 / (0.62198 + W0); // pressure at dew point temperature
+
+  var tsat = psyTsatFnPb(pdew);
+
+  return tsat;
+
+}
+
+// PURPOSE OF THIS FUNCTION:
+// This function calculates the dew-point temperature {C} from dry-bulb, wet-bulb and pressure.
+function psyTdpFnTdbTwbPb(
+  tdb, // dry-bulb temperature {C}
+  twb, // wet-bulb temperature {C}
+  pb // barometric pressure (N/M**2) {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED na
+
+  var w = Math.max(psyWFnTdbTwbPb(tdb, twb, pb), 1e-5);
+
+  var tdp = psyTdpFnWPb(w, pb);
+
+  if (tdp > twb) {
+    tdp = twb;
+  }
+
+  return tdp;
+
+}
+
+function psyTsatFnPb(
+  pb // barometric pressure {Pascals}
+) {
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    RE-ENGINEERED Dec 2003; Rahul Chillar
+
+  // PURPOSE OF THIS FUNCTION:
+  // This function provides the saturation temperature from barometric pressure.
+
+  // METHODOLOGY EMPLOYED:
+  // na
+
+  // REFERENCES:
+  // 1989 ASHRAE Handbook - Fundamentals
+  // Checked against 2005 HOF, Chap 6, Table 3 (using pressure in, temperature out) with
+  // good correlation from -60C to 160C
+
+  var itmax = 50; // Maximum number of iterations
+  var convTol = 0.0001;
+
+  // FUNCTION LOCAL VARIABLE DECLARATIONS:
+  var pbSave = -99999;
+  var tSatSave = -99999;
+  var tSat; // Water temperature guess
+  var iter; // Iteration counter
+
+  // Check press in range.
+  if (pb == pbSave) {
+    return tSatSave;
+  }
+  pbSave = pb;
+
+  // Uses an iterative process to determine the saturation temperature at a given
+  // pressure by correlating saturated water vapor as a function of temperature.
+
+  // Initial guess of boiling temperature
+  tSat = 100;
+  iter = 0;
+
+  // If above 1555000,set value of Temp corresponding to Saturation Pressure of 1555000 Pascal.
+  if (pb >= 1555000) {
+    tSat = 200;
+    // If below 0.0017,set value of Temp corresponding to Saturation Pressure of 0.0017 Pascal.
+  } else if (pb <= 0.0017) {
+    tSat = -100;
+
+    // Setting Value of PsyTsatFnPb= 0C, due to non-continuous function for Saturation Pressure at 0C.
+  } else if ((pb > 611) && (pb < 611.25)) {
+    tSat = 0;
+
+  } else {
+    // Iterate to find the saturation temperature
+    // of water given the total pressure
+
+    // Set iteration loop parameters
+    // make sure these are initialized
+    var pSat; // Pressure corresponding to temp. guess
+    var error; // Deviation of dependent variable in iteration
+    var x1; // Previous value of independent variable in ITERATE
+    var y1; // Previous value of dependent variable in ITERATE
+    var resultx; // resultx is the final Iteration result passed back to the calling routine
+    var icvg; // Iteration convergence flag
+    for (iter = 1; iter <= itmax; ++iter) {
+
+      // Calculate saturation pressure for estimated boiling temperature
+      pSat = psyPsatFnTemp(tSat);
+
+      // Compare with specified pressure and update estimate of temperature
+      error = pb - pSat;
+      //Iterate( ResultX, convTol, tSat, error, X1, Y1, iter, icvg );
+      var small = 1e-9;
+      var perturb = 0.1;
+      // Check for convergence by comparing change in X
+      if (iter != 1 && (Math.abs(tSat - x1) < convTol || error === 0)) {
+        resultx = tSat;
+        icvg = 1;
+      } else {
+        // Not converged
+        icvg = 0;
+        if (iter === 1) {
+          // New guess is specified by Perturb
+          if (Math.abs(tSat) > small) {
+            resultx = tSat * (1 + perturb);
+          } else {
+            resultx = perturb;
+          }
+        } else {
+          // New guess calculated from LINEAR FIT of most recent two points
+          var dy = error - y1;
+          if (Math.abs(dy) < small) dy = small;
+          // new estimation
+          resultx = (error * x1 - y1 * tSat) / dy;
+        }
+        x1 = tSat;
+        y1 = error;
+      }
+      tSat = resultx;
+      // If converged leave loop iteration
+      if (icvg == 1) break;
+
+      // Water temperature not converged, repeat calculations with new
+      // estimate of water temperature
+
+    }
+
+    // Saturation temperature has not converged after maximum specified
+    // iterations. Print error message, set return error flag, and RETURN
+
+  } // End If for the Pressure Range Checking
+
+  // Result is SatTemperature
+  return tSat; // result=> saturation temperature {C}
+}
+
+
+
+// PURPOSE OF THIS FUNCTION:
+// This function provides the wet-bulb temperature from dry-bulb temperature,
+// humidity ratio and barometric pressure.
+function psyTwbFnTdbWPb(
+  tdb, // dry-bulb temperature {C}
+  w, // humidity ratio
+  pb // barometric pressure {Pascals}
+) {
+
+  // FUNCTION INFORMATION:
+  //    AUTHOR     George Shih
+  //    DATE WRITTEN  May 1976
+  //    MODIFIED    na
+  //    RE-ENGINEERED Dec 2003; Rahul Chillar
+  //           2011; as time saving measure, cache some values.
+
+  // METHODOLOGY EMPLOYED:
+  // Uses an Iterative procedure to calculate WetBulbTemperature
+
+  // Return value
+  var twb; // result=> Temperature Wet-Bulb {C}
+
+  // Locals
+  // FUNCTION ARGUMENT DEFINITIONS:
+
+  // FUNCTION PARAMETER DEFINITIONS:
+  var itmax = 100; // Maximum No of Iterations
+  var convTol = 0.0001;
+
+  // FUNCTION LOCAL VARIABLE DECLARATIONS:
+  var tBoil = 100; // Guess for boiling temperature of water at given pressure
+  var wnew; // Humidity ratio calculated with wet bulb guess
+  var w; // Humidity ratio entered and corrected as necessary
+  var resultx; // resultx is the final Iteration result passed back to the calling routine
+  var error; // Deviation of dependent variable in iteration
+  var x1; // Independent variable in ITERATE
+  var y1; // Dependent variable in ITERATE
+  var wstar; // Humidity ratio as a function of Sat Press of Wet Bulb
+  var psatstar; // Saturation pressure at wet bulb temperature
+  var iter; // Iteration counter
+  var icvg; // Iteration convergence flag
+  var FlagError; // set when errors should be flagged
+
+  // CHECK tdb IN RANGE.
+  if (tdb <= -100) {
+    console.warning("psyTwbFnTdbWPb - Dry bulb temperature was below -100C, assuming -100C");
+    tdb = -100;
+  }
+
+  if (tdb >= 200) {
+    console.warning("psyTwbFnTdbWPb - Dry bulb temperature was above 200C, assuming 200C");
+    tdb = 200;
+  }
+
+  // CHECK w IN RANGE.
+  if (w < 0) {
+    w = 1e-5;
+  }
+
+  // Initial temperature guess at atmospheric pressure
+  tBoil = psyTsatFnPb(pb);
+
+  // Set initial guess of WetBulbTemp=Entering Dry Bulb Temperature
+  twb = tdb;
+
+  // Begin iteration loop
+  for (iter = 1; iter <= itmax; iter++) {
+
+    // Assigning a value to twb
+    if (twb >= (tBoil - 0.09)) {
+      twb = tBoil - 0.1;
+    }
+
+    // Determine the saturation pressure for wet bulb temperature
+    psatstar = psyPsatFnTemp(twb);
+
+    // Determine humidity ratio for given saturation pressure
+    wstar = 0.62198 * psatstar / (pb - psatstar);
+
+    // Calculate new humidity ratio and determine difference from known
+    // humidity ratio which is wStar calculated earlier
+    wnew = ((2501 - 2.381 * twb) * wstar - (tdb - twb)) / (2501 + 1.805 * tdb - 4.186 * twb);
+
+    // Check error, if not satisfied, calculate new guess and iterate
+    error = w - wnew;
+
+    // Using Iterative Procedure to Calculate WetBulb
+    //Iterate( resultx, convTol, twb, error, x1, y1, iter, icvg );
+    var small = 1e-9;
+    var perturb = 0.1;
+    // Check for convergence by comparing change in X
+    if (iter != 1 && (Math.abs(twb - x1) < convTol || error === 0)) {
+      resultx = twb;
+      icvg = 1;
+    } else {
+      // Not converged
+      icvg = 0;
+      if (iter === 1) {
+        // New guess is specified by Perturb
+        if (Math.abs(twb) > small) {
+          resultx = twb * (1 + perturb);
+        } else {
+          resultx = perturb;
+        }
+      } else {
+        // New guess calculated from LINEAR FIT of most recent two points
+        var dy = error - y1;
+        if (Math.abs(dy) < small) dy = small;
+        // new estimation
+        resultx = (error * x1 - y1 * twb) / dy;
+      }
+      x1 = twb;
+      y1 = error;
+    }
+    twb = resultx;
+
+    // If converged, leave iteration loop.
+    if (icvg === 1) break;
+
+    // Error Trap for the Discontinuous nature of PsyPsatFnTemp function (Sat Press Curve) at ~0 Deg C.
+    if ((psatstar > 611) && (psatstar < 611.25) && (Math.abs(error) <= 0.0001) && (iter > 4)) break;
+
+  } // End of Iteration Loop
+
+  // Wet bulb temperature has not converged after maximum specified
+  // iterations. Print error message, set return error flag, and RETURN
+  if (iter > itmax) {
+    //ShowRecurringWarningErrorAtEnd( "WetBulb not converged after max iterations(PsyTwbFnTdbWPb)", iPsyErrIndex( iPsyTwbFnTdbWPb3 ) );
+  }
+
+  // If (TempWetBulb)>(Dry Bulb Temp) , Setting (TempWetBulb)=(DryBulbTemp).
+  if (twb > tdb) {
+    twb = tdb;
+  }
+
+  return twb;
+}
+</script>
+
+</body>
+</html>

@@ -68,6 +68,7 @@ class ViewModel < OpenStudio::Ruleset::ModelUserScript
     
     # configure template with variable values
     os_data = JSON::generate(json, {:object_nl=>"", :array_nl=>"", :indent=>"", :space=>"", :space_before=>""})
+    title = "View Model"
     renderer = ERB.new(html_in)
     html_out = renderer.result(binding)
 

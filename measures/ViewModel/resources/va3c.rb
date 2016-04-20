@@ -44,6 +44,15 @@ class VA3C
       self.thermalZoneMaterialName = 'Undefined' if self.thermalZoneMaterialName.nil?
       self.spaceTypeMaterialName = 'Undefined' if self.spaceTypeMaterialName.nil?
       self.buildingStoryMaterialName = 'Undefined' if self.buildingStoryMaterialName.nil?
+      
+      self.constructionName = '' if self.constructionName.nil?
+      self.spaceName = '' if self.spaceName.nil?
+      self.thermalZoneName = '' if self.thermalZoneName.nil?
+      self.spaceTypeName = '' if self.spaceTypeName.nil?
+      self.buildingStoryName = '' if self.buildingStoryName.nil?
+      self.outsideBoundaryCondition = '' if self.outsideBoundaryCondition.nil?
+      self.outsideBoundaryConditionObjectName = '' if self.outsideBoundaryConditionObjectName.nil?
+      
     end
   end
   Vertex = Struct.new(:x, :y, :z)
@@ -80,6 +89,7 @@ class VA3C
     model.getBuildingStorys.each do |buildingStory|
       buildingStoryNames << buildingStory.name.to_s
     end
+    buildingStoryNames.sort! {|x,y| x.upcase <=> y.upcase} # case insensitive sort
     
     # build up the json hash
     result = Hash.new
@@ -103,7 +113,7 @@ class VA3C
   end
   
   # create a material
-  def self.make_material(name, color, opacity, side)
+  def self.make_material(name, color, opacity, side, shininess=50)
 
     transparent = false
     if opacity < 1
@@ -116,8 +126,8 @@ class VA3C
                 :color => "#{color}".hex,
                 :ambient => "#{color}".hex,
                 :emissive => '0x000000'.hex,
-                :specular => '0x808080'.hex,
-                :shininess => 50,
+                :specular => "#{color}".hex,
+                :shininess => shininess,
                 :opacity => opacity,
                 :transparent => transparent,
                 :wireframe => false,
@@ -129,10 +139,12 @@ class VA3C
   def self.build_materials(model)
     materials = []
     
-    materials << make_material('Undefined', format_color(255, 255, 255), 1, THREE::DoubleSide) 
+    #materials << make_material('Undefined', format_color(255, 255, 255), 1, THREE::DoubleSide) 
+    materials << {:uuid => "#{format_uuid(OpenStudio::createUUID)}", :name => 'Undefined', :type => 'MeshBasicMaterial', :color => '0xffffff'.hex, :side => THREE::DoubleSide}
     
     materials << make_material('NormalMaterial', format_color(255, 255, 255), 1, THREE::DoubleSide) 
-    materials << make_material('NormalMaterial_Ext', format_color(255, 255, 255), 1, THREE::FrontSide) 
+    #materials << make_material('NormalMaterial_Ext', format_color(255, 255, 255), 1, THREE::FrontSide) 
+    materials << {:uuid => "#{format_uuid(OpenStudio::createUUID)}", :name => 'NormalMaterial_Ext', :type => 'MeshBasicMaterial', :color => '0xffffff'.hex, :side => THREE::FrontSide}
     materials << make_material('NormalMaterial_Int', format_color(255, 0, 0), 1, THREE::BackSide) 
     
     # materials from 'openstudio\openstudiocore\ruby\openstudio\sketchup_plugin\lib\interfaces\MaterialsInterface.rb'
@@ -354,12 +366,24 @@ class VA3C
       surface_user_data.outsideBoundaryConditionObjectName = adjacent_surface.get.name.to_s
       surface_user_data.outsideBoundaryConditionObjectHandle = format_uuid(adjacent_surface.get.handle)
       
-      # todo: do this for real
-      surface_user_data.coincidentWithOutsideObject = true
+      other_site_transformation = OpenStudio::Transformation.new
+      other_group = adjacent_surface.get.planarSurfaceGroup
+      if not other_group.empty?
+        other_site_transformation = other_group.get.siteTransformation
+      end
+      
+      other_vertices = other_site_transformation*adjacent_surface.get.vertices
+      if OpenStudio::circularEqual(site_transformation*surface.vertices, OpenStudio::reverse(other_vertices))
+        #puts "adjacent surfaces are coincident"
+        surface_user_data.coincidentWithOutsideObject = true # controls display only, not energy model
+      else
+        #puts "adjacent surfaces are not coincident"
+        surface_user_data.coincidentWithOutsideObject = false # controls display only, not energy model
+      end
+            
     end
     surface_user_data.sunExposure = surface.sunExposure
     surface_user_data.windExposure = surface.windExposure
-    
     
     if surface.outsideBoundaryCondition == 'Outdoors'
       if surface.sunExposure == 'SunExposed' && surface.windExposure == 'WindExposed'
@@ -464,7 +488,8 @@ class VA3C
       sub_surface_user_data.coincidentWithOutsideObject = false
       
       sub_surface_user_data.surfaceType = sub_surface.subSurfaceType
-      if /Window/.match(sub_surface.subSurfaceType) || /Glass/.match(sub_surface.subSurfaceType) 
+      if /Window/.match(sub_surface.subSurfaceType) || /Glass/.match(sub_surface.subSurfaceType) || 
+         /Skylight/.match(sub_surface.subSurfaceType) || /TubularDaylight/.match(sub_surface.subSurfaceType) 
         sub_surface_user_data.surfaceTypeMaterialName = 'Window'
       else
         sub_surface_user_data.surfaceTypeMaterialName = 'Door'
@@ -475,9 +500,21 @@ class VA3C
       if adjacent_sub_surface.is_initialized
         sub_surface_user_data.outsideBoundaryConditionObjectName = adjacent_sub_surface.get.name.to_s
         sub_surface_user_data.outsideBoundaryConditionObjectHandle = format_uuid(adjacent_sub_surface.get.handle)
+      
+        other_site_transformation = OpenStudio::Transformation.new
+        other_group = adjacent_sub_surface.get.planarSurfaceGroup
+        if not other_group.empty?
+          other_site_transformation = other_group.get.siteTransformation
+        end
         
-        # todo: do this for real
-        sub_surface_user_data.coincidentWithOutsideObject = true
+        other_vertices = other_site_transformation*adjacent_sub_surface.get.vertices
+        if OpenStudio::circularEqual(site_transformation*sub_surface.vertices, OpenStudio::reverse(other_vertices))
+          #puts "adjacent sub surfaces are coincident"
+          surface_user_data.coincidentWithOutsideObject = true # controls display only, not energy model
+        else
+          #puts "adjacent sub surfaces are not coincident"
+          surface_user_data.coincidentWithOutsideObject = false # controls display only, not energy model
+        end
       
         sub_surface_user_data.boundaryMaterialName = 'Boundary_Surface'
       else
@@ -617,9 +654,9 @@ class VA3C
     surface_user_data.surfaceType = shading_surface_type + 'Shading'
     surface_user_data.surfaceTypeMaterialName = shading_surface_type + 'Shading'
   
-    surface_user_data.outsideBoundaryCondition = nil
-    surface_user_data.outsideBoundaryConditionObjectName = nil
-    surface_user_data.outsideBoundaryConditionObjectHandle = nil
+    #surface_user_data.outsideBoundaryCondition = nil
+    #surface_user_data.outsideBoundaryConditionObjectName = nil
+    #surface_user_data.outsideBoundaryConditionObjectHandle = nil
     surface_user_data.sunExposure = 'SunExposed'
     surface_user_data.windExposure = 'WindExposed'
     
@@ -629,17 +666,19 @@ class VA3C
       surface_user_data.constructionMaterialName = 'Construction_' + construction.get.name.to_s
     end
     
-    surface_user_data.spaceName = space_name
-    surface_user_data.thermalZoneName = thermal_zone_name
+    if space_name
+      surface_user_data.spaceName = space_name
+    end
     if thermal_zone_name
+      surface_user_data.thermalZoneName = thermal_zone_name
       surface_user_data.thermalZoneMaterialName = 'ThermalZone_' + thermal_zone_name
     end
-    surface_user_data.spaceTypeName = space_type_name
     if space_type_name
+      surface_user_data.spaceTypeName = space_type_name
       surface_user_data.spaceTypeMaterialName = 'SpaceType_' + space_type_name
     end
-    surface_user_data.buildingStoryName = building_story_name
     if building_story_name
+      surface_user_data.buildingStoryName = building_story_name
       surface_user_data.buildingStoryMaterialName = 'BuildingStory_' + building_story_name
     end
 
@@ -657,6 +696,146 @@ class VA3C
     return [geometries, user_datas]
   end  
 
+  # turn an interior partition surface into geometries
+  def self.make_interior_partition_geometries(surface)
+    geometries = []
+    user_datas = []
+
+    # get the transformation to site coordinates
+    site_transformation = OpenStudio::Transformation.new
+    planar_surface_group = surface.planarSurfaceGroup
+    if not planar_surface_group.empty?
+      site_transformation = planar_surface_group.get.siteTransformation
+    end
+    interior_partition_surface_group = surface.interiorPartitionSurfaceGroup
+
+    space_name = nil
+    thermal_zone_name = nil
+    space_type_name = nil
+    building_story_name = nil
+    if not interior_partition_surface_group.empty?
+
+      space = interior_partition_surface_group.get.space
+      if space.is_initialized
+        space = space.get
+        space_name = space.name.to_s
+        
+        thermal_zone = space.thermalZone
+        if thermal_zone.is_initialized
+          thermal_zone_name = thermal_zone.get.name.to_s
+        end
+        
+        space_type = space.spaceType
+        if space_type.is_initialized
+          space_type_name = space_type.get.name.to_s
+        end
+        
+        building_story = space.buildingStory
+        if building_story.is_initialized
+          building_story_name = building_story.get.name.to_s
+        end
+      end
+    end
+    
+    # get the vertices
+    surface_vertices = surface.vertices
+    t = OpenStudio::Transformation::alignFace(surface_vertices)
+    r = t.rotationMatrix
+    tInv = t.inverse
+    surface_vertices = OpenStudio::reverse(tInv*surface_vertices)
+
+    # triangulate surface
+    triangles = OpenStudio::computeTriangulation(surface_vertices, OpenStudio::Point3dVectorVector.new)
+    if triangles.empty?
+      puts "Failed to triangulate interior partition surface #{surface.name}"
+      return geometries
+    end
+
+    all_vertices = []
+    face_indices = []
+    triangles.each do |vertices|
+      vertices = site_transformation*t*vertices
+      #normal = site_transformation.rotationMatrix*r*z
+
+      # https://github.com/mrdoob/three.js/wiki/JSON-Model-format-3
+      # 0 indicates triangle
+      # 16 indicates triangle with normals
+      face_indices << 0
+      vertices.reverse_each do |vertex|
+        face_indices << get_vertex_index(vertex, all_vertices)  
+      end
+
+      # convert to 1 based indices
+      #face_indices.each_index {|i| face_indices[i] = face_indices[i] + 1}
+    end
+
+    data = GeometryData.new
+    data.vertices = flatten_vertices(all_vertices)
+    data.normals = [] 
+    data.uvs = []
+    data.faces = face_indices
+    data.scale = 1
+    data.visible = true
+    data.castShadow = true
+    data.receiveShadow = false
+    data.doubleSided = true
+    
+    geometry = Geometry.new
+    geometry.uuid = format_uuid(surface.handle)
+    geometry.type = 'Geometry'
+    geometry.data = data.to_h
+    geometries << geometry.to_h
+    
+    surface_user_data = UserData.new
+    surface_user_data.handle = format_uuid(surface.handle)
+    surface_user_data.name = surface.name.to_s
+    surface_user_data.coincidentWithOutsideObject = false
+    
+    surface_user_data.surfaceType = 'InteriorPartitionSurface'
+    surface_user_data.surfaceTypeMaterialName = 'InteriorPartitionSurface'
+  
+    #surface_user_data.outsideBoundaryCondition = nil
+    #surface_user_data.outsideBoundaryConditionObjectName = nil
+    #surface_user_data.outsideBoundaryConditionObjectHandle = nil
+    surface_user_data.sunExposure = 'NoSun'
+    surface_user_data.windExposure = 'NoWind'
+    
+    construction = surface.construction
+    if construction.is_initialized
+      surface_user_data.constructionName = construction.get.name.to_s
+      surface_user_data.constructionMaterialName = 'Construction_' + construction.get.name.to_s
+    end
+    
+    if space_name
+      surface_user_data.spaceName = space_name
+    end
+    if thermal_zone_name
+      surface_user_data.thermalZoneName = thermal_zone_name
+      surface_user_data.thermalZoneMaterialName = 'ThermalZone_' + thermal_zone_name
+    end
+    if space_type_name
+      surface_user_data.spaceTypeName = space_type_name
+      surface_user_data.spaceTypeMaterialName = 'SpaceType_' + space_type_name
+    end
+    if building_story_name
+      surface_user_data.buildingStoryName = building_story_name
+      surface_user_data.buildingStoryMaterialName = 'BuildingStory_' + building_story_name
+    end
+
+    #vertices = []
+    #surface.vertices.each do |v| 
+    #  vertex = Vertex.new
+    #  vertex.x = v.x
+    #  vertex.y = v.y
+    #  vertex.z = v.z
+    #  vertices << vertex.to_h
+    #end
+    #surface_user_data.vertices = vertices
+    user_datas << surface_user_data.to_h
+
+    return [geometries, user_datas]
+  end  
+  
   def self.identity_matrix
     return [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
   end
@@ -707,9 +886,7 @@ class VA3C
         scene_child.name = user_data[:name]
         scene_child.type = "Mesh"
         scene_child.geometry = geometry[:uuid]
-        
 
-        
         if i == 0
           # first geometry is base surface
           scene_child.material = material[:uuid]
@@ -746,6 +923,31 @@ class VA3C
           material = space_shading_material
         end
         
+        all_geometries << geometry
+
+        scene_child = SceneChild.new
+        scene_child.uuid = format_uuid(OpenStudio::createUUID) 
+        scene_child.name = user_data[:name]
+        scene_child.type = 'Mesh'
+        scene_child.geometry = geometry[:uuid]
+        scene_child.material = material[:uuid]
+        scene_child.matrix = identity_matrix
+        scene_child.userData = user_data
+        object[:children] << scene_child.to_h
+      end
+      
+    end    
+    
+    # loop over all interior partition surfaces
+    model.getInteriorPartitionSurfaces.each do |surface|
+  
+      geometries, user_datas = make_interior_partition_geometries(surface)
+      geometries.each_index do |i| 
+        geometry = geometries[i]
+        user_data = user_datas[i]
+        
+        material = interior_partition_surface_material
+
         all_geometries << geometry
 
         scene_child = SceneChild.new
