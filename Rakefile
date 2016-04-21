@@ -342,63 +342,12 @@ def save_analysis(analysis)
   analysis.save_zip "analysis/#{analysis.name}.zip"
 end
 
+
+# ********************* Start List of Tasks ***********************************
 desc 'create the analysis files with more output'
 task :setup do
   analysis, _run_options = get_project
   save_analysis(analysis)
-end
-
-task :create_cluster do
-  _analysis, run_options = get_project
-  puts run_options
-  create_cluster(run_options)
-end
-
-
-desc 'setup problem, start cluster, and run analysis (will submit another job if cluster is already running)'
-task :run do
-  analysis, run_options = get_project
-  save_analysis(analysis)
-  create_cluster(run_options)
-  run_analysis(analysis, 'aws')
-end
-
-desc 'run vagrant'
-task :run_vagrant do
-  analysis, run_options = get_project
-  save_analysis(analysis)
-  run_analysis(analysis, 'vagrant')
-end
-
-desc 'run local (localhost:8080)'
-task :run_local do
-  analysis, run_options = get_project
-  save_analysis(analysis)
-  run_analysis(analysis, 'local')
-end
-
-desc 'run local development (localhost:3000)'
-task :run_local_development do
-  task(:run_custom).invoke('local_development')
-end
-
-desc 'run NREL24a'
-task :run_NREL24a do
-  analysis, run_options = get_project
-  save_analysis(analysis)
-  run_analysis(analysis, 'nrel24a')
-end
-
-desc 'run NREL24b'
-task :run_NREL24b do
-  analysis, run_options = get_project
-  save_analysis(analysis)
-  run_analysis(analysis, 'nrel24b')
-end
-
-desc "run NREL24"
-task :run_NREL24 do |t, args|
-  task(:run_custom).invoke('nrel24')
 end
 
 desc "run analysis with customized options"
@@ -570,8 +519,37 @@ task :update_measures do
   end
 end
 
-desc 'test csv'
-task :from_csv do
+desc 'setup problem, start cluster, and run analysis (will submit another job if cluster is already running)'
+task :run do
+  task(:run_custom).invoke('aws')
+end
 
+desc 'run vagrant'
+task :run_vagrant do
+  task(:run_custom).invoke('vagrant')
+end
 
+desc 'run local (localhost:8080)'
+task :run_local do
+  task(:run_custom).invoke('local')
+end
+
+desc 'run local development (localhost:3000)'
+task :run_local_development do
+  task(:run_custom).invoke('local_development')
+end
+
+desc 'run NREL24a'
+task :run_NREL24a do
+  task(:run_custom).invoke('nrel24a')
+end
+
+desc 'run NREL24b'
+task :run_NREL24b do
+  task(:run_custom).invoke('nrel24b')
+end
+
+desc "run NREL24"
+task :run_NREL24 do |t, args|
+  task(:run_custom).invoke('nrel24')
 end
