@@ -3,6 +3,7 @@ Analysis Example Change Log
 
 Version Unreleased 
 ------------------
+* Remove allow_multiple_jobs and server_as_worker options. These are by defaulted to true now.
 * Support for CSV import to specify individual data point
 
 Version 0.4.2

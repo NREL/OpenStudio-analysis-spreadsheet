@@ -73,9 +73,6 @@ def get_project(excel_file = '')
       run_options['user_id'] = csv.settings[:user_id]
       run_options['proxy_port'] = csv.settings[:proxy_port]
 
-      # TODO: remove allow and use_server_as_worker from server
-      # run_options['allow_multiple_jobs'] = true
-      # run_options['use_server_as_worker'] = true
       run_options['run_data_point_filename'] = 'run_openstudio_workflow_monthly.rb'
       run_options['simulate_data_point_filename'] = 'simulate_data_point.rb'
       run_options['analysis_type'] = csv.settings[:analysis_type]
@@ -211,8 +208,6 @@ def run_analysis(analysis, run_options, target = 'aws', download = false)
   analysis_id = api.run(formulation_file,
                         analysis_zip_file,
                         run_options['analysis_type'],
-                        run_options['allow_multiple_jobs'],
-                        true,
                         false, # push to dencity
                         run_options['run_data_point_filename'])
 
