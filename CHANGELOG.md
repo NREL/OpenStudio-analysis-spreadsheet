@@ -1,6 +1,10 @@
 Analysis Example Change Log
 ==================================
 
+Version Unreleased 
+------------------
+* Support for CSV import to specify individual data point
+
 Version 0.4.2
 -------------
 * Clean up spreadsheet instructions and typos
