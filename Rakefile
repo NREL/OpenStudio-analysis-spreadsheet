@@ -205,11 +205,19 @@ def run_analysis(analysis, run_options, target = 'aws', download = false)
   options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
 
-  analysis_id = api.run(formulation_file,
-                        analysis_zip_file,
-                        run_options['analysis_type'],
-                        false, # push to dencity
-                        run_options['run_data_point_filename'])
+  if run_options[:batch_run_method]
+    analysis_id = api.run(formulation_file,
+                          analysis_zip_file,
+                          run_options['analysis_type'],
+                          { batch_run_method: run_options[:batch_run_method]}
+    )
+  else
+    analysis_id = api.run(formulation_file,
+                          analysis_zip_file,
+                          run_options['analysis_type']
+    )
+  end
+
 
   # Report some useful info
   puts
@@ -346,9 +354,10 @@ task :setup do
 end
 
 desc "run analysis with customized options"
-task :run_custom, [:target, :project, :download] do |t, args|
-  args.with_defaults(target: 'aws', project: nil, download: false)
+task :run_custom, [:target, :project, :download, :batch_run_method] do |t, args|
+  args.with_defaults(target: 'aws', project: nil, download: false, batch_run_method: 'batch_run' )
   analysis, run_options = get_project(args[:project])
+  run_options[:batch_run_method] = args[:batch_run_method]
   save_analysis(analysis)
   if args[:target].downcase == 'aws'
     create_cluster(run_options)
@@ -531,7 +540,7 @@ end
 
 desc 'run local development (localhost:3000)'
 task :run_local_development do
-  task(:run_custom).invoke('local_development')
+  task(:run_custom).invoke('local_development', nil, nil, 'batch_run_local' )
 end
 
 desc 'run NREL24a'
