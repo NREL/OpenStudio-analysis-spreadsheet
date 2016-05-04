@@ -540,6 +540,7 @@ end
 
 desc 'run local development (localhost:3000)'
 task :run_local_development do
+  # task(:run_custom).invoke('local_development', nil, nil, 'batch_run' )
   task(:run_custom).invoke('local_development', nil, nil, 'batch_run_local' )
 end
 
