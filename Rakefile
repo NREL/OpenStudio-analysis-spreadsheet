@@ -353,6 +353,13 @@ task :setup do
   save_analysis(analysis)
 end
 
+desc 'Create a cluster, but do not submit a job'
+task :create_cluster do
+  analysis, run_options = get_project
+  save_analysis(analysis)
+  create_cluster(run_options)
+end
+
 desc "run analysis with customized options"
 task :run_custom, [:target, :project, :download, :batch_run_method] do |t, args|
   args.with_defaults(target: 'aws', project: nil, download: false, batch_run_method: 'batch_run' )
