@@ -170,6 +170,8 @@ def configure_target_server(cluster_name, target)
         json = JSON.parse(File.read("#{cluster_name}.json"), symbolize_names: true)
         server_dns = "http://#{json[:server][:dns]}"
       end
+    else
+      server_dns = target
   end
 end
 
@@ -543,12 +545,6 @@ end
 desc 'run local (localhost:8080)'
 task :run_local do
   task(:run_custom).invoke('local')
-end
-
-desc 'run local development (localhost:3000)'
-task :run_local_development do
-  # task(:run_custom).invoke('local_development', nil, nil, 'batch_run' )
-  task(:run_custom).invoke('local_development', nil, nil, 'batch_run_local' )
 end
 
 desc 'run NREL24a'
