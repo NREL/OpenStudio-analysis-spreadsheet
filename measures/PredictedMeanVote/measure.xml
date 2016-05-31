@@ -1,2 +1,110 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Predicted Mean Vote</name><uid>d26890c0-1281-4384-a676-5d38fa2e9e75</uid><version_id>628c904d-0f25-4e84-8c27-909629aa5b92</version_id><description>This measure adds the necessary data to people objects to support Predicted Mean Vote output data. It also adds the variable request.</description><modeler_description>This will not add new people objects, but rather just extend the ones that are in the model. It will rely on schedules already made in the model instead of creating new schedules.</modeler_description><tags><tag>Reporting.QAQC</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>PMV_Exercise6PlusNewSchedules.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>8F5B7AFF</checksum></file><file><filename>PMV_Exercise6PlusNewSchedulesIdealAir.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>0530ABC7</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>D7223F2B</checksum></file><file><filename>PredictedMeanVote_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>DAC1F753</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>predicted_mean_vote</name>
+  <uid>d26890c0-1281-4384-a676-5d38fa2e9e75</uid>
+  <version_id>e8ff6db9-99ba-43f4-9063-e1c1397c8d3b</version_id>
+  <version_modified>20160531T204353Z</version_modified>
+  <xml_checksum>0CA4D54C</xml_checksum>
+  <class_name>PredictedMeanVote</class_name>
+  <display_name>Predicted Mean Vote</display_name>
+  <description>This measure adds the necessary data to people objects to support Predicted Mean Vote output data. It also adds the variable request.</description>
+  <modeler_description>This will not add new people objects, but rather just extend the ones that are in the model. It will rely on schedules already made in the model instead of creating new schedules.</modeler_description>
+  <arguments>
+    <argument>
+      <name>comfortWarnings</name>
+      <display_name>Enable ASHRAE 55 Comfort Warnings?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>meanRadiantCalcType</name>
+      <display_name>Mean Radiant Temperature Calculation Type.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>ZoneAveraged</default_value>
+      <choices>
+        <choice>
+          <value>ZoneAveraged</value>
+          <display_name>ZoneAveraged</display_name>
+        </choice>
+        <choice>
+          <value>SurfaceWeighted</value>
+          <display_name>SurfaceWeighted</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>workEfficiencySchedule</name>
+      <display_name>Choose a Work Efficiency Schedule.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>clothingSchedule</name>
+      <display_name>Choose a Clothing Insulation Schedule.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>airVelocitySchedule</name>
+      <display_name>Choose an Air Velocity Schedule.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.0</identifier>
+        <min_compatible>1.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>A025A717</checksum>
+    </file>
+  </files>
+</measure>

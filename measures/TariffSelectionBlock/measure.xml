@@ -1,2 +1,252 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>tariff_selection_block</name><uid>42e9f831-f39a-4709-a79b-41db49c94f8c</uid><version_id>0004b483-a08b-4e29-a016-65590abc25cb</version_id><description>This measure sets block rates for electricity, and flat rates for gas, water, district heating, and district cooling.</description><modeler_description>Will add the necessary UtilityCost objects into the model.</modeler_description><tags><tag>Economics.Life Cycle Cost Analysis</tag></tags><attributes><attribute><name>Intended Software Tool</name><value>OpenStudio Application</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Parametric Analysis Tool</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Analysis Spreadsheet</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Sensitivity Analysis</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>New Construction EE</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Retrofit EE</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>OpenStudio Application</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Parametric Analysis Tool</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Analysis Spreadsheet</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Sensitivity Analysis</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>New Construction EE</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Retrofit EE</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>OpenStudio Application</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Parametric Analysis Tool</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Analysis Spreadsheet</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Sensitivity Analysis</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>New Construction EE</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Retrofit EE</value><datatype>string</datatype></attribute><attribute><name>Measure Type</name><value>EnergyPlusMeasure</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>OpenStudio Application</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Parametric Analysis Tool</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Analysis Spreadsheet</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Sensitivity Analysis</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>New Construction EE</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Retrofit EE</value><datatype>string</datatype></attribute></attributes><files><file><filename>os_lib_helper_methods.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>9336238A</checksum></file><file><filename>EnvelopeAndLoadTestModel_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>E11F67BD</checksum></file><file><filename>tariff_selection_block_test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>7D51B95A</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.6.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>56304605</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>tariff_selection_block</name>
+  <uid>42e9f831-f39a-4709-a79b-41db49c94f8c</uid>
+  <version_id>70aa26f8-626a-45fd-940e-3fc143a56afc</version_id>
+  <version_modified>20160531T204356Z</version_modified>
+  <xml_checksum>92578CE8</xml_checksum>
+  <class_name>TariffSelectionBlock</class_name>
+  <display_name> Tariff Selection-Block</display_name>
+  <description>This measure sets block rates for electricity, and flat rates for gas, water, district heating, and district cooling.</description>
+  <modeler_description>Will add the necessary UtilityCost objects into the model.</modeler_description>
+  <arguments>
+    <argument>
+      <name>demand_window_length</name>
+      <display_name>Demand Window Length.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>QuarterHour</default_value>
+      <choices>
+        <choice>
+          <value>QuarterHour</value>
+          <display_name>QuarterHour</display_name>
+        </choice>
+        <choice>
+          <value>HalfHour</value>
+          <display_name>HalfHour</display_name>
+        </choice>
+        <choice>
+          <value>FullHour</value>
+          <display_name>FullHour</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>elec_block_values</name>
+      <display_name>Electric Block Rate Ceiling Values</display_name>
+      <description>Comma separated block ceilings.</description>
+      <type>String</type>
+      <units>kWh</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>200,1000</default_value>
+    </argument>
+    <argument>
+      <name>elec_block_costs</name>
+      <display_name>Electric Block Rate Costs</display_name>
+      <description>Comma separated block rate values. Should have same number of rates as blocks.</description>
+      <type>String</type>
+      <units>$/kWh</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.07,0.06</default_value>
+    </argument>
+    <argument>
+      <name>elec_remaining_rate</name>
+      <display_name>Electric Rate for Remaining</display_name>
+      <description>Rate for Electricity above last block level.</description>
+      <type>Double</type>
+      <units>$/kWh</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.05</default_value>
+    </argument>
+    <argument>
+      <name>gas_rate</name>
+      <display_name>Gas Rate</display_name>
+      <type>Double</type>
+      <units>$/therm</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.5</default_value>
+    </argument>
+    <argument>
+      <name>water_rate</name>
+      <display_name>Water Rate</display_name>
+      <type>Double</type>
+      <units>$/gal</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.005</default_value>
+    </argument>
+    <argument>
+      <name>disthtg_rate</name>
+      <display_name>District Heating Rate</display_name>
+      <type>Double</type>
+      <units>$/kBtu</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.2</default_value>
+    </argument>
+    <argument>
+      <name>distclg_rate</name>
+      <display_name>District Cooling Rate</display_name>
+      <type>Double</type>
+      <units>$/kBtu</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.2</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Economics.Life Cycle Cost Analysis</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Sensitivity Analysis</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Retrofit EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Sensitivity Analysis</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Retrofit EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Sensitivity Analysis</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Retrofit EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Sensitivity Analysis</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Retrofit EE</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>os_lib_helper_methods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9336238A</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.6.0</identifier>
+        <min_compatible>1.6.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>56304605</checksum>
+    </file>
+  </files>
+</measure>

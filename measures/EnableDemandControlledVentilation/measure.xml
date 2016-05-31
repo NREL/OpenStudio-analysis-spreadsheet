@@ -1,6 +1,145 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Enable Demand Controlled Ventilation</name><uid>3ff4b412-8689-4b11-a588-935c621dc97d</uid><version_id>4e2e12e8-8ae0-4328-89d6-739bd0450968</version_id><description>The facility currently does not have a demand controlled ventilation system or CO2 sensors in the air delivery system. Outside air is introduced and conditioned at a fixed rate based on the maximum design. Since the building occupancy fluctuates and is often less than the maximum design occupancy, it is being over-ventilated and consuming more energy than necessary. The building CO2 level is closely related to the occupancy. The typical outside CO2 level is relatively low concentration, around 400 to 500 ppm, and is used to dilute the higher indoor CO2 levels.&#13;&#13;Demand controlled ventilation could be implemented by deploying CO2 sensors located in each AHU return air duct and in densely occupied spaces, such as conference rooms. Implementation of this ECM will require:&#13;&#13;-Rebalance the open/closed outside air dampers to a lower minimum ventilation rate.&#13;&#13;-Program demand ventilation controls into each AHU, controlling modulating dampers in mixed air AHUs and VFDs in outside air units. Ventilation will be generally controlled from return air sensors, but will be increased as needed based on densely occupied space sensors.&#13;&#13;-Commission the project.</description><modeler_description>This measure enable demand controlled ventilation on all or a single air loops in the building. The measure will loop through the selected systems, go into the &quot;control&quot; tab for the air system and toggles the &quot;Demand Controlled Ventilation&quot; button to the &quot;on&quot; position.&#13;&#13;&#13;&#13;&#13;&#13;
-&#13;&#13;&#13;&#13;&#13;&#13;
-If the HVAC system does not have an air side system, or if the &quot;Demand Controlled Ventilation&quot; button is already in the &quot;on&quot; position, then the runner sends an info message to the user that the model was not changed.&#13;&#13;&#13;&#13;&#13;&#13;
-&#13;&#13;&#13;&#13;&#13;&#13;
-The cost arguments are user arguments that start with a default of $0.</modeler_description><tags><tag>HVAC.Ventilation</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>EnableDemandControlledVentilation_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>AD5006AF</checksum></file><file><filename>0320_ModelWithHVAC_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>E8E3B807</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.5</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>B760F214</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>enable_demand_controlled_ventilation</name>
+  <uid>3ff4b412-8689-4b11-a588-935c621dc97d</uid>
+  <version_id>c89aad71-9650-45a9-a0d7-35ea5d99f6f5</version_id>
+  <version_modified>20160531T204351Z</version_modified>
+  <xml_checksum>ECE70A70</xml_checksum>
+  <class_name>EnableDemandControlledVentilation</class_name>
+  <display_name>EnableDemandControlledVentilation</display_name>
+  <description>The facility currently does not have a demand controlled ventilation system or CO2 sensors in the air delivery system. Outside air is introduced and conditioned at a fixed rate based on the maximum design. Since the building occupancy fluctuates and is often less than the maximum design occupancy, it is being over-ventilated and consuming more energy than necessary. The building CO2 level is closely related to the occupancy. The typical outside CO2 level is relatively low concentration, around 400 to 500 ppm, and is used to dilute the higher indoor CO2 levels.&#xd;&#xd;Demand controlled ventilation could be implemented by deploying CO2 sensors located in each AHU return air duct and in densely occupied spaces, such as conference rooms. Implementation of this ECM will require:&#xd;&#xd;-Rebalance the open/closed outside air dampers to a lower minimum ventilation rate.&#xd;&#xd;-Program demand ventilation controls into each AHU, controlling modulating dampers in mixed air AHUs and VFDs in outside air units. Ventilation will be generally controlled from return air sensors, but will be increased as needed based on densely occupied space sensors.&#xd;&#xd;-Commission the project.</description>
+  <modeler_description>This measure enable demand controlled ventilation on all or a single air loops in the building. The measure will loop through the selected systems, go into the "control" tab for the air system and toggles the "Demand Controlled Ventilation" button to the "on" position.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+If the HVAC system does not have an air side system, or if the "Demand Controlled Ventilation" button is already in the "on" position, then the runner sends an info message to the user that the model was not changed.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+The cost arguments are user arguments that start with a default of $0.</modeler_description>
+  <arguments>
+    <argument>
+      <name>object</name>
+      <display_name>Choose an Air Loop to Alter.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>{ce06d730-13a6-4e99-8a04-2b4dd375ff61}</default_value>
+      <choices>
+        <choice>
+          <value>{ce06d730-13a6-4e99-8a04-2b4dd375ff61}</value>
+          <display_name>*All Air Loops*</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>remove_costs</name>
+      <display_name>Remove Baseline Costs From Effected AirLoopHVACOutdoorAirSystems?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs per Air Loop to Enable Demand Controlled Ventilation ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost</name>
+      <display_name>Demolition Costs per Air Loop to Enable Demand Controlled Ventilation ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Construction?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost</name>
+      <display_name>O &amp; M Costs per Air Loop for Demand Controlled Ventilation  ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Ventilation</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.5</identifier>
+        <min_compatible>1.0.5</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>912CB855</checksum>
+    </file>
+  </files>
+</measure>

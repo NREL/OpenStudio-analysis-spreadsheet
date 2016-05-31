@@ -1,2 +1,210 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Reduce Night Time Lighting Loads</name><uid>93461778-59a1-49ca-8bbb-f4b939e4a9d8</uid><version_id>4480385a-f29e-46ce-925c-80811339a7eb</version_id><description>Many buildings have lights that run unnecessarily at night.  Turning these lights off at night can provide energy savings without impacting the day-to-day operation of the building occupants.  Implementing this change may require coordination with after-hours cleaning and maintenance crews.</description><modeler_description>This measure sets fractional lighting schedule values for all instances of the selected lights definition for a specific time of day and for specific days of the week.  The new schedules values are based on the user arguments. Summer and winter design day profiles will not be altered.  This measure clones the existing schedules, modifies them, then assigns these modified schedules to the lights instances. Costs can be added per each lights object.  Quantity for costing is calculated by looking at number of instances and their quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.</modeler_description><tags><tag>Electric Lighting.Electric Lighting Controls</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>EnvelopeAndLoadTestModel_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>2F43FAAF</checksum></file><file><filename>ReduceNightTimeLightingLoads_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>CAADB5CB</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>5C7FDDA8</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>reduce_night_time_lighting_loads</name>
+  <uid>93461778-59a1-49ca-8bbb-f4b939e4a9d8</uid>
+  <version_id>063883ac-ac32-4bff-9353-2f61f2d65c94</version_id>
+  <version_modified>20160531T204353Z</version_modified>
+  <xml_checksum>0AC58119</xml_checksum>
+  <class_name>ReduceNightTimeLightingLoads</class_name>
+  <display_name>Reduce Night Time Lighting Loads</display_name>
+  <description>Many buildings have lights that run unnecessarily at night.  Turning these lights off at night can provide energy savings without impacting the day-to-day operation of the building occupants.  Implementing this change may require coordination with after-hours cleaning and maintenance crews.</description>
+  <modeler_description>This measure sets fractional lighting schedule values for all instances of the selected lights definition for a specific time of day and for specific days of the week.  The new schedules values are based on the user arguments. Summer and winter design day profiles will not be altered.  This measure clones the existing schedules, modifies them, then assigns these modified schedules to the lights instances. Costs can be added per each lights object.  Quantity for costing is calculated by looking at number of instances and their quantity. Currently cost is added to the building, but in a future version cost will be associated with the instances.</modeler_description>
+  <arguments>
+    <argument>
+      <name>lights_def</name>
+      <display_name>Pick a Lighting Definition From the Model (schedules using this will be altered)</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>fraction_value</name>
+      <display_name>Fractional Value for Night Time Load</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.1</default_value>
+    </argument>
+    <argument>
+      <name>apply_weekday</name>
+      <display_name>Apply Schedule Changes to Weekday and Default Profiles?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>start_weekday</name>
+      <display_name>Weekday/Default Time to Start Night Time Fraction(24hr, use decimal for sub hour).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>18</default_value>
+    </argument>
+    <argument>
+      <name>end_weekday</name>
+      <display_name>Weekday/Default Time to End Night Time Fraction(24hr, use decimal for sub hour).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>9</default_value>
+    </argument>
+    <argument>
+      <name>apply_saturday</name>
+      <display_name>Apply schedule changes to Saturdays?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>start_saturday</name>
+      <display_name>Saturday Time to Start Night Time Fraction(24hr, use decimal for sub hour).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>18</default_value>
+    </argument>
+    <argument>
+      <name>end_saturday</name>
+      <display_name>Saturday Time to End Night Time Fraction(24hr, use decimal for sub hour).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>9</default_value>
+    </argument>
+    <argument>
+      <name>apply_sunday</name>
+      <display_name>Apply Schedule Changes to Sundays?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>start_sunday</name>
+      <display_name>Sunday Time to Start Night Time Fraction(24hr, use decimal for sub hour).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>18</default_value>
+    </argument>
+    <argument>
+      <name>end_sunday</name>
+      <display_name>Sunday Time to End Night Time Fraction(24hr, use decimal for sub hour).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>9</default_value>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs per Light Quantity ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost</name>
+      <display_name>O &amp; M Costs Costs per Light Quantity ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Electric Lighting.Electric Lighting Controls</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.0</identifier>
+        <min_compatible>1.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>5C7FDDA8</checksum>
+    </file>
+  </files>
+</measure>

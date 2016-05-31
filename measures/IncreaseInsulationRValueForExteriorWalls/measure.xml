@@ -1,5 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Set R-value of Insulation for Exterior Walls to a Specific Value</name><uid>34877255-5bb5-45db-ad45-abd9ca80960c</uid><version_id>a149805d-59c2-4cc0-a3c7-1eac0f2809e2</version_id><description>Set the R-Value of exterior wall insulation to a specified value.  Higher R-Values provide better insulation, lowering heat loss and heat gain through the exterior walls. Costs for a construction can be adjusted</description><modeler_description>Set the R-Value (ft^2*h*R/Btu) of the insulation material layer in air exposed exterior walls to a specified value. Find constructions used for exterior walls, make copies of these and assign them to the appropriate construction sets or surfaces. Identify which layer of the construction is the insulation layer. Layer to change could be Material, No Mass Material, or Air Gap Material. If the Insulation layer is &quot;Material? the thickness will be changed to attain the desired R-Value. If the insulation layer is &quot;No Mass Material? or &quot;Air Gap Material? the Thermal Resistance can be directly entered. If the construction doesn't appear to have an insulation layer it will not be altered. Surfaces with &quot;Adiabatic&quot; boundary conditions are not specifically assumed to be interior or exterior. As a result constructions used on &quot;Adiabatic&quot; surfaces will not be altered. Constructions for surfaces with a &quot;Ground&quot; boundary condition will also not be altered. Constructions with an insulation layer that already exceeds the requested R-Value will also not be altered.&#13;&#13;&#13;&#13;&#13;&#13;
-&#13;&#13;&#13;&#13;&#13;&#13;
-The resulting construction will retain the cost data from the source construction, however material and installation cost can be increased which will affect replacement cost if it happens during the analysis period. Additionally a one-time cost can be added to reflect any retrofit costs that occur at some point prior to replacement.&#13;&#13;&#13;&#13;&#13;&#13;
-  </modeler_description><tags><tag>Envelope.Opaque</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>EnvelopeAndLoadTestModel_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>938A1BB0</checksum></file><file><filename>ReverseTranslatedModel.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>20C95654</checksum></file><file><filename>IncreaseInsulationRValueForExteriorWalls_01_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>3BECDE86</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>0.11.5</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>F00F6729</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>increase_insulation_r_value_for_exterior_walls</name>
+  <uid>34877255-5bb5-45db-ad45-abd9ca80960c</uid>
+  <version_id>443ca27e-6fd3-4990-a2d2-75bc3c3fae00</version_id>
+  <version_modified>20160531T204352Z</version_modified>
+  <xml_checksum>0F858D9E</xml_checksum>
+  <class_name>IncreaseInsulationRValueForExteriorWalls</class_name>
+  <display_name>Increase R-value of Insulation for Exterior Walls to a Specific Value</display_name>
+  <description>Set the R-Value of exterior wall insulation to a specified value.  Higher R-Values provide better insulation, lowering heat loss and heat gain through the exterior walls. Costs for a construction can be adjusted</description>
+  <modeler_description>Set the R-Value (ft^2*h*R/Btu) of the insulation material layer in air exposed exterior walls to a specified value. Find constructions used for exterior walls, make copies of these and assign them to the appropriate construction sets or surfaces. Identify which layer of the construction is the insulation layer. Layer to change could be Material, No Mass Material, or Air Gap Material. If the Insulation layer is "Material? the thickness will be changed to attain the desired R-Value. If the insulation layer is "No Mass Material? or "Air Gap Material? the Thermal Resistance can be directly entered. If the construction doesn't appear to have an insulation layer it will not be altered. Surfaces with "Adiabatic" boundary conditions are not specifically assumed to be interior or exterior. As a result constructions used on "Adiabatic" surfaces will not be altered. Constructions for surfaces with a "Ground" boundary condition will also not be altered. Constructions with an insulation layer that already exceeds the requested R-Value will also not be altered.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+The resulting construction will retain the cost data from the source construction, however material and installation cost can be increased which will affect replacement cost if it happens during the analysis period. Additionally a one-time cost can be added to reflect any retrofit costs that occur at some point prior to replacement.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+  </modeler_description>
+  <arguments>
+    <argument>
+      <name>r_value</name>
+      <display_name>Insulation R-value (ft^2*h*R/Btu).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>13</default_value>
+    </argument>
+    <argument>
+      <name>allow_reduction</name>
+      <display_name>Allow both increase and decrease in R-value to reach requested target?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost_increase_ip</name>
+      <display_name>Increase in Material and Installation Costs for Construction per Area Used ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>one_time_retrofit_cost_ip</name>
+      <display_name>One Time Retrofit Cost to Add Insulation to Construction ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_retrofit_cost</name>
+      <display_name>Year to Incur One Time Retrofit Cost (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+        <min_compatible>0.11.5</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>4B748F4D</checksum>
+    </file>
+  </files>
+</measure>

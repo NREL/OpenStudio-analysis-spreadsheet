@@ -1,2 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Set Water Heater Efficiency, Heat Loss, and Peak Water Flow Rate</name><uid>22dc85fc-2502-4b87-acf8-2da15467c1c5</uid><version_id>7f471bd7-0885-4054-b80c-1380ab13b8bc</version_id><description>High efficiency service water heaters with proper insulation save building energy consumption. This measure allows users to modify the water heater fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. Note that the peak flow rate change only applies to standalone water heaters, not for those water heaters with plant loop connections.</description><modeler_description>The measure loops through the baseline model and identifies the OS:WaterHeater:Mixed objects. Users can choose one or all water heaters from the drop down list to change the fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. If these parameters are changed through the measure, their initial and final values are reported during simulation.  </modeler_description><tags><tag>Service Water Heating.Water Heating</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>EB5D1B10</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>57DEC381</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>set_water_heater_efficiency_heat_lossand_peak_water_flow_rate</name>
+  <uid>22dc85fc-2502-4b87-acf8-2da15467c1c5</uid>
+  <version_id>0addcd28-4549-4e29-83eb-5c917c58dcf1</version_id>
+  <version_modified>20160531T204355Z</version_modified>
+  <xml_checksum>A949FB5D</xml_checksum>
+  <class_name>SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate</class_name>
+  <display_name>SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate</display_name>
+  <description>High efficiency service water heaters with proper insulation save building energy consumption. This measure allows users to modify the water heater fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. Note that the peak flow rate change only applies to standalone water heaters, not for those water heaters with plant loop connections.</description>
+  <modeler_description>The measure loops through the baseline model and identifies the OS:WaterHeater:Mixed objects. Users can choose one or all water heaters from the drop down list to change the fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. If these parameters are changed through the measure, their initial and final values are reported during simulation.  </modeler_description>
+  <arguments>
+    <argument>
+      <name>info_widget</name>
+      <display_name>!!!!*** This Measure is not Applicable to loaded Model. Read the description and choose an appropriate baseline model. ***!!!!</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Service Water Heating.Water Heating</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.0</identifier>
+        <min_compatible>1.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>D422A582</checksum>
+    </file>
+  </files>
+</measure>
