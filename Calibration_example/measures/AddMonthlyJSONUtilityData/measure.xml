@@ -2,7 +2,8 @@
   <schema_version>3.0</schema_version>
   <name>add_monthly_json_utility_data</name>
   <uid>6da969e0-4256-49bf-9607-26504cc3d423</uid>
-  <version_id>e608bc78-1f2e-4090-a612-2531786f6cd6</version_id>
+  <version_id>a3b96a97-aa43-46c3-a186-b5504a1d5698</version_id>
+  <version_modified>20160620T200625Z</version_modified>
   <xml_checksum>9064277D</xml_checksum>
   <class_name>AddMonthlyJSONUtilityData</class_name>
   <display_name>AddMonthlyJSONUtilityData</display_name>
@@ -117,17 +118,6 @@
   </attributes>
   <files>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.3.3</identifier>
-        <min_compatible>1.3.3</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>752F1263</checksum>
-    </file>
-    <file>
       <filename>electric.json</filename>
       <filetype>json</filetype>
       <usage_type>test</usage_type>
@@ -144,6 +134,17 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>E0E8A1D9</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.3</identifier>
+        <min_compatible>1.3.3</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>895FF86A</checksum>
     </file>
   </files>
 </measure>

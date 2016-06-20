@@ -2,7 +2,8 @@
   <schema_version>3.0</schema_version>
   <name>change_run_period</name>
   <uid>6da969e0-4256-49bf-9607-26504cc3d321</uid>
-  <version_id>37f4935c-ecff-43a5-97ab-e43a877b62e6</version_id>
+  <version_id>06114ddd-5a42-431b-9230-299bef262eb9</version_id>
+  <version_modified>20160620T200625Z</version_modified>
   <xml_checksum>9064277D</xml_checksum>
   <class_name>ChangeRunPeriod</class_name>
   <display_name>ChangeRunPeriod</display_name>
@@ -50,7 +51,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>0A867905</checksum>
+      <checksum>6EE5410B</checksum>
     </file>
   </files>
 </measure>

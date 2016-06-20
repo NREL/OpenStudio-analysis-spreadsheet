@@ -1,2 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>aedg_k_12_kitchen</name><uid>92750b5a-7eb5-4df5-899f-c186c7c27935</uid><version_id>33ec1d3a-9ef8-4dae-bbe4-de60398e24f8</version_id><description>Measure replaces existing kitchen equipment (if any) with refrigeration, electric, and gas equipment that align with the kitchen equipment recommendations of the 50% K-12 AEDG.</description><modeler_description>Measure is only applied to kitchen space types.  All refrigeration systems are deleted (assumption is that refrigeration would only be needed for kitchen operations).  Gas and electric equipment are removed from kitchen spaces.  The largest kitchen space is selected as the representative space, to which AEDG recommended kitchen loads are applied.  Loads are applied on a per student basis.  The user can input number of students manually.  Otherwise, the measure will calculate the number of students from the classroom floor area.  If there is no classroom floor area, the user wil be required to specify a number of students.</modeler_description><tags><tag>Whole Building.Space Types</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>OsLib_AedgMeasures.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>400D07BE</checksum></file><file><filename>OsLib_Constructions.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>1DBDBCB3</checksum></file><file><filename>OsLib_LightingAndEquipment.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>E76DE29C</checksum></file><file><filename>OsLib_Geometry.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>730B5D71</checksum></file><file><filename>OsLib_HelperMethods.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>9E06F9BD</checksum></file><file><filename>OsLib_Schedules.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>C53CDDCD</checksum></file><file><filename>AEDG_HVAC_GenericTestModel_0225_a.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>3337CE47</checksum></file><file><filename>OsLib_HVAC.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>DD15D25B</checksum></file><file><filename>AedgK12Kitchen_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>1BEEA24A</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.3.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>AC9326AA</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>aedg_k_12_kitchen</name>
+  <uid>92750b5a-7eb5-4df5-899f-c186c7c27935</uid>
+  <version_id>3d6b29ae-d474-41fc-a0c6-79933dd07984</version_id>
+  <version_modified>20160620T200509Z</version_modified>
+  <xml_checksum>057E8D9D</xml_checksum>
+  <class_name>AedgK12Kitchen</class_name>
+  <display_name>AedgK12Kitchen</display_name>
+  <description>Measure replaces existing kitchen equipment (if any) with refrigeration, electric, and gas equipment that align with the kitchen equipment recommendations of the 50% K-12 AEDG.</description>
+  <modeler_description>Measure is only applied to kitchen space types.  All refrigeration systems are deleted (assumption is that refrigeration would only be needed for kitchen operations).  Gas and electric equipment are removed from kitchen spaces.  The largest kitchen space is selected as the representative space, to which AEDG recommended kitchen loads are applied.  Loads are applied on a per student basis.  The user can input number of students manually.  Otherwise, the measure will calculate the number of students from the classroom floor area.  If there is no classroom floor area, the user wil be required to specify a number of students.</modeler_description>
+  <arguments>
+    <argument>
+      <name>costTotalKitchenSystem</name>
+      <display_name>Total Cost for Kitchen System ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>numberOfStudents</name>
+      <display_name>Total Number of Students.</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Whole Building.Space Types</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>OsLib_AedgMeasures.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>400D07BE</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Constructions.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>1DBDBCB3</checksum>
+    </file>
+    <file>
+      <filename>OsLib_LightingAndEquipment.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>E76DE29C</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Geometry.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>730B5D71</checksum>
+    </file>
+    <file>
+      <filename>OsLib_HelperMethods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9E06F9BD</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C53CDDCD</checksum>
+    </file>
+    <file>
+      <filename>OsLib_HVAC.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>DD15D25B</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.0</identifier>
+        <min_compatible>1.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>AC9326AA</checksum>
+    </file>
+  </files>
+</measure>

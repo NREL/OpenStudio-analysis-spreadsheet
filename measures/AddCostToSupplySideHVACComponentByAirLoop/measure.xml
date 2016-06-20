@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Add Cost To Supply Side HVAC Component by Air Loop</name><uid>a667a52f-aa04-4997-9292-c81671d75f84</uid><version_id>c0bb63dc-499a-4dec-af14-cc52b39d5044</version_id><description>This will add cost to HVAC components of a specified type in the selected air loop(s). It can run on all air loops or a single air loop. This measures only adds cost and doesn't alter equipment performance</description><modeler_description>Currently this measure supports the following objects:
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_cost_to_supply_side_hvac_component_by_air_loop</name>
+  <uid>a667a52f-aa04-4997-9292-c81671d75f84</uid>
+  <version_id>7f1a7a24-c44b-4390-9184-f86d1d628348</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>35DA4ED3</xml_checksum>
+  <class_name>AddCostToSupplySideHVACComponentByAirLoop</class_name>
+  <display_name>AddCostToSupplySideHVACComponentByAirLoop</display_name>
+  <description>This will add cost to HVAC components of a specified type in the selected air loop(s). It can run on all air loops or a single air loop. This measures only adds cost and doesn't alter equipment performance</description>
+  <modeler_description>Currently this measure supports the following objects:
     CoilCoolingDXSingleSpeed
     CoilCoolingDXTwoSpeed
     CoilHeatingDXSingleSpeed
@@ -12,4 +21,204 @@
     PumpConstantSpeed
     PumpVariableSpeed
     CoilCoolingWater
-    CoilHeatingWater</modeler_description><tags><tag>Economics.Life Cycle Cost Analysis</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>HVACComponentBasic.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>94286F6C</checksum></file><file><filename>AddCostToSupplySideHVACComponentByAirLoop_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>1A599FB0</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.3</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>D1D78226</checksum></file></files></measure>
+    CoilHeatingWater</modeler_description>
+  <arguments>
+    <argument>
+      <name>hvac_comp_type</name>
+      <display_name>Select an HVAC Air Loop Supply Side Component Type.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <choices>
+        <choice>
+          <value>CoilCoolingDXSingleSpeed</value>
+          <display_name>CoilCoolingDXSingleSpeed</display_name>
+        </choice>
+        <choice>
+          <value>CoilCoolingDXTwoSpeed</value>
+          <display_name>CoilCoolingDXTwoSpeed</display_name>
+        </choice>
+        <choice>
+          <value>CoilHeatingDXSingleSpeed</value>
+          <display_name>CoilHeatingDXSingleSpeed</display_name>
+        </choice>
+        <choice>
+          <value>CoilHeatingElectric</value>
+          <display_name>CoilHeatingElectric</display_name>
+        </choice>
+        <choice>
+          <value>CoilHeatingGas</value>
+          <display_name>CoilHeatingGas</display_name>
+        </choice>
+        <choice>
+          <value>CoilHeatingWaterBaseboard</value>
+          <display_name>CoilHeatingWaterBaseboard</display_name>
+        </choice>
+        <choice>
+          <value>FanConstantVolume</value>
+          <display_name>FanConstantVolume</display_name>
+        </choice>
+        <choice>
+          <value>FanOnOff</value>
+          <display_name>FanOnOff</display_name>
+        </choice>
+        <choice>
+          <value>FanVariableVolume</value>
+          <display_name>FanVariableVolume</display_name>
+        </choice>
+        <choice>
+          <value>PumpConstantSpeed</value>
+          <display_name>PumpConstantSpeed</display_name>
+        </choice>
+        <choice>
+          <value>PumpVariableSpeed</value>
+          <display_name>PumpVariableSpeed</display_name>
+        </choice>
+        <choice>
+          <value>CoilCoolingWater</value>
+          <display_name>CoilCoolingWater</display_name>
+        </choice>
+        <choice>
+          <value>CoilHeatingWater</value>
+          <display_name>CoilHeatingWater</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>object</name>
+      <display_name>Choose an Air Loop to Add Costs to.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <choices>
+        <choice>
+          <value>{0db90dd0-67f3-4802-9393-f7d32900d925}</value>
+          <display_name>*All Air Loops*</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>remove_costs</name>
+      <display_name>Remove Existing Costs?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs per Component ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost</name>
+      <display_name>Demolition Costs per Component ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Construction?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost</name>
+      <display_name>O &amp; M Costs per Component ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Economics.Life Cycle Cost Analysis</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.3</identifier>
+        <min_compatible>1.0.3</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>09262547</checksum>
+    </file>
+  </files>
+</measure>

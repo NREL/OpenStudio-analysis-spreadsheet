@@ -1,13 +1,44 @@
 <measure>
-  <name>Change Exterior Wall Thermal Properties</name>
+  <schema_version>3.0</schema_version>
+  <name>change_exterior_wall_thermal_properties</name>
   <uid>a2221a95-99c2-4445-a6ff-c57d34410662</uid>
-  <version_id>39ec157b-c119-4cf7-acd4-dcf5cf425703</version_id>
+  <version_id>ea983ddc-f716-486b-b96c-71add4a6aec1</version_id>
+  <version_modified>20160620T200625Z</version_modified>
+  <xml_checksum>31085437</xml_checksum>
+  <class_name>ChangeExteriorWallThermalProperties</class_name>
+  <display_name>Change Exterior Wall Thermal Properties</display_name>
   <description>Allows calibration of exterior walls by altering the thermal resistance, density, and solar absorptance of the wall constructions independently.</description>
   <modeler_description>Tunes all exterior wall surfaces by providing separate calibration multipliers to thermal resistance, thermal mass, and solar absorptance.</modeler_description>
+  <arguments>
+    <argument>
+      <name>r_value_mult</name>
+      <display_name>Exterior wall total R-value multiplier</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+    <argument>
+      <name>solar_abs_mult</name>
+      <display_name>Exterior wall solar absorptance multiplier</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+    <argument>
+      <name>thermal_mass_mult</name>
+      <display_name>Exterior wall thermal mass multiplier</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>
-	<tag>Calibration</tag>
+    <tag>Calibration</tag>
   </tags>
   <attributes>
     <attribute>
@@ -48,17 +79,18 @@
       <filename>ChangeExteriorWallThermalProperties_test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>1020054F</checksum>
+      <checksum>39AB5EE7</checksum>
     </file>
     <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
+        <min_compatible>0.11.5</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>2B0F0D0D</checksum>
+      <checksum>9684E306</checksum>
     </file>
   </files>
 </measure>

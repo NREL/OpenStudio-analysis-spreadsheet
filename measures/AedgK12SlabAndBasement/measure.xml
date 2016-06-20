@@ -1,2 +1,184 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>AEDG K12 - SlabAndBasement</name><uid>589fcda1-049e-44c5-82e4-804d7d9165aa</uid><version_id>32282f65-6e37-472d-a795-244356e97e5e</version_id><description>This measure applies K12 AEDG 50% recommendations for slab and below grade walls. It can also be used to model and simulate ASHRAE 90.1 2004 slab and below grade wall insulation levels. Note that for many climate zones (1-5), if your model doesn't have below grade walls or heated slabs the AEDG recommendations will be the same as the ASHRAE 90.1 20004 baseline. This measure runs a multi-year simulation so it will take a few minutes to run.</description><modeler_description>This measure doesn't change the constructions in the model, rather it runs the EnergyPlus slab or basement pre-processor to calculate monthly ground temperatures given inputs for constructions soil properties, and additional model information. It will also adjust the boundary condition of ground exposed surfaces.</modeler_description><tags><tag>Envelope.Opaque</tag></tags><attributes><attribute><name>Measure Type</name><value>EnergyPlusMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>CorePerim_Basement.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>67DEF0E0</checksum></file><file><filename>CorePerim_NoBasement.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>7DBC7FB5</checksum></file><file><filename>USA_IL_Chicago-OHare.Intl.AP.725300_TMY3.epw</filename><filetype>epw</filetype><usage_type>test</usage_type><checksum>C254B53F</checksum></file><file><filename>basement.idf</filename><filetype>idf</filetype><usage_type>resource</usage_type><checksum>8AE0DF53</checksum></file><file><filename>OsLib_AedgMeasures.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>9FC84A27</checksum></file><file><filename>OsLib_EnergyPlusMethods.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>6B09A7B5</checksum></file><file><filename>OsLib_HelperMethods.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>AA628E4E</checksum></file><file><filename>slab.idf</filename><filetype>idf</filetype><usage_type>resource</usage_type><checksum>CCB0C61C</checksum></file><file><filename>test.idf</filename><filetype>idf</filetype><usage_type>test</usage_type><checksum>ACCBF4AD</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.5.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>E6257791</checksum></file><file><filename>USA_CO_Golden-NREL.724666_TMY3.epw</filename><filetype>epw</filetype><usage_type>test</usage_type><checksum>BDF687C1</checksum></file><file><filename>AedgK12SlabAndBasement_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>8F3D8235</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>aedg_k_12_slab_and_basement</name>
+  <uid>589fcda1-049e-44c5-82e4-804d7d9165aa</uid>
+  <version_id>b2085d13-8797-45f5-8cb4-04bd4d4331b3</version_id>
+  <version_modified>20160620T200509Z</version_modified>
+  <xml_checksum>6A939A50</xml_checksum>
+  <class_name>AedgK12SlabAndBasement</class_name>
+  <display_name>AedgK12SlabAndBasement</display_name>
+  <description>This measure applies K12 AEDG 50% recommendations for slab and below grade walls. It can also be used to model and simulate ASHRAE 90.1 2004 slab and below grade wall insulation levels. Note that for many climate zones (1-5), if your model doesn't have below grade walls or heated slabs the AEDG recommendations will be the same as the ASHRAE 90.1 20004 baseline. This measure runs a multi-year simulation so it will take a few minutes to run.</description>
+  <modeler_description>This measure doesn't change the constructions in the model, rather it runs the EnergyPlus slab or basement pre-processor to calculate monthly ground temperatures given inputs for constructions soil properties, and additional model information. It will also adjust the boundary condition of ground exposed surfaces.</modeler_description>
+  <arguments>
+    <argument>
+      <name>target</name>
+      <display_name>Slab and Basement Insulation Performance</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>AEDG K-12 - Target</default_value>
+      <choices>
+        <choice>
+          <value>ASHRAE 90.1 2004</value>
+          <display_name>ASHRAE 90.1 2004</display_name>
+        </choice>
+        <choice>
+          <value>AEDG K-12 - Target</value>
+          <display_name>AEDG K-12 - Target</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>slabOrBasement</name>
+      <display_name>Model Ground Condition.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Slab</default_value>
+      <choices>
+        <choice>
+          <value>Slab</value>
+          <display_name>Slab</display_name>
+        </choice>
+        <choice>
+          <value>Basement (choose this if you have below grade walls)</value>
+          <display_name>Basement (choose this if you have below grade walls)</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>heatedSlab</name>
+      <display_name>Heated Slab? (Check this if you plan to add a Radiant System)</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>climateZone</name>
+      <display_name>ASHRAE Climate Zone</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <choices>
+        <choice>
+          <value>1</value>
+          <display_name>1</display_name>
+        </choice>
+        <choice>
+          <value>2</value>
+          <display_name>2</display_name>
+        </choice>
+        <choice>
+          <value>3</value>
+          <display_name>3</display_name>
+        </choice>
+        <choice>
+          <value>4</value>
+          <display_name>4</display_name>
+        </choice>
+        <choice>
+          <value>5</value>
+          <display_name>5</display_name>
+        </choice>
+        <choice>
+          <value>6</value>
+          <display_name>6</display_name>
+        </choice>
+        <choice>
+          <value>7</value>
+          <display_name>7</display_name>
+        </choice>
+        <choice>
+          <value>8</value>
+          <display_name>8</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>apRatio</name>
+      <display_name>Slab area to perimeter ratio (ft^2/ft).Range is 5.0 ft to 72.0 ft.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>32.5</default_value>
+    </argument>
+    <argument>
+      <name>costTotalSlabBasementInsulation</name>
+      <display_name>Total cost related to slab and basement insulation ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>basement.idf</filename>
+      <filetype>idf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>8AE0DF53</checksum>
+    </file>
+    <file>
+      <filename>OsLib_AedgMeasures.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9FC84A27</checksum>
+    </file>
+    <file>
+      <filename>OsLib_EnergyPlusMethods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>6B09A7B5</checksum>
+    </file>
+    <file>
+      <filename>OsLib_HelperMethods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AA628E4E</checksum>
+    </file>
+    <file>
+      <filename>slab.idf</filename>
+      <filetype>idf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>CCB0C61C</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.5.0</identifier>
+        <min_compatible>1.5.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>E6257791</checksum>
+    </file>
+  </files>
+</measure>

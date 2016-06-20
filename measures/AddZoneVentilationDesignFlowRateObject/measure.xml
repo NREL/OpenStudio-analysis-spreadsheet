@@ -1,2 +1,117 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>add_zone_ventilation_design_flow_rate_object</name><uid>c31e2212-720d-413f-bdb9-f38e198dcfa3</uid><version_id>3855bc09-9fba-4582-a307-879d1e972a23</version_id><description>This will allow you to add a ZoneVentilation:DesignFlowRate object into your model in a specified zone. The ventilation type is exposed as an argument but the design flow rate calculation method is set to design flow rate. A number of other object inputs are exposed as arguments.</description><modeler_description>This is simple implementation ment to expose the object to users. More complex use case specific versions will likely be developed in the future that may add multiple zone ventilation objects as well as zone mixing objects.</modeler_description><tags><tag>HVAC.Ventilation</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Apply Measure Now</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>OpenStudio Application</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Parametric Analysis Tool</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Analysis Spreadsheet</value><datatype>string</datatype></attribute><attribute><name>Intended Use Case</name><value>Model Articulation</value><datatype>string</datatype></attribute></attributes><files><file><filename>add_zone_ventilation_design_flow_rate_object_test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>756C714A</checksum></file><file><filename>example_model.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>2492F353</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.8.4</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>BF1B67B3</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_zone_ventilation_design_flow_rate_object</name>
+  <uid>c31e2212-720d-413f-bdb9-f38e198dcfa3</uid>
+  <version_id>d968466f-223c-42a6-b83c-21292796a087</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>3B6B95A6</xml_checksum>
+  <class_name>AddZoneVentilationDesignFlowRateObject</class_name>
+  <display_name>Add Zone Ventilation Design Flow Rate Object</display_name>
+  <description>This will allow you to add a ZoneVentilation:DesignFlowRate object into your model in a specified zone. The ventilation type is exposed as an argument but the design flow rate calculation method is set to design flow rate. A number of other object inputs are exposed as arguments.</description>
+  <modeler_description>This is simple implementation ment to expose the object to users. More complex use case specific versions will likely be developed in the future that may add multiple zone ventilation objects as well as zone mixing objects.</modeler_description>
+  <arguments>
+    <argument>
+      <name>zone</name>
+      <display_name>Choose Thermal Zones to add zone ventilation to.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>vent_sch</name>
+      <display_name>Choose Schedule.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <choices>
+        <choice>
+          <value>{00000000-0000-0000-0000-000000000000}</value>
+          <display_name>{00000000-0000-0000-0000-000000000000}</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>vent_type</name>
+      <display_name>Ventilation Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Natural</default_value>
+      <choices>
+        <choice>
+          <value>Natural</value>
+          <display_name>Natural</display_name>
+        </choice>
+        <choice>
+          <value>Exhaust</value>
+          <display_name>Exhaust</display_name>
+        </choice>
+        <choice>
+          <value>Intake</value>
+          <display_name>Intake</display_name>
+        </choice>
+        <choice>
+          <value>Balanced</value>
+          <display_name>Balanced</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>design_flow_rate</name>
+      <display_name>Design Flow Rate</display_name>
+      <type>Double</type>
+      <units>cfm</units>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Ventilation</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Model Articulation</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.8.4</identifier>
+        <min_compatible>1.8.4</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>BF1B67B3</checksum>
+    </file>
+  </files>
+</measure>

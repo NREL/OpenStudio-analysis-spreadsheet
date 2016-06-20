@@ -1,2 +1,153 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Add Exterior Lights</name><uid>34f9050c-5f8f-4d10-8e46-30ca8333114d</uid><version_id>bb541f7f-6787-4b67-9f0d-c2f2e7ede8eb</version_id><description>Add exterior lighting to the building.  This may be in addition to or in place of existing exterior lighting.  This lighting will run from sunset to sunrise. Optionally you can add costs to the lights.</description><modeler_description>This measure has an argument for design power (W) and a name for the new exterior lights, as well as an option to remove any existing exterior lights. It will add an ExteriorLightsDefinition object and associate it with an Exterior Lights object. The lights will have a schedule that always has fractional value of 1 but the object will be controlled by an astronomical clock. Cost is added to the building and not the lights. If the lights are removed at a later date, the cost will remain.</modeler_description><tags><tag>Electric Lighting.Lighting Equipment</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>RefBldgMediumOfficeNew2004_Chicago_a.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>5A270A31</checksum></file><file><filename>AddExteriorLights_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>1F5A963E</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>0.10.2</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>CC4C7F02</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_exterior_lights</name>
+  <uid>34f9050c-5f8f-4d10-8e46-30ca8333114d</uid>
+  <version_id>3ad954b3-b6cc-412c-8de1-0e2446a4b528</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>293730A7</xml_checksum>
+  <class_name>AddExteriorLights</class_name>
+  <display_name>Add Exterior Lights</display_name>
+  <description>Add exterior lighting to the building.  This may be in addition to or in place of existing exterior lighting.  This lighting will run from sunset to sunrise. Optionally you can add costs to the lights.</description>
+  <modeler_description>This measure has an argument for design power (W) and a name for the new exterior lights, as well as an option to remove any existing exterior lights. It will add an ExteriorLightsDefinition object and associate it with an Exterior Lights object. The lights will have a schedule that always has fractional value of 1 but the object will be controlled by an astronomical clock. Cost is added to the building and not the lights. If the lights are removed at a later date, the cost will remain.</modeler_description>
+  <arguments>
+    <argument>
+      <name>ext_lighting_level</name>
+      <display_name>Exterior Lighting Design Power (W)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1000</default_value>
+    </argument>
+    <argument>
+      <name>end_use_subcategory</name>
+      <display_name>End-Use SubCategory</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Exterior Facade Lighting</default_value>
+    </argument>
+    <argument>
+      <name>remove_existing_ext_lights</name>
+      <display_name>Remove Existing Exterior Lights in the Project?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs for Exterior Lights ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost</name>
+      <display_name>Demolition Costs for Exterior Lights ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Construction?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost</name>
+      <display_name>O &amp; M Costs for Exterior Lights ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Electric Lighting.Lighting Equipment</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.10.2</identifier>
+        <min_compatible>0.10.2</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>637B13E9</checksum>
+    </file>
+  </files>
+</measure>

@@ -1,2 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Add Simple PV to Shading Surfaces By Type</name><uid>27627c16-75d4-4fc3-add9-2d7d538c0130</uid><version_id>7dd48c74-7217-4690-9149-351c76255df2</version_id><description>This measure will add Simple PV objects to site, building or space/zone shading surfaces. This will not create any new geometry, but will just make PV objects out of existing shading geometry. Optionally a cost can be added for the PV.</description><modeler_description>This measure will add PV objects for all site, building, or zone shading surfaces. Site and Building surfaces exist in both OpenStudio and EnergyPlus. Space shading surfaces in OpenStudio are translated to zone shading surfaces in EnergyPlus. The necessary PV objects will be added for each surface, as well as a number of shared PV resources.  A number of arguments will expose various PV settings. The recurring cost objects added are not directly associated with the PV objects. If the PV objects are removed the cost will remain.</modeler_description><tags><tag>Onsite Power Generation.Photovoltaic</tag></tags><attributes><attribute><name>Measure Type</name><value>EnergyPlusMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>PV_test_model.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>35BEAA75</checksum></file><file><filename>AddSimplePvToShadingSurfacesByType_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>F9E6DB33</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>0.10.2</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>88265410</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_simple_pv_to_shading_surfaces_by_type</name>
+  <uid>27627c16-75d4-4fc3-add9-2d7d538c0130</uid>
+  <version_id>7e65d626-f502-4e78-ac7a-86b77f2d310b</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>92C8C204</xml_checksum>
+  <class_name>AddSimplePvToShadingSurfacesByType</class_name>
+  <display_name>Add Simple PV to Specified Shading Surfaces</display_name>
+  <description>This measure will add Simple PV objects to site, building or space/zone shading surfaces. This will not create any new geometry, but will just make PV objects out of existing shading geometry. Optionally a cost can be added for the PV.</description>
+  <modeler_description>This measure will add PV objects for all site, building, or zone shading surfaces. Site and Building surfaces exist in both OpenStudio and EnergyPlus. Space shading surfaces in OpenStudio are translated to zone shading surfaces in EnergyPlus. The necessary PV objects will be added for each surface, as well as a number of shared PV resources.  A number of arguments will expose various PV settings. The recurring cost objects added are not directly associated with the PV objects. If the PV objects are removed the cost will remain.</modeler_description>
+  <arguments>
+    <argument>
+      <name>shading_type</name>
+      <display_name>Choose the Type of Shading Surfaces to add PV to</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Building Shading</default_value>
+      <choices>
+        <choice>
+          <value>Site Shading</value>
+          <display_name>Site Shading</display_name>
+        </choice>
+        <choice>
+          <value>Building Shading</value>
+          <display_name>Building Shading</display_name>
+        </choice>
+        <choice>
+          <value>Space/Zone Shading</value>
+          <display_name>Space/Zone Shading</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>fraction_surfacearea_with_pv</name>
+      <display_name>Fraction of Included Surface Area with PV</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.5</default_value>
+    </argument>
+    <argument>
+      <name>value_for_cell_efficiency</name>
+      <display_name>Fractional Value for Cell Efficiency</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.12</default_value>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs for the PV ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost</name>
+      <display_name>O &amp; M Costs for the PV ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Onsite Power Generation.Photovoltaic</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.10.2</identifier>
+        <min_compatible>0.10.2</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>82C6BB51</checksum>
+    </file>
+  </files>
+</measure>

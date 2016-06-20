@@ -1,5 +1,148 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Add Cost per Floor Area to Building</name><uid>153992bb-0202-424b-9fbb-57fcf0285e65</uid><version_id>0d0f03bb-4f8c-4aed-9178-e7025a3c9e9f</version_id><description>This measure will create life cycle cost objects associated with a the building. You can set a material &amp; installation cost, demolition cost, and O&amp;M costs. Optionally existing cost objects already associated with building can be deleted. This measure will not affect energy use of the building.</description><modeler_description>This measure will add a number of life cycle cost objects and associate them with the building. In addition to the inputs for the cost values, a number of other inputs are exposed to specify when the cost first occurs and at what frequency it occurs in the future. This measure is intended to be used as an &quot;Always Run&quot; measure to apply costs to the baseline simulation before any design alternatives manipulate it. This will allow you to show the full cost for your baseline building without having to manually cost all individual objects. You could include construction costs, land, design fees, or anything else you want.&#13;&#13;
-&#13;&#13;
-For baseline costs, &quot;Years Until Costs Start? indicates the year that the capital costs first occur. For new construction this will be typically be &quot;0? and &quot;Demolition Costs Occur During Initial Construction?? will be &quot;false?. For a retrofit &quot;Years Until Costs Start? is between &quot;0? and the &quot;Expected Life? of the object, while &quot;Demolition Costs Occur During Initial Construction?? is &quot;true?.  O&amp;M cost and frequency can be whatever is appropriate for the component.&#13;&#13;
-  </modeler_description><tags><tag>Economics.Life Cycle Cost Analysis</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>0416_NetArea_b.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>CB515014</checksum></file><file><filename>AddCostPerFloorAreaToBuilding_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>689434BE</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>0.11.5</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>508CC9D3</checksum></file><file><filename>0924_demo_e.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>273A6E59</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_cost_per_floor_area_to_building</name>
+  <uid>153992bb-0202-424b-9fbb-57fcf0285e65</uid>
+  <version_id>a8015c84-7eea-4fc4-a2bc-74f15a9e78ce</version_id>
+  <version_modified>20160620T200505Z</version_modified>
+  <xml_checksum>35DA4ED3</xml_checksum>
+  <class_name>AddCostPerFloorAreaToBuilding</class_name>
+  <display_name>AddCostPerFloorAreaToBuilding</display_name>
+  <description>This measure will create life cycle cost objects associated with a the building. You can set a material &amp; installation cost, demolition cost, and O&amp;M costs. Optionally existing cost objects already associated with building can be deleted. This measure will not affect energy use of the building.</description>
+  <modeler_description>This measure will add a number of life cycle cost objects and associate them with the building. In addition to the inputs for the cost values, a number of other inputs are exposed to specify when the cost first occurs and at what frequency it occurs in the future. This measure is intended to be used as an "Always Run" measure to apply costs to the baseline simulation before any design alternatives manipulate it. This will allow you to show the full cost for your baseline building without having to manually cost all individual objects. You could include construction costs, land, design fees, or anything else you want.&#xd;&#xd;
+&#xd;&#xd;
+For baseline costs, "Years Until Costs Start? indicates the year that the capital costs first occur. For new construction this will be typically be "0? and "Demolition Costs Occur During Initial Construction?? will be "false?. For a retrofit "Years Until Costs Start? is between "0? and the "Expected Life? of the object, while "Demolition Costs Occur During Initial Construction?? is "true?.  O&amp;M cost and frequency can be whatever is appropriate for the component.&#xd;&#xd;
+  </modeler_description>
+  <arguments>
+    <argument>
+      <name>remove_costs</name>
+      <display_name>Remove Existing Costs?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>lcc_name</name>
+      <display_name>Name for Life Cycle Cost Object.</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Building - Life Cycle Costs</default_value>
+    </argument>
+    <argument>
+      <name>material_cost_ip</name>
+      <display_name>Material and Installation Costs for the Building per Floor Area ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost_ip</name>
+      <display_name>Demolition Costs for Construction per Area Used ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Construction?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost_ip</name>
+      <display_name>O &amp; M Costs for the Builiding per Floor Area Used ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Economics.Life Cycle Cost Analysis</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+        <min_compatible>0.11.5</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>BEEF1AF8</checksum>
+    </file>
+  </files>
+</measure>

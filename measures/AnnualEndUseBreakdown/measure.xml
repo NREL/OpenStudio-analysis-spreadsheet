@@ -1,2 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Annual End Use Breakdown</name><uid>f032a1a6-e58f-4c39-bb41-5a7d53f03378</uid><version_id>b206bf55-a41d-4550-b007-5d37ce055f8d</version_id><description>This measure creates an annual summary report pulling both from data in your model and in the EnergyPlus results. It has building level information as well as detail on space types, HVAC systems, and envelope.</description><modeler_description>For the most part consumption data comes from the tabular energy plus data, space type and loop details come from the OpenStudio model. The code for this is modular, so it should be easy to add additional tabular EnergyPlus content.</modeler_description><tags><tag>Reporting.QAQC</tag></tags><attributes><attribute><name>Measure Type</name><value>ReportingMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>AnnualEndUseBreakdown_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>A2CFDDC3</checksum></file><file><filename>os_lib_schedules.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>F86B5236</checksum></file><file><filename>report.html</filename><filetype>html</filetype><usage_type>test</usage_type><checksum>75107694</checksum></file><file><filename>ExampleModel.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>1769B19D</checksum></file><file><filename>report.html.erb</filename><filetype>erb</filetype><usage_type>resource</usage_type><checksum>9FB3B606</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.1.4</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>8654557C</checksum></file><file><filename>os_lib_reporting.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>254AB610</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>annual_end_use_breakdown</name>
+  <uid>f032a1a6-e58f-4c39-bb41-5a7d53f03378</uid>
+  <version_id>76579049-e582-42e1-9f2b-69099d3cdbd1</version_id>
+  <version_modified>20160620T200512Z</version_modified>
+  <xml_checksum>2C8A3EEF</xml_checksum>
+  <class_name>AnnualEndUseBreakdown</class_name>
+  <display_name>Annual End Use Breakdown</display_name>
+  <description>This measure creates an annual summary report pulling both from data in your model and in the EnergyPlus results. It has building level information as well as detail on space types, HVAC systems, and envelope.</description>
+  <modeler_description>For the most part consumption data comes from the tabular energy plus data, space type and loop details come from the OpenStudio model. The code for this is modular, so it should be easy to add additional tabular EnergyPlus content.</modeler_description>
+  <arguments/>
+  <provenances/>
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ReportingMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>os_lib_schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F86B5236</checksum>
+    </file>
+    <file>
+      <filename>report.html.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9FB3B606</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.1.4</identifier>
+        <min_compatible>1.1.4</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>8654557C</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>254AB610</checksum>
+    </file>
+  </files>
+</measure>
