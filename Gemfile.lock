@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/NREL/OpenStudio-analysis-gem.git
-  revision: b5be92cbd99fb8cb218025388c6894cd2bb674dd
+  revision: 45f15dd87f3b12c807ec9f8dff828898c98c9267
   branch: develop
   specs:
     openstudio-analysis (0.5.0)
@@ -49,30 +49,33 @@ GEM
     json_pure (1.8.3)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
-    mini_portile2 (2.0.0)
-    multi_json (1.12.0)
+    mini_portile2 (2.1.0)
+    multi_json (1.12.1)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
-    nokogiri (1.6.7.2-x86-mingw32)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    nokogiri (1.6.8-x86-mingw32)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     openstudio-aws (0.4.2)
       aws-sdk-core (= 2.2.26)
       net-scp (~> 1.1)
       net-ssh (= 3.0.2)
       semantic (~> 1.4)
       sshkey (~> 1.7)
-    parallel (1.8.0)
-    rake (11.1.2)
+    parallel (1.9.0)
+    pkg-config (1.1.7)
+    rake (11.2.2)
     roo (1.13.2)
       nokogiri
       rubyzip
       spreadsheet (> 0.6.4)
     ruby-ole (1.2.12)
-    rubyXL (3.3.18)
+    rubyXL (3.3.21)
       nokogiri (>= 1.4.4)
       rubyzip (>= 1.1.6)
     rubyzip (1.2.0)
@@ -99,4 +102,4 @@ DEPENDENCIES
   rake (~> 11.1)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
