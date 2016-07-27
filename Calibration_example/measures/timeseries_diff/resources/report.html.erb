@@ -220,6 +220,18 @@ $.each(allSeries, function(index, all_series) {
   
 });
 
+  // Add the series cvrmse to the legend
+  primlegend.append("text").text("CVRMSE:" + allSeries[0].cvrmse)
+    .attr("y", legendSpacing * (i + 1))
+    .attr("class", "noselect");  
+i += 1;
+
+  // Add the series nmbe to the legend
+  primlegend.append("text").text("NMBE:" + allSeries[0].nmbe)
+    .attr("y", legendSpacing * (i + 1))
+    .attr("class", "noselect"); 
+i += 1;
+
 // Define what to do when the selector is moved around
 function brushed() {
   console.log("Brushed")

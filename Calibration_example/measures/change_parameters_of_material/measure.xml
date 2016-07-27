@@ -1,0 +1,172 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>change_parameters_of_material</name>
+  <uid>3c7a6751-bb54-4600-9410-8f042e1a413b</uid>
+  <version_id>09280152-7955-42e4-9f88-d98d1021e617</version_id>
+  <xml_checksum>0BF71A3E</xml_checksum>
+  <class_name>ChangeParametersOfMaterial</class_name>
+  <display_name>Change Parameters Of Material</display_name>
+  <description>Change Parameters Of Material.</description>
+  <modeler_description>Change Parameters Of Material</modeler_description>
+  <arguments>
+    <argument>
+      <name>construction</name>
+      <display_name>Choose a Construction to Alter.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>thickness</name>
+      <display_name>thickness</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.006</default_value>
+    </argument>
+    <argument>
+      <name>density</name>
+      <display_name>density</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>7800</default_value>
+    </argument>
+    <argument>
+      <name>thermal_absorptance</name>
+      <display_name>thermal_absorptance</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.69</default_value>
+    </argument>
+    <argument>
+      <name>solar_absorptance</name>
+      <display_name>solar_absorptance.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.69</default_value>
+    </argument>
+    <argument>
+      <name>visible_absorptance</name>
+      <display_name>visible_absorptance</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.69</default_value>
+    </argument>
+    <argument>
+      <name>thermal_conductivity</name>
+      <display_name>thermal_conductivity</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>45</default_value>
+    </argument>
+    <argument>
+      <name>specific_heat</name>
+      <display_name>specific_heat</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>499</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Model Articulation</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Calibration</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Sensitivity Analysis</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Retrofit EE</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>EnvelopeAndLoadTestModel_01.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>10AA8866</checksum>
+    </file>
+    <file>
+      <filename>IncreaseInsulationRValueForExteriorWalls_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>6D66DD5C</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+        <min_compatible>0.11.5</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>2BCA0AF6</checksum>
+    </file>
+  </files>
+</measure>

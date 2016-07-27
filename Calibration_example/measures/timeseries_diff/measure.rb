@@ -129,6 +129,18 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     plot_flag.setDescription("plot_flag timeseries data")
     plot_flag.setDefaultValue(true)
     args << plot_flag
+    
+    plot_name = OpenStudio::Ruleset::OSArgument.makeStringArgument("plot_name", true)
+    plot_name.setDisplayName("Plot name")
+    plot_name.setDescription("Plot name")
+    plot_name.setDefaultValue("")
+    args << plot_name
+    
+    warning_messages = OpenStudio::Ruleset::OSArgument.makeBoolArgument("warning_messages", true)
+    warning_messages.setDisplayName("warning_messages")
+    warning_messages.setDescription("warning_messages")
+    warning_messages.setDefaultValue(false)
+    args << warning_messages
 
     return args
   end
@@ -172,8 +184,10 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
     find_avail = runner.getBoolArgumentValue("find_avail", user_arguments) 
     compute_diff = runner.getBoolArgumentValue("compute_diff", user_arguments) 
     verbose_messages = runner.getBoolArgumentValue("verbose_messages", user_arguments)
+    warning_messages = runner.getBoolArgumentValue("warning_messages", user_arguments)
     algorithm_download = runner.getBoolArgumentValue("algorithm_download", user_arguments)
     plot_flag = runner.getBoolArgumentValue("plot_flag", user_arguments)
+    plot_name = runner.getStringArgumentValue("plot_name", user_arguments)
     env = runner.getStringArgumentValue("env", user_arguments)
     stp = runner.getStringArgumentValue("stp", user_arguments)
     
@@ -205,9 +219,15 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
 
     end 
     
-    diff = [0.0]
-    simdata = [0.0]
-    csvdata = [0.0]
+    diff = 0.0
+    simdata = 0.0
+    csvdata = 0.0
+    ySum = 0.0
+    squaredError = 0.0
+    sumError = 0.0
+    n = 0
+    cvrmse = 0
+    nmbe = 0
     #map = {'Whole Building:Facility Total Electric Demand Power [W](TimeStep)'=>['Whole Building','Facility Total Electric Demand Power'],'OCCUPIED_TZ:Zone Mean Air Temperature [C](TimeStep)'=>['OCCUPIED_TZ','Zone Mean Air Temperature']}
 
     map = {"#{csv_var}" => { key: sql_key, var: sql_var, index: 0 }}
@@ -346,7 +366,7 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
         if sql.timeSeries(env,stp,var,key).is_initialized
           ser = sql.timeSeries(env,stp,var,key).get
         else
-          runner.registerWarning("sql.timeSeries not initialized env: #{env},stp: #{stp},var: #{var},key: #{key}.")
+            runner.registerWarning("sql.timeSeries not initialized env: #{env},stp: #{stp},var: #{var},key: #{key}.")
           next
         end
         date_times = ser.dateTimes
@@ -371,7 +391,9 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
         csv.each_index do |row|
           if row > 0
             if csv[row][0].nil?
-              runner.registerWarning("empty csv row number #{row}")
+              if warning_messages
+                runner.registerWarning("empty csv row number #{row}")
+              end
               next
             end
             mon = csv[row][0].split(' ')[0].split('/')[0].to_i
@@ -402,7 +424,9 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
             end            
             dtm = OpenStudio::DateTime.new(dat,tim)
             if !(dtm >= first_date && dtm <= last_date)
-              runner.registerWarning("CSV DateTime #{dtm} is not in SQL Timeseries Dates")
+              if warning_messages
+                runner.registerWarning("CSV DateTime #{dtm} is not in SQL Timeseries Dates")
+              end
               next
             end
             if year == nil
@@ -440,20 +464,24 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
 
                   
                   if norm == 1
-                    dif = mtr.to_f - sim.to_f
+                    dif = scale.to_f * (mtr.to_f - sim.to_f).abs
                   elsif norm == 2  
-                    dif = sim.to_f - mtr.to_f
+                    dif = (scale.to_f * (mtr.to_f - sim.to_f))**2
                   else
-                    dif = (mtr.to_f - sim.to_f).abs
+                    dif = scale.to_f * (mtr.to_f - sim.to_f)
                   end
-                  #apply scale factor
-                  dif = dif.to_f * scale.to_f
+                  
+                  squaredError = squaredError + (mtr.to_f - sim.to_f)**2
+                  sumError = sumError + (mtr.to_f - sim.to_f)
+                  ySum = ySum + mtr.to_f
+                  n = n + 1
+                  
                   temp_sim << [etim,sim.to_f]
                   temp_mtr << [etim,mtr.to_f] 
-                  temp_norm << [etim,dif.to_f]                  
-                  diff[diff_index] = diff[diff_index] + dif.to_f
-                  simdata[diff_index] = simdata[diff_index] + sim.to_f
-                  csvdata[diff_index] = csvdata[diff_index] + mtr.to_f
+                  #temp_norm << [etim,dif.to_f]                  
+                  diff = diff + dif.to_f
+                  simdata = simdata + sim.to_f
+                  csvdata = csvdata + mtr.to_f
                   runner.registerInfo("mtr value is #{mtr}") if verbose_messages
                   runner.registerInfo("sim value is #{sim}") if verbose_messages
                   runner.registerInfo("dif value is #{dif}") if verbose_messages
@@ -467,12 +495,23 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
         series2["data"] = data2
         all_series << series
         all_series << series2
+        yBar = ySum/n
+        cvrmse = 100.0 * Math::sqrt(squaredError/n) / yBar
+        nmbe = 100.0 * (sumError/n) / yBar
+        series["cvrmse"] = cvrmse.round(2)
+        series["nmbe"] = nmbe.round(2)
+        series2["cvrmse"] = cvrmse.round(2)
+        series2["nmbe"] = nmbe.round(2)
       else
         runner.registerInfo("Found Time Header: #{csv_time_header}")
       end
     end
- 
-    results = {"metadata" => {"tz" => tzs.to_i, "variables" => {"variable" => csv_var, "variable_display_name" => csv_var_dn}}, "data_mtr" => temp_mtr, "data_sim" => temp_sim, "data_diff" => temp_norm}
+    
+
+    
+    #results = {"metadata" => {"tz" => tzs.to_i, "variables" => {"variable" => csv_var, "variable_display_name" => csv_var_dn}}, "data_mtr" => temp_mtr, "data_sim" => temp_sim, "data_diff" => temp_norm}
+    #remove diff norm from results json
+    results = {"metadata" => {"tz" => tzs.to_i, "variables" => {"variable" => csv_var, "variable_display_name" => csv_var_dn}}, "data_mtr" => temp_mtr, "data_sim" => temp_sim}
     runner.registerInfo("Saving timeseries_#{csv_var}.json") 
     FileUtils.mkdir_p(File.dirname("timeseries_#{csv_var}.json")) unless Dir.exist?(File.dirname("timeseries_#{csv_var}.json"))
     File.open("timeseries_#{csv_var}.json", 'wb') {|f| f << JSON.pretty_generate(results)}
@@ -488,11 +527,16 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
         FileUtils.cp("allseries_#{csv_var}.json",directory_name)
       end
     end  
+    if norm == 2
+      diff = Math::sqrt(diff)
+    end
     
     runner.registerInfo("results: #{results}") if verbose_messages
-    runner.registerValue("diff", diff[0], "")
-    runner.registerValue("simdata", simdata[0], "")
-    runner.registerValue("csvdata", csvdata[0], "")
+    runner.registerValue("diff", diff, "")
+    runner.registerValue("simdata", simdata, "")
+    runner.registerValue("csvdata", csvdata, "")
+    runner.registerValue("cvrmse", cvrmse, "")
+    runner.registerValue("nmbe", nmbe, "")
 
     if plot_flag
       runner.registerInfo("start plotting")
@@ -514,7 +558,11 @@ class TimeseriesDiff < OpenStudio::Ruleset::ReportingUserScript
       html_out = renderer.result(binding)
       
       # write html file
-      html_out_path = "./report_#{csv_var}.html"
+      if plot_name.empty?
+        html_out_path = "./report_#{csv_var}.html"
+      else  
+        html_out_path = "./report_#{plot_name}.html"
+      end
       File.open(html_out_path, 'w') do |file|
         file << html_out
         # make sure data is written to the disk one way or the other
