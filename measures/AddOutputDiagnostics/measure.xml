@@ -1,13 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>add_output_diagnostics</name><uid>cb957503-4a01-42c4-a918-a44df4ea759c</uid><version_id>8e73c828-ed5e-4a4a-90ff-794bca1d56e4</version_id><description>Often the eplusout.err file may request output diagnostics. This measure can be used to add this to the IDF file. Re-run your project to see the requested output.</description><modeler_description>Makes Output:Diagnostics object with choice list for optional values.&#13;&#13;&#13;&#13;&#13;
-&#13;&#13;&#13;&#13;&#13;
-DisplayAllWarnings&#13;&#13;&#13;&#13;&#13;
-DisplayExtraWarnings&#13;&#13;&#13;&#13;&#13;
-DisplayUnusedSchedules&#13;&#13;&#13;&#13;&#13;
-DisplayUnusedObjects&#13;&#13;&#13;&#13;&#13;
-DisplayAdvancedReportVariables&#13;&#13;&#13;&#13;&#13;
-DisplayZoneAirHeatBalanceOffBalance&#13;&#13;&#13;&#13;&#13;
-DoNotMirrorDetachedShading&#13;&#13;&#13;&#13;&#13;
-DisplayWeatherMissingDataWarnings&#13;&#13;&#13;&#13;&#13;
-ReportDuringWarmup&#13;&#13;&#13;&#13;&#13;
-ReportDetailedWarmupConvergence</modeler_description><tags><tag>Reporting.QAQC</tag></tags><attributes><attribute><name>Measure Type</name><value>EnergyPlusMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>AddOutputDiagnostics_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>45DBB47C</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>DFA810D6</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_output_diagnostics</name>
+  <uid>cb957503-4a01-42c4-a918-a44df4ea759c</uid>
+  <version_id>f3adde6f-58ab-45de-95a0-597d009f8c99</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>AA6ADD14</xml_checksum>
+  <class_name>AddOutputDiagnostics</class_name>
+  <display_name>AddOutputDiagnostics</display_name>
+  <description>Often the eplusout.err file may request output diagnostics. This measure can be used to add this to the IDF file. Re-run your project to see the requested output.</description>
+  <modeler_description>Makes Output:Diagnostics object with choice list for optional values.&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayAllWarnings&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayExtraWarnings&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayUnusedSchedules&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayUnusedObjects&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayAdvancedReportVariables&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayZoneAirHeatBalanceOffBalance&#xd;&#xd;&#xd;&#xd;&#xd;
+DoNotMirrorDetachedShading&#xd;&#xd;&#xd;&#xd;&#xd;
+DisplayWeatherMissingDataWarnings&#xd;&#xd;&#xd;&#xd;&#xd;
+ReportDuringWarmup&#xd;&#xd;&#xd;&#xd;&#xd;
+ReportDetailedWarmupConvergence</modeler_description>
+  <arguments>
+    <argument>
+      <name>outputDiagnostic</name>
+      <display_name>Output Diagnostic Value.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>DisplayExtraWarnings</default_value>
+      <choices>
+        <choice>
+          <value>DisplayAllWarnings</value>
+          <display_name>DisplayAllWarnings</display_name>
+        </choice>
+        <choice>
+          <value>DisplayExtraWarnings</value>
+          <display_name>DisplayExtraWarnings</display_name>
+        </choice>
+        <choice>
+          <value>DisplayUnusedSchedules</value>
+          <display_name>DisplayUnusedSchedules</display_name>
+        </choice>
+        <choice>
+          <value>DisplayUnusedObjects</value>
+          <display_name>DisplayUnusedObjects</display_name>
+        </choice>
+        <choice>
+          <value>DisplayAdvancedReportVariables</value>
+          <display_name>DisplayAdvancedReportVariables</display_name>
+        </choice>
+        <choice>
+          <value>DisplayZoneAirHeatBalanceOffBalance</value>
+          <display_name>DisplayZoneAirHeatBalanceOffBalance</display_name>
+        </choice>
+        <choice>
+          <value>DoNotMirrorDetachedShading</value>
+          <display_name>DoNotMirrorDetachedShading</display_name>
+        </choice>
+        <choice>
+          <value>DisplayWeatherMissingDataWarnings</value>
+          <display_name>DisplayWeatherMissingDataWarnings</display_name>
+        </choice>
+        <choice>
+          <value>ReportDuringWarmup</value>
+          <display_name>ReportDuringWarmup</display_name>
+        </choice>
+        <choice>
+          <value>ReportDetailedWarmupConvergence</value>
+          <display_name>ReportDetailedWarmupConvergence</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.0</identifier>
+        <min_compatible>1.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>DFA810D6</checksum>
+    </file>
+  </files>
+</measure>

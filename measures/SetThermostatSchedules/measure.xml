@@ -1,2 +1,103 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Set Thermostat Schedules</name><uid>d241d623-d596-4b26-9b67-fe390be1e839</uid><version_id>699b90d0-1b73-4208-869a-c6987afda0da</version_id><description>Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one</description><modeler_description>Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one.</modeler_description><tags><tag>HVAC.HVAC Controls</tag></tags><attributes><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>SetThermostatSchedules_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>215A22F5</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.2.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>764BA2C0</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>set_thermostat_schedules</name>
+  <uid>d241d623-d596-4b26-9b67-fe390be1e839</uid>
+  <version_id>a9782468-b752-4108-a3b3-8f05b15de5fd</version_id>
+  <version_modified>20160531T204355Z</version_modified>
+  <xml_checksum>F4CEA58B</xml_checksum>
+  <class_name>SetThermostatSchedules</class_name>
+  <display_name>Set Thermostat Schedules</display_name>
+  <description>Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one</description>
+  <modeler_description>Sets zone thermostat schedules to schedules in the same file. If a zone does not have a thermostat this measure will add one.</modeler_description>
+  <arguments>
+    <argument>
+      <name>zones</name>
+      <display_name>Choose Thermal Zones to change thermostat schedules on.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>{292394eb-312e-4537-8267-2074b7ead44f}</default_value>
+      <choices>
+        <choice>
+          <value>{292394eb-312e-4537-8267-2074b7ead44f}</value>
+          <display_name>*All Thermal Zones*</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>cooling_sch</name>
+      <display_name>Choose Cooling Schedule.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>{00000000-0000-0000-0000-000000000000}</default_value>
+      <choices>
+        <choice>
+          <value>{00000000-0000-0000-0000-000000000000}</value>
+          <display_name>*No Change*</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>heating_sch</name>
+      <display_name>Choose Heating Schedule.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>{00000000-0000-0000-0000-000000000000}</default_value>
+      <choices>
+        <choice>
+          <value>{00000000-0000-0000-0000-000000000000}</value>
+          <display_name>*No Change*</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs per Thermal Zone ($/thermal zone).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.HVAC Controls</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.0</identifier>
+        <min_compatible>1.2.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>74CCE799</checksum>
+    </file>
+  </files>
+</measure>

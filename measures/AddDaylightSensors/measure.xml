@@ -1,2 +1,184 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Add Daylight Sensor at the Center of Spaces with a Specified Space Type Assigned</name><uid>62babdc7-c81e-4dfd-96e8-af1628a55167</uid><version_id>4292214f-930c-4928-8273-1236f191f15f</version_id><description>This measure will add daylighting controls to spaces that that have space types assigned with names containing the string in the argument. You can also add a cost per space for sensors added to the model.</description><modeler_description>Make an array of the spaces that meet the criteria. Locate the sensor x and y values by averaging the min and max X and Y values from floor surfaces in the space. If a space already has a daylighting control, do not add a new one and leave the original in place. Warn the user if the space isn't assigned to a thermal zone, or if the space doesn't have any translucent surfaces. Note that the cost is added to the space not the sensor. If the sensor is removed at a later date, the cost will remain.</modeler_description><tags><tag>Electric Lighting.Electric Lighting Controls</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>ModelForDaylightSensors.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>34D67AAA</checksum></file><file><filename>AddDaylightSensors_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>CF35F53F</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.2.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>5C62BED4</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_daylight_sensors</name>
+  <uid>62babdc7-c81e-4dfd-96e8-af1628a55167</uid>
+  <version_id>d964c15f-3ffd-4955-894e-317b52904153</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>0AC58119</xml_checksum>
+  <class_name>AddDaylightSensors</class_name>
+  <display_name>Add Daylight Sensor at the Center of Spaces with a Specified Space Type Assigned</display_name>
+  <description>This measure will add daylighting controls to spaces that that have space types assigned with names containing the string in the argument. You can also add a cost per space for sensors added to the model.</description>
+  <modeler_description>Make an array of the spaces that meet the criteria. Locate the sensor x and y values by averaging the min and max X and Y values from floor surfaces in the space. If a space already has a daylighting control, do not add a new one and leave the original in place. Warn the user if the space isn't assigned to a thermal zone, or if the space doesn't have any translucent surfaces. Note that the cost is added to the space not the sensor. If the sensor is removed at a later date, the cost will remain.</modeler_description>
+  <arguments>
+    <argument>
+      <name>space_type</name>
+      <display_name>Add Daylight Sensors to Spaces of This Space Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>setpoint</name>
+      <display_name>Daylighting Setpoint (fc)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>45</default_value>
+    </argument>
+    <argument>
+      <name>control_type</name>
+      <display_name>Daylighting Control Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Continuous/Off</default_value>
+      <choices>
+        <choice>
+          <value>None</value>
+          <display_name>None</display_name>
+        </choice>
+        <choice>
+          <value>Continuous</value>
+          <display_name>Continuous</display_name>
+        </choice>
+        <choice>
+          <value>Stepped</value>
+          <display_name>Stepped</display_name>
+        </choice>
+        <choice>
+          <value>Continuous/Off</value>
+          <display_name>Continuous/Off</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>min_power_fraction</name>
+      <display_name>Daylighting Minimum Input Power Fraction(min = 0 max = 0.6)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.3</default_value>
+    </argument>
+    <argument>
+      <name>min_light_fraction</name>
+      <display_name>Daylighting Minimum Light Output Fraction (min = 0 max = 0.6)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.2</default_value>
+    </argument>
+    <argument>
+      <name>height</name>
+      <display_name>Sensor Height (inches)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>30</default_value>
+    </argument>
+    <argument>
+      <name>material_cost</name>
+      <display_name>Material and Installation Costs per Space for Daylight Sensor ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost</name>
+      <display_name>Demolition Costs per Space for Daylight Sensor ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Construction?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost</name>
+      <display_name>O &amp; M Costs per Space for Daylight Sensor ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Electric Lighting.Electric Lighting Controls</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.2.0</identifier>
+        <min_compatible>1.2.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>5C62BED4</checksum>
+    </file>
+  </files>
+</measure>

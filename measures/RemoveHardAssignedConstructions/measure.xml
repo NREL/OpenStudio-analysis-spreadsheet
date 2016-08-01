@@ -1,2 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Remove Hard Assigned Constructions</name><uid>277c4962-17e7-46fa-a5f3-643218b2a513</uid><version_id>1fbccf16-fab3-4e4d-96a7-51be4080a6b8</version_id><description>This will remove all construction assignments from made directly to surfaces or sub-surfaces. This may useful if you started with an Imported IDF file and now want to use construction sets.</description><modeler_description>This is classified under opaque, but it also affects fenestration surfaces.</modeler_description><tags><tag>Envelope.Opaque</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>ImportedIdf_TestModel.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>C1C64003</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.3.1</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>45827605</checksum></file><file><filename>RemoveHardAssignedConstructions_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>6E4CA0F4</checksum></file><file><filename>test.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>F7090FCC</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>remove_hard_assigned_constructions</name>
+  <uid>277c4962-17e7-46fa-a5f3-643218b2a513</uid>
+  <version_id>93b087f5-19ae-4235-b8cf-1e156d9b8d8e</version_id>
+  <version_modified>20160531T204353Z</version_modified>
+  <xml_checksum>1E963D9C</xml_checksum>
+  <class_name>RemoveHardAssignedConstructions</class_name>
+  <display_name>RemoveHardAssignedConstructions</display_name>
+  <description>This will remove all construction assignments from made directly to surfaces or sub-surfaces. This may useful if you started with an Imported IDF file and now want to use construction sets.</description>
+  <modeler_description>This is classified under opaque, but it also affects fenestration surfaces.</modeler_description>
+  <arguments>
+    <argument>
+      <name>preserve_adiabatic</name>
+      <display_name>Preserve Hard Assigned Constructions for Adiabatic Surfaces.</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.1</identifier>
+        <min_compatible>1.3.1</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>7B9347E9</checksum>
+    </file>
+  </files>
+</measure>

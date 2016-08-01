@@ -1,2 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Modify EnergyPlus CoilCoolingDXSingleSpeed Objects</name><uid>906f4d50-042d-4135-9eae-553345ab476a</uid><version_id>14e8503e-d11b-46f5-ab86-bb35747b05ec</version_id><description>Set various values for existing CoilCoolingDXSingleSpeed objects. Input values are in SI units.</description><modeler_description>Set various values for all CoilCoolingDXSingleSpeed objects in the model will be set to the requested SI value.</modeler_description><tags><tag>HVAC.Cooling</tag></tags><attributes><attribute><name>Measure Type</name><value>EnergyPlusMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>Test.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>E0B29F81</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.1.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>BE3A2D5D</checksum></file><file><filename>ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>E657E6AD</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>modify_energy_plus_coil_cooling_dx_single_speed_objects</name>
+  <uid>906f4d50-042d-4135-9eae-553345ab476a</uid>
+  <version_id>47a5bbed-d9be-494d-94b1-ff7c86cefc58</version_id>
+  <version_modified>20160531T204352Z</version_modified>
+  <xml_checksum>C7ED76C0</xml_checksum>
+  <class_name>ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects</class_name>
+  <display_name>ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects</display_name>
+  <description>Set various values for existing CoilCoolingDXSingleSpeed objects. Input values are in SI units.</description>
+  <modeler_description>Set various values for all CoilCoolingDXSingleSpeed objects in the model will be set to the requested SI value.</modeler_description>
+  <arguments>
+    <argument>
+      <name>ratedTotalCoolingCapacity</name>
+      <display_name>Rated Total Cooling Capacity (W).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>ratedCOP</name>
+      <display_name>Rated COP (W/W).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>ratedAirFlowRate</name>
+      <display_name>Rated Air Flow Rate (m^3/s).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>condensateRemovalStart</name>
+      <display_name>Nominal Time for Condensate Removal to Begin (s).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>evapLatentRatio</name>
+      <display_name>Ratio of Initial Moisture Evaporation Rate and Steady State Latent Capacity.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>latentCapTimeConstant</name>
+      <display_name>Latent Capacity Time Constant (s).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Cooling</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.1.0</identifier>
+        <min_compatible>1.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>B7BB79EA</checksum>
+    </file>
+  </files>
+</measure>

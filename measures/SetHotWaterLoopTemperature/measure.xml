@@ -1,9 +1,24 @@
 <measure>
-  <name>Set Hot Water Loop Temperature</name>
+  <schema_version>3.0</schema_version>
+  <name>set_hot_water_loop_temperature</name>
   <uid>5217cff7-d280-438b-948a-d6c028fa2dfb</uid>
-  <version_id>a198a0d3-cf6e-43f6-8fe4-62d15490be67</version_id>
+  <version_id>84659305-3439-4a4b-a5a0-0629c6564592</version_id>
+  <version_modified>20160531T204355Z</version_modified>
+  <xml_checksum>0DA5C9E6</xml_checksum>
+  <class_name>SetHotWaterLoopTemperature</class_name>
+  <display_name>SetHotWaterLoopTemperature</display_name>
   <description></description>
   <modeler_description>For each plantloop that contains a boiler:hotwater, set the loop setpoint to the user specified value.  Also, set the sizing temperature of the plant to this same setpoint.</modeler_description>
+  <arguments>
+    <argument>
+      <name>hw_temp_f</name>
+      <display_name>Desired hot water setpoint (F)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>140</default_value>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>HVAC.Heating</tag>
@@ -22,20 +37,15 @@
   </attributes>
   <files>
     <file>
-      <filename>SetHotWaterLoopTemperature_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>1C183F04</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.3</identifier>
+        <min_compatible>1.2.3</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>E4F96394</checksum>
+      <checksum>BABD422B</checksum>
     </file>
   </files>
 </measure>

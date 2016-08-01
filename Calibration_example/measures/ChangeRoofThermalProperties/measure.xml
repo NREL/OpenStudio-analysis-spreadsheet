@@ -1,13 +1,44 @@
 <measure>
-  <name>Change Roof Thermal Properties</name>
+  <schema_version>3.0</schema_version>
+  <name>change_roof_thermal_properties</name>
   <uid>6c4eb22b-770f-456c-bcd1-084cfad89eeb</uid>
-  <version_id>30fbc32f-ff44-48b7-9b0d-e70796f09ef5</version_id>
+  <version_id>4efba3a2-a2cb-4f69-982d-8bf67cec68bc</version_id>
+  <version_modified>20160620T200625Z</version_modified>
+  <xml_checksum>31085437</xml_checksum>
+  <class_name>ChangeRoofThermalProperties</class_name>
+  <display_name>Change Roof Thermal Properties</display_name>
   <description>Allows calibration of roof by altering the thermal resistance, density, and solar absorptance of the wall constructions independently.</description>
   <modeler_description>Tunes all roof surfaces by providing separate calibration multipliers to thermal resistance, thermal mass, and solar absorptance.</modeler_description>
+  <arguments>
+    <argument>
+      <name>r_value_mult</name>
+      <display_name>Roof total R-value multiplier</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+    <argument>
+      <name>solar_abs_mult</name>
+      <display_name>Roof solar absorptance multiplier</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+    <argument>
+      <name>thermal_mass_mult</name>
+      <display_name>Roof thermal mass multiplier</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>
-	<tag>Calibration</tag>
+    <tag>Calibration</tag>
   </tags>
   <attributes>
     <attribute>
@@ -48,17 +79,24 @@
       <filename>ChangeRoofThermalProperties_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>C3F2A7B7</checksum>
+      <checksum>D73E5688</checksum>
     </file>
     <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
+        <min_compatible>0.11.5</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>DC927612</checksum>
+      <checksum>2E673C0C</checksum>
+    </file>
+    <file>
+      <filename>ChangeRoofThermalProperties_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D73E5688</checksum>
     </file>
   </files>
 </measure>

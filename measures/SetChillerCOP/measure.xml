@@ -1,9 +1,34 @@
 <measure>
-  <name>SetChillerCOP</name>
+  <schema_version>3.0</schema_version>
+  <name>set_chiller_cop</name>
   <uid>6b87fc76-a663-4611-bf1f-3ff416727267</uid>
-  <version_id>279c16d7-e087-43ea-bfce-1b6c85bb4c5a</version_id>
+  <version_id>5593c8b4-d846-4740-9f3b-cd5ecd63b81b</version_id>
+  <version_modified>20160531T204354Z</version_modified>
+  <xml_checksum>9E2537CD</xml_checksum>
+  <class_name>SetChillerCOP</class_name>
+  <display_name>SetChillerCOP</display_name>
   <description>This measure sets the COP for a chiller </description>
   <modeler_description>This measure may only work for Chiller:Electric:EIR</modeler_description>
+  <arguments>
+    <argument>
+      <name>info_widget</name>
+      <display_name>!!!!*** This Measure is not Applicable to loaded Model. Read the description and choose an appropriate baseline model. ***!!!!</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>
@@ -22,20 +47,15 @@
   </attributes>
   <files>
     <file>
-      <filename>SetChillerCOP_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>92627C06</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.0</identifier>
+        <min_compatible>1.2.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>E1E3C18E</checksum>
+      <checksum>62149D04</checksum>
     </file>
   </files>
 </measure>

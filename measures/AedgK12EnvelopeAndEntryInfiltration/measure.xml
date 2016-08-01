@@ -1,2 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>AEDG K12 - Envelope And Entry Infiltration</name><uid>02447d29-ee6a-436a-af49-3358ad90f7aa</uid><version_id>e4ae75d1-7c4b-4e1f-9abf-d0a1d1ae0785</version_id><description>This measure addresses two sources of air infiltration. The first is infiltration through the building envelope. The second is infiltration due to occupants entering and leaving the building. The AEDG provides recommendations and tips on how to limit infiltration in both cases. For occupant entry vestibules may be recommended at major entries depending on the size of the building and climate zone.</description><modeler_description>This measure will remove all existing infiltration objects and then add two new types of objects. Every zone will get an infiltration object that adds infiltration per area of exterior envelope. Zones in a user specified floor will have an extra infiltration object specific to occupant entry and exit to and from the building. The measure allows you to pick a baseline or low energy recommendation for envelope infiltration. Additionally there is a choice argument to model the building entry with or without vestibules. The measure will pick the recommended value by looking at the model's climate zone and size, but the user can override this recommendation.</modeler_description><tags><tag>Envelope.Infiltration</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>0221_SimpleSchool_g_123_dev.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>7EA9492A</checksum></file><file><filename>AedgK12EnvelopeAndEntryInfiltration_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>A76EFFD7</checksum></file><file><filename>BoxProfileTest.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>25B3A6BB</checksum></file><file><filename>CurveProfileTest.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>0252ED64</checksum></file><file><filename>OsLib_AedgMeasures.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>279C090D</checksum></file><file><filename>OsLib_OutdoorAirAndInfiltration.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>C3C8CBEC</checksum></file><file><filename>OsLib_Schedules.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>86DFA772</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.3.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>022C6AFA</checksum></file><file><filename>OsLib_HelperMethods.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>2AE9E52E</checksum></file><file><filename>BoxProfileTest_output.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>C8C103B5</checksum></file><file><filename>CurveProfileTest_output.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>3A38992E</checksum></file><file><filename>test.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>7F4CA561</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>aedg_k_12_envelope_and_entry_infiltration</name>
+  <uid>02447d29-ee6a-436a-af49-3358ad90f7aa</uid>
+  <version_id>a725fd88-bd3e-4071-a104-482ee3a9f2b6</version_id>
+  <version_modified>20160620T200507Z</version_modified>
+  <xml_checksum>EACB548E</xml_checksum>
+  <class_name>AedgK12EnvelopeAndEntryInfiltration</class_name>
+  <display_name>AedgK12EnvelopeAndEntryInfiltration</display_name>
+  <description>This measure addresses two sources of air infiltration. The first is infiltration through the building envelope. The second is infiltration due to occupants entering and leaving the building. The AEDG provides recommendations and tips on how to limit infiltration in both cases. For occupant entry vestibules may be recommended at major entries depending on the size of the building and climate zone.</description>
+  <modeler_description>This measure will remove all existing infiltration objects and then add two new types of objects. Every zone will get an infiltration object that adds infiltration per area of exterior envelope. Zones in a user specified floor will have an extra infiltration object specific to occupant entry and exit to and from the building. The measure allows you to pick a baseline or low energy recommendation for envelope infiltration. Additionally there is a choice argument to model the building entry with or without vestibules. The measure will pick the recommended value by looking at the model's climate zone and size, but the user can override this recommendation.</modeler_description>
+  <arguments>
+    <argument>
+      <name>infiltrationEnvelope</name>
+      <display_name>Envelope Infiltration Level (Not including Occupant Entry Infiltration)</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>AEDG K-12 - Target</default_value>
+      <choices>
+        <choice>
+          <value>AEDG K-12 - Baseline</value>
+          <display_name>AEDG K-12 - Baseline</display_name>
+        </choice>
+        <choice>
+          <value>AEDG K-12 - Target</value>
+          <display_name>AEDG K-12 - Target</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>infiltrationOccupant</name>
+      <display_name>Occupant Entry Infiltration Modeling Approach</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Model Occupant Entry With a Vestibule if Recommended by K12 AEDG</default_value>
+      <choices>
+        <choice>
+          <value>Model Occupant Entry With a Vestibule if Recommended by K12 AEDG</value>
+          <display_name>Model Occupant Entry With a Vestibule if Recommended by K12 AEDG</display_name>
+        </choice>
+        <choice>
+          <value>Don't model Occupant Entry Infiltration With a Vestibule</value>
+          <display_name>Don't model Occupant Entry Infiltration With a Vestibule</display_name>
+        </choice>
+        <choice>
+          <value>Model Occupant Entry With a Vestibule</value>
+          <display_name>Model Occupant Entry With a Vestibule</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>story</name>
+      <display_name>Apply Occupant Entry Infiltration to ThermalZones on this floor.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>num_entries</name>
+      <display_name>Number of Primary Occupant Entry Points on Selected Floor.</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>4</default_value>
+    </argument>
+    <argument>
+      <name>doorOpeningEventsPerPerson</name>
+      <display_name>Number of Door Opening Events Per Person Per Day (2 is expected minimum for one entry and exit).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>3</default_value>
+    </argument>
+    <argument>
+      <name>pressureDifferenceAcrossDoor_pa</name>
+      <display_name>Pressure Difference Across Door At Occupant Entries (pa).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>4</default_value>
+    </argument>
+    <argument>
+      <name>costTotalEnvelopeInfiltration</name>
+      <display_name>Total cost for all Envelope Improvements ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>costTotalEntryInfiltration</name>
+      <display_name>Total cost for all Occupant Entry Improvements ($).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Infiltration</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>OsLib_AedgMeasures.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9FC84A27</checksum>
+    </file>
+    <file>
+      <filename>OsLib_OutdoorAirAndInfiltration.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>61115846</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A59F2148</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.0</identifier>
+        <min_compatible>1.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>AC9CA702</checksum>
+    </file>
+    <file>
+      <filename>OsLib_HelperMethods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>709EA7D2</checksum>
+    </file>
+  </files>
+</measure>

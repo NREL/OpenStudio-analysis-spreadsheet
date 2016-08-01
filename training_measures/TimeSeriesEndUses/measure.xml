@@ -1,9 +1,64 @@
 <measure>
-  <name>TimeSeriesEndUses</name>
+  <schema_version>3.0</schema_version>
+  <name>time_series_end_uses</name>
   <uid>477e4d05-8e52-4470-9916-185612e70812</uid>
-  <version_id>acdf41b5-bfc1-44d7-9065-a5a0abede699</version_id>
+  <version_id>a4d4ddd9-1f38-4d99-8be0-502529859f73</version_id>
+  <version_modified>20160620T201855Z</version_modified>
+  <xml_checksum>1E1F8B97</xml_checksum>
+  <class_name>TimeSeriesEndUses</class_name>
+  <display_name>TimeSeriesEndUses</display_name>
   <description>create time series for end uses</description>
   <modeler_description>create time series for end uses</modeler_description>
+  <arguments>
+    <argument>
+      <name>meter_type</name>
+      <display_name>Meter Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Facility</default_value>
+      <choices>
+        <choice>
+          <value>Facility</value>
+          <display_name>Facility</display_name>
+        </choice>
+        <choice>
+          <value>Building</value>
+          <display_name>Building</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>reporting_frequency</name>
+      <display_name>Reporting Frequency</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>hourly</default_value>
+      <choices>
+        <choice>
+          <value>detailed</value>
+          <display_name>detailed</display_name>
+        </choice>
+        <choice>
+          <value>timestep</value>
+          <display_name>timestep</display_name>
+        </choice>
+        <choice>
+          <value>hourly</value>
+          <display_name>hourly</display_name>
+        </choice>
+        <choice>
+          <value>daily</value>
+          <display_name>daily</display_name>
+        </choice>
+        <choice>
+          <value>monthly</value>
+          <display_name>monthly</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -25,23 +80,12 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.3.2</identifier>
+        <min_compatible>1.3.2</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>6E02F190</checksum>
-    </file>
-    <file>
-      <filename>TimeSeriesEndUses_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>468998BC</checksum>
-    </file>
-    <file>
-      <filename></filename>
-      <filetype></filetype>
-      <usage_type>resource</usage_type>
-      <checksum>00000000</checksum>
+      <checksum>016CE027</checksum>
     </file>
   </files>
 </measure>

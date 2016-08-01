@@ -1,2 +1,121 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Bar Aspect Ratio Study</name><uid>3dcac94d-8a2e-43b6-8698-a3a4e8f3903f</uid><version_id>2ed355fb-64f8-4896-a2f2-4fef9f498bcd</version_id><description>This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.</description><modeler_description>This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.</modeler_description><tags><tag>Envelope.Form</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><version><software_program>OpenStudio</software_program><identifier>1.0.4</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>F7797E4A</checksum></file><file><filename>BarAspectRatioStudy_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>6193AE6E</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>bar_aspect_ratio_study</name>
+  <uid>3dcac94d-8a2e-43b6-8698-a3a4e8f3903f</uid>
+  <version_id>f38feed3-0f2b-4c9b-a25f-4b6c54d13786</version_id>
+  <version_modified>20160620T200512Z</version_modified>
+  <xml_checksum>49BEF039</xml_checksum>
+  <class_name>BarAspectRatioStudy</class_name>
+  <display_name>BarAspectRatioStudy</display_name>
+  <description>This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.</description>
+  <modeler_description>This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.</modeler_description>
+  <arguments>
+    <argument>
+      <name>total_bldg_area_ip</name>
+      <display_name>Total Building Floor Area (ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>10000</default_value>
+    </argument>
+    <argument>
+      <name>ns_to_ew_ratio</name>
+      <display_name>Ratio of North/South Facade Length Relative to East/West Facade Length.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2</default_value>
+    </argument>
+    <argument>
+      <name>num_floors</name>
+      <display_name>Number of Floors.</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2</default_value>
+    </argument>
+    <argument>
+      <name>floor_to_floor_height_ip</name>
+      <display_name>Floor to Floor Height (ft).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>10</default_value>
+    </argument>
+    <argument>
+      <name>surface_matching</name>
+      <display_name>Surface Matching?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>make_zones</name>
+      <display_name>Make Thermal Zones from Spaces?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Form</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.4</identifier>
+        <min_compatible>1.0.4</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>864F0C5B</checksum>
+    </file>
+  </files>
+</measure>

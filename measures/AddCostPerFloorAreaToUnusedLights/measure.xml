@@ -1,2 +1,144 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Add Cost per Floor Area to Unused Lights</name><uid>a5f5ddcf-48bb-413a-a712-0ee22f0b40a4</uid><version_id>ce910bf1-e3a8-4c50-98ca-cc376a74ecdb</version_id><description>This measure is the same as &quot;Add Cost per Floor Area to Electric Lights&quot; except that it only offers lights definitions that are not used in the model.</description><modeler_description>The use case for this is a lights definition that is not used in the baseline but will be used after other measures are run. For example using the &quot;Swap Lights Definition&quot; measure.</modeler_description><tags><tag>Economics.Life Cycle Cost Analysis</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>0416_NetArea_b.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>08033201</checksum></file><file><filename>AddCostPerFloorAreaToUusedLights_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>15C082CE</checksum></file><file><filename>resultsviewer.log</filename><filetype>log</filetype><usage_type>test</usage_type><checksum>00000000</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.0</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>53E240A2</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>add_cost_per_floor_area_to_unused_lights</name>
+  <uid>a5f5ddcf-48bb-413a-a712-0ee22f0b40a4</uid>
+  <version_id>f4147616-fcdb-4c0a-a3f2-d254963fedcf</version_id>
+  <version_modified>20160620T200506Z</version_modified>
+  <xml_checksum>35DA4ED3</xml_checksum>
+  <class_name>AddCostPerFloorAreaToUnusedLights</class_name>
+  <display_name>AddCostPerFloorAreaToUnusedLights</display_name>
+  <description>This measure is the same as "Add Cost per Floor Area to Electric Lights" except that it only offers lights definitions that are not used in the model.</description>
+  <modeler_description>The use case for this is a lights definition that is not used in the baseline but will be used after other measures are run. For example using the "Swap Lights Definition" measure.</modeler_description>
+  <arguments>
+    <argument>
+      <name>lights_def</name>
+      <display_name>Choose a Watt per Area Lights Definition to Add Costs to.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>remove_costs</name>
+      <display_name>Remove Existing Costs?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost_ip</name>
+      <display_name>Material and Installation Costs for Definition per Floor Area ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost_ip</name>
+      <display_name>Demolition Costs for Definition per Floor Area ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Definition?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost_ip</name>
+      <display_name>O &amp; M Costs for Definition per Floor Area ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Economics.Life Cycle Cost Analysis</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.0</identifier>
+        <min_compatible>1.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>8A50A367</checksum>
+    </file>
+  </files>
+</measure>

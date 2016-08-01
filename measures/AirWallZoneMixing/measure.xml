@@ -1,10 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>air_wall_zone_mixing</name><uid>fd04f73e-a530-4144-9e1e-c1878b1394bc</uid><version_id>1d76f66a-3b62-48c5-b97c-e4664568c6e8</version_id><description>This measure replaces conductive heat transfer with zone mixing wherever air walls are used on matched surfaces or sub-surfaces for walls. A user argument is exposed for a coefficient that represents a target air changes per hour (ACH) for a room where the zone volume/the air wall surface area is the same as its zone height. As the room gets deeper the additional airflow per unit of depth decreases. If two zones have different mixing estimates, the lower will be used. If a smaller portion of an inter-zone wall is an air wall, that will also decrease zone mixing airflow.
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>air_wall_zone_mixing</name>
+  <uid>fd04f73e-a530-4144-9e1e-c1878b1394bc</uid>
+  <version_id>5a56caa6-890c-4fbc-b980-6e60197a8ab5</version_id>
+  <version_modified>20160620T200512Z</version_modified>
+  <xml_checksum>772B7164</xml_checksum>
+  <class_name>AirWallZoneMixing</class_name>
+  <display_name>Air Wall Zone Mixing</display_name>
+  <description>This measure replaces conductive heat transfer with zone mixing wherever air walls are used on matched surfaces or sub-surfaces for walls. A user argument is exposed for a coefficient that represents a target air changes per hour (ACH) for a room where the zone volume/the air wall surface area is the same as its zone height. As the room gets deeper the additional airflow per unit of depth decreases. If two zones have different mixing estimates, the lower will be used. If a smaller portion of an inter-zone wall is an air wall, that will also decrease zone mixing airflow.
 
-A construction will be hard assigned to the matched surfaces using the air wall, and the then boundary condition will be changed to adiabatic. This will avoid including both air mixing and conductive transfer across zones. Zone mixing objects will also be made for sub-surface air walls, but they can't be made adiabatic unless their base surface also is. A warning will be issued if that happens</description><modeler_description>The formula used to determine the design flow rate is the zone mixing coefficient * zone volume/sqrt(zone volume / (air wall area * zone height).
+A construction will be hard assigned to the matched surfaces using the air wall, and the then boundary condition will be changed to adiabatic. This will avoid including both air mixing and conductive transfer across zones. Zone mixing objects will also be made for sub-surface air walls, but they can't be made adiabatic unless their base surface also is. A warning will be issued if that happens</description>
+  <modeler_description>The formula used to determine the design flow rate is the zone mixing coefficient * zone volume/sqrt(zone volume / (air wall area * zone height).
 
 Zone mixing will only be added where there is an air wall and where the matched surfaces belong to spaces in different thermal zones and the base surface type is a wall. Currently floors are not addressed by this measure. Air walls in spaces that are part of the same thermal zone will be left alone. The intended use case is a single base surface that spans the room or one or more sub-surface that spans a portion of it. If you have multiple air wall base surfaces matched between the same zones you may get higher than expected zone mixing.
 
 Example 1: two 10' high by 40' wide by 10' deep rooms with a zone mixing coefficient of 1.0 would have a design flow rate of 66.67 CFM (equiv to 1.0 ACH)
 Example 2: two 10' high by 40' wide by 40' deep rooms with a zone mixing coefficient of 1.0 would have a design flow rate of 133.33 CFM (equiv to 0.5 ACH)
-Example 3: two 40' high by 10' wide by 10' deep rooms with a zone mixing coefficient of 1.0 would have a design flow rate of 66.67 CFM (equiv to 1.0 ACH)</modeler_description><tags><tag>HVAC.Distribution</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Apply Measure Now</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>OpenStudio Application</value><datatype>string</datatype></attribute><attribute><name>Intended Software Tool</name><value>Parametric Analysis Tool</value><datatype>string</datatype></attribute></attributes><files><file><filename>example_model.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>AD3A8B94</checksum></file><file><filename>os_lib_geometry.rb</filename><filetype>rb</filetype><usage_type>resource</usage_type><checksum>363435A9</checksum></file><file><filename>air_wall_zone_mixing_test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>0598FA88</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.8.4</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>B6E688D1</checksum></file><file><filename>SimpleTest.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>38ED88B9</checksum></file><file><filename>AirWallZoneMixing.pdf</filename><filetype>pdf</filetype><usage_type>resource</usage_type><checksum>D898FE3D</checksum></file></files></measure>
+Example 3: two 40' high by 10' wide by 10' deep rooms with a zone mixing coefficient of 1.0 would have a design flow rate of 66.67 CFM (equiv to 1.0 ACH)</modeler_description>
+  <arguments>
+    <argument>
+      <name>zone_mixing_coef</name>
+      <display_name>Cross Mixing Coefficient</display_name>
+      <description>Cross Mixing flow rate = zone mixing coefficient * zone volume/sqrt(thermal zone volume/(air wall area*zone height))</description>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+    <argument>
+      <name>add_zone_mixing_variables</name>
+      <display_name>Add Zone Mixing Output Variable Requests</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Distribution</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>os_lib_geometry.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>363435A9</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.8.4</identifier>
+        <min_compatible>1.8.4</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>B6E688D1</checksum>
+    </file>
+    <file>
+      <filename>AirWallZoneMixing.pdf</filename>
+      <filetype>pdf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>D898FE3D</checksum>
+    </file>
+  </files>
+</measure>

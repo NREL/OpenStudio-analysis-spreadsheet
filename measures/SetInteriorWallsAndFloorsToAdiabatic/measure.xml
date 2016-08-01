@@ -1,2 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Set Interior Walls to Adiabatic</name><uid>7e440f88-1b2d-444e-8586-9a8d1ac84b8d</uid><version_id>34a4b299-3a55-415b-81c6-d7a4520f7272</version_id><description>Set interior walls to Adiabatic and assign a hard construction.</description><modeler_description>This will change wall with a surface boundary condition to adiabatic and will assigned the selected construction.</modeler_description><tags><tag>Envelope.Opaque</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>EnvelopeAndLoadTestModel_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>938A1BB0</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.4</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>8CD156C1</checksum></file><file><filename>SetInteriorWallsAndFloorsToSelectedConstruction_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>9A53F9E7</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>set_interior_walls_and_floors_to_adiabatic</name>
+  <uid>7e440f88-1b2d-444e-8586-9a8d1ac84b8d</uid>
+  <version_id>eef00709-75f5-46f8-a674-4f3a6524e8d8</version_id>
+  <version_modified>20160531T204355Z</version_modified>
+  <xml_checksum>1E963D9C</xml_checksum>
+  <class_name>SetInteriorWallsAndFloorsToAdiabatic</class_name>
+  <display_name>SetInteriorWallsAndFloorsToAdiabatic</display_name>
+  <description>Set interior walls to Adiabatic and assign a hard construction.</description>
+  <modeler_description>This will change wall with a surface boundary condition to adiabatic and will assigned the selected construction.</modeler_description>
+  <arguments>
+    <argument>
+      <name>construction</name>
+      <display_name>Select New Construction.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.4</identifier>
+        <min_compatible>1.0.4</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>2E522515</checksum>
+    </file>
+  </files>
+</measure>

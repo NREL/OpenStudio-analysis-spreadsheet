@@ -1,9 +1,24 @@
 <measure>
-  <name>Set Minimum VAV Terminal Flow Fraction</name>
+  <schema_version>3.0</schema_version>
+  <name>set_minimum_vav_terminal_flow_fraction</name>
   <uid>5e2dbc3a-5a22-4e6b-93e2-a4add95e3ccc</uid>
-  <version_id>a94f55ef-06e6-44b3-b6ca-b930a546f919</version_id>
+  <version_id>bd17d72c-911c-4830-a81a-1ecd00b722b6</version_id>
+  <version_modified>20160531T204355Z</version_modified>
+  <xml_checksum>ECE70A70</xml_checksum>
+  <class_name>SetMinimumVAVTerminalFlowFraction</class_name>
+  <display_name>SetMinimumVAVTerminalFlowFraction</display_name>
   <description></description>
   <modeler_description>Loops through all AirLoops, setting Zone Minimum Air Flow Input Method to "Constant" and "Constant Minimum Airflow Fraction" to a user specified value for all Airterminal:SingleDuct:VAV:Reheat and Airterminal:SingleDuct:VAV:NoReheat terminals encountered.</modeler_description>
+  <arguments>
+    <argument>
+      <name>min_vav_frac</name>
+      <display_name>Minimum VAV Terminal Flow Fraction (%)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>30</default_value>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>HVAC.Ventilation</tag>
@@ -22,20 +37,15 @@
   </attributes>
   <files>
     <file>
-      <filename>SetMinimumVAVTerminalFlowFraction_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>5744362B</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.3</identifier>
+        <min_compatible>1.2.3</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>5461C370</checksum>
+      <checksum>B8A973FA</checksum>
     </file>
   </files>
 </measure>

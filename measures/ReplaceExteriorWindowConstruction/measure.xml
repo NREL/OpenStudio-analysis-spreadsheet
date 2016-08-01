@@ -1,5 +1,183 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Replace Exterior Window Constructions with a Different Construction from the Model</name><uid>e9cc8132-fe83-4cd6-a168-8c7637b04e12</uid><version_id>e891d4e8-be7a-44e0-970a-fa0afe42eb83</version_id><description>Replace existing windows with different windows to change thermal or lighting performance.  Window technology has improved drastically over the years, and double or triple-pane high performance windows currently on the market can cut down on envelope loads greatly.  Window frames with thermal breaks reduce the considerable energy that can transfer through thermally unbroken frames.  High performance windows typically also come with low-emissivity (low?e) glass to keep radiant heat on the same side of the glass from where the heat originated. This means that during the cooling months a low-e glass would tend to keep radiant heat from the sun on the outside of the window, which would keep the inside of a building cooler. Conversely, during heating months low-e glass helps keep radiant heat from inside the building on the inside, which would keep the inside of a building warmer.  Life cycle cost values may be added for the new window applied by the measure.</description><modeler_description>Replace fixed and/or operable exterior window constructions with another construction in the model.  Skylights (windows in roofs vs. walls) will not be altered. Windows in surfaces with &quot;Adiabatic&quot; boundary conditions are not specifically assumed to be interior or exterior. As a result constructions used on windows in &quot;Adiabatic&quot; surfaces will not be altered. Material &amp; installation, demolition, and O&amp;M costs can be added to the applied window construction. Optionally any prior costs associated with construction can be removed.&#13;&#13;&#13;&#13;&#13;&#13;&#13;
-&#13;&#13;&#13;&#13;&#13;&#13;&#13;
-For costs added as part of a design alternatives &quot;Years Until Costs Start? is typically &quot;0?. For a new construction scenario &quot;Demolition Costs Occur During Initial Construction?? is &quot;false?. For retrofit scenario &quot;Demolition Costs Occur During Initial Construction?? is &quot;true?. O&amp;M cost and frequency can be whatever is appropriate for the component.&#13;&#13;&#13;&#13;&#13;&#13;&#13;
-  </modeler_description><tags><tag>Envelope.Fenestration</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Measure Function</name><value>Measure</value><datatype>string</datatype></attribute><attribute><name>Requires EnergyPlus Results</name><value>false</value><datatype>boolean</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>EnvelopeAndLoadTestModel_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>938A1BB0</checksum></file><file><filename>ReverseTranslatedModel.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>20C95654</checksum></file><file><filename>ReplaceExteriorWindowConstruction_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>B3022F72</checksum></file><file><filename>EnvelopeAndLoadTestModel_01Costed.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>344E16E0</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>0.11.5</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>FCB65E69</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>replace_exterior_window_construction</name>
+  <uid>e9cc8132-fe83-4cd6-a168-8c7637b04e12</uid>
+  <version_id>bb857067-e024-470c-85c6-267f321640c6</version_id>
+  <version_modified>20160531T204353Z</version_modified>
+  <xml_checksum>6DE831F7</xml_checksum>
+  <class_name>ReplaceExteriorWindowConstruction</class_name>
+  <display_name>Replace Exterior Window Constructions with a Different Construction from the Model.</display_name>
+  <description>Replace existing windows with different windows to change thermal or lighting performance.  Window technology has improved drastically over the years, and double or triple-pane high performance windows currently on the market can cut down on envelope loads greatly.  Window frames with thermal breaks reduce the considerable energy that can transfer through thermally unbroken frames.  High performance windows typically also come with low-emissivity (low?e) glass to keep radiant heat on the same side of the glass from where the heat originated. This means that during the cooling months a low-e glass would tend to keep radiant heat from the sun on the outside of the window, which would keep the inside of a building cooler. Conversely, during heating months low-e glass helps keep radiant heat from inside the building on the inside, which would keep the inside of a building warmer.  Life cycle cost values may be added for the new window applied by the measure.</description>
+  <modeler_description>Replace fixed and/or operable exterior window constructions with another construction in the model.  Skylights (windows in roofs vs. walls) will not be altered. Windows in surfaces with "Adiabatic" boundary conditions are not specifically assumed to be interior or exterior. As a result constructions used on windows in "Adiabatic" surfaces will not be altered. Material &amp; installation, demolition, and O&amp;M costs can be added to the applied window construction. Optionally any prior costs associated with construction can be removed.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+For costs added as part of a design alternatives "Years Until Costs Start? is typically "0?. For a new construction scenario "Demolition Costs Occur During Initial Construction?? is "false?. For retrofit scenario "Demolition Costs Occur During Initial Construction?? is "true?. O&amp;M cost and frequency can be whatever is appropriate for the component.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+  </modeler_description>
+  <arguments>
+    <argument>
+      <name>construction</name>
+      <display_name>Pick a Window Construction From the Model to Replace Existing Window Constructions.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>change_fixed_windows</name>
+      <display_name>Change Fixed Windows?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>change_operable_windows</name>
+      <display_name>Change Operable Windows?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>remove_costs</name>
+      <display_name>Remove Existing Costs?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>material_cost_ip</name>
+      <display_name>Material and Installation Costs for Construction per Area Used ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demolition_cost_ip</name>
+      <display_name>Demolition Costs for Construction per Area Used ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>years_until_costs_start</name>
+      <display_name>Years Until Costs Start (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>demo_cost_initial_const</name>
+      <display_name>Demolition Costs Occur During Initial Construction?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>expected_life</name>
+      <display_name>Expected Life (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>20</default_value>
+    </argument>
+    <argument>
+      <name>om_cost_ip</name>
+      <display_name>O &amp; M Costs for Construction per Area Used ($/ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>om_frequency</name>
+      <display_name>O &amp; M Frequency (whole years).</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Fenestration</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+        <min_compatible>0.11.5</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>20DA78D2</checksum>
+    </file>
+  </files>
+</measure>

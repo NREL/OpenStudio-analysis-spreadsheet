@@ -1,9 +1,92 @@
 <measure>
-  <name>Create Aspect Ratio with Rotation</name>
+  <schema_version>3.0</schema_version>
+  <name>create_building</name>
   <uid>4f231149-c2ba-4b45-88e8-c117c62fcaf2</uid>
-  <version_id>8244cfab-5ed2-4b15-9685-1eecd1f1ab5d</version_id>
+  <version_id>8e18e713-a659-4b2a-849e-b153dd69bf2b</version_id>
+  <version_modified>20160620T201854Z</version_modified>
+  <xml_checksum>634FEB77</xml_checksum>
+  <class_name>CreateBuilding</class_name>
+  <display_name>CreateBuilding</display_name>
   <description>This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.  This will also let us set rotation</description>
   <modeler_description>This is based on the SketchUp Plugin user script to create a rectangular building, but just uses different inputs. The resulting building will have a core and perimeter zoning, unless it is too small, in which case eac floor will have a single zone.</modeler_description>
+  <arguments>
+    <argument>
+      <name>total_bldg_area_ip</name>
+      <display_name>Total Building Floor Area (ft^2).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>10000</default_value>
+    </argument>
+    <argument>
+      <name>ns_to_ew_ratio</name>
+      <display_name>Ratio of North/South Facade Length Relative to East/West Facade Length.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2</default_value>
+    </argument>
+    <argument>
+      <name>num_floors</name>
+      <display_name>Number of Floors.</display_name>
+      <type>Integer</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2</default_value>
+    </argument>
+    <argument>
+      <name>floor_to_floor_height_ip</name>
+      <display_name>Floor to Floor Height (ft).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>10</default_value>
+    </argument>
+    <argument>
+      <name>rotation_ip</name>
+      <display_name>Rotation (deg).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>surface_matching</name>
+      <display_name>Surface Matching?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>make_zones</name>
+      <display_name>Make Thermal Zones from Spaces?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
   <provenances/>
   <tags>
     <tag>Envelope.Form</tag>
@@ -35,17 +118,18 @@
       <filename>BarAspectRatioStudy_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>6193AE6E</checksum>
+      <checksum>297E6225</checksum>
     </file>
     <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.4</identifier>
+        <min_compatible>1.0.4</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>9775F779</checksum>
+      <checksum>CFFE7954</checksum>
     </file>
   </files>
 </measure>

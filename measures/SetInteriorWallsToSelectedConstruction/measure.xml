@@ -1,2 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Set Interior Walls to Selected Construction</name><uid>efca6a0a-53d2-40a2-b249-4db1528dfb51</uid><version_id>eb942fcb-667a-4e9a-9c7a-539d22ca26a4</version_id><description>Replace all interior walls with the specified construction.</description><modeler_description>Currently this hard assigns the requested construction to any surfaces that have type of &quot;Wall&quot; and an exterior boundary condition of &quot;Outdoors&quot;. In a future version this could apply to default constructions sets first, and then only hard assign to surfaces, that were previously hard assigned.</modeler_description><tags><tag>Envelope.Opaque</tag></tags><attributes><attribute><name>Measure Type</name><value>ModelMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>SetInteriorWallstoSelectedConstruction_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>81E89D19</checksum></file><file><filename>EnvelopeAndLoadTestModel_01.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>938A1BB0</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.0.4</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>A45DAB59</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>set_interior_walls_to_selected_construction</name>
+  <uid>efca6a0a-53d2-40a2-b249-4db1528dfb51</uid>
+  <version_id>225ebff9-7001-4b0c-b426-ad069b036a33</version_id>
+  <version_modified>20160531T204355Z</version_modified>
+  <xml_checksum>1E963D9C</xml_checksum>
+  <class_name>SetInteriorWallsToSelectedConstruction</class_name>
+  <display_name>SetInteriorWallsToSelectedConstruction</display_name>
+  <description>Replace all interior walls with the specified construction.</description>
+  <modeler_description>Currently this hard assigns the requested construction to any surfaces that have type of "Wall" and an exterior boundary condition of "Outdoors". In a future version this could apply to default constructions sets first, and then only hard assign to surfaces, that were previously hard assigned.</modeler_description>
+  <arguments>
+    <argument>
+      <name>construction</name>
+      <display_name>Select new material:</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <provenances/>
+  <tags>
+    <tag>Envelope.Opaque</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.4</identifier>
+        <min_compatible>1.0.4</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>F6AAD2CB</checksum>
+    </file>
+  </files>
+</measure>

@@ -1,2 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<measure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://bcl.nrel.gov/xsd/measures/version/1.0.xsd"><name>Standard Reports</name><uid>fc337100-8634-404e-8966-01243d292a79</uid><version_id>c418b65d-aa8d-41c2-98b3-7ae3af82a788</version_id><description>Change me</description><modeler_description>Change me</modeler_description><tags><tag>Reporting.QAQC</tag></tags><attributes><attribute><name>Measure Type</name><value>ReportingMeasure</value><datatype>string</datatype></attribute><attribute><name>Uses SketchUp API</name><value>false</value><datatype>boolean</datatype></attribute></attributes><files><file><filename>StandardReports_Test.rb</filename><filetype>rb</filetype><usage_type>test</usage_type><checksum>8C62A700</checksum></file><file><version><software_program>OpenStudio</software_program><identifier>1.1.2</identifier></version><filename>measure.rb</filename><filetype>rb</filetype><usage_type>script</usage_type><checksum>63F94F9C</checksum></file><file><filename>ExampleModel.osm</filename><filetype>osm</filetype><usage_type>test</usage_type><checksum>0D4162D2</checksum></file><file><filename>report.html.in</filename><filetype>in</filetype><usage_type>resource</usage_type><checksum>AC3F6804</checksum></file></files></measure>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>standard_reports</name>
+  <uid>fc337100-8634-404e-8966-01243d292a79</uid>
+  <version_id>332ee48e-da9d-4d6a-9713-248f1ea2a212</version_id>
+  <version_modified>20160531T204356Z</version_modified>
+  <xml_checksum>2C8A3EEF</xml_checksum>
+  <class_name>StandardReports</class_name>
+  <display_name>Standard Reports</display_name>
+  <description>Change me</description>
+  <modeler_description>Change me</modeler_description>
+  <arguments/>
+  <provenances/>
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ReportingMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.1.2</identifier>
+        <min_compatible>1.1.2</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>7DC3A63D</checksum>
+    </file>
+    <file>
+      <filename>report.html.in</filename>
+      <filetype>in</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>DEB83B8D</checksum>
+    </file>
+  </files>
+</measure>
