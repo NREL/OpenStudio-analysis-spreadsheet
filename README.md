@@ -2,25 +2,32 @@
 
 [![Dependency Status](https://www.versioneye.com/user/projects/540a3047ccc023a17f0001d5/badge.svg?style=flat)](https://www.versioneye.com/user/projects/540a3047ccc023a17f0001d5)
 
-The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon OpenStudio Cluster.  Example analysis are:
+The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setup and run simulations on an Amazon 
+OpenStudio Cluster. Example analyses are:
 
 * Monthly Utility Data Calibration
-![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324111/7887be68-6c44-11e5-86de-9d004585ad8e.png)
+
+    ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324111/7887be68-6c44-11e5-86de-9d004585ad8e.png)
 
 * Timeseries Calibration
-![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324119/7d4919ce-6c44-11e5-982a-2216095b523d.png)
-![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324120/7ec41f60-6c44-11e5-941d-208286a63b32.png)
+
+    ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324119/7d4919ce-6c44-11e5-982a-2216095b523d.png)
+    ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324120/7ec41f60-6c44-11e5-941d-208286a63b32.png)
  
 * Optimization
-![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324114/7a4e536a-6c44-11e5-9c64-57ef26658ed3.png)
+
+    ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324114/7a4e536a-6c44-11e5-9c64-57ef26658ed3.png)
 
 * Design of Experiments
-![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324117/7bc4e34e-6c44-11e5-8bee-894b4412043d.png)
+
+    ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324117/7bc4e34e-6c44-11e5-8bee-894b4412043d.png)
 
 * Uncertainty Quantification
-![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324123/802cc5fa-6c44-11e5-86d8-c8db0302d514.png)
+
+    ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324123/802cc5fa-6c44-11e5-86d8-c8db0302d514.png)
 
 ## Available Algorithms
+
 * NSGA2 (Nondominated Sorting Genetic Algorithm 2) multi-objective optimization
 * SPEA2 (Strength Pareto Evolutionary Algorithm 2) multi-objective optimization
 * RGenoud (R version of GENetic Optimization Using Derivaties) single-objective optimization
@@ -33,18 +40,23 @@ The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setu
 * Single Run
 * Repeat Run
 
-## OpenStudio Server
+## What is OpenStudio Server?
+
   The analysis spreadsheet submits jobs/problems to the OpenStudio Server https://github.com/NREL/OpenStudio-server.
   The architecture of the OS-Server:
+
   ![alt tag](https://cloud.githubusercontent.com/assets/2235296/10324109/764a00e8-6c44-11e5-8e96-828a06c8df63.png)
   
-## User Documentation
-  https://github.com/NREL/OpenStudio-analysis-spreadsheet/blob/develop/documentation/spreadsheet_userguide_prerelease.pdf
+## Spreadsheet User Guide
 
-## List of OS-Server versions on Amazon
-  http://s3.amazonaws.com//openstudio-resources/server/api/v2/amis.json
+See https://github.com/NREL/OpenStudio-analysis-spreadsheet/blob/develop/documentation/spreadsheet_userguide_prerelease.pdf
 
-## Layout
+## List of OpenStudio Server Amazon AMIs Versions
+
+See http://s3.amazonaws.com/openstudio-resources/server/api/v2/amis.json
+
+## Analysis Spreadsheet Project Layout
+
 * Analysis - These are the exported files that are uploaded to the cloud server to run.
 * Projects - List of projects in the form of analysis spreadsheets. These are the file that you should edit and copy.
 * Seeds - Example seed OSM models.
@@ -53,7 +65,7 @@ The OpenStudio Analysis Spreadsheet uses OpenStudio's Analysis & AWS gem to setu
 
 ## Instructions
 
-Currently the execution of this requires command line (terminal) access.  
+Currently the execution of this project requires command line (terminal) access.  
 
 * Make sure to have Ruby 2.0 installed and the bundler gem.  Check your version of Ruby by running `ruby --version`.
 * Does not currently work with Ruby 2.2.
@@ -66,41 +78,52 @@ set HTTP_PROXY_USER=user
 set HTTP_PROXY_PASS=password
 ```
 
-## Running Examples
+## Installation
 
-* Verify Ruby version and install RubyGem's Bundler.  In a command line call the method below.
+* Verify Ruby version and install RubyGem's Bundler. In a command line call the method below.
 
-```
-ruby --version
-gem install bundler
-```
-*Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
+    ```
+    ruby --version
+    gem install bundler
+    ```
+    
+    *Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
 
-### Using Git
+### Downloading
 
-```
-git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
-cd <path to download>
-bundle 
-bundle exec rake run
-```
-*Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
+* Using Git
 
-To update simply go to the directory and call
+    * Checkout 
+        
+        ```
+        git clone https://github.com/NREL/OpenStudio-analysis-spreadsheet.git
+        cd <path to download>
+        bundle 
+        bundle exec rake run
+        ```
+    
+        *Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
+    
+    * Update
+    
+        ```
+        git pull
+        bundle
+        ```
+        
+        *Note Mac 10.9 users using system Ruby 2.0 will need to run `sudo bundle` if you are using system's Ruby.*
 
-```
-git pull
-bundle
-```
+* Direct Download
+    * Download the latest release from https://github.com/NREL/OpenStudio-analysis-spreadsheet/releases
+    * Unzip into a directory
+    * Go to unzipped directory in a command/terminal window
+    
+### Running Analyses
 
-### Without Git
-
-* Download the latest release from https://github.com/NREL/OpenStudio-analysis-spreadsheet/releases
-* Unzip into a directory and go to that directory in a command/terminal window
-* Running the Analysis
+* Creating and Running on the Cluster
 
     * New cluster
-
+    
         ```
         cd <path_to_downloaded_directory>
         bundle
@@ -118,7 +141,7 @@ bundle
         
     * Pre-configured cluster from external source
      
-        If the cluster has been created using other provisioners (e.g. docker, chef, HPC ) and the IP address is known,
+        If the cluster has been created using other provisioners (e.g. docker, Chef, HPC ) and the IP address is known,
         then run the following command to submit the analysis.
             
         ```
@@ -153,14 +176,17 @@ bundle
 
 ## Windows Specific Installation Steps
 
-If you have any issues getting gem dependencies installed, it may be helpful to remove all your gems and start over.  to do this run the command below (note that you will need to reinstall bundler after removing all gems).
+If you have any issues getting gem dependencies installed, it may be helpful to remove all your gems and start over.  
+To do this run the command below (note that you will need to reinstall bundler after removing all gems).
 
 ```
 ruby -e "`gem list`.split(/$/).each { |line| puts `gem uninstall -Iax #{line.split(' ')[0]}` unless line.empty? }"
 ```
 
 
-If you are using XML (via the BCL gem) then by default the path to the libxml DLLs is not included.  You will need to add the path by hand.  To do this find where the DLLs are by going to your Ruby installation directory and making sure they exist. Typically the installation will be something like:
+If you are using XML (via the BCL gem) then by default the path to the libxml DLLs is not included.  You will need to
+add the path by hand.  To do this find where the DLLs are by going to your Ruby installation directory and making sure 
+they exist. Typically the installation will be something like:
 
 ```
 C:\Ruby<RUBY_VERSION>\lib\ruby\gems\<RUBY_VERSION>\gems\libxml-ruby-<GEM_VERSION>\lib\libs
