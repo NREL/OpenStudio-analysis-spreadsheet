@@ -97,53 +97,58 @@ bundle
 
 * Download the latest release from https://github.com/NREL/OpenStudio-analysis-spreadsheet/releases
 * Unzip into a directory and go to that directory in a command/terminal window
-* Run
+* Running the Analysis
 
-```
-cd <path_to_downloaded_directory>
-bundle
-bundle exec rake run
-```
+    * New cluster
 
-* Run example (will setup the cluster and run the project)
+        ```
+        cd <path_to_downloaded_directory>
+        bundle
+        bundle exec rake run
+        ```
+    
+    * Pre-configured cluster from Spreadsheet
+    
+        If the cluster has already been created using the spreadsheet and the cluster is still running, then
+        by rerunning the command below will result in the submission of more analyses to the existing cluster.
+    
+        ```
+        bundle exec rake run
+        ```
+        
+    * Pre-configured cluster from external source
+     
+        If the cluster has been created using other provisioners (e.g. docker, chef, HPC ) and the IP address is known,
+        then run the following command to submit the analysis.
+            
+        ```
+        bundle exec rake run_custom[http://<ip-address>:8080]
+        ```
 
-```
-bundle exec rake run
-```
+* Select the appropriate analysis/project from the list provided after running the above command. 
 
-* This will now ask which project you want to run. Select the right spreadsheet.
+    *Note the first time you run this you will need to add in your AWS credentials in your `<home-dir>/aws_config.yml`
+    file.* The file should only be readable by you as it contains your AWS secret key for access. The YML file needs to 
+    look like:
 
-* Note the first time you run this you will need to add in your AWS credentials in your `<home-dir>/aws_config.yml` file then run the `bundle exec rake run` command again.  Note that this file should only be readable by you as it contains your secret key for AWS access. The YML file will look something like:
-
-
-```
-access_key_id: YOUR_ACCESS_KEY_ID
-secret_access_key: YOUR_SECRET_ACCESS_KEY
-```
-
-* To run an analysis on a pre-configured AWS instance. The program will look for the pre-defined cluster configuration information and submit to that cluster.
-
-```
-bundle exec rake run
-```
+    ```
+    access_key_id: YOUR_ACCESS_KEY_ID
+    secret_access_key: YOUR_SECRET_ACCESS_KEY
+    ```
+    
+    After this has been added, then rerun the correct "Running the Analysis" methods from above.
 
 * To add a new project (spreadsheet)
 
-Copy and rename one of the templates in the `projects` directory.
+    Copy and rename one of the templates in the `projects` directory.
 
-* Delete projects
-Note: this has been disabled.
+* Reset analysis (removes the server files) 
+    
+    **NOTE: this does not kill AWS instances. You must do that manually via the AWS console Note: this has been disabled.**
 
-```
-bundle exec rake delete_all
-```
-
-* Reset analysis (removes the server files) NOTE: this does not kill AWS instances. You must do that manually via the AWS console
-Note: this has been disabled.
-
-```
-bundle exec rake clean
-```
+    ```
+    bundle exec rake clean
+    ```
 
 
 ## Windows Specific Installation Steps
@@ -189,8 +194,4 @@ Make sure that you do not run the `bundle exec rake run` command as sudo.  If yo
 
 If you experience issues accessing github.com, rubygems.org, or aws.amazon.com, make sure that the path to these sites are not blocked.  Some more information can be found in [this issue](https://github.com/NREL/OpenStudio-analysis-gem/issues/3).
 
-## Todos
-
-* Move the analysis files under need a project specific folder (under project)
-* Re-enable the kill_all methods
 
