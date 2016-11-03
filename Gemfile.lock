@@ -4,7 +4,7 @@ GEM
     archive-tar-minitar (0.5.2)
     aws-sdk-core (2.2.26)
       jmespath (~> 1.0)
-    bcl (0.5.6)
+    bcl (0.5.7)
       archive-tar-minitar
       builder
       faraday
@@ -41,8 +41,8 @@ GEM
     net-ssh (3.0.2)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    openstudio-analysis (1.0.0.pre.rc5)
-      bcl (~> 0.5.5)
+    openstudio-analysis (1.0.0.rc7)
+      bcl (~> 0.5.7)
       dencity (~> 0.1.0)
       faraday (~> 0.8)
       nokogiri (~> 1.6)
@@ -76,10 +76,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcl (~> 0.5.6)
   colored (~> 1.2)
   git
-  openstudio-analysis (~> 1.0.0.pre.rc5)
+  openstudio-analysis (~> 1.0.0.rc7)
   openstudio-aws (~> 0.4.2)
   rake (~> 11.1)
 
