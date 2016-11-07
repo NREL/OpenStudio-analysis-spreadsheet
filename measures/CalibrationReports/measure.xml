@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>calibration_reports</name>
   <uid>e6642d40-7366-4647-8724-53a37991d579</uid>
-  <version_id>057e5be0-5b1c-4e06-98dc-5c806817ca22</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>33fb81fb-6acf-413e-a6ce-b307289647d5</version_id>
+  <version_modified>20161107T222242Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>CalibrationReports</class_name>
   <display_name>Calibration Reports</display_name>
   <description>Change me</description>
   <modeler_description>Change me</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -37,7 +38,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.1.2</identifier>
-        <min_compatible>1.1.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

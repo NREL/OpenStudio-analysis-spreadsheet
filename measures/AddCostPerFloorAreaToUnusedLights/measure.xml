@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_cost_per_floor_area_to_unused_lights</name>
   <uid>a5f5ddcf-48bb-413a-a712-0ee22f0b40a4</uid>
-  <version_id>f4147616-fcdb-4c0a-a3f2-d254963fedcf</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>35DA4ED3</xml_checksum>
+  <version_id>74486f3e-1f73-4599-b92a-82a36d6b63c6</version_id>
+  <version_modified>20161107T222204Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddCostPerFloorAreaToUnusedLights</class_name>
   <display_name>AddCostPerFloorAreaToUnusedLights</display_name>
   <description>This measure is the same as "Add Cost per Floor Area to Electric Lights" except that it only offers lights definitions that are not used in the model.</description>
@@ -102,6 +102,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -133,7 +134,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

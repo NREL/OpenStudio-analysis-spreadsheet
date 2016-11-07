@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_exterior_lights</name>
   <uid>34f9050c-5f8f-4d10-8e46-30ca8333114d</uid>
-  <version_id>3ad954b3-b6cc-412c-8de1-0e2446a4b528</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>293730A7</xml_checksum>
+  <version_id>d3e0ed27-9114-4e1c-9d8f-8123b67c2945</version_id>
+  <version_modified>20161107T222206Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddExteriorLights</class_name>
   <display_name>Add Exterior Lights</display_name>
   <description>Add exterior lighting to the building.  This may be in addition to or in place of existing exterior lighting.  This lighting will run from sunset to sunrise. Optionally you can add costs to the lights.</description>
@@ -111,6 +111,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>
@@ -142,7 +143,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

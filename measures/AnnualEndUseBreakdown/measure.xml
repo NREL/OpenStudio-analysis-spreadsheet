@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>annual_end_use_breakdown</name>
   <uid>f032a1a6-e58f-4c39-bb41-5a7d53f03378</uid>
-  <version_id>76579049-e582-42e1-9f2b-69099d3cdbd1</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>dbcbe929-4b97-4acc-abd3-b532e7f2446d</version_id>
+  <version_modified>20161107T222238Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>AnnualEndUseBreakdown</class_name>
   <display_name>Annual End Use Breakdown</display_name>
   <description>This measure creates an annual summary report pulling both from data in your model and in the EnergyPlus results. It has building level information as well as detail on space types, HVAC systems, and envelope.</description>
   <modeler_description>For the most part consumption data comes from the tabular energy plus data, space type and loop details come from the OpenStudio model. The code for this is modular, so it should be easy to add additional tabular EnergyPlus content.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -28,12 +29,6 @@
   </attributes>
   <files>
     <file>
-      <filename>os_lib_schedules.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F86B5236</checksum>
-    </file>
-    <file>
       <filename>report.html.erb</filename>
       <filetype>erb</filetype>
       <usage_type>resource</usage_type>
@@ -43,7 +38,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.1.4</identifier>
-        <min_compatible>1.1.4</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
@@ -55,6 +50,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>254AB610</checksum>
+    </file>
+    <file>
+      <filename>os_lib_schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F86B5236</checksum>
     </file>
   </files>
 </measure>

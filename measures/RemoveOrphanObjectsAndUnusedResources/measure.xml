@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>remove_orphan_objects_and_unused_resources</name>
   <uid>c618f299-a245-49ce-a119-82eb54007ede</uid>
-  <version_id>5167ab82-a7a3-4a17-b125-02bc0433d651</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>28AD5222</xml_checksum>
+  <version_id>96796af4-ea9f-4d2f-bf24-19fedc853810</version_id>
+  <version_modified>20161107T222421Z</version_modified>
+  <xml_checksum>612457D2</xml_checksum>
   <class_name>RemoveOrphanObjectsAndUnusedResources</class_name>
   <display_name>Remove Orphan Objects and Unused Resources</display_name>
   <description>This is the start of a measure that will have expanded functionality over time. It will have two distinct functions. One will be to remove orphan objects. This will typically include things that should never have been left alone and often are not visible in the GUI. This would include load instances without a space or space type, and surfaces without a space.
@@ -85,6 +85,7 @@ A second functionality is to remove unused resources. This will include things l
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Space Types</tag>
@@ -126,7 +127,7 @@ A second functionality is to remove unused resources. This will include things l
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.5.0</identifier>
-        <min_compatible>1.5.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

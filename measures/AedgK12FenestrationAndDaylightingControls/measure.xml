@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_k_12_fenestration_and_daylighting_controls</name>
   <uid>76683121-d531-46c0-8e1c-749c1ff646f0</uid>
-  <version_id>f0aededa-17b8-42a1-9afe-a43bb90d03ab</version_id>
-  <version_modified>20160620T200508Z</version_modified>
-  <xml_checksum>6FAFA9DE</xml_checksum>
+  <version_id>8d80428a-b064-426b-984e-826833eaa23e</version_id>
+  <version_modified>20161107T222220Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgK12FenestrationAndDaylightingControls</class_name>
   <display_name>AedgK12FenestrationAndDaylightingControls</display_name>
   <description>This measure will remove all existing exterior windows, glass doors, and skylights from your model. They will be replaced with view and daylight windows as recommended by the K12 AEDG recommendations. Windows on the south facade will have a exterior shading or light shelf surfaces depending on if they are view or daylight windows. East and west view windows will have internal shading controls. In spaces with daylighting controls daylight sensor will be added. The modeler should inspect where the sensors were placed, the recommended illuminance setpoint, and the fraction of the zones lighting controlled by the sensor.</description>
@@ -51,6 +51,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Fenestration</tag>

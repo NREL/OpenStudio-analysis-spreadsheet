@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_chiller_cop</name>
   <uid>6b87fc76-a663-4611-bf1f-3ff416727267</uid>
-  <version_id>5593c8b4-d846-4740-9f3b-cd5ecd63b81b</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>9E2537CD</xml_checksum>
+  <version_id>2cc78606-5713-4356-a4f3-8c569865d894</version_id>
+  <version_modified>20161107T222429Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetChillerCOP</class_name>
   <display_name>SetChillerCOP</display_name>
   <description>This measure sets the COP for a chiller </description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>

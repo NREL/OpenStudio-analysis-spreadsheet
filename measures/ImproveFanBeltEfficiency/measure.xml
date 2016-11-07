@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>improve_fan_belt_efficiency</name>
   <uid>724ef0bb-49ab-4697-bcab-09a8846a3714</uid>
-  <version_id>472c9bb8-36a2-41dd-adff-2d3a2972c752</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>F78494F2</xml_checksum>
+  <version_id>af64b446-c7bd-4364-938e-b7e5616d2c1f</version_id>
+  <version_modified>20161107T222402Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>ImproveFanBeltEfficiency</class_name>
   <display_name>Improve Fan Belt Efficiency</display_name>
   <description>The assessment team observed opportunities for fan belt improvements on HVAC fan drives. These motors are asynchronous induction motors.&#xd;&#xd;
@@ -21,10 +21,10 @@ Well-adjusted belts run cooler, last longer, and operate at higher efficiency th
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{60f56187-d1b2-43b8-9378-0ab46df56374}</default_value>
+      <default_value>{a5c6d6fb-dfbf-40c3-a61f-3e42f8a31daf}</default_value>
       <choices>
         <choice>
-          <value>{60f56187-d1b2-43b8-9378-0ab46df56374}</value>
+          <value>{a5c6d6fb-dfbf-40c3-a61f-3e42f8a31daf}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -122,6 +122,7 @@ Well-adjusted belts run cooler, last longer, and operate at higher efficiency th
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Distribution</tag>
@@ -143,7 +144,7 @@ Well-adjusted belts run cooler, last longer, and operate at higher efficiency th
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.3</identifier>
-        <min_compatible>1.0.3</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

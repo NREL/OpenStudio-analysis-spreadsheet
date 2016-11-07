@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>modify_energy_plus_coil_cooling_dx_single_speed_objects</name>
   <uid>906f4d50-042d-4135-9eae-553345ab476a</uid>
-  <version_id>47a5bbed-d9be-494d-94b1-ff7c86cefc58</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>C7ED76C0</xml_checksum>
+  <version_id>af5f34ef-c725-408d-a92f-21f44836a389</version_id>
+  <version_modified>20161107T222410Z</version_modified>
+  <xml_checksum>C75AF51E</xml_checksum>
   <class_name>ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects</class_name>
   <display_name>ModifyEnergyPlusCoilCoolingDXSingleSpeedObjects</display_name>
   <description>Set various values for existing CoilCoolingDXSingleSpeed objects. Input values are in SI units.</description>
@@ -53,6 +53,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>
@@ -74,7 +75,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.1.0</identifier>
-        <min_compatible>1.1.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

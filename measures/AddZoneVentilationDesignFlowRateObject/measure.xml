@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_zone_ventilation_design_flow_rate_object</name>
   <uid>c31e2212-720d-413f-bdb9-f38e198dcfa3</uid>
-  <version_id>d968466f-223c-42a6-b83c-21292796a087</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>3B6B95A6</xml_checksum>
+  <version_id>8b22b662-37ea-44c3-a556-dda7b07bb404</version_id>
+  <version_modified>20161107T222208Z</version_modified>
+  <xml_checksum>612457D2</xml_checksum>
   <class_name>AddZoneVentilationDesignFlowRateObject</class_name>
   <display_name>Add Zone Ventilation Design Flow Rate Object</display_name>
   <description>This will allow you to add a ZoneVentilation:DesignFlowRate object into your model in a specified zone. The ventilation type is exposed as an argument but the design flow rate calculation method is set to design flow rate. A number of other object inputs are exposed as arguments.</description>
@@ -65,6 +65,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Ventilation</tag>
@@ -106,7 +107,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.8.4</identifier>
-        <min_compatible>1.8.4</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

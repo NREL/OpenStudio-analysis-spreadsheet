@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>remove_unused_default_profiles</name>
   <uid>c6940cf1-1950-4ae7-a842-1e211b737497</uid>
-  <version_id>9182d8cd-7bc7-43f9-bd0f-f43fb44746cb</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>B6CD1F98</xml_checksum>
+  <version_id>2413e5f8-88d2-46f7-92fa-c958bc187253</version_id>
+  <version_modified>20161107T222421Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>RemoveUnusedDefaultProfiles</class_name>
   <display_name>RemoveUnusedDefaultProfiles</display_name>
   <description>This measure will remove unused default profiles that existed in some older OpenStudio templates. It will remove some EnergyPlus warnings that had appeared in the past.</description>
   <modeler_description>This measure is intended to cleanup ScheduleRuleset objects in our template files. These schedules did not use the default profile. The lowest priority rule will become the new default.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Whole Building Schedules</tag>

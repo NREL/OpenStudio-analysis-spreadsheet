@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_daylight_sensors</name>
   <uid>62babdc7-c81e-4dfd-96e8-af1628a55167</uid>
-  <version_id>d964c15f-3ffd-4955-894e-317b52904153</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>0AC58119</xml_checksum>
+  <version_id>9cf20577-8a4f-45f8-b2d0-2b0c6aa64eec</version_id>
+  <version_modified>20161107T222205Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddDaylightSensors</class_name>
   <display_name>Add Daylight Sensor at the Center of Spaces with a Specified Space Type Assigned</display_name>
   <description>This measure will add daylighting controls to spaces that that have space types assigned with names containing the string in the argument. You can also add a cost per space for sensors added to the model.</description>
@@ -142,6 +142,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Electric Lighting Controls</tag>
@@ -173,7 +174,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.0</identifier>
-        <min_compatible>1.2.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

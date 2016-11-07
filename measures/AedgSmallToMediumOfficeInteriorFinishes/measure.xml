@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_interior_finishes</name>
   <uid>d426daf2-995d-4c76-bec4-4b34e7ae2f38</uid>
-  <version_id>1b307284-e37c-4ef0-a231-cea863e90329</version_id>
-  <version_modified>20160620T200511Z</version_modified>
-  <xml_checksum>1E963D9C</xml_checksum>
+  <version_id>24833017-850e-4df9-97db-c385df743ebb</version_id>
+  <version_modified>20161107T222233Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeInteriorFinishes</class_name>
   <display_name>AedgSmallToMediumOfficeInteriorFinishes</display_name>
   <description>This measure will adjust the visible reflectance of materials used on interior building surfaces. Different target values will be set for floors, ceilings, and furniture/interior partition surfaces.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{730b2f06-0d48-4d57-9d10-00d96f096bd2}</default_value>
+      <default_value>{3e182e3b-2b7b-45e0-ade9-fa38d0148c75}</default_value>
       <choices>
         <choice>
-          <value>{730b2f06-0d48-4d57-9d10-00d96f096bd2}</value>
+          <value>{3e182e3b-2b7b-45e0-ade9-fa38d0148c75}</value>
           <display_name>*All Interior Partition Surfaces*</display_name>
         </choice>
       </choices>
@@ -43,6 +43,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_co_pfor_two_speed_dx_cooling_units</name>
   <uid>ab217b3b-4eac-4e3c-90a3-ab8800b50cfb</uid>
-  <version_id>798a4f03-4a6b-490b-9361-29096c477fb5</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>9E2537CD</xml_checksum>
+  <version_id>604777c0-cb21-4a15-9c0c-48dcde93e1dc</version_id>
+  <version_modified>20161107T222431Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetCOPforTwoSpeedDXCoolingUnits</class_name>
   <display_name>Set COP for Two Speed DX Cooling Units</display_name>
   <description>This measure will find two speed DX cooling units in the model and will alter the Rated HighSpeed COP to a specified value. It can be run on a single or all air loops in the model.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{32245985-5e08-497d-b2a4-b415647b1cd7}</default_value>
+      <default_value>{175fdb43-dfec-4903-8a4c-6eec3c31b419}</default_value>
       <choices>
         <choice>
-          <value>{32245985-5e08-497d-b2a4-b415647b1cd7}</value>
+          <value>{175fdb43-dfec-4903-8a4c-6eec3c31b419}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -125,6 +125,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>
@@ -146,7 +147,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

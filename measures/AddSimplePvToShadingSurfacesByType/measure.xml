@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_simple_pv_to_shading_surfaces_by_type</name>
   <uid>27627c16-75d4-4fc3-add9-2d7d538c0130</uid>
-  <version_id>7e65d626-f502-4e78-ac7a-86b77f2d310b</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>92C8C204</xml_checksum>
+  <version_id>5a3a5278-f710-44f5-983a-e75530aa499f</version_id>
+  <version_modified>20161107T222207Z</version_modified>
+  <xml_checksum>390FCA70</xml_checksum>
   <class_name>AddSimplePvToShadingSurfacesByType</class_name>
   <display_name>Add Simple PV to Specified Shading Surfaces</display_name>
   <description>This measure will add Simple PV objects to site, building or space/zone shading surfaces. This will not create any new geometry, but will just make PV objects out of existing shading geometry. Optionally a cost can be added for the PV.</description>
@@ -81,6 +81,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Onsite Power Generation.Photovoltaic</tag>
@@ -112,7 +113,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

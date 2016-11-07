@@ -448,50 +448,17 @@ task :create_measure_csv do
   csv.close
 end
 
-desc 'update measure.json files'
-task :update_measure_jsons do
-  require 'bcl'
-  bcl = BCL::ComponentMethods.new
-
-  Dir['./**/measure.rb'].each do |m|
-    puts "Parsing #{m}"
-    j = bcl.parse_measure_file('useless', m)
-    m_j = "#{File.join(File.dirname(m), File.basename(m, '.*'))}.json"
-    puts "Writing #{m_j}"
-    File.open(m_j, 'w') { |f| f << JSON.pretty_generate(j) }
-  end
-end
-
 desc 'update measure.xml files'
 task :update_measure_xmls do
-  begin
-    require 'openstudio'
-    require 'git'
-
-    # g = Git.open(File.dirname(__FILE__), :log => Logger.new("update_measure_xmls.log"))
-    # g = Git.init
-    # g.status.untracked.each do |u|
-    #  puts u
-    # end
-
-    os_version = OpenStudio::VersionString.new(OpenStudio.openStudioVersion)
-    min_os_version = OpenStudio::VersionString.new('1.4.0')
-    if os_version >= min_os_version
-      Dir['./**/measure.rb'].each do |m|
-        # DLM: todo, check for untracked files in this directory and do not compute checksums if they exist
-        measure = OpenStudio::BCLMeasure.load(OpenStudio::Path.new("#{File.dirname(m)}"))
-        if measure.empty?
-          puts "Directory #{m} is not a measure"
-        else
-          measure = measure.get
-          measure.checkForUpdates
-          # measure.save
-        end
-      end
+  # Path to openstudio CLI
+  openstudio_cli = ENV['OPENSTUDIO_CLI']
+  if openstudio_cli && File.exist?(openstudio_cli)
+    Dir['./measures/**/*.xml'].each do |measure|
+      puts "#{measure} :: #{File.dirname(measure)}"
+      puts `#{openstudio_cli} measure -u "#{File.dirname(measure)}"`
     end
-
-  rescue LoadError
-    puts 'Cannot require openstudio or git'
+  else
+    puts "OPENSTUDIO_CLI env var is not set. Download and install OpenStudio CLI and set OPENSTUDIO_CLI to binary"
   end
 end
 

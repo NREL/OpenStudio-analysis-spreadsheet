@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>zone_report</name>
   <uid>f3531642-27ce-4624-95ab-0bfcd5b9f5fe</uid>
-  <version_id>db183703-5534-42bf-a1fe-41e420d082a6</version_id>
-  <version_modified>20160531T204357Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>d29e6c3b-ea80-42bd-99df-b9d71275fc43</version_id>
+  <version_modified>20161107T222452Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>ZoneReport</class_name>
   <display_name>Zone Report</display_name>
   <description> This measure provides Thermal Zone level HVAC information.  Output includes thermal zone equipment descriptions and details, zone sizing information for heating and cooling, and a disaggregation of the contributions of envelope and internal gains to the HVAC loads.</description>
   <modeler_description> This measure will not report uncontrolled air terminals, or zone level radiant HVAC equipment.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -31,7 +32,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.5.0</identifier>
-        <min_compatible>1.5.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

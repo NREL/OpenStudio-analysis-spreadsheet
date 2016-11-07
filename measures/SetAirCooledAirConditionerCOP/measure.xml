@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_air_cooled_air_conditioner_cop</name>
   <uid>a7b70ba5-72e9-440d-a9e1-7e209902ed16</uid>
-  <version_id>894b86c2-8e47-47dc-afe9-71132fc28bb3</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>9FB55606</xml_checksum>
+  <version_id>adb5cd0c-a73b-4907-9cfc-a0cf42db3026</version_id>
+  <version_modified>20161107T222427Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetAirCooledAirConditionerCOP</class_name>
   <display_name>SetAirCooledAirConditionerCOP</display_name>
   <description>Air conditioner coefficient of performance (COP) affects cooling  energy consumption. The measure offers two options to set the air-cooled air conditioner COP. Option 1 allows users to specify the COP input directly. Option 2 determines the COP based on the rated total cooling capacity and the prescriptive requirements in ASHRAE Standard 90.1. </description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>
@@ -60,7 +61,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

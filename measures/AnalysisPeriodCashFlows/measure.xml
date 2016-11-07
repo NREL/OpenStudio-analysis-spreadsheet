@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>analysis_period_cash_flows</name>
   <uid>a5d251bd-af5d-42e3-8c20-0160a37a7e18</uid>
-  <version_id>76e763b9-908a-431d-ba1f-dd6d510b5931</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>29bd1dfd-2eec-48c2-81a7-aac022a938b1</version_id>
+  <version_modified>20161107T222237Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>AnalysisPeriodCashFlows</class_name>
   <display_name>AnalysisPeriodCashFlows</display_name>
   <description>This will create a bar chart showign cash flows for the analysis period. Cash flows will be broken out by source. This will include Capital, operational, and Utility costs.</description>
   <modeler_description>This is intened to be used on a model that either has default costs assigned in the baseline model or has had costs added in Energy Conservation Measures.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -31,7 +32,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.1</identifier>
-        <min_compatible>1.2.1</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

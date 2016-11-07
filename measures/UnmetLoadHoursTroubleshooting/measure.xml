@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>unmet_load_hours_troubleshooting</name>
   <uid>6e9727aa-b460-4294-9870-b63ec6417977</uid>
-  <version_id>c320fce9-3ea6-4510-82f2-ff7cf18d2352</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>5BFE84C4</xml_checksum>
+  <version_id>ed035e6c-335d-4021-9116-27a95e574db4</version_id>
+  <version_modified>20161107T222449Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>UnmetLoadHoursTroubleshooting</class_name>
   <display_name>Unmet Load Hours Troubleshooting</display_name>
   <description>Unmet load hours are any hours of operation when conditioned spaces are outside the throttling range for heating or cooling controls. That is, they are the hours in a year that the HVAC system serving a space cannot maintain space setpoint. This measure performs a series of checks against various model input variables and when applicable informs the user of possible sources of unmet cooling and heating hours. The measure also creates a dynamic time series plot of unmet cooling and heating hours, by zone - whose patterns may be interpreted to assist in troubleshooting unmet cooling and heating hours. Prior to running this measure, users will need to add the following output variables to their model: 1) Zone Mean Air Temperature,hourly  2) Zone Thermostat Heating Setpoint Temperature, hourly 3) Zone Thermostat Cooling Setpoint Temperature, hourly 4) Zone People Occupant Count, hourly using the AddOutputVariable OS measure, or the add output variables screen in the OpenStudio application.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
@@ -27,6 +27,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.Troubleshooting</tag>
@@ -48,7 +49,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.5.0</identifier>
-        <min_compatible>1.5.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

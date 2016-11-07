@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>modify_energy_plus_fan_variable_volume_objects</name>
   <uid>14a9aa83-b4de-48b4-ba65-dad6f102ffcb</uid>
-  <version_id>34edbf05-1646-4b2f-a7b0-82c9010c899e</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>D8794EFE</xml_checksum>
+  <version_id>118140a4-ad88-47bf-be2f-5585d70e13a1</version_id>
+  <version_modified>20161107T222409Z</version_modified>
+  <xml_checksum>C75AF51E</xml_checksum>
   <class_name>ModifyEnergyPlusFanVariableVolumeObjects</class_name>
   <display_name>ModifyEnergyPlusFanVariableVolumeObjects</display_name>
   <description>Set the Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model. Input values are in SI units.</description>
@@ -25,6 +25,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Distribution</tag>

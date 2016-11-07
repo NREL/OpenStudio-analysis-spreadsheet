@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>shift_schedule_profile_time</name>
   <uid>4a428da9-16bb-46be-bbf0-1ad30c98d9ca</uid>
-  <version_id>80cc211b-7bbd-40d3-bd92-dc2878544d04</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>B6CD1F98</xml_checksum>
+  <version_id>24128723-1d17-455e-b405-1c3e7e5a0e7b</version_id>
+  <version_modified>20161107T222443Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ShiftScheduleProfileTime</class_name>
   <display_name>ShiftScheduleProfileTime</display_name>
   <description>Shift a single or all schedules in the building by the specified number of hours</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{0ce048e2-c029-4cb6-b775-765c0999caa0}</default_value>
+      <default_value>{900f66cd-7917-40ce-a5a0-a1e656d68aeb}</default_value>
       <choices>
         <choice>
-          <value>{0ce048e2-c029-4cb6-b775-765c0999caa0}</value>
+          <value>{900f66cd-7917-40ce-a5a0-a1e656d68aeb}</value>
           <display_name>*All Ruleset Schedules*</display_name>
         </choice>
       </choices>
@@ -33,6 +33,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Whole Building Schedules</tag>
@@ -64,7 +65,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.4</identifier>
-        <min_compatible>1.0.4</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

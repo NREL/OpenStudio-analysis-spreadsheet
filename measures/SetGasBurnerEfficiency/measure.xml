@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_gas_burner_efficiency</name>
   <uid>28c79510-5001-4582-bf93-d34d223f19ca</uid>
-  <version_id>59b99741-6b90-4ffc-99ce-7dbbd97e3da9</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>0DA5C9E6</xml_checksum>
+  <version_id>30122340-b681-46e5-afa5-ed4fe877e47c</version_id>
+  <version_modified>20161107T222436Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetGasBurnerEfficiency</class_name>
   <display_name>Set Gas Burner Efficiency</display_name>
   <description>This measure will find Coil Heating Gas units in the model and will alter the burner efficiency to a specified value. It can be run on a single or all air loops in the model.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{f85e7a63-2abc-4cca-8542-963aa84df23a}</default_value>
+      <default_value>{9014fd39-fda0-4bab-9d14-bcbe58a3b086}</default_value>
       <choices>
         <choice>
-          <value>{f85e7a63-2abc-4cca-8542-963aa84df23a}</value>
+          <value>{9014fd39-fda0-4bab-9d14-bcbe58a3b086}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -117,6 +117,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Heating</tag>

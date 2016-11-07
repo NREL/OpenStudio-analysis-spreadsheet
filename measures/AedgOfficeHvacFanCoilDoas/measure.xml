@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_office_hvac_fan_coil_doas</name>
   <uid>298c5638-bd9d-4d6a-9c8a-e0514df4db4a</uid>
-  <version_id>d2243e54-a4b5-406e-8e97-4c64714385a8</version_id>
-  <version_modified>20160620T200509Z</version_modified>
-  <xml_checksum>4435983D</xml_checksum>
+  <version_id>1f7846eb-d3d7-42f4-90d7-3326a4d93e8f</version_id>
+  <version_modified>20161107T222226Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgOfficeHvacFanCoilDoas</class_name>
   <display_name>AedgOfficeHvacFanCoilDoas</display_name>
   <description>Measure replaces existing HVAC system (if any) with a Fan Coil with DOAS HVAC system (one DOAS per floor).  The fan coil with DOAS system (centralized DOAS, with zone level conditioning) is applied to all space types.  In select cases, the user is given the option to preserve existing HVAC schedules.  In other cases, new schedules are generated that align with AEDG recommendations.  The resulting HVAC system reflects the HVAC recommendations of the 50% Small and Medium Office AEDG.</description>
@@ -44,6 +44,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Whole System</tag>

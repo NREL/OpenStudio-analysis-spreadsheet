@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>predicted_mean_vote</name>
   <uid>d26890c0-1281-4384-a676-5d38fa2e9e75</uid>
-  <version_id>e8ff6db9-99ba-43f4-9063-e1c1397c8d3b</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>0CA4D54C</xml_checksum>
+  <version_id>9c6c2810-38fa-4368-9273-4f410f4a91e3</version_id>
+  <version_modified>20161107T222413Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>PredictedMeanVote</class_name>
   <display_name>Predicted Mean Vote</display_name>
   <description>This measure adds the necessary data to people objects to support Predicted Mean Vote output data. It also adds the variable request.</description>
@@ -68,6 +68,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -99,7 +100,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

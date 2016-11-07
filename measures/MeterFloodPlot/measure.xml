@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>meter_flood_plot</name>
   <uid>1ce1e77e-993b-4719-8f03-9b21261a3c6a</uid>
-  <version_id>e9698ea1-9bc1-43b5-aba1-9954170cf24a</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>6d24a37f-2625-46cc-a9ae-b36cb8aebcb6</version_id>
+  <version_modified>20161107T222409Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>MeterFloodPlot</class_name>
   <display_name>MeterFloodPlot</display_name>
   <description>This measures generates a flood plot of the requested meter.</description>
@@ -19,6 +19,7 @@
       <default_value>Electricity:Facility</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -46,7 +47,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.0</identifier>
-        <min_compatible>1.2.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

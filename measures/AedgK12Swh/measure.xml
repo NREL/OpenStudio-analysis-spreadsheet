@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_k_12_swh</name>
   <uid>081b3ccb-fc4a-48f7-ad50-87c90c20f9f9</uid>
-  <version_id>9a022d09-7c30-4011-ae5a-f32fbd57e5bc</version_id>
-  <version_modified>20160620T200509Z</version_modified>
-  <xml_checksum>9882CBDB</xml_checksum>
+  <version_id>85d10898-ed57-4ff6-bd13-e9da99c1b3b6</version_id>
+  <version_modified>20161107T222225Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgK12Swh</class_name>
   <display_name>AedgK12Swh</display_name>
   <description>Measure replaces existing swh equipment (if any) with the swh equipment recommendations of the 50% K-12 AEDG.</description>
@@ -26,6 +26,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Service Water Heating.Water Heating</tag>
@@ -44,6 +45,17 @@
   </attributes>
   <files>
     <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.0</identifier>
+        <min_compatible>1.8.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>5DE892C0</checksum>
+    </file>
+    <file>
       <filename>OsLib_AedgMeasures.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -54,12 +66,6 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>1DBDBCB3</checksum>
-    </file>
-    <file>
-      <filename>OsLib_LightingAndEquipment.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>E76DE29C</checksum>
     </file>
     <file>
       <filename>OsLib_Geometry.rb</filename>
@@ -74,27 +80,22 @@
       <checksum>9E06F9BD</checksum>
     </file>
     <file>
-      <filename>OsLib_Schedules.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>C53CDDCD</checksum>
-    </file>
-    <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.3.0</identifier>
-        <min_compatible>1.3.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>5DE892C0</checksum>
-    </file>
-    <file>
       <filename>OsLib_HVAC.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>DD15D25B</checksum>
+    </file>
+    <file>
+      <filename>OsLib_LightingAndEquipment.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>E76DE29C</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C53CDDCD</checksum>
     </file>
   </files>
 </measure>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_meter</name>
   <uid>ad4015f2-6d1d-4bb2-84b1-db47bc67a5b2</uid>
-  <version_id>d4d5e1d0-9838-4e07-86a1-1b1d07183c03</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>0CA4D54C</xml_checksum>
+  <version_id>30bf5473-f4e7-4266-a19a-6e60f10c01e9</version_id>
+  <version_modified>20161107T222206Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddMeter</class_name>
   <display_name>AddMeter</display_name>
   <description>This measure adds an meter at the requested reporting frequency.</description>
@@ -49,6 +49,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -80,7 +81,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

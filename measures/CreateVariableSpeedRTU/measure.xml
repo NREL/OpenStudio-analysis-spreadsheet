@@ -1,0 +1,177 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>create_variable_speed_rtu</name>
+  <uid>7fb36b3a-5591-4627-a2b0-7709fbeae593</uid>
+  <version_id>fd28034a-d7e7-4383-8c6d-87e8a940ece7</version_id>
+  <version_modified>20161107T222244Z</version_modified>
+  <xml_checksum>7F301983</xml_checksum>
+  <class_name>CreateVariableSpeedRTU</class_name>
+  <display_name>Create Variable Speed RTU</display_name>
+  <description>This measure examines the existing HVAC system(s) present in the current OpenStudio model. If a constant-speed system is found, the user can opt to have the measure replace that system with a variable-speed RTU. 'Variable speed' in this case means that the compressor will be operated using either two or four stages (user's choice). The user can choose between using a gas heating coil, or a direct-expansion (DX) heating coil. Additionally, the user is able to enter the EER (cooling) and COP (heating) values for each DX stage. This measure allows users to easily identify the impact of improved part-load efficiency.</description>
+  <modeler_description>This measure loops through the existing airloops, looking for loops that have a constant speed fan. (Note that if an object such as an AirloopHVAC:UnitarySystem is present in the model, that the measure will NOT identify that loop as either constant- or variable-speed, since the fan is located inside the UnitarySystem object.) The user can designate which constant-speed airloop they'd like to apply the measure to, or opt to apply the measure to all airloops. The measure then replaces the supply components on the airloop with an AirloopHVAC:UnitarySystem object. Any DX coils added to the UnitarySystem object are of the type CoilCoolingDXMultiSpeed / CoilHeatingDXMultiSpeed, with the number of stages set to either two or four, depending on user input. If the user opts for a gas furnace, an 80% efficient CoilHeatingGas object is added. Fan properties (pressure rise and total efficiency) are transferred automatically from the existing (but deleted) constant speed fan to the new variable-speed fan. Currently, this measure is only applicable to the Standalone Retail DOE Prototype building model, but it has been structured to facilitate expansion to other models with a minimum of effort.</modeler_description>
+  <arguments>
+    <argument>
+      <name>object</name>
+      <display_name>Choose an Air Loop to change from CAV to VAV.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>{2e7f215c-3a32-4dc4-aed3-3b260177e09a}</default_value>
+      <choices>
+        <choice>
+          <value>{2e7f215c-3a32-4dc4-aed3-3b260177e09a}</value>
+          <display_name>*All CAV Air Loops*</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>cooling_coil_type</name>
+      <display_name>Choose the type of cooling coil.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Two-Stage Compressor</default_value>
+      <choices>
+        <choice>
+          <value>Two-Stage Compressor</value>
+          <display_name>Two-Stage Compressor</display_name>
+        </choice>
+        <choice>
+          <value>Four-Stage Compressor</value>
+          <display_name>Four-Stage Compressor</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>rated_cc_eer</name>
+      <display_name>Rated Cooling Coil EER</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>three_quarter_cc_eer</name>
+      <display_name>Cooling Coil EER at 75% Capacity</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>half_cc_eer</name>
+      <display_name>Cooling Coil EER at 50% Capacity</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>quarter_cc_eer</name>
+      <display_name>Cooling Coil EER at 25% Capacity</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>heating_coil_type</name>
+      <display_name>Choose the type of heating coil.</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Gas Heating Coil</default_value>
+      <choices>
+        <choice>
+          <value>Gas Heating Coil</value>
+          <display_name>Gas Heating Coil</display_name>
+        </choice>
+        <choice>
+          <value>Heat Pump</value>
+          <display_name>Heat Pump</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>rated_hc_gas_efficiency</name>
+      <display_name>Rated Gas Heating Coil Efficiency (0-1.00)</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>rated_hc_cop</name>
+      <display_name>Rated Heating Coil COP</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>three_quarter_hc_cop</name>
+      <display_name>Heating Coil COP at 75% Capacity</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>half_hc_cop</name>
+      <display_name>Heating Coil COP at 50% Capacity</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>quarter_hc_cop</name>
+      <display_name>Heating Coil COP at 25% Capacity</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <outputs/>
+  <provenances/>
+  <tags>
+    <tag>HVAC.Whole System</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Model Articulation</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>New Construction EE</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.12.2</identifier>
+        <min_compatible>1.12.2</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>2ACE3BB2</checksum>
+    </file>
+  </files>
+</measure>

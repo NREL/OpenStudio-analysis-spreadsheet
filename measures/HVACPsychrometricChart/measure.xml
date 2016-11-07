@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>hvac_psychrometric_chart</name>
   <uid>97213780-0727-4462-8ec0-9a6c3e475cd6</uid>
-  <version_id>34545e30-95e3-4929-a7db-cf7bdff0b33d</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>F657B621</xml_checksum>
+  <version_id>56946c4b-0e78-4437-ba0e-beeeb03ec508</version_id>
+  <version_modified>20161107T222400Z</version_modified>
+  <xml_checksum>3FF57E78</xml_checksum>
   <class_name>HVACPsychrometricChart</class_name>
   <display_name>HVAC Psychrometric Chart</display_name>
   <description>A psychrometric chart shows the relationship between air temperature and humidity conditions.</description>
@@ -19,6 +19,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.Troubleshooting</tag>
@@ -51,7 +52,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.5.2</identifier>
-        <min_compatible>1.5.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

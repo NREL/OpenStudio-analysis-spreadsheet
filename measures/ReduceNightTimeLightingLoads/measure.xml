@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>reduce_night_time_lighting_loads</name>
   <uid>93461778-59a1-49ca-8bbb-f4b939e4a9d8</uid>
-  <version_id>063883ac-ac32-4bff-9353-2f61f2d65c94</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>0AC58119</xml_checksum>
+  <version_id>a0ee6714-9c55-404c-b10f-191b0699c8c0</version_id>
+  <version_modified>20161107T222417Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ReduceNightTimeLightingLoads</class_name>
   <display_name>Reduce Night Time Lighting Loads</display_name>
   <description>Many buildings have lights that run unnecessarily at night.  Turning these lights off at night can provide energy savings without impacting the day-to-day operation of the building occupants.  Implementing this change may require coordination with after-hours cleaning and maintenance crews.</description>
@@ -168,6 +168,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Electric Lighting Controls</tag>
@@ -199,7 +200,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

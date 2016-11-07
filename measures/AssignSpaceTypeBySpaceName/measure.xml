@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>assign_space_type_by_space_name</name>
   <uid>69ad41bb-cdfe-4a4c-a385-9efaf35b7c27</uid>
-  <version_id>9917f8ac-f508-447a-b942-b3222053ea69</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>057E8D9D</xml_checksum>
+  <version_id>d055df94-3263-4b1a-bde2-a2c497e564db</version_id>
+  <version_modified>20161107T222239Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AssignSpaceTypeBySpaceName</class_name>
   <display_name>AssignSpaceTypeBySpaceName</display_name>
   <description>Assign space type to spaces with names that include a user defined string. Optionally skip over spaces that already have space types assigned directly to the space.</description>
@@ -23,10 +23,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{4ad33f38-efee-42de-9ce3-3ca40d21a7e8}</default_value>
+      <default_value>{eecb9730-e245-4ec7-816c-61985ee6bd30}</default_value>
       <choices>
         <choice>
-          <value>{4ad33f38-efee-42de-9ce3-3ca40d21a7e8}</value>
+          <value>{eecb9730-e245-4ec7-816c-61985ee6bd30}</value>
           <display_name>&lt;clear field></display_name>
         </choice>
       </choices>
@@ -50,6 +50,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Space Types</tag>

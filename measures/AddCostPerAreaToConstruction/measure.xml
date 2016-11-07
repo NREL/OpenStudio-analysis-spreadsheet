@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_cost_per_area_to_construction</name>
   <uid>bf6ac5d5-6348-4012-b7b4-1200a672e377</uid>
-  <version_id>4bf1f080-89e8-482a-bca9-ea4877358082</version_id>
-  <version_modified>20160620T200505Z</version_modified>
-  <xml_checksum>35DA4ED3</xml_checksum>
+  <version_id>bd0a9500-2815-41e2-9015-eb14407814a3</version_id>
+  <version_modified>20161107T222202Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddCostPerAreaToConstruction</class_name>
   <display_name>AddCostPerAreaToConstruction</display_name>
   <description>This measure will create life cycle cost objects associated with a the building. You can set a material &amp; installation cost, demolition cost, and O&amp;M costs. Optionally existing cost objects already associated with building can be deleted. This measure will not affect energy use of the building.</description>
@@ -105,6 +105,7 @@ For baseline costs, "Years Until Costs Start? indicates the year that the capita
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -136,7 +137,7 @@ For baseline costs, "Years Until Costs Start? indicates the year that the capita
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
-        <min_compatible>0.11.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_exterior_wall_construction</name>
   <uid>736836f8-1a55-47a6-96b7-9fd157be6744</uid>
-  <version_id>1fb3370f-4f3f-4b6f-b00a-d88192898f2c</version_id>
-  <version_modified>20160620T200511Z</version_modified>
-  <xml_checksum>1E963D9C</xml_checksum>
+  <version_id>900f021d-c946-4769-814a-f5cb074fc4e2</version_id>
+  <version_modified>20161107T222233Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeExteriorWallConstruction</class_name>
   <display_name>AedgSmallToMediumOfficeExteriorWallConstruction</display_name>
   <description>This measure will modify existing exterior wall insulation levels based on construction type and climate zone. The exterior wall construction type and climate zone should be set in the model prior to using this measure. For mass and metal walls if an existing insulation layer can be found it will be increased, if not a new insulation layer will be added. For mass this will be at the exterior of the construction. For metal it will be added just behind the exterior layer. For steel and wood framed walls, insulation will be added to the exterior of the construction. </description>
@@ -23,6 +23,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>

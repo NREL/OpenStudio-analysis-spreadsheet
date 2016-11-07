@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>remove_internal_loads_directly_assigned_to_spaces</name>
   <uid>3f63ab7c-7f04-4479-b7ed-a19362cbb615</uid>
-  <version_id>b9ad00d1-9685-4add-be10-6fe6767135f4</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>057E8D9D</xml_checksum>
+  <version_id>b8e5b1ef-834c-4916-9df8-5c5e1ee7a999</version_id>
+  <version_modified>20161107T222420Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>RemoveInternalLoadsDirectlyAssignedToSpaces</class_name>
   <display_name>RemoveInternalLoadsDirectlyAssignedToSpaces</display_name>
   <description>This will removed all internal loads assigned directly to spaces. This can be useful if your model started as an IDF, and now you want to assign space types.</description>
   <modeler_description> If you just assign space types without removing loads assigned directly to space, you can end up with double loads.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Space Types</tag>

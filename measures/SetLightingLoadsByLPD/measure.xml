@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_lighting_loads_by_lpd</name>
   <uid>38962937-0bd7-480c-b39a-12d075f3f493</uid>
-  <version_id>820d1839-69f0-49c7-bace-7dc2cd2dee58</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>293730A7</xml_checksum>
+  <version_id>8517c58b-f988-4650-95f4-342bb4a20048</version_id>
+  <version_modified>20161107T222439Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetLightingLoadsByLPD</class_name>
   <display_name>Set Lighting Loads by LPD</display_name>
   <description>Set the lighting power density (W/ft^2) in the to a specified value for all spaces that have lights. This can be applied to the entire building or a specific space type. Cost can be added per floor area.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{a5dcb039-d526-4158-a54a-a3716925d00e}</default_value>
+      <default_value>{6a1463f4-694a-4a86-aa76-1593004cbce1}</default_value>
       <choices>
         <choice>
-          <value>{a5dcb039-d526-4158-a54a-a3716925d00e}</value>
+          <value>{6a1463f4-694a-4a86-aa76-1593004cbce1}</value>
           <display_name>*Entire Building*</display_name>
         </choice>
       </choices>
@@ -99,6 +99,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>
@@ -130,7 +131,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.3</identifier>
-        <min_compatible>0.11.3</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

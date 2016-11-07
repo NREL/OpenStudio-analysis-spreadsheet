@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>example_report</name>
   <uid>174a6f71-3e8c-4f99-9e7a-b64f2e7535d4</uid>
-  <version_id>386b46b7-82ef-4e11-a823-01211f86608b</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>557BF06F</xml_checksum>
+  <version_id>c54ce4e4-b079-4b75-9ee4-e9171d79a21d</version_id>
+  <version_modified>20161107T222246Z</version_modified>
+  <xml_checksum>A94354BA</xml_checksum>
   <class_name>ExampleReport</class_name>
   <display_name>Example Report</display_name>
   <description>Simple example of modular code to create tables and charts in OpenStudio reporting measures. This is not meant to use as is, it is an example to help with reporting measure development.</description>
@@ -65,6 +65,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -103,16 +104,16 @@
   </attributes>
   <files>
     <file>
-      <filename>os_lib_helper_methods.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A6430141</checksum>
-    </file>
-    <file>
       <filename>report.html.erb</filename>
       <filetype>erb</filetype>
       <usage_type>resource</usage_type>
       <checksum>6AD259AE</checksum>
+    </file>
+    <file>
+      <filename>os_lib_helper_methods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A6430141</checksum>
     </file>
     <file>
       <filename>os_lib_reporting_custom.rb</filename>
@@ -130,7 +131,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.7.5</identifier>
-        <min_compatible>1.7.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

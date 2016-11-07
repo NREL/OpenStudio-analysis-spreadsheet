@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_k_12_interior_lighting</name>
   <uid>2faf0e50-8589-427f-8ee8-928169b1f7fa</uid>
-  <version_id>73a0f3ad-c352-499b-9f69-250db00f9866</version_id>
-  <version_modified>20160620T200508Z</version_modified>
-  <xml_checksum>2DDDDD82</xml_checksum>
+  <version_id>28243784-290c-4702-807c-6585e66e6f0c</version_id>
+  <version_modified>20161107T222223Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgK12InteriorLighting</class_name>
   <display_name>AedgK12InteriorLighting</display_name>
   <description>This measure removes all existing electric equipment objects from spaces recognized as primary or secondary school space types, with the exception of the kitchen which has a dedicated measure that should be used. New equipment will be added based on the 50% K12 AEDG recommendations.</description>
@@ -19,6 +19,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>

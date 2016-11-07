@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_energy_plus_light_objects_lpd</name>
   <uid>27b7b89c-6d88-44c9-a84a-0038e768bd42</uid>
-  <version_id>99a14b0b-cca6-446b-94d9-cdbca6f70ae7</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>B087785D</xml_checksum>
+  <version_id>856ec338-3438-48a7-89fe-74e8e2ebb2d6</version_id>
+  <version_modified>20161107T222432Z</version_modified>
+  <xml_checksum>C75AF51E</xml_checksum>
   <class_name>SetEnergyPlusLightObjectsLPD</class_name>
   <display_name>SetEnergyPlusLightObjectsLPD</display_name>
   <description>Set the LPD for all lights objects in the model. Input values are in SI units.</description>
@@ -19,6 +19,7 @@
       <default_value>10.76</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>
@@ -40,7 +41,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.1.0</identifier>
-        <min_compatible>1.1.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

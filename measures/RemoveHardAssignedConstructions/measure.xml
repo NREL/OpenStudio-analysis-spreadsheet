@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>remove_hard_assigned_constructions</name>
   <uid>277c4962-17e7-46fa-a5f3-643218b2a513</uid>
-  <version_id>93b087f5-19ae-4235-b8cf-1e156d9b8d8e</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>1E963D9C</xml_checksum>
+  <version_id>eb1981db-469e-4836-8e07-c058d06c90cb</version_id>
+  <version_modified>20161107T222419Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>RemoveHardAssignedConstructions</class_name>
   <display_name>RemoveHardAssignedConstructions</display_name>
   <description>This will remove all construction assignments from made directly to surfaces or sub-surfaces. This may useful if you started with an Imported IDF file and now want to use construction sets.</description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>
@@ -50,7 +51,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.3.1</identifier>
-        <min_compatible>1.3.1</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

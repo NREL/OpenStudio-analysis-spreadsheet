@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>increase_insulation_r_value_for_roofs</name>
   <uid>c6b78646-be8e-425b-af79-fdbbcd0d58d5</uid>
-  <version_id>a52ce1d7-e8b1-4c03-a07c-c3a5392800ce</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>0F858D9E</xml_checksum>
+  <version_id>392c48c4-ae68-4345-8acf-5ab1bc71b7aa</version_id>
+  <version_modified>20161107T222404Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>IncreaseInsulationRValueForRoofs</class_name>
   <display_name>Increase R-value of Insulation for Roofs to a Specific Value</display_name>
   <description>Set the R-Value of roof insulation to a specified value.  Higher R-Values provide better insulation, lowering heat loss and heat gain through the roof.</description>
@@ -64,6 +64,7 @@ The resulting construction will retain the cost data from the source constructio
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>
@@ -95,7 +96,7 @@ The resulting construction will retain the cost data from the source constructio
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
-        <min_compatible>0.11.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

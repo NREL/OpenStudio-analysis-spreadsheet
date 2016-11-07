@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>enable_demand_controlled_ventilation</name>
   <uid>3ff4b412-8689-4b11-a588-935c621dc97d</uid>
-  <version_id>c89aad71-9650-45a9-a0d7-35ea5d99f6f5</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>ECE70A70</xml_checksum>
+  <version_id>36354a2a-9526-4716-afa3-0066c9b994a8</version_id>
+  <version_modified>20161107T222245Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>EnableDemandControlledVentilation</class_name>
   <display_name>EnableDemandControlledVentilation</display_name>
   <description>The facility currently does not have a demand controlled ventilation system or CO2 sensors in the air delivery system. Outside air is introduced and conditioned at a fixed rate based on the maximum design. Since the building occupancy fluctuates and is often less than the maximum design occupancy, it is being over-ventilated and consuming more energy than necessary. The building CO2 level is closely related to the occupancy. The typical outside CO2 level is relatively low concentration, around 400 to 500 ppm, and is used to dilute the higher indoor CO2 levels.&#xd;&#xd;Demand controlled ventilation could be implemented by deploying CO2 sensors located in each AHU return air duct and in densely occupied spaces, such as conference rooms. Implementation of this ECM will require:&#xd;&#xd;-Rebalance the open/closed outside air dampers to a lower minimum ventilation rate.&#xd;&#xd;-Program demand ventilation controls into each AHU, controlling modulating dampers in mixed air AHUs and VFDs in outside air units. Ventilation will be generally controlled from return air sensors, but will be increased as needed based on densely occupied space sensors.&#xd;&#xd;-Commission the project.</description>
@@ -20,10 +20,10 @@ The cost arguments are user arguments that start with a default of $0.</modeler_
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{ce06d730-13a6-4e99-8a04-2b4dd375ff61}</default_value>
+      <default_value>{fd5ce7ff-eb13-465d-9616-bbf8ec0946d2}</default_value>
       <choices>
         <choice>
-          <value>{ce06d730-13a6-4e99-8a04-2b4dd375ff61}</value>
+          <value>{fd5ce7ff-eb13-465d-9616-bbf8ec0946d2}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -113,6 +113,7 @@ The cost arguments are user arguments that start with a default of $0.</modeler_
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Ventilation</tag>
@@ -134,7 +135,7 @@ The cost arguments are user arguments that start with a default of $0.</modeler_
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.5</identifier>
-        <min_compatible>1.0.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

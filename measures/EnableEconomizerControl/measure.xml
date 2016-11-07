@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>enable_economizer_control</name>
   <uid>f8cc920d-8ae3-411a-922f-e6fed3223c4d</uid>
-  <version_id>73babfc9-c4c9-4142-89e2-814a375dc609</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>ECE70A70</xml_checksum>
+  <version_id>7fb6ab5d-5541-474a-9c2d-5f050067f969</version_id>
+  <version_modified>20161107T222245Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>EnableEconomizerControl</class_name>
   <display_name>Enable Economizer Control</display_name>
   <description>There is currently not a functioning air side economizer enabled in the building. Air side economizers use cold outside air to either assist the mechanical cooling system, or if the air is cold enough, provide all of the cooling for a facility.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
@@ -29,10 +29,10 @@ The cost arguments are user arguments that start with a default of $0.&#xd;&#xd;
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{f15038f8-1647-4e95-96ce-105d752dc40b}</default_value>
+      <default_value>{a4ce3407-34a5-48ce-8919-1d2e14726d5c}</default_value>
       <choices>
         <choice>
-          <value>{f15038f8-1647-4e95-96ce-105d752dc40b}</value>
+          <value>{a4ce3407-34a5-48ce-8919-1d2e14726d5c}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -187,6 +187,7 @@ The cost arguments are user arguments that start with a default of $0.&#xd;&#xd;
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Ventilation</tag>
@@ -208,7 +209,7 @@ The cost arguments are user arguments that start with a default of $0.&#xd;&#xd;
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

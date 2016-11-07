@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_overhangs_by_projection_factor</name>
   <uid>1e29e117-3916-4368-b24d-75da54045956</uid>
-  <version_id>999baba0-fdd8-4dec-be29-cc08b6580508</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>6DE831F7</xml_checksum>
+  <version_id>b332a326-bbe4-4d88-a5ab-947700507765</version_id>
+  <version_modified>20161107T222207Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddOverhangsByProjectionFactor</class_name>
   <display_name>Add Overhangs by Projection Factor</display_name>
   <description>Add overhangs by projection factor to specified windows. The projection factor is the overhang depth divided by the window height. This can be applied to windows by the closest cardinal direction. If baseline model contains overhangs made by this measure, they will be replaced. Optionally the measure can delete any pre-existing space shading surfaces.</description>
@@ -70,6 +70,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Fenestration</tag>
@@ -101,7 +102,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

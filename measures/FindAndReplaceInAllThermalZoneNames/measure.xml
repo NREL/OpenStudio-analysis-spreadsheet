@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>find_and_replace_in_all_thermal_zone_names</name>
   <uid>3573d81e-e7de-4949-be50-8abcd0f95a35</uid>
-  <version_id>2aadadd1-e103-450e-bcbd-f2166c5f6eb9</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>057E8D9D</xml_checksum>
+  <version_id>765a0022-9970-4da2-8f5e-99896c670554</version_id>
+  <version_modified>20161107T222248Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>FindAndReplaceInAllThermalZoneNames</class_name>
   <display_name>Find And Replace In All Thermal Zone Names</display_name>
   <description>This measure will find and replace text in all thermal zone names. If the resulting name doesn't represent a unique thermal zone name it won't be changed. The search string must not be empty, but the replace string be empty.</description>
@@ -27,6 +27,7 @@
       <default_value></default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Space Types</tag>
@@ -48,7 +49,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

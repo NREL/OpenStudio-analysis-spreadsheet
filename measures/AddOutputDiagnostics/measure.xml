@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_output_diagnostics</name>
   <uid>cb957503-4a01-42c4-a918-a44df4ea759c</uid>
-  <version_id>f3adde6f-58ab-45de-95a0-597d009f8c99</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>AA6ADD14</xml_checksum>
+  <version_id>155b7eeb-295a-4ada-b694-5277fa43125c</version_id>
+  <version_modified>20161107T222206Z</version_modified>
+  <xml_checksum>C75AF51E</xml_checksum>
   <class_name>AddOutputDiagnostics</class_name>
   <display_name>AddOutputDiagnostics</display_name>
   <description>Often the eplusout.err file may request output diagnostics. This measure can be used to add this to the IDF file. Re-run your project to see the requested output.</description>
@@ -72,6 +72,7 @@ ReportDetailedWarmupConvergence</modeler_description>
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -93,7 +94,7 @@ ReportDetailedWarmupConvergence</modeler_description>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

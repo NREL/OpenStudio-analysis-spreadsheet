@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_co_pfor_single_speed_dx_cooling_units</name>
   <uid>4a737582-b5fc-477a-89e9-f8501af13b10</uid>
-  <version_id>1bfff151-c238-4183-8967-97b3d5370727</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>9E2537CD</xml_checksum>
+  <version_id>3c7c6ad0-f751-457f-8e13-69b26bffc563</version_id>
+  <version_modified>20161107T222430Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetCOPforSingleSpeedDXCoolingUnits</class_name>
   <display_name>Set COP for Single Speed DX Cooling Units</display_name>
   <description>This measure will find single speed DX cooling units in the model and will alter the Rated COP to a specified value. It can be run on a single or all air loops in the model.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{5da112dc-6a42-4b56-98a5-e94a7c467231}</default_value>
+      <default_value>{01e7ed9e-fe56-48af-bd32-be31fe77a087}</default_value>
       <choices>
         <choice>
-          <value>{5da112dc-6a42-4b56-98a5-e94a7c467231}</value>
+          <value>{01e7ed9e-fe56-48af-bd32-be31fe77a087}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -117,6 +117,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>
@@ -138,7 +139,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

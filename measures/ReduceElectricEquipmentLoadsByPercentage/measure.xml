@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>reduce_electric_equipment_loads_by_percentage</name>
   <uid>b93f5c07-a1a8-4741-9d47-af00a2e7e288</uid>
-  <version_id>c20205d6-35ae-4fe4-8cf0-93f00668e957</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>F9A5B8F0</xml_checksum>
+  <version_id>f0e3111f-4669-43be-a321-6fbb743f9230</version_id>
+  <version_modified>20161107T222414Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ReduceElectricEquipmentLoadsByPercentage</class_name>
   <display_name>Reduce Electric Equipment Loads by Percentage</display_name>
   <description>Reduce electric equipment loads. This will affect equipment that have a, power, power per area (LPD), or power per person value. This can be applied to the entire building or a specific space type. A positive percentage represents an increase electric equipment power, while a negative percentage can be used for an increase in electric equipment power.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{94567ab5-c1e1-4699-b78f-1332970b8886}</default_value>
+      <default_value>{75ecddce-eec2-4557-aa70-98a4f7284151}</default_value>
       <choices>
         <choice>
-          <value>{94567ab5-c1e1-4699-b78f-1332970b8886}</value>
+          <value>{75ecddce-eec2-4557-aa70-98a4f7284151}</value>
           <display_name>*Entire Building*</display_name>
         </choice>
       </choices>
@@ -99,6 +99,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Equipment.Electric Equipment</tag>
@@ -130,7 +131,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

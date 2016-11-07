@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_water_heater_efficiency_heat_lossand_peak_water_flow_rate</name>
   <uid>22dc85fc-2502-4b87-acf8-2da15467c1c5</uid>
-  <version_id>0addcd28-4549-4e29-83eb-5c917c58dcf1</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>A949FB5D</xml_checksum>
+  <version_id>0a933b26-38cb-4b5c-8c44-7d30dd9ecb83</version_id>
+  <version_modified>20161107T222442Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate</class_name>
   <display_name>SetWaterHeaterEfficiencyHeatLossandPeakWaterFlowRate</display_name>
   <description>High efficiency service water heaters with proper insulation save building energy consumption. This measure allows users to modify the water heater fuel type, thermal efficiency, heat loss coefficient to the ambient air temperature, and the peak hot water use flow rate. Note that the peak flow rate change only applies to standalone water heaters, not for those water heaters with plant loop connections.</description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Service Water Heating.Water Heating</tag>
@@ -60,7 +61,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

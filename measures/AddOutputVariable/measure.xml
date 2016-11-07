@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_output_variable</name>
   <uid>2a058afb-e349-49ae-a4bf-2c56a42b4352</uid>
-  <version_id>1d0864a9-5e0a-4607-a1bc-897c4a08d314</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>0CA4D54C</xml_checksum>
+  <version_id>9d851a14-bc6e-491a-8054-f30ff1212dd6</version_id>
+  <version_modified>20161107T222207Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddOutputVariable</class_name>
   <display_name>AddOutputVariable</display_name>
   <description>This measure adds an output variable at the requested reporting frequency.</description>
@@ -61,6 +61,7 @@
       <default_value>*</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -92,7 +93,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

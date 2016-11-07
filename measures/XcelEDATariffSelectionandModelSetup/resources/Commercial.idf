@@ -20,7 +20,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.117881298;                            !- Cost per Unit Value or Variable Name
+  0.111663786;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialSummerOffPeakEnergyCharge,    !- Name
@@ -28,7 +28,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.117881298;                            !- Cost per Unit Value or Variable Name
+  0.111663786;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialWinterOnPeakEnergyCharge,     !- Name
@@ -36,7 +36,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.08976106079999999;                    !- Cost per Unit Value or Variable Name
+  0.085808806;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialWinterOffPeakEnergyCharge,    !- Name
@@ -44,7 +44,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.08976106079999999;                    !- Cost per Unit Value or Variable Name
+  0.085808806;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   CommercialSummerDemandCharge,           !- Name

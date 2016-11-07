@@ -1,15 +1,17 @@
 <measure>
   <schema_version>3.0</schema_version>
+  <error>cannot load such file -- rubygems/version</error>
   <name>view_model</name>
   <uid>f4669f10-fda5-489d-8e1c-7ca3c2d40378</uid>
-  <version_id>d2ad0ab0-fea9-46c4-bde0-b50906574245</version_id>
-  <version_modified>20160531T204357Z</version_modified>
-  <xml_checksum>1E1F8B97</xml_checksum>
-  <class_name>ViewModel</class_name>
-  <display_name>ViewModel</display_name>
+  <version_id>7b50f4d0-d83a-4b31-8f9d-415d76440e11</version_id>
+  <version_modified>20161107T222451Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
+  <class_name></class_name>
+  <display_name></display_name>
   <description>Visualize an OpenStudio model in a web based viewer</description>
   <modeler_description>Converts the OpenStudio model to vA3C JSON format and renders using Three.js</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -31,7 +33,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.6.3</identifier>
-        <min_compatible>1.6.3</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
@@ -39,16 +41,16 @@
       <checksum>656ECCCB</checksum>
     </file>
     <file>
-      <filename>va3c.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>254BCDED</checksum>
-    </file>
-    <file>
       <filename>report.html.in</filename>
       <filetype>in</filetype>
       <usage_type>resource</usage_type>
       <checksum>64866EE7</checksum>
+    </file>
+    <file>
+      <filename>va3c.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>254BCDED</checksum>
     </file>
   </files>
 </measure>

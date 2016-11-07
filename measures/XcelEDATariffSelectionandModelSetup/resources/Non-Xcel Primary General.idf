@@ -20,7 +20,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.04495546164;                          !- Cost per Unit Value or Variable Name
+  0.042911985;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Non-Xcel Primary GeneralSummerOffPeakEnergyCharge, !- Name
@@ -28,7 +28,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.03286336164;                          !- Cost per Unit Value or Variable Name
+  0.030656685;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Non-Xcel Primary GeneralWinterOnPeakEnergyCharge, !- Name
@@ -36,7 +36,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.04670476164;                          !- Cost per Unit Value or Variable Name
+  0.045783285;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Non-Xcel Primary GeneralWinterOffPeakEnergyCharge, !- Name
@@ -44,7 +44,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.03408226164;                          !- Cost per Unit Value or Variable Name
+  0.032604885;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Non-Xcel Primary GeneralSummerDemandCharge, !- Name
@@ -52,7 +52,7 @@ UtilityCost:Charge:Simple,
   totalDemand,                            !- Source Variable
   summer,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  19.338918479999993;                     !- Cost per Unit Value or Variable Name
+  18.318657360;                           !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Non-Xcel Primary GeneralWinterDemandCharge, !- Name
@@ -60,7 +60,7 @@ UtilityCost:Charge:Simple,
   totalDemand,                            !- Source Variable
   winter,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  15.819855239999999;                     !- Cost per Unit Value or Variable Name
+  14.961700680;                           !- Cost per Unit Value or Variable Name
 
 Schedule:Compact,
   TwoSeasonSchedule,                      !- Name

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>adjust_thermostat_setpoints_by_degrees</name>
   <uid>6e1f34f9-92e1-44ea-9279-de0b9b64f6a1</uid>
-  <version_id>c9e7c1e3-7b0e-48d7-86d1-8cff0a97d4f5</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>4F7846F2</xml_checksum>
+  <version_id>0b6a00c9-9004-4c63-bcfd-bf44e3d9a27f</version_id>
+  <version_modified>20161107T222209Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AdjustThermostatSetpointsByDegrees</class_name>
   <display_name>Adjust Thermostat Setpoints by Degrees</display_name>
   <description>This measure adjusts heating and cooling setpoints by a user specified number of degrees. This is applied throughout the entire building.</description>
@@ -45,6 +45,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.HVAC Controls</tag>
@@ -76,7 +77,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>reduce_night_time_electric_equipment_loads</name>
   <uid>b446301d-8f0e-41fc-9245-c3851b8732ff</uid>
-  <version_id>ffa6a08a-2749-4a14-8d8b-973a7f7d2f56</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>F4EB279D</xml_checksum>
+  <version_id>01c59645-9249-4dbd-ad49-81a57ee70992</version_id>
+  <version_modified>20161107T222416Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ReduceNightTimeElectricEquipmentLoads</class_name>
   <display_name>Reduce Night Time Electric Equipment Loads</display_name>
   <description>Many buildings have electric equipment that runs unnecessarily at night.  Turning this equipment off at night can provide energy savings without impacting the day-to-day operation of the building occupants.  Before implementing this change, make sure that equipment can be brought back online quickly enough in the morning to avoid issues with occupants overriding the controls due to productivity losses.</description>
@@ -168,6 +168,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Equipment.Equipment Controls</tag>
@@ -199,7 +200,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

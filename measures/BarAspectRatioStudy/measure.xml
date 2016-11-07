@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>bar_aspect_ratio_study</name>
   <uid>3dcac94d-8a2e-43b6-8698-a3a4e8f3903f</uid>
-  <version_id>f38feed3-0f2b-4c9b-a25f-4b6c54d13786</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>49BEF039</xml_checksum>
+  <version_id>16e4f53d-f042-4c36-8a0c-699658710381</version_id>
+  <version_modified>20161107T222241Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>BarAspectRatioStudy</class_name>
   <display_name>BarAspectRatioStudy</display_name>
   <description>This measure will create a building envelope based on a target floor area, aspect ratio, and floor to floor height.</description>
@@ -79,6 +79,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Form</tag>
@@ -110,7 +111,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.4</identifier>
-        <min_compatible>1.0.4</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

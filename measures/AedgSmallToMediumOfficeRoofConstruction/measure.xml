@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_roof_construction</name>
   <uid>f35d0cf1-40e4-47d1-84a4-91181a03085e</uid>
-  <version_id>fe9d0519-4eb4-48ba-bb35-3c02d2a8936a</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>1E963D9C</xml_checksum>
+  <version_id>d953a386-3923-432a-9f73-b2f76537d22b</version_id>
+  <version_modified>20161107T222235Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeRoofConstruction</class_name>
   <display_name>AedgSmallToMediumOfficeRoofConstruction</display_name>
   <description>This measure will modify existing roof insulation levels and Solar Reflective Index (SRI) values based on roof type and climate zone. The roof type and climate zone should be set in the model prior to using this measure. If your model uses an attic, all attic surfaces should have an "Attic' intended surface type. For attics it doesn't matter what you put for "Standards Construction Type". The measure will check attic insulation where the attic is adjacent to other not attic spaces.</description>
@@ -31,6 +31,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>

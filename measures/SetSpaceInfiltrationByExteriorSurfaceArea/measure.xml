@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_space_infiltration_by_exterior_surface_area</name>
   <uid>b43adf2d-1e8f-48a4-9470-bde1b1444b4f</uid>
-  <version_id>00c709b1-586e-4f34-9b9a-53986802c4f6</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>E88CCCA7</xml_checksum>
+  <version_id>9cfc5c86-da50-4c7c-ba9a-02b5acc8075f</version_id>
+  <version_modified>20161107T222441Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetSpaceInfiltrationByExteriorSurfaceArea</class_name>
   <display_name>Set Space Infiltration by Exterior Surface Area</display_name>
   <description>Replace all Space Infiltration objects with a new one that has a prescribed flow rate per exterior surface area.  There are many strategies that can be used to reduce infiltration.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
@@ -55,6 +55,7 @@ A one time material &amp; installation cost can be added to the building object 
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Infiltration</tag>
@@ -86,7 +87,7 @@ A one time material &amp; installation cost can be added to the building object 
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
-        <min_compatible>0.11.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

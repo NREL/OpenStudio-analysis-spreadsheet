@@ -62,14 +62,14 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
     # adding argument for disthtg_rate
     disthtg_rate = OpenStudio::Ruleset::OSArgument.makeDoubleArgument("disthtg_rate", true)
     disthtg_rate.setDisplayName("District Heating Rate")
-    disthtg_rate.setUnits("$/kBtu")
+    disthtg_rate.setUnits("$/therm")
     disthtg_rate.setDefaultValue(0.2)
     args << disthtg_rate
 
     # adding argument for distclg_rate
     distclg_rate = OpenStudio::Ruleset::OSArgument.makeDoubleArgument("distclg_rate", true)
     distclg_rate.setDisplayName("District Cooling Rate")
-    distclg_rate.setUnits("$/kBtu")
+    distclg_rate.setUnits("$/therm")
     distclg_rate.setDefaultValue(0.2)
     args << distclg_rate
 
@@ -224,7 +224,7 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
       UtilityCost:Tariff,
         DistrictHeating Tariff,                             !- Name
         DistrictHeating:Facility,                           !- Output Meter Name
-        KBtu,                                  !- Conversion Factor Choice
+        Therm,                                  !- Conversion Factor Choice
         ,                                       !- Energy Conversion Factor
         ,                                       !- Demand Conversion Factor
         ,                                       !- Time of Use Period Schedule Name
@@ -236,8 +236,6 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
       disthtg_tariff = workspace.addObject(OpenStudio::IdfObject::load(new_object_string).get).get
 
       # make UtilityCost:Charge:Simple objects for disthtg
-      #value = OpenStudio::convert(args['gas_rate'],"1/therms","1/Kbtu").get # todo - get conversion working
-      value = args['disthtg_rate']/99.98 # $/therm to $/Kbtu
       new_object_string = "
       UtilityCost:Charge:Simple,
         DistrictHeatingTariffEnergyCharge, !- Name
@@ -245,7 +243,7 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
         totalEnergy,                            !- Source Variable
         Annual,                                 !- Season
         EnergyCharges,                          !- Category Variable Name
-        #{value};          !- Cost per Unit Value or Variable Name
+        #{args['disthtg_rate']};          !- Cost per Unit Value or Variable Name
         "
       disthtg_utility_cost = workspace.addObject(OpenStudio::IdfObject::load(new_object_string).get).get
     end
@@ -256,7 +254,7 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
       UtilityCost:Tariff,
         DistrictCooling Tariff,                             !- Name
         DistrictCooling:Facility,                           !- Output Meter Name
-        KBtu,                                  !- Conversion Factor Choice
+        Therm,                                  !- Conversion Factor Choice
         ,                                       !- Energy Conversion Factor
         ,                                       !- Demand Conversion Factor
         ,                                       !- Time of Use Period Schedule Name
@@ -268,8 +266,6 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
       distclg_tariff = workspace.addObject(OpenStudio::IdfObject::load(new_object_string).get).get
 
       # make UtilityCost:Charge:Simple objects for distclg
-      #value = OpenStudio::convert(args['gas_rate'],"1/therms","1/Kbtu").get # todo - get conversion working
-      value = args['distclg_rate']/99.98 # $/therm to $/Kbtu
       new_object_string = "
       UtilityCost:Charge:Simple,
         DistrictCoolingTariffEnergyCharge, !- Name
@@ -277,7 +273,7 @@ class TariffSelectionFlat < OpenStudio::Ruleset::WorkspaceUserScript
         totalEnergy,                            !- Source Variable
         Annual,                                 !- Season
         EnergyCharges,                          !- Category Variable Name
-        #{value};          !- Cost per Unit Value or Variable Name
+        #{args['distclg_rate']};          !- Cost per Unit Value or Variable Name
       "
       distclg_utility_cost = workspace.addObject(OpenStudio::IdfObject::load(new_object_string).get).get
     end

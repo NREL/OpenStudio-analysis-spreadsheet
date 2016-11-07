@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>ventilation_qaqc</name>
   <uid>429b770a-1ede-42e2-84d2-50d4758633a2</uid>
-  <version_id>1e174d35-078b-4d08-be77-3a40fdb13dee</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>c9659811-bf95-4cfd-8173-c8ed97211dfc</version_id>
+  <version_modified>20161107T222449Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>VentilationQAQC</class_name>
   <display_name>Ventilation Report</display_name>
   <description>This measure asks the user to select a thermal zone (or all zones) and generates a Quality Assurance Report relating to ventilation and infiltration model objects. The QA report consists of two sections: 1) A table listing each space and associated (total of space) ventilation and infiltration metrics and 2) an interactive time series chart plotting both the zone mechanical ventilation rate and the zone Infiltration mass flow rate. Error or warning messages may be triggered based on the resulting cfm/person and ACH for each space associated with the selected thermal zone(s).</description>
@@ -25,6 +25,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -46,7 +47,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.5.0</identifier>
-        <min_compatible>1.5.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

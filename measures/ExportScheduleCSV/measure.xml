@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>export_schedule_csv</name>
   <uid>6fc1a46d-4912-47af-8ace-a7c453fbe363</uid>
-  <version_id>b2c6d96b-2c29-4d7d-9965-0229deb1a3bb</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>272f8099-0800-4c0b-b6b8-69bdf8b07bd9</version_id>
+  <version_modified>20161107T222246Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>ExportScheduleCSV</class_name>
   <display_name>ExportScheduleCSV</display_name>
   <description>This script exports a CSV file containing values for each schedule in the model at a specified interval.</description>
@@ -19,6 +19,7 @@
       <default_value>60</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -40,7 +41,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.1.1</identifier>
-        <min_compatible>1.1.1</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

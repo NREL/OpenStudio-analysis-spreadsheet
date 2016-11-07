@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_run_period</name>
   <uid>63d43c68-ed11-4c60-a5c5-cae72f7ba4ff</uid>
-  <version_id>263371ca-653e-47fb-a891-44bef1629e6e</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>23441D50</xml_checksum>
+  <version_id>cc2ef2f3-8db9-4e93-a774-7231768604e3</version_id>
+  <version_modified>20161107T222440Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetRunPeriod</class_name>
   <display_name>SetRunPeriod</display_name>
   <description>This will allow you to change the starting and ending day and month of the Run Period object.</description>
@@ -39,6 +39,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Whole Building Schedules</tag>

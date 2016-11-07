@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_energy_recovery_ventilator</name>
   <uid>9b530f72-e5ab-467b-acd6-b5c3458d7b55</uid>
-  <version_id>ca695327-3510-48ba-82ee-6c83be637f4d</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>BF75C791</xml_checksum>
+  <version_id>c89a3f17-4962-41ce-a117-601c531001c0</version_id>
+  <version_modified>20161107T222205Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddEnergyRecoveryVentilator</class_name>
   <display_name>AddEnergyRecoveryVentilator</display_name>
   <description>Energy recovery ventilator transfers energy between the exhaust/relief and outdoor air streams and helps reduce building energy use. The measure adds an air-to-air heat exchanger to the air handler unit. Users can define the latent and sensible heat transfer effectiveness. </description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Energy Recovery</tag>
@@ -60,7 +61,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>air_wall_zone_mixing</name>
   <uid>fd04f73e-a530-4144-9e1e-c1878b1394bc</uid>
-  <version_id>5a56caa6-890c-4fbc-b980-6e60197a8ab5</version_id>
-  <version_modified>20160620T200512Z</version_modified>
-  <xml_checksum>772B7164</xml_checksum>
+  <version_id>76a32fba-7ef7-40fc-9046-e1a9d7c5a2c4</version_id>
+  <version_modified>20161107T222236Z</version_modified>
+  <xml_checksum>0D0748A3</xml_checksum>
   <class_name>AirWallZoneMixing</class_name>
   <display_name>Air Wall Zone Mixing</display_name>
   <description>This measure replaces conductive heat transfer with zone mixing wherever air walls are used on matched surfaces or sub-surfaces for walls. A user argument is exposed for a coefficient that represents a target air changes per hour (ACH) for a room where the zone volume/the air wall surface area is the same as its zone height. As the room gets deeper the additional airflow per unit of depth decreases. If two zones have different mixing estimates, the lower will be used. If a smaller portion of an inter-zone wall is an air wall, that will also decrease zone mixing airflow.
@@ -46,6 +46,7 @@ Example 3: two 40' high by 10' wide by 10' deep rooms with a zone mixing coeffic
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Distribution</tag>
@@ -74,16 +75,10 @@ Example 3: two 40' high by 10' wide by 10' deep rooms with a zone mixing coeffic
   </attributes>
   <files>
     <file>
-      <filename>os_lib_geometry.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>363435A9</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.8.4</identifier>
-        <min_compatible>1.8.4</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
@@ -95,6 +90,12 @@ Example 3: two 40' high by 10' wide by 10' deep rooms with a zone mixing coeffic
       <filetype>pdf</filetype>
       <usage_type>resource</usage_type>
       <checksum>D898FE3D</checksum>
+    </file>
+    <file>
+      <filename>os_lib_geometry.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>363435A9</checksum>
     </file>
   </files>
 </measure>

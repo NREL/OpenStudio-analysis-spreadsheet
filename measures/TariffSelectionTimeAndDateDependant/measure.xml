@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>tariff_selection_time_and_date_dependant</name>
   <uid>a890e296-b357-432f-8d53-6428d9bf3c0a</uid>
-  <version_id>30c18d7b-cff3-4db3-a9e6-965f70970e5c</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>135F7E88</xml_checksum>
+  <version_id>7e4f44f5-2024-42ba-acdc-5cba2c1e2611</version_id>
+  <version_modified>20161107T222448Z</version_modified>
+  <xml_checksum>C741C05C</xml_checksum>
   <class_name>TariffSelectionTimeAndDateDependant</class_name>
   <display_name>Tariff Selection-Time and Date Dependant</display_name>
   <description>This measure sets flat rates for gas, water, district heating, and district cooling but has on seasonal and off peak rates for electricity. It exposes inputs for the time of day and day of year where peak rates should be applied.</description>
@@ -162,7 +162,7 @@
       <name>disthtg_rate</name>
       <display_name>District Heating Rate</display_name>
       <type>Double</type>
-      <units>$/kBtu</units>
+      <units>$/therm</units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>0.2</default_value>
@@ -171,12 +171,13 @@
       <name>distclg_rate</name>
       <display_name>District Cooling Rate</display_name>
       <type>Double</type>
-      <units>$/kBtu</units>
+      <units>$/therm</units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>0.2</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -250,21 +251,16 @@
   </attributes>
   <files>
     <file>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type></usage_type>
+      <checksum>21B347B2</checksum>
+    </file>
+    <file>
       <filename>os_lib_helper_methods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>9336238A</checksum>
-    </file>
-    <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.6.0</identifier>
-        <min_compatible>1.6.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>5E7E0CA1</checksum>
     </file>
   </files>
 </measure>

@@ -41,7 +41,7 @@ GEM
     net-ssh (3.0.2)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    openstudio-analysis (1.0.0.rc7)
+    openstudio-analysis (1.0.0.rc8)
       bcl (~> 0.5.7)
       dencity (~> 0.1.0)
       faraday (~> 0.8)
@@ -78,7 +78,7 @@ PLATFORMS
 DEPENDENCIES
   colored (~> 1.2)
   git
-  openstudio-analysis (~> 1.0.0.rc7)
+  openstudio-analysis (~> 1.0.0.rc8)
   openstudio-aws (~> 0.4.2)
   rake (~> 11.1)
 

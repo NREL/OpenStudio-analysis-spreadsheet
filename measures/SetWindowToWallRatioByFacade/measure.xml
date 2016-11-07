@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_window_to_wall_ratio_by_facade</name>
   <uid>f347ae80-48b4-4c40-bfd4-6c5139b38136</uid>
-  <version_id>199201d5-b7fa-4dc6-bbb4-e839835f4216</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>6DE831F7</xml_checksum>
+  <version_id>b47dec1f-2f9a-439a-a132-362580ca3963</version_id>
+  <version_modified>20161107T222442Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetWindowToWallRatioByFacade</class_name>
   <display_name>Set Window to Wall Ratio by Facade</display_name>
   <description>This measure will set the window to wall ratio for exterior surfaces with a specified orientation. If one or more windows exist on an affected wall, they will be removed and replaced with a single ribbon window. Doors will not be removed. If the requested ratio can't be achieved then the wall will remain untouched.</description>
@@ -53,6 +53,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Fenestration</tag>
@@ -84,7 +85,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
-        <min_compatible>0.10.2</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

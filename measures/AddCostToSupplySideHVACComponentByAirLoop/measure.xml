@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_cost_to_supply_side_hvac_component_by_air_loop</name>
   <uid>a667a52f-aa04-4997-9292-c81671d75f84</uid>
-  <version_id>7f1a7a24-c44b-4390-9184-f86d1d628348</version_id>
-  <version_modified>20160620T200506Z</version_modified>
-  <xml_checksum>35DA4ED3</xml_checksum>
+  <version_id>9653941c-7e32-40a5-8952-d47901f92018</version_id>
+  <version_modified>20161107T222204Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>AddCostToSupplySideHVACComponentByAirLoop</class_name>
   <display_name>AddCostToSupplySideHVACComponentByAirLoop</display_name>
   <description>This will add cost to HVAC components of a specified type in the selected air loop(s). It can run on all air loops or a single air loop. This measures only adds cost and doesn't alter equipment performance</description>
@@ -92,7 +92,7 @@
       <model_dependent>false</model_dependent>
       <choices>
         <choice>
-          <value>{0db90dd0-67f3-4802-9393-f7d32900d925}</value>
+          <value>{beb551e0-8772-4a2b-ba79-12c5d274f128}</value>
           <display_name>*All Air Loops*</display_name>
         </choice>
       </choices>
@@ -182,6 +182,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -213,7 +214,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.3</identifier>
-        <min_compatible>1.0.3</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

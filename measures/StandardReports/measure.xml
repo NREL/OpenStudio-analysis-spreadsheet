@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>standard_reports</name>
   <uid>fc337100-8634-404e-8966-01243d292a79</uid>
-  <version_id>332ee48e-da9d-4d6a-9713-248f1ea2a212</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>8d4c43e8-7f0f-4d29-a761-e7471e590547</version_id>
+  <version_modified>20161107T222444Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>StandardReports</class_name>
   <display_name>Standard Reports</display_name>
   <description>Change me</description>
   <modeler_description>Change me</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>

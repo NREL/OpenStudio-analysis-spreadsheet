@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_exterior_lighting</name>
   <uid>90211a9c-de3f-458d-85c1-b40666b55f06</uid>
-  <version_id>305dac42-b746-46a2-8c07-cae9ef29b1a0</version_id>
-  <version_modified>20160620T200511Z</version_modified>
-  <xml_checksum>2DDDDD82</xml_checksum>
+  <version_id>fe0736fd-002c-4c83-9c7e-ba3c0c44c623</version_id>
+  <version_modified>20161107T222232Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeExteriorLighting</class_name>
   <display_name>AedgSmallToMediumOfficeExteriorLighting</display_name>
   <description>This measure will create exterior lights objects in four different categories described below. The lighting levels and controls will be based on the "How to Implement Recommendations" section in the AEDG; any existing exterior lighting will be removed. A special input is needed for this measure to define the exterior lighting zone, which further describes whether the site is urban or rural. </description>
@@ -94,6 +94,7 @@ Lighting Zones:&#xd;&#xd;
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>

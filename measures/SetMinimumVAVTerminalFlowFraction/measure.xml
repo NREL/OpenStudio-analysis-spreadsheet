@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_minimum_vav_terminal_flow_fraction</name>
   <uid>5e2dbc3a-5a22-4e6b-93e2-a4add95e3ccc</uid>
-  <version_id>bd17d72c-911c-4830-a81a-1ecd00b722b6</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>ECE70A70</xml_checksum>
+  <version_id>1fbe31bd-5a31-443f-94a9-1e8892f0e70f</version_id>
+  <version_modified>20161107T222440Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetMinimumVAVTerminalFlowFraction</class_name>
   <display_name>SetMinimumVAVTerminalFlowFraction</display_name>
   <description></description>
@@ -19,6 +19,7 @@
       <default_value>30</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Ventilation</tag>

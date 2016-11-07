@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_air_cooled_unitary_heat_pump_cop</name>
   <uid>15ae3288-331e-4c28-9fc5-2bc3397cb57e</uid>
-  <version_id>6a26f8fa-b3a0-4407-bcfc-846cdda7aa63</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>9FB55606</xml_checksum>
+  <version_id>ab7d91ed-6d42-4225-be8c-d3460694cab5</version_id>
+  <version_modified>20161107T222428Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetAirCooledUnitaryHeatPumpCOP</class_name>
   <display_name>SetAirCooledUnitaryHeatPumpCOP</display_name>
   <description>The coefficient of performance (COP) of heat pumps affects both heating and cooling energy consumption. The measure offers two options to set the air-cooled heap pump COP. Option 1 allows users to specify the heating and cooling COP inputs directly. Option 2 determines the COP values based on the rated total cooling capacity and the prescriptive requirements in ASHRAE Standard 90.1. </description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Cooling</tag>
@@ -60,7 +61,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>tariff_selection_flat</name>
   <uid>539c3e8e-6c41-4f50-ac61-6cbbf1ee1b55</uid>
-  <version_id>c7a77321-c26f-4d3e-823f-e7d2c19422f4</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>FBDC6D11</xml_checksum>
+  <version_id>cb067d02-977d-4c2e-82e2-8a4ee52c01bc</version_id>
+  <version_modified>20161107T222447Z</version_modified>
+  <xml_checksum>E0F92FE1</xml_checksum>
   <class_name>TariffSelectionFlat</class_name>
   <display_name>Tariff Selection-Flat</display_name>
   <description>This measure sets flat rates for electricity, gas, water, district heating, and district cooling.</description>
@@ -63,7 +63,7 @@
       <name>disthtg_rate</name>
       <display_name>District Heating Rate</display_name>
       <type>Double</type>
-      <units>$/kBtu</units>
+      <units>$/therm</units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>0.2</default_value>
@@ -72,12 +72,13 @@
       <name>distclg_rate</name>
       <display_name>District Cooling Rate</display_name>
       <type>Double</type>
-      <units>$/kBtu</units>
+      <units>$/therm</units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>0.2</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -181,21 +182,16 @@
   </attributes>
   <files>
     <file>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type></usage_type>
+      <checksum>946AE303</checksum>
+    </file>
+    <file>
       <filename>os_lib_helper_methods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>9336238A</checksum>
-    </file>
-    <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.6.0</identifier>
-        <min_compatible>1.6.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>8C91CE8E</checksum>
     </file>
   </files>
 </measure>

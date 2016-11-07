@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>schedule_profile_report</name>
   <uid>84cc117a-3a6c-4d81-840c-51e4debc35b7</uid>
-  <version_id>feb52ea2-bbe6-4e9c-9109-eba481d93294</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>557BF06F</xml_checksum>
+  <version_id>557f2731-e17e-4c83-a5e7-b61415c8b98e</version_id>
+  <version_modified>20161107T222426Z</version_modified>
+  <xml_checksum>A94354BA</xml_checksum>
   <class_name>ScheduleProfileReport</class_name>
   <display_name> Schedule Profile Report</display_name>
   <description>Create stepped plots of each ruleset schedule, with a line for the default profile, each rule, and the summer and winter design day.</description>
   <modeler_description>This gets value every 15 minutes.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -57,7 +58,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.1</identifier>
-        <min_compatible>1.2.1</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

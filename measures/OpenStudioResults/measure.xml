@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>open_studio_results</name>
   <uid>a25386cd-60e4-46bc-8b11-c755f379d916</uid>
-  <version_id>196295ce-1ee6-4b96-9642-2bcef867c5c9</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>557BF06F</xml_checksum>
+  <version_id>a22ba2c7-c79c-46fa-affa-260ec5ae4ea4</version_id>
+  <version_modified>20161107T215050Z</version_modified>
+  <xml_checksum>A94354BA</xml_checksum>
   <class_name>OpenStudioResults</class_name>
   <display_name>OpenStudio Results</display_name>
   <description>This measure creates high level tables and charts pulling both from model inputs and EnergyPlus results. It has building level information as well as detail on space types, thermal zones, HVAC systems, envelope characteristics, and economics. Click the heading above a chart to view a table of the chart data.</description>
@@ -389,6 +389,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -427,12 +428,6 @@
   </attributes>
   <files>
     <file>
-      <filename>os_lib_schedules.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>C4185CAA</checksum>
-    </file>
-    <file>
       <filename>os_lib_helper_methods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -442,7 +437,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.7.5</identifier>
-        <min_compatible>1.7.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
@@ -460,6 +455,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>818C6AEE</checksum>
+    </file>
+    <file>
+      <filename>os_lib_schedules.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C4185CAA</checksum>
     </file>
   </files>
 </measure>

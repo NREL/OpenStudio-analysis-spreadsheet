@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>enable_ideal_air_loads_for_all_zones</name>
   <uid>f70d4a3d-8b93-4fef-b679-858fe1e05acc</uid>
-  <version_id>657f146a-1f25-40c9-bb2f-cf007850b829</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>4435983D</xml_checksum>
+  <version_id>a80494e8-bd24-4516-b0ea-fc0349c4bd82</version_id>
+  <version_modified>20161107T222245Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>EnableIdealAirLoadsForAllZones</class_name>
   <display_name>EnableIdealAirLoadsForAllZones</display_name>
   <description>This will enable Ideal Air Loads for all thermal zones in the model. This will result in disconnecting any pre-existing HVAC systems from the zones.</description>
   <modeler_description>This doesn't clean up any air or plant loops that are left. It was developed to use on models without HVAC. If you use it in another way you may have to clean up remaining objects prior to running a simulation.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Whole System</tag>
@@ -31,7 +32,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.3.1</identifier>
-        <min_compatible>1.3.1</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

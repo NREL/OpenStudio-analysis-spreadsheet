@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>replace_thermostat_schedules</name>
   <uid>67931e1a-bff1-4da2-97c9-577f0daecc40</uid>
-  <version_id>27be8f0e-e931-4a47-9c83-a41fa9ca6b24</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>4F7846F2</xml_checksum>
+  <version_id>16a31c9c-a52a-4cac-8f5b-4706f9150c2c</version_id>
+  <version_modified>20161107T222425Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ReplaceThermostatSchedules</class_name>
   <display_name>Replace Thermostat Schedules</display_name>
   <description>Replace zone thermostat schedules with other schedules in the same file.  If a zone does not have a thermostat this measure will not add one.</description>
@@ -16,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{692d0395-155b-48a4-af69-e6f4156c3954}</default_value>
+      <default_value>{8ff91601-c0ec-4224-a282-ce414a8639cb}</default_value>
       <choices>
         <choice>
-          <value>{692d0395-155b-48a4-af69-e6f4156c3954}</value>
+          <value>{8ff91601-c0ec-4224-a282-ce414a8639cb}</value>
           <display_name>*All Thermal Zones*</display_name>
         </choice>
       </choices>
@@ -61,6 +61,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.HVAC Controls</tag>
@@ -92,7 +93,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.0</identifier>
-        <min_compatible>1.2.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

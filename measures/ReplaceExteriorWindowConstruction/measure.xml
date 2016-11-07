@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>replace_exterior_window_construction</name>
   <uid>e9cc8132-fe83-4cd6-a168-8c7637b04e12</uid>
-  <version_id>bb857067-e024-470c-85c6-267f321640c6</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>6DE831F7</xml_checksum>
+  <version_id>ab039784-e1da-4236-9e72-03e41fb6c710</version_id>
+  <version_modified>20161107T222423Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ReplaceExteriorWindowConstruction</class_name>
   <display_name>Replace Exterior Window Constructions with a Different Construction from the Model.</display_name>
   <description>Replace existing windows with different windows to change thermal or lighting performance.  Window technology has improved drastically over the years, and double or triple-pane high performance windows currently on the market can cut down on envelope loads greatly.  Window frames with thermal breaks reduce the considerable energy that can transfer through thermally unbroken frames.  High performance windows typically also come with low-emissivity (low?e) glass to keep radiant heat on the same side of the glass from where the heat originated. This means that during the cooling months a low-e glass would tend to keep radiant heat from the sun on the outside of the window, which would keep the inside of a building cooler. Conversely, during heating months low-e glass helps keep radiant heat from inside the building on the inside, which would keep the inside of a building warmer.  Life cycle cost values may be added for the new window applied by the measure.</description>
@@ -141,6 +141,7 @@ For costs added as part of a design alternatives "Years Until Costs Start? is ty
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Fenestration</tag>
@@ -172,7 +173,7 @@ For costs added as part of a design alternatives "Years Until Costs Start? is ty
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
-        <min_compatible>0.11.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

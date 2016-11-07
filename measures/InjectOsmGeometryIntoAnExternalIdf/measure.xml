@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>inject_osm_geometry_into_an_external_idf</name>
   <uid>45ced2d1-e0d9-46ee-aed2-dcbaa4089cca</uid>
-  <version_id>759fa6d7-1c9e-4214-b8d0-3ae3b3b19a87</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>3BE1CF9C</xml_checksum>
+  <version_id>62bf0c08-1aa9-4569-b0a3-29a9fcdff7f1</version_id>
+  <version_modified>20161107T222406Z</version_modified>
+  <xml_checksum>C75AF51E</xml_checksum>
   <class_name>InjectOsmGeometryIntoAnExternalIdf</class_name>
   <display_name>InjectOsmGeometryIntoAnExternalIdf</display_name>
   <description>The goal here is to let people bring an IDF into OpenStudio to add or alter geometry. Then to inject only the geometry back into a copy of the source IDF file, which has never been brought into OpenStudio.</description>
@@ -42,6 +42,7 @@ Constructions and other resources won?t be moved back and forth but the surface 
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Form</tag>
@@ -63,7 +64,7 @@ Constructions and other resources won?t be moved back and forth but the surface 
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.6</identifier>
-        <min_compatible>1.0.6</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>report_model_changes</name>
   <uid>8f953cb2-384d-49e6-b331-a4d307847a45</uid>
-  <version_id>3e2e102c-01b4-466f-87ec-542d9a953ae4</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>1E1F8B97</xml_checksum>
+  <version_id>567b3cad-c59a-4683-8fe0-16b8ffdd5499</version_id>
+  <version_modified>20161107T222425Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>ReportModelChanges</class_name>
   <display_name>ReportModelChanges</display_name>
   <description>This measure takes the path to an external OSM file.  When it runs, it compares that model to the current model and reports differences between the two.  </description>
@@ -18,6 +18,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_exterior_floor_construction</name>
   <uid>6698017c-52bd-4fc9-9240-f480301f66b8</uid>
-  <version_id>13f1035b-f17c-455d-bd88-b3878db33d22</version_id>
-  <version_modified>20160620T200511Z</version_modified>
-  <xml_checksum>1E963D9C</xml_checksum>
+  <version_id>ca821c14-3cc6-49cd-a51c-318391e4cc1d</version_id>
+  <version_modified>20161107T222232Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeExteriorFloorConstruction</class_name>
   <display_name>AedgSmallToMediumOfficeExteriorFloorConstruction</display_name>
   <description>This measure will modify existing exterior floor (air exposed) insulation levels based on construction type and climate zone. The exterior floor construction type and climate zone should be set in the model prior to using this measure. For mass floors if an existing insulation layer can be found it will be increase or added at the inside of the floor. For steel and wood framed floors, insulation will be enhanced for an existing layer, or a new exterior layer will be added.</description>
@@ -22,6 +22,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>

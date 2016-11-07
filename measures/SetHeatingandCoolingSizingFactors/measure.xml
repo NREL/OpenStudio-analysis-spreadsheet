@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_heatingand_cooling_sizing_factors</name>
   <uid>e9267250-ea12-4edf-9756-7b43282246bf</uid>
-  <version_id>49f25471-8e39-48a1-89dc-7b2bf4b05880</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>4435983D</xml_checksum>
+  <version_id>30e35586-c67e-4b09-833b-08e685f135a1</version_id>
+  <version_modified>20161107T222436Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetHeatingandCoolingSizingFactors</class_name>
   <display_name>SetHeatingandCoolingSizingFactors</display_name>
   <description></description>
@@ -27,6 +27,7 @@
       <default_value>1.15</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Whole System</tag>

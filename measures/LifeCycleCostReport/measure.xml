@@ -2,68 +2,14 @@
   <schema_version>3.0</schema_version>
   <name>life_cycle_cost_report</name>
   <uid>ae699b16-e6e9-4d8d-acd7-4ed4c51a7239</uid>
-  <version_id>5b0962cb-b06b-4572-ab23-8f8168495f78</version_id>
-  <version_modified>20160531T204352Z</version_modified>
-  <xml_checksum>DE353BF6</xml_checksum>
+  <version_id>40252538-2421-4c3a-b077-bd2eddb4c7ae</version_id>
+  <version_modified>20161107T222408Z</version_modified>
+  <xml_checksum>CBDD62AC</xml_checksum>
   <class_name>LifeCycleCostReport</class_name>
   <display_name>LifeCycle Cost Report</display_name>
   <description>Lists all LifeCycle Cost objects in the model as well as the LifeCycle Cost Parameter object</description>
   <modeler_description>Separate tables are made for costs tagged as Construction, Maintainance, and Salvage.</modeler_description>
   <arguments>
-    <argument>
-      <name>template_section</name>
-      <display_name>Tasty Treats</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>mat_prop_section</name>
-      <display_name>Material Properties</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>general_building_information_section</name>
-      <display_name>General Building Information</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
     <argument>
       <name>life_cycle_cost_section</name>
       <display_name>LifeCycle Costs</display_name>
@@ -101,6 +47,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -159,16 +106,16 @@
   </attributes>
   <files>
     <file>
-      <filename>os_lib_helper_methods.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A6430141</checksum>
-    </file>
-    <file>
       <filename>report.html.erb</filename>
       <filetype>erb</filetype>
       <usage_type>resource</usage_type>
       <checksum>6AD259AE</checksum>
+    </file>
+    <file>
+      <filename>os_lib_helper_methods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A6430141</checksum>
     </file>
     <file>
       <filename>ExampleReport.pdf</filename>
@@ -177,21 +124,21 @@
       <checksum>E0F862F0</checksum>
     </file>
     <file>
-      <filename>os_lib_reporting_custom.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>C4C00D2F</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.7.5</identifier>
-        <min_compatible>1.7.5</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>AF8AEF5C</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting_custom.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C4C00D2F</checksum>
     </file>
   </files>
 </measure>

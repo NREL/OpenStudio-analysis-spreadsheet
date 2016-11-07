@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>fan_assist_night_ventilation</name>
   <uid>5e77cb11-0fa9-432b-97bd-87c40949ee1f</uid>
-  <version_id>1c284409-9269-422b-9f93-22cadf81437f</version_id>
-  <version_modified>20160531T204351Z</version_modified>
-  <xml_checksum>26DDAE64</xml_checksum>
+  <version_id>c66d6c6f-320c-468f-b7d9-eee9d291f85a</version_id>
+  <version_modified>20161107T222247Z</version_modified>
+  <xml_checksum>2E1CD325</xml_checksum>
   <class_name>FanAssistNightVentilation</class_name>
   <display_name>Fan Assist Night Ventilation</display_name>
   <description>This measure is meant to roughly model the impact of fan assisted night ventilation. The user needs to have a ventilation schedule in the model, operable windows where natural ventilation is desired, and air walls or interior operable windows in walls and floors to define the path of air through the building. The user specified flow rate is proportionally split up based on the area of exterior operable windows. The size of interior air walls and windows doesn't matter.</description>
@@ -57,6 +57,7 @@ To address an issue in OpenStudio zones with ZoneVentilation, this measure adds 
       <default_value>55</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Ventilation</tag>

@@ -1,0 +1,75 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <error>cannot load such file -- openstudio-standards</error>
+  <name>create_baseline_building</name>
+  <uid>4de56e21-b6cd-45d9-8466-862507d228b2</uid>
+  <version_id>ff50e3b1-4e7f-4cd1-bb49-4a03f1ad366d</version_id>
+  <version_modified>20161107T222243Z</version_modified>
+  <xml_checksum>16B68B0C</xml_checksum>
+  <class_name>CreateBaselineBuilding</class_name>
+  <display_name>Create Baseline Building</display_name>
+  <description>Creates the Performance Rating Method baseline building.  For 90.1, this is the Appendix G aka LEED Baseline.  For India ECBC, this is the Appendix D Baseline.  Note: for 90.1, this model CANNOT be used for code compliance; it is not the same as the Energy Cost Budget baseline.</description>
+  <modeler_description></modeler_description>
+  <arguments>
+    <argument>
+      <name></name>
+      <display_name></display_name>
+      <type></type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name></name>
+      <display_name></display_name>
+      <type></type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name></name>
+      <display_name></display_name>
+      <type></type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name></name>
+      <display_name></display_name>
+      <type></type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name></name>
+      <display_name></display_name>
+      <type></type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <outputs/>
+  <provenances/>
+  <tags>
+    <tag>Whole Building.Space Types</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type></usage_type>
+      <checksum>917CC8E3</checksum>
+    </file>
+  </files>
+</measure>

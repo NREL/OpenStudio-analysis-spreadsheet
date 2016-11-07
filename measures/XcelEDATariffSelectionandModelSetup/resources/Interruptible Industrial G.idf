@@ -20,7 +20,7 @@ UtilityCost:Charge:Simple,
   totalEnergy,                            !- Source Variable
   Annual,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  5.046774482966392;                      !- Cost per Unit Value or Variable Name
+  4.5382953;                              !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   FlatDemandCharge-Gas,                   !- Name
@@ -28,5 +28,5 @@ UtilityCost:Charge:Simple,
   totalDemand,                            !- Source Variable
   Annual,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  8.276175;                               !- Cost per Unit Value or Variable Name
+  6.75000;                                !- Cost per Unit Value or Variable Name
 

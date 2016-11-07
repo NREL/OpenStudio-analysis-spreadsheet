@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>tariff_selection_generic</name>
   <uid>d65ae535-f0ea-4745-9f5b-8d42c7070741</uid>
-  <version_id>348ecfe4-bfc5-4d3a-86a4-70cb4cd4ed72</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>43564105</xml_checksum>
+  <version_id>e3f02354-fd96-44bd-ad14-34f097fb40ee</version_id>
+  <version_modified>20161107T222447Z</version_modified>
+  <xml_checksum>C5F5C79E</xml_checksum>
   <class_name>TariffSelectionGeneric</class_name>
   <display_name> Tariff Selection-Generic</display_name>
   <description>This measure creates tariff objets from pre-poulated IDF files in the measures "resoruces" directory.</description>
@@ -71,6 +71,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -193,7 +194,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.6.0</identifier>
-        <min_compatible>1.6.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

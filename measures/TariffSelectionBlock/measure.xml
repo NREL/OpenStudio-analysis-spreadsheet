@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>tariff_selection_block</name>
   <uid>42e9f831-f39a-4709-a79b-41db49c94f8c</uid>
-  <version_id>70aa26f8-626a-45fd-940e-3fc143a56afc</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>92578CE8</xml_checksum>
+  <version_id>278b7887-0096-4736-a3c7-b540949a0cf7</version_id>
+  <version_modified>20161107T222446Z</version_modified>
+  <xml_checksum>8C7EDC5D</xml_checksum>
   <class_name>TariffSelectionBlock</class_name>
   <display_name> Tariff Selection-Block</display_name>
   <description>This measure sets block rates for electricity, and flat rates for gas, water, district heating, and district cooling.</description>
@@ -84,7 +84,7 @@
       <name>disthtg_rate</name>
       <display_name>District Heating Rate</display_name>
       <type>Double</type>
-      <units>$/kBtu</units>
+      <units>$/therm</units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>0.2</default_value>
@@ -93,12 +93,13 @@
       <name>distclg_rate</name>
       <display_name>District Cooling Rate</display_name>
       <type>Double</type>
-      <units>$/kBtu</units>
+      <units>$/therm</units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>0.2</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -232,21 +233,16 @@
   </attributes>
   <files>
     <file>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type></usage_type>
+      <checksum>F335EC74</checksum>
+    </file>
+    <file>
       <filename>os_lib_helper_methods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>9336238A</checksum>
-    </file>
-    <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.6.0</identifier>
-        <min_compatible>1.6.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>56304605</checksum>
     </file>
   </files>
 </measure>

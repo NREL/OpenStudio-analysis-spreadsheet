@@ -20,7 +20,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.044338749239999996;                   !- Cost per Unit Value or Variable Name
+  0.042254759;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Transmission GeneralSummerOffPeakEnergyCharge, !- Name
@@ -28,7 +28,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   summer,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.032399649239999995;                   !- Cost per Unit Value or Variable Name
+  0.030183059;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Transmission GeneralWinterOnPeakEnergyCharge, !- Name
@@ -36,7 +36,7 @@ UtilityCost:Charge:Simple,
   peakEnergy,                             !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.04606764924;                          !- Cost per Unit Value or Variable Name
+  0.045085259;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Transmission GeneralWinterOffPeakEnergyCharge, !- Name
@@ -44,7 +44,7 @@ UtilityCost:Charge:Simple,
   offPeakEnergy,                          !- Source Variable
   winter,                                 !- Season
   EnergyCharges,                          !- Category Variable Name
-  0.03360324924;                          !- Cost per Unit Value or Variable Name
+  0.032095559;                            !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Transmission GeneralSummerDemandCharge, !- Name
@@ -52,7 +52,7 @@ UtilityCost:Charge:Simple,
   totalDemand,                            !- Source Variable
   summer,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  14.08132032;                            !- Cost per Unit Value or Variable Name
+  13.264194240;                           !- Cost per Unit Value or Variable Name
 
 UtilityCost:Charge:Simple,
   Transmission GeneralWinterDemandCharge, !- Name
@@ -60,7 +60,7 @@ UtilityCost:Charge:Simple,
   totalDemand,                            !- Source Variable
   winter,                                 !- Season
   DemandCharges,                          !- Category Variable Name
-  10.57394832;                            !- Cost per Unit Value or Variable Name
+  9.918390240;                            !- Cost per Unit Value or Variable Name
 
 Schedule:Compact,
   TwoSeasonSchedule,                      !- Name

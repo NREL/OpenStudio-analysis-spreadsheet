@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_hot_water_loop_temperature</name>
   <uid>5217cff7-d280-438b-948a-d6c028fa2dfb</uid>
-  <version_id>84659305-3439-4a4b-a5a0-0629c6564592</version_id>
-  <version_modified>20160531T204355Z</version_modified>
-  <xml_checksum>0DA5C9E6</xml_checksum>
+  <version_id>304d5b49-8768-42a3-aaa2-fc0ee8add45e</version_id>
+  <version_modified>20161107T222437Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>SetHotWaterLoopTemperature</class_name>
   <display_name>SetHotWaterLoopTemperature</display_name>
   <description></description>
@@ -19,6 +19,7 @@
       <default_value>140</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Heating</tag>

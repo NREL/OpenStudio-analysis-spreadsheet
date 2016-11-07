@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_k_12_electric_equipment</name>
   <uid>4ef1195b-a7b2-4afc-8bbc-e0c28a86dfa4</uid>
-  <version_id>81f6372e-5a1b-4b1d-8d3d-a980d33b852f</version_id>
-  <version_modified>20160620T200507Z</version_modified>
-  <xml_checksum>126F1C43</xml_checksum>
+  <version_id>c5412ef9-39b1-47cb-8286-2121736c3703</version_id>
+  <version_modified>20161107T222217Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgK12ElectricEquipment</class_name>
   <display_name>AedgK12ElectricEquipment</display_name>
   <description>This measure removes all existing electric equipment from spaces recognized as primary or secondary school space types. New electric equipment will be added based on the 50% K12 AEDG recommendations. Kitchen equipment wont' be altered by this measure. There is a stand alone AEDG measure specifically for the kitchen.</description>
@@ -19,6 +19,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Equipment.Electric Equipment</tag>

@@ -1,253 +1,17 @@
 <measure>
   <schema_version>3.0</schema_version>
-  <name>space_type_and_construction_set_wizard</name>
+  <error>No such file or directory @ rb_sysopen - /Users/nlong/working/OpenStudio-analysis-spreadsheet/measures/SpaceTypeAndConstructionSetWizard/resources/OpenStudio_Standards.json</error>
+  <name>Space Type And Construction Set Wizard</name>
   <uid>9f8b4a61-ef75-42b6-8cb9-b73fad1f794a</uid>
-  <version_id>f132bdb3-bd12-476f-844c-a8afdcaafd88</version_id>
-  <version_modified>20160531T204356Z</version_modified>
-  <xml_checksum>057E8D9D</xml_checksum>
-  <class_name>SpaceTypeAndConstructionSetWizard</class_name>
-  <display_name>SpaceTypeAndConstructionSetWizard</display_name>
+  <version_id>fef6b0c5-b6af-43f1-920d-db0a73c94d8f</version_id>
+  <version_modified>20161107T222444Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
+  <class_name></class_name>
+  <display_name></display_name>
   <description>Create space types and or construction sets for the requested building type, climate zone, and target.</description>
   <modeler_description>These are created from the same JSON file that was used to make the OpenStudio templates. Optionally this will also set the building default space type and construction set.</modeler_description>
-  <arguments>
-    <argument>
-      <name>buildingType</name>
-      <display_name>Building Type</display_name>
-      <type>Choice</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <choices>
-        <choice>
-          <value>FullServiceRestaurant</value>
-          <display_name>FullServiceRestaurant</display_name>
-        </choice>
-        <choice>
-          <value>Hospital</value>
-          <display_name>Hospital</display_name>
-        </choice>
-        <choice>
-          <value>LargeHotel</value>
-          <display_name>LargeHotel</display_name>
-        </choice>
-        <choice>
-          <value>MidriseApartment</value>
-          <display_name>MidriseApartment</display_name>
-        </choice>
-        <choice>
-          <value>Office</value>
-          <display_name>Office</display_name>
-        </choice>
-        <choice>
-          <value>Outpatient</value>
-          <display_name>Outpatient</display_name>
-        </choice>
-        <choice>
-          <value>PrimarySchool</value>
-          <display_name>PrimarySchool</display_name>
-        </choice>
-        <choice>
-          <value>QuickServiceRestaurant</value>
-          <display_name>QuickServiceRestaurant</display_name>
-        </choice>
-        <choice>
-          <value>Retail</value>
-          <display_name>Retail</display_name>
-        </choice>
-        <choice>
-          <value>SecondarySchool</value>
-          <display_name>SecondarySchool</display_name>
-        </choice>
-        <choice>
-          <value>SmallHotel</value>
-          <display_name>SmallHotel</display_name>
-        </choice>
-        <choice>
-          <value>StripMall</value>
-          <display_name>StripMall</display_name>
-        </choice>
-        <choice>
-          <value>SuperMarket</value>
-          <display_name>SuperMarket</display_name>
-        </choice>
-        <choice>
-          <value>Warehouse</value>
-          <display_name>Warehouse</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>template</name>
-      <display_name>Template</display_name>
-      <type>Choice</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <choices>
-        <choice>
-          <value>189.1-2009</value>
-          <display_name>189.1-2009</display_name>
-        </choice>
-        <choice>
-          <value>90.1-2007</value>
-          <display_name>90.1-2007</display_name>
-        </choice>
-        <choice>
-          <value>90.1-2010</value>
-          <display_name>90.1-2010</display_name>
-        </choice>
-        <choice>
-          <value>DOE Ref 1980-2004</value>
-          <display_name>DOE Ref 1980-2004</display_name>
-        </choice>
-        <choice>
-          <value>DOE Ref 2004</value>
-          <display_name>DOE Ref 2004</display_name>
-        </choice>
-        <choice>
-          <value>DOE Ref Pre-1980</value>
-          <display_name>DOE Ref Pre-1980</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>climateZone</name>
-      <display_name>ASHRAE Climate Zone</display_name>
-      <type>Choice</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <choices>
-        <choice>
-          <value>ASHRAE 169-2006-1A</value>
-          <display_name>ASHRAE 169-2006-1A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-1B</value>
-          <display_name>ASHRAE 169-2006-1B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-2A</value>
-          <display_name>ASHRAE 169-2006-2A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-2B</value>
-          <display_name>ASHRAE 169-2006-2B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-3A</value>
-          <display_name>ASHRAE 169-2006-3A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-3B</value>
-          <display_name>ASHRAE 169-2006-3B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-3C</value>
-          <display_name>ASHRAE 169-2006-3C</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-4A</value>
-          <display_name>ASHRAE 169-2006-4A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-4B</value>
-          <display_name>ASHRAE 169-2006-4B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-4C</value>
-          <display_name>ASHRAE 169-2006-4C</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-5A</value>
-          <display_name>ASHRAE 169-2006-5A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-5B</value>
-          <display_name>ASHRAE 169-2006-5B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-5C</value>
-          <display_name>ASHRAE 169-2006-5C</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-6A</value>
-          <display_name>ASHRAE 169-2006-6A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-6B</value>
-          <display_name>ASHRAE 169-2006-6B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-7A</value>
-          <display_name>ASHRAE 169-2006-7A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-7B</value>
-          <display_name>ASHRAE 169-2006-7B</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-8A</value>
-          <display_name>ASHRAE 169-2006-8A</display_name>
-        </choice>
-        <choice>
-          <value>ASHRAE 169-2006-8B</value>
-          <display_name>ASHRAE 169-2006-8B</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>createSpaceTypes</name>
-      <display_name>Create Space Types?</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>createConstructionSet</name>
-      <display_name>Create Construction Set?</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>setBuildingDefaults</name>
-      <display_name>Set Building Defaults Using New Objects?</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-  </arguments>
+  <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Whole Building.Space Types</tag>
@@ -266,10 +30,39 @@
   </attributes>
   <files>
     <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.4.1</identifier>
+        <min_compatible>1.8.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>C22C120A</checksum>
+    </file>
+    <file>
+      <filename>ConstructionSetGenerator.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>243529DE</checksum>
+    </file>
+    <file>
       <filename>CreateTemplateModels.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>D277CC46</checksum>
+    </file>
+    <file>
+      <filename>Master_Schedules.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9DBFE129</checksum>
+    </file>
+    <file>
+      <filename>OsLib_Constructions.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>11B983A5</checksum>
     </file>
     <file>
       <filename>OsLib_HelperMethods.rb</filename>
@@ -284,45 +77,10 @@
       <checksum>FDF2CAA1</checksum>
     </file>
     <file>
-      <filename>ConstructionSetGenerator.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>243529DE</checksum>
-    </file>
-    <file>
       <filename>SpaceTypeGenerator.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>76DF6968</checksum>
-    </file>
-    <file>
-      <filename>OpenStudio_Standards.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>1F1BBC81</checksum>
-    </file>
-    <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.4.1</identifier>
-        <min_compatible>1.4.1</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>C22C120A</checksum>
-    </file>
-    <file>
-      <filename>OsLib_Constructions.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>11B983A5</checksum>
-    </file>
-    <file>
-      <filename>Master_Schedules.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>9DBFE129</checksum>
     </file>
   </files>
 </measure>

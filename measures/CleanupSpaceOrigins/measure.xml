@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>cleanup_space_origins</name>
   <uid>d81f8791-081d-4346-9f27-1b721d27ea86</uid>
-  <version_id>3cf87e5c-7bc2-42e0-9de4-e63a1a3b7079</version_id>
-  <version_modified>20160620T200513Z</version_modified>
-  <xml_checksum>45097B60</xml_checksum>
+  <version_id>a30bd6f3-0d53-4ea4-a8b9-f4fbba2511b9</version_id>
+  <version_modified>20161107T222243Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>CleanupSpaceOrigins</class_name>
   <display_name>CleanupSpaceOrigins</display_name>
   <description>This measure will move the space origin for all spaces to the origin of bounding box closest to the model origin.</description>
   <modeler_description>This was originally developed to cleanup imported IDF's which sometimes had all zone origins at model 0,0,0.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Form</tag>
@@ -31,7 +32,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.3.1</identifier>
-        <min_compatible>1.3.1</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

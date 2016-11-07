@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_interior_lighting</name>
   <uid>e1e16b8f-5cbf-447c-9f76-7fe69b3cf01e</uid>
-  <version_id>15abd7ec-fed3-4dc1-ac8c-291d929285be</version_id>
-  <version_modified>20160620T200511Z</version_modified>
-  <xml_checksum>2DDDDD82</xml_checksum>
+  <version_id>2a8b1c9d-c0b6-4f8d-9699-67ef43d1d299</version_id>
+  <version_modified>20161107T222234Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeInteriorLighting</class_name>
   <display_name>AedgSmallToMediumOfficeInteriorLighting</display_name>
   <description>This measure removes all existing lighting objects from spaces recognized as primary or secondary school space types. New lighting will be added based on the 50% Small to Medium Office AEDG recommendations.</description>
@@ -19,6 +19,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>
@@ -37,6 +38,17 @@
   </attributes>
   <files>
     <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.3.0</identifier>
+        <min_compatible>1.8.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>9A87D9C0</checksum>
+    </file>
+    <file>
       <filename>OsLib_AedgMeasures.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -49,27 +61,16 @@
       <checksum>1FC7DE81</checksum>
     </file>
     <file>
-      <filename>OsLib_Schedules.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A59F2148</checksum>
-    </file>
-    <file>
       <filename>OsLib_LightingAndEquipment.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>E1C8FE10</checksum>
     </file>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>1.3.0</identifier>
-        <min_compatible>1.3.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
+      <filename>OsLib_Schedules.rb</filename>
       <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>9A87D9C0</checksum>
+      <usage_type>resource</usage_type>
+      <checksum>A59F2148</checksum>
     </file>
   </files>
 </measure>

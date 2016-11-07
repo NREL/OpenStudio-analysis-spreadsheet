@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_ext_wall_to_ground_boundary_condition_by_story</name>
   <uid>be9023ea-fefe-4074-ac03-718ccfb6d25f</uid>
-  <version_id>3b6f5ea9-016d-4e85-931d-dcbc6b16b3c1</version_id>
-  <version_modified>20160531T204354Z</version_modified>
-  <xml_checksum>0F858D9E</xml_checksum>
+  <version_id>ff66a77c-cdac-4e79-b640-efc8519ae30c</version_id>
+  <version_modified>20161107T222434Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetExtWallToGroundBoundaryConditionByStory</class_name>
   <display_name>SetExtWallToGroundBoundaryConditionByStory</display_name>
   <description>Use this to setup one of your building stories as a basement.</description>
@@ -18,6 +18,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>
@@ -49,7 +50,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

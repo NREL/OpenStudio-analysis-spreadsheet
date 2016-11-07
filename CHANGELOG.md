@@ -5,6 +5,9 @@ Version Unreleased
 ------------------
 * Remove allow_multiple_jobs and server_as_worker options. These are by defaulted to true now.
 * Support for CSV import to specify individual data point
+* Update measure XMLs to version 3.0
+* Remove measure JSON files (use XMLs)
+* Support for CSV (batch datapoint) to run a measure with no arguments. (Set arguments to 'None').
 
 Version 0.4.2
 -------------

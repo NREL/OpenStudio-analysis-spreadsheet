@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>aedg_small_to_medium_office_envelope_and_entry_infiltration</name>
   <uid>9c977bfb-d3f8-4f61-afcf-9524edf82cb8</uid>
-  <version_id>837c0f76-d3ae-4fdc-84c5-6fd2f0442a44</version_id>
-  <version_modified>20160620T200511Z</version_modified>
-  <xml_checksum>EACB548E</xml_checksum>
+  <version_id>a2c2e5ff-c513-4c39-9c75-e2c7135e49a8</version_id>
+  <version_modified>20161107T222230Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AedgSmallToMediumOfficeEnvelopeAndEntryInfiltration</class_name>
   <display_name>AedgSmallToMediumOfficeEnvelopeAndEntryInfiltration</display_name>
   <description>This measure addresses two sources of air infiltration. The first is infiltration through the building envelope. The second is infiltration due to occupants entering and leaving the building. The AEDG provides recommendations and tips on how to limit infiltration in both cases. For occupant entry vestibules may be recommended at major entries depending on the size of the building and climate zone.</description>
@@ -98,6 +98,7 @@
       <default_value>0</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Infiltration</tag>

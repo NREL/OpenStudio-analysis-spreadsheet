@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>rename_space_surfaces_basedon_parent_spaceand_orientation</name>
   <uid>e627ae57-fa86-49bf-81bb-920181a25736</uid>
-  <version_id>2ddbf5ff-725b-49a5-a387-cb458476ca17</version_id>
-  <version_modified>20160531T204353Z</version_modified>
-  <xml_checksum>0F858D9E</xml_checksum>
+  <version_id>88af2e69-f936-4c1c-b1d7-6d46505860a4</version_id>
+  <version_modified>20161107T222422Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>RenameSpaceSurfacesBasedonParentSpaceandOrientation</class_name>
   <display_name>RenameSpaceSurfacesBasedonParentSpaceandOrientation</display_name>
   <description>This will rename surfaces so so that they will look like "Surface MySpace1 wall 230-01" where "MySpace1" is the name of my space "wall" is the surface type and 230 is the orientation of the surface and 01 is the first surface of that orientation. SubSurfaces will start with SubSurface instead of "Surface.</description>
   <modeler_description>This is a modeling aid. It just cleans up surface naming and will not have any impact on the simulation results. The  orientation will be rounded to the closest integer and padding all surfaces will have be padded to show 2 figures. so that single digit numbers will have a leading 0. This will help in sort order on pull down lists.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>
@@ -41,7 +42,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.0.0</identifier>
-        <min_compatible>1.0.0</min_compatible>
+        <min_compatible>1.8.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
