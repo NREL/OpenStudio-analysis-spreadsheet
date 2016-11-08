@@ -1,0 +1,32 @@
+[
+  {
+    "units": "kBTU/ft2",
+    "objective_function": true,
+    "objective_function_index": 0,
+    "objective_function_target": null,
+    "objective_function_group": 1,
+    "scaling_factor": null,
+    "display_name": "Total Site Energy Intensity",
+    "display_name_short": "Site EUI",
+    "metadata_id": "total_site_energy_intensity",
+    "name": "OpenStudioResults.eui",
+    "visualize": true,
+    "export": true,
+    "variable_type": "double"
+  },
+  {
+    "units": "kBTU",
+    "objective_function": true,
+    "objective_function_index": 1,
+    "objective_function_target": null,
+    "objective_function_group": 2,
+    "scaling_factor": null,
+    "display_name": "Net Site Energy",
+    "display_name_short": "Net Site Energy",
+    "metadata_id": "total_net_site_energy_ip",
+    "name": "OpenStudioResults.net_site_energy",
+    "visualize": true,
+    "export": true,
+    "variable_type": "double"
+  }
+]
