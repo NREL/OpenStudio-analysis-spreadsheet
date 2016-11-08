@@ -8,6 +8,7 @@ Version Unreleased
 * Update measure XMLs to version 3.0
 * Remove measure JSON files (use XMLs)
 * Support for CSV (batch datapoint) to run a measure with no arguments. (Set arguments to 'None').
+* Update Office seed model for OpenStudio 13.0
 
 Version 0.4.2
 -------------
