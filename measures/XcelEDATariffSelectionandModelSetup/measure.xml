@@ -2,8 +2,8 @@
   <schema_version>3.0</schema_version>
   <name>xcel_eda_tariff_selectionand_model_setup</name>
   <uid>c5ab60e9-b8e5-4653-a502-5ed030f1335d</uid>
-  <version_id>b9a5e162-b721-4ec5-8749-b9cd99524ab9</version_id>
-  <version_modified>20161107T222452Z</version_modified>
+  <version_id>8cd9ccdc-345e-4f19-a34c-3bbbf51171db</version_id>
+  <version_modified>20161116T222311Z</version_modified>
   <xml_checksum>390FCA70</xml_checksum>
   <class_name>XcelEDATariffSelectionandModelSetup</class_name>
   <display_name>XcelEDATariffSelectionandModelSetup</display_name>
@@ -132,15 +132,27 @@
   </attributes>
   <files>
     <file>
+      <filename>EnvelopeAndLoadTestModel_01.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E11F67BD</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.3</identifier>
-        <min_compatible>1.8.0</min_compatible>
+        <min_compatible>0.11.3</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>805C6011</checksum>
+    </file>
+    <file>
+      <filename>Interruptible Industrial G.idf</filename>
+      <filetype>idf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>48C37F65</checksum>
     </file>
     <file>
       <filename>Commercial.idf</filename>
@@ -245,10 +257,10 @@
       <checksum>3D6406B3</checksum>
     </file>
     <file>
-      <filename>Interruptible Industrial G.idf</filename>
-      <filetype>idf</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>48C37F65</checksum>
+      <filename>XcelEDATariffSelectionandModelSetup_Test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>57A1E1C7</checksum>
     </file>
   </files>
 </measure>
