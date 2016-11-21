@@ -1,0 +1,43 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>bad_reporting_measure</name>
+  <uid>92bee759-86ae-4617-92e2-f8e5aa9dc684</uid>
+  <version_id>814668ba-fec4-4858-8bbd-dfb11f104414</version_id>
+  <version_modified>20161121T221510Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
+  <class_name>BadReportingMeasure</class_name>
+  <display_name>BadReportingMeasure</display_name>
+  <description>This measure extracts key simulation results and performs basic model QAQC checks necessary for the Xcel EDA Program.</description>
+  <modeler_description>Reads the model and sql file to pull out the necessary information and run the model checks.  The check results show up as Warning messages in the measure's output on the PAT run tab.</modeler_description>
+  <arguments/>
+  <outputs/>
+  <provenances/>
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ReportingMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>1.0.6</identifier>
+        <min_compatible>1.0.6</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>46C77FC9</checksum>
+    </file>
+  </files>
+</measure>
