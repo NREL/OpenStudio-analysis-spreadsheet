@@ -528,3 +528,9 @@ desc "run NREL24"
 task :run_NREL24 do |t, args|
   task(:run_custom).invoke('nrel24')
 end
+
+desc "run LCNode1"
+task :run_lcnode1 do |t, args|
+  task(:run_custom).invoke('http://10.60.7.61:8080')
+end
+
