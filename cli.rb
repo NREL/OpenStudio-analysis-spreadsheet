@@ -201,9 +201,9 @@ def run_queued_tasks(analysis_type, download_dir, flags, timeout)
                 dps_error_count += 1
               end
             end
+            puts "INFO: DOWNLOAD STATUS -- Zip file download complete. #{dps_error_count} of #{dps.count} datapoints failed to download."
           end
           completed[:zip] = true
-          puts "INFO: DOWNLOAD STATUS -- Zip file download complete. #{dps_error_count} of #{dps.count} datapoints failed to download."
         end
 
         # Stop aws instance
@@ -436,8 +436,12 @@ begin
   # Run project on target server
   @analysis_id = @server_api.run("#{temp_filepath}.json","#{temp_filepath}.zip",aws_instance_options[:analysis_type])
 ensure
-  #Ensure resource cleanup
-  FileUtils.rm_r '.temp'
+  begin
+    #Ensure resource cleanup
+    FileUtils.rm_r '.temp'
+  rescue
+    puts 'Unable to delete the `.temp` directory. Continuing'.red
+  end
 end
 
 # Determine if there are queued tasks
