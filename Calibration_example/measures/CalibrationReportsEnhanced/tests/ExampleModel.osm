@@ -1,7 +1,7 @@
 
 OS:Version,
-  {93ba9c1b-af72-421b-9cd8-5aa912c9db14}, !- Handle
-  1.13.1;                                 !- Version Identifier
+  {3e09400d-7b26-40c4-8376-775553719dac}, !- Handle
+  1.1.3;                                  !- Version Identifier
 
 OS:Schedule:Constant,
   {5b31371e-075a-43e5-b7df-93e6c5dbb53e}, !- Handle
@@ -12,10 +12,20 @@ OS:Schedule:Constant,
 OS:ScheduleTypeLimits,
   {a19aa1e9-5e4d-426d-ac44-c9b9e6fa6e18}, !- Handle
   Always On Discrete Limits,              !- Name
-  0,                                      !- Lower Limit Value
-  1,                                      !- Upper Limit Value
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
   Discrete,                               !- Numeric Type
   Availability;                           !- Unit Type
+
+OS:Building,
+  {8c09ff8f-5f75-4d27-9f7e-bf9a58538137}, ! Handle
+  Mid-rise Apartment,                     ! Name
+  ,                                       ! Building Type
+  -0,                                     ! North Axis
+  ,                                       ! Nominal Floor to Floor Height
+  {61494be9-25ef-40d9-82bd-b74a2efaeb76}, ! Space Type Name
+  {6b8d9294-f8e5-4dba-98e3-8a12a5521854}, ! Default Construction Set Name
+  ;                                       ! Default Schedule Set Name
 
 OS:Construction,
   {76db9171-03b6-41e7-a45e-2de62e14f86c}, ! Handle
@@ -4361,7 +4371,7 @@ OS:Rendering:Color,
 
 OS:YearDescription,
   {fb706778-97ec-4b68-a089-0dea130bfeed}, !- Handle
-  2012,                                   !- Calendar Year
+  2000,                                   !- Calendar Year
   ,                                       !- Day of Week for Start Day
   ;                                       !- Is Leap Year
 
@@ -4412,7 +4422,7 @@ OS:SurfaceConvectionAlgorithm:Outside,
 OS:HeatBalanceAlgorithm,
   {31bc4afb-6a42-4bd1-a025-00e5e76e5cbb}, !- Handle
   ConductionTransferFunction,             !- Algorithm
-  200;                                    !- Surface Temperature Upper Limit {C}
+  200;                                    !- Surface Temperature Upper Limit {F}
 
 OS:ZoneAirHeatBalanceAlgorithm,
   {944088fc-16a9-4ed6-a19d-bbaca376aaa0}, !- Handle
@@ -7738,12 +7748,8 @@ OS:PortList,
 OS:Sizing:Zone,
   {fb2c9cbd-b42b-4607-9629-f224cdaac07d}, !- Handle
   {53f8202f-af80-4f57-b071-2f00591042d9}, !- Zone or ZoneList Name
-  SupplyAirTemperature,                   !- Zone Cooling Design Supply Air Temperature Input Method
   14,                                     !- Zone Cooling Design Supply Air Temperature {C}
-  11.11,                                  !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
-  SupplyAirTemperature,                   !- Zone Heating Design Supply Air Temperature Input Method
   40,                                     !- Zone Heating Design Supply Air Temperature {C}
-  11.11,                                  !- Zone Heating Design Supply Air Temperature Difference {deltaC}
   0.0085,                                 !- Zone Cooling Design Supply Air Humidity Ratio {kg-H2O/kg-air}
   0.008,                                  !- Zone Heating Design Supply Air Humidity Ratio {kg-H2O/kg-air}
   ,                                       !- Zone Heating Sizing Factor
@@ -7759,11 +7765,7 @@ OS:Sizing:Zone,
   ,                                       !- Heating Maximum Air Flow {m3/s}
   ,                                       !- Heating Maximum Air Flow Fraction
   ,                                       !- Design Zone Air Distribution Effectiveness in Cooling Mode
-  ,                                       !- Design Zone Air Distribution Effectiveness in Heating Mode
-  No,                                     !- Account for Dedicated Outdoor Air System
-  NeutralSupplyAir,                       !- Dedicated Outdoor Air System Control Strategy
-  Autosize,                               !- Dedicated Outdoor Air Low Setpoint Temperature for Design {C}
-  Autosize;                               !- Dedicated Outdoor Air High Setpoint Temperature for Design {C}
+  ;                                       !- Design Zone Air Distribution Effectiveness in Heating Mode
 
 OS:ZoneHVAC:EquipmentList,
   {ee3ab550-b981-4dd9-baa2-4b4cf85cd10c}, !- Handle
@@ -7831,12 +7833,8 @@ OS:PortList,
 OS:Sizing:Zone,
   {17233842-7fc1-4889-9d73-434ef5994ace}, !- Handle
   {ac372c72-46a2-422c-8271-7b9cc842fcea}, !- Zone or ZoneList Name
-  SupplyAirTemperature,                   !- Zone Cooling Design Supply Air Temperature Input Method
   14,                                     !- Zone Cooling Design Supply Air Temperature {C}
-  11.11,                                  !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
-  SupplyAirTemperature,                   !- Zone Heating Design Supply Air Temperature Input Method
   40,                                     !- Zone Heating Design Supply Air Temperature {C}
-  11.11,                                  !- Zone Heating Design Supply Air Temperature Difference {deltaC}
   0.0085,                                 !- Zone Cooling Design Supply Air Humidity Ratio {kg-H2O/kg-air}
   0.008,                                  !- Zone Heating Design Supply Air Humidity Ratio {kg-H2O/kg-air}
   ,                                       !- Zone Heating Sizing Factor
@@ -7852,11 +7850,7 @@ OS:Sizing:Zone,
   ,                                       !- Heating Maximum Air Flow {m3/s}
   ,                                       !- Heating Maximum Air Flow Fraction
   ,                                       !- Design Zone Air Distribution Effectiveness in Cooling Mode
-  ,                                       !- Design Zone Air Distribution Effectiveness in Heating Mode
-  No,                                     !- Account for Dedicated Outdoor Air System
-  NeutralSupplyAir,                       !- Dedicated Outdoor Air System Control Strategy
-  Autosize,                               !- Dedicated Outdoor Air Low Setpoint Temperature for Design {C}
-  Autosize;                               !- Dedicated Outdoor Air High Setpoint Temperature for Design {C}
+  ;                                       !- Design Zone Air Distribution Effectiveness in Heating Mode
 
 OS:ZoneHVAC:EquipmentList,
   {c427d1f8-0bb0-4b19-91df-a139344024d2}, !- Handle
@@ -7924,12 +7918,8 @@ OS:PortList,
 OS:Sizing:Zone,
   {aca3d731-4202-42f0-b2d0-fc7fc6421e41}, !- Handle
   {55f3ba1e-bd5a-41b6-8b7e-bcb4e7962df0}, !- Zone or ZoneList Name
-  SupplyAirTemperature,                   !- Zone Cooling Design Supply Air Temperature Input Method
   14,                                     !- Zone Cooling Design Supply Air Temperature {C}
-  11.11,                                  !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
-  SupplyAirTemperature,                   !- Zone Heating Design Supply Air Temperature Input Method
   40,                                     !- Zone Heating Design Supply Air Temperature {C}
-  11.11,                                  !- Zone Heating Design Supply Air Temperature Difference {deltaC}
   0.0085,                                 !- Zone Cooling Design Supply Air Humidity Ratio {kg-H2O/kg-air}
   0.008,                                  !- Zone Heating Design Supply Air Humidity Ratio {kg-H2O/kg-air}
   ,                                       !- Zone Heating Sizing Factor
@@ -7945,11 +7935,7 @@ OS:Sizing:Zone,
   ,                                       !- Heating Maximum Air Flow {m3/s}
   ,                                       !- Heating Maximum Air Flow Fraction
   ,                                       !- Design Zone Air Distribution Effectiveness in Cooling Mode
-  ,                                       !- Design Zone Air Distribution Effectiveness in Heating Mode
-  No,                                     !- Account for Dedicated Outdoor Air System
-  NeutralSupplyAir,                       !- Dedicated Outdoor Air System Control Strategy
-  Autosize,                               !- Dedicated Outdoor Air Low Setpoint Temperature for Design {C}
-  Autosize;                               !- Dedicated Outdoor Air High Setpoint Temperature for Design {C}
+  ;                                       !- Design Zone Air Distribution Effectiveness in Heating Mode
 
 OS:ZoneHVAC:EquipmentList,
   {a4ed77f5-b0e7-4406-8b11-146319445d45}, !- Handle
@@ -8040,11 +8026,11 @@ OS:WeatherFile,
   -7,                                     !- Time Zone {hr}
   1829,                                   !- Elevation {m}
   file:files/USA_CO_Golden-NREL.724666_TMY3.epw, !- Url
-  BDF687C1;                               !- Checksum
+  3CF64E88;                               !- Checksum
 
 OS:Site,
   {8b52a327-429f-42c5-905e-2f30a140b77a}, !- Handle
-  Denver Centennial  Golden   Nr,         !- Name
+  Site 1,                                 !- Name
   39.74,                                  !- Latitude {deg}
   -105.18,                                !- Longitude {deg}
   -7,                                     !- Time Zone {hr}
@@ -8307,7 +8293,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Clg .4% Condns Enth=>MDB, !- Name
   27.3,                                   !- Maximum Dry-Bulb Temperature {C}
   15.2,                                   !- Daily Dry-Bulb Temperature Range {deltaC}
-  59700,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  59700,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   4.9,                                    !- Wind Speed {m/s}
   0,                                      !- Wind Direction {deg}
@@ -8333,7 +8319,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Clg .4% Condns DP=>MDB, !- Name
   20.2,                                   !- Maximum Dry-Bulb Temperature {C}
   15.2,                                   !- Daily Dry-Bulb Temperature Range {deltaC}
-  16.1,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  16.1,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   4.9,                                    !- Wind Speed {m/s}
   0,                                      !- Wind Direction {deg}
@@ -8359,7 +8345,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Clg .4% Condns DB=>MWB, !- Name
   33,                                     !- Maximum Dry-Bulb Temperature {C}
   15.2,                                   !- Daily Dry-Bulb Temperature Range {deltaC}
-  15.7,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  15.7,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   4.9,                                    !- Wind Speed {m/s}
   0,                                      !- Wind Direction {deg}
@@ -8385,7 +8371,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Hum_n 99.6% Condns DP=>MCDB, !- Name
   -10.9,                                  !- Maximum Dry-Bulb Temperature {C}
   0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
-  -21.6,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  -21.6,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   3,                                      !- Wind Speed {m/s}
   340,                                    !- Wind Direction {deg}
@@ -8407,7 +8393,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Clg .4% Condns WB=>MDB, !- Name
   27.3,                                   !- Maximum Dry-Bulb Temperature {C}
   15.2,                                   !- Daily Dry-Bulb Temperature Range {deltaC}
-  18.4,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  18.4,                                   !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   4.9,                                    !- Wind Speed {m/s}
   0,                                      !- Wind Direction {deg}
@@ -8433,7 +8419,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Htg Wind 99.6% Condns WS=>MCDB, !- Name
   3.9,                                    !- Maximum Dry-Bulb Temperature {C}
   0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
-  3.9,                                    !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  3.9,                                    !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   12.2,                                   !- Wind Speed {m/s}
   340,                                    !- Wind Direction {deg}
@@ -8455,7 +8441,7 @@ OS:SizingPeriod:DesignDay,
   Denver Centennial  Golden   N Ann Htg 99.6% Condns DB, !- Name
   -18.8,                                  !- Maximum Dry-Bulb Temperature {C}
   0,                                      !- Daily Dry-Bulb Temperature Range {deltaC}
-  -18.8,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb
+  -18.8,                                  !- Humidity Indicating Conditions at Maximum Dry-Bulb {BasedOnField A3}
   81198,                                  !- Barometric Pressure {Pa}
   3,                                      !- Wind Speed {m/s}
   340,                                    !- Wind Direction {deg}
@@ -8576,7 +8562,7 @@ OS:UtilityBill,
   7.3,                                    !- Billing Period Peak Demand 13
   98.24;                                  !- Billing Period Total Cost 13
 
-OS:Output:Meter,
+OS:Meter,
   {34ddf533-db2d-4c81-8cd2-bd3fd77d538c}, !- Handle
   Electricity:Facility,                   !- Name
   Daily;                                  !- Reporting Frequency
@@ -8685,7 +8671,7 @@ OS:UtilityBill,
   ,                                       !- Billing Period Peak Demand 13
   89.73;                                  !- Billing Period Total Cost 13
 
-OS:Output:Meter,
+OS:Meter,
   {a0a03d3f-3f3c-45ab-ad93-cf4d2801d009}, !- Handle
   Gas:Facility,                           !- Name
   Daily;                                  !- Reporting Frequency
@@ -8741,8 +8727,8 @@ OS:Schedule:Constant,
 OS:ScheduleTypeLimits,
   {22f436b0-252e-4367-b8de-1a1a66a98afe}, !- Handle
   Schedule Type Limits 1,                 !- Name
-  0,                                      !- Lower Limit Value
-  1,                                      !- Upper Limit Value
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
   Discrete,                               !- Numeric Type
   Availability;                           !- Unit Type
 
@@ -9116,9 +9102,7 @@ OS:PlantLoop,
   Plant Loop 1,                           !- Name
   ,                                       !- Fluid Type
   ,                                       !- User Defined Fluid Type
-  ,                                       !- Plant Equipment Operation Heating Load
-  ,                                       !- Plant Equipment Operation Cooling Load
-  ,                                       !- Primary Plant Equipment Operation Scheme
+  ,                                       !- Plant Equipment Operation Scheme Name
   {26deed91-5d6d-471b-b78e-296ef91ca87f}, !- Loop Temperature Setpoint Node Name
   ,                                       !- Maximum Loop Temperature {C}
   ,                                       !- Minimum Loop Temperature {C}
@@ -9132,7 +9116,7 @@ OS:PlantLoop,
   {3cad7bcb-537a-4e18-ae09-c6008efe80e2}, !- Demand Side Outlet Node Name
   ,                                       !- Demand Side Branch List Name
   ,                                       !- Demand Side Connector List Name
-  Optimal,                                !- Load Distribution Scheme
+  ,                                       !- Load Distribution Scheme
   ,                                       !- Availability Manager List Name
   ,                                       !- Plant Loop Demand Calculation Scheme
   ,                                       !- Common Pipe Simulation
@@ -9143,10 +9127,7 @@ OS:Sizing:Plant,
   {d576c31b-8bcb-4724-aa15-eaee410ca7b0}, !- Plant or Condenser Loop Name
   Heating,                                !- Loop Type
   82,                                     !- Design Loop Exit Temperature {C}
-  11,                                     !- Loop Design Temperature Difference {deltaC}
-  NonCoincident,                          !- Sizing Option
-  1,                                      !- Zone Timesteps in Averaging Window
-  None;                                   !- Coincident Sizing Factor Mode
+  11;                                     !- Loop Design Temperature Difference {deltaC}
 
 OS:Node,
   {0e7bfa3d-cd68-4f4e-9a1e-f6f182e8ef9c}, !- Handle
@@ -9269,8 +9250,8 @@ OS:Connection,
 OS:ScheduleTypeLimits,
   {84881d5b-9042-4349-b464-7b363cd86945}, !- Handle
   Temperature 5,                          !- Name
-  ,                                       !- Lower Limit Value
-  ,                                       !- Upper Limit Value
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
   Continuous,                             !- Numeric Type
   Temperature;                            !- Unit Type
 
@@ -9332,16 +9313,16 @@ OS:SetpointManager:Scheduled,
 OS:ScheduleTypeLimits,
   {709d0245-a26d-4ad8-a0b8-119b91c2d3dc}, !- Handle
   Temperature 6,                          !- Name
-  ,                                       !- Lower Limit Value
-  ,                                       !- Upper Limit Value
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
   Continuous,                             !- Numeric Type
   Temperature;                            !- Unit Type
 
 OS:ScheduleTypeLimits,
   {c3fce164-2fa3-4636-9376-957d28cd632a}, !- Handle
   Temperature 7,                          !- Name
-  ,                                       !- Lower Limit Value
-  ,                                       !- Upper Limit Value
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
   Continuous,                             !- Numeric Type
   Temperature;                            !- Unit Type
 
@@ -9365,8 +9346,8 @@ OS:Schedule:Day,
 OS:ScheduleTypeLimits,
   {2f1fc4f3-3bdf-4805-8a93-27be60ea1b0a}, !- Handle
   Temperature 8,                          !- Name
-  ,                                       !- Lower Limit Value
-  ,                                       !- Upper Limit Value
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
   Continuous,                             !- Numeric Type
   Temperature;                            !- Unit Type
 
@@ -9599,7 +9580,7 @@ OS:SpaceInfiltration:DesignFlowRate,
   {9125cd57-8d8f-4b20-8152-29c570e48d40}, !- Handle
   Space Infiltration Design Flow Rate 1,  !- Name
   {b2b27a8d-0c11-4b65-aca9-667581d024bb}, !- Space or SpaceType Name
-  {4334ce5b-9f4d-4665-ab65-4aca0447565a}, !- Schedule Name
+  ,                                       !- Schedule Name
   Flow/Space,                             !- Design Flow Rate Calculation Method
   0,                                      !- Design Flow Rate {m3/s}
   ,                                       !- Flow per Space Floor Area {m3/s-m2}
@@ -9775,8 +9756,8 @@ OS:Schedule:Day,
 OS:ScheduleTypeLimits,
   {31d0a227-1b6b-4a4f-98c0-ce9d7e0f4a52}, !- Handle
   Temperature 9,                          !- Name
-  ,                                       !- Lower Limit Value
-  ,                                       !- Upper Limit Value
+  ,                                       !- Lower Limit Value {BasedOnField A4}
+  ,                                       !- Upper Limit Value {BasedOnField A4}
   Continuous,                             !- Numeric Type
   Temperature;                            !- Unit Type
 
@@ -9820,17 +9801,34 @@ OS:AirLoopHVAC,
   {78bbcdf4-b44a-4125-9445-110ac5a21ba1}, !- Handle
   Packaged Rooftop Air Conditioner,       !- Name
   ,                                       !- Controller List Name
-  {07e15aba-6282-4b4d-8ca7-cce4b74035e5}, !- Availability Schedule
-  ,                                       !- Availability Manager
+  {c7a0f649-034e-463f-96a2-de6ddda0a840}, !- Availability Manager List Name
   AutoSize,                               !- Design Supply Air Flow Rate {m3/s}
   ,                                       !- Branch List Name
   ,                                       !- Connector List Name
   {b7a184b7-4e1a-45a1-9802-bf259882fb33}, !- Supply Side Inlet Node Name
   {71b6d0ef-ca3b-4c75-aa52-2fc866b26249}, !- Demand Side Outlet Node Name
-  {421fe14d-b24b-458d-b058-bfa216c13da5}, !- Demand Side Inlet Node A
-  {5303df36-9115-402f-9c9a-06832e3e2981}, !- Supply Side Outlet Node A
-  ,                                       !- Demand Side Inlet Node B
-  ;                                       !- Supply Side Outlet Node B
+  {421fe14d-b24b-458d-b058-bfa216c13da5}, !- Demand Side Inlet Node Names
+  {5303df36-9115-402f-9c9a-06832e3e2981}; !- Supply Side Outlet Node Names
+
+OS:AvailabilityManagerAssignmentList,
+  {c7a0f649-034e-463f-96a2-de6ddda0a840}, !- Handle
+  Availability Manager Assignment List 1, !- Name
+  {286e0a4b-4a4e-4a5c-bb1e-5117af000320}, !- Availability Manager Name 1
+  {84d80d27-68f7-4278-ac5e-6f6eb2b15984}; !- Availability Manager Name 2
+
+OS:AvailabilityManager:Scheduled,
+  {286e0a4b-4a4e-4a5c-bb1e-5117af000320}, !- Handle
+  Availability Manager Scheduled 1,       !- Name
+  {07e15aba-6282-4b4d-8ca7-cce4b74035e5}; !- Schedule Name
+
+OS:AvailabilityManager:NightCycle,
+  {84d80d27-68f7-4278-ac5e-6f6eb2b15984}, !- Handle
+  Availability Manager Night Cycle 1,     !- Name
+  ,                                       !- Applicability Schedule
+  ,                                       !- Fan Schedule
+  ,                                       !- Control Type
+  ,                                       !- Thermostat Tolerance {deltaC}
+  ;                                       !- Cycling Run Time {s}
 
 OS:Node,
   {0479976c-4a30-49d6-8a34-ea5e431d8fdb}, !- Handle
@@ -9943,24 +9941,7 @@ OS:Sizing:System,
   0,                                      !- Cooling Design Air Flow Rate {m3/s}
   DesignDay,                              !- Heating Design Air Flow Method
   0,                                      !- Heating Design Air Flow Rate {m3/s}
-  ZoneSum,                                !- System Outdoor Air Method
-  1,                                      !- Zone Maximum Outdoor Air Fraction {dimensionless}
-  0.0099676501,                           !- Cooling Supply Air Flow Rate Per Floor Area {m3/s-m2}
-  1,                                      !- Cooling Fraction of Autosized Cooling Supply Air Flow Rate
-  3.9475456e-05,                          !- Cooling Supply Air Flow Rate Per Unit Cooling Capacity {m3/s-W}
-  0.0099676501,                           !- Heating Supply Air Flow Rate Per Floor Area {m3/s-m2}
-  1,                                      !- Heating Fraction of Autosized Heating Supply Air Flow Rate
-  1,                                      !- Heating Fraction of Autosized Cooling Supply Air Flow Rate
-  3.1588213e-05,                          !- Heating Supply Air Flow Rate Per Unit Heating Capacity {m3/s-W}
-  CoolingDesignCapacity,                  !- Cooling Design Capacity Method
-  Autosize,                               !- Cooling Design Capacity {W}
-  234.7,                                  !- Cooling Design Capacity Per Floor Area {W/m2}
-  1,                                      !- Fraction of Autosized Cooling Design Capacity
-  HeatingDesignCapacity,                  !- Heating Design Capacity Method
-  Autosize,                               !- Heating Design Capacity {W}
-  157,                                    !- Heating Design Capacity Per Floor Area {W/m2}
-  1,                                      !- Fraction of Autosized Heating Design Capacity
-  OnOff;                                  !- Central Cooling Capacity Control Method
+  ZoneSum;                                !- System Outdoor Air Method
 
 OS:Fan:ConstantVolume,
   {670074dc-6b91-4b64-8c84-d0f957218fd3}, !- Handle
@@ -9997,10 +9978,10 @@ OS:Curve:Biquadratic,
   0.00333,                                !- Coefficient4 y
   -8e-005,                                !- Coefficient5 y**2
   -0.00021,                               !- Coefficient6 x*y
-  17,                                     !- Minimum Value of x
-  22,                                     !- Maximum Value of x
-  13,                                     !- Minimum Value of y
-  46;                                     !- Maximum Value of y
+  17,                                     !- Minimum Value of x {BasedOnField A2}
+  22,                                     !- Maximum Value of x {BasedOnField A2}
+  13,                                     !- Minimum Value of y {BasedOnField A3}
+  46;                                     !- Maximum Value of y {BasedOnField A3}
 
 OS:Curve:Quadratic,
   {bcea3ee8-a60b-4fc2-80ee-bfed7316323d}, !- Handle
@@ -10008,8 +9989,8 @@ OS:Curve:Quadratic,
   0.77136,                                !- Coefficient1 Constant
   0.34053,                                !- Coefficient2 x
   -0.11088,                               !- Coefficient3 x**2
-  0.75918,                                !- Minimum Value of x
-  1.13877;                                !- Maximum Value of x
+  0.75918,                                !- Minimum Value of x {BasedOnField A2}
+  1.13877;                                !- Maximum Value of x {BasedOnField A2}
 
 OS:Curve:Biquadratic,
   {a1ca2266-9972-493e-ba3d-cc6d8a4fffbf}, !- Handle
@@ -10020,10 +10001,10 @@ OS:Curve:Biquadratic,
   -0.01434,                               !- Coefficient4 y
   0.00063,                                !- Coefficient5 y**2
   -0.00038,                               !- Coefficient6 x*y
-  17,                                     !- Minimum Value of x
-  22,                                     !- Maximum Value of x
-  13,                                     !- Minimum Value of y
-  46;                                     !- Maximum Value of y
+  17,                                     !- Minimum Value of x {BasedOnField A2}
+  22,                                     !- Maximum Value of x {BasedOnField A2}
+  13,                                     !- Minimum Value of y {BasedOnField A3}
+  46;                                     !- Maximum Value of y {BasedOnField A3}
 
 OS:Curve:Quadratic,
   {d76f290c-2ded-4991-8d2d-0b96a9b3d830}, !- Handle
@@ -10031,8 +10012,8 @@ OS:Curve:Quadratic,
   1.2055,                                 !- Coefficient1 Constant
   -0.32953,                               !- Coefficient2 x
   0.12308,                                !- Coefficient3 x**2
-  0.75918,                                !- Minimum Value of x
-  1.13877;                                !- Maximum Value of x
+  0.75918,                                !- Minimum Value of x {BasedOnField A2}
+  1.13877;                                !- Maximum Value of x {BasedOnField A2}
 
 OS:Curve:Quadratic,
   {71ebf3c3-567f-4ef4-a3eb-7a2ba9521eae}, !- Handle
@@ -10040,8 +10021,8 @@ OS:Curve:Quadratic,
   0.771,                                  !- Coefficient1 Constant
   0.229,                                  !- Coefficient2 x
   0,                                      !- Coefficient3 x**2
-  0,                                      !- Minimum Value of x
-  1;                                      !- Maximum Value of x
+  0,                                      !- Minimum Value of x {BasedOnField A2}
+  1;                                      !- Maximum Value of x {BasedOnField A2}
 
 OS:Coil:Cooling:DX:SingleSpeed,
   {2cbc2641-4271-421c-a86a-7ab98831a7f0}, !- Handle
@@ -10325,8 +10306,8 @@ OS:Connection,
 OS:ScheduleTypeLimits,
   {b599c5b4-10b0-403f-8419-b0b750cf8eaa}, !- Handle
   OnOff,                                  !- Name
-  0,                                      !- Lower Limit Value
-  1,                                      !- Upper Limit Value
+  0,                                      !- Lower Limit Value {BasedOnField A4}
+  1,                                      !- Upper Limit Value {BasedOnField A4}
   Discrete,                               !- Numeric Type
   Availability;                           !- Unit Type
 
@@ -10450,48 +10431,8 @@ OS:Schedule:Day,
   0,                                      !- Minute 3
   0;                                      !- Value Until Time 3
 
-OS:Output:Meter,
+OS:Meter,
   {c0898fa3-3244-4751-92aa-0491efada7c1}, !- Handle
   Electricity:Facility,                   !- Name
   Timestep;                               !- Reporting Frequency
-
-OS:Building,
-  {8c09ff8f-5f75-4d27-9f7e-bf9a58538137}, !- Handle
-  Mid-rise Apartment,                     !- Name
-  ,                                       !- Building Sector Type
-  -0,                                     !- North Axis {deg}
-  ,                                       !- Nominal Floor to Floor Height {m}
-  {61494be9-25ef-40d9-82bd-b74a2efaeb76}, !- Space Type Name
-  {6b8d9294-f8e5-4dba-98e3-8a12a5521854}, !- Default Construction Set Name
-  ;                                       !- Default Schedule Set Name
-
-OS:ClimateZones,
-  {b01be12d-2f42-4f0d-ab37-b9252013c56f}, !- Handle
-  ,                                       !- Active Institution
-  ,                                       !- Active Year
-  ASHRAE,                                 !- Climate Zone Institution Name 1
-  ANSI/ASHRAE Standard 169,               !- Climate Zone Document Name 1
-  2006,                                   !- Climate Zone Document Year 1
-  ,                                       !- Climate Zone Value 1
-  CEC,                                    !- Climate Zone Institution Name 2
-  California Climate Zone Descriptions,   !- Climate Zone Document Name 2
-  1995,                                   !- Climate Zone Document Year 2
-  ;                                       !- Climate Zone Value 2
-
-OS:LifeCycleCost:Parameters,
-  {63c8d8f0-df45-4f9e-801c-814fefea95ce}, !- Handle
-  FEMP,                                   !- Analysis Type
-  ,                                       !- Discounting Convention
-  ,                                       !- Inflation Approach
-  ,                                       !- Real Discount Rate
-  ,                                       !- Nominal Discount Rate
-  ,                                       !- Inflation
-  ,                                       !- Base Date Month
-  ,                                       !- Base Date Year
-  ,                                       !- Service Date Month
-  ,                                       !- Service Date Year
-  ,                                       !- Length of Study Period in Years
-  ,                                       !- Tax Rate
-  ,                                       !- Depreciation Method
-  Yes;                                    !- Use NIST Fuel Escalation Rates
 

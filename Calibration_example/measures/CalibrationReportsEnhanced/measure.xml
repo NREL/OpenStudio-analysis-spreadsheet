@@ -2,13 +2,13 @@
   <schema_version>3.0</schema_version>
   <name>calibration_reports_enhanced</name>
   <uid>e6642d40-7366-4647-8724-53a37991d668</uid>
-  <version_id>0e828633-4429-4cc7-8811-28aa79ca908f</version_id>
-  <version_modified>20170201T180857Z</version_modified>
-  <xml_checksum>9F9D8C87</xml_checksum>
+  <version_id>b1402446-1d6d-4b04-8034-2a9481992487</version_id>
+  <version_modified>20160620T200625Z</version_modified>
+  <xml_checksum>2C8A3EEF</xml_checksum>
   <class_name>CalibrationReportsEnhanced</class_name>
   <display_name>Calibration Reports Enhanced</display_name>
-  <description>This measure is intended for calibibration of modeled results against user entered utility bill.</description>
-  <modeler_description>Measure looks at consumption for electricity and natural gas, and demand for electricity. It is inteneded to be used with no more than one gas an electric bills. Each bill can have multiple billing periods. Make sure ot use an AMY matching the utility data time frame.</modeler_description>
+  <description>Calibration Reports Enhanced</description>
+  <modeler_description>Has variables for when the model is within the calibration limits.</modeler_description>
   <arguments>
     <argument>
       <name>electric_nmbe_limit</name>
@@ -43,176 +43,6 @@
       <default_value>15</default_value>
     </argument>
   </arguments>
-  <outputs>
-    <output>
-      <name>electricity_consumption_actual</name>
-      <display_name>electricity_consumption_actual</display_name>
-      <short_name>electricity_consumption_actual</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_consumption_modeled</name>
-      <display_name>electricity_consumption_modeled</display_name>
-      <short_name>electricity_consumption_modeled</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_consumption_cvrmse</name>
-      <display_name>electricity_consumption_cvrmse</display_name>
-      <short_name>electricity_consumption_cvrmse</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_consumption_nmbe</name>
-      <display_name>electricity_consumption_nmbe</display_name>
-      <short_name>electricity_consumption_nmbe</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_sum_of_squares</name>
-      <display_name>electricity_sum_of_squares</display_name>
-      <short_name>electricity_sum_of_squares</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_dof</name>
-      <display_name>electricity_dof</display_name>
-      <short_name>electricity_dof</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_rmse</name>
-      <display_name>electricity_rmse</display_name>
-      <short_name>electricity_rmse</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_peak_demand_nmbe</name>
-      <display_name>electricity_peak_demand_nmbe</display_name>
-      <short_name>electricity_peak_demand_nmbe</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_peak_demand_actual</name>
-      <display_name>electricity_peak_demand_actual</display_name>
-      <short_name>electricity_peak_demand_actual</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_peak_demand_modeled</name>
-      <display_name>electricity_peak_demand_modeled</display_name>
-      <short_name>electricity_peak_demand_modeled</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_consumption_actual</name>
-      <display_name>natural_gas_consumption_actual</display_name>
-      <short_name>natural_gas_consumption_actual</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_consumption_modeled</name>
-      <display_name>natural_gas_consumption_modeled</display_name>
-      <short_name>natural_gas_consumption_modeled</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_consumption_cvrmse</name>
-      <display_name>natural_gas_consumption_cvrmse</display_name>
-      <short_name>natural_gas_consumption_cvrmse</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_consumption_nmbe</name>
-      <display_name>natural_gas_consumption_nmbe</display_name>
-      <short_name>natural_gas_consumption_nmbe</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_sum_of_squares</name>
-      <display_name>natural_gas_sum_of_squares</display_name>
-      <short_name>natural_gas_sum_of_squares</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_dof</name>
-      <display_name>natural_gas_dof</display_name>
-      <short_name>natural_gas_dof</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_rmse</name>
-      <display_name>natural_gas_rmse</display_name>
-      <short_name>natural_gas_rmse</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>total_sum_of_squares</name>
-      <display_name>total_sum_of_squares</display_name>
-      <short_name>total_sum_of_squares</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>total_dof</name>
-      <display_name>total_dof</display_name>
-      <short_name>total_dof</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>total_rmse</name>
-      <display_name>total_rmse</display_name>
-      <short_name>total_rmse</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_cvrmse_within_limit</name>
-      <display_name>electricity_cvrmse_within_limit</display_name>
-      <short_name>electricity_cvrmse_within_limit</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>electricity_nmbe_within_limit</name>
-      <display_name>electricity_nmbe_within_limit</display_name>
-      <short_name>electricity_nmbe_within_limit</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_cvrmse_within_limit</name>
-      <display_name>natural_gas_cvrmse_within_limit</display_name>
-      <short_name>natural_gas_cvrmse_within_limit</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-    <output>
-      <name>natural_gas_nmbe_within_limit</name>
-      <display_name>natural_gas_nmbe_within_limit</display_name>
-      <short_name>natural_gas_nmbe_within_limit</short_name>
-      <type>Double</type>
-      <model_dependent>false</model_dependent>
-    </output>
-  </outputs>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -234,36 +64,29 @@
       <filename>CalibrationReports_Test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>AC255BBC</checksum>
+      <checksum>469E58E1</checksum>
     </file>
     <file>
       <filename>report.html.in</filename>
       <filetype>in</filetype>
       <usage_type>resource</usage_type>
-      <checksum>22F45739</checksum>
+      <checksum>08CC0C71</checksum>
     </file>
     <file>
       <filename>ExampleModel.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>5A314A0A</checksum>
+      <checksum>A930DF8D</checksum>
     </file>
     <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.11.0</identifier>
-        <min_compatible>1.11.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>04F2ABB5</checksum>
-    </file>
-    <file>
-      <filename>USA_CO_Golden-NREL.724666_TMY3.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BDF687C1</checksum>
+      <checksum>80B425D5</checksum>
     </file>
   </files>
 </measure>

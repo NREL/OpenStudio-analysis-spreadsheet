@@ -109,7 +109,7 @@ d3.tip=function(){function t(t){v=m(t),w=v.createSVGPoint(),document.body.append
             maxNMBE = fempMaxNMBE;
             maxCVRMSE = fempMaxCVRMSE;
         }
-        $('#calibrationString').text("NMBE of " + maxNMBE + "% or less and CV(RMSE) of " + maxCVRMSE + "% relative to monthly data.  Must contain all utility data for one year and real weather data.  Check the guideline for additional requirements.");
+        $('#calibrationString').text("NBME of " + maxNMBE + "% or less and CV(RMSE) of " + maxCVRMSE + "% relative to monthly data.  Must contain all utility data for one year and real weather data.  Check the guideline for additional requirements.");
 
         $('.table').each(function(i) {
             $(this).find('tr:last td:not(:first)').each(function(j) {
