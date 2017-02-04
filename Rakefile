@@ -113,7 +113,7 @@ Or run `rake clean`".red
     puts 'Starting cluster...'.cyan
 
     # Don't use the old API (Version 1)
-    ami_version = options['openstudio_server_version'][0] == 2 ? 3 : 2
+    ami_version = options['openstudio_server_version'][0] == '2' ? 3 : 2
     aws_options = {
         ami_lookup_version: ami_version,
         openstudio_server_version: options['openstudio_server_version']
