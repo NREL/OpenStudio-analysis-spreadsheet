@@ -142,6 +142,7 @@ Or run `rake clean`".red
     aws.create_workers(options['worker_nodes'].to_i, worker_options)
     aws.save_cluster_info "#{options['cluster_name']}.json"
     aws.print_connection_info
+    sleep 30
 
     server_dns = "http://#{aws.os_aws.server.data.dns}"
 
