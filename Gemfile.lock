@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/nrel/openstudio-analysis-gem.git
-  revision: 002e51cf75a21f509644c74b789a3293d246861d
+  revision: 4932e2403a2433efa0d2b9f292eb4781fc1cf9fe
   branch: develop
   specs:
     openstudio-analysis (1.0.0.rc14)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/nrel/openstudio-aws-gem.git
-  revision: 826a19c61b3a7422c760451c9e633ff0cce4da60
+  revision: db68e2034ad8a0328aaf0981ebc8ea54379b6b53
   branch: dockerize
   specs:
     openstudio-aws (0.5.0.rc0)

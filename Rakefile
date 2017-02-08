@@ -142,7 +142,6 @@ Or run `rake clean`".red
     aws.create_workers(options['worker_nodes'].to_i, worker_options)
     aws.save_cluster_info "#{options['cluster_name']}.json"
     aws.print_connection_info
-    sleep 30
 
     server_dns = "http://#{aws.os_aws.server.data.dns}"
 
@@ -209,17 +208,21 @@ def run_analysis(analysis, run_options, target = 'aws', download = false)
   options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
 
-  if run_options[:batch_run_method]
-    analysis_id = api.run(formulation_file,
-                          analysis_zip_file,
-                          run_options['analysis_type'],
-                          { batch_run_method: run_options[:batch_run_method]}
-    )
-  else
-    analysis_id = api.run(formulation_file,
-                          analysis_zip_file,
-                          run_options['analysis_type']
-    )
+  begin
+    if run_options[:batch_run_method]
+      analysis_id = api.run(formulation_file,
+                            analysis_zip_file,
+                            run_options['analysis_type'],
+                            { batch_run_method: run_options[:batch_run_method]}
+      )
+    else
+      analysis_id = api.run(formulation_file,
+                            analysis_zip_file,
+                            run_options['analysis_type']
+      )
+    end
+  rescue => e
+    puts "Analysis submission failed with message `#{e.message}` in:\n#{e.backtrace.join("\n")}"
   end
 
 
