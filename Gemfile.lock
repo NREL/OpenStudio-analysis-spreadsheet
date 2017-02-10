@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/nrel/openstudio-analysis-gem.git
-  revision: 4932e2403a2433efa0d2b9f292eb4781fc1cf9fe
+  revision: 40b1a3360ee60bfbdb19aca6709b7f256ece52aa
   branch: develop
   specs:
-    openstudio-analysis (1.0.0.rc14)
+    openstudio-analysis (1.0.0.rc15)
       bcl (~> 0.5.7)
       dencity (~> 0.1.0)
       faraday (~> 0.8)
@@ -63,7 +63,7 @@ GEM
       mini_portile2 (~> 2.1.0)
     nokogiri (1.6.8.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
-    openstudio-aws (0.5.0.rc1)
+    openstudio-aws (0.5.0.rc2)
       aws-sdk-core (= 2.2.26)
       net-scp (~> 1.1)
       net-ssh (= 3.0.2)
@@ -79,7 +79,7 @@ GEM
     rubyXL (3.3.22)
       nokogiri (>= 1.4.4)
       rubyzip (>= 1.1.6)
-    rubyzip (1.2.0)
+    rubyzip (1.2.1)
     semantic (1.6.0)
     sshkey (1.9.0)
     systemu (2.6.5)
@@ -97,7 +97,7 @@ DEPENDENCIES
   git
   nokogiri (= 1.6.8.1)
   openstudio-analysis!
-  openstudio-aws (= 0.5.0.rc1)
+  openstudio-aws (= 0.5.0.rc2)
   rake (~> 11.1)
 
 BUNDLED WITH
