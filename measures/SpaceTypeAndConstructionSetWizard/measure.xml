@@ -1,10 +1,10 @@
 <measure>
   <schema_version>3.0</schema_version>
-  <error>No such file or directory @ rb_sysopen - /Users/nlong/working/OpenStudio-analysis-spreadsheet/measures/SpaceTypeAndConstructionSetWizard/resources/OpenStudio_Standards.json</error>
+  <error>No such file or directory @ rb_sysopen - C:/Projects/os-spread-docker/measures/SpaceTypeAndConstructionSetWizard/resources/OpenStudio_Standards.json</error>
   <name>Space Type And Construction Set Wizard</name>
   <uid>9f8b4a61-ef75-42b6-8cb9-b73fad1f794a</uid>
-  <version_id>fef6b0c5-b6af-43f1-920d-db0a73c94d8f</version_id>
-  <version_modified>20161107T222444Z</version_modified>
+  <version_id>ea762f3c-cbc5-4025-ad58-e016ba93cd08</version_id>
+  <version_modified>20170216T204355Z</version_modified>
   <xml_checksum>BCB7218E</xml_checksum>
   <class_name></class_name>
   <display_name></display_name>

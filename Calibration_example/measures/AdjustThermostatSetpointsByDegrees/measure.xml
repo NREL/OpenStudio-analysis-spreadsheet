@@ -1,9 +1,51 @@
 <measure>
-  <name>Adjust Thermostat Setpoints by Degrees</name>
+  <schema_version>3.0</schema_version>
+  <name>adjust_thermostat_setpoints_by_degrees</name>
   <uid>6e1f34f9-92e1-44ea-9279-de0b9b64f6a1</uid>
-  <version_id>12df347b-7909-4bd4-af6b-c5a5825d175d</version_id>
+  <version_id>e74e9ffb-29d7-4148-8e2b-bc70ea4f4599</version_id>
+  <version_modified>20170216T204320Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
+  <class_name>AdjustThermostatSetpointsByDegrees</class_name>
+  <display_name>Adjust Thermostat Setpoints by Degrees</display_name>
   <description>This measure adjusts heating and cooling setpoints by a user specified number of degrees. This is applied throughout the entire building.</description>
   <modeler_description>This measure will clone all of the schedules that are used as heating and cooling setpoints for thermal zones. The clones are hooked up to the thermostat in place of the original schedules. Then the schedules are adjusted by the specified values. There is a checkbox to determine if the thermostat for design days should be altered.</modeler_description>
+  <arguments>
+    <argument>
+      <name>cooling_adjustment</name>
+      <display_name>Degrees Fahrenheit to Adjust Cooling Setpoint By.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1</default_value>
+    </argument>
+    <argument>
+      <name>heating_adjustment</name>
+      <display_name>Degrees Fahrenheit to Adjust heating Setpoint By.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>-1</default_value>
+    </argument>
+    <argument>
+      <name>alter_design_days</name>
+      <display_name>Alter Design Day Thermostats?</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>false</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.HVAC Controls</tag>
@@ -47,6 +89,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.10.2</identifier>
+        <min_compatible>0.10.2</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

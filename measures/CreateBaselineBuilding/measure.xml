@@ -1,10 +1,10 @@
 <measure>
   <schema_version>3.0</schema_version>
-  <error>cannot load such file -- openstudio-standards</error>
+  <error>Unable to extract OpenStudio::Measure::OSMeasure object from C:/Projects/os-spread-docker/measures/CreateBaselineBuilding/measure.rb. The script should contain a class that derives from OpenStudio::Measure::OSMeasure and should close with a line stating the class name followed by .new.registerWithApplication.</error>
   <name>create_baseline_building</name>
   <uid>4de56e21-b6cd-45d9-8466-862507d228b2</uid>
-  <version_id>ff50e3b1-4e7f-4cd1-bb49-4a03f1ad366d</version_id>
-  <version_modified>20161107T222243Z</version_modified>
+  <version_id>7cce3b1e-ae31-482f-be0b-f4e5b955bc1a</version_id>
+  <version_modified>20170216T204353Z</version_modified>
   <xml_checksum>16B68B0C</xml_checksum>
   <class_name>CreateBaselineBuilding</class_name>
   <display_name>Create Baseline Building</display_name>

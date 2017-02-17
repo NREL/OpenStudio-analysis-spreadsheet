@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>add_monthly_json_utility_data</name>
   <uid>6da969e0-4256-49bf-9607-26504cc3d423</uid>
-  <version_id>a3b96a97-aa43-46c3-a186-b5504a1d5698</version_id>
-  <version_modified>20160620T200625Z</version_modified>
-  <xml_checksum>9064277D</xml_checksum>
+  <version_id>59a749f4-89d4-403d-8abe-7435825884f2</version_id>
+  <version_modified>20170216T204320Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>AddMonthlyJSONUtilityData</class_name>
   <display_name>AddMonthlyJSONUtilityData</display_name>
   <description>Reads in json format and adds utility data</description>
@@ -100,6 +100,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>
@@ -117,18 +118,6 @@
     </attribute>
   </attributes>
   <files>
-    <file>
-      <filename>electric.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>2D3A360B</checksum>
-    </file>
-    <file>
-      <filename>gas.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>3495E56F</checksum>
-    </file>
     <file>
       <filename>AddMonthlyJSONUtilityData_Test.rb</filename>
       <filetype>rb</filetype>

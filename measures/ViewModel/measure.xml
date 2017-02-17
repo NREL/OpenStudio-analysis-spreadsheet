@@ -1,13 +1,12 @@
 <measure>
   <schema_version>3.0</schema_version>
-  <error>cannot load such file -- rubygems/version</error>
   <name>view_model</name>
   <uid>f4669f10-fda5-489d-8e1c-7ca3c2d40378</uid>
-  <version_id>7b50f4d0-d83a-4b31-8f9d-415d76440e11</version_id>
-  <version_modified>20161107T222451Z</version_modified>
+  <version_id>e73b1dd1-758e-49b3-82e3-521841e12513</version_id>
+  <version_modified>20170216T204356Z</version_modified>
   <xml_checksum>BCB7218E</xml_checksum>
-  <class_name></class_name>
-  <display_name></display_name>
+  <class_name>ViewModel</class_name>
+  <display_name>ViewModel</display_name>
   <description>Visualize an OpenStudio model in a web based viewer</description>
   <modeler_description>Converts the OpenStudio model to vA3C JSON format and renders using Three.js</modeler_description>
   <arguments/>

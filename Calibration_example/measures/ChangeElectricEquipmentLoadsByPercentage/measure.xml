@@ -2,8 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>change_electric_equipment_loads_by_percentage</name>
   <uid>b93f5c06-a1a8-4741-9d47-af00a2e7e288</uid>
-  <version_id>273f319c-b013-423f-b53b-907255afdbf7</version_id>
-  <xml_checksum>F9A5B8F0</xml_checksum>
+  <version_id>5546a54e-0519-491a-93d4-9ac68f54d6a1</version_id>
+  <version_modified>20170216T204320Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ChangeElectricEquipmentLoadsByPercentage</class_name>
   <display_name>Change Electric Equipment Loads by Percentage</display_name>
   <description>Change electric equipment loads. This will affect equipment that have a, power, power per area (LPD), or power per person value. This can be applied to the entire building or a specific space type. A positive percentage represents an increase electric equipment power, while a negative percentage can be used for an increase in electric equipment power.</description>
@@ -15,10 +16,10 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{87992073-34e6-4f4d-b9f5-89a5bf8d5cc4}</default_value>
+      <default_value>*Entire Building*</default_value>
       <choices>
         <choice>
-          <value>{87992073-34e6-4f4d-b9f5-89a5bf8d5cc4}</value>
+          <value>{dfa82a7e-6492-4fba-95bd-50ff92f71dd8}</value>
           <display_name>*Entire Building*</display_name>
         </choice>
       </choices>
@@ -98,6 +99,7 @@
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Equipment.Electric Equipment</tag>

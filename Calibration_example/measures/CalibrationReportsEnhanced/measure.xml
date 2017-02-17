@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>calibration_reports_enhanced</name>
   <uid>e6642d40-7366-4647-8724-53a37991d668</uid>
-  <version_id>b1402446-1d6d-4b04-8034-2a9481992487</version_id>
-  <version_modified>20160620T200625Z</version_modified>
-  <xml_checksum>2C8A3EEF</xml_checksum>
+  <version_id>ae3af6d7-2b09-4a09-9e30-de8622374469</version_id>
+  <version_modified>20170216T204320Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>CalibrationReportsEnhanced</class_name>
   <display_name>Calibration Reports Enhanced</display_name>
   <description>Calibration Reports Enhanced</description>
@@ -43,6 +43,7 @@
       <default_value>15</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Reporting.QAQC</tag>
@@ -82,6 +83,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.11.0</identifier>
+        <min_compatible>1.11.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

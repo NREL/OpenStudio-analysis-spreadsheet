@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>set_boiler_thermal_efficiency</name>
   <uid>fee282f5-e3d7-43ea-b996-bc7dead34927</uid>
-  <version_id>f9cc2378-1e34-470b-a659-ec45208acd15</version_id>
-  <version_modified>20160620T200626Z</version_modified>
-  <xml_checksum>0C35A82D</xml_checksum>
+  <version_id>a45963ed-10a1-4113-8e12-6c09664e6ba4</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>SetBoilerThermalEfficiency</class_name>
   <display_name>SetBoilerThermalEfficiency</display_name>
   <description>Boiler thermal efficiency affects heating  energy consumption. The measure offers two options to set the boiler thermal efficiency. Option 1 allows users to specify the efficiency inputs directly. Option 2 determines the boiler thermal efficiency based on the boiler type, the boiler capacity, the fuel type and the prescriptive requirement in ASHRAE Standard 90.1. Option 2 is only applicable to natural gas or oil fired boilers. </description>
@@ -29,6 +29,7 @@
       </choices>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Heating</tag>

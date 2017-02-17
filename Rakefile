@@ -154,7 +154,7 @@ def configure_target_server(cluster_name, target)
   server_dns = nil
   case target.downcase
     when 'vagrant'
-      server_dns = 'http://localhost:8080'
+      server_dns = 'http://192.168.99.100:8080'
     when 'nrel24a'
       server_dns = 'http://bball-130553.nrel.gov:8080'
     when 'nrel24b'

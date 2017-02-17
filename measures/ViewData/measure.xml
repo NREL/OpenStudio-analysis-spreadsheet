@@ -1,16 +1,76 @@
 <measure>
   <schema_version>3.0</schema_version>
-  <error>cannot load such file -- rubygems/version</error>
   <name>view_data</name>
   <uid>18cf0de7-48b8-48dc-ab68-0dd29f0b8bd0</uid>
-  <version_id>b44d203a-1a73-4f80-a713-79ae32c6586f</version_id>
-  <version_modified>20161107T222450Z</version_modified>
+  <version_id>c6d53a63-c93f-4779-b527-2dfff75506c1</version_id>
+  <version_modified>20170216T204355Z</version_modified>
   <xml_checksum>9F9D8C87</xml_checksum>
-  <class_name></class_name>
-  <display_name></display_name>
+  <class_name>ViewData</class_name>
+  <display_name>ViewData</display_name>
   <description>Visualize energy simulation data plotted on an OpenStudio model in a web based viewer</description>
   <modeler_description>Converts the OpenStudio model to vA3C JSON format and renders using Three.js, simulation data is applied to surfaces of the model</modeler_description>
-  <arguments/>
+  <arguments>
+    <argument>
+      <name>file_source</name>
+      <display_name>Model Source</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Last OSM</default_value>
+      <choices>
+        <choice>
+          <value>Last OSM</value>
+          <display_name>Last OSM</display_name>
+        </choice>
+        <choice>
+          <value>Last IDF</value>
+          <display_name>Last IDF</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>reporting_frequency</name>
+      <display_name>Reporting Frequency</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Hourly</default_value>
+      <choices>
+        <choice>
+          <value>Timestep</value>
+          <display_name>Timestep</display_name>
+        </choice>
+        <choice>
+          <value>Hourly</value>
+          <display_name>Hourly</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>variable1_name</name>
+      <display_name>Variable 1 Name</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Surface Outside Face Temperature</default_value>
+    </argument>
+    <argument>
+      <name>variable2_name</name>
+      <display_name>Variable 2 Name</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Surface Inside Face Temperature</default_value>
+    </argument>
+    <argument>
+      <name>variable3_name</name>
+      <display_name>Variable 3 Name</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Zone Mean Radiant Temperature</default_value>
+    </argument>
+  </arguments>
   <outputs/>
   <provenances/>
   <tags>
