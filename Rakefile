@@ -113,8 +113,9 @@ Or run `rake clean`".red
     puts 'Starting cluster...'.cyan
 
     # Don't use the old API (Version 1)
+    ami_version = options['openstudio_server_version'][0] == '2' ? 3 : 2
     aws_options = {
-        ami_lookup_version: 2,
+        ami_lookup_version: ami_version,
         openstudio_server_version: options['openstudio_server_version']
     }
     aws = OpenStudio::Aws::Aws.new(aws_options)
@@ -207,17 +208,21 @@ def run_analysis(analysis, run_options, target = 'aws', download = false)
   options = {hostname: server_dns}
   api = OpenStudio::Analysis::ServerApi.new(options)
 
-  if run_options[:batch_run_method]
-    analysis_id = api.run(formulation_file,
-                          analysis_zip_file,
-                          run_options['analysis_type'],
-                          { batch_run_method: run_options[:batch_run_method]}
-    )
-  else
-    analysis_id = api.run(formulation_file,
-                          analysis_zip_file,
-                          run_options['analysis_type']
-    )
+  begin
+    if run_options[:batch_run_method]
+      analysis_id = api.run(formulation_file,
+                            analysis_zip_file,
+                            run_options['analysis_type'],
+                            { batch_run_method: run_options[:batch_run_method]}
+      )
+    else
+      analysis_id = api.run(formulation_file,
+                            analysis_zip_file,
+                            run_options['analysis_type']
+      )
+    end
+  rescue => e
+    puts "Analysis submission failed with message `#{e.message}` in:\n#{e.backtrace.join("\n")}"
   end
 
 
