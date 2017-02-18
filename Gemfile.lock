@@ -59,8 +59,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
-    nokogiri (1.6.8.1)
-      mini_portile2 (~> 2.1.0)
     nokogiri (1.6.8.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
     openstudio-aws (0.5.0.rc4)
@@ -80,7 +78,7 @@ GEM
       nokogiri (>= 1.4.4)
       rubyzip (>= 1.1.6)
     rubyzip (1.2.1)
-    semantic (1.5.0)
+    semantic (1.6.0)
     sshkey (1.9.0)
     systemu (2.6.5)
     uuid (2.3.8)
@@ -89,7 +87,6 @@ GEM
     zliby (0.0.5)
 
 PLATFORMS
-  ruby
   x64-mingw32
 
 DEPENDENCIES
