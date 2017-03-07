@@ -6,7 +6,7 @@ gem 'git', require: false
 
 gem 'openstudio-aws', '~> 0.5.0-rc3'
 
-gem 'openstudio-analysis', '1.0.0.rc16'
+gem 'openstudio-analysis', '1.0.0.rc17'
 #gem 'openstudio-analysis', path: '../OpenStudio-analysis-gem'
 #gem 'openstudio-analysis', github: 'nrel/openstudio-analysis-gem', branch: 'develop'
 

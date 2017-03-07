@@ -47,7 +47,7 @@ GEM
     net-ssh (3.0.2)
     nokogiri (1.6.8.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
-    openstudio-analysis (1.0.0.rc16)
+    openstudio-analysis (1.0.0.rc17)
       bcl (~> 0.5.7)
       dencity (~> 0.1.0)
       faraday (~> 0.8)
@@ -55,7 +55,7 @@ GEM
       roo (~> 2.4)
       rubyzip (~> 1.2)
       semantic (~> 1.4)
-    openstudio-aws (0.5.0.rc4)
+    openstudio-aws (0.5.0.rc5)
       aws-sdk-core (= 2.2.26)
       net-scp (~> 1.1)
       net-ssh (= 3.0.2)
@@ -87,7 +87,7 @@ DEPENDENCIES
   colored (~> 1.2)
   git
   nokogiri (= 1.6.8.1)
-  openstudio-analysis (= 1.0.0.rc16)
+  openstudio-analysis (= 1.0.0.rc17)
   openstudio-aws (~> 0.5.0.pre.rc3)
   rake (~> 11.1)
 
