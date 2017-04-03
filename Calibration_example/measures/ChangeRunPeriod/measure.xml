@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>change_run_period</name>
   <uid>6da969e0-4256-49bf-9607-26504cc3d321</uid>
-  <version_id>06114ddd-5a42-431b-9230-299bef262eb9</version_id>
-  <version_modified>20160620T200625Z</version_modified>
-  <xml_checksum>9064277D</xml_checksum>
+  <version_id>79372085-0ecf-4748-9283-df84ad9314e2</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>ChangeRunPeriod</class_name>
   <display_name>ChangeRunPeriod</display_name>
   <description>ChangeRunPeriod</description>
@@ -25,6 +25,7 @@
       <model_dependent>false</model_dependent>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Economics.Life Cycle Cost Analysis</tag>

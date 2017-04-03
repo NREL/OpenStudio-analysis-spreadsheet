@@ -2,14 +2,15 @@
   <schema_version>3.0</schema_version>
   <name>server_directory_cleanup</name>
   <uid>ec7d04ad-0b7b-495b-825a-e1b6d28d1d3f</uid>
-  <version_id>03ab227d-43f0-4842-98c8-536e07813189</version_id>
-  <version_modified>20160620T200626Z</version_modified>
-  <xml_checksum>5F1EDF75</xml_checksum>
+  <version_id>e018b608-cdff-4f47-9658-49491bd5f992</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>ServerDirectoryCleanup</class_name>
   <display_name>Server Directory Cleanup</display_name>
   <description>Removes a significant portion of the saved results from each run, helping to alleviate memory problems.</description>
   <modeler_description>Use during large server runs, when individual sequel files and the like will not be needed.</modeler_description>
   <arguments/>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Calibration</tag>
@@ -31,6 +32,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.11.0</identifier>
+        <min_compatible>1.11.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>

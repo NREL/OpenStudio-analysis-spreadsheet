@@ -2,8 +2,8 @@
   <schema_version>3.0</schema_version>
   <name>xcel_eda_reportingand_qaqc</name>
   <uid>92bee759-86ae-4617-92e2-f8e5aa9dc684</uid>
-  <version_id>9a2a3c32-c47f-4c1a-a532-eb905a3ef04b</version_id>
-  <version_modified>20161117T193148Z</version_modified>
+  <version_id>5cd1d245-a2f5-4a4a-9480-21c3779dbdff</version_id>
+  <version_modified>20170216T204356Z</version_modified>
   <xml_checksum>9F9D8C87</xml_checksum>
   <class_name>XcelEDAReportingandQAQC</class_name>
   <display_name>XcelEDAReportingandQAQC</display_name>
@@ -70,28 +70,10 @@
       <checksum>78A571C7</checksum>
     </file>
     <file>
-      <filename>0116_OfficeTest121_dev.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>63E36762</checksum>
-    </file>
-    <file>
       <filename>CreateResults.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>65271996</checksum>
-    </file>
-    <file>
-      <filename>XcelEDAReportingandQAQC_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>4EBEE468</checksum>
-    </file>
-    <file>
-      <filename>USA_CO_Golden-NREL.724666_TMY3.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BDF687C1</checksum>
     </file>
   </files>
 </measure>

@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>change_electric_baseboard</name>
   <uid>4253e38c-6b48-4e96-8da7-002cec68d376</uid>
-  <version_id>055b1a36-89a4-4bfc-b0ab-bb7843f1aa7f</version_id>
-  <version_modified>20160620T200625Z</version_modified>
-  <xml_checksum>45097B60</xml_checksum>
+  <version_id>60915ede-5d3f-4e81-87eb-329388aae017</version_id>
+  <version_modified>20170216T204320Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
   <class_name>ChangeElectricBaseboard</class_name>
   <display_name>Change Electric Baseboard</display_name>
   <description>Change Electric Baseboard</description>
@@ -27,6 +27,7 @@
       <default_value>1500</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Form</tag>

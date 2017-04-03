@@ -1,9 +1,33 @@
 <measure>
-  <name>Set Heating and Cooling Sizing Factors</name>
+  <schema_version>3.0</schema_version>
+  <name>set_heatingand_cooling_sizing_factors</name>
   <uid>e9267250-ea12-4edf-9756-7b43282246bf</uid>
-  <version_id>46cd0919-2c4a-46a2-93e2-860703c5d918</version_id>
+  <version_id>697c38b3-a99e-488b-9c75-f0e596a778b4</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>BCB7218E</xml_checksum>
+  <class_name>SetHeatingandCoolingSizingFactors</class_name>
+  <display_name>SetHeatingandCoolingSizingFactors</display_name>
   <description></description>
   <modeler_description>Set the whole-model heating sizing factor and the whole-model cooling sizing factor to user specified values.</modeler_description>
+  <arguments>
+    <argument>
+      <name>htg_sz_factor</name>
+      <display_name>Heating Sizing Factor (eg 1.25 = 125% of required heating capacity.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.25</default_value>
+    </argument>
+    <argument>
+      <name>clg_sz_factor</name>
+      <display_name>Coolinig Sizing Factor (eg 1.15 = 115% of required cooling capacity.</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.15</default_value>
+    </argument>
+  </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Whole System</tag>
@@ -22,20 +46,15 @@
   </attributes>
   <files>
     <file>
-      <filename>SetHeatingandCoolingSizingFactors_Test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>DED5F65F</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.2.3</identifier>
+        <min_compatible>1.2.3</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>BB1EDC63</checksum>
+      <checksum>9743D4A4</checksum>
     </file>
   </files>
 </measure>

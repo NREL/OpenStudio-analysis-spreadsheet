@@ -1,10 +1,9 @@
 <measure>
   <schema_version>3.0</schema_version>
-  <error>cannot load such file -- openstudio-standards</error>
   <name>create_doe_prototype_building</name>
   <uid>be90fd0b-a651-467a-bc8d-29d310b0f937</uid>
-  <version_id>b51a885b-4e9b-4435-b00a-3f65d770b8fb</version_id>
-  <version_modified>20161107T222244Z</version_modified>
+  <version_id>088282e7-d2d1-4874-a947-fe0b7a2ddde0</version_id>
+  <version_modified>20170216T204353Z</version_modified>
   <xml_checksum>BCB7218E</xml_checksum>
   <class_name>CreateDOEPrototypeBuilding</class_name>
   <display_name>Create DOE Prototype Building</display_name>

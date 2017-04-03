@@ -2,9 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>reduce_lighting_loads_by_percentage</name>
   <uid>d37b7ed5-887a-4d1f-b304-259462eadbe9</uid>
-  <version_id>35a85c7a-2706-4e7f-b209-1b85555a02aa</version_id>
-  <version_modified>20160620T200626Z</version_modified>
-  <xml_checksum>293730A7</xml_checksum>
+  <version_id>37904665-c1c5-48aa-a688-bcc06b09c7f5</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>E8A47F56</xml_checksum>
   <class_name>ReduceLightingLoadsByPercentage</class_name>
   <display_name>Reduce Lighting Loads by Percentage</display_name>
   <description>The lighting system in this building uses more power per area than is required with the latest lighting technologies.  Replace the lighting system with a newer, more efficient lighting technology.  Newer technologies provide the same amount of light but use less energy in the process.</description>
@@ -17,10 +17,10 @@ Loop through all lights and luminaires in the specified space type or the entire
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>{f886f5d4-5abf-42b5-aad7-c0423e34a24f}</default_value>
+      <default_value>*Entire Building*</default_value>
       <choices>
         <choice>
-          <value>{f886f5d4-5abf-42b5-aad7-c0423e34a24f}</value>
+          <value>{ec1fb20a-6d57-417b-9f50-f9b10e584b9a}</value>
           <display_name>*Entire Building*</display_name>
         </choice>
       </choices>
@@ -100,6 +100,7 @@ Loop through all lights and luminaires in the specified space type or the entire
       <default_value>1</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Electric Lighting.Lighting Equipment</tag>

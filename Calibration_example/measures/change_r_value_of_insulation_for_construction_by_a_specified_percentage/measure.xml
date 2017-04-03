@@ -2,8 +2,9 @@
   <schema_version>3.0</schema_version>
   <name>change_r_value_of_insulation_for_construction_by_a_specified_percentage</name>
   <uid>3c7a6751-bb54-4600-9410-8f042e1a513b</uid>
-  <version_id>37a75567-64f1-42e9-be09-68e85c3bf0c2</version_id>
-  <xml_checksum>0BF71A3E</xml_checksum>
+  <version_id>f0c634a3-a0b4-49bf-b165-437e00742914</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>557EC503</xml_checksum>
   <class_name>ChangeRValueOfInsulationForConstructionByASpecifiedPercentage</class_name>
   <display_name>Change R-value of Insulation for Construction By a Specified Percentage</display_name>
   <description>Change the R value of the insulation layer in selected construction by a percentage.</description>
@@ -25,6 +26,7 @@
       <default_value>30</default_value>
     </argument>
   </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>Envelope.Opaque</tag>

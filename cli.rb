@@ -85,8 +85,8 @@ def lookup_target_url(target_type)
     when 'lcnode1'
       server_dns = 'http://10.60.7.61:8080'
     else
-      puts "ERROR: TARGET -- Unknown 'target_type' in #{__method__}"
-      fail 1
+      puts "WARN: TARGET -- Unknown 'target_type' in #{__method__}"
+      server_dns = target_type.downcase
   end
 
   server_dns

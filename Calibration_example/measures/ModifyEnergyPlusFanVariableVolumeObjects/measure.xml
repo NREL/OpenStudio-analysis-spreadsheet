@@ -1,9 +1,31 @@
 <measure>
-  <name>Modify EnergyPlus Fan Variable Volume Objects</name>
+  <schema_version>3.0</schema_version>
+  <name>modify_energyplus_fan_variable_volume_objects</name>
   <uid>14a9aa83-b4de-48b4-ba65-dad6f102ffcb</uid>
-  <version_id>2d970fea-7fac-4378-9f00-7f30e026f2f3</version_id>
+  <version_id>96d54b40-46ca-4077-96cd-3355e8bef868</version_id>
+  <version_modified>20170216T204321Z</version_modified>
+  <xml_checksum>C75AF51E</xml_checksum>
+  <class_name>ModifyEnergyPlusFanVariableVolumeObjects</class_name>
+  <display_name>ModifyEnergyPlusFanVariableVolumeObjects</display_name>
   <description>Set the Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model. Input values are in SI units.</description>
   <modeler_description>Maximum Flow Rate and and Pressure Rise values for all Fan:VariableVolume objects in the model will be set to the requested SI value.</modeler_description>
+  <arguments>
+    <argument>
+      <name>pressureRise</name>
+      <display_name>Pressure Rise (Pa).</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+    <argument>
+      <name>maximumFlowRate</name>
+      <display_name>Maximum Flow Rate (m^3/s).</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <outputs/>
   <provenances/>
   <tags>
     <tag>HVAC.Distribution</tag>
@@ -31,6 +53,7 @@
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.1.0</identifier>
+        <min_compatible>1.1.0</min_compatible>
       </version>
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
