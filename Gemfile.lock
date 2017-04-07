@@ -45,6 +45,8 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     nokogiri (1.6.8.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
     openstudio-analysis (1.0.0.rc17)
@@ -81,6 +83,7 @@ GEM
     zliby (0.0.5)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -92,4 +95,4 @@ DEPENDENCIES
   rake (~> 11.1)
 
 BUNDLED WITH
-   1.14.4
+   1.14.6
