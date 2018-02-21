@@ -4,7 +4,7 @@ gem 'rake', '~> 11.1'
 gem 'colored', '~> 1.2'
 gem 'git', require: false
 
-gem 'openstudio-aws', '0.5.0.rc8'
+gem 'openstudio-aws', '0.6.0'
 
 gem 'openstudio-analysis', '1.0.0.rc19'
 #gem 'openstudio-analysis', path: '../OpenStudio-analysis-gem'
